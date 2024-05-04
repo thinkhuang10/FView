@@ -78,8 +78,8 @@ public class RunForm : Form
 	private string dbProviderName = "SqlClient Data Provider";
 
 	private string dbConnString = "";
-
-	private int hwnd;
+	
+	//private int hwnd;
 
 	private CAuthoritySeiallize cas = new CAuthoritySeiallize();
 
@@ -294,88 +294,6 @@ public class RunForm : Form
 			return;
 		}
 		ProjectAuthorityStarter();
-		hwnd = FindWindow(null, "DXP");
-		if (hwnd != 0)
-		{
-			return;
-		}
-		try
-		{
-			new DirectoryInfo(MainControl.installpath.Replace("file:///", ""));
-			Process process = new Process();
-			string arguments = "";
-			if (MainControl.dhp.RunEvnironment)
-			{
-				arguments = "ProjRun?1|";
-			}
-			ProcessStartInfo startInfo = new ProcessStartInfo(AppDomain.CurrentDomain.BaseDirectory + (AppDomain.CurrentDomain.BaseDirectory.EndsWith("\\") ? "..\\..\\DXP.exe" : "\\..\\..\\DXP.exe"), arguments);
-			process.StartInfo = startInfo;
-			process.Start();
-		}
-		catch (Exception)
-		{
-			try
-			{
-				Process process2 = new Process();
-				string arguments2 = "";
-				if (MainControl.dhp.RunEvnironment)
-				{
-					arguments2 = "ProjRun?1|";
-				}
-				ProcessStartInfo startInfo2 = new ProcessStartInfo(AppDomain.CurrentDomain.BaseDirectory + (AppDomain.CurrentDomain.BaseDirectory.EndsWith("\\") ? "..\\..\\Bin\\DXP.exe" : "\\..\\..\\Bin\\DXP.exe"), arguments2);
-				process2.StartInfo = startInfo2;
-				process2.Start();
-				string text = sleepTime;
-				MessageBox.Show("数据将会加载" + text + "ms.请耐心等待！");
-				DateTime now = DateTime.Now;
-				while (now.AddSeconds(int.Parse(text)) > DateTime.Now)
-				{
-				}
-				Timer timer = new Timer();
-				timer.Interval = 1000;
-				timer.Tick += timer_Tick;
-				timer.Enabled = true;
-			}
-			catch (Exception)
-			{
-				MessageBox.Show("启动DXP失败,请手动启动,并加载相关工程。");
-			}
-		}
-	}
-
-	private void timer_Tick(object sender, EventArgs e)
-	{
-		if ((hwnd = FindWindow(null, "DXP")) != 0)
-		{
-			COPYDATASTRUCT lParam = default;
-			DirectoryInfo directoryInfo = new DirectoryInfo(MainControl.projectpath.Replace("file:///", ""));
-			string text = directoryInfo.Parent.FullName + "\\" + MainControl.projectname.Replace(".dhp", "") + ".dsl";
-			if (!File.Exists(text))
-			{
-				text = AppDomain.CurrentDomain.BaseDirectory + "\\..\\" + MainControl.projectname.Replace(".dhp", "") + ".dsl";
-				if (!File.Exists(text))
-				{
-					((Timer)sender).Enabled = false;
-					return;
-				}
-			}
-			byte[] bytes = Encoding.Default.GetBytes(text);
-			int num = bytes.Length;
-			lParam.dwData = (IntPtr)3000;
-			lParam.cbData = num + 1;
-			lParam.lpData = text;
-			SendMessageTimeout(hwnd, 74, (int)base.Handle, ref lParam, 0, 1000, 0);
-			((Timer)sender).Enabled = false;
-		}
-		else
-		{
-			count++;
-			if (count > 3)
-			{
-				((Timer)sender).Enabled = false;
-				MessageBox.Show("未能打开DXP");
-			}
-		}
 	}
 
 	private void printdoc_PrintPage(object sender, PrintPageEventArgs e)
