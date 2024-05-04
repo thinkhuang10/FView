@@ -67,11 +67,14 @@ ShowUninstDetails show
 ;Installer Sections
 ;--------------------------------
 
-Section "" DotnetFramework
+Section ".NET Framework 4.8" DotnetFramework
   !define DOTNETFX4_8_INSTALLER_NAME "ndp48-x86-x64-allos-enu.exe"
-
+  
+  File /oname=$TEMP\${DOTNETFX4_8_INSTALLER_NAME} "${DOTNETFX4_8_INSTALLER_NAME}"
+  
   DetailPrint "Starting Microsoft .NET Framework v4.8 Setup..."
-  ExecWait "${DOTNETFX4_8_INSTALLER_NAME}"
+  ExecWait '"$TEMP\${DOTNETFX4_8_INSTALLER_NAME}" /norestart /ChainingPackage FullX64BootStrapper'
+  Delete "$TEMP\${DOTNETFX4_8_INSTALLER_NAME}"
   DetailPrint "Microsoft .NET Framework is installed."
  
 SectionEnd
@@ -223,10 +226,10 @@ Function CheckPreinstalled
 
 	Call GetNetFrameworkVersion
 	${If} $R0 >= 528040 ;判断是否高于.NET Framework 4.8, 默认版本号528040
-	    SectionSetFlags ${DotnetFramework} 0	; 设置为1表示安装，0表示不安装
-		DetailPrint "Microsoft .NET Framework is alread installed."
+	    SectionSetFlags ${DotnetFramework} 0	; 0表示不安装，1表示安装
+		DetailPrint "Microsoft .NET Framework is alread installed."	
 	${Else}
-		SectionSetFlags ${DotnetFramework} 1	; 设置为1表示安装，0表示不安装
+		SectionSetFlags ${DotnetFramework} 1	; 0表示不安装，1表示安装
 		DetailPrint "Microsoft .NET Framework has not installed."
 	${EndIf}
 
