@@ -1,0 +1,3 @@
+namespace AxDCCECLIENTLib;
+
+public delegate void _DDCCEClientEvents_FireOnDataReadyEventHandler(object sender, _DDCCEClientEvents_FireOnDataReadyEvent e);

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{7BCCAB5C-7B83-415A-868E-EE8249DEFE2C}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <LangVersion>11.0</LangVersion>
+    <AssemblyName>Guan</AssemblyName>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\..\bin\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\..\bin\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Guan\drawbitmap.cs" />
+    <Compile Include="Guan\drawbitmap2.cs" />
+    <Compile Include="Guan\drawbitmap3.cs" />
+    <Compile Include="Guan\drawbitmap4.cs" />
+    <Compile Include="Guan\drawbitmap5.cs" />
+    <Compile Include="Guan\drawbitmap6.cs" />
+    <Compile Include="Guan\drawbitmap7.cs" />
+    <Compile Include="Guan\Save.cs" />
+    <Compile Include="Guan\SaveC2.cs" />
+    <Compile Include="Guan\SaveC3.cs" />
+    <Compile Include="Guan\SaveC4.cs" />
+    <Compile Include="Guan\SaveC5.cs" />
+    <Compile Include="Guan\SaveC6.cs" />
+    <Compile Include="Guan\SaveC7.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\CommonSnappableTypes\CommonSnappableTypes.csproj">
+      <Project>{2c5abf19-fd7d-4b1f-9bb1-6b5224518fcf}</Project>
+      <Name>CommonSnappableTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ShapeRuntime\ShapeRuntime.csproj">
+      <Project>{362ad0a6-a3e8-4203-8df3-24b015d58be6}</Project>
+      <Name>ShapeRuntime</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SetsForms\SetsForms.csproj">
+      <Project>{6dd7dde1-3205-4ea8-ab98-33a2d77ca81e}</Project>
+      <Name>SetsForms</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,3 @@
+namespace AxDCCECLIENTLib;
+
+public delegate void _DDCCEClientEvents_FireOnBehaviorEventHandler(object sender, _DDCCEClientEvents_FireOnBehaviorEvent e);

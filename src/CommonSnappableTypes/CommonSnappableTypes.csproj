@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{2C5ABF19-FD7D-4B1F-9BB1-6B5224518FCF}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <LangVersion>11.0</LangVersion>
+    <AssemblyName>CommonSnappableTypes</AssemblyName>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\bin\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\bin\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data" />
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonSnappableTypes\BitMapForIM.cs" />
+    <Compile Include="CommonSnappableTypes\ControlInfoAttribute.cs" />
+    <Compile Include="CommonSnappableTypes\DHMICtrlPropertyAttribute.cs" />
+    <Compile Include="CommonSnappableTypes\DHMIHidePropertyAttribute.cs" />
+    <Compile Include="CommonSnappableTypes\DHMIImageManage.cs" />
+    <Compile Include="CommonSnappableTypes\DHMINeedSerPropertyAttribute.cs" />
+    <Compile Include="CommonSnappableTypes\GetDataBase.cs" />
+    <Compile Include="CommonSnappableTypes\GetImageName.cs" />
+    <Compile Include="CommonSnappableTypes\GetValue.cs" />
+    <Compile Include="CommonSnappableTypes\GetVarTable.cs" />
+    <Compile Include="CommonSnappableTypes\IAlarm.cs" />
+    <Compile Include="CommonSnappableTypes\IDCCEControl.cs" />
+    <Compile Include="CommonSnappableTypes\SetValue.cs" />
+    <Compile Include="CommonSnappableTypes\VarTableImageManage.cs" />
+    <Compile Include="CommonSnappableTypes\VarTableUITypeEditor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

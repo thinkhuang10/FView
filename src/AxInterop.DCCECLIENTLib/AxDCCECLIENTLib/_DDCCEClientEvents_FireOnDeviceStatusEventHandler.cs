@@ -1,0 +1,3 @@
+namespace AxDCCECLIENTLib;
+
+public delegate void _DDCCEClientEvents_FireOnDeviceStatusEventHandler(object sender, _DDCCEClientEvents_FireOnDeviceStatusEvent e);

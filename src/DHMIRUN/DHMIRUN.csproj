@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{CF872EC7-0862-4614-9DBB-803E4FBD6DC8}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <LangVersion>11.0</LangVersion>
+    <AssemblyName>DHMIRUN</AssemblyName>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\bin\HMIRun\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\bin\HMIRun\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationIcon Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationManifest Include="app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HMIRunForm.Properties\Resources.cs" />
+    <Compile Include="HMIRunForm.Properties\Settings.cs" />
+    <Compile Include="HMIRunForm.ServerLogic\RunErrorHandler.cs" />
+    <Compile Include="HMIRunForm.ServerLogic\RunTimeoutHandler.cs" />
+    <Compile Include="HMIRunForm.ServerLogic\ScriptEngine.cs" />
+    <Compile Include="HMIRunForm.ServerLogic\ScriptLanguage.cs" />
+    <Compile Include="HMIRunForm.ServerLogic\ServerLogicWorker.cs" />
+    <Compile Include="HMIRunForm\ConnBuilder.cs" />
+    <Compile Include="HMIRunForm\DBConnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMIRunForm\Program.cs" />
+    <Compile Include="HMIRunForm\ProjectEndForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMIRunForm\ProjectStartForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMIRunForm\RunForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMIRunForm\RuntimeDBOperationDele.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="HMIRunForm.ProjectEndForm.resx" LogicalName="HMIRunForm.ProjectEndForm.resources" />
+    <EmbeddedResource Include="HMIRunForm.ProjectStartForm.resx" LogicalName="HMIRunForm.ProjectStartForm.resources" />
+    <EmbeddedResource Include="HMIRunForm.Properties.Resources.resx" LogicalName="HMIRunForm.Properties.Resources.resources" />
+    <EmbeddedResource Include="HMIRunForm.RunForm.resx" LogicalName="HMIRunForm.RunForm.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HMIWeb\HMIWeb.csproj">
+      <Project>{ab1d1a04-10fe-44ac-b439-6202e816a36c}</Project>
+      <Name>HMIWeb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Interop.MSScriptControl\Interop.MSScriptControl.csproj">
+      <Project>{0feecf4d-b9da-4a9d-aeaf-1668e5fb0beb}</Project>
+      <Name>Interop.MSScriptControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShapeRuntime\ShapeRuntime.csproj">
+      <Project>{362ad0a6-a3e8-4203-8df3-24b015d58be6}</Project>
+      <Name>ShapeRuntime</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

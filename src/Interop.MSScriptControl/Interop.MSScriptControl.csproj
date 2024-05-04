@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{0FEECF4D-B9DA-4A9D-AEAF-1668E5FB0BEB}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <LangVersion>11.0</LangVersion>
+    <AssemblyName>Interop.MSScriptControl</AssemblyName>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <OutputPath>..\bin\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>..\bin\</OutputPath>
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MSScriptControl\DScriptControlSource.cs" />
+    <Compile Include="MSScriptControl\DScriptControlSource_ErrorEventHandler.cs" />
+    <Compile Include="MSScriptControl\DScriptControlSource_Event.cs" />
+    <Compile Include="MSScriptControl\DScriptControlSource_EventProvider.cs" />
+    <Compile Include="MSScriptControl\DScriptControlSource_SinkHelper.cs" />
+    <Compile Include="MSScriptControl\DScriptControlSource_TimeoutEventHandler.cs" />
+    <Compile Include="MSScriptControl\Error.cs" />
+    <Compile Include="MSScriptControl\ErrorClass.cs" />
+    <Compile Include="MSScriptControl\IScriptControl.cs" />
+    <Compile Include="MSScriptControl\IScriptError.cs" />
+    <Compile Include="MSScriptControl\IScriptModule.cs" />
+    <Compile Include="MSScriptControl\IScriptModuleCollection.cs" />
+    <Compile Include="MSScriptControl\IScriptProcedure.cs" />
+    <Compile Include="MSScriptControl\IScriptProcedureCollection.cs" />
+    <Compile Include="MSScriptControl\Module.cs" />
+    <Compile Include="MSScriptControl\ModuleClass.cs" />
+    <Compile Include="MSScriptControl\Modules.cs" />
+    <Compile Include="MSScriptControl\ModulesClass.cs" />
+    <Compile Include="MSScriptControl\Procedure.cs" />
+    <Compile Include="MSScriptControl\ProcedureClass.cs" />
+    <Compile Include="MSScriptControl\Procedures.cs" />
+    <Compile Include="MSScriptControl\ProceduresClass.cs" />
+    <Compile Include="MSScriptControl\ScriptControl.cs" />
+    <Compile Include="MSScriptControl\ScriptControlClass.cs" />
+    <Compile Include="MSScriptControl\ScriptControlConstants.cs" />
+    <Compile Include="MSScriptControl\ScriptControlStates.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

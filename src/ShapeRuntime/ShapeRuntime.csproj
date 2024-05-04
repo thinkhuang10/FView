@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{362AD0A6-A3E8-4203-8DF3-24B015D58BE6}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <LangVersion>11.0</LangVersion>
+    <AssemblyName>ShapeRuntime</AssemblyName>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\bin\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <OutputPath>..\bin\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SevenZip.Buffer\InBuffer.cs" />
+    <Compile Include="SevenZip.Buffer\OutBuffer.cs" />
+    <Compile Include="SevenZip.CommandLineParser\CommandForm.cs" />
+    <Compile Include="SevenZip.CommandLineParser\CommandSubCharsSet.cs" />
+    <Compile Include="SevenZip.CommandLineParser\Parser.cs" />
+    <Compile Include="SevenZip.CommandLineParser\SwitchForm.cs" />
+    <Compile Include="SevenZip.CommandLineParser\SwitchResult.cs" />
+    <Compile Include="SevenZip.CommandLineParser\SwitchType.cs" />
+    <Compile Include="SevenZip.Compression.LZMA\Base.cs" />
+    <Compile Include="SevenZip.Compression.LZMA\Decoder.cs" />
+    <Compile Include="SevenZip.Compression.LZMA\Encoder.cs" />
+    <Compile Include="SevenZip.Compression.LZ\BinTree.cs" />
+    <Compile Include="SevenZip.Compression.LZ\IInWindowStream.cs" />
+    <Compile Include="SevenZip.Compression.LZ\IMatchFinder.cs" />
+    <Compile Include="SevenZip.Compression.LZ\InWindow.cs" />
+    <Compile Include="SevenZip.Compression.LZ\OutWindow.cs" />
+    <Compile Include="SevenZip.Compression.RangeCoder\BitDecoder.cs" />
+    <Compile Include="SevenZip.Compression.RangeCoder\BitEncoder.cs" />
+    <Compile Include="SevenZip.Compression.RangeCoder\BitTreeDecoder.cs" />
+    <Compile Include="SevenZip.Compression.RangeCoder\BitTreeEncoder.cs" />
+    <Compile Include="SevenZip.Compression.RangeCoder\Decoder.cs" />
+    <Compile Include="SevenZip.Compression.RangeCoder\Encoder.cs" />
+    <Compile Include="SevenZip.Compression\LZMACoder.cs" />
+    <Compile Include="SevenZip\CoderPropID.cs" />
+    <Compile Include="SevenZip\CRC.cs" />
+    <Compile Include="SevenZip\DataErrorException.cs" />
+    <Compile Include="SevenZip\ICodeProgress.cs" />
+    <Compile Include="SevenZip\ICoder.cs" />
+    <Compile Include="SevenZip\InvalidParamException.cs" />
+    <Compile Include="SevenZip\ISetCoderProperties.cs" />
+    <Compile Include="SevenZip\ISetDecoderProperties.cs" />
+    <Compile Include="SevenZip\IWriteCoderProperties.cs" />
+    <Compile Include="ShapeRuntime.DBAnimation\DBAnimation.cs" />
+    <Compile Include="ShapeRuntime.DBAnimation\DBDeleteAnimation.cs" />
+    <Compile Include="ShapeRuntime.DBAnimation\DBInsertAnimation.cs" />
+    <Compile Include="ShapeRuntime.DBAnimation\DBSelectAnimation.cs" />
+    <Compile Include="ShapeRuntime.DBAnimation\DBUpdateAnimation.cs" />
+    <Compile Include="ShapeRuntime.DBAnimation\NewtableAnimation.cs" />
+    <Compile Include="ShapeRuntime\BinarySerialize.cs" />
+    <Compile Include="ShapeRuntime\CAuthorityInfo.cs" />
+    <Compile Include="ShapeRuntime\CAuthoritySeiallize.cs" />
+    <Compile Include="ShapeRuntime\CBezier.cs" />
+    <Compile Include="ShapeRuntime\CButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShapeRuntime\CButtonSaveItems.cs" />
+    <Compile Include="ShapeRuntime\CCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShapeRuntime\CCheckBoxSaveItems.cs" />
+    <Compile Include="ShapeRuntime\CCircleRect.cs" />
+    <Compile Include="ShapeRuntime\CCloseLines.cs" />
+    <Compile Include="ShapeRuntime\CComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShapeRuntime\CComboBoxSaveItems.cs" />
+    <Compile Include="ShapeRuntime\CControl.cs" />
+    <Compile Include="ShapeRuntime\CDataGridView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShapeRuntime\CDataGridViewSaveItems.cs" />
+    <Compile Include="ShapeRuntime\CDateTimePicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShapeRuntime\CDateTimePickerSaveItems.cs" />
+    <Compile Include="ShapeRuntime\CEllipse.cs" />
+    <Compile Include="ShapeRuntime\CGraphicsPath.cs" />
+    <Compile Include="ShapeRuntime\CGroupBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShapeRuntime\CGroupBoxSaveItems.cs" />
+    <Compile Include="ShapeRuntime\CIOAlarm.cs" />
+    <Compile Include="ShapeRuntime\CIOItem.cs" />
+    <Compile Include="ShapeRuntime\CLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShapeRuntime\CLabelSaveItems.cs" />
+    <Compile Include="ShapeRuntime\CLine.cs" />
+    <Compile Include="ShapeRuntime\CLines.cs" />
+    <Compile Include="ShapeRuntime\CListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShapeRuntime\CListBoxSaveItems.cs" />
+    <Compile Include="ShapeRuntime\CPicture.cs" />
+    <Compile Include="ShapeRuntime\CPictureBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShapeRuntime\CPictureBoxSaveItems.cs" />
+    <Compile Include="ShapeRuntime\CPixieControl.cs" />
+    <Compile Include="ShapeRuntime\CRectangle.cs" />
+    <Compile Include="ShapeRuntime\CShape.cs" />
+    <Compile Include="ShapeRuntime\CString.cs" />
+    <Compile Include="ShapeRuntime\CTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShapeRuntime\CTextBoxSaveItems.cs" />
+    <Compile Include="ShapeRuntime\CTimer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShapeRuntime\CVectorGraph.cs" />
+    <Compile Include="ShapeRuntime\DataFile.cs" />
+    <Compile Include="ShapeRuntime\DBCfgPara.cs" />
+    <Compile Include="ShapeRuntime\EventSetItem.cs" />
+    <Compile Include="ShapeRuntime\GlobalScriptClass.cs" />
+    <Compile Include="ShapeRuntime\HmiAbstractPage.cs" />
+    <Compile Include="ShapeRuntime\HmiPage.cs" />
+    <Compile Include="ShapeRuntime\HmiPageFile.cs" />
+    <Compile Include="ShapeRuntime\HmiPageGroup.cs" />
+    <Compile Include="ShapeRuntime\HmiProject.cs" />
+    <Compile Include="ShapeRuntime\HMIProjectFile.cs" />
+    <Compile Include="ShapeRuntime\HMIUser.cs" />
+    <Compile Include="ShapeRuntime\HTML5_CButtonProperty.cs" />
+    <Compile Include="ShapeRuntime\HTML5_CCheckBoxProperty.cs" />
+    <Compile Include="ShapeRuntime\HTML5_CComboBoxProperty.cs" />
+    <Compile Include="ShapeRuntime\HTML5_CDataGridViewProperty.cs" />
+    <Compile Include="ShapeRuntime\HTML5_CDateTimePickerProperty.cs" />
+    <Compile Include="ShapeRuntime\HTML5_CLabelProperty.cs" />
+    <Compile Include="ShapeRuntime\HTML5_CListBoxProperty.cs" />
+    <Compile Include="ShapeRuntime\HTML5_CPictureBoxProperty.cs" />
+    <Compile Include="ShapeRuntime\HTML5_CTextBoxProperty.cs" />
+    <Compile Include="ShapeRuntime\IControlShape.cs" />
+    <Compile Include="ShapeRuntime\IDBAnimation.cs" />
+    <Compile Include="ShapeRuntime\IEventBind.cs" />
+    <Compile Include="ShapeRuntime\IPropertyBind.cs" />
+    <Compile Include="ShapeRuntime\ISupportHtml5.cs" />
+    <Compile Include="ShapeRuntime\KVPart.cs" />
+    <Compile Include="ShapeRuntime\Operation.cs" />
+    <Compile Include="ShapeRuntime\ParaIO.cs" />
+    <Compile Include="ShapeRuntime\ProjectIO.cs" />
+    <Compile Include="ShapeRuntime\requestEventBindDictDele.cs" />
+    <Compile Include="ShapeRuntime\requestPropertyBindDataDele.cs" />
+    <Compile Include="ShapeRuntime\SafeRegions.cs" />
+    <Compile Include="ShapeRuntime\ServerLogicItem.cs" />
+    <Compile Include="ShapeRuntime\ServerLogicRequest.cs" />
+    <Compile Include="ShapeRuntime\ShapeGetValue.cs" />
+    <Compile Include="ShapeRuntime\ShapeRuntimeGetVarTable.cs" />
+    <Compile Include="ShapeRuntime\ShapeSetValue.cs" />
+    <Compile Include="ShapeRuntime\UserType.cs" />
+    <Compile Include="ShapeRuntime\ValidateVarName.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommonSnappableTypes\CommonSnappableTypes.csproj">
+      <Project>{2c5abf19-fd7d-4b1f-9bb1-6b5224518fcf}</Project>
+      <Name>CommonSnappableTypes</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

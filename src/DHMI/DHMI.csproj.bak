@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{629ED397-0B50-431E-B5A0-F03A5E212B73}</ProjectGuid>
+    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>WinExe</OutputType>
+    <LangVersion>11.0</LangVersion>
+    <AssemblyName>DHMI</AssemblyName>
+    <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Utils.v10.1" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="ICSharpCode.TextEditor">
+      <HintPath>C:\DView\Code\bin\ICSharpCode.TextEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v10.1">
+      <HintPath>C:\DView\Code\bin\DevExpress.XtraBars.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.ACTIVEXFINDERLib">
+      <HintPath>C:\DView\Code\bin\Interop.ACTIVEXFINDERLib.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="ShapeRuntime">
+      <HintPath>C:\DView\Code\bin\ShapeRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="DevExpress.XtraEditors.v10.1">
+      <HintPath>C:\DView\Code\bin\DevExpress.XtraEditors.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v10.1">
+      <HintPath>C:\DView\Code\bin\DevExpress.XtraNavBar.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v10.1">
+      <HintPath>C:\DView\Code\bin\DevExpress.XtraTreeList.v10.1.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonSnappableTypes">
+      <HintPath>C:\DView\Code\bin\CommonSnappableTypes.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.MSScriptControl">
+      <HintPath>C:\DView\Code\bin\Interop.MSScriptControl.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>C:\DView\Code\bin\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="HMICompile">
+      <HintPath>C:\DView\Code\bin\HMICompile.exe</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.OfficeSkins.v10.1">
+      <HintPath>C:\DView\Code\bin\DevExpress.OfficeSkins.v10.1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationIcon Include="app.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationManifest Include="app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HMIEditEnvironment.Animation\DataGridViewComboEditBoxCell.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\DataGridViewComboEditBoxColumn.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\DBDeleteForm.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\DBInsertForm.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\DBInsertSerializeCopy.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\DBMultOperation.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\DBNewForm.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\DBNewSerializeCopy.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\DBOperationTypeSelect.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\DBSelectForm.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\DBSelectSerializeCopy.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\DBUpdateForm.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\DBUpdateSerializeCopy.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\DBVarForm.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\RulesForm.cs" />
+    <Compile Include="HMIEditEnvironment.Animation\SortForm.cs" />
+    <Compile Include="HMIEditEnvironment.CodeCompletion\CodeCompletionDataProvider.cs" />
+    <Compile Include="HMIEditEnvironment.CodeCompletion\CodeCompletionKeyHandler.cs" />
+    <Compile Include="HMIEditEnvironment.DBOperation\DBCtrl.cs" />
+    <Compile Include="HMIEditEnvironment.Properties\Resources.cs" />
+    <Compile Include="HMIEditEnvironment.Properties\Settings.cs" />
+    <Compile Include="HMIEditEnvironment.Publish.Steps\StepPageCompressor.cs" />
+    <Compile Include="HMIEditEnvironment.Publish\BaseStepPage.cs" />
+    <Compile Include="HMIEditEnvironment.Publish\BuildScriptFile.cs" />
+    <Compile Include="HMIEditEnvironment.Publish\PublishOptions.cs" />
+    <Compile Include="HMIEditEnvironment.Publish\PublishWizard.cs" />
+    <Compile Include="HMIEditEnvironment.Publish\StepPageComponent.cs" />
+    <Compile Include="HMIEditEnvironment.Publish\StepPageConfirm.cs" />
+    <Compile Include="HMIEditEnvironment.Publish\StepPageFeature.cs" />
+    <Compile Include="HMIEditEnvironment.Publish\StepPageFinish.cs" />
+    <Compile Include="HMIEditEnvironment.Publish\StepPageWelcome.cs" />
+    <Compile Include="HMIEditEnvironment.ServerLogic\DBInsertSerializeCopy.cs" />
+    <Compile Include="HMIEditEnvironment.ServerLogic\DBSelectSerializeCopy.cs" />
+    <Compile Include="HMIEditEnvironment.ServerLogic\DBUpdateSerializeCopy.cs" />
+    <Compile Include="HMIEditEnvironment.ServerLogic\MakeMacro.cs" />
+    <Compile Include="HMIEditEnvironment.ServerLogic\SLChooseVar.cs" />
+    <Compile Include="HMIEditEnvironment.ServerLogic\SLDBRules.cs" />
+    <Compile Include="HMIEditEnvironment.ServerLogic\SLSetDBDelete.cs" />
+    <Compile Include="HMIEditEnvironment.ServerLogic\SLSetDBInsert.cs" />
+    <Compile Include="HMIEditEnvironment.ServerLogic\SLSetDBSelect.cs" />
+    <Compile Include="HMIEditEnvironment.ServerLogic\SLSetDBUpdate.cs" />
+    <Compile Include="HMIEditEnvironment.ServerLogic\SLSetGoto.cs" />
+    <Compile Include="HMIEditEnvironment.ServerLogic\SLSetLabel.cs" />
+    <Compile Include="HMIEditEnvironment.ServerLogic\SLSetVar.cs" />
+    <Compile Include="HMIEditEnvironment\AboutBox.cs" />
+    <Compile Include="HMIEditEnvironment\ActiveXFinderForm.cs" />
+    <Compile Include="HMIEditEnvironment\aiForm.cs" />
+    <Compile Include="HMIEditEnvironment\aoForm.cs" />
+    <Compile Include="HMIEditEnvironment\AuthoritySettingForm.cs" />
+    <Compile Include="HMIEditEnvironment\CDBCrossXMLInfo.cs" />
+    <Compile Include="HMIEditEnvironment\CDBVarDefine.cs" />
+    <Compile Include="HMIEditEnvironment\CEditEnvironmentGlobal.cs" />
+    <Compile Include="HMIEditEnvironment\CForDCCEControl.cs" />
+    <Compile Include="HMIEditEnvironment\CGlobal.cs" />
+    <Compile Include="HMIEditEnvironment\CheckIOExists.cs" />
+    <Compile Include="HMIEditEnvironment\CheckScript.cs" />
+    <Compile Include="HMIEditEnvironment\ChildForm.cs" />
+    <Compile Include="HMIEditEnvironment\ClassForScript.cs" />
+    <Compile Include="HMIEditEnvironment\ColorEditControl.cs" />
+    <Compile Include="HMIEditEnvironment\ControlInfoSetting.cs" />
+    <Compile Include="HMIEditEnvironment\COPYDATASTRUCT.cs" />
+    <Compile Include="HMIEditEnvironment\COPYDATASTRUCT2.cs" />
+    <Compile Include="HMIEditEnvironment\CPageProperty.cs" />
+    <Compile Include="HMIEditEnvironment\CReUnDoItem.cs" />
+    <Compile Include="HMIEditEnvironment\CRow.cs" />
+    <Compile Include="HMIEditEnvironment\CScriptFuncShow.cs" />
+    <Compile Include="HMIEditEnvironment\CScriptPropertyShow.cs" />
+    <Compile Include="HMIEditEnvironment\CWebPageProperty.cs" />
+    <Compile Include="HMIEditEnvironment\czbfbForm.cs" />
+    <Compile Include="HMIEditEnvironment\cztzForm.cs" />
+    <Compile Include="HMIEditEnvironment\czydForm.cs" />
+    <Compile Include="HMIEditEnvironment\DBConnConfigForm.cs" />
+    <Compile Include="HMIEditEnvironment\DbConnType.cs" />
+    <Compile Include="HMIEditEnvironment\DBCrossConfigForm.cs" />
+    <Compile Include="HMIEditEnvironment\DBOperationGlobal.cs" />
+    <Compile Include="HMIEditEnvironment\DBServer_MainForm.cs" />
+    <Compile Include="HMIEditEnvironment\DBServer_StepOne.cs" />
+    <Compile Include="HMIEditEnvironment\DBServer_StepTwo.cs" />
+    <Compile Include="HMIEditEnvironment\delPage.cs" />
+    <Compile Include="HMIEditEnvironment\dhljForm.cs" />
+    <Compile Include="HMIEditEnvironment\diForm.cs" />
+    <Compile Include="HMIEditEnvironment\doForm.cs" />
+    <Compile Include="HMIEditEnvironment\EventBindForm.cs" />
+    <Compile Include="HMIEditEnvironment\EventEditSelectMethod.cs" />
+    <Compile Include="HMIEditEnvironment\EventSetFunction.cs" />
+    <Compile Include="HMIEditEnvironment\EventSetGoto.cs" />
+    <Compile Include="HMIEditEnvironment\EventSetLabel.cs" />
+    <Compile Include="HMIEditEnvironment\EventSetProperty.cs" />
+    <Compile Include="HMIEditEnvironment\EventSetServerLogic.cs" />
+    <Compile Include="HMIEditEnvironment\EventSetVar.cs" />
+    <Compile Include="HMIEditEnvironment\FindMessageEventArgs.cs" />
+    <Compile Include="HMIEditEnvironment\FindOptions.cs" />
+    <Compile Include="HMIEditEnvironment\FindResult.cs" />
+    <Compile Include="HMIEditEnvironment\FindResultEventArgs.cs" />
+    <Compile Include="HMIEditEnvironment\gdbhForm.cs" />
+    <Compile Include="HMIEditEnvironment\HistoryData_XmlInfo.cs" />
+    <Compile Include="HMIEditEnvironment\ImageManage.cs" />
+    <Compile Include="HMIEditEnvironment\InitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMIEditEnvironment\IOForm.cs" />
+    <Compile Include="HMIEditEnvironment\kdbhForm.cs" />
+    <Compile Include="HMIEditEnvironment\ListViewItemComparer.cs" />
+    <Compile Include="HMIEditEnvironment\MDIParent1.cs" />
+    <Compile Include="HMIEditEnvironment\MsgForm.cs" />
+    <Compile Include="HMIEditEnvironment\MySQLConfigForm.cs" />
+    <Compile Include="HMIEditEnvironment\ObjectBoolean.cs" />
+    <Compile Include="HMIEditEnvironment\ObjExplorer.cs" />
+    <Compile Include="HMIEditEnvironment\ObjExplorerSortor.cs" />
+    <Compile Include="HMIEditEnvironment\pageForm.cs" />
+    <Compile Include="HMIEditEnvironment\PageOpenerForm.cs" />
+    <Compile Include="HMIEditEnvironment\PagePropertyForm.cs" />
+    <Compile Include="HMIEditEnvironment\Program.cs" />
+    <Compile Include="HMIEditEnvironment\projectIOEditForm.cs" />
+    <Compile Include="HMIEditEnvironment\ProjectIOGroupEditForm.cs" />
+    <Compile Include="HMIEditEnvironment\PropertyBindForm.cs" />
+    <Compile Include="HMIEditEnvironment\PublicSettingItems.cs" />
+    <Compile Include="HMIEditEnvironment\PublishSettingForm.cs" />
+    <Compile Include="HMIEditEnvironment\renameProjectIOForm.cs" />
+    <Compile Include="HMIEditEnvironment\RunErrorHandler.cs" />
+    <Compile Include="HMIEditEnvironment\RunTimeoutHandler.cs" />
+    <Compile Include="HMIEditEnvironment\ScriptEngine.cs" />
+    <Compile Include="HMIEditEnvironment\ScriptLanguage.cs" />
+    <Compile Include="HMIEditEnvironment\ScriptUnit.cs" />
+    <Compile Include="HMIEditEnvironment\ScriptUnitAddUserDefineEvent.cs" />
+    <Compile Include="HMIEditEnvironment\ScriptUnitFindAndReplaceFrm.cs" />
+    <Compile Include="HMIEditEnvironment\ScriptUnitMoveLineFrm.cs" />
+    <Compile Include="HMIEditEnvironment\setFirstPageForm.cs" />
+    <Compile Include="HMIEditEnvironment\setForm.cs" />
+    <Compile Include="HMIEditEnvironment\spbfbForm.cs" />
+    <Compile Include="HMIEditEnvironment\sptzForm.cs" />
+    <Compile Include="HMIEditEnvironment\spydForm.cs" />
+    <Compile Include="HMIEditEnvironment\SqlHelper.cs" />
+    <Compile Include="HMIEditEnvironment\SQLServerConfigForm.cs" />
+    <Compile Include="HMIEditEnvironment\StringArray.cs" />
+    <Compile Include="HMIEditEnvironment\structTableInfo.cs" />
+    <Compile Include="HMIEditEnvironment\TempTag.cs" />
+    <Compile Include="HMIEditEnvironment\TextEditorSearcher.cs" />
+    <Compile Include="HMIEditEnvironment\TextFindForm.cs" />
+    <Compile Include="HMIEditEnvironment\TextRange.cs" />
+    <Compile Include="HMIEditEnvironment\txycForm.cs" />
+    <Compile Include="HMIEditEnvironment\UserCommandControl2.cs" />
+    <Compile Include="HMIEditEnvironment\UserShapeEditControl.cs" />
+    <Compile Include="HMIEditEnvironment\VarExplore.cs" />
+    <Compile Include="HMIEditEnvironment\VarTable.cs" />
+    <Compile Include="HMIEditEnvironment\xzForm.cs" />
+    <Compile Include="HMIEditEnvironment\ysForm.cs" />
+    <Compile Include="HMIEditEnvironment\yytjForm.cs" />
+    <Compile Include="HMIEditEnvironment\zfcscForm.cs" />
+    <Compile Include="HMIEditEnvironment\zfcsrForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMIEditEnvironment\图标.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DHMI.exe.licenses" LogicalName="DHMI.exe.licenses" />
+    <EmbeddedResource Include="HMIEditEnvironment.AboutBox.resx" LogicalName="HMIEditEnvironment.AboutBox.resources" />
+    <EmbeddedResource Include="HMIEditEnvironment.AuthoritySettingForm.resx" LogicalName="HMIEditEnvironment.AuthoritySettingForm.resources" />
+    <EmbeddedResource Include="HMIEditEnvironment.MDIParent1.resx" LogicalName="HMIEditEnvironment.MDIParent1.resources" />
+    <EmbeddedResource Include="HMIEditEnvironment.ObjExplorer.resx" LogicalName="HMIEditEnvironment.ObjExplorer.resources" />
+    <EmbeddedResource Include="HMIEditEnvironment.PageOpenerForm.resx" LogicalName="HMIEditEnvironment.PageOpenerForm.resources" />
+    <EmbeddedResource Include="HMIEditEnvironment.Properties.Resources.resx" LogicalName="HMIEditEnvironment.Properties.Resources.resources" />
+    <EmbeddedResource Include="HMIEditEnvironment.Publish.PublishWizard.resx" LogicalName="HMIEditEnvironment.Publish.PublishWizard.resources" />
+    <EmbeddedResource Include="HMIEditEnvironment.PublishSettingForm.resx" LogicalName="HMIEditEnvironment.PublishSettingForm.resources" />
+    <EmbeddedResource Include="HMIEditEnvironment.ScriptUnit.resx" LogicalName="HMIEditEnvironment.ScriptUnit.resources" />
+    <EmbeddedResource Include="HMIEditEnvironment.ServerLogic.MakeMacro.resx" LogicalName="HMIEditEnvironment.ServerLogic.MakeMacro.resources" />
+    <EmbeddedResource Include="HMIEditEnvironment.setFirstPageForm.resx" LogicalName="HMIEditEnvironment.setFirstPageForm.resources" />
+    <EmbeddedResource Include="HMIEditEnvironment.图标.resx" LogicalName="HMIEditEnvironment.图标.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
