@@ -68,9 +68,6 @@ public class ChildForm : Form
         base.FormBorderStyle = FormBorderStyle.FixedSingle;
         base.MaximizeBox = false;
         base.MinimizeBox = false;
-        ResourceManager resourceManager = new(typeof(图标));
-        Bitmap bitmap = (Bitmap)resourceManager.GetObject("PageImage");
-        base.Icon = Icon.FromHandle(bitmap.GetHicon());
     }
 
     private void ChildForm_SizeChanged(object sender, EventArgs e)

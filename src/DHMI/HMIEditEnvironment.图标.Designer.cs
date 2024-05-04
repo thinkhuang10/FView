@@ -63,9 +63,69 @@ internal class HMIEditEnvironment_图标 {
     /// <summary>
     ///   查找 System.Drawing.Bitmap 类型的本地化资源。
     /// </summary>
-    internal static System.Drawing.Bitmap PageImage {
+    internal static System.Drawing.Bitmap circleRect_small {
         get {
-            object obj = ResourceManager.GetObject("PageImage", resourceCulture);
+            object obj = ResourceManager.GetObject("circleRect_small", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+    /// </summary>
+    internal static System.Drawing.Bitmap ell_small {
+        get {
+            object obj = ResourceManager.GetObject("ell_small", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+    /// </summary>
+    internal static System.Drawing.Bitmap line_small {
+        get {
+            object obj = ResourceManager.GetObject("line_small", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+    /// </summary>
+    internal static System.Drawing.Bitmap polygon_small {
+        get {
+            object obj = ResourceManager.GetObject("polygon_small", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+    /// </summary>
+    internal static System.Drawing.Bitmap polyline_small {
+        get {
+            object obj = ResourceManager.GetObject("polyline_small", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+    /// </summary>
+    internal static System.Drawing.Bitmap rect_small {
+        get {
+            object obj = ResourceManager.GetObject("rect_small", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+    /// </summary>
+    internal static System.Drawing.Bitmap str_small {
+        get {
+            object obj = ResourceManager.GetObject("str_small", resourceCulture);
             return ((System.Drawing.Bitmap)(obj));
         }
     }

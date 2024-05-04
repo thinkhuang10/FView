@@ -64,15 +64,13 @@ namespace HMIEditEnvironment
             System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("数据视图", "GridView.png");
             System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("列表框", "ListView.png");
             System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("定时器", "Timer.png");
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("HTML5上传控件", "Html5Upload.png");
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Excel导入控件", "ExcelImport.png");
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("直线", "line.png");
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("椭圆", "ell.png");
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("矩形", "rect.png");
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("圆角矩形", "circleRect.png");
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("贝塞尔曲线", "bezier.png");
-            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("三角形", "san.png");
-            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("文字", "str.png");
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("直线", "line.png");
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("椭圆", "ell.png");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("矩形", "rect.png");
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("圆角矩形", "circleRect.png");
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("贝塞尔曲线", "bezier.png");
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("三角形", "san.png");
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("文字", "str.png");
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.myPropertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.listView_事件 = new System.Windows.Forms.ListView();
@@ -111,8 +109,6 @@ namespace HMIEditEnvironment
             this.ToolStripMenuItem_本地根节点_粘贴页面 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator34 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItem_本地根节点_关闭所有 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_HTML5根节点_新建页面组 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton27 = new System.Windows.Forms.ToolStripButton();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
@@ -366,28 +362,6 @@ namespace HMIEditEnvironment
             this.repositoryItemComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemComboBox();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.popupMenu2 = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.contextMenuStrip_HTML5页面 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripMenuItem_HTML5页面_打开 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_HTML5页面_关闭 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_HTML5页面_保存 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItem_HTML5页面_删除 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItem_HTML5页面_上移 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_HTML5页面_下移 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_HTML5页面_移至顶层 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_HTML5页面_移至底层 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItem_HTML5页面_复制 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_HTML5页面_导出 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItem_HTML5页面_属性 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip_HTML5页面根节点 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripMenuItem_HTML5根节点_新建页面 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_HTML5根节点_导入页面 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_HTML5根节点_粘贴页面 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItem_HTML5根节点_关闭所有 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_页面组_新建页面组 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_页面组_重命名 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_页面组_删除 = new System.Windows.Forms.ToolStripMenuItem();
@@ -451,8 +425,6 @@ namespace HMIEditEnvironment
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).BeginInit();
-            this.contextMenuStrip_HTML5页面.SuspendLayout();
-            this.contextMenuStrip_HTML5页面根节点.SuspendLayout();
             this.contextMenuStrip_页面组.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ImageCollection_ProjectNavigation)).BeginInit();
             this.SuspendLayout();
@@ -816,18 +788,6 @@ namespace HMIEditEnvironment
             this.ToolStripMenuItem_本地根节点_关闭所有.Size = new System.Drawing.Size(153, 22);
             this.ToolStripMenuItem_本地根节点_关闭所有.Text = "关闭所有(&C)";
             this.ToolStripMenuItem_本地根节点_关闭所有.Click += new System.EventHandler(this.ToolStripMenuItem_页面根_关闭所有_Click);
-            // 
-            // ToolStripMenuItem_HTML5根节点_新建页面组
-            // 
-            this.ToolStripMenuItem_HTML5根节点_新建页面组.Name = "ToolStripMenuItem_HTML5根节点_新建页面组";
-            this.ToolStripMenuItem_HTML5根节点_新建页面组.Size = new System.Drawing.Size(153, 22);
-            this.ToolStripMenuItem_HTML5根节点_新建页面组.Text = "新建页面组(&G)";
-            this.ToolStripMenuItem_HTML5根节点_新建页面组.Click += new System.EventHandler(this.ToolStripMenuItem_页面组_新建页面组_Click);
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(150, 6);
             // 
             // toolStripButton27
             // 
@@ -2204,7 +2164,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_DrawLine.Enabled = false;
             this.barButtonItem_DrawLine.Hint = "直线";
             this.barButtonItem_DrawLine.Id = 249;
-            this.barButtonItem_DrawLine.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_DrawLine.ImageOptions.Image")));
+            this.barButtonItem_DrawLine.ImageOptions.Image = global::HMIEditEnvironment_图标.line_small;
             this.barButtonItem_DrawLine.Name = "barButtonItem_DrawLine";
             this.barButtonItem_DrawLine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制直线_ItemClick);
             // 
@@ -2214,7 +2174,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_CurveLine.Enabled = false;
             this.barButtonItem_CurveLine.Hint = "折线";
             this.barButtonItem_CurveLine.Id = 250;
-            this.barButtonItem_CurveLine.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_CurveLine.ImageOptions.Image")));
+            this.barButtonItem_CurveLine.ImageOptions.Image = global::HMIEditEnvironment_图标.polyline_small;
             this.barButtonItem_CurveLine.Name = "barButtonItem_CurveLine";
             this.barButtonItem_CurveLine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制折线_ItemClick);
             // 
@@ -2224,7 +2184,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_DrawEllipse.Enabled = false;
             this.barButtonItem_DrawEllipse.Hint = "椭圆";
             this.barButtonItem_DrawEllipse.Id = 251;
-            this.barButtonItem_DrawEllipse.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_DrawEllipse.ImageOptions.Image")));
+            this.barButtonItem_DrawEllipse.ImageOptions.Image = global::HMIEditEnvironment_图标.ell_small;
             this.barButtonItem_DrawEllipse.Name = "barButtonItem_DrawEllipse";
             this.barButtonItem_DrawEllipse.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制椭圆_ItemClick);
             // 
@@ -2234,7 +2194,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_Rectangle.Enabled = false;
             this.barButtonItem_Rectangle.Hint = "矩形";
             this.barButtonItem_Rectangle.Id = 252;
-            this.barButtonItem_Rectangle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Rectangle.ImageOptions.Image")));
+            this.barButtonItem_Rectangle.ImageOptions.Image = global::HMIEditEnvironment_图标.rect_small;
             this.barButtonItem_Rectangle.Name = "barButtonItem_Rectangle";
             this.barButtonItem_Rectangle.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制矩形_ItemClick);
             // 
@@ -2244,7 +2204,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_Polygon.Enabled = false;
             this.barButtonItem_Polygon.Hint = "多边形";
             this.barButtonItem_Polygon.Id = 253;
-            this.barButtonItem_Polygon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Polygon.ImageOptions.Image")));
+            this.barButtonItem_Polygon.ImageOptions.Image = global::HMIEditEnvironment_图标.polygon_small;
             this.barButtonItem_Polygon.Name = "barButtonItem_Polygon";
             this.barButtonItem_Polygon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制多边形_ItemClick);
             // 
@@ -2264,7 +2224,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_String.Enabled = false;
             this.barButtonItem_String.Hint = "文字";
             this.barButtonItem_String.Id = 256;
-            this.barButtonItem_String.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_String.ImageOptions.Image")));
+            this.barButtonItem_String.ImageOptions.Image = global::HMIEditEnvironment_图标.str_small;
             this.barButtonItem_String.Name = "barButtonItem_String";
             this.barButtonItem_String.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制文字_ItemClick);
             // 
@@ -2428,9 +2388,7 @@ namespace HMIEditEnvironment
             listViewItem8,
             listViewItem9,
             listViewItem10,
-            listViewItem11,
-            listViewItem12,
-            listViewItem13});
+            listViewItem11});
             this.listView_Windows控件.LargeImageList = this.imageList_Windows控件;
             this.listView_Windows控件.Location = new System.Drawing.Point(0, 0);
             this.listView_Windows控件.Name = "listView_Windows控件";
@@ -2441,9 +2399,20 @@ namespace HMIEditEnvironment
             // 
             // imageList_Windows控件
             // 
-            this.imageList_Windows控件.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList_Windows控件.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList_Windows控件.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_Windows控件.ImageStream")));
             this.imageList_Windows控件.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList_Windows控件.Images.SetKeyName(0, "Label.png");
+            this.imageList_Windows控件.Images.SetKeyName(1, "CheckBox.png");
+            this.imageList_Windows控件.Images.SetKeyName(2, "Button.png");
+            this.imageList_Windows控件.Images.SetKeyName(3, "ListBox.png");
+            this.imageList_Windows控件.Images.SetKeyName(4, "TextBox.png");
+            this.imageList_Windows控件.Images.SetKeyName(5, "Image.png");
+            this.imageList_Windows控件.Images.SetKeyName(6, "Calendar.png");
+            this.imageList_Windows控件.Images.SetKeyName(7, "Timer.png");
+            this.imageList_Windows控件.Images.SetKeyName(8, "ListView.png");
+            this.imageList_Windows控件.Images.SetKeyName(9, "GridView.png");
+            this.imageList_Windows控件.Images.SetKeyName(10, "StockFrame.png");
+            this.imageList_Windows控件.Images.SetKeyName(11, "Image.png");
             // 
             // navBarGroupControlContainer_基本图元
             // 
@@ -2457,13 +2426,13 @@ namespace HMIEditEnvironment
             this.listView_基本图元.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView_基本图元.HideSelection = false;
             this.listView_基本图元.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem12,
+            listViewItem13,
             listViewItem14,
             listViewItem15,
             listViewItem16,
             listViewItem17,
-            listViewItem18,
-            listViewItem19,
-            listViewItem20});
+            listViewItem18});
             this.listView_基本图元.LargeImageList = this.imageList_图库_基本图元;
             this.listView_基本图元.Location = new System.Drawing.Point(0, 0);
             this.listView_基本图元.Name = "listView_基本图元";
@@ -2474,9 +2443,15 @@ namespace HMIEditEnvironment
             // 
             // imageList_图库_基本图元
             // 
-            this.imageList_图库_基本图元.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList_图库_基本图元.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList_图库_基本图元.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList_图库_基本图元.ImageStream")));
             this.imageList_图库_基本图元.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList_图库_基本图元.Images.SetKeyName(0, "line.png");
+            this.imageList_图库_基本图元.Images.SetKeyName(1, "ell.png");
+            this.imageList_图库_基本图元.Images.SetKeyName(2, "rect.png");
+            this.imageList_图库_基本图元.Images.SetKeyName(3, "circleRect.png");
+            this.imageList_图库_基本图元.Images.SetKeyName(4, "str.png");
+            this.imageList_图库_基本图元.Images.SetKeyName(5, "san.png");
+            this.imageList_图库_基本图元.Images.SetKeyName(6, "bezier.png");
             // 
             // 基本图元
             // 
@@ -3352,177 +3327,6 @@ namespace HMIEditEnvironment
             this.popupMenu2.Manager = this.barManager1;
             this.popupMenu2.Name = "popupMenu2";
             // 
-            // contextMenuStrip_HTML5页面
-            // 
-            this.contextMenuStrip_HTML5页面.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_HTML5页面_打开,
-            this.ToolStripMenuItem_HTML5页面_关闭,
-            this.ToolStripMenuItem_HTML5页面_保存,
-            this.toolStripSeparator10,
-            this.ToolStripMenuItem_HTML5页面_删除,
-            this.toolStripSeparator2,
-            this.ToolStripMenuItem_HTML5页面_上移,
-            this.ToolStripMenuItem_HTML5页面_下移,
-            this.ToolStripMenuItem_HTML5页面_移至顶层,
-            this.ToolStripMenuItem_HTML5页面_移至底层,
-            this.toolStripSeparator4,
-            this.ToolStripMenuItem_HTML5页面_复制,
-            this.ToolStripMenuItem_HTML5页面_导出,
-            this.toolStripSeparator5,
-            this.ToolStripMenuItem_HTML5页面_属性});
-            this.contextMenuStrip_HTML5页面.Name = "contextMenuStrip_HTML5a";
-            this.contextMenuStrip_HTML5页面.Size = new System.Drawing.Size(178, 270);
-            // 
-            // ToolStripMenuItem_HTML5页面_打开
-            // 
-            this.ToolStripMenuItem_HTML5页面_打开.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItem_HTML5页面_打开.Image")));
-            this.ToolStripMenuItem_HTML5页面_打开.Name = "ToolStripMenuItem_HTML5页面_打开";
-            this.ToolStripMenuItem_HTML5页面_打开.Size = new System.Drawing.Size(177, 22);
-            this.ToolStripMenuItem_HTML5页面_打开.Text = "打开(&O)";
-            this.ToolStripMenuItem_HTML5页面_打开.Click += new System.EventHandler(this.ToolStripMenuItem_页面_打开_Click);
-            // 
-            // ToolStripMenuItem_HTML5页面_关闭
-            // 
-            this.ToolStripMenuItem_HTML5页面_关闭.Name = "ToolStripMenuItem_HTML5页面_关闭";
-            this.ToolStripMenuItem_HTML5页面_关闭.Size = new System.Drawing.Size(177, 22);
-            this.ToolStripMenuItem_HTML5页面_关闭.Text = "关闭(&C)";
-            this.ToolStripMenuItem_HTML5页面_关闭.Click += new System.EventHandler(this.ToolStripMenuItem_页面_关闭_Click);
-            // 
-            // ToolStripMenuItem_HTML5页面_保存
-            // 
-            this.ToolStripMenuItem_HTML5页面_保存.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItem_HTML5页面_保存.Image")));
-            this.ToolStripMenuItem_HTML5页面_保存.Name = "ToolStripMenuItem_HTML5页面_保存";
-            this.ToolStripMenuItem_HTML5页面_保存.Size = new System.Drawing.Size(177, 22);
-            this.ToolStripMenuItem_HTML5页面_保存.Text = "保存(&S)";
-            this.ToolStripMenuItem_HTML5页面_保存.Click += new System.EventHandler(this.ToolStripMenuItem_页面_保存_Click);
-            // 
-            // toolStripSeparator10
-            // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            this.toolStripSeparator10.Size = new System.Drawing.Size(174, 6);
-            // 
-            // ToolStripMenuItem_HTML5页面_删除
-            // 
-            this.ToolStripMenuItem_HTML5页面_删除.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItem_HTML5页面_删除.Image")));
-            this.ToolStripMenuItem_HTML5页面_删除.Name = "ToolStripMenuItem_HTML5页面_删除";
-            this.ToolStripMenuItem_HTML5页面_删除.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-            this.ToolStripMenuItem_HTML5页面_删除.Size = new System.Drawing.Size(177, 22);
-            this.ToolStripMenuItem_HTML5页面_删除.Text = "删除(&D)";
-            this.ToolStripMenuItem_HTML5页面_删除.Click += new System.EventHandler(this.ToolStripMenuItem_页面_删除_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(174, 6);
-            // 
-            // ToolStripMenuItem_HTML5页面_上移
-            // 
-            this.ToolStripMenuItem_HTML5页面_上移.Name = "ToolStripMenuItem_HTML5页面_上移";
-            this.ToolStripMenuItem_HTML5页面_上移.Size = new System.Drawing.Size(177, 22);
-            this.ToolStripMenuItem_HTML5页面_上移.Text = "上移(&U)";
-            this.ToolStripMenuItem_HTML5页面_上移.Click += new System.EventHandler(this.ToolStripMenuItem_页面_上移_Click);
-            // 
-            // ToolStripMenuItem_HTML5页面_下移
-            // 
-            this.ToolStripMenuItem_HTML5页面_下移.Name = "ToolStripMenuItem_HTML5页面_下移";
-            this.ToolStripMenuItem_HTML5页面_下移.Size = new System.Drawing.Size(177, 22);
-            this.ToolStripMenuItem_HTML5页面_下移.Text = "下移(&D)";
-            this.ToolStripMenuItem_HTML5页面_下移.Click += new System.EventHandler(this.ToolStripMenuItem_页面_下移_Click);
-            // 
-            // ToolStripMenuItem_HTML5页面_移至顶层
-            // 
-            this.ToolStripMenuItem_HTML5页面_移至顶层.Name = "ToolStripMenuItem_HTML5页面_移至顶层";
-            this.ToolStripMenuItem_HTML5页面_移至顶层.Size = new System.Drawing.Size(177, 22);
-            this.ToolStripMenuItem_HTML5页面_移至顶层.Text = "移至顶层(&T)";
-            this.ToolStripMenuItem_HTML5页面_移至顶层.Click += new System.EventHandler(this.ToolStripMenuItem_页面_移至顶层_Click);
-            // 
-            // ToolStripMenuItem_HTML5页面_移至底层
-            // 
-            this.ToolStripMenuItem_HTML5页面_移至底层.Name = "ToolStripMenuItem_HTML5页面_移至底层";
-            this.ToolStripMenuItem_HTML5页面_移至底层.Size = new System.Drawing.Size(177, 22);
-            this.ToolStripMenuItem_HTML5页面_移至底层.Text = "移至底层(&B)";
-            this.ToolStripMenuItem_HTML5页面_移至底层.Click += new System.EventHandler(this.ToolStripMenuItem_页面_移至底层_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(174, 6);
-            // 
-            // ToolStripMenuItem_HTML5页面_复制
-            // 
-            this.ToolStripMenuItem_HTML5页面_复制.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItem_HTML5页面_复制.Image")));
-            this.ToolStripMenuItem_HTML5页面_复制.Name = "ToolStripMenuItem_HTML5页面_复制";
-            this.ToolStripMenuItem_HTML5页面_复制.Size = new System.Drawing.Size(177, 22);
-            this.ToolStripMenuItem_HTML5页面_复制.Text = "复制(&C)";
-            this.ToolStripMenuItem_HTML5页面_复制.Click += new System.EventHandler(this.ToolStripMenuItem_页面_复制_Click);
-            // 
-            // ToolStripMenuItem_HTML5页面_导出
-            // 
-            this.ToolStripMenuItem_HTML5页面_导出.Name = "ToolStripMenuItem_HTML5页面_导出";
-            this.ToolStripMenuItem_HTML5页面_导出.Size = new System.Drawing.Size(177, 22);
-            this.ToolStripMenuItem_HTML5页面_导出.Text = "导出(&E)";
-            this.ToolStripMenuItem_HTML5页面_导出.Click += new System.EventHandler(this.ToolStripMenuItem_页面_导出_Click);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(174, 6);
-            // 
-            // ToolStripMenuItem_HTML5页面_属性
-            // 
-            this.ToolStripMenuItem_HTML5页面_属性.Name = "ToolStripMenuItem_HTML5页面_属性";
-            this.ToolStripMenuItem_HTML5页面_属性.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.Return)));
-            this.ToolStripMenuItem_HTML5页面_属性.Size = new System.Drawing.Size(177, 22);
-            this.ToolStripMenuItem_HTML5页面_属性.Text = "属性(&P)";
-            this.ToolStripMenuItem_HTML5页面_属性.Click += new System.EventHandler(this.ToolStripMenuItem_页面_属性_Click);
-            // 
-            // contextMenuStrip_HTML5页面根节点
-            // 
-            this.contextMenuStrip_HTML5页面根节点.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_HTML5根节点_新建页面组,
-            this.toolStripSeparator8,
-            this.ToolStripMenuItem_HTML5根节点_新建页面,
-            this.ToolStripMenuItem_HTML5根节点_导入页面,
-            this.ToolStripMenuItem_HTML5根节点_粘贴页面,
-            this.toolStripSeparator6,
-            this.ToolStripMenuItem_HTML5根节点_关闭所有});
-            this.contextMenuStrip_HTML5页面根节点.Name = "contextMenuStrip_HTML5b";
-            this.contextMenuStrip_HTML5页面根节点.Size = new System.Drawing.Size(154, 126);
-            // 
-            // ToolStripMenuItem_HTML5根节点_新建页面
-            // 
-            this.ToolStripMenuItem_HTML5根节点_新建页面.Name = "ToolStripMenuItem_HTML5根节点_新建页面";
-            this.ToolStripMenuItem_HTML5根节点_新建页面.Size = new System.Drawing.Size(153, 22);
-            this.ToolStripMenuItem_HTML5根节点_新建页面.Text = "新建页面(&P)";
-            this.ToolStripMenuItem_HTML5根节点_新建页面.Click += new System.EventHandler(this.ToolStripMenuItem_页面组_新建页面_Click);
-            // 
-            // ToolStripMenuItem_HTML5根节点_导入页面
-            // 
-            this.ToolStripMenuItem_HTML5根节点_导入页面.Name = "ToolStripMenuItem_HTML5根节点_导入页面";
-            this.ToolStripMenuItem_HTML5根节点_导入页面.Size = new System.Drawing.Size(153, 22);
-            this.ToolStripMenuItem_HTML5根节点_导入页面.Text = "导入页面(&I)";
-            this.ToolStripMenuItem_HTML5根节点_导入页面.Click += new System.EventHandler(this.ToolStripMenuItem_页面组_导入页面_Click);
-            // 
-            // ToolStripMenuItem_HTML5根节点_粘贴页面
-            // 
-            this.ToolStripMenuItem_HTML5根节点_粘贴页面.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuItem_HTML5根节点_粘贴页面.Image")));
-            this.ToolStripMenuItem_HTML5根节点_粘贴页面.Name = "ToolStripMenuItem_HTML5根节点_粘贴页面";
-            this.ToolStripMenuItem_HTML5根节点_粘贴页面.Size = new System.Drawing.Size(153, 22);
-            this.ToolStripMenuItem_HTML5根节点_粘贴页面.Text = "粘贴页面(&P)";
-            this.ToolStripMenuItem_HTML5根节点_粘贴页面.Click += new System.EventHandler(this.ToolStripMenuItem_页面组_粘贴页面_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(150, 6);
-            // 
-            // ToolStripMenuItem_HTML5根节点_关闭所有
-            // 
-            this.ToolStripMenuItem_HTML5根节点_关闭所有.Name = "ToolStripMenuItem_HTML5根节点_关闭所有";
-            this.ToolStripMenuItem_HTML5根节点_关闭所有.Size = new System.Drawing.Size(153, 22);
-            this.ToolStripMenuItem_HTML5根节点_关闭所有.Text = "关闭所有(&C)";
-            this.ToolStripMenuItem_HTML5根节点_关闭所有.Click += new System.EventHandler(this.ToolStripMenuItem_页面根_关闭所有_Click);
-            // 
             // ToolStripMenuItem_页面组_新建页面组
             // 
             this.ToolStripMenuItem_页面组_新建页面组.Name = "ToolStripMenuItem_页面组_新建页面组";
@@ -3713,8 +3517,6 @@ namespace HMIEditEnvironment
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemComboBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu2)).EndInit();
-            this.contextMenuStrip_HTML5页面.ResumeLayout(false);
-            this.contextMenuStrip_HTML5页面根节点.ResumeLayout(false);
             this.contextMenuStrip_页面组.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ImageCollection_ProjectNavigation)).EndInit();
             this.ResumeLayout(false);
@@ -4201,53 +4003,7 @@ namespace HMIEditEnvironment
 
         private ToolStripSeparator toolStripMenuItem4;
 
-        private ContextMenuStrip contextMenuStrip_HTML5页面;
-
-        private ContextMenuStrip contextMenuStrip_HTML5页面根节点;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5页面_打开;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5页面_关闭;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5页面_保存;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5页面_删除;
-
-        private ToolStripSeparator toolStripSeparator2;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5页面_上移;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5页面_下移;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5页面_移至顶层;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5页面_移至底层;
-
-        private ToolStripSeparator toolStripSeparator4;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5页面_复制;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5页面_导出;
-
-        private ToolStripSeparator toolStripSeparator5;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5页面_属性;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5根节点_新建页面;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5根节点_导入页面;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5根节点_粘贴页面;
-
-        private ToolStripSeparator toolStripSeparator6;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5根节点_关闭所有;
-
         private BarButtonItem barButtonItem140;
-
-        private ToolStripMenuItem ToolStripMenuItem_HTML5根节点_新建页面组;
-
-        private ToolStripSeparator toolStripSeparator8;
 
         private ToolStripMenuItem ToolStripMenuItem_本地根节点_新建页面组;
 
@@ -4258,8 +4014,6 @@ namespace HMIEditEnvironment
         private ControlContainer dockPanelContainer_对象浏览器;
 
         private ToolStripSeparator toolStripSeparator7;
-
-        private ToolStripSeparator toolStripSeparator10;
 
         private ImageList imageList_Windows控件;
 

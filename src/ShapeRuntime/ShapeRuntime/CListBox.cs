@@ -465,14 +465,10 @@ public class CListBox : ListBox, IDCCEControl, IControlShape, IDBAnimation, ISup
     {
         get
         {
-            try
-            {
-                return base.SelectedItem.ToString();
-            }
-            catch (Exception)
-            {
-                return "";
-            }
+            if (null == base.SelectedItem)
+                return string.Empty;
+
+            return base.SelectedItem.ToString();
         }
         set
         {

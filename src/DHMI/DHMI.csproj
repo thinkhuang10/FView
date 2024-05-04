@@ -611,6 +611,27 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\polyline_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\polygon_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ell_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rect_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circleRect_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\str_small.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>
