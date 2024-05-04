@@ -42,6 +42,9 @@
   <PropertyGroup>
     <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System" />
@@ -50,9 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <ApplicationIcon Include="app.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationManifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HMIRunForm.Properties\Resources.cs" />
@@ -87,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HMIWeb\HMIWeb.csproj">

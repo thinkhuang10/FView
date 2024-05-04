@@ -70,6 +70,9 @@
   <PropertyGroup>
     <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Pdf.v23.2.Core" />
     <Reference Include="DevExpress.Office.v23.2.Core" />
@@ -106,9 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <ApplicationIcon Include="app.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationManifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HMIEditEnvironment.Animation\DataGridViewComboEditBoxCell.cs" />
@@ -567,6 +567,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
