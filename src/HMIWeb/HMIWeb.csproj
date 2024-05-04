@@ -92,10 +92,6 @@
       <Project>{2c5abf19-fd7d-4b1f-9bb1-6b5224518fcf}</Project>
       <Name>CommonSnappableTypes</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HMIClient\HMIClient.csproj">
-      <Project>{0c6e69f8-cf78-4994-acb6-6184bd93ac98}</Project>
-      <Name>HMIClient</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Interop.MSScriptControl\Interop.MSScriptControl.csproj">
       <Project>{0feecf4d-b9da-4a9d-aeaf-1668e5fb0beb}</Project>
       <Name>Interop.MSScriptControl</Name>

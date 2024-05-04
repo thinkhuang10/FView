@@ -1,5 +1,5 @@
 using CommonSnappableTypes;
-using HMIClient;
+//using HMIClient;
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using ShapeRuntime;
@@ -94,7 +94,7 @@ public class MainControl : UserControl, IMessageFilter
 
     private object GlobleObj;
 
-    private Client client;
+    //private Client client;
 
     private ScriptEngine m_ScriptEngine;
 
@@ -1251,7 +1251,7 @@ public class MainControl : UserControl, IMessageFilter
             timer.Stop();
             comtimer.Stop();
             systimer.Stop();
-            client.Stop();
+            //client.Stop();
         }
         catch (Exception ex2)
         {
@@ -1884,47 +1884,6 @@ public class MainControl : UserControl, IMessageFilter
         }
     }
 
-    private void client_VariableAlarmEvent(object sender, VariableAlarmEventArgs e)
-    {
-        AlarmState = Convert.ToInt32((e.lAlarmType & 0xFF000000u) >> 24);
-        Varlist[e.lID] = e.pvarValue;
-        if ((e.lAlarmType & 0xFF) == 0 && (e.lAlarmType & 0xFF00) >> 8 == 0)
-        {
-            return;
-        }
-        foreach (CIOAlarm iOAlarm in dhp.IOAlarms)
-        {
-            try
-            {
-                if (e.lID == int.Parse(iOAlarm.MsgID) && (e.lAlarmType & 0xFF) == 0 && iOAlarm.boolAlarmScript[((e.lAlarmType & 0xFF00) >> 8) - 1].Trim() != "")
-                {
-                    try
-                    {
-                        m_ScriptEngine.ExecuteStatement(iOAlarm.boolAlarmScript[((e.lAlarmType & 0xFF00) >> 8) - 1]);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message + " Line:" + m_ScriptEngine.Error.Line + " Columu:" + m_ScriptEngine.Error.Column);
-                    }
-                }
-                else if (e.lID == int.Parse(iOAlarm.MsgID) && iOAlarm.script[(e.lAlarmType & 0xFF) - 1].Trim() != "")
-                {
-                    try
-                    {
-                        m_ScriptEngine.ExecuteStatement(iOAlarm.script[(e.lAlarmType & 0xFF) - 1]);
-                    }
-                    catch (Exception ex2)
-                    {
-                        MessageBox.Show(ex2.Message + " Line:" + m_ScriptEngine.Error.Line + " Columu:" + m_ScriptEngine.Error.Column);
-                    }
-                }
-            }
-            catch
-            {
-            }
-        }
-    }
-
     private void OnMouseDown(object sender, MouseEventArgs e)
     {
         sender.GetType().GetMethod("GetFocus")?.Invoke(sender, new object[0]);
@@ -2401,12 +2360,7 @@ public class MainControl : UserControl, IMessageFilter
 
     public void setvalue(int id, object value)
     {
-        client.setvalue(id, value);
-    }
-
-    public object DXPExecute(int lMethordType, object varValue, int lDeviceID, int lStartID, int lRWCount)
-    {
-        return client.Execute(lMethordType, varValue, lDeviceID, lStartID, lRWCount);
+        //client.setvalue(id, value);
     }
 
     private void ResetScriptEngine(ScriptEngine s)
@@ -3190,18 +3144,18 @@ public class MainControl : UserControl, IMessageFilter
             num++;
         }
         init.Say("构建通信组件..");
-        client = new Client(Varlist, ParaDict)
-        {
-            MsgLabel = label1
-        };
-        if (dhp.ipaddress != null && dhp.ipaddress != "")
-        {
-            client.ServerIp = dhp.ipaddress;
-        }
-        if (dhp.port != null && dhp.port != "")
-        {
-            client.Port = int.Parse(dhp.port);
-        }
+        //client = new Client(Varlist, ParaDict)
+        //{
+        //    MsgLabel = label1
+        //};
+        //if (dhp.ipaddress != null && dhp.ipaddress != "")
+        //{
+        //    client.ServerIp = dhp.ipaddress;
+        //}
+        //if (dhp.port != null && dhp.port != "")
+        //{
+        //    client.Port = int.Parse(dhp.port);
+        //}
         init.Say("初始化页面..");
         dfs = new List<DataFile>();
         foreach (string key in dhp.pages.Keys)
@@ -3223,8 +3177,8 @@ public class MainControl : UserControl, IMessageFilter
         }
         m_ScriptEngine.ExecuteStatement(GlobalScriptBackUp);
         init.Say("初始化事件引擎..");
-        client.VariableAlarmEvent += client_VariableAlarmEvent;
-        client.DeviceAlarmEvent += client_DeviceAlarmEvent;
+        //client.VariableAlarmEvent += client_VariableAlarmEvent;
+        //client.DeviceAlarmEvent += client_DeviceAlarmEvent;
         base.Resize += MainControl_Resize;
         oldsize = dhp.ProjectSize;
         LastPageHeight = oldsize.Height;
@@ -3247,7 +3201,7 @@ public class MainControl : UserControl, IMessageFilter
         init.Say("正在启动底层通信服务..");
         new_Start_DXP();
         init.Say("正在启动数据通讯..");
-        client.Start();
+        //client.Start();
         datathread.Start();
         Thread.Sleep(1000);
         timer.Enabled = true;
@@ -4900,24 +4854,10 @@ public class MainControl : UserControl, IMessageFilter
                 }
             case "MainControl":
                 return this;
-            case "HMIClient":
-                return client;
+            //case "HMIClient":
+            //    return client;
             default:
                 return null;
-        }
-    }
-
-    private void client_DeviceAlarmEvent(object sender, DeviceAlarmEventArgs e)
-    {
-        try
-        {
-            DeviceID = e._lDevID;
-            DeviceState = e._lState;
-            m_ScriptEngine.ExecuteStatement(dhp.devLogic);
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message + " Line:" + m_ScriptEngine.Error.Line + " Columu:" + m_ScriptEngine.Error.Column);
         }
     }
 
