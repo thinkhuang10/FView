@@ -1,5 +1,4 @@
 using CommonSnappableTypes;
-//using HMIClient;
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using ShapeRuntime;
@@ -94,8 +93,6 @@ public class MainControl : UserControl, IMessageFilter
 
     private object GlobleObj;
 
-    //private Client client;
-
     private ScriptEngine m_ScriptEngine;
 
     private readonly XmlDocument xmldoc = new();
@@ -170,10 +167,6 @@ public class MainControl : UserControl, IMessageFilter
 
     private readonly Dictionary<string, float> dic_zoomy = new();
 
-    private readonly Dictionary<string, int> dic_locationX = new();
-
-    private readonly Dictionary<string, int> dic_locationY = new();
-
     private readonly DateTime begintime = DateTime.Now;
 
     private readonly Dictionary<string, object> tempValueDict = new();
@@ -235,56 +228,6 @@ public class MainControl : UserControl, IMessageFilter
     public event EventHandler InitOK;
 
     public event EventHandler FullScreenEvent;
-
-    public void setipaddress(string ip, string p)
-    {
-        if (ip != null && ip != "")
-        {
-            ipaddress = ip;
-            try
-            {
-                try
-                {
-                    string[] array = ip.Split('.');
-                    int result = 0;
-                    if (array.Length == 4 && int.TryParse(array[0], out result) && result > 0 && result < 256 && int.TryParse(array[1], out result) && result > 0 && result < 256 && int.TryParse(array[2], out result) && result > 0 && result < 256 && int.TryParse(array[3], out result) && result > 0 && result < 256)
-                    {
-                        ipaddress = ip;
-                    }
-                    else
-                    {
-                        ipaddress = GetHostIP(ip);
-                    }
-                }
-                catch
-                {
-                    ipaddress = GetHostIP(ip);
-                }
-            }
-            catch (Exception)
-            {
-                isauthority = false;
-            }
-        }
-        else
-        {
-            ipaddress = "127.0.0.1";
-        }
-        if (p != null && p != "")
-        {
-            port = p;
-        }
-        else
-        {
-            port = "80";
-        }
-    }
-
-    [DllImport("User32.dll")]
-    private static extern int FindWindow([MarshalAs(UnmanagedType.LPStr)] string lpClassName, [MarshalAs(UnmanagedType.LPStr)] string lpWindowName);
-
-    [DllImport("User32.dll")]
-    private static extern int SendMessageTimeout(int hWnd, int Msg, int wParam, ref COPYDATASTRUCT lParam, int fuFlags, int uTimeout, int lpdwResult);
 
     public void YMQH(CShape s)
     {
@@ -970,18 +913,16 @@ public class MainControl : UserControl, IMessageFilter
     public double MySin(int time, int cycle, double max, double min, double delay)
     {
         if (!Check.CheckZero(cycle))
-        {
             return 0.0;
-        }
+
         return Math.Sin(Math.PI * 2.0 / (double)cycle * (((double)time - delay) % (double)cycle)) * (max - min) / 2.0 + (max + min) / 2.0;
     }
 
     public double increase(int time, int cycle, double max, double min, double delay)
     {
         if (!Check.CheckZero(cycle))
-        {
             return 0.0;
-        }
+
         double num = (max - min) / (double)cycle;
         return min + num * (((double)time - delay) % (double)cycle);
     }
@@ -989,9 +930,8 @@ public class MainControl : UserControl, IMessageFilter
     public double degress(int time, int cycle, double max, double min, double delay)
     {
         if (!Check.CheckZero(cycle))
-        {
             return 0.0;
-        }
+
         double num = (float)(min - max) / (float)cycle;
         return max + num * (((double)time - delay) % (double)cycle);
     }
@@ -999,9 +939,8 @@ public class MainControl : UserControl, IMessageFilter
     public double triangle(int time, int cycle, double max, double min, double delay)
     {
         if (!Check.CheckZero(cycle))
-        {
             return 0.0;
-        }
+
         double num = (float)(max - min) / (float)(cycle / 2);
         if (((double)time - delay) % (double)cycle <= (double)(cycle / 2))
         {
@@ -2399,21 +2338,17 @@ public class MainControl : UserControl, IMessageFilter
             if (!DicIO.ContainsKey(str))
             {
                 if (str.ToLower() == "[null]")
-                {
                     return null;
-                }
+
                 if (str.ToLower() == "[true]")
-                {
                     return true;
-                }
+
                 if (str.ToLower() == "[false]")
-                {
                     return false;
-                }
+
                 if (str.StartsWith("[\"") && str.EndsWith("\"]"))
-                {
                     return str.Substring(2, str.Length - 4);
-                }
+
                 float result = 0f;
                 if (str.StartsWith("[") && str.EndsWith("]") && float.TryParse(str.Substring(1, str.Length - 2), out result))
                 {
@@ -2439,9 +2374,8 @@ public class MainControl : UserControl, IMessageFilter
                 if (str.StartsWith("[TEMP"))
                 {
                     if (tempValueDict.ContainsKey(str))
-                    {
                         return tempValueDict[str];
-                    }
+
                     return false;
                 }
                 if (str.Contains("."))
@@ -3198,8 +3132,7 @@ public class MainControl : UserControl, IMessageFilter
         method2 = GetType().GetMethod("Execute");
         handler2 = Delegate.CreateDelegate(eventHandlerType2, this, method2);
         event2.AddEventHandler(GlobleObj, handler2);
-        init.Say("正在启动底层通信服务..");
-        new_Start_DXP();
+
         init.Say("正在启动数据通讯..");
         //client.Start();
         datathread.Start();
@@ -3261,86 +3194,6 @@ public class MainControl : UserControl, IMessageFilter
         timer2Delay.Interval = 1000;
         timer2Delay.Tick += timer2Delay_Tick;
         timer2Delay.Start();
-    }
-
-    public void new_Start_DXP()
-    {
-        if (RequestUrl.Length > 0)
-        {
-            return;
-        }
-        Process process = new();
-        string arguments = "false";
-        if (FindWindow(null, "DXP") == 0)
-        {
-            string text = AppDomain.CurrentDomain.BaseDirectory;
-            if (!text.EndsWith("\\"))
-            {
-                text += "\\";
-            }
-            string text2 = "";
-            if (File.Exists(text + "..\\..\\DXP.exe"))
-            {
-                text2 = text + "..\\..\\DXP.exe";
-            }
-            else
-            {
-                if (!File.Exists(text + "..\\..\\Bin\\DXP.exe"))
-                {
-                    return;
-                }
-                text2 = text + "..\\..\\Bin\\DXP.exe";
-            }
-            if (text2 != "")
-            {
-                ProcessStartInfo startInfo = new(text2, arguments);
-                process.StartInfo = startInfo;
-                process.Start();
-            }
-        }
-        int num = FindWindow(null, "DXP");
-        if (num != 0)
-        {
-            COPYDATASTRUCT lParam = default;
-            DirectoryInfo directoryInfo = new(projectpath.Replace("file:///", ""));
-            string s = directoryInfo.Parent.FullName + "\\" + projectname.Replace(".dhp", "") + ".dsl";
-            byte[] bytes = Encoding.Default.GetBytes(s);
-            int num2 = bytes.Length;
-            lParam.dwData = (IntPtr)3000;
-            lParam.cbData = num2 + 1;
-            lParam.lpData = Marshal.StringToHGlobalAnsi(s);
-            SendMessageTimeout(num, 74, (int)base.Handle, ref lParam, 0, 0, 0);
-        }
-        System.Windows.Forms.Timer timer = new()
-        {
-            Interval = 1000
-        };
-        timer.Tick += timer_Tick2;
-        timer.Enabled = true;
-    }
-
-    private void timer_Tick2(object sender, EventArgs e)
-    {
-        int hWnd = FindWindow(null, "DXP");
-        COPYDATASTRUCT lParam = default;
-        DirectoryInfo directoryInfo = new(projectpath.Replace("file:///", ""));
-        string text = directoryInfo.Parent.FullName + "\\" + projectname.Replace(".dhp", "") + ".dsl";
-        if (!File.Exists(text))
-        {
-            text = AppDomain.CurrentDomain.BaseDirectory + "\\..\\" + projectname.Replace(".dhp", "") + ".dsl";
-            if (!File.Exists(text))
-            {
-                ((System.Windows.Forms.Timer)sender).Enabled = false;
-                return;
-            }
-        }
-        byte[] bytes = Encoding.Default.GetBytes(text);
-        int num = bytes.Length;
-        lParam.dwData = (IntPtr)3000;
-        lParam.cbData = num + 1;
-        lParam.lpData = Marshal.StringToHGlobalAnsi(text);
-        SendMessageTimeout(hWnd, 74, (int)base.Handle, ref lParam, 0, 0, 0);
-        ((System.Windows.Forms.Timer)sender).Enabled = false;
     }
 
     public void DelayLoadPage(string pagename)
@@ -4854,12 +4707,12 @@ public class MainControl : UserControl, IMessageFilter
                 }
             case "MainControl":
                 return this;
-            //case "HMIClient":
-            //    return client;
             default:
                 return null;
         }
     }
+
+    #region 脚本中的系统API
 
     public string NewGUID()
     {
@@ -5214,6 +5067,8 @@ public class MainControl : UserControl, IMessageFilter
         }
         return false;
     }
+
+    #endregion
 
     private void InitializeComponent()
     {

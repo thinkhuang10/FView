@@ -3,6 +3,10 @@ using MSScriptControl;
 
 namespace HMIWeb;
 
+public delegate void RunErrorHandler();
+
+public delegate void RunTimeoutHandler();
+
 public class ScriptEngine
 {
     private readonly ScriptControlClass msc;

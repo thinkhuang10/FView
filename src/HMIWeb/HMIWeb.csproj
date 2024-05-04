@@ -56,7 +56,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HMIWeb\Check.cs" />
-    <Compile Include="HMIWeb\COPYDATASTRUCT.cs" />
     <Compile Include="HMIWeb\DbConnType.cs" />
     <Compile Include="HMIWeb\DeflateCompress.cs" />
     <Compile Include="HMIWeb\ErrorException.cs" />
@@ -66,8 +65,6 @@
     <Compile Include="HMIWeb\MainControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="HMIWeb\RunErrorHandler.cs" />
-    <Compile Include="HMIWeb\RunTimeoutHandler.cs" />
     <Compile Include="HMIWeb\ScriptEngine.cs" />
     <Compile Include="HMIWeb\ScriptLanguage.cs" />
     <Compile Include="HMIWeb\SingleForm.cs">

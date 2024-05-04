@@ -1571,7 +1571,7 @@
             <property name="IsGalleryToolbarItemLink">false</property>
             <property name="GalleryBarItemName" />
             <property name="ItemId">210</property>
-            <property name="ClickCount">20</property>
+            <property name="ClickCount">21</property>
             <property name="UserWidth">0</property>
             <property name="UserEditWidth">0</property>
             <property name="UserCaption" />
@@ -2326,7 +2326,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">2</property>
+            <property name="RecentIndex">1</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">true</property>
@@ -2353,7 +2353,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">3</property>
+            <property name="RecentIndex">2</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">false</property>
@@ -2380,7 +2380,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">4</property>
+            <property name="RecentIndex">3</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">false</property>
@@ -2407,7 +2407,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">1</property>
+            <property name="RecentIndex">4</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">false</property>
@@ -2615,7 +2615,7 @@
             <property name="IsGalleryToolbarItemLink">false</property>
             <property name="GalleryBarItemName" />
             <property name="ItemId">125</property>
-            <property name="ClickCount">68</property>
+            <property name="ClickCount">70</property>
             <property name="UserWidth">0</property>
             <property name="UserEditWidth">0</property>
             <property name="UserCaption" />
@@ -2672,7 +2672,7 @@
             <property name="IsGalleryToolbarItemLink">false</property>
             <property name="GalleryBarItemName" />
             <property name="ItemId">2</property>
-            <property name="ClickCount">194</property>
+            <property name="ClickCount">196</property>
             <property name="UserWidth">0</property>
             <property name="UserEditWidth">0</property>
             <property name="UserCaption" />
@@ -2680,7 +2680,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">0</property>
+            <property name="RecentIndex">1</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="ImageIndex">-1</property>
@@ -2776,7 +2776,7 @@
             <property name="IsGalleryToolbarItemLink">false</property>
             <property name="GalleryBarItemName" />
             <property name="ItemId">6</property>
-            <property name="ClickCount">65</property>
+            <property name="ClickCount">67</property>
             <property name="UserWidth">0</property>
             <property name="UserEditWidth">0</property>
             <property name="UserCaption" />
