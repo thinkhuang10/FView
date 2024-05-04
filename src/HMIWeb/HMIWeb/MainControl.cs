@@ -1182,40 +1182,40 @@ public class MainControl : UserControl, IMessageFilter
     {
         //while (canwork)
         //{
-        //	_event.WaitOne();
-        //	lock (ids)
-        //	{
-        //		for (int i = MaxID + 1; i < Varlist.Length; i++)
-        //		{
-        //			if (Varlist[i] == null)
-        //			{
-        //				Varlist[i] = 0;
-        //			}
-        //		}
-        //		if (ids.Count != 0)
-        //		{
-        //			int num = int.MaxValue;
-        //			for (int j = 0; j < ids.Count; j++)
-        //			{
-        //				if (ids[j].Id > MaxID)
-        //				{
-        //					num = j;
-        //					break;
-        //				}
-        //			}
-        //			if (num == int.MaxValue)
-        //			{
-        //				int id = ids[0].Id;
-        //				int id2 = ids[ids.Count - 1].Id;
-        //				client.getvalues(id, id2);
-        //			}
-        //			else
-        //			{
-        //				client.getvalues(ids[0].Id, ids[num - 1].Id);
-        //			}
-        //		}
-        //	}
-        //	_event.Reset();
+        //    _event.WaitOne();
+        //    lock (ids)
+        //    {
+        //        for (int i = MaxID + 1; i < Varlist.Length; i++)
+        //        {
+        //            if (Varlist[i] == null)
+        //            {
+        //                Varlist[i] = 0;
+        //            }
+        //        }
+        //        if (ids.Count != 0)
+        //        {
+        //            int num = int.MaxValue;
+        //            for (int j = 0; j < ids.Count; j++)
+        //            {
+        //                if (ids[j].Id > MaxID)
+        //                {
+        //                    num = j;
+        //                    break;
+        //                }
+        //            }
+        //            if (num == int.MaxValue)
+        //            {
+        //                int id = ids[0].Id;
+        //                int id2 = ids[ids.Count - 1].Id;
+        //                client.getvalues(id, id2);
+        //            }
+        //            else
+        //            {
+        //                client.getvalues(ids[0].Id, ids[num - 1].Id);
+        //            }
+        //        }
+        //    }
+        //    _event.Reset();
         //}
     }
 
@@ -3040,7 +3040,7 @@ public class MainControl : UserControl, IMessageFilter
         BackColor = dhp.ProjectBackColor;
         systimer.Interval = ((dhp.LogicTime < 50) ? 50 : dhp.LogicTime);
         systimer.Tick += systimer_Tick;
-        //init.Say("加载设备变量信息..");
+        init.Say("加载变量信息..");
         //input = resourceManager.GetObject(dhp.IOfiles, new CultureInfo("")) as byte[];
         //byte[] buffer = ((!dhp.Compress) ? input : Operation.UncompressStream(input));
         //using (memoryStream = new MemoryStream(buffer))
@@ -3050,7 +3050,7 @@ public class MainControl : UserControl, IMessageFilter
         //	memoryStream.Dispose();
         //}
         //XmlNodeList xmlNodeList = xmldoc.SelectNodes("/DocumentRoot/Item");
-        //MaxID = -1;
+
         //foreach (XmlNode item in xmlNodeList)
         //{
         //	VarTableItem varTableItem = new VarTableItem();
@@ -3065,11 +3065,11 @@ public class MainControl : UserControl, IMessageFilter
         //	DicIO.Add(varTableItem.Name, varTableItem);
         //}
         int num = MaxID + 1;
-        //Varlist = new object[MaxID + 1 + dhp.ProjectIOs.Count];
-        //for (int i = 0; i < MaxID + 1; i++)
-        //{
-        //	Varlist[i] = 0;
-        //}
+        Varlist = new object[MaxID + 1 + dhp.ProjectIOs.Count];
+        for (int i = 0; i < MaxID + 1; i++)
+        {
+            Varlist[i] = 0;
+        }
         init.Say("加载内部变量信息..");
         foreach (ProjectIO projectIO in dhp.ProjectIOs)
         {
