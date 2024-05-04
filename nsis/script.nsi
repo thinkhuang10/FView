@@ -107,7 +107,6 @@ Section "FTView·þÎñ¶Ë" FTViewServer
   File /r "${InstallFilesDir}\DevExpress.Data.v23.2.dll"
   File /r "${InstallFilesDir}\DevExpress.Drawing.v23.2.dll"
   File /r "${InstallFilesDir}\DevExpress.Office.v23.2.Core.dll"
-  File /r "${InstallFilesDir}\DevExpress.OfficeSkins.v10.1.dll"
   File /r "${InstallFilesDir}\DevExpress.Pdf.v23.2.Core.dll"
   File /r "${InstallFilesDir}\DevExpress.Pdf.v23.2.Drawing.dll"
   File /r "${InstallFilesDir}\DevExpress.Printing.v23.2.Core.dll"
