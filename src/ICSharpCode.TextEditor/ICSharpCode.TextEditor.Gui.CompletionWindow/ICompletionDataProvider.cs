@@ -4,7 +4,6 @@ namespace ICSharpCode.TextEditor.Gui.CompletionWindow;
 
 public interface ICompletionDataProvider
 {
-    ImageList ImageList { get; }
 
     string PreSelection { get; }
 

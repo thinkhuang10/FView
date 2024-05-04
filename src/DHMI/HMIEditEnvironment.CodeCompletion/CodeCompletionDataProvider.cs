@@ -10,8 +10,6 @@ internal class CodeCompletionDataProvider : ICompletionDataProvider
 {
     private readonly ScriptUnit form;
 
-    public ImageList ImageList => form.imageList1;
-
     public string PreSelection => null;
 
     public int DefaultIndex => -1;

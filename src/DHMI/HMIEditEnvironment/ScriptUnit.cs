@@ -25,21 +25,7 @@ public partial class ScriptUnit : XtraForm
 
     private TreeNode iot;
 
-    private XmlNodeList xns;
-
-    private List<XmlNode> srclxn;
-
-    private XmlNodeList xnitemst;
-
-    private List<XmlNode> xnitemsSRC;
-
-    private List<XmlNode> xnitems;
-
     private TreeNode roottn;
-
-    private List<XmlNode> tdlxn;
-
-    private List<XmlNode> lxn;
 
     public static TreeNode ClickNode;
 
@@ -250,7 +236,7 @@ public partial class ScriptUnit : XtraForm
         }
         else
         {
-            treeNode = ClickNode.Nodes.Add("shape.png", CtrlName, "shape.png");
+            treeNode = ClickNode.Nodes.Add("shape.png", CtrlName);
             treeNode.Nodes.Add(eventScriptFrm.EventNode);
         }
         treeNode.Expand();
@@ -406,7 +392,7 @@ public partial class ScriptUnit : XtraForm
     {
         try
         {
-            rootNode = treeView1.Nodes.Add("project.png", "工程相关", "project.png");
+            rootNode = treeView1.Nodes.Add("project.png", "工程相关");
             return true;
         }
         catch
@@ -420,7 +406,7 @@ public partial class ScriptUnit : XtraForm
     {
         try
         {
-            TreeNode treeNode = rootNode.Nodes.Add("l.png", "全局脚本", "l.png");
+            TreeNode treeNode = rootNode.Nodes.Add("l.png", "全局脚本");
             treeNode.Tag = new TempTag(null, CEditEnvironmentGlobal.dhp.SrcGlobalLogic, CEditEnvironmentGlobal.dhp);
             rootNode.Expand();
             if (CEditEnvironmentGlobal.dhp.SrcGlobalLogic != string.Empty)
@@ -440,7 +426,7 @@ public partial class ScriptUnit : XtraForm
     {
         try
         {
-            TreeNode treeNode = rootNode.Nodes.Add("l.png", "设备上下线事件脚本", "l.png");
+            TreeNode treeNode = rootNode.Nodes.Add("l.png", "设备上下线事件脚本");
             treeNode.Tag = new TempTag(null, CEditEnvironmentGlobal.dhp.devjiaoben, CEditEnvironmentGlobal.dhp);
             if (CEditEnvironmentGlobal.dhp.devjiaoben != string.Empty)
             {
@@ -459,7 +445,7 @@ public partial class ScriptUnit : XtraForm
     {
         try
         {
-            TreeNode treeNode = rootNode.Nodes.Add("l.png", "程序启动脚本", "l.png");
+            TreeNode treeNode = rootNode.Nodes.Add("l.png", "程序启动脚本");
             treeNode.Tag = new TempTag(null, CEditEnvironmentGlobal.dhp.cxdzshijiaoben[0], CEditEnvironmentGlobal.dhp);
             if (CEditEnvironmentGlobal.dhp.cxdzshijiaoben[0] != "")
             {
@@ -478,7 +464,7 @@ public partial class ScriptUnit : XtraForm
     {
         try
         {
-            TreeNode treeNode = rootNode.Nodes.Add("l.png", "程序运行脚本", "l.png");
+            TreeNode treeNode = rootNode.Nodes.Add("l.png", "程序运行脚本");
             treeNode.Tag = new TempTag(null, CEditEnvironmentGlobal.dhp.cxdzshijiaoben[1], CEditEnvironmentGlobal.dhp);
             if (CEditEnvironmentGlobal.dhp.cxdzshijiaoben[1] != string.Empty)
             {
@@ -498,7 +484,7 @@ public partial class ScriptUnit : XtraForm
     {
         try
         {
-            TreeNode treeNode = rootNode.Nodes.Add("l.png", "程序关闭脚本", "l.png");
+            TreeNode treeNode = rootNode.Nodes.Add("l.png", "程序关闭脚本");
             treeNode.Tag = new TempTag(null, CEditEnvironmentGlobal.dhp.cxdzshijiaoben[2], CEditEnvironmentGlobal.dhp);
             if (CEditEnvironmentGlobal.dhp.cxdzshijiaoben[2] != string.Empty)
             {
@@ -517,49 +503,7 @@ public partial class ScriptUnit : XtraForm
     {
         try
         {
-            iot = rootNode.Nodes.Add("io.png", "变量报警脚本", "io.png");
-            xns = CEditEnvironmentGlobal.xmldoc.SelectNodes("/DocumentRoot/Group");
-            srclxn = new List<XmlNode>();
-            foreach (XmlNode xn in xns)
-            {
-                if (xn.Attributes["ParentID"].Value != "-1")
-                {
-                    srclxn.Add(xn);
-                }
-            }
-            xnitemst = CEditEnvironmentGlobal.xmldoc.SelectNodes("/DocumentRoot/Item");
-            xnitemsSRC = new List<XmlNode>();
-            for (int i = 0; i < xnitemst.Count; i++)
-            {
-                for (int j = ((i - 1 >= 0) ? (Convert.ToInt32(xnitemst[i - 1].Attributes["id"].Value) + 1) : 0); j < Convert.ToInt32(xnitemst[i].Attributes["id"].Value); j++)
-                {
-                    xnitemsSRC.Add(null);
-                }
-                xnitemsSRC.Add(xnitemst[i]);
-            }
-            xnitems = new List<XmlNode>(xnitemsSRC);
-            TreeNode treenode = iot.Nodes.Add("0", "设备变量", "io.png");
-            roottn = iot;
-            tdlxn = new List<XmlNode>();
-            lxn = new List<XmlNode>(srclxn);
-            while (lxn.Count != 0)
-            {
-                foreach (XmlNode item in lxn)
-                {
-                    TreeNode treeNode = findNode(item.Attributes["ParentID"].Value, roottn);
-                    if (treeNode != null)
-                    {
-                        TreeNode treenode2 = treeNode.Nodes.Add(item.Attributes["id"].Value, item.Attributes["Name"].Value, "io.png");
-                        AddIOToTree(xnitems, treenode2, item.Attributes["id"].Value, addalarmscript: true);
-                        tdlxn.Add(item);
-                    }
-                }
-                foreach (XmlNode item2 in tdlxn)
-                {
-                    lxn.Remove(item2);
-                }
-            }
-            AddLastIOToTree(xnitems, treenode, addalarmscript: true);
+            iot = rootNode.Nodes.Add("io.png", "变量报警脚本");
             return true;
         }
         catch
@@ -573,13 +517,13 @@ public partial class ScriptUnit : XtraForm
     {
         try
         {
-            TreeNode treeNode = rootNode.Nodes.Add("page.png", "页面相关", "page.png");
+            TreeNode treeNode = rootNode.Nodes.Add("page.png", "页面相关");
             List<DataFile> list = new(CEditEnvironmentGlobal.dfs);
             list.Sort(PageNameCompare);
             treeNode.Expand();
             foreach (DataFile item in list)
             {
-                TreeNode tnParent = treeNode.Nodes.Add("page.png", item.pageName, "page.png");
+                TreeNode tnParent = treeNode.Nodes.Add("page.png", item.pageName);
                 TreeNode treeNode2 = AddNode("l.png", "页面显示脚本", item.pagedzshijiaoben[0], item.pagedzshijiaoben[0] != string.Empty, ref tnParent, item);
                 treeNode2 = AddNode("l.png", "页面运行脚本", item.pagedzshijiaoben[1], item.pagedzshijiaoben[1] != string.Empty, ref tnParent, item);
                 ((TempTag)treeNode2.Tag).t = item.LogicTime;
@@ -588,7 +532,7 @@ public partial class ScriptUnit : XtraForm
                 list2.Sort(ShapeNameCompare);
                 foreach (CShape item2 in list2)
                 {
-                    TreeNode tnParent2 = tnParent.Nodes.Add("shape.png", item2.Name, "shape.png");
+                    TreeNode tnParent2 = tnParent.Nodes.Add("shape.png", item2.Name);
                     int num = 0;
                     if (!(item2 is CControl))
                     {
@@ -659,7 +603,7 @@ public partial class ScriptUnit : XtraForm
                                 {
                                     if (item2.ysdzshijianbiaodashi[i] != null)
                                     {
-                                        treeNode2 = tnParent2.Nodes.Add("l.png", array[i].Name.ToString(), "l.png");
+                                        treeNode2 = tnParent2.Nodes.Add("l.png", array[i].Name.ToString());
                                         treeNode2.Tag = new TempTag(null, item2.ysdzshijianbiaodashi[i], item2);
                                         item2.ysdzshijianmingcheng[i] = array[i].ToString();
                                         if (item2.ysdzshijianbiaodashi[i] != "")
@@ -702,7 +646,7 @@ public partial class ScriptUnit : XtraForm
                                     }
                                     if (item2.ysdzshijianbiaodashi[j] != null)
                                     {
-                                        treeNode2 = tnParent2.Nodes.Add("l.png", array[j].Name.ToString(), "l.png");
+                                        treeNode2 = tnParent2.Nodes.Add("l.png", array[j].Name.ToString());
                                         treeNode2.Tag = new TempTag(null, item2.ysdzshijianbiaodashi[j], item2);
                                         item2.ysdzshijianmingcheng[j] = array[j].ToString();
                                         if (item2.ysdzshijianbiaodashi[j] != "")
@@ -719,7 +663,7 @@ public partial class ScriptUnit : XtraForm
                                 {
                                     if (item2.ysdzshijianbiaodashi[m] != null)
                                     {
-                                        treeNode2 = tnParent2.Nodes.Add("l.png", array[m].Name.ToString(), "l.png");
+                                        treeNode2 = tnParent2.Nodes.Add("l.png", array[m].Name.ToString());
                                         treeNode2.Tag = new TempTag(null, item2.ysdzshijianbiaodashi[m], item2);
                                         if (item2.ysdzshijianbiaodashi[m] != "")
                                         {
@@ -742,7 +686,7 @@ public partial class ScriptUnit : XtraForm
                                 {
                                     if (item2.ysdzshijianbiaodashi[n] != null)
                                     {
-                                        treeNode2 = tnParent2.Nodes.Add("l.png", array2[n].Name.ToString(), "l.png");
+                                        treeNode2 = tnParent2.Nodes.Add("l.png", array2[n].Name.ToString());
                                         treeNode2.Tag = new TempTag(null, item2.ysdzshijianbiaodashi[n], item2);
                                         item2.ysdzshijianmingcheng[n] = array2[n].ToString();
                                         if (item2.ysdzshijianbiaodashi[n] != "")
@@ -760,7 +704,7 @@ public partial class ScriptUnit : XtraForm
                                     item2.ysdzshijianmingcheng[num2] = array2[num2].ToString();
                                     if (item2.ysdzshijianbiaodashi[num2] != null)
                                     {
-                                        treeNode2 = tnParent2.Nodes.Add("l.png", array2[num2].Name.ToString(), "l.png");
+                                        treeNode2 = tnParent2.Nodes.Add("l.png", array2[num2].Name.ToString());
                                         treeNode2.Tag = new TempTag(null, item2.ysdzshijianbiaodashi[num2], item2);
                                         if (item2.ysdzshijianbiaodashi[num2] != "")
                                         {
@@ -791,31 +735,8 @@ public partial class ScriptUnit : XtraForm
     {
         try
         {
-            rootNode = treeView2.Nodes.Add("iog", "变量", "io.png");
-            iot = rootNode.Nodes.Add("0", "设备变量", "io.png");
-            xnitems = new List<XmlNode>(xnitemsSRC);
-            AddIOToTree(xnitems, iot, "0", addalarmscript: false);
-            roottn = iot;
-            tdlxn = new List<XmlNode>();
-            lxn = new List<XmlNode>(srclxn);
-            while (lxn.Count != 0)
-            {
-                foreach (XmlNode item in lxn)
-                {
-                    TreeNode treeNode = findNode(item.Attributes["ParentID"].Value, roottn);
-                    if (treeNode != null)
-                    {
-                        TreeNode treenode = treeNode.Nodes.Add(item.Attributes["id"].Value, item.Attributes["Name"].Value, "io.png");
-                        AddIOToTree(xnitems, treenode, item.Attributes["id"].Value, addalarmscript: false);
-                        tdlxn.Add(item);
-                    }
-                }
-                foreach (XmlNode item2 in tdlxn)
-                {
-                    lxn.Remove(item2);
-                }
-            }
-            AddLastIOToTree(xnitems, iot, addalarmscript: false);
+            rootNode = treeView2.Nodes.Add("iog", "变量");
+            iot = rootNode.Nodes.Add("0", "设备变量");
             TreeNode treeNode2 = (TreeNode)CEditEnvironmentGlobal.dhp.ProjectIOTreeRoot.Clone();
             SetProjectIONodes(treeNode2);
             rootNode.Nodes.Add(treeNode2);
@@ -832,28 +753,28 @@ public partial class ScriptUnit : XtraForm
     {
         try
         {
-            rootNode = treeView2.Nodes.Add("api.png", "系统API", "api.png");
-            TreeNode treeNode = rootNode.Nodes.Add("api", "KeyValue", "api.png");
+            rootNode = treeView2.Nodes.Add("api.png", "系统API");
+            TreeNode treeNode = rootNode.Nodes.Add("api", "KeyValue");
             treeNode.Tag = "键盘事件中获取按下键代码 System.KeyValue";
-            treeNode = rootNode.Nodes.Add("api", "Exec", "api.png");
+            treeNode = rootNode.Nodes.Add("api", "Exec");
             treeNode.Tag = "启动外部程序 System.Exec String,String (String:启动外部程序路径,String:启动外部程序参数)";
-            treeNode = rootNode.Nodes.Add("api", "ExecWait", "api.png");
+            treeNode = rootNode.Nodes.Add("api", "ExecWait");
             treeNode.Tag = "启动外部程序并等待结束 System.ExecWait String,String (String:启动外部程序路径,String:启动外部程序参数)";
-            treeNode = rootNode.Nodes.Add("api", "SetPageVisible", "api.png");
+            treeNode = rootNode.Nodes.Add("api", "SetPageVisible");
             treeNode.Tag = "设置页面的显示隐藏 System.SetPageVisible String,Boolean (String:页面脚本名称,Boolean:是否可见)";
-            treeNode = rootNode.Nodes.Add("api", "FullScreen", "api.png");
+            treeNode = rootNode.Nodes.Add("api", "FullScreen");
             treeNode.Tag = "全屏显示并返回布尔值 System.FullScreen";
-            treeNode = rootNode.Nodes.Add("api", "Exit", "api.png");
+            treeNode = rootNode.Nodes.Add("api", "Exit");
             treeNode.Tag = "退出运行环境 System.Exit";
-            treeNode = rootNode.Nodes.Add("api", "SetDBConn", "api.png");
+            treeNode = rootNode.Nodes.Add("api", "SetDBConn");
             treeNode.Tag = "设置数据库连接字符串 System.SetDBConn String";
-            treeNode = rootNode.Nodes.Add("api", "ExecuteSql", "api.png");
+            treeNode = rootNode.Nodes.Add("api", "ExecuteSql");
             treeNode.Tag = "执行SQL指令 System.ExecuteSql String (String:要被执行的SQL语句)";
-            treeNode = rootNode.Nodes.Add("api", "ExecuteSqlReturnArray", "api.png");
+            treeNode = rootNode.Nodes.Add("api", "ExecuteSqlReturnArray");
             treeNode.Tag = "执行SQL指令并返回数组 System.ExecuteSqlReturnArray String (String:要被执行的SQL语句)";
-            treeNode = rootNode.Nodes.Add("api", "DBSelect", "api.png");
+            treeNode = rootNode.Nodes.Add("api", "DBSelect");
             treeNode.Tag = "读取数据表 System.DBSelect String (String:读取数据使用的Select语句字符串)";
-            treeNode = rootNode.Nodes.Add("api", "GetAppFullDir", "api.png");
+            treeNode = rootNode.Nodes.Add("api", "GetAppFullDir");
             treeNode.Tag = "获取当前程序集路径 System. GetAppFullDir";
             return true;
         }
@@ -868,17 +789,17 @@ public partial class ScriptUnit : XtraForm
     {
         try
         {
-            rootNode = treeView2.Nodes.Add("project.png", "工程属性相关", "project.png");
+            rootNode = treeView2.Nodes.Add("project.png", "工程属性相关");
             List<DataFile> list = new(CEditEnvironmentGlobal.dfs);
             foreach (DataFile item in list)
             {
-                TreeNode treeNode = rootNode.Nodes.Add("page.png", item.pageName + "(" + item.name + ")", "page.png");
+                TreeNode treeNode = rootNode.Nodes.Add("page.png", item.pageName + "(" + item.name + ")");
                 treeNode.Name = item.name;
                 List<CShape> list2 = new(item.ListAllShowCShape);
                 list2.Sort(ShapeNameCompare);
                 foreach (CShape item2 in list2)
                 {
-                    TreeNode treeNode2 = treeNode.Nodes.Add("shape.png", item2.Name, "shape.png");
+                    TreeNode treeNode2 = treeNode.Nodes.Add("shape.png", item2.Name);
                     if (item2 is CControl)
                     {
                         object c = (item2 as CControl)._c;
@@ -894,11 +815,11 @@ public partial class ScriptUnit : XtraForm
                                 {
                                     if (c is AxHost)
                                     {
-                                        treeNode2.Nodes.Add("property.png", propertyInfo.Name, "property.png");
+                                        treeNode2.Nodes.Add("property.png", propertyInfo.Name);
                                     }
                                     else if (!Attribute.IsDefined(propertyInfo, typeof(DHMIHidePropertyAttribute)))
                                     {
-                                        treeNode2.Nodes.Add("property.png", propertyInfo.Name, "property.png");
+                                        treeNode2.Nodes.Add("property.png", propertyInfo.Name);
                                     }
                                 }
                             }
@@ -919,7 +840,7 @@ public partial class ScriptUnit : XtraForm
                         {
                             if (!Attribute.IsDefined(propertyInfo2, typeof(DHMIHidePropertyAttribute)) && !cScriptPropertyShow2.ltProperty.Contains(propertyInfo2.Name))
                             {
-                                treeNode2.Nodes.Add("property.png", propertyInfo2.Name, "property.png");
+                                treeNode2.Nodes.Add("property.png", propertyInfo2.Name);
                             }
                         }
                         catch (Exception)
@@ -941,17 +862,17 @@ public partial class ScriptUnit : XtraForm
     {
         try
         {
-            rootNode = treeView2.Nodes.Add("project.png", "工程相关方法", "project.png");
+            rootNode = treeView2.Nodes.Add("project.png", "工程相关方法");
             List<DataFile> list = new(CEditEnvironmentGlobal.dfs);
             foreach (DataFile item in list)
             {
-                TreeNode treeNode = rootNode.Nodes.Add("page.png", item.pageName + "(" + item.name + ")", "page.png");
+                TreeNode treeNode = rootNode.Nodes.Add("page.png", item.pageName + "(" + item.name + ")");
                 treeNode.Name = item.name;
                 List<CShape> list2 = new(item.ListAllShowCShape);
                 list2.Sort(ShapeNameCompare);
                 foreach (CShape item2 in list2)
                 {
-                    TreeNode treeNode2 = treeNode.Nodes.Add("shape.png", item2.Name, "shape.png");
+                    TreeNode treeNode2 = treeNode.Nodes.Add("shape.png", item2.Name);
                     if (item2 is CControl)
                     {
                         object c = (item2 as CControl)._c;
@@ -977,11 +898,11 @@ public partial class ScriptUnit : XtraForm
                                 {
                                     if (c is AxHost)
                                     {
-                                        treeNode2.Nodes.Add("property.png", methodInfo.Name, "property.png");
+                                        treeNode2.Nodes.Add("property.png", methodInfo.Name);
                                     }
                                     else if (!Attribute.IsDefined(methodInfo, typeof(DHMIHidePropertyAttribute)))
                                     {
-                                        treeNode2.Nodes.Add("property.png", methodInfo.Name, "property.png");
+                                        treeNode2.Nodes.Add("property.png", methodInfo.Name);
                                     }
                                 }
                             }
@@ -1016,7 +937,7 @@ public partial class ScriptUnit : XtraForm
                             }
                             if (!cScriptFuncShow2.ltFunc.Contains(methodInfo2.Name))
                             {
-                                treeNode2.Nodes.Add("property.png", methodInfo2.Name, "property.png");
+                                treeNode2.Nodes.Add("property.png", methodInfo2.Name);
                             }
                         }
                         catch (Exception)
@@ -1656,183 +1577,6 @@ public partial class ScriptUnit : XtraForm
         return true;
     }
 
-    private void AddLastIOToTree(List<XmlNode> xnitems, TreeNode treenode, bool addalarmscript)
-    {
-        try
-        {
-            XmlNode[] array = xnitems.ToArray();
-            foreach (XmlNode xmlNode in array)
-            {
-                if (xmlNode == null || !addalarmscript || (!(xmlNode.ChildNodes[1].Attributes["AlarmType"].Value != "0") && !(xmlNode.ChildNodes[1].Attributes["LoloActive"].Value != "0") && !(xmlNode.ChildNodes[1].Attributes["LowActive"].Value != "0") && !(xmlNode.ChildNodes[1].Attributes["HighActive"].Value != "0") && !(xmlNode.ChildNodes[1].Attributes["HihiActive"].Value != "0") && !(xmlNode.ChildNodes[1].Attributes["AimActive"].Value != "0") && !(xmlNode.ChildNodes[1].Attributes["ShiftActive"].Value != "0") && !(xmlNode.ChildNodes[1].Attributes["AlarmType"].Value != "0") && !(xmlNode.ChildNodes[1].Attributes["AlarmType"].Value != "0")))
-                {
-                    continue;
-                }
-                TreeNode tnParent = treenode.Nodes.Add("io", xmlNode.Attributes["Name"].Value, "io.png");
-                if (xmlNode.Attributes["ValType"].Value == "0")
-                {
-                    string value = xmlNode.ChildNodes[1].Attributes["AlarmType"].Value;
-                    foreach (CIOAlarm iOAlarm in CEditEnvironmentGlobal.dhp.IOAlarms)
-                    {
-                        if (!(iOAlarm.name == "[" + xmlNode.Attributes["Name"].Value + "]"))
-                        {
-                            continue;
-                        }
-                        switch (value)
-                        {
-                            case "1":
-                                AddNode("l.png", "位变量开", iOAlarm.boolAlarmScript[5], iOAlarm.boolAlarmScript[5] != "", ref tnParent, iOAlarm);
-                                break;
-                            case "2":
-                                AddNode("l.png", "位变量关", iOAlarm.boolAlarmScript[6], iOAlarm.boolAlarmScript[6] != "", ref tnParent, iOAlarm);
-                                break;
-                            case "3":
-                                AddNode("l.png", "位变量由开到关", iOAlarm.boolAlarmScript[7], iOAlarm.boolAlarmScript[7] != "", ref tnParent, iOAlarm);
-                                break;
-                            case "4":
-                                AddNode("l.png", "位变量由关到开", iOAlarm.boolAlarmScript[8], iOAlarm.boolAlarmScript[8] != "", ref tnParent, iOAlarm);
-                                break;
-                            case "5":
-                                AddNode("l.png", "位变量变化", iOAlarm.boolAlarmScript[9], iOAlarm.boolAlarmScript[9] != "", ref tnParent, iOAlarm);
-                                break;
-                        }
-                        goto IL_0a88;
-                    }
-                    switch (value)
-                    {
-                        case "1":
-                            {
-                                TreeNode treeNode = tnParent.Nodes.Add("l.png", "位变量开", "l.png");
-                                treeNode.Tag = new TempTag(null, null, null);
-                                break;
-                            }
-                        case "2":
-                            {
-                                TreeNode treeNode = tnParent.Nodes.Add("l.png", "位变量关", "l.png");
-                                treeNode.Tag = new TempTag(null, null, null);
-                                break;
-                            }
-                        case "3":
-                            {
-                                TreeNode treeNode = tnParent.Nodes.Add("l.png", "位变量由开到关", "l.png");
-                                treeNode.Tag = new TempTag(null, null, null);
-                                break;
-                            }
-                        case "4":
-                            {
-                                TreeNode treeNode = tnParent.Nodes.Add("l.png", "位变量由关到开", "l.png");
-                                treeNode.Tag = new TempTag(null, null, null);
-                                break;
-                            }
-                        case "5":
-                            {
-                                TreeNode treeNode = tnParent.Nodes.Add("l.png", "位变量变化", "l.png");
-                                treeNode.Tag = new TempTag(null, null, null);
-                                break;
-                            }
-                    }
-                    continue;
-                }
-                foreach (CIOAlarm iOAlarm2 in CEditEnvironmentGlobal.dhp.IOAlarms)
-                {
-                    if (!(iOAlarm2.name == "[" + xmlNode.Attributes["Name"].Value + "]"))
-                    {
-                        continue;
-                    }
-                    if (xmlNode.ChildNodes[1].Attributes["LoloActive"].Value != "0")
-                    {
-                        TreeNode treeNode = tnParent.Nodes.Add("l.png", "下下限报警", "l.png");
-                        treeNode.Tag = new TempTag(null, iOAlarm2.script[6], iOAlarm2);
-                        if (iOAlarm2.script[6] != string.Empty)
-                        {
-                            treeNode.NodeFont = BoldFont;
-                        }
-                    }
-                    if (xmlNode.ChildNodes[1].Attributes["LowActive"].Value != "0")
-                    {
-                        TreeNode treeNode = tnParent.Nodes.Add("l.png", "下限报警", "l.png");
-                        treeNode.Tag = new TempTag(null, iOAlarm2.script[7], iOAlarm2);
-                        if (iOAlarm2.script[7] != string.Empty)
-                        {
-                            treeNode.NodeFont = BoldFont;
-                        }
-                    }
-                    if (xmlNode.ChildNodes[1].Attributes["HighActive"].Value != "0")
-                    {
-                        TreeNode treeNode = tnParent.Nodes.Add("l.png", "上限报警", "l.png");
-                        treeNode.Tag = new TempTag(null, iOAlarm2.script[8], iOAlarm2);
-                        if (iOAlarm2.script[8] != string.Empty)
-                        {
-                            treeNode.NodeFont = BoldFont;
-                        }
-                    }
-                    if (xmlNode.ChildNodes[1].Attributes["HihiActive"].Value != "0")
-                    {
-                        TreeNode treeNode = tnParent.Nodes.Add("l.png", "上上限报警", "l.png");
-                        treeNode.Tag = new TempTag(null, iOAlarm2.script[9], iOAlarm2);
-                        if (iOAlarm2.script[9] != string.Empty)
-                        {
-                            treeNode.NodeFont = BoldFont;
-                        }
-                    }
-                    if (xmlNode.ChildNodes[1].Attributes["AimActive"].Value != "0")
-                    {
-                        TreeNode treeNode = tnParent.Nodes.Add("l.png", "目标值报警", "l.png");
-                        treeNode.Tag = new TempTag(null, iOAlarm2.script[10], iOAlarm2);
-                        if (iOAlarm2.script[10] != string.Empty)
-                        {
-                            treeNode.NodeFont = BoldFont;
-                        }
-                    }
-                    if (xmlNode.ChildNodes[1].Attributes["ShiftActive"].Value != "0")
-                    {
-                        TreeNode treeNode = tnParent.Nodes.Add("l.png", "变化率报警", "l.png");
-                        treeNode.Tag = new TempTag(null, iOAlarm2.script[11], iOAlarm2);
-                        if (iOAlarm2.script[11] != string.Empty)
-                        {
-                            treeNode.NodeFont = BoldFont;
-                        }
-                    }
-                    goto IL_0a88;
-                }
-                if (xmlNode.ChildNodes[1].Attributes["LoloActive"].Value != "0")
-                {
-                    TreeNode treeNode = tnParent.Nodes.Add("l.png", "下下限报警", "l.png");
-                    treeNode.Tag = new TempTag(null, null, null);
-                }
-                if (xmlNode.ChildNodes[1].Attributes["LowActive"].Value != "0")
-                {
-                    TreeNode treeNode = tnParent.Nodes.Add("l.png", "下限报警", "l.png");
-                    treeNode.Tag = new TempTag(null, null, null);
-                }
-                if (xmlNode.ChildNodes[1].Attributes["HighActive"].Value != "0")
-                {
-                    TreeNode treeNode = tnParent.Nodes.Add("l.png", "上限报警", "l.png");
-                    treeNode.Tag = new TempTag(null, null, null);
-                }
-                if (xmlNode.ChildNodes[1].Attributes["HihiActive"].Value != "0")
-                {
-                    TreeNode treeNode = tnParent.Nodes.Add("l.png", "上上限报警", "l.png");
-                    treeNode.Tag = new TempTag(null, null, null);
-                }
-                if (xmlNode.ChildNodes[1].Attributes["AimActive"].Value != "0")
-                {
-                    TreeNode treeNode = tnParent.Nodes.Add("l.png", "目标值报警", "l.png");
-                    treeNode.Tag = new TempTag(null, null, null);
-                }
-                if (xmlNode.ChildNodes[1].Attributes["ShiftActive"].Value != "0")
-                {
-                    TreeNode treeNode = tnParent.Nodes.Add("l.png", "变化率报警", "l.png");
-                    treeNode.Tag = new TempTag(null, null, null);
-                }
-            IL_0a88:;
-            }
-            xnitems.Clear();
-        }
-        catch
-        {
-        }
-    }
-
     private void AddIOToTree(List<XmlNode> xnitems, TreeNode treenode, string groupid, bool addalarmscript)
     {
         XmlNode[] array = xnitems.ToArray();
@@ -1851,7 +1595,7 @@ public partial class ScriptUnit : XtraForm
                 continue;
             }
             xnitems.Remove(xmlNode);
-            TreeNode treeNode = treenode.Nodes.Add("io", xmlNode.Attributes["Name"].Value, "io.png");
+            TreeNode treeNode = treenode.Nodes.Add("io", xmlNode.Attributes["Name"].Value);
             if (!addalarmscript)
             {
                 continue;
@@ -1865,61 +1609,60 @@ public partial class ScriptUnit : XtraForm
                     {
                         continue;
                     }
-                    treeNode2 = treeNode.Nodes.Add("l.png", "位变量开", "l.png");
+                    treeNode2 = treeNode.Nodes.Add("位变量开");
                     treeNode2.Tag = new TempTag(null, iOAlarm.boolAlarmScript[5], iOAlarm);
-                    treeNode2 = treeNode.Nodes.Add("l.png", "位变量关", "l.png");
+                    treeNode2 = treeNode.Nodes.Add("位变量关");
                     treeNode2.Tag = new TempTag(null, iOAlarm.boolAlarmScript[6], iOAlarm);
-                    treeNode2 = treeNode.Nodes.Add("l.png", "位变量由开到关", "l.png");
+                    treeNode2 = treeNode.Nodes.Add("位变量由开到关");
                     treeNode2.Tag = new TempTag(null, iOAlarm.boolAlarmScript[7], iOAlarm);
-                    treeNode2 = treeNode.Nodes.Add("l.png", "位变量由关到开", "l.png");
+                    treeNode2 = treeNode.Nodes.Add("位变量由关到开");
                     treeNode2.Tag = new TempTag(null, iOAlarm.boolAlarmScript[8], iOAlarm);
-                    treeNode2 = treeNode.Nodes.Add("l.png", "位变量变化", "l.png");
+                    treeNode2 = treeNode.Nodes.Add("位变量变化");
                     treeNode2.Tag = new TempTag(null, iOAlarm.boolAlarmScript[9], iOAlarm);
                     goto IL_0581;
                 }
-                treeNode2 = treeNode.Nodes.Add("l.png", "位变量开", "l.png");
+                treeNode2 = treeNode.Nodes.Add("位变量开");
                 treeNode2.Tag = new TempTag(null, null, null);
-                treeNode2 = treeNode.Nodes.Add("l.png", "位变量关", "l.png");
+                treeNode2 = treeNode.Nodes.Add("位变量关");
                 treeNode2.Tag = new TempTag(null, null, null);
-                treeNode2 = treeNode.Nodes.Add("l.png", "位变量由开到关", "l.png");
+                treeNode2 = treeNode.Nodes.Add("位变量由开到关");
                 treeNode2.Tag = new TempTag(null, null, null);
-                treeNode2 = treeNode.Nodes.Add("l.png", "位变量由关到开", "l.png");
+                treeNode2 = treeNode.Nodes.Add("位变量由关到开");
                 treeNode2.Tag = new TempTag(null, null, null);
-                treeNode2 = treeNode.Nodes.Add("l.png", "位变量变化", "l.png");
+                treeNode2 = treeNode.Nodes.Add("位变量变化");
                 treeNode2.Tag = new TempTag(null, null, null);
                 continue;
             }
             foreach (CIOAlarm iOAlarm2 in CEditEnvironmentGlobal.dhp.IOAlarms)
             {
                 if (!(iOAlarm2.name == "[" + xmlNode.Attributes["Name"].Value + "]"))
-                {
                     continue;
-                }
-                treeNode2 = treeNode.Nodes.Add("l.png", "下下限报警", "l.png");
+
+                treeNode2 = treeNode.Nodes.Add("下下限报警");
                 treeNode2.Tag = new TempTag(null, iOAlarm2.script[6], iOAlarm2);
-                treeNode2 = treeNode.Nodes.Add("l.png", "下限报警", "l.png");
+                treeNode2 = treeNode.Nodes.Add("下限报警");
                 treeNode2.Tag = new TempTag(null, iOAlarm2.script[7], iOAlarm2);
-                treeNode2 = treeNode.Nodes.Add("l.png", "上限报警", "l.png");
+                treeNode2 = treeNode.Nodes.Add( "上限报警");
                 treeNode2.Tag = new TempTag(null, iOAlarm2.script[8], iOAlarm2);
-                treeNode2 = treeNode.Nodes.Add("l.png", "上上限报警", "l.png");
+                treeNode2 = treeNode.Nodes.Add("上上限报警");
                 treeNode2.Tag = new TempTag(null, iOAlarm2.script[9], iOAlarm2);
-                treeNode2 = treeNode.Nodes.Add("l.png", "目标值报警", "l.png");
+                treeNode2 = treeNode.Nodes.Add("目标值报警");
                 treeNode2.Tag = new TempTag(null, iOAlarm2.script[10], iOAlarm2);
-                treeNode2 = treeNode.Nodes.Add("l.png", "变化率报警", "l.png");
+                treeNode2 = treeNode.Nodes.Add("变化率报警");
                 treeNode2.Tag = new TempTag(null, iOAlarm2.script[11], iOAlarm2);
                 goto IL_0581;
             }
-            treeNode2 = treeNode.Nodes.Add("l.png", "下下限报警", "l.png");
+            treeNode2 = treeNode.Nodes.Add("下下限报警");
             treeNode2.Tag = new TempTag(null, null, null);
-            treeNode2 = treeNode.Nodes.Add("l.png", "下限报警", "l.png");
+            treeNode2 = treeNode.Nodes.Add("下限报警");
             treeNode2.Tag = new TempTag(null, null, null);
-            treeNode2 = treeNode.Nodes.Add("l.png", "上限报警", "l.png");
+            treeNode2 = treeNode.Nodes.Add("上限报警");
             treeNode2.Tag = new TempTag(null, null, null);
-            treeNode2 = treeNode.Nodes.Add("l.png", "上上限报警", "l.png");
+            treeNode2 = treeNode.Nodes.Add("上上限报警");
             treeNode2.Tag = new TempTag(null, null, null);
-            treeNode2 = treeNode.Nodes.Add("l.png", "目标值报警", "l.png");
+            treeNode2 = treeNode.Nodes.Add("目标值报警");
             treeNode2.Tag = new TempTag(null, null, null);
-            treeNode2 = treeNode.Nodes.Add("l.png", "变化率报警", "l.png");
+            treeNode2 = treeNode.Nodes.Add("变化率报警");
             treeNode2.Tag = new TempTag(null, null, null);
         IL_0581:;
         }
@@ -1934,9 +1677,7 @@ public partial class ScriptUnit : XtraForm
         foreach (TreeNode node in startNode.Nodes)
         {
             if (findNode(id, node) != null)
-            {
                 return findNode(id, node);
-            }
         }
         return null;
     }

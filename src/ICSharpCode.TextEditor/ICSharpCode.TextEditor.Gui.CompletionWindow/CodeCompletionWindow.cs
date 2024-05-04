@@ -78,7 +78,6 @@ public class CodeCompletionWindow : AbstractCompletionWindow
         }
         codeCompletionListView = new CodeCompletionListView(completionData)
         {
-            ImageList = completionDataProvider.ImageList,
             Dock = DockStyle.Fill
         };
         codeCompletionListView.SelectedItemChanged += CodeCompletionListViewSelectedItemChanged;

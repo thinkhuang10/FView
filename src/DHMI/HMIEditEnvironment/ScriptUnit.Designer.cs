@@ -73,7 +73,6 @@ namespace HMIEditEnvironment
             this.deleteEventBtnItem = new DevExpress.XtraBars.BarButtonItem();
             this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.treeView2 = new System.Windows.Forms.TreeView();
             this.splitterControl2 = new DevExpress.XtraEditors.SplitterControl();
@@ -525,22 +524,13 @@ namespace HMIEditEnvironment
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.treeView1.HideSelection = false;
-            this.treeView1.ImageIndex = 0;
-            this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(0, 46);
             this.treeView1.Name = "treeView1";
-            this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(244, 497);
             this.treeView1.TabIndex = 5;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView1_KeyDown);
             this.treeView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseClick);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
             // splitterControl1
             // 
@@ -554,11 +544,8 @@ namespace HMIEditEnvironment
             // 
             this.treeView2.Dock = System.Windows.Forms.DockStyle.Right;
             this.treeView2.HideSelection = false;
-            this.treeView2.ImageIndex = 0;
-            this.treeView2.ImageList = this.imageList1;
             this.treeView2.Location = new System.Drawing.Point(593, 46);
             this.treeView2.Name = "treeView2";
-            this.treeView2.SelectedImageIndex = 0;
             this.treeView2.Size = new System.Drawing.Size(199, 497);
             this.treeView2.TabIndex = 8;
             this.treeView2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView2_AfterSelect);
@@ -817,8 +804,6 @@ namespace HMIEditEnvironment
         private SplitterControl splitterControl2;
 
         private SplitterControl splitterControl3;
-
-        public ImageList imageList1;
 
         private OpenFileDialog openFileDialog1;
 
