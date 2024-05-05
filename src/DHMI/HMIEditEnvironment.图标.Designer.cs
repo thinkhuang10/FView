@@ -93,6 +93,26 @@ internal class HMIEditEnvironment_图标 {
     /// <summary>
     ///   查找 System.Drawing.Bitmap 类型的本地化资源。
     /// </summary>
+    internal static System.Drawing.Bitmap FillLeft {
+        get {
+            object obj = ResourceManager.GetObject("FillLeft", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+    /// </summary>
+    internal static System.Drawing.Bitmap FillRight {
+        get {
+            object obj = ResourceManager.GetObject("FillRight", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+    /// </summary>
     internal static System.Drawing.Bitmap line_small {
         get {
             object obj = ResourceManager.GetObject("line_small", resourceCulture);

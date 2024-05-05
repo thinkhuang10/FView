@@ -125,6 +125,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ShapeRuntime\CLabelSaveItems.cs" />
+    <Compile Include="ShapeRuntime\ClassForUsers.cs" />
     <Compile Include="ShapeRuntime\CLine.cs" />
     <Compile Include="ShapeRuntime\CLines.cs" />
     <Compile Include="ShapeRuntime\CListBox.cs">

@@ -421,6 +421,12 @@
     </Compile>
     <Compile Include="HMIEditEnvironment\RunErrorHandler.cs" />
     <Compile Include="HMIEditEnvironment\RunTimeoutHandler.cs" />
+    <Compile Include="HMIEditEnvironment\SafeRegionADD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMIEditEnvironment\SafeRegionEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="HMIEditEnvironment\ScriptEngine.cs" />
     <Compile Include="HMIEditEnvironment\ScriptLanguage.cs" />
     <Compile Include="HMIEditEnvironment\ScriptUnit.cs">
@@ -471,8 +477,17 @@
     <Compile Include="HMIEditEnvironment\UserCommandControl2.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="HMIEditEnvironment\UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="HMIEditEnvironment\UserShapeEditControl.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HMIEditEnvironment\UserTypeADD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HMIEditEnvironment\UserTypeEdit.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="HMIEditEnvironment\VarExplore.cs">
       <SubType>UserControl</SubType>
@@ -651,6 +666,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\polyline_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\FillLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\FillRight.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

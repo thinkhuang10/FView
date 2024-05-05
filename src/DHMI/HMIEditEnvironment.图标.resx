@@ -127,6 +127,12 @@
   <data name="ell_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Images\ell_small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="FillLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\FillLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FillRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Images\FillRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="line_small" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Images\line_small.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

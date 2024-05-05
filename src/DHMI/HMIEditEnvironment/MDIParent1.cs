@@ -1,4 +1,5 @@
 using CommonSnappableTypes;
+using DevExpress.Internal;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using DevExpress.XtraBars;
@@ -1895,8 +1896,10 @@ public partial class MDIParent1 : XtraForm
         }
         else if (e.Node.Name == "Authority")
         {
-            AuthoritySettingForm authoritySettingForm = new();
-            authoritySettingForm.ShowDialog();
+            //AuthoritySettingForm authoritySettingForm = new();
+            //authoritySettingForm.ShowDialog();
+            var form = new UserForm();
+            form.ShowDialog();
         }
         else if (e.Node.Name == "Setting")
         {
