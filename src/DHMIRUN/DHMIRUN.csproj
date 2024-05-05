@@ -84,6 +84,9 @@
     <Compile Include="HMIRunForm\RunForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="HMIRunForm\RunForm.Designer.cs">
+      <DependentUpon>RunForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="HMIRunForm\RuntimeDBOperationDele.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
