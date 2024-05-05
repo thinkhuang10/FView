@@ -551,6 +551,9 @@
     <EmbeddedResource Include="HMIEditEnvironment\AboutBox.resx" LogicalName="HMIEditEnvironment.AboutBox.resources">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="HMIEditEnvironment\dhljForm.resx">
+      <DependentUpon>dhljForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HMIEditEnvironment\MDIParent1.resx">
       <DependentUpon>MDIParent1.cs</DependentUpon>
     </EmbeddedResource>

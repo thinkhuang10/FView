@@ -35,11 +35,6 @@ public class aiForm : Form
         InitializeComponent();
     }
 
-    public aiForm()
-    {
-        InitializeComponent();
-    }
-
     private void button1_Click(object sender, EventArgs e)
     {
         try
@@ -47,6 +42,7 @@ public class aiForm : Form
             if (textBox1.Text == "")
             {
                 theglobal.SelectedShapeList[0].ai = false;
+                theglobal.SelectedShapeList[0].aibianliang = "";
                 Close();
                 return;
             }
@@ -55,38 +51,22 @@ public class aiForm : Form
                 MessageBox.Show("区间[" + textBox3.Text + "," + textBox4.Text + "]输入有误,请从新输入.");
                 return;
             }
-            foreach (string iOItem in CheckIOExists.IOItemList)
+
+            theglobal.SelectedShapeList[0].aibianliang = textBox1.Text;
+            theglobal.SelectedShapeList[0].aitishi = textBox2.Text;
+            theglobal.SelectedShapeList[0].aimax = Convert.ToDouble(textBox4.Text);
+            theglobal.SelectedShapeList[0].aimin = Convert.ToDouble(textBox3.Text);
+            if (!theglobal.SelectedShapeList[0].ai && MessageBox.Show("是否激活相关配置?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (!(iOItem == textBox1.Text))
-                {
-                    continue;
-                }
-                goto IL_00fb;
+                theglobal.SelectedShapeList[0].ai = true;
             }
-            MessageBox.Show("输入的变量有误,请从新输入");
-            return;
-        IL_00fb:
-            try
-            {
-                theglobal.SelectedShapeList[0].aibianliang = textBox1.Text;
-                theglobal.SelectedShapeList[0].aitishi = textBox2.Text;
-                theglobal.SelectedShapeList[0].aimax = Convert.ToDouble(textBox4.Text);
-                theglobal.SelectedShapeList[0].aimin = Convert.ToDouble(textBox3.Text);
-                if (!theglobal.SelectedShapeList[0].ai && MessageBox.Show("是否激活相关配置?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    theglobal.SelectedShapeList[0].ai = true;
-                }
-                base.DialogResult = DialogResult.OK;
-                Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
+            DialogResult = DialogResult.OK;
+            Close();
         }
-        catch (Exception ex2)
+        catch (Exception ex)
         {
-            MessageBox.Show(ex2.Message);
+            MessageBox.Show(ex.Message);
         }
     }
 
@@ -95,38 +75,12 @@ public class aiForm : Form
         Close();
     }
 
-    private void textBox1_TextChanged(object sender, EventArgs e)
-    {
-    }
-
-    private void textBox1_Click(object sender, EventArgs e)
-    {
-        IOForm iOForm = new()
-        {
-            Edit = false
-        };
-        if (iOForm.ShowDialog() == DialogResult.OK)
-        {
-            textBox1.Text = iOForm.io;
-        }
-    }
-
     private void aiForm_Load(object sender, EventArgs e)
     {
-        try
-        {
-            textBox1.Text = theglobal.SelectedShapeList[0].aibianliang;
-            textBox2.Text = theglobal.SelectedShapeList[0].aitishi;
-            textBox3.Text = theglobal.SelectedShapeList[0].aimin.ToString();
-            textBox4.Text = theglobal.SelectedShapeList[0].aimax.ToString();
-        }
-        catch (Exception)
-        {
-        }
-    }
-
-    private void textBox2_TextChanged(object sender, EventArgs e)
-    {
+        textBox1.Text = theglobal.SelectedShapeList[0].aibianliang;
+        textBox2.Text = theglobal.SelectedShapeList[0].aitishi;
+        textBox3.Text = theglobal.SelectedShapeList[0].aimin.ToString();
+        textBox4.Text = theglobal.SelectedShapeList[0].aimax.ToString();
     }
 
     private void button3_Click(object sender, EventArgs e)
@@ -139,10 +93,6 @@ public class aiForm : Form
         {
             textBox1.Text = iOForm.io;
         }
-    }
-
-    private void textBox3_TextChanged(object sender, EventArgs e)
-    {
     }
 
     private void InitializeComponent()
@@ -169,8 +119,6 @@ public class aiForm : Form
         this.textBox1.Name = "textBox1";
         this.textBox1.Size = new System.Drawing.Size(133, 21);
         this.textBox1.TabIndex = 0;
-        this.textBox1.Click += new System.EventHandler(textBox1_Click);
-        this.textBox1.TextChanged += new System.EventHandler(textBox1_TextChanged);
         this.label2.AutoSize = true;
         this.label2.Location = new System.Drawing.Point(23, 50);
         this.label2.Name = "label2";
@@ -182,7 +130,6 @@ public class aiForm : Form
         this.textBox2.Size = new System.Drawing.Size(133, 21);
         this.textBox2.TabIndex = 2;
         this.textBox2.Text = "模拟量输入";
-        this.textBox2.TextChanged += new System.EventHandler(textBox2_TextChanged);
         this.button1.Location = new System.Drawing.Point(82, 111);
         this.button1.Name = "button1";
         this.button1.Size = new System.Drawing.Size(75, 23);
@@ -210,7 +157,6 @@ public class aiForm : Form
         this.textBox3.Size = new System.Drawing.Size(71, 21);
         this.textBox3.TabIndex = 4;
         this.textBox3.Text = "-9999";
-        this.textBox3.TextChanged += new System.EventHandler(textBox3_TextChanged);
         this.label3.AutoSize = true;
         this.label3.Location = new System.Drawing.Point(23, 77);
         this.label3.Name = "label3";

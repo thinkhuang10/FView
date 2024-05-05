@@ -2469,6 +2469,14 @@ public class MainControl : UserControl, IMessageFilter
     {
         try
         {
+            var arrayVar = str.Split('$');
+            if (2 == arrayVar.Length)
+            {
+                arrayVar[1] = "[" + arrayVar[1];
+                var suffixVal = GetValue(arrayVar[1]);
+                str = arrayVar[0] + suffixVal + "]";
+            }
+
             if (!DicIO.ContainsKey(str))
             {
                 if (str.StartsWith("[TEMP"))

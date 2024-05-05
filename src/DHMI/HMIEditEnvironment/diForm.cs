@@ -40,25 +40,16 @@ public class diForm : XtraForm
 
     private void button1_Click(object sender, EventArgs e)
     {
-        if (textBox1.Text == "")
-        {
-            theglobal.SelectedShapeList[0].di = false;
-            Close();
-            return;
-        }
-        foreach (string iOItem in CheckIOExists.IOItemList)
-        {
-            if (!(iOItem == textBox1.Text))
-            {
-                continue;
-            }
-            goto IL_0084;
-        }
-        MessageBox.Show("输入的变量有误,请从新输入");
-        return;
-    IL_0084:
         try
-        {
+        { 
+            if (textBox1.Text == "")
+            {
+                theglobal.SelectedShapeList[0].di = false;
+                theglobal.SelectedShapeList[0].dibianlaing = "";
+                Close();
+                return;
+            }
+
             theglobal.SelectedShapeList[0].dibianlaing = textBox1.Text;
             theglobal.SelectedShapeList[0].ditishi = textBox2.Text;
             theglobal.SelectedShapeList[0].ditishion = textBox3.Text;
@@ -70,8 +61,9 @@ public class diForm : XtraForm
             base.DialogResult = DialogResult.OK;
             Close();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            MessageBox.Show(ex.Message);
         }
     }
 
@@ -80,30 +72,12 @@ public class diForm : XtraForm
         Close();
     }
 
-    private void textBox1_Click(object sender, EventArgs e)
-    {
-        IOForm iOForm = new()
-        {
-            Edit = false
-        };
-        if (iOForm.ShowDialog() == DialogResult.OK)
-        {
-            textBox1.Text = iOForm.io;
-        }
-    }
-
     private void diForm_Load(object sender, EventArgs e)
     {
-        try
-        {
-            textBox1.Text = theglobal.SelectedShapeList[0].dibianlaing;
-            textBox2.Text = theglobal.SelectedShapeList[0].ditishi;
-            textBox3.Text = theglobal.SelectedShapeList[0].ditishion;
-            textBox4.Text = theglobal.SelectedShapeList[0].ditishioff;
-        }
-        catch (Exception)
-        {
-        }
+        textBox1.Text = theglobal.SelectedShapeList[0].dibianlaing;
+        textBox2.Text = theglobal.SelectedShapeList[0].ditishi;
+        textBox3.Text = theglobal.SelectedShapeList[0].ditishion;
+        textBox4.Text = theglobal.SelectedShapeList[0].ditishioff;
     }
 
     private void button3_Click(object sender, EventArgs e)
@@ -152,7 +126,6 @@ public class diForm : XtraForm
         this.textBox1.Name = "textBox1";
         this.textBox1.Size = new System.Drawing.Size(154, 22);
         this.textBox1.TabIndex = 0;
-        this.textBox1.Click += new System.EventHandler(textBox1_Click);
         this.label1.AutoSize = true;
         this.label1.Location = new System.Drawing.Point(42, 25);
         this.label1.Name = "label1";

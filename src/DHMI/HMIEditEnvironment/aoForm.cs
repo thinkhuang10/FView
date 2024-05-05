@@ -31,11 +31,6 @@ public class aoForm : Form
 
 	private Label label5;
 
-	public aoForm()
-	{
-		InitializeComponent();
-	}
-
 	public aoForm(CGlobal _theglobal)
 	{
 		InitializeComponent();

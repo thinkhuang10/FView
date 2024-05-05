@@ -33,36 +33,28 @@ public class zfcsrForm : XtraForm
 
     private void button1_Click(object sender, EventArgs e)
     {
-        if (textBox1.Text == "")
-        {
-            theglobal.SelectedShapeList[0].zfcsr = false;
-            Close();
-            return;
-        }
-        foreach (string iOItem in CheckIOExists.IOItemList)
-        {
-            if (!(iOItem == textBox1.Text))
-            {
-                continue;
-            }
-            goto IL_0084;
-        }
-        MessageBox.Show("输入的变量有误,请从新输入");
-        return;
-    IL_0084:
         try
         {
+            if (textBox1.Text == "")
+            {
+                theglobal.SelectedShapeList[0].zfcsr = false;
+                theglobal.SelectedShapeList[0].zfcsrbianliang = "";
+                Close();
+                return;
+            }
+
             theglobal.SelectedShapeList[0].zfcsrbianliang = textBox1.Text;
             theglobal.SelectedShapeList[0].zfcsrtishi = textBox2.Text;
             if (!theglobal.SelectedShapeList[0].zfcsr && MessageBox.Show("是否激活相关配置?", "提示", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 theglobal.SelectedShapeList[0].zfcsr = true;
             }
-            base.DialogResult = DialogResult.OK;
+            DialogResult = DialogResult.OK;
             Close();
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            MessageBox.Show(ex.Message);
         }
     }
 
@@ -71,28 +63,10 @@ public class zfcsrForm : XtraForm
         Close();
     }
 
-    private void textBox1_Click(object sender, EventArgs e)
-    {
-        IOForm iOForm = new()
-        {
-            Edit = false
-        };
-        if (iOForm.ShowDialog() == DialogResult.OK)
-        {
-            textBox1.Text = iOForm.io;
-        }
-    }
-
     private void zfcsrForm_Load(object sender, EventArgs e)
     {
-        try
-        {
-            textBox1.Text = theglobal.SelectedShapeList[0].zfcsrbianliang;
-            textBox2.Text = theglobal.SelectedShapeList[0].zfcsrtishi;
-        }
-        catch (Exception)
-        {
-        }
+        textBox1.Text = theglobal.SelectedShapeList[0].zfcsrbianliang;
+        textBox2.Text = theglobal.SelectedShapeList[0].zfcsrtishi;
     }
 
     private void button3_Click(object sender, EventArgs e)
@@ -150,7 +124,6 @@ public class zfcsrForm : XtraForm
         this.textBox1.Name = "textBox1";
         this.textBox1.Size = new System.Drawing.Size(117, 22);
         this.textBox1.TabIndex = 0;
-        this.textBox1.Click += new System.EventHandler(textBox1_Click);
         this.textBox2.Location = new System.Drawing.Point(99, 54);
         this.textBox2.Name = "textBox2";
         this.textBox2.Size = new System.Drawing.Size(210, 22);
