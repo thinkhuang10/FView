@@ -30,7 +30,12 @@ public class aoForm : Form
 
 	private Label label5;
 
-	public aoForm(CGlobal _theglobal)
+    public aoForm()
+    {
+        InitializeComponent();
+    }
+
+    public aoForm(CGlobal _theglobal)
 	{
 		InitializeComponent();
 		theglobal = _theglobal;
@@ -202,14 +207,14 @@ public class aoForm : Form
 		label4.Size = new System.Drawing.Size(131, 12);
 		label4.TabIndex = 10;
 		label4.Text = "注:请输入0-15之间整数";
-		radioGroup1.Location = new System.Drawing.Point(73, 45);
-		radioGroup1.Name = "radioGroup1";
-		radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[2]
-		{
-			new(null, "十进制"),
-			new(null, "十六进制")
-		});
-		radioGroup1.Size = new System.Drawing.Size(215, 24);
+        this.radioGroup1.Location = new System.Drawing.Point(73, 45);
+        this.radioGroup1.Name = "radioGroup1";
+        this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[2]
+        {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "十进制"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "十六进制")
+        });
+        radioGroup1.Size = new System.Drawing.Size(215, 24);
 		radioGroup1.TabIndex = 11;
 		radioGroup1.SelectedIndexChanged += new System.EventHandler(radioGroup1_SelectedIndexChanged);
 		label5.AutoSize = true;

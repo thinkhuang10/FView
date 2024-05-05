@@ -345,11 +345,11 @@ public class AuthoritySettingForm : Form
 	private void InitializeComponent()
 	{
 		components = new System.ComponentModel.Container();
-		System.Windows.Forms.TreeNode treeNode = new("操作工级");
-		System.Windows.Forms.TreeNode treeNode2 = new("班长级", 0, 0);
-		System.Windows.Forms.TreeNode treeNode3 = new("工程师级");
-		System.Windows.Forms.TreeNode treeNode4 = new("系统管理员级");
-		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIEditEnvironment.AuthoritySettingForm));
+		System.Windows.Forms.TreeNode treeNode = new System.Windows.Forms.TreeNode("操作工级");
+		System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("班长级", 0, 0);
+		System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("工程师级");
+		System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("系统管理员级");
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HMIEditEnvironment.AuthoritySettingForm));
 		btModify = new System.Windows.Forms.Button();
 		btCancel = new System.Windows.Forms.Button();
 		label1 = new System.Windows.Forms.Label();

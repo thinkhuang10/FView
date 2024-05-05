@@ -61,7 +61,7 @@ public class ProjectEndForm : Form
 
 	private void InitializeComponent()
 	{
-		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIRunForm.ProjectEndForm));
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HMIRunForm.ProjectEndForm));
 		tbPassword = new System.Windows.Forms.TextBox();
 		cbUser = new System.Windows.Forms.ComboBox();
 		label2 = new System.Windows.Forms.Label();

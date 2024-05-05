@@ -1,16 +1,12 @@
+using CommonSnappableTypes;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using CommonSnappableTypes;
 
 namespace ShapeRuntime;
 

@@ -1,5 +1,4 @@
 using CommonSnappableTypes;
-using DevExpress.DocumentView;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
 using DevExpress.XtraBars;
@@ -10,6 +9,7 @@ using DevExpress.XtraNavBar;
 using HMICompile;
 using HMIEditEnvironment.DeviceManager;
 using HMIEditEnvironment.TagManager;
+using LogHelper;
 using ShapeRuntime;
 using System;
 using System.Collections.Generic;
@@ -17,7 +17,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -4201,6 +4200,8 @@ public partial class MDIParent1 : XtraForm
 
     private void MDIParent1_Load(object sender, EventArgs e)
     {
+        LogUtil.Init();
+
         Operation.bEditEnvironment = true;
         CEditEnvironmentGlobal.mdiparent = this;
 

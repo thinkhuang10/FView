@@ -59,7 +59,7 @@ public class MakeMacro : Form
 
 	private void InitializeComponent()
 	{
-		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIEditEnvironment.ServerLogic.MakeMacro));
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HMIEditEnvironment.ServerLogic.MakeMacro));
 		button1 = new System.Windows.Forms.Button();
 		button2 = new System.Windows.Forms.Button();
 		splitContainer1 = new System.Windows.Forms.SplitContainer();

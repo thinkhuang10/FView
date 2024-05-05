@@ -594,9 +594,9 @@ public class DBNewForm : Form
 	private void InitializeComponent()
 	{
 		components = new System.ComponentModel.Container();
-		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle = new();
-		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new();
-		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new();
+		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle = new System.Windows.Forms.DataGridViewCellStyle();
+		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
 		label2 = new System.Windows.Forms.Label();
 		label4 = new System.Windows.Forms.Label();
 		label3 = new System.Windows.Forms.Label();

@@ -156,6 +156,9 @@ Section "FTView服务端" FTViewServer
   File /r "${InstallFilesDir}\Timer_1.dll"
   File /r "${InstallFilesDir}\YiBiao.dll"
   File /r "${InstallFilesDir}\YouBiao.dll"
+  File /r "${InstallFilesDir}\Serilog.dll"
+  File /r "${InstallFilesDir}\Serilog.Sinks.File.dll"
+  File /r "${InstallFilesDir}\System.Diagnostics.DiagnosticSource.dll"
   
 SectionEnd
 
@@ -166,14 +169,21 @@ Section "FTView客户端" FTViewClient
   CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\DHMIRUN.lnk" "$INSTDIR\DHMIRUN.exe"
   
-  File "${InstallFilesDir}\HMIRUN\AxInterop.DCCECLIENTLib.dll"
-  File "${InstallFilesDir}\HMIRUN\CommonSnappableTypes.dll"
-  File "${InstallFilesDir}\HMIRUN\DHMIRUN.exe.config"
-  File "${InstallFilesDir}\HMIRUN\HMIWeb.dll"
-  File "${InstallFilesDir}\HMIRUN\Interop.DCCECLIENTLib.dll"
-  File "${InstallFilesDir}\HMIRUN\Interop.MSScriptControl.dll"
-  File "${InstallFilesDir}\HMIRUN\MySql.Data.dll"
-  File "${InstallFilesDir}\HMIRUN\ShapeRuntime.dll"
+  File /r "${InstallFilesDir}\HMIRUN\AxInterop.DCCECLIENTLib.dll"
+  File /r "${InstallFilesDir}\HMIRUN\CommonSnappableTypes.dll"
+  File /r "${InstallFilesDir}\HMIRUN\DHMIRUN.exe.config"
+  File /r "${InstallFilesDir}\HMIRUN\HMIWeb.dll"
+  File /r "${InstallFilesDir}\HMIRUN\Interop.DCCECLIENTLib.dll"
+  File /r "${InstallFilesDir}\HMIRUN\Interop.MSScriptControl.dll"
+  File /r "${InstallFilesDir}\HMIRUN\MySql.Data.dll"
+  File /r "${InstallFilesDir}\HMIRUN\ShapeRuntime.dll"
+  File /r "${InstallFilesDir}\Serilog.dll"
+  File /r "${InstallFilesDir}\Serilog.Sinks.File.dll"
+  File /r "${InstallFilesDir}\System.Diagnostics.DiagnosticSource.dll"
+  File /r "${InstallFilesDir}\System.Buffers.dll"
+  File /r "${InstallFilesDir}\System.Memory.dll"
+  File /r "${InstallFilesDir}\System.Numerics.Vectors.dll"
+  File /r "${InstallFilesDir}\System.Runtime.CompilerServices.Unsafe.dll"
 
 SectionEnd
 

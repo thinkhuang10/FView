@@ -72,7 +72,7 @@ public class ProjectStartForm : Form
 
 	private void InitializeComponent()
 	{
-		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIRunForm.ProjectStartForm));
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HMIRunForm.ProjectStartForm));
 		btSure = new System.Windows.Forms.Button();
 		btCancel = new System.Windows.Forms.Button();
 		label1 = new System.Windows.Forms.Label();

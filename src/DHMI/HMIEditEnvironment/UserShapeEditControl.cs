@@ -2372,20 +2372,20 @@ public class UserShapeEditControl : UserControl
 		base.SuspendLayout();
 		popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[14]
 		{
-			new(barButtonItem8),
-			new(barButtonItem1),
-			new(barButtonItem3, true),
-			new(barButtonItem4),
-			new(barButtonItem5),
-			new(barButtonItem_Delete),
-			new(DevExpress.XtraBars.BarLinkUserDefines.Caption | DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, barEditItemControlName, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu),
-			new(barSubItem1),
-			new(barSubItem5),
-			new(barSubItem2),
-			new(barSubItem3),
-			new(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, barSubItem6, DevExpress.XtraBars.BarItemPaintStyle.Standard),
-			new(barButtonItem10, true),
-			new(barButtonItem11)
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem8),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem1),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem3, true),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem4),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem5),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem_Delete),
+			new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Caption | DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, barEditItemControlName, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu),
+			new DevExpress.XtraBars.LinkPersistInfo(barSubItem1),
+			new DevExpress.XtraBars.LinkPersistInfo(barSubItem5),
+			new DevExpress.XtraBars.LinkPersistInfo(barSubItem2),
+			new DevExpress.XtraBars.LinkPersistInfo(barSubItem3),
+			new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, barSubItem6, DevExpress.XtraBars.BarItemPaintStyle.Standard),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem10, true),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem11)
 		});
 		popupMenu1.Manager = barManager1;
 		popupMenu1.Name = "popupMenu1";
@@ -2425,9 +2425,9 @@ public class UserShapeEditControl : UserControl
 		barSubItem1.Id = 9;
 		barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[3]
 		{
-			new(barButtonItem12),
-			new(DevExpress.XtraBars.BarLinkUserDefines.Width, barEditItem2, "", false, true, true, 30),
-			new(DevExpress.XtraBars.BarLinkUserDefines.Width, barEditItem3, "", false, true, true, 50)
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem12),
+			new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, barEditItem2, "", false, true, true, 30),
+			new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, barEditItem3, "", false, true, true, 50)
 		});
 		barSubItem1.Name = "barSubItem1";
 		barSubItem1.Popup += new System.EventHandler(BarSubItem1_Popup);
@@ -2482,9 +2482,9 @@ public class UserShapeEditControl : UserControl
 		barSubItem2.Id = 10;
 		barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[3]
 		{
-			new(barButtonItem13),
-			new(barButtonItem14),
-			new(barButtonItem15)
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem13),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem14),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem15)
 		});
 		barSubItem2.Name = "barSubItem2";
 		barButtonItem13.Caption = "相同宽度(&W)";
@@ -2503,14 +2503,14 @@ public class UserShapeEditControl : UserControl
 		barSubItem3.Id = 11;
 		barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[8]
 		{
-			new(barButtonItem16),
-			new(barButtonItem17),
-			new(barButtonItem18),
-			new(barButtonItem19),
-			new(barButtonItem20),
-			new(barButtonItem21),
-			new(barButtonItem22, true),
-			new(barButtonItem23)
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem16),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem17),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem18),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem19),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem20),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem21),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem22, true),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem23)
 		});
 		barSubItem3.Name = "barSubItem3";
 		barButtonItem16.Caption = "上对齐(&T)";
@@ -2562,7 +2562,7 @@ public class UserShapeEditControl : UserControl
 		repositoryItemColorEdit1.AutoHeight = false;
 		repositoryItemColorEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[1]
 		{
-			new(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)
+			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)
 		});
 		repositoryItemColorEdit1.Name = "repositoryItemColorEdit1";
 		barEditItem3.Caption = "边线颜色";
@@ -2574,15 +2574,15 @@ public class UserShapeEditControl : UserControl
 		repositoryItemColorEdit2.AutoHeight = false;
 		repositoryItemColorEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[1]
 		{
-			new(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)
+			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)
 		});
 		repositoryItemColorEdit2.Name = "repositoryItemColorEdit2";
 		barSubItem5.Caption = "组合拆解(&G)";
 		barSubItem5.Id = 30;
 		barSubItem5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[2]
 		{
-			new(barButtonItem24),
-			new(barButtonItem25)
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem24),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem25)
 		});
 		barSubItem5.Name = "barSubItem5";
 		barButtonItem24.Caption = "组合(&G)";
@@ -2597,10 +2597,10 @@ public class UserShapeEditControl : UserControl
 		barSubItem6.Id = 34;
 		barSubItem6.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[4]
 		{
-			new(barButtonItem27),
-			new(barButtonItem28),
-			new(barButtonItem29, true),
-			new(barButtonItem30)
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem27),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem28),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem29, true),
+			new DevExpress.XtraBars.LinkPersistInfo(barButtonItem30)
 		});
 		barSubItem6.Name = "barSubItem6";
 		barButtonItem27.Caption = "移动至顶层(&F)";

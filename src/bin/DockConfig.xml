@@ -2615,7 +2615,7 @@
             <property name="IsGalleryToolbarItemLink">false</property>
             <property name="GalleryBarItemName" />
             <property name="ItemId">125</property>
-            <property name="ClickCount">82</property>
+            <property name="ClickCount">83</property>
             <property name="UserWidth">0</property>
             <property name="UserEditWidth">0</property>
             <property name="UserCaption" />
@@ -2672,7 +2672,7 @@
             <property name="IsGalleryToolbarItemLink">false</property>
             <property name="GalleryBarItemName" />
             <property name="ItemId">2</property>
-            <property name="ClickCount">223</property>
+            <property name="ClickCount">225</property>
             <property name="UserWidth">0</property>
             <property name="UserEditWidth">0</property>
             <property name="UserCaption" />
@@ -3926,7 +3926,7 @@
       <property name="ShowCloseButton">true</property>
       <property name="FloatOnDblClick">true</property>
     </property>
-    <property name="ActivePanelID">-1</property>
+    <property name="ActivePanelID">2</property>
     <property name="XtraSerializableScreenConfiguration" iskey="true" value="2">
       <property name="Item1">@1,X=0@1,Y=0@4,Width=1366@3,Height=768</property>
       <property name="Item2">@4,X=1366@1,Y=0@4,Width=1920@4,Height=1080</property>

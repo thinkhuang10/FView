@@ -98,6 +98,10 @@
       <Project>{0feecf4d-b9da-4a9d-aeaf-1668e5fb0beb}</Project>
       <Name>Interop.MSScriptControl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LogHelper\LogHelper.csproj">
+      <Project>{7b2570cc-766e-45d0-97f7-8e9483b35884}</Project>
+      <Name>LogHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShapeRuntime\ShapeRuntime.csproj">
       <Project>{362ad0a6-a3e8-4203-8df3-24b015d58be6}</Project>
       <Name>ShapeRuntime</Name>

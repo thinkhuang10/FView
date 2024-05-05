@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using HMIRunForm.Properties;
 using HMIRunForm.ServerLogic;
 using HMIWeb;
+using LogHelper;
 using ShapeRuntime;
 
 namespace HMIRunForm;
@@ -533,7 +534,10 @@ public class RunForm : Form
 	public RunForm()
 	{
 		InitializeComponent();
-		Type type = Type.GetType("LogicPage.Globle,CustomLogic");
+
+        LogUtil.Init();
+
+        Type type = Type.GetType("LogicPage.Globle,CustomLogic");
 		Activator.CreateInstance(type);
 		ResourceManager resourceManager = (ResourceManager)type.GetField("rm").GetValue(null);
 		string name = (string)type.GetField("projectname").GetValue(null);
@@ -572,7 +576,7 @@ public class RunForm : Form
 
 	private void InitializeComponent()
 	{
-		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIRunForm.RunForm));
+		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HMIRunForm.RunForm));
 		TopPanel = new System.Windows.Forms.Panel();
 		menuStrip = new System.Windows.Forms.MenuStrip();
 		数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
