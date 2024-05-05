@@ -314,7 +314,7 @@ public class UserShapeEditControl : UserControl
 		e = new MouseEventArgs(e.Button, e.Clicks, Convert.ToInt32(e.X), Convert.ToInt32(e.Y), e.Delta);
 		theglobal.lastmouseeventargs = e;
 		theglobal.theform.BringToFront();
-		CEditEnvironmentGlobal.mdiparent.activeform(theglobal.theform);
+		CEditEnvironmentGlobal.mdiparent.Activeform(theglobal.theform);
 		if (theglobal.str_IMDoingWhat == "BeginDrawShape")
 		{
 			CShape cShape = theglobal.g_ListAllShowCShape[theglobal.g_ListAllShowCShape.Count - 1];

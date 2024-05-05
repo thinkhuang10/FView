@@ -400,89 +400,7 @@ public partial class MDIParent1 : XtraForm
         return true;
     }
 
-    [DllImport("user32.dll")]
-    public static extern int GetSystemMetrics(int which);
-
-    [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
-    public static extern bool SetWindowPos(int hWnd, int hWndInsertAfter, int x, int y, int cx, int cy, int flags);
-
-    [DllImport("user32.dll")]
-    public static extern void SetWindowPos(IntPtr hwnd, IntPtr hwndInsertAfter, int X, int Y, int width, int height, uint flags);
-    
-    [DllImport("Kernel32.dll", CharSet = CharSet.Auto)]
-    private static extern bool CopyFile([MarshalAs(UnmanagedType.LPStr)] string ExistingFileName, [MarshalAs(UnmanagedType.LPStr)] string lpNewFileName, bool bFailIfExists);
-
-    [DllImport("User32.dll")]
-    private static extern int SendMessageTimeout(int hWnd, int Msg, int wParam, ref COPYDATASTRUCT lParam, int fuFlags, int uTimeout, int lpdwResult);
-
-    [DllImport("User32.dll")]
-    private static extern int FindWindow([MarshalAs(UnmanagedType.LPStr)] string lpClassName, [MarshalAs(UnmanagedType.LPStr)] string lpWindowName);
-
-    [DllImport("user32.dll", SetLastError = true)]
-    public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
-
-    [DllImport("user32.dll", SetLastError = true)]
-    public static extern bool ShowWindow(IntPtr hWnd, uint nCmdShow);
-
-    public void StartProcessDataComm(int FromHandle, COPYDATASTRUCT2 copyDataStruct)
-    {
-        try
-        {
-            int flag = 4002;
-            string data = "EndInit";
-            ResponseDDSEditor(FromHandle, flag, data);
-            CEditEnvironmentGlobal.ProCmdDict = AnalyzeCommand(Marshal.PtrToStringAnsi(copyDataStruct.lpData));
-            if (!CEditEnvironmentGlobal.ProCmdDict.TryGetValue("-p", out string value))
-            {
-                return;
-            }
-            value = value.Replace("\"", "");
-            FileInfo fileInfo = new(value);
-
-            LoadProjectFromDSL(fileInfo);
-        }
-        catch
-        {
-            MessageBox.Show("进程间开始传递数据出现异常！", "提示");
-        }
-    }
-
-    public void EndProcessDataComm()
-    {
-        try
-        {
-            barButtonItem_保存工程_ItemClick(null, null);
-            SaveBarLayout();
-            userCommandControl21.theglobal = nullcglobal;
-            SaveCommonMetaFileConfig();
-            Process[] processesByName = Process.GetProcessesByName("DHMI");
-            Process[] array = processesByName;
-            foreach (Process process in array)
-            {
-                process.Kill();
-            }
-        }
-        catch
-        {
-            MessageBox.Show("进程间结束时传递数据出现异常！", "提示");
-        }
-    }
-
-    private void OnCopyData(ref Message m)
-    {
-        CEditEnvironmentGlobal.FViewEditorHandle = (int)m.WParam;
-        COPYDATASTRUCT2 copyDataStruct = (COPYDATASTRUCT2)m.GetLParam(typeof(COPYDATASTRUCT2));
-        if ((int)copyDataStruct.dwData == 4000)
-        {
-            StartProcessDataComm(CEditEnvironmentGlobal.FViewEditorHandle, copyDataStruct);
-        }
-        else if ((int)copyDataStruct.dwData == 4004)
-        {
-            EndProcessDataComm();
-        }
-    }
-
-    private void panel_横向标尺_Paint(object sender, PaintEventArgs e)
+    private void Panel_横向标尺_Paint(object sender, PaintEventArgs e)
     {
         Graphics graphics = e.Graphics;
         new Font("黑体", 7f, FontStyle.Regular);
@@ -501,7 +419,7 @@ public partial class MDIParent1 : XtraForm
         graphics.DrawRectangle(Pens.Black, e.ClipRectangle);
     }
 
-    private void panel_纵向标尺_Paint(object sender, PaintEventArgs e)
+    private void Panel_纵向标尺_Paint(object sender, PaintEventArgs e)
     {
         Graphics graphics = e.Graphics;
         new StringFormat(StringFormatFlags.DirectionVertical);
@@ -521,7 +439,7 @@ public partial class MDIParent1 : XtraForm
         graphics.DrawRectangle(Pens.Black, e.ClipRectangle);
     }
 
-    private void myPropertyGrid1_Enter(object sender, EventArgs e)
+    private void MyPropertyGrid1_Enter(object sender, EventArgs e)
     {
         if (myPropertyGrid1.SelectedObject is not CShape)
         {
@@ -533,7 +451,7 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void myPropertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+    private void MyPropertyGrid1_PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
     {
         if (e.ChangedItem != null && e.OldValue != e.ChangedItem.Value)
         {
@@ -547,7 +465,7 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void menubarCheckItem_工具栏_CheckedChanged(object sender, ItemClickEventArgs e)
+    private void MenubarCheckItem_工具栏_CheckedChanged(object sender, ItemClickEventArgs e)
     {
         if (menubarCheckItem_工具栏.Checked)
         {
@@ -564,12 +482,12 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void menubarCheckItem_状态栏_CheckedChanged(object sender, ItemClickEventArgs e)
+    private void MenubarCheckItem_状态栏_CheckedChanged(object sender, ItemClickEventArgs e)
     {
         statusbar_状态栏.Visible = menubarCheckItem_状态栏.Checked;
     }
 
-    private void menubarCheckItem_导航栏_CheckedChanged(object sender, ItemClickEventArgs e)
+    private void MenubarCheckItem_导航栏_CheckedChanged(object sender, ItemClickEventArgs e)
     {
         dockPanel_导航栏.Visibility = ((!menubarCheckItem_导航栏.Checked) ? DockVisibility.Hidden : DockVisibility.Visible);
     }
@@ -589,29 +507,29 @@ public partial class MDIParent1 : XtraForm
         dockPanel_变量浏览器.Visibility = ((!menubarCheckItem_变量浏览器.Checked) ? DockVisibility.Hidden : DockVisibility.Visible);
     }
 
-    private void menubarCheckItem_属性_CheckedChanged(object sender, ItemClickEventArgs e)
+    private void MenubarCheckItem_属性_CheckedChanged(object sender, ItemClickEventArgs e)
     {
         dockPanel_属性.Visibility = ((!menubarCheckItem_属性.Checked) ? DockVisibility.Hidden : DockVisibility.Visible);
     }
 
-    private void menubarCheckItem_动画_CheckedChanged(object sender, ItemClickEventArgs e)
+    private void MenubarCheckItem_动画_CheckedChanged(object sender, ItemClickEventArgs e)
     {
         dockPanel_动画.Visibility = ((!menubarCheckItem_动画.Checked) ? DockVisibility.Hidden : DockVisibility.Visible);
     }
 
-    private void barButtonItem137_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem137_ItemClick(object sender, ItemClickEventArgs e)
     {
         CEditEnvironmentGlobal.scriptUnitForm.Init();
         CEditEnvironmentGlobal.scriptUnitForm.Show();
         CEditEnvironmentGlobal.scriptUnitForm.BringToFront();
     }
 
-    private void barButtonItem_保存页面_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_保存页面_ItemClick(object sender, ItemClickEventArgs e)
     {
         SaveOnePage(base.ActiveMdiChild as ChildForm);
     }
 
-    private void barButtonItem62_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem62_ItemClick(object sender, ItemClickEventArgs e)
     {
         ControlInfoSetting controlInfoSetting = new();
         controlInfoSetting.ShowDialog();
@@ -634,173 +552,173 @@ public partial class MDIParent1 : XtraForm
 
     private void BarButtonItem100_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem25_ItemClick(sender, e);
+        BarButtonItem25_ItemClick(sender, e);
     }
 
     private void BarButtonItem101_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem26_ItemClick(sender, e);
+        BarButtonItem26_ItemClick(sender, e);
     }
 
     private void BarButtonItem102_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem23_ItemClick(sender, e);
+        BarButtonItem23_ItemClick(sender, e);
     }
 
     private void BarButtonItem103_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem24_ItemClick(sender, e);
+        BarButtonItem24_ItemClick(sender, e);
     }
 
     private void BarButtonItem104_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem29_ItemClick(sender, e);
+        BarButtonItem29_ItemClick(sender, e);
     }
 
     private void BarButtonItem105_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem30_ItemClick(sender, e);
+        BarButtonItem30_ItemClick(sender, e);
     }
 
     private void BarButtonItem106_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem48_ItemClick(sender, e);
+        BarButtonItem48_ItemClick(sender, e);
     }
 
-    private void barButtonItem107_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem107_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem49_ItemClick(sender, e);
+        BarButtonItem49_ItemClick(sender, e);
     }
 
-    private void barButtonItem108_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem108_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem50_ItemClick(sender, e);
+        BarButtonItem50_ItemClick(sender, e);
     }
 
-    private void barButtonItem109_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem109_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem51_ItemClick(sender, e);
+        BarButtonItem51_ItemClick(sender, e);
     }
 
-    private void barButtonItem110_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem110_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem52_ItemClick(sender, e);
+        BarButtonItem52_ItemClick(sender, e);
     }
 
     private void BarButtonItem111_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem53_ItemClick(sender, e);
+        BarButtonItem53_ItemClick(sender, e);
     }
 
     private void BarButtonItem117_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem27_ItemClick(sender, e);
+        BarButtonItem27_ItemClick(sender, e);
     }
 
     private void BarButtonItem118_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem28_ItemClick(sender, e);
+        BarButtonItem28_ItemClick(sender, e);
     }
 
-    private void barButtonItem112_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem112_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem54_ItemClick(sender, e);
+        BarButtonItem54_ItemClick(sender, e);
     }
 
-    private void barButtonItem113_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem113_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem55_ItemClick(sender, e);
+        BarButtonItem55_ItemClick(sender, e);
     }
 
-    private void barButtonItem114_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem114_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem56_ItemClick(sender, e);
+        BarButtonItem56_ItemClick(sender, e);
     }
 
-    private void barButtonItem72_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem72_ItemClick(object sender, ItemClickEventArgs e)
     {
         AddWindowsControl("ShapeRuntime.CButton");
     }
 
-    private void barButtonItem73_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem73_ItemClick(object sender, ItemClickEventArgs e)
     {
         AddWindowsControl("ShapeRuntime.CCheckBox");
     }
 
-    private void barButtonItem74_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem74_ItemClick(object sender, ItemClickEventArgs e)
     {
         AddWindowsControl("ShapeRuntime.CLabel");
     }
 
-    private void barButtonItem75_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem75_ItemClick(object sender, ItemClickEventArgs e)
     {
         AddWindowsControl("ShapeRuntime.CTextBox");
     }
 
-    private void barButtonItem76_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem76_ItemClick(object sender, ItemClickEventArgs e)
     {
         AddWindowsControl("ShapeRuntime.CComboBox");
     }
 
-    private void barButtonItem77_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem77_ItemClick(object sender, ItemClickEventArgs e)
     {
         AddWindowsControl("ShapeRuntime.CDateTimePicker");
     }
 
-    private void barButtonItem78_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem78_ItemClick(object sender, ItemClickEventArgs e)
     {
         AddWindowsControl("ShapeRuntime.CPictureBox");
     }
 
-    private void barButtonItem79_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem79_ItemClick(object sender, ItemClickEventArgs e)
     {
         AddWindowsControl("ShapeRuntime.CGroupBox");
     }
 
-    private void barButtonItem80_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem80_ItemClick(object sender, ItemClickEventArgs e)
     {
         AddWindowsControl("ShapeRuntime.CDataGridView");
     }
 
-    private void barButtonItem_about_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_about_ItemClick(object sender, ItemClickEventArgs e)
     {
-        AboutBox aboutBox = new();
+        var aboutBox = new AboutBox();
         aboutBox.ShowDialog();
     }
 
-    private void barButtonItem85_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem85_ItemClick(object sender, ItemClickEventArgs e)
     {
         BarButtonItem14_ItemClick(sender, e);
     }
 
-    private void barButtonItem86_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem86_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem13_ItemClick(sender, e);
+        BarButtonItem13_ItemClick(sender, e);
     }
 
-    private void barButtonItem87_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem87_ItemClick(object sender, ItemClickEventArgs e)
     {
         BarButtonItem15_ItemClick(sender, e);
     }
 
-    private void barButtonItem88_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem88_ItemClick(object sender, ItemClickEventArgs e)
     {
         BarButtonItem17_ItemClick(sender, e);
     }
 
-    private void barButtonItem89_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem89_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem10_ItemClick(sender, e);
+        BarButtonItem10_ItemClick(sender, e);
     }
 
-    private void barButtonItem90_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem90_ItemClick(object sender, ItemClickEventArgs e)
     {
-        barButtonItem11_ItemClick(sender, e);
+        BarButtonItem11_ItemClick(sender, e);
     }
 
-    private void barButtonItem91_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem91_ItemClick(object sender, ItemClickEventArgs e)
     {
-        BarButtonItem_Debug.ItemClick -= barButtonItem91_ItemClick;
+        BarButtonItem_Debug.ItemClick -= BarButtonItem91_ItemClick;
 
         if (CEditEnvironmentGlobal.path != null && !(CEditEnvironmentGlobal.path == ""))
         {
@@ -810,10 +728,10 @@ public partial class MDIParent1 : XtraForm
             CEditEnvironmentGlobal.dhp.key = key;
         }
 
-        BarButtonItem_Debug.ItemClick += barButtonItem91_ItemClick;
+        BarButtonItem_Debug.ItemClick += BarButtonItem91_ItemClick;
     }
 
-    private void toolbarButtonItem_Windows控件_ItemClick(object sender, ItemClickEventArgs e)
+    private void ToolbarButtonItem_Windows控件_ItemClick(object sender, ItemClickEventArgs e)
     {
         dockPanel_基本控件.Show();
     }
@@ -828,7 +746,7 @@ public partial class MDIParent1 : XtraForm
         dockPanel_ActiveX控件.Show();
     }
 
-    private void toolbarButtonItem_精灵控件_ItemClick(object sender, ItemClickEventArgs e)
+    private void ToolbarButtonItem_精灵控件_ItemClick(object sender, ItemClickEventArgs e)
     {
         dockPanel_精灵控件.Show();
     }
@@ -839,8 +757,8 @@ public partial class MDIParent1 : XtraForm
         {
             return;
         }
-        List<CShape> list = new();
-        List<CShape> list2 = new();
+        var list = new List<CShape>();
+        var list2 = new List<CShape>();
         foreach (CShape selectedShape in userCommandControl21.theglobal.SelectedShapeList)
         {
             list2.Add(selectedShape.Copy());
@@ -851,7 +769,7 @@ public partial class MDIParent1 : XtraForm
         userCommandControl21.theglobal.uc2.RefreshGraphics();
     }
 
-    private void barEditItem3_EditValueChanged(object sender, EventArgs e)
+    private void BarEditItem3_EditValueChanged(object sender, EventArgs e)
     {
         if (CEditEnvironmentGlobal.NotEditValue)
         {
@@ -869,12 +787,11 @@ public partial class MDIParent1 : XtraForm
         userCommandControl21.theglobal.uc2.RefreshGraphics();
     }
 
-    private void barEditItem5_EditValueChanged(object sender, EventArgs e)
+    private void BarEditItem5_EditValueChanged(object sender, EventArgs e)
     {
         if (CEditEnvironmentGlobal.NotEditValue)
-        {
             return;
-        }
+
         List<CShape> list = new();
         List<CShape> list2 = new();
         userCommandControl21.theglobal.OldShapes.Clear();
@@ -888,42 +805,42 @@ public partial class MDIParent1 : XtraForm
         userCommandControl21.theglobal.uc2.RefreshGraphics();
     }
 
-    private void dockPanel_导航栏_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
+    private void DockPanel_导航栏_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
     {
         menubarCheckItem_导航栏.Checked = e.Visibility != DockVisibility.Hidden;
     }
 
-    private void dockPanel_输出栏_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
+    private void DockPanel_输出栏_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
     {
         menubarCheckItem_输出栏.Checked = e.Visibility != DockVisibility.Hidden;
     }
 
-    private void dockPanel_对象浏览器_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
+    private void DockPanel_对象浏览器_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
     {
         menubarCheckItem_对象浏览器.Checked = e.Visibility != DockVisibility.Hidden;
     }
 
-    private void dockPanel_变量浏览器_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
+    private void DockPanel_变量浏览器_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
     {
         menubarCheckItem_变量浏览器.Checked = e.Visibility != DockVisibility.Hidden;
     }
 
-    private void dockPanel_属性_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
+    private void DockPanel_属性_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
     {
         menubarCheckItem_属性.Checked = e.Visibility != DockVisibility.Hidden;
     }
 
-    private void dockPanel_事件_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
+    private void DockPanel_事件_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
     {
         menubarCheckItem_事件.Checked = e.Visibility != DockVisibility.Hidden;
     }
 
-    private void dockPanel_动画_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
+    private void DockPanel_动画_VisibilityChanged(object sender, VisibilityChangedEventArgs e)
     {
         menubarCheckItem_动画.Checked = e.Visibility != DockVisibility.Hidden;
     }
 
-    private void dockPanel_基本控件_SizeChanged(object sender, EventArgs e)
+    private void DockPanel_基本控件_SizeChanged(object sender, EventArgs e)
     {
         int num = 0;
         foreach (var group in navBarControl_基本控件.Groups.Cast<NavBarGroup>())
@@ -937,7 +854,7 @@ public partial class MDIParent1 : XtraForm
         navBarControl_基本控件.Height = num2;
     }
 
-    private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+    private void DataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
     {
         if (e.ColumnIndex == 2)
         {
@@ -958,7 +875,7 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void fileSystemWatcher1_Changed(object sender, FileSystemEventArgs e)
+    private void FileSystemWatcher1_Changed(object sender, FileSystemEventArgs e)
     {
         try
         {
@@ -974,25 +891,24 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void barButtonItem_打开页面_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_打开页面_ItemClick(object sender, ItemClickEventArgs e)
     {
-        PageOpenerForm pageOpenerForm = new();
-        pageOpenerForm.OpenPageEvent += delegate (object s1, PageOpenerForm.OpenPageEventArgs e1)
+        var form = new PageOpenerForm();
+        form.OpenPageEvent += delegate (object s1, PageOpenerForm.OpenPageEventArgs e1)
         {
             页面_打开(e1.PageName);
         };
-        pageOpenerForm.ShowDialog();
+        form.ShowDialog();
     }
 
-    public void barButtonItem_保存工程_ItemClick(object sender, ItemClickEventArgs e)
+    public void BarButtonItem_保存工程_ItemClick(object sender, ItemClickEventArgs e)
     {
         if (CEditEnvironmentGlobal.path == "" || CEditEnvironmentGlobal.projectfile == "")
-        {
             return;
-        }
+
         StatSize();
-        string projectfile = CEditEnvironmentGlobal.projectfile;
-        Dictionary<string, string> dictionary = new();
+        var projectfile = CEditEnvironmentGlobal.projectfile;
+        var dictionary = new Dictionary<string, string>();
         List<string> list = new();
         foreach (DataFile df in CEditEnvironmentGlobal.dfs)
         {
@@ -1017,7 +933,7 @@ public partial class MDIParent1 : XtraForm
         CEditEnvironmentGlobal.msgbox.Say("成功保存到" + projectfile);
     }
 
-    private void barButtonItem70_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem70_ItemClick(object sender, ItemClickEventArgs e)
     {
         try
         {
@@ -1056,7 +972,7 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void barButtonItem71_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem71_ItemClick(object sender, ItemClickEventArgs e)
     {
         try
         {
@@ -1100,22 +1016,22 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void barButtonItem_退出_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_退出_ItemClick(object sender, ItemClickEventArgs e)
     {
         Close();
     }
 
-    private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button_撤消_Click(sender, e);
     }
 
-    private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button_重复_Click(sender, e);
     }
 
-    private void barButtonItem13_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem13_ItemClick(object sender, ItemClickEventArgs e)
     {
         CEditEnvironmentGlobal.CLS.Clear();
         List<CShape> list = new();
@@ -1202,18 +1118,16 @@ public partial class MDIParent1 : XtraForm
 
     private void BarButtonItem17_ItemClick(object sender, ItemClickEventArgs e)
     {
-        List<CShape> list = new();
-        CShape[] array = userCommandControl21.theglobal.SelectedShapeList.ToArray();
+        var list = new List<CShape>();
+        var array = userCommandControl21.theglobal.SelectedShapeList.ToArray();
         foreach (CShape cShape in array)
         {
-            List<string> list2 = CheckIOExists.ShapeInUse(userCommandControl21.theglobal.df.name + "." + cShape.Name);
+            var list2 = CheckIOExists.ShapeInUse(userCommandControl21.theglobal.df.name + "." + cShape.Name);
             if (list2.Count != 0)
             {
-                delPage delPage2 = new(list2, "该图形正在被引用,是否仍继续操作.");
+                var delPage2 = new delPage(list2, "该图形正在被引用,是否仍继续操作.");
                 if (delPage2.ShowDialog() != DialogResult.Yes)
-                {
                     return;
-                }
             }
             if (cShape is CControl)
             {
@@ -1228,10 +1142,10 @@ public partial class MDIParent1 : XtraForm
         userCommandControl21.theglobal.uc2.RefreshGraphics();
     }
 
-    private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
     {
-        TextFindForm textFindForm = new();
-        textFindForm.FindResultHandler += delegate (object s1, FindResultEventArgs e1)
+        var form = new TextFindForm();
+        form.FindResultHandler += delegate (object s1, FindResultEventArgs e1)
         {
             if (e1.Result != null)
             {
@@ -1251,101 +1165,101 @@ public partial class MDIParent1 : XtraForm
                 theglobal.uc2.RefreshGraphics();
             }
         };
-        textFindForm.ShowDialog(this);
+        form.ShowDialog(this);
     }
 
-    private void barButtonItem19_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem19_ItemClick(object sender, ItemClickEventArgs e)
     {
-        yytjForm yytjForm2 = new(CEditEnvironmentGlobal.dhp, CEditEnvironmentGlobal.dfs, CEditEnvironmentGlobal.ioitemroot, CEditEnvironmentGlobal.dhp.ProjectIOs);
-        yytjForm2.Show();
+        var form = new yytjForm(CEditEnvironmentGlobal.dhp, CEditEnvironmentGlobal.dfs, CEditEnvironmentGlobal.ioitemroot, CEditEnvironmentGlobal.dhp.ProjectIOs);
+        form.Show();
     }
 
-    private void barButtonItem23_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem23_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button9_Click(sender, e);
     }
 
-    private void barButtonItem24_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem24_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button10_Click(sender, e);
     }
 
-    private void barButtonItem25_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem25_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button19_Click(sender, e);
     }
 
-    private void barButtonItem26_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem26_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button20_Click(sender, e);
     }
 
-    private void barButtonItem27_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem27_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button7_Click(sender, e);
     }
 
-    private void barButtonItem28_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem28_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button8_Click(sender, e);
     }
 
-    private void barButtonItem48_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem48_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button16_Click(sender, e);
     }
 
-    private void barButtonItem49_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem49_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button15_Click(sender, e);
     }
 
-    private void barButtonItem50_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem50_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button14_Click(sender, e);
     }
 
-    private void barButtonItem51_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem51_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button11_Click(sender, e);
     }
 
-    private void barButtonItem52_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem52_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button12_Click(sender, e);
     }
 
-    private void barButtonItem53_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem53_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button13_Click(sender, e);
     }
 
-    private void barButtonItem54_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem54_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button27_Click(sender, e);
     }
 
-    private void barButtonItem55_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem55_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.SameWidth();
     }
 
-    private void barButtonItem56_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem56_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.SameHeight();
     }
 
-    private void barButtonItem29_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem29_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button17_Click(sender, e);
     }
 
-    private void barButtonItem30_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem30_ItemClick(object sender, ItemClickEventArgs e)
     {
         userCommandControl21.button18_Click(sender, e);
     }
 
-    private void barCheckItem10_CheckedChanged(object sender, ItemClickEventArgs e)
+    private void BarCheckItem10_CheckedChanged(object sender, ItemClickEventArgs e)
     {
         if (barCheckItem10.Tag == null || (bool)barCheckItem10.Tag)
         {
@@ -1661,7 +1575,7 @@ public partial class MDIParent1 : XtraForm
                     e.Cancel = true;
                     return;
                 case DialogResult.Yes:
-                    barButtonItem_保存工程_ItemClick(sender, null);
+                    BarButtonItem_保存工程_ItemClick(sender, null);
                     break;
             }
             SaveBarLayout();
@@ -1681,20 +1595,7 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    protected override void DefWndProc(ref Message m)
-    {
-        int msg = m.Msg;
-        if (msg == 74)
-        {
-            OnCopyData(ref m);
-        }
-        else
-        {
-            base.DefWndProc(ref m);
-        }
-    }
-
-    private void dockPanel_ActiveX控件_MouseClick(object sender, MouseEventArgs e)
+    private void DockPanel_ActiveX控件_MouseClick(object sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Right)
         {
@@ -1702,19 +1603,19 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void barButtonItem_绘制直线_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_绘制直线_ItemClick(object sender, ItemClickEventArgs e)
     {
         BarStaticItem_Status.Caption = "开始绘制直线";
         userCommandControl21.button_绘制直线_Click(sender, e);
     }
 
-    private void barButtonItem_绘制折线_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_绘制折线_ItemClick(object sender, ItemClickEventArgs e)
     {
         BarStaticItem_Status.Caption = "开始绘制折线";
         userCommandControl21.button_绘制折线_Click(sender, e);
     }
 
-    private void barButtonItem_绘制椭圆_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_绘制椭圆_ItemClick(object sender, ItemClickEventArgs e)
     {
         BarStaticItem_Status.Caption = "开始绘制椭圆";
         userCommandControl21.button_绘制椭圆_Click(sender, e);
@@ -1891,7 +1792,7 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void treeView_工程导航_AfterCollapse(object sender, TreeViewEventArgs e)
+    private void TreeView_工程导航_AfterCollapse(object sender, TreeViewEventArgs e)
     {
         if (e.Node.Tag is HmiPageGroup && (e.Node.Tag as HmiPageGroup).Parent != null)
         {
@@ -1901,7 +1802,7 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void treeView_工程导航_AfterExpand(object sender, TreeViewEventArgs e)
+    private void TreeView_工程导航_AfterExpand(object sender, TreeViewEventArgs e)
     {
         if (e.Node.Tag is HmiPageGroup && (e.Node.Tag as HmiPageGroup).Parent != null)
         {
@@ -1911,12 +1812,12 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void treeView_工程导航_BeforeCollapse(object sender, TreeViewCancelEventArgs e)
+    private void TreeView_工程导航_BeforeCollapse(object sender, TreeViewCancelEventArgs e)
     {
         e.Cancel = m_MouseClicks > 1;
     }
 
-    private void treeView_工程导航_BeforeExpand(object sender, TreeViewCancelEventArgs e)
+    private void TreeView_工程导航_BeforeExpand(object sender, TreeViewCancelEventArgs e)
     {
         e.Cancel = m_MouseClicks > 1;
     }
@@ -2008,11 +1909,7 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void treeView_工程导航_KeyDown(object sender, KeyEventArgs e)
-    {
-    }
-
-    private void treeView_工程导航_ItemDrag(object sender, ItemDragEventArgs e)
+    private void TreeView_工程导航_ItemDrag(object sender, ItemDragEventArgs e)
     {
         if (e.Button != MouseButtons.Left || e.Item is not TreeNode)
         {
@@ -2031,7 +1928,7 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void treeView_工程导航_DragOver(object sender, DragEventArgs e)
+    private void TreeView_工程导航_DragOver(object sender, DragEventArgs e)
     {
         e.Effect = DragDropEffects.None;
         if (e.Data.GetDataPresent(typeof(TreeNode)) && e.Data.GetData(typeof(TreeNode)) is TreeNode treeNode)
@@ -2444,7 +2341,7 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void listView_图元_MouseDown(object sender, MouseEventArgs e)
+    private void ListView_图元_MouseDown(object sender, MouseEventArgs e)
     {
         ListView listView = sender as ListView;
         ListViewItem itemAt = listView.GetItemAt(e.X, e.Y);
@@ -3047,7 +2944,7 @@ public partial class MDIParent1 : XtraForm
                 LargeImageList = PixieLibraryControlImageList,
                 Name = "listView_精灵控件"
             };
-            listView.MouseDown += listView_图元_MouseDown;
+            listView.MouseDown += ListView_图元_MouseDown;
             navBarGroup.ControlContainer.Controls.Add(listView);
             DataRow[] array2 = ds.Tables["PixieControl"].Select("CategorySN='" + array[i]["SN"].ToString() + "'", "Label");
             for (int j = 0; j < array2.Length; j++)
@@ -3120,7 +3017,7 @@ public partial class MDIParent1 : XtraForm
                 LargeImageList = PixieLibraryControlImageList,
                 Name = "listView_DCCE工控组件"
             };
-            listView.MouseDown += listView_图元_MouseDown;
+            listView.MouseDown += ListView_图元_MouseDown;
             navBarGroup.ControlContainer.Controls.Add(listView);
             DataRow[] array2 = ds.Tables["Pixie"].Select("CategorySN='" + array[i]["SN"].ToString() + "'", "Label");
             for (int j = 0; j < array2.Length; j++)
@@ -3298,29 +3195,13 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    public void activeform(Form f)
+    public void Activeform(Form f)
     {
         _ = Thread.CurrentThread;
         ActivateMdiChild(f);
     }
 
-    public CIOItem findNode(string id, CIOItem startNode)
-    {
-        if (startNode.id == id)
-        {
-            return startNode;
-        }
-        foreach (CIOItem item in startNode.subitem)
-        {
-            if (findNode(id, item) != null)
-            {
-                return findNode(id, item);
-            }
-        }
-        return null;
-    }
-
-    private void listView2_DoubleClick(object sender, EventArgs e)
+    private void ListView2_DoubleClick(object sender, EventArgs e)
     {
         if (listView_事件.SelectedItems.Count != 0 && userCommandControl21.theglobal.SelectedShapeList.Count != 0)
         {
@@ -4044,53 +3925,6 @@ public partial class MDIParent1 : XtraForm
         treeView_工程导航.SelectedNode = srcNode;
     }
 
-    private Dictionary<string, string> AnalyzeCommand(string cmd)
-    {
-        Dictionary<string, string> dictionary = new();
-        bool flag = false;
-        bool flag2 = false;
-        bool flag3 = false;
-        StringBuilder stringBuilder = new();
-        StringBuilder stringBuilder2 = new();
-        bool flag4 = true;
-        for (int i = 0; i < cmd.Length; i++)
-        {
-            if (cmd[i] == '"')
-            {
-                flag = !flag;
-            }
-            else if (!flag && cmd[i] == '-')
-            {
-                if (!flag4)
-                {
-                    dictionary.Add("-" + stringBuilder.ToString(), stringBuilder2.ToString());
-                }
-                else
-                {
-                    flag4 = false;
-                }
-                flag2 = true;
-                stringBuilder = new StringBuilder();
-                stringBuilder2 = new StringBuilder();
-            }
-            else if (!flag && flag2 && cmd[i] == ' ')
-            {
-                flag2 = false;
-                flag3 = true;
-            }
-            else if (flag2)
-            {
-                stringBuilder.Append(cmd[i]);
-            }
-            else if (flag3)
-            {
-                stringBuilder2.Append(cmd[i]);
-            }
-        }
-        dictionary.Add("-" + stringBuilder.ToString(), stringBuilder2.ToString());
-        return dictionary;
-    }
-
     private void LoadProjectFromDSL(FileInfo dslProjectFile)
     {
         try
@@ -4116,26 +3950,6 @@ public partial class MDIParent1 : XtraForm
         if (CEditEnvironmentGlobal.dfs.Count == 0)
         {
             页面_新建();
-        }
-    }
-
-    private void ResponseDDSEditor(int handle, int flag, string data)
-    {
-        if (handle == 0)
-            return;
-
-        try
-        {
-            COPYDATASTRUCT lParam = default;
-            lParam.dwData = (IntPtr)flag;
-            lParam.cbData = data.Length;
-            lParam.lpData = data;
-            SendMessageTimeout(handle, 74, 0, ref lParam, 0, 1000, 0);
-            CEditEnvironmentGlobal.msgbox.Hide();
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
         }
     }
 
@@ -4311,7 +4125,7 @@ public partial class MDIParent1 : XtraForm
         EnableProject(newProject.ProjeceFilePath);
     }
 
-    private void barButtonItem_OpenProject_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_OpenProject_ItemClick(object sender, ItemClickEventArgs e)
     {
         openFileDialog_OpenProject.Filter = "工程文件|*.fview";
         if (DialogResult.OK != openFileDialog_OpenProject.ShowDialog())
@@ -4440,11 +4254,6 @@ public partial class MDIParent1 : XtraForm
     {
         var form = new ProjectProperty(CEditEnvironmentGlobal.ProjectPath);
         form.ShowDialog();
-    }
-
-    private void treeView_工程导航_AfterSelect(object sender, TreeViewEventArgs e)
-    {
-
     }
 }
 
