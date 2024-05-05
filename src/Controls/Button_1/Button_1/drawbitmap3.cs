@@ -260,10 +260,7 @@ public class drawbitmap3 : CPixieControl
 
     public override void ManageMouseDown(MouseEventArgs e)
     {
-        if (this.Click != null)
-        {
-            this.Click(this, null);
-        }
+        Click?.Invoke(this, null);
         mousedownflag = true;
         if (!string.IsNullOrEmpty(varname))
         {

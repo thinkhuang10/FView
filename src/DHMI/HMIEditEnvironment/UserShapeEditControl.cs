@@ -767,7 +767,7 @@ public class UserShapeEditControl : UserControl
 		theglobal.uc1.button8_Click(sender, e);
 	}
 
-	private void barButtonItem27_ItemClick(object sender, ItemClickEventArgs e)
+	private void BarButtonItem27_ItemClick(object sender, ItemClickEventArgs e)
 	{
 		theglobal.uc1.button9_Click(sender, e);
 	}
@@ -993,12 +993,6 @@ public class UserShapeEditControl : UserControl
 					break;
 				case "定时器":
 					cControl.type = "ShapeRuntime.CTimer";
-					break;
-				case "HTML5上传控件":
-					cControl.type = "ShapeRuntime.HTML5_Controls.FileUpLoad";
-					break;
-				case "Excel 导入控件":
-					cControl.type = "ShapeRuntime.HTML5_Controls.ExcelIn";
 					break;
 				}
 				cControl._dllfile = AppDomain.CurrentDomain.BaseDirectory + "ShapeRuntime.dll";
@@ -1250,12 +1244,6 @@ public class UserShapeEditControl : UserControl
 				break;
 			case "定时器":
 				cControl.type = "ShapeRuntime.CTimer";
-				break;
-			case "HTML5上传控件":
-				cControl.type = "ShapeRuntime.HTML5_Controls.FileUpLoad";
-				break;
-			case "Excel导入控件":
-				cControl.type = "ShapeRuntime.HTML5_Controls.ExcelIn";
 				break;
 			}
 			cControl._dllfile = AppDomain.CurrentDomain.BaseDirectory + "ShapeRuntime.dll";
@@ -2328,317 +2316,317 @@ public class UserShapeEditControl : UserControl
 
 	private void InitializeComponent()
 	{
-		this.components = new System.ComponentModel.Container();
-		this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
-		this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem_Delete = new DevExpress.XtraBars.BarButtonItem();
-		this.barEditItemControlName = new DevExpress.XtraBars.BarEditItem();
-		this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-		this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-		this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
-		this.colorEditControl1 = new HMIEditEnvironment.ColorEditControl();
-		this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
-		this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-		this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-		this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-		this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-		this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
-		this.barSubItem2 = new DevExpress.XtraBars.BarSubItem();
-		this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
-		this.barSubItem3 = new DevExpress.XtraBars.BarSubItem();
-		this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem22 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
-		this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
-		this.repositoryItemColorEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemColorEdit();
-		this.barEditItem3 = new DevExpress.XtraBars.BarEditItem();
-		this.repositoryItemColorEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemColorEdit();
-		this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
-		this.barButtonItem24 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem25 = new DevExpress.XtraBars.BarButtonItem();
-		this.barSubItem6 = new DevExpress.XtraBars.BarSubItem();
-		this.barButtonItem27 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem28 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem29 = new DevExpress.XtraBars.BarButtonItem();
-		this.barButtonItem30 = new DevExpress.XtraBars.BarButtonItem();
-		((System.ComponentModel.ISupportInitialize)this.popupMenu1).BeginInit();
-		((System.ComponentModel.ISupportInitialize)this.repositoryItemTextEdit1).BeginInit();
-		((System.ComponentModel.ISupportInitialize)this.colorEditControl1).BeginInit();
-		((System.ComponentModel.ISupportInitialize)this.barManager1).BeginInit();
-		((System.ComponentModel.ISupportInitialize)this.repositoryItemColorEdit1).BeginInit();
-		((System.ComponentModel.ISupportInitialize)this.repositoryItemColorEdit2).BeginInit();
+		components = new System.ComponentModel.Container();
+		popupMenu1 = new DevExpress.XtraBars.PopupMenu(components);
+		barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem_Delete = new DevExpress.XtraBars.BarButtonItem();
+		barEditItemControlName = new DevExpress.XtraBars.BarEditItem();
+		repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+		barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+		barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+		colorEditControl1 = new HMIEditEnvironment.ColorEditControl();
+		barManager1 = new DevExpress.XtraBars.BarManager(components);
+		barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+		barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+		barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+		barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+		barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem7 = new DevExpress.XtraBars.BarButtonItem();
+		barSubItem2 = new DevExpress.XtraBars.BarSubItem();
+		barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem15 = new DevExpress.XtraBars.BarButtonItem();
+		barSubItem3 = new DevExpress.XtraBars.BarSubItem();
+		barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem19 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem22 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+		barEditItem2 = new DevExpress.XtraBars.BarEditItem();
+		repositoryItemColorEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemColorEdit();
+		barEditItem3 = new DevExpress.XtraBars.BarEditItem();
+		repositoryItemColorEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemColorEdit();
+		barSubItem5 = new DevExpress.XtraBars.BarSubItem();
+		barButtonItem24 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem25 = new DevExpress.XtraBars.BarButtonItem();
+		barSubItem6 = new DevExpress.XtraBars.BarSubItem();
+		barButtonItem27 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem28 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem29 = new DevExpress.XtraBars.BarButtonItem();
+		barButtonItem30 = new DevExpress.XtraBars.BarButtonItem();
+		((System.ComponentModel.ISupportInitialize)popupMenu1).BeginInit();
+		((System.ComponentModel.ISupportInitialize)repositoryItemTextEdit1).BeginInit();
+		((System.ComponentModel.ISupportInitialize)colorEditControl1).BeginInit();
+		((System.ComponentModel.ISupportInitialize)barManager1).BeginInit();
+		((System.ComponentModel.ISupportInitialize)repositoryItemColorEdit1).BeginInit();
+		((System.ComponentModel.ISupportInitialize)repositoryItemColorEdit2).BeginInit();
 		base.SuspendLayout();
-		this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[14]
+		popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[14]
 		{
-			new(this.barButtonItem8),
-			new(this.barButtonItem1),
-			new(this.barButtonItem3, true),
-			new(this.barButtonItem4),
-			new(this.barButtonItem5),
-			new(this.barButtonItem_Delete),
-			new(DevExpress.XtraBars.BarLinkUserDefines.Caption | DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barEditItemControlName, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu),
-			new(this.barSubItem1),
-			new(this.barSubItem5),
-			new(this.barSubItem2),
-			new(this.barSubItem3),
-			new(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem6, DevExpress.XtraBars.BarItemPaintStyle.Standard),
-			new(this.barButtonItem10, true),
-			new(this.barButtonItem11)
+			new(barButtonItem8),
+			new(barButtonItem1),
+			new(barButtonItem3, true),
+			new(barButtonItem4),
+			new(barButtonItem5),
+			new(barButtonItem_Delete),
+			new(DevExpress.XtraBars.BarLinkUserDefines.Caption | DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, barEditItemControlName, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu),
+			new(barSubItem1),
+			new(barSubItem5),
+			new(barSubItem2),
+			new(barSubItem3),
+			new(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, barSubItem6, DevExpress.XtraBars.BarItemPaintStyle.Standard),
+			new(barButtonItem10, true),
+			new(barButtonItem11)
 		});
-		this.popupMenu1.Manager = this.barManager1;
-		this.popupMenu1.Name = "popupMenu1";
-		this.popupMenu1.BeforePopup += new System.ComponentModel.CancelEventHandler(popupMenu1_BeforePopup);
-		this.barButtonItem8.Caption = "精灵面板(&P)";
-		this.barButtonItem8.Id = 56;
-		this.barButtonItem8.Name = "barButtonItem8";
-		this.barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem8_ItemClick);
-		this.barButtonItem1.Caption = "对象动画(&A)";
-		this.barButtonItem1.Id = 0;
-		this.barButtonItem1.Name = "barButtonItem1";
-		this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem1_ItemClick);
-		this.barButtonItem3.Caption = "复制(&C)";
-		this.barButtonItem3.Id = 2;
-		this.barButtonItem3.Name = "barButtonItem3";
-		this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem3_ItemClick);
-		this.barButtonItem4.Caption = "剪切(&T)";
-		this.barButtonItem4.Id = 3;
-		this.barButtonItem4.Name = "barButtonItem4";
-		this.barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem4_ItemClick);
-		this.barButtonItem5.Caption = "粘贴(&P)";
-		this.barButtonItem5.Id = 4;
-		this.barButtonItem5.Name = "barButtonItem5";
-		this.barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem5_ItemClick);
-		this.barButtonItem_Delete.Caption = "删除(&D)";
-		this.barButtonItem_Delete.Id = 62;
-		this.barButtonItem_Delete.Name = "barButtonItem_Delete";
-		this.barButtonItem_Delete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem_Delete_ItemClick);
-		this.barEditItemControlName.Edit = this.repositoryItemTextEdit1;
-		this.barEditItemControlName.Id = 15;
-		this.barEditItemControlName.Name = "barEditItemControlName";
-		this.barEditItemControlName.Width = 120;
-		this.barEditItemControlName.EditValueChanged += new System.EventHandler(barEditItemControlName_EditValueChanged);
-		this.repositoryItemTextEdit1.AutoHeight = false;
-		this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
-		this.barSubItem1.Caption = "对象属性(&R)";
-		this.barSubItem1.Id = 9;
-		this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[3]
+		popupMenu1.Manager = barManager1;
+		popupMenu1.Name = "popupMenu1";
+		popupMenu1.BeforePopup += new System.ComponentModel.CancelEventHandler(popupMenu1_BeforePopup);
+		barButtonItem8.Caption = "精灵面板(&P)";
+		barButtonItem8.Id = 56;
+		barButtonItem8.Name = "barButtonItem8";
+		barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem8_ItemClick);
+		barButtonItem1.Caption = "对象动画(&A)";
+		barButtonItem1.Id = 0;
+		barButtonItem1.Name = "barButtonItem1";
+		barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem1_ItemClick);
+		barButtonItem3.Caption = "复制(&C)";
+		barButtonItem3.Id = 2;
+		barButtonItem3.Name = "barButtonItem3";
+		barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem3_ItemClick);
+		barButtonItem4.Caption = "剪切(&T)";
+		barButtonItem4.Id = 3;
+		barButtonItem4.Name = "barButtonItem4";
+		barButtonItem4.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem4_ItemClick);
+		barButtonItem5.Caption = "粘贴(&P)";
+		barButtonItem5.Id = 4;
+		barButtonItem5.Name = "barButtonItem5";
+		barButtonItem5.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem5_ItemClick);
+		barButtonItem_Delete.Caption = "删除(&D)";
+		barButtonItem_Delete.Id = 62;
+		barButtonItem_Delete.Name = "barButtonItem_Delete";
+		barButtonItem_Delete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem_Delete_ItemClick);
+		barEditItemControlName.Edit = repositoryItemTextEdit1;
+		barEditItemControlName.Id = 15;
+		barEditItemControlName.Name = "barEditItemControlName";
+		barEditItemControlName.Width = 120;
+		barEditItemControlName.EditValueChanged += new System.EventHandler(barEditItemControlName_EditValueChanged);
+		repositoryItemTextEdit1.AutoHeight = false;
+		repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+		barSubItem1.Caption = "对象属性(&R)";
+		barSubItem1.Id = 9;
+		barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[3]
 		{
-			new(this.barButtonItem12),
-			new(DevExpress.XtraBars.BarLinkUserDefines.Width, this.barEditItem2, "", false, true, true, 30),
-			new(DevExpress.XtraBars.BarLinkUserDefines.Width, this.barEditItem3, "", false, true, true, 50)
+			new(barButtonItem12),
+			new(DevExpress.XtraBars.BarLinkUserDefines.Width, barEditItem2, "", false, true, true, 30),
+			new(DevExpress.XtraBars.BarLinkUserDefines.Width, barEditItem3, "", false, true, true, 50)
 		});
-		this.barSubItem1.Name = "barSubItem1";
-		this.barSubItem1.Popup += new System.EventHandler(BarSubItem1_Popup);
-		this.barButtonItem12.ActAsDropDown = true;
-		this.barButtonItem12.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
-		this.barButtonItem12.Caption = "填充样式";
-		this.barButtonItem12.DropDownControl = this.colorEditControl1;
-		this.barButtonItem12.Id = 16;
-		this.barButtonItem12.Name = "barButtonItem12";
-		this.colorEditControl1.Appearance.BackColor = System.Drawing.SystemColors.Control;
-		this.colorEditControl1.Appearance.Options.UseBackColor = true;
-		this.colorEditControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-		this.colorEditControl1.Location = new System.Drawing.Point(4, 60);
-		this.colorEditControl1.Manager = this.barManager1;
-		this.colorEditControl1.Name = "colorEditControl1";
-		this.colorEditControl1.Size = new System.Drawing.Size(150, 230);
-		this.colorEditControl1.TabIndex = 6;
-		this.colorEditControl1.Visible = false;
-		this.barManager1.DockControls.Add(this.barDockControlTop);
-		this.barManager1.DockControls.Add(this.barDockControlBottom);
-		this.barManager1.DockControls.Add(this.barDockControlLeft);
-		this.barManager1.DockControls.Add(this.barDockControlRight);
-		this.barManager1.Form = this;
-		this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[36]
+		barSubItem1.Name = "barSubItem1";
+		barSubItem1.Popup += new System.EventHandler(BarSubItem1_Popup);
+		barButtonItem12.ActAsDropDown = true;
+		barButtonItem12.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+		barButtonItem12.Caption = "填充样式";
+		barButtonItem12.DropDownControl = colorEditControl1;
+		barButtonItem12.Id = 16;
+		barButtonItem12.Name = "barButtonItem12";
+		colorEditControl1.Appearance.BackColor = System.Drawing.SystemColors.Control;
+		colorEditControl1.Appearance.Options.UseBackColor = true;
+		colorEditControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+		colorEditControl1.Location = new System.Drawing.Point(4, 60);
+		colorEditControl1.Manager = barManager1;
+		colorEditControl1.Name = "colorEditControl1";
+		colorEditControl1.Size = new System.Drawing.Size(150, 230);
+		colorEditControl1.TabIndex = 6;
+		colorEditControl1.Visible = false;
+		barManager1.DockControls.Add(barDockControlTop);
+		barManager1.DockControls.Add(barDockControlBottom);
+		barManager1.DockControls.Add(barDockControlLeft);
+		barManager1.DockControls.Add(barDockControlRight);
+		barManager1.Form = this;
+		barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[36]
 		{
-			this.barButtonItem1, this.barButtonItem3, this.barButtonItem4, this.barButtonItem5, this.barButtonItem6, this.barButtonItem7, this.barSubItem1, this.barSubItem2, this.barSubItem3, this.barButtonItem10,
-			this.barButtonItem11, this.barEditItemControlName, this.barButtonItem12, this.barEditItem2, this.barEditItem3, this.barButtonItem13, this.barButtonItem14, this.barButtonItem15, this.barButtonItem16, this.barButtonItem17,
-			this.barButtonItem18, this.barButtonItem19, this.barButtonItem20, this.barButtonItem21, this.barButtonItem22, this.barButtonItem23, this.barSubItem5, this.barButtonItem24, this.barButtonItem25, this.barSubItem6,
-			this.barButtonItem27, this.barButtonItem28, this.barButtonItem29, this.barButtonItem30, this.barButtonItem8, this.barButtonItem_Delete
+			barButtonItem1, barButtonItem3, barButtonItem4, barButtonItem5, barButtonItem6, barButtonItem7, barSubItem1, barSubItem2, barSubItem3, barButtonItem10,
+			barButtonItem11, barEditItemControlName, barButtonItem12, barEditItem2, barEditItem3, barButtonItem13, barButtonItem14, barButtonItem15, barButtonItem16, barButtonItem17,
+			barButtonItem18, barButtonItem19, barButtonItem20, barButtonItem21, barButtonItem22, barButtonItem23, barSubItem5, barButtonItem24, barButtonItem25, barSubItem6,
+			barButtonItem27, barButtonItem28, barButtonItem29, barButtonItem30, barButtonItem8, barButtonItem_Delete
 		});
-		this.barManager1.MaxItemId = 69;
-		this.barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[3] { this.repositoryItemTextEdit1, this.repositoryItemColorEdit1, this.repositoryItemColorEdit2 });
-		this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-		this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-		this.barDockControlTop.Size = new System.Drawing.Size(463, 0);
-		this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-		this.barDockControlBottom.Location = new System.Drawing.Point(0, 302);
-		this.barDockControlBottom.Size = new System.Drawing.Size(463, 0);
-		this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-		this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
-		this.barDockControlLeft.Size = new System.Drawing.Size(0, 302);
-		this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-		this.barDockControlRight.Location = new System.Drawing.Point(463, 0);
-		this.barDockControlRight.Size = new System.Drawing.Size(0, 302);
-		this.barButtonItem6.Caption = "大小调整";
-		this.barButtonItem6.Id = 5;
-		this.barButtonItem6.Name = "barButtonItem6";
-		this.barButtonItem7.Caption = "排列对齐";
-		this.barButtonItem7.Id = 6;
-		this.barButtonItem7.Name = "barButtonItem7";
-		this.barSubItem2.Caption = "大小调整(&S)";
-		this.barSubItem2.Id = 10;
-		this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[3]
+		barManager1.MaxItemId = 69;
+		barManager1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[3] { repositoryItemTextEdit1, repositoryItemColorEdit1, repositoryItemColorEdit2 });
+		barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+		barDockControlTop.Location = new System.Drawing.Point(0, 0);
+		barDockControlTop.Size = new System.Drawing.Size(463, 0);
+		barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+		barDockControlBottom.Location = new System.Drawing.Point(0, 302);
+		barDockControlBottom.Size = new System.Drawing.Size(463, 0);
+		barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+		barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+		barDockControlLeft.Size = new System.Drawing.Size(0, 302);
+		barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+		barDockControlRight.Location = new System.Drawing.Point(463, 0);
+		barDockControlRight.Size = new System.Drawing.Size(0, 302);
+		barButtonItem6.Caption = "大小调整";
+		barButtonItem6.Id = 5;
+		barButtonItem6.Name = "barButtonItem6";
+		barButtonItem7.Caption = "排列对齐";
+		barButtonItem7.Id = 6;
+		barButtonItem7.Name = "barButtonItem7";
+		barSubItem2.Caption = "大小调整(&S)";
+		barSubItem2.Id = 10;
+		barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[3]
 		{
-			new(this.barButtonItem13),
-			new(this.barButtonItem14),
-			new(this.barButtonItem15)
+			new(barButtonItem13),
+			new(barButtonItem14),
+			new(barButtonItem15)
 		});
-		this.barSubItem2.Name = "barSubItem2";
-		this.barButtonItem13.Caption = "相同宽度(&W)";
-		this.barButtonItem13.Id = 19;
-		this.barButtonItem13.Name = "barButtonItem13";
-		this.barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem13_ItemClick);
-		this.barButtonItem14.Caption = "相同高度(&H)";
-		this.barButtonItem14.Id = 20;
-		this.barButtonItem14.Name = "barButtonItem14";
-		this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem14_ItemClick);
-		this.barButtonItem15.Caption = "相同大小(&S)";
-		this.barButtonItem15.Id = 21;
-		this.barButtonItem15.Name = "barButtonItem15";
-		this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem15_ItemClick);
-		this.barSubItem3.Caption = "排列对齐(&N)";
-		this.barSubItem3.Id = 11;
-		this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[8]
+		barSubItem2.Name = "barSubItem2";
+		barButtonItem13.Caption = "相同宽度(&W)";
+		barButtonItem13.Id = 19;
+		barButtonItem13.Name = "barButtonItem13";
+		barButtonItem13.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem13_ItemClick);
+		barButtonItem14.Caption = "相同高度(&H)";
+		barButtonItem14.Id = 20;
+		barButtonItem14.Name = "barButtonItem14";
+		barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem14_ItemClick);
+		barButtonItem15.Caption = "相同大小(&S)";
+		barButtonItem15.Id = 21;
+		barButtonItem15.Name = "barButtonItem15";
+		barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem15_ItemClick);
+		barSubItem3.Caption = "排列对齐(&N)";
+		barSubItem3.Id = 11;
+		barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[8]
 		{
-			new(this.barButtonItem16),
-			new(this.barButtonItem17),
-			new(this.barButtonItem18),
-			new(this.barButtonItem19),
-			new(this.barButtonItem20),
-			new(this.barButtonItem21),
-			new(this.barButtonItem22, true),
-			new(this.barButtonItem23)
+			new(barButtonItem16),
+			new(barButtonItem17),
+			new(barButtonItem18),
+			new(barButtonItem19),
+			new(barButtonItem20),
+			new(barButtonItem21),
+			new(barButtonItem22, true),
+			new(barButtonItem23)
 		});
-		this.barSubItem3.Name = "barSubItem3";
-		this.barButtonItem16.Caption = "上对齐(&T)";
-		this.barButtonItem16.Id = 22;
-		this.barButtonItem16.Name = "barButtonItem16";
-		this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem16_ItemClick);
-		this.barButtonItem17.Caption = "水平对齐(&V)";
-		this.barButtonItem17.Id = 23;
-		this.barButtonItem17.Name = "barButtonItem17";
-		this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem17_ItemClick);
-		this.barButtonItem18.Caption = "下对齐(&B)";
-		this.barButtonItem18.Id = 24;
-		this.barButtonItem18.Name = "barButtonItem18";
-		this.barButtonItem18.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem18_ItemClick);
-		this.barButtonItem19.Caption = "左对齐(&L)";
-		this.barButtonItem19.Id = 25;
-		this.barButtonItem19.Name = "barButtonItem19";
-		this.barButtonItem19.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem19_ItemClick);
-		this.barButtonItem20.Caption = "垂直对齐(&H)";
-		this.barButtonItem20.Id = 26;
-		this.barButtonItem20.Name = "barButtonItem20";
-		this.barButtonItem20.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem20_ItemClick);
-		this.barButtonItem21.Caption = "右对齐(&R)";
-		this.barButtonItem21.Id = 27;
-		this.barButtonItem21.Name = "barButtonItem21";
-		this.barButtonItem21.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem21_ItemClick);
-		this.barButtonItem22.Caption = "水平等间距";
-		this.barButtonItem22.Id = 28;
-		this.barButtonItem22.Name = "barButtonItem22";
-		this.barButtonItem22.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem22_ItemClick);
-		this.barButtonItem23.Caption = "垂直等间距";
-		this.barButtonItem23.Id = 29;
-		this.barButtonItem23.Name = "barButtonItem23";
-		this.barButtonItem23.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem23_ItemClick);
-		this.barButtonItem10.Caption = "页面事件(&E)";
-		this.barButtonItem10.Id = 13;
-		this.barButtonItem10.Name = "barButtonItem10";
-		this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem10_ItemClick);
-		this.barButtonItem11.Caption = "页面属性(&R)";
-		this.barButtonItem11.Id = 14;
-		this.barButtonItem11.Name = "barButtonItem11";
-		this.barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem11_ItemClick);
-		this.barEditItem2.Caption = "填充色  ";
-		this.barEditItem2.Edit = this.repositoryItemColorEdit1;
-		this.barEditItem2.Id = 17;
-		this.barEditItem2.Name = "barEditItem2";
-		this.barEditItem2.Width = 75;
-		this.barEditItem2.EditValueChanged += new System.EventHandler(barEditItem2_EditValueChanged);
-		this.repositoryItemColorEdit1.AutoHeight = false;
-		this.repositoryItemColorEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[1]
-		{
-			new(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)
-		});
-		this.repositoryItemColorEdit1.Name = "repositoryItemColorEdit1";
-		this.barEditItem3.Caption = "边线颜色";
-		this.barEditItem3.Edit = this.repositoryItemColorEdit2;
-		this.barEditItem3.Id = 18;
-		this.barEditItem3.Name = "barEditItem3";
-		this.barEditItem3.Width = 75;
-		this.barEditItem3.EditValueChanged += new System.EventHandler(barEditItem3_EditValueChanged);
-		this.repositoryItemColorEdit2.AutoHeight = false;
-		this.repositoryItemColorEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[1]
+		barSubItem3.Name = "barSubItem3";
+		barButtonItem16.Caption = "上对齐(&T)";
+		barButtonItem16.Id = 22;
+		barButtonItem16.Name = "barButtonItem16";
+		barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem16_ItemClick);
+		barButtonItem17.Caption = "水平对齐(&V)";
+		barButtonItem17.Id = 23;
+		barButtonItem17.Name = "barButtonItem17";
+		barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem17_ItemClick);
+		barButtonItem18.Caption = "下对齐(&B)";
+		barButtonItem18.Id = 24;
+		barButtonItem18.Name = "barButtonItem18";
+		barButtonItem18.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem18_ItemClick);
+		barButtonItem19.Caption = "左对齐(&L)";
+		barButtonItem19.Id = 25;
+		barButtonItem19.Name = "barButtonItem19";
+		barButtonItem19.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem19_ItemClick);
+		barButtonItem20.Caption = "垂直对齐(&H)";
+		barButtonItem20.Id = 26;
+		barButtonItem20.Name = "barButtonItem20";
+		barButtonItem20.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem20_ItemClick);
+		barButtonItem21.Caption = "右对齐(&R)";
+		barButtonItem21.Id = 27;
+		barButtonItem21.Name = "barButtonItem21";
+		barButtonItem21.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem21_ItemClick);
+		barButtonItem22.Caption = "水平等间距";
+		barButtonItem22.Id = 28;
+		barButtonItem22.Name = "barButtonItem22";
+		barButtonItem22.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem22_ItemClick);
+		barButtonItem23.Caption = "垂直等间距";
+		barButtonItem23.Id = 29;
+		barButtonItem23.Name = "barButtonItem23";
+		barButtonItem23.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem23_ItemClick);
+		barButtonItem10.Caption = "页面事件(&E)";
+		barButtonItem10.Id = 13;
+		barButtonItem10.Name = "barButtonItem10";
+		barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem10_ItemClick);
+		barButtonItem11.Caption = "页面属性(&R)";
+		barButtonItem11.Id = 14;
+		barButtonItem11.Name = "barButtonItem11";
+		barButtonItem11.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem11_ItemClick);
+		barEditItem2.Caption = "填充色  ";
+		barEditItem2.Edit = repositoryItemColorEdit1;
+		barEditItem2.Id = 17;
+		barEditItem2.Name = "barEditItem2";
+		barEditItem2.Width = 75;
+		barEditItem2.EditValueChanged += new System.EventHandler(barEditItem2_EditValueChanged);
+		repositoryItemColorEdit1.AutoHeight = false;
+		repositoryItemColorEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[1]
 		{
 			new(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)
 		});
-		this.repositoryItemColorEdit2.Name = "repositoryItemColorEdit2";
-		this.barSubItem5.Caption = "组合拆解(&G)";
-		this.barSubItem5.Id = 30;
-		this.barSubItem5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[2]
+		repositoryItemColorEdit1.Name = "repositoryItemColorEdit1";
+		barEditItem3.Caption = "边线颜色";
+		barEditItem3.Edit = repositoryItemColorEdit2;
+		barEditItem3.Id = 18;
+		barEditItem3.Name = "barEditItem3";
+		barEditItem3.Width = 75;
+		barEditItem3.EditValueChanged += new System.EventHandler(barEditItem3_EditValueChanged);
+		repositoryItemColorEdit2.AutoHeight = false;
+		repositoryItemColorEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[1]
 		{
-			new(this.barButtonItem24),
-			new(this.barButtonItem25)
+			new(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)
 		});
-		this.barSubItem5.Name = "barSubItem5";
-		this.barButtonItem24.Caption = "组合(&G)";
-		this.barButtonItem24.Id = 31;
-		this.barButtonItem24.Name = "barButtonItem24";
-		this.barButtonItem24.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem24_ItemClick);
-		this.barButtonItem25.Caption = "拆解(&U)";
-		this.barButtonItem25.Id = 32;
-		this.barButtonItem25.Name = "barButtonItem25";
-		this.barButtonItem25.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem25_ItemClick);
-		this.barSubItem6.Caption = "层次与翻转(&L)";
-		this.barSubItem6.Id = 34;
-		this.barSubItem6.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[4]
+		repositoryItemColorEdit2.Name = "repositoryItemColorEdit2";
+		barSubItem5.Caption = "组合拆解(&G)";
+		barSubItem5.Id = 30;
+		barSubItem5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[2]
 		{
-			new(this.barButtonItem27),
-			new(this.barButtonItem28),
-			new(this.barButtonItem29, true),
-			new(this.barButtonItem30)
+			new(barButtonItem24),
+			new(barButtonItem25)
 		});
-		this.barSubItem6.Name = "barSubItem6";
-		this.barButtonItem27.Caption = "移动至顶层(&F)";
-		this.barButtonItem27.Id = 35;
-		this.barButtonItem27.Name = "barButtonItem27";
-		this.barButtonItem27.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem27_ItemClick);
-		this.barButtonItem28.Caption = "移动至底层(&B)";
-		this.barButtonItem28.Id = 36;
-		this.barButtonItem28.Name = "barButtonItem28";
-		this.barButtonItem28.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(BarButtonItem28_ItemClick);
-		this.barButtonItem29.Caption = "水平翻转(&H)";
-		this.barButtonItem29.Id = 37;
-		this.barButtonItem29.Name = "barButtonItem29";
-		this.barButtonItem29.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(BarButtonItem29_ItemClick);
-		this.barButtonItem30.Caption = "垂直翻转(&V)";
-		this.barButtonItem30.Id = 38;
-		this.barButtonItem30.Name = "barButtonItem30";
-		this.barButtonItem30.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem30_ItemClick);
-		this.AllowDrop = true;
+		barSubItem5.Name = "barSubItem5";
+		barButtonItem24.Caption = "组合(&G)";
+		barButtonItem24.Id = 31;
+		barButtonItem24.Name = "barButtonItem24";
+		barButtonItem24.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem24_ItemClick);
+		barButtonItem25.Caption = "拆解(&U)";
+		barButtonItem25.Id = 32;
+		barButtonItem25.Name = "barButtonItem25";
+		barButtonItem25.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem25_ItemClick);
+		barSubItem6.Caption = "层次与翻转(&L)";
+		barSubItem6.Id = 34;
+		barSubItem6.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[4]
+		{
+			new(barButtonItem27),
+			new(barButtonItem28),
+			new(barButtonItem29, true),
+			new(barButtonItem30)
+		});
+		barSubItem6.Name = "barSubItem6";
+		barButtonItem27.Caption = "移动至顶层(&F)";
+		barButtonItem27.Id = 35;
+		barButtonItem27.Name = "barButtonItem27";
+		barButtonItem27.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(BarButtonItem27_ItemClick);
+		barButtonItem28.Caption = "移动至底层(&B)";
+		barButtonItem28.Id = 36;
+		barButtonItem28.Name = "barButtonItem28";
+		barButtonItem28.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(BarButtonItem28_ItemClick);
+		barButtonItem29.Caption = "水平翻转(&H)";
+		barButtonItem29.Id = 37;
+		barButtonItem29.Name = "barButtonItem29";
+		barButtonItem29.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(BarButtonItem29_ItemClick);
+		barButtonItem30.Caption = "垂直翻转(&V)";
+		barButtonItem30.Id = 38;
+		barButtonItem30.Name = "barButtonItem30";
+		barButtonItem30.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem30_ItemClick);
+		AllowDrop = true;
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-		this.BackColor = System.Drawing.SystemColors.Control;
-		base.Controls.Add(this.colorEditControl1);
-		base.Controls.Add(this.barDockControlLeft);
-		base.Controls.Add(this.barDockControlRight);
-		base.Controls.Add(this.barDockControlBottom);
-		base.Controls.Add(this.barDockControlTop);
+		BackColor = System.Drawing.SystemColors.Control;
+		base.Controls.Add(colorEditControl1);
+		base.Controls.Add(barDockControlLeft);
+		base.Controls.Add(barDockControlRight);
+		base.Controls.Add(barDockControlBottom);
+		base.Controls.Add(barDockControlTop);
 		base.Name = "UserShapeEditControl";
 		base.Size = new System.Drawing.Size(463, 302);
 		base.Load += new System.EventHandler(UserControl2_Load);
@@ -2652,12 +2640,12 @@ public class UserShapeEditControl : UserControl
 		base.MouseDown += new System.Windows.Forms.MouseEventHandler(UserControl2_MouseDown);
 		base.MouseMove += new System.Windows.Forms.MouseEventHandler(UserControl2_MouseMove);
 		base.MouseUp += new System.Windows.Forms.MouseEventHandler(UserControl2_MouseUp);
-		((System.ComponentModel.ISupportInitialize)this.popupMenu1).EndInit();
-		((System.ComponentModel.ISupportInitialize)this.repositoryItemTextEdit1).EndInit();
-		((System.ComponentModel.ISupportInitialize)this.colorEditControl1).EndInit();
-		((System.ComponentModel.ISupportInitialize)this.barManager1).EndInit();
-		((System.ComponentModel.ISupportInitialize)this.repositoryItemColorEdit1).EndInit();
-		((System.ComponentModel.ISupportInitialize)this.repositoryItemColorEdit2).EndInit();
+		((System.ComponentModel.ISupportInitialize)popupMenu1).EndInit();
+		((System.ComponentModel.ISupportInitialize)repositoryItemTextEdit1).EndInit();
+		((System.ComponentModel.ISupportInitialize)colorEditControl1).EndInit();
+		((System.ComponentModel.ISupportInitialize)barManager1).EndInit();
+		((System.ComponentModel.ISupportInitialize)repositoryItemColorEdit1).EndInit();
+		((System.ComponentModel.ISupportInitialize)repositoryItemColorEdit2).EndInit();
 		base.ResumeLayout(false);
 	}
 }

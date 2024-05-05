@@ -127,10 +127,7 @@ public class CListBox : ListBox, IDCCEControl, IControlShape, IDBAnimation
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -1281,9 +1278,9 @@ public class CListBox : ListBox, IDCCEControl, IControlShape, IDBAnimation
 
     public new event EventHandler DoubleClick;
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     public event EventHandler IDChanged;
 
@@ -1340,7 +1337,7 @@ public class CListBox : ListBox, IDCCEControl, IControlShape, IDBAnimation
             {
                 if (tags[i].ToString().StartsWith("#Bind:"))
                 {
-                    Items[i] = this.GetValueEvent("[" + tags[i].ToString().Substring(6) + "]");
+                    Items[i] = GetValueEvent("[" + tags[i].ToString().Substring(6) + "]");
                 }
             }
         }
@@ -1360,26 +1357,17 @@ public class CListBox : ListBox, IDCCEControl, IControlShape, IDBAnimation
 
     private void CListBox_Click(object sender, EventArgs e)
     {
-        if (this.Click != null)
-        {
-            this.Click(sender, e);
-        }
+        Click?.Invoke(sender, e);
     }
 
     private void CListBox_DoubleClick(object sender, EventArgs e)
     {
-        if (this.DoubleClick != null)
-        {
-            this.DoubleClick(sender, e);
-        }
+        DoubleClick?.Invoke(sender, e);
     }
 
     private void CListBox_SelectedItemChanged(object sender, EventArgs e)
     {
-        if (this.SelectedItemChanged != null)
-        {
-            this.SelectedItemChanged(sender, e);
-        }
+        SelectedItemChanged?.Invoke(sender, e);
     }
 
     public byte[] Serialize()
@@ -1575,17 +1563,11 @@ public class CListBox : ListBox, IDCCEControl, IControlShape, IDBAnimation
 
     public void FireDBOperationOK()
     {
-        if (this.DBOperationOK != null)
-        {
-            this.DBOperationOK(this, null);
-        }
+        DBOperationOK?.Invoke(this, null);
     }
 
     public void FireDBOperationErr()
     {
-        if (this.DBOperationErr != null)
-        {
-            this.DBOperationErr(this, null);
-        }
+        DBOperationErr?.Invoke(this, null);
     }
 }

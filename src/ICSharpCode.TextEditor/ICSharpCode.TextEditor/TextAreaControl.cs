@@ -414,7 +414,7 @@ public class TextAreaControl : Panel
 
     protected override void WndProc(ref Message m)
     {
-        if (m.Msg == 123 && this.ShowContextMenu != null)
+        if (m.Msg == 123 && ShowContextMenu != null)
         {
             long num = m.LParam.ToInt64();
             int num2 = (short)(num & 0xFFFF);
@@ -422,12 +422,12 @@ public class TextAreaControl : Panel
             if (num2 == -1 && num3 == -1)
             {
                 Point screenPosition = Caret.ScreenPosition;
-                this.ShowContextMenu(this, new MouseEventArgs(MouseButtons.None, 0, screenPosition.X, screenPosition.Y + textArea.TextView.FontHeight, 0));
+                ShowContextMenu(this, new MouseEventArgs(MouseButtons.None, 0, screenPosition.X, screenPosition.Y + textArea.TextView.FontHeight, 0));
             }
             else
             {
                 Point point = PointToClient(new Point(num2, num3));
-                this.ShowContextMenu(this, new MouseEventArgs(MouseButtons.Right, 1, point.X, point.Y, 0));
+                ShowContextMenu(this, new MouseEventArgs(MouseButtons.Right, 1, point.X, point.Y, 0));
             }
         }
         base.WndProc(ref m);

@@ -50,7 +50,7 @@ public sealed class MarkerStrategy
         if (!markersTable.ContainsKey(offset))
         {
             List<TextMarker> list = new();
-            for (int i = 0; i < this.textMarker.Count; i++)
+            for (int i = 0; i < textMarker.Count; i++)
             {
                 TextMarker textMarker = this.textMarker[i];
                 if (textMarker.Offset <= offset && offset <= textMarker.EndOffset)
@@ -67,7 +67,7 @@ public sealed class MarkerStrategy
     {
         int num = offset + length - 1;
         List<TextMarker> list = new();
-        for (int i = 0; i < this.textMarker.Count; i++)
+        for (int i = 0; i < textMarker.Count; i++)
         {
             TextMarker textMarker = this.textMarker[i];
             if ((textMarker.Offset <= offset && offset <= textMarker.EndOffset) || (textMarker.Offset <= num && num <= textMarker.EndOffset) || (offset <= textMarker.Offset && textMarker.Offset <= num) || (offset <= textMarker.EndOffset && textMarker.EndOffset <= num))

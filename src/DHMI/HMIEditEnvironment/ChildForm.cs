@@ -121,27 +121,27 @@ public class ChildForm : Form
 
     private void InitializeComponent()
     {
-        this.userControl21 = new HMIEditEnvironment.UserShapeEditControl();
+        userControl21 = new HMIEditEnvironment.UserShapeEditControl();
         base.SuspendLayout();
-        this.userControl21.AllowDrop = true;
-        this.userControl21.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-        this.userControl21.BackColor = System.Drawing.Color.Transparent;
-        this.userControl21.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.userControl21.ForeColor = System.Drawing.SystemColors.Control;
-        this.userControl21.Location = new System.Drawing.Point(0, 0);
-        this.userControl21.Name = "userControl21";
-        this.userControl21.Size = new System.Drawing.Size(800, 600);
-        this.userControl21.TabIndex = 0;
+        userControl21.AllowDrop = true;
+        userControl21.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+        userControl21.BackColor = System.Drawing.Color.Transparent;
+        userControl21.Dock = System.Windows.Forms.DockStyle.Fill;
+        userControl21.ForeColor = System.Drawing.SystemColors.Control;
+        userControl21.Location = new System.Drawing.Point(0, 0);
+        userControl21.Name = "userControl21";
+        userControl21.Size = new System.Drawing.Size(800, 600);
+        userControl21.TabIndex = 0;
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+        BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
         base.ClientSize = new System.Drawing.Size(800, 600);
-        base.Controls.Add(this.userControl21);
-        this.DoubleBuffered = true;
+        base.Controls.Add(userControl21);
+        DoubleBuffered = true;
         base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         base.KeyPreview = true;
         base.Name = "ChildForm";
-        this.Text = "图形编辑器";
+        Text = "图形编辑器";
         base.FormClosing += new System.Windows.Forms.FormClosingEventHandler(ChildForm_FormClosing);
         base.Load += new System.EventHandler(Form1_Load);
         base.LocationChanged += new System.EventHandler(ChildForm_LocationChanged);

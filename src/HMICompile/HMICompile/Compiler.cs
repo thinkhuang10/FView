@@ -1002,9 +1002,9 @@ public class Compiler
                     stringBuilder.Append(error.ToString());
                     stringBuilder.Append(Environment.NewLine);
                 }
-                this.error = stringBuilder.ToString();
-                MessageBox.Show(this.error.ToString());
-                Console.WriteLine(this.error);
+                error = stringBuilder.ToString();
+                MessageBox.Show(error.ToString());
+                Console.WriteLine(error);
                 Console.ReadLine();
                 return false;
             }
@@ -1055,9 +1055,9 @@ public class Compiler
                         stringBuilder3.Append(error2.ToString());
                         stringBuilder3.Append(Environment.NewLine);
                     }
-                    this.error = stringBuilder3.ToString();
-                    MessageBox.Show(this.error.ToString());
-                    Console.WriteLine(this.error);
+                    error = stringBuilder3.ToString();
+                    MessageBox.Show(error.ToString());
+                    Console.WriteLine(error);
                     Console.ReadLine();
                     return false;
                 }
@@ -1065,8 +1065,8 @@ public class Compiler
         }
         catch (Exception ex)
         {
-            this.error = ex.Message;
-            MessageBox.Show(this.error);
+            error = ex.Message;
+            MessageBox.Show(error);
             return false;
         }
         return true;

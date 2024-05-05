@@ -2542,26 +2542,17 @@ public class CShape : IDBAnimation, IEventBind, IPropertyBind, ISerializable
 
     public void FireClick()
     {
-        if (this.Click != null)
-        {
-            this.Click(this, null);
-        }
+        Click?.Invoke(this, null);
     }
 
     public void FireDBOperationOK()
     {
-        if (this.DBOperationOK != null)
-        {
-            this.DBOperationOK(this, null);
-        }
+        DBOperationOK?.Invoke(this, null);
     }
 
     public void FireDBOperationErr()
     {
-        if (this.DBOperationErr != null)
-        {
-            this.DBOperationErr(this, null);
-        }
+        DBOperationErr?.Invoke(this, null);
     }
 
     public CShape()

@@ -18,9 +18,9 @@ public class CLine : CShape
 {
     private GraphicsPath swapgp1;
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     protected CLine(SerializationInfo info, StreamingContext context)
         : base(info, context)
@@ -156,10 +156,7 @@ public class CLine : CShape
         }
         graphicsPath.AddLine(ImportantPoints[8], ImportantPoints[9]);
         list.Add(graphicsPath);
-        if (swapgp != null)
-        {
-            swapgp.Dispose();
-        }
+        swapgp?.Dispose();
         swapgp = graphicsPath;
         needRefreshShape = false;
         return list;

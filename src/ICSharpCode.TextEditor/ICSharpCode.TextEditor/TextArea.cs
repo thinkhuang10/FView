@@ -336,10 +336,7 @@ public class TextArea : Control
 
     protected virtual void OnToolTipRequest(ToolTipRequestEventArgs e)
     {
-        if (this.ToolTipRequest != null)
-        {
-            this.ToolTipRequest(this, e);
-        }
+        ToolTipRequest?.Invoke(this, e);
     }
 
     private void CloseToolTip()
@@ -417,10 +414,7 @@ public class TextArea : Control
             leftMargin.HandleMouseMove(new Point(e.X, e.Y), e.Button);
             if (lastMouseInMargin != leftMargin)
             {
-                if (lastMouseInMargin != null)
-                {
-                    lastMouseInMargin.HandleMouseLeave(EventArgs.Empty);
-                }
+                lastMouseInMargin?.HandleMouseLeave(EventArgs.Empty);
                 lastMouseInMargin = leftMargin;
             }
             return;
@@ -469,10 +463,7 @@ public class TextArea : Control
         Rectangle clipRectangle = e.ClipRectangle;
         bool flag2 = clipRectangle.X == 0 && clipRectangle.Y == 0 && clipRectangle.Width == base.Width && clipRectangle.Height == base.Height;
         graphics.TextRenderingHint = TextEditorProperties.TextRenderingHint;
-        if (updateMargin != null)
-        {
-            updateMargin.Paint(graphics, updateMargin.DrawingPosition);
-        }
+        updateMargin?.Paint(graphics, updateMargin.DrawingPosition);
         if (clipRectangle.Width <= 0 || clipRectangle.Height <= 0)
         {
             return;
@@ -534,9 +525,9 @@ public class TextArea : Control
 
     protected internal virtual bool HandleKeyPress(char ch)
     {
-        if (this.KeyEventHandler != null)
+        if (KeyEventHandler != null)
         {
-            return this.KeyEventHandler(ch);
+            return KeyEventHandler(ch);
         }
         return false;
     }
@@ -631,7 +622,7 @@ public class TextArea : Control
 
     public bool ExecuteDialogKey(Keys keyData)
     {
-        if (this.DoProcessDialogKey != null && this.DoProcessDialogKey(keyData))
+        if (DoProcessDialogKey != null && DoProcessDialogKey(keyData))
         {
             return true;
         }
@@ -824,10 +815,7 @@ public class TextArea : Control
             caret.PositionChanged -= SearchMatchingBracket;
             caret.Dispose();
         }
-        if (selectionManager != null)
-        {
-            selectionManager.Dispose();
-        }
+        selectionManager?.Dispose();
         Document.TextContentChanged -= TextContentChanged;
         Document.FoldingManager.FoldingsChanged -= DocumentFoldingsChanged;
         motherTextAreaControl = null;

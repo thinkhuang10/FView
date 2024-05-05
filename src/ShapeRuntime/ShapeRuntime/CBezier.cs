@@ -169,10 +169,7 @@ public class CBezier : CShape
         }
         graphicsPath.AddBezier(array[8], array[10], array[11], array[9]);
         graphicsPath.Transform(TranslateMatrix);
-        if (swapgp != null)
-        {
-            swapgp.Dispose();
-        }
+        swapgp?.Dispose();
         swapgp = graphicsPath;
         needRefreshShape = false;
         list.Add(graphicsPath);

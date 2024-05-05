@@ -1988,7 +1988,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_HorizontalEquidistance.Id = 170;
             this.barButtonItem_HorizontalEquidistance.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_HorizontalEquidistance.ImageOptions.Image")));
             this.barButtonItem_HorizontalEquidistance.Name = "barButtonItem_HorizontalEquidistance";
-            this.barButtonItem_HorizontalEquidistance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem117_ItemClick);
+            this.barButtonItem_HorizontalEquidistance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem117_ItemClick);
             // 
             // barButtonItem_VerticalEquidistance
             // 
@@ -1998,7 +1998,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_VerticalEquidistance.Id = 171;
             this.barButtonItem_VerticalEquidistance.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_VerticalEquidistance.ImageOptions.Image")));
             this.barButtonItem_VerticalEquidistance.Name = "barButtonItem_VerticalEquidistance";
-            this.barButtonItem_VerticalEquidistance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem118_ItemClick);
+            this.barButtonItem_VerticalEquidistance.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem118_ItemClick);
             // 
             // barButtonItem_TopAlign
             // 
@@ -2058,7 +2058,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_RightAlign.Id = 159;
             this.barButtonItem_RightAlign.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_RightAlign.ImageOptions.Image")));
             this.barButtonItem_RightAlign.Name = "barButtonItem_RightAlign";
-            this.barButtonItem_RightAlign.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem111_ItemClick);
+            this.barButtonItem_RightAlign.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem111_ItemClick);
             // 
             // barButtonItem_EqualWidth
             // 

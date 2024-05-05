@@ -15,19 +15,13 @@ public sealed class DScriptControlSource_SinkHelper : DScriptControlSource
     public void Error()
     {
         //Error decoding local variables: Signature type sequence must have at least one element.
-        if (m_ErrorDelegate != null)
-        {
-            m_ErrorDelegate();
-        }
+        m_ErrorDelegate?.Invoke();
     }
 
     public void Timeout()
     {
         //Error decoding local variables: Signature type sequence must have at least one element.
-        if (m_TimeoutDelegate != null)
-        {
-            m_TimeoutDelegate();
-        }
+        m_TimeoutDelegate?.Invoke();
     }
 
     internal DScriptControlSource_SinkHelper()

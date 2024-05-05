@@ -265,10 +265,7 @@ public class drawbitmap7 : CPixieControl
     {
         try
         {
-            if (this.Click != null)
-            {
-                this.Click(this, null);
-            }
+            Click?.Invoke(this, null);
             mousedownflag = true;
             if (string.IsNullOrEmpty(varname))
             {

@@ -45,7 +45,7 @@ public class BtnSet3 : Form
     {
         try
         {
-            if (this.ckvarevent(txt_var.Text))
+            if (ckvarevent(txt_var.Text))
             {
                 if (txt_var.Text != "")
                 {
@@ -73,7 +73,7 @@ public class BtnSet3 : Form
 
     private void btn_view_Click(object sender, EventArgs e)
     {
-        string value = this.viewevent();
+        string value = viewevent();
         if (!string.IsNullOrEmpty(value))
         {
             txt_var.Text = value;
@@ -105,94 +105,94 @@ public class BtnSet3 : Form
 
     private void InitializeComponent()
     {
-        this.txt_var = new System.Windows.Forms.TextBox();
-        this.btn_view = new System.Windows.Forms.Button();
-        this.txt_text = new System.Windows.Forms.TextBox();
-        this.label5 = new System.Windows.Forms.Label();
-        this.groupBox1 = new System.Windows.Forms.GroupBox();
-        this.lbl_txtcolor = new System.Windows.Forms.Label();
-        this.label1 = new System.Windows.Forms.Label();
-        this.btn_OK = new System.Windows.Forms.Button();
-        this.btn_cancel = new System.Windows.Forms.Button();
-        this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-        this.groupBox1.SuspendLayout();
+        txt_var = new System.Windows.Forms.TextBox();
+        btn_view = new System.Windows.Forms.Button();
+        txt_text = new System.Windows.Forms.TextBox();
+        label5 = new System.Windows.Forms.Label();
+        groupBox1 = new System.Windows.Forms.GroupBox();
+        lbl_txtcolor = new System.Windows.Forms.Label();
+        label1 = new System.Windows.Forms.Label();
+        btn_OK = new System.Windows.Forms.Button();
+        btn_cancel = new System.Windows.Forms.Button();
+        colorDialog1 = new System.Windows.Forms.ColorDialog();
+        groupBox1.SuspendLayout();
         base.SuspendLayout();
-        this.txt_var.Location = new System.Drawing.Point(12, 19);
-        this.txt_var.Name = "txt_var";
-        this.txt_var.Size = new System.Drawing.Size(184, 21);
-        this.txt_var.TabIndex = 0;
-        this.btn_view.Location = new System.Drawing.Point(203, 19);
-        this.btn_view.Name = "btn_view";
-        this.btn_view.Size = new System.Drawing.Size(75, 23);
-        this.btn_view.TabIndex = 1;
-        this.btn_view.Text = "....";
-        this.btn_view.UseVisualStyleBackColor = true;
-        this.btn_view.Click += new System.EventHandler(btn_view_Click);
-        this.txt_text.Location = new System.Drawing.Point(96, 24);
-        this.txt_text.Name = "txt_text";
-        this.txt_text.Size = new System.Drawing.Size(148, 21);
-        this.txt_text.TabIndex = 2;
-        this.label5.AutoSize = true;
-        this.label5.Location = new System.Drawing.Point(25, 29);
-        this.label5.Name = "label5";
-        this.label5.Size = new System.Drawing.Size(65, 12);
-        this.label5.TabIndex = 39;
-        this.label5.Text = "显示文本：";
-        this.groupBox1.Controls.Add(this.lbl_txtcolor);
-        this.groupBox1.Controls.Add(this.label1);
-        this.groupBox1.Controls.Add(this.label5);
-        this.groupBox1.Controls.Add(this.txt_text);
-        this.groupBox1.Location = new System.Drawing.Point(12, 48);
-        this.groupBox1.Name = "groupBox1";
-        this.groupBox1.Size = new System.Drawing.Size(266, 92);
-        this.groupBox1.TabIndex = 41;
-        this.groupBox1.TabStop = false;
-        this.groupBox1.Text = "设置";
-        this.lbl_txtcolor.AutoSize = true;
-        this.lbl_txtcolor.BackColor = System.Drawing.Color.Black;
-        this.lbl_txtcolor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-        this.lbl_txtcolor.Location = new System.Drawing.Point(96, 64);
-        this.lbl_txtcolor.Name = "lbl_txtcolor";
-        this.lbl_txtcolor.Size = new System.Drawing.Size(67, 14);
-        this.lbl_txtcolor.TabIndex = 3;
-        this.lbl_txtcolor.Text = "          ";
-        this.lbl_txtcolor.Click += new System.EventHandler(lbl_txtcolor_Click);
-        this.label1.AutoSize = true;
-        this.label1.Location = new System.Drawing.Point(25, 64);
-        this.label1.Name = "label1";
-        this.label1.Size = new System.Drawing.Size(65, 12);
-        this.label1.TabIndex = 41;
-        this.label1.Text = "文字颜色：";
-        this.btn_OK.Location = new System.Drawing.Point(121, 155);
-        this.btn_OK.Name = "btn_OK";
-        this.btn_OK.Size = new System.Drawing.Size(75, 23);
-        this.btn_OK.TabIndex = 4;
-        this.btn_OK.Text = "确定";
-        this.btn_OK.UseVisualStyleBackColor = true;
-        this.btn_OK.Click += new System.EventHandler(btn_OK_Click);
-        this.btn_cancel.Location = new System.Drawing.Point(203, 154);
-        this.btn_cancel.Name = "btn_cancel";
-        this.btn_cancel.Size = new System.Drawing.Size(75, 23);
-        this.btn_cancel.TabIndex = 5;
-        this.btn_cancel.Text = "取消";
-        this.btn_cancel.UseVisualStyleBackColor = true;
-        this.btn_cancel.Click += new System.EventHandler(btn_cancel_Click);
+        txt_var.Location = new System.Drawing.Point(12, 19);
+        txt_var.Name = "txt_var";
+        txt_var.Size = new System.Drawing.Size(184, 21);
+        txt_var.TabIndex = 0;
+        btn_view.Location = new System.Drawing.Point(203, 19);
+        btn_view.Name = "btn_view";
+        btn_view.Size = new System.Drawing.Size(75, 23);
+        btn_view.TabIndex = 1;
+        btn_view.Text = "....";
+        btn_view.UseVisualStyleBackColor = true;
+        btn_view.Click += new System.EventHandler(btn_view_Click);
+        txt_text.Location = new System.Drawing.Point(96, 24);
+        txt_text.Name = "txt_text";
+        txt_text.Size = new System.Drawing.Size(148, 21);
+        txt_text.TabIndex = 2;
+        label5.AutoSize = true;
+        label5.Location = new System.Drawing.Point(25, 29);
+        label5.Name = "label5";
+        label5.Size = new System.Drawing.Size(65, 12);
+        label5.TabIndex = 39;
+        label5.Text = "显示文本：";
+        groupBox1.Controls.Add(lbl_txtcolor);
+        groupBox1.Controls.Add(label1);
+        groupBox1.Controls.Add(label5);
+        groupBox1.Controls.Add(txt_text);
+        groupBox1.Location = new System.Drawing.Point(12, 48);
+        groupBox1.Name = "groupBox1";
+        groupBox1.Size = new System.Drawing.Size(266, 92);
+        groupBox1.TabIndex = 41;
+        groupBox1.TabStop = false;
+        groupBox1.Text = "设置";
+        lbl_txtcolor.AutoSize = true;
+        lbl_txtcolor.BackColor = System.Drawing.Color.Black;
+        lbl_txtcolor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        lbl_txtcolor.Location = new System.Drawing.Point(96, 64);
+        lbl_txtcolor.Name = "lbl_txtcolor";
+        lbl_txtcolor.Size = new System.Drawing.Size(67, 14);
+        lbl_txtcolor.TabIndex = 3;
+        lbl_txtcolor.Text = "          ";
+        lbl_txtcolor.Click += new System.EventHandler(lbl_txtcolor_Click);
+        label1.AutoSize = true;
+        label1.Location = new System.Drawing.Point(25, 64);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(65, 12);
+        label1.TabIndex = 41;
+        label1.Text = "文字颜色：";
+        btn_OK.Location = new System.Drawing.Point(121, 155);
+        btn_OK.Name = "btn_OK";
+        btn_OK.Size = new System.Drawing.Size(75, 23);
+        btn_OK.TabIndex = 4;
+        btn_OK.Text = "确定";
+        btn_OK.UseVisualStyleBackColor = true;
+        btn_OK.Click += new System.EventHandler(btn_OK_Click);
+        btn_cancel.Location = new System.Drawing.Point(203, 154);
+        btn_cancel.Name = "btn_cancel";
+        btn_cancel.Size = new System.Drawing.Size(75, 23);
+        btn_cancel.TabIndex = 5;
+        btn_cancel.Text = "取消";
+        btn_cancel.UseVisualStyleBackColor = true;
+        btn_cancel.Click += new System.EventHandler(btn_cancel_Click);
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         base.ClientSize = new System.Drawing.Size(292, 191);
-        base.Controls.Add(this.btn_OK);
-        base.Controls.Add(this.btn_cancel);
-        base.Controls.Add(this.groupBox1);
-        base.Controls.Add(this.txt_var);
-        base.Controls.Add(this.btn_view);
+        base.Controls.Add(btn_OK);
+        base.Controls.Add(btn_cancel);
+        base.Controls.Add(groupBox1);
+        base.Controls.Add(txt_var);
+        base.Controls.Add(btn_view);
         base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
         base.MaximizeBox = false;
         base.MinimizeBox = false;
         base.Name = "BtnSet3";
-        this.Text = "按钮设置";
+        Text = "按钮设置";
         base.Load += new System.EventHandler(BtnSet3_Load);
-        this.groupBox1.ResumeLayout(false);
-        this.groupBox1.PerformLayout();
+        groupBox1.ResumeLayout(false);
+        groupBox1.PerformLayout();
         base.ResumeLayout(false);
         base.PerformLayout();
     }

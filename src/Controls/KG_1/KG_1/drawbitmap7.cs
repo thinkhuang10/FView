@@ -313,10 +313,7 @@ public class drawbitmap7 : CPixieControl
         {
             if (this.value != value)
             {
-                if (this.Value1Changed != null)
-                {
-                    this.Value1Changed(this, null);
-                }
+                Value1Changed?.Invoke(this, null);
                 NeedRefresh = true;
                 this.value = value;
             }
@@ -337,10 +334,7 @@ public class drawbitmap7 : CPixieControl
         {
             if (value2 != value)
             {
-                if (this.Value2Changed != null)
-                {
-                    this.Value2Changed(this, null);
-                }
+                Value2Changed?.Invoke(this, null);
                 NeedRefresh = true;
                 value2 = value;
             }
@@ -361,10 +355,7 @@ public class drawbitmap7 : CPixieControl
         {
             if (value3 != value)
             {
-                if (this.Value3Changed != null)
-                {
-                    this.Value3Changed(this, null);
-                }
+                Value3Changed?.Invoke(this, null);
                 NeedRefresh = true;
                 value3 = value;
             }
@@ -385,10 +376,7 @@ public class drawbitmap7 : CPixieControl
         {
             if (value4 != value)
             {
-                if (this.Value4Changed != null)
-                {
-                    this.Value4Changed(this, null);
-                }
+                Value4Changed?.Invoke(this, null);
                 NeedRefresh = true;
                 value4 = value;
             }

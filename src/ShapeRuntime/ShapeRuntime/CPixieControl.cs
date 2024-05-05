@@ -229,18 +229,18 @@ public class CPixieControl : CShape
 
     public string GetVarNames()
     {
-        if (this.OnGetVarTable != null)
+        if (OnGetVarTable != null)
         {
-            return this.OnGetVarTable("");
+            return OnGetVarTable("");
         }
         return null;
     }
 
     public bool ValidateVarName(string varName)
     {
-        if (this.ValidateVar != null)
+        if (ValidateVar != null)
         {
-            return this.ValidateVar(varName);
+            return ValidateVar(varName);
         }
         return false;
     }
@@ -255,10 +255,7 @@ public class CPixieControl : CShape
         if (v == 0)
         {
             VMirror = !VMirror;
-            if (_b[0] != null)
-            {
-                _b[0].RotateFlip(RotateFlipType.RotateNoneFlipX);
-            }
+            _b[0]?.RotateFlip(RotateFlipType.RotateNoneFlipX);
             RotateAtPoint.X = pointF.X * 2f - RotateAtPoint.X;
             RotateAngel = 0f - RotateAngel;
             TranslateMatrix.Reset();
@@ -267,10 +264,7 @@ public class CPixieControl : CShape
         if (v == 1)
         {
             HMirror = !HMirror;
-            if (_b[0] != null)
-            {
-                _b[0].RotateFlip(RotateFlipType.Rotate180FlipX);
-            }
+            _b[0]?.RotateFlip(RotateFlipType.Rotate180FlipX);
             RotateAtPoint.Y = pointF.Y * 2f - RotateAtPoint.Y;
             RotateAngel = 0f - RotateAngel;
             TranslateMatrix.Reset();
@@ -404,27 +398,24 @@ public class CPixieControl : CShape
         {
             return null;
         }
-        if (this.GetValueEvent != null)
+        if (GetValueEvent != null)
         {
-            return this.GetValueEvent(name);
+            return GetValueEvent(name);
         }
         return null;
     }
 
     public void SetValue(string name, object value)
     {
-        if (isRunning && this.SetValueEvent != null)
+        if (isRunning && SetValueEvent != null)
         {
-            this.SetValueEvent(name, value);
+            SetValueEvent(name, value);
         }
     }
 
     public void FinishRefresh(Bitmap b)
     {
-        if (_b[0] != null)
-        {
-            _b[0].Dispose();
-        }
+        _b[0]?.Dispose();
         _b[0] = b;
         if (VMirror)
         {
@@ -477,17 +468,17 @@ public class CPixieControl : CShape
 
     public void clearEvent()
     {
-        this.OnGetVarTable = null;
-        this.ValidateVar = null;
+        OnGetVarTable = null;
+        ValidateVar = null;
     }
 
     public void backupEvent()
     {
         evdata = new object[2];
-        evdata[0] = this.OnGetVarTable;
-        evdata[1] = this.ValidateVar;
-        this.OnGetVarTable = null;
-        this.ValidateVar = null;
+        evdata[0] = OnGetVarTable;
+        evdata[1] = ValidateVar;
+        OnGetVarTable = null;
+        ValidateVar = null;
     }
 
     public override void BeforeSaveMe()
@@ -500,8 +491,8 @@ public class CPixieControl : CShape
     {
         if (evdata != null && evdata.Length >= 2)
         {
-            this.OnGetVarTable = (ShapeRuntimeGetVarTable)evdata[0];
-            this.ValidateVar = (ValidateVarName)evdata[1];
+            OnGetVarTable = (ShapeRuntimeGetVarTable)evdata[0];
+            ValidateVar = (ValidateVarName)evdata[1];
             evdata[0] = null;
             evdata[1] = null;
         }
@@ -547,8 +538,8 @@ public class CPixieControl : CShape
         cPixieControl._Brush = (Brush)_Brush.Clone();
         cPixieControl.type = this.type;
         cPixieControl._b = (Bitmap[])_b.Clone();
-        cPixieControl.OnGetVarTable += this.OnGetVarTable;
-        cPixieControl.ValidateVar += this.ValidateVar;
+        cPixieControl.OnGetVarTable += OnGetVarTable;
+        cPixieControl.ValidateVar += ValidateVar;
         cPixieControl.AfterLoadMe();
         return cPixieControl;
     }

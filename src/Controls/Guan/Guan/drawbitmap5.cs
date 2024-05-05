@@ -374,9 +374,9 @@ public class drawbitmap5 : CPixieControl
                 }
                 else if (Value > high)
                 {
-                    if (!highalertflag && this.HighAlert != null)
+                    if (!highalertflag && HighAlert != null)
                     {
-                        this.HighAlert(this, null);
+                        HighAlert(this, null);
                         highalertflag = true;
                     }
                     PointF point2 = new(52 * _width / 170, 166 * _height / 210);
@@ -387,9 +387,9 @@ public class drawbitmap5 : CPixieControl
                 }
                 else if (Value < low)
                 {
-                    if (!lowalertflag && this.LowAlert != null)
+                    if (!lowalertflag && LowAlert != null)
                     {
-                        this.LowAlert(this, null);
+                        LowAlert(this, null);
                         lowalertflag = true;
                     }
                     PointF point3 = new(52 * _width / 170, 166 * _height / 210);

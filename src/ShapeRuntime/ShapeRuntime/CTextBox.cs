@@ -91,10 +91,7 @@ public class CTextBox : TextBox, IDCCEControl, IControlShape
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -426,18 +423,15 @@ public class CTextBox : TextBox, IDCCEControl, IControlShape
 
     public event EventHandler TextChange;
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     public event EventHandler IDChanged;
 
     private void CTextBox_TextChanged(object sender, EventArgs e)
     {
-        if (this.TextChange != null)
-        {
-            this.TextChange(sender, e);
-        }
+        TextChange?.Invoke(sender, e);
     }
 
     public string makeStyle()
@@ -452,9 +446,9 @@ public class CTextBox : TextBox, IDCCEControl, IControlShape
         StringBuilder stringBuilder = new();
         ChangeEventScript(stringBuilder);
         bool flag = false;
-        if (this.requestEventBindDict != null)
+        if (RequestEventBindDict != null)
         {
-            Dictionary<string, List<EventSetItem>> dictionary = this.requestEventBindDict();
+            Dictionary<string, List<EventSetItem>> dictionary = RequestEventBindDict();
             if (dictionary != null)
             {
                 foreach (string key in dictionary.Keys)

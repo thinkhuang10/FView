@@ -260,10 +260,7 @@ public class drawbitmap2 : CPixieControl
     {
         try
         {
-            if (this.Click != null)
-            {
-                this.Click(this, null);
-            }
+            Click?.Invoke(this, null);
             mousedownflag = true;
             if ((float)e.Y < Math.Abs(Height) * 0.5f)
             {

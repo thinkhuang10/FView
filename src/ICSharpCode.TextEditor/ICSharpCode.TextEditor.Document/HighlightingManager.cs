@@ -165,9 +165,6 @@ public class HighlightingManager
 
     protected virtual void OnReloadSyntaxHighlighting(EventArgs e)
     {
-        if (this.ReloadSyntaxHighlighting != null)
-        {
-            this.ReloadSyntaxHighlighting(this, e);
-        }
+        ReloadSyntaxHighlighting?.Invoke(this, e);
     }
 }

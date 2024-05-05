@@ -17,9 +17,9 @@ namespace ShapeRuntime;
 [ComVisible(true)]
 public class CEllipse : CShape
 {
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     protected CEllipse(SerializationInfo info, StreamingContext context)
         : base(info, context)
@@ -168,10 +168,7 @@ public class CEllipse : CShape
             graphicsPath.AddPath(item, connect: false);
         }
         graphicsPath.Transform(TranslateMatrix);
-        if (swapgp != null)
-        {
-            swapgp.Dispose();
-        }
+        swapgp?.Dispose();
         swapgp = graphicsPath;
         needRefreshShape = false;
         list.Add(graphicsPath);

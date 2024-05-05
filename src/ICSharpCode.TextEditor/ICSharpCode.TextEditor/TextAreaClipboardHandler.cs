@@ -253,9 +253,6 @@ public class TextAreaClipboardHandler
 
     protected virtual void OnCopyText(CopyTextEventArgs e)
     {
-        if (this.CopyText != null)
-        {
-            this.CopyText(this, e);
-        }
+        CopyText?.Invoke(this, e);
     }
 }

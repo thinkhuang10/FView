@@ -50,10 +50,7 @@ public class LedAlarmControl : UserControl, IDCCEControl, IControlShape
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -592,7 +589,7 @@ public class LedAlarmControl : UserControl, IDCCEControl, IControlShape
             string text = "";
             try
             {
-                text = this.GetValueEvent("[" + saveData.strVar + "]").ToString();
+                text = GetValueEvent("[" + saveData.strVar + "]").ToString();
             }
             catch
             {
@@ -614,7 +611,7 @@ public class LedAlarmControl : UserControl, IDCCEControl, IControlShape
             double num = 0.0;
             try
             {
-                num = Convert.ToDouble(this.GetValueEvent("[" + saveData.strVar + "]"));
+                num = Convert.ToDouble(GetValueEvent("[" + saveData.strVar + "]"));
             }
             catch
             {
@@ -656,7 +653,7 @@ public class LedAlarmControl : UserControl, IDCCEControl, IControlShape
             string text = "";
             try
             {
-                text = this.GetValueEvent("[" + saveData.strVar + "]").ToString();
+                text = GetValueEvent("[" + saveData.strVar + "]").ToString();
             }
             catch
             {
@@ -678,7 +675,7 @@ public class LedAlarmControl : UserControl, IDCCEControl, IControlShape
             double num = 0.0;
             try
             {
-                num = Convert.ToDouble(this.GetValueEvent("[" + saveData.strVar + "]"));
+                num = Convert.ToDouble(GetValueEvent("[" + saveData.strVar + "]"));
             }
             catch
             {
@@ -722,7 +719,7 @@ public class LedAlarmControl : UserControl, IDCCEControl, IControlShape
         if (!isRuning)
         {
             LedAlarmSetForm ledAlarmSetForm = new(saveData);
-            ledAlarmSetForm.GetVarTableEvent += this.GetVarTableEvent;
+            ledAlarmSetForm.GetVarTableEvent += GetVarTableEvent;
             ledAlarmSetForm.ShowDialog();
         }
     }
@@ -748,10 +745,10 @@ public class LedAlarmControl : UserControl, IDCCEControl, IControlShape
 
     private void InitializeComponent()
     {
-        this.timer = new System.Windows.Forms.Timer();
+        timer = new System.Windows.Forms.Timer();
         base.SuspendLayout();
-        this.timer.Interval = 1000;
-        this.timer.Tick += new System.EventHandler(timer_Tick);
+        timer.Interval = 1000;
+        timer.Tick += new System.EventHandler(timer_Tick);
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         base.Name = "LedAlarmControl";

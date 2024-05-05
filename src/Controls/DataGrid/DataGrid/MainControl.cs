@@ -217,34 +217,34 @@ public class MainControl : UserControl, IDCCEControl
 
     private void InitializeComponent()
     {
-        this.dataGridView = new System.Windows.Forms.DataGridView();
-        ((System.ComponentModel.ISupportInitialize)this.dataGridView).BeginInit();
+        dataGridView = new System.Windows.Forms.DataGridView();
+        ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
         base.SuspendLayout();
-        this.dataGridView.AllowUserToAddRows = false;
-        this.dataGridView.AllowUserToDeleteRows = false;
-        this.dataGridView.AllowUserToOrderColumns = true;
-        this.dataGridView.AllowUserToResizeRows = false;
-        this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        this.dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.dataGridView.EnableHeadersVisualStyles = false;
-        this.dataGridView.Location = new System.Drawing.Point(0, 0);
-        this.dataGridView.Name = "dataGridView";
-        this.dataGridView.RowHeadersVisible = false;
-        this.dataGridView.RowTemplate.Height = 23;
-        this.dataGridView.Size = new System.Drawing.Size(630, 340);
-        this.dataGridView.TabIndex = 0;
-        this.dataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(dataGridView_CellBeginEdit);
-        this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView_CellClick);
-        this.dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView_CellEndEdit);
-        this.dataGridView.KeyUp += new System.Windows.Forms.KeyEventHandler(dataGridView_KeyUp);
-        this.dataGridView.MouseClick += new System.Windows.Forms.MouseEventHandler(dataGridView_MouseClick);
+        dataGridView.AllowUserToAddRows = false;
+        dataGridView.AllowUserToDeleteRows = false;
+        dataGridView.AllowUserToOrderColumns = true;
+        dataGridView.AllowUserToResizeRows = false;
+        dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        dataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+        dataGridView.EnableHeadersVisualStyles = false;
+        dataGridView.Location = new System.Drawing.Point(0, 0);
+        dataGridView.Name = "dataGridView";
+        dataGridView.RowHeadersVisible = false;
+        dataGridView.RowTemplate.Height = 23;
+        dataGridView.Size = new System.Drawing.Size(630, 340);
+        dataGridView.TabIndex = 0;
+        dataGridView.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(dataGridView_CellBeginEdit);
+        dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView_CellClick);
+        dataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView_CellEndEdit);
+        dataGridView.KeyUp += new System.Windows.Forms.KeyEventHandler(dataGridView_KeyUp);
+        dataGridView.MouseClick += new System.Windows.Forms.MouseEventHandler(dataGridView_MouseClick);
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        base.Controls.Add(this.dataGridView);
+        base.Controls.Add(dataGridView);
         base.Name = "MainControl";
         base.Size = new System.Drawing.Size(630, 340);
         base.Load += new System.EventHandler(MainControl_Load);
-        ((System.ComponentModel.ISupportInitialize)this.dataGridView).EndInit();
+        ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
         base.ResumeLayout(false);
     }
 }

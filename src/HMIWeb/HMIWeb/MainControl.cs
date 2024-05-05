@@ -63,8 +63,6 @@ public class MainControl : UserControl, IMessageFilter
 
     public object[] Varlist;
 
-    private readonly List<DataFile> dflist = new();
-
     private readonly Dictionary<string, DataFile> SD = new();
 
     private readonly Dictionary<string, object> SO = new();
@@ -140,10 +138,6 @@ public class MainControl : UserControl, IMessageFilter
     private bool inresize;
 
     public bool dead;
-
-    private Size oldsize;
-
-    private int LastPageHeight;
 
     private bool m_NotVisibleChange;
 
@@ -353,7 +347,7 @@ public class MainControl : UserControl, IMessageFilter
 
     public void KGSC(CShape s)
     {
-        if (s is CString)
+        if (s is CString @string)
         {
             bool flag = false;
             try
@@ -365,15 +359,15 @@ public class MainControl : UserControl, IMessageFilter
             }
             if (flag && s.dotishion != "")
             {
-                ((CString)s).DisplayStr = s.dotishion;
+                @string.DisplayStr = s.dotishion;
             }
             else if (!flag && s.dotishioff != "")
             {
-                ((CString)s).DisplayStr = s.dotishioff;
+                @string.DisplayStr = s.dotishioff;
             }
             else
             {
-                ((CString)s).DisplayStr = flag.ToString();
+                @string.DisplayStr = flag.ToString();
             }
         }
     }
@@ -996,7 +990,7 @@ public class MainControl : UserControl, IMessageFilter
         //}
     }
 
-    public void close()
+    public void Close()
     {
         try
         {
@@ -1062,7 +1056,7 @@ public class MainControl : UserControl, IMessageFilter
         Refresh();
     }
 
-    public void seturl(string u)
+    public void Seturl(string u)
     {
         url = u;
         absoluteUrl = u.Substring(0, u.LastIndexOf('/') + 1);
@@ -1205,17 +1199,17 @@ public class MainControl : UserControl, IMessageFilter
                 }
                 for (int j = 0; j < dataFile2.ListAllShowCShape.Count; j++)
                 {
-                    if (dataFile2.ListAllShowCShape[j] is CControl)
+                    if (dataFile2.ListAllShowCShape[j] is CControl control)
                     {
                         try
                         {
-                            ((CControl)dataFile2.ListAllShowCShape[j]).Width = dataFile2.ListAllShowCShape[j].DefaultSize.Width * PageZoomX * zoomX;
-                            ((CControl)dataFile2.ListAllShowCShape[j]).Height = dataFile2.ListAllShowCShape[j].DefaultSize.Height * PageZoomY * zoomY;
-                            ((CControl)dataFile2.ListAllShowCShape[j]).X = Convert.ToInt32((float)dataFile2.ListAllShowCShape[j].DefaultLocaion.X * PageZoomX * zoomX);
-                            ((CControl)dataFile2.ListAllShowCShape[j]).Y = Convert.ToInt32((float)dataFile2.ListAllShowCShape[j].DefaultLocaion.Y * PageZoomY * zoomY);
-                            float num = ((CControl)dataFile2.ListAllShowCShape[j]).DefaultFontSize * ((PageZoomX * zoomX < PageZoomY * zoomY) ? (PageZoomX * zoomX) : (PageZoomY * zoomY));
+                            control.Width = dataFile2.ListAllShowCShape[j].DefaultSize.Width * PageZoomX * zoomX;
+                            control.Height = dataFile2.ListAllShowCShape[j].DefaultSize.Height * PageZoomY * zoomY;
+                            control.X = Convert.ToInt32((float)dataFile2.ListAllShowCShape[j].DefaultLocaion.X * PageZoomX * zoomX);
+                            control.Y = Convert.ToInt32((float)dataFile2.ListAllShowCShape[j].DefaultLocaion.Y * PageZoomY * zoomY);
+                            float num = control.DefaultFontSize * ((PageZoomX * zoomX < PageZoomY * zoomY) ? (PageZoomX * zoomX) : (PageZoomY * zoomY));
                             num = ((num < 8.25f) ? 8.25f : num);
-                            ((CControl)dataFile2.ListAllShowCShape[j])._c.Font = new Font(((CControl)dataFile2.ListAllShowCShape[j])._c.Font.Name, num);
+                            control._c.Font = new Font(control._c.Font.Name, num);
                         }
                         catch (Exception)
                         {
@@ -1313,17 +1307,17 @@ public class MainControl : UserControl, IMessageFilter
             }
             for (int k = 0; k < dataFile.ListAllShowCShape.Count; k++)
             {
-                if (dataFile.ListAllShowCShape[k] is CControl)
+                if (dataFile.ListAllShowCShape[k] is CControl control)
                 {
                     try
                     {
-                        ((CControl)dataFile.ListAllShowCShape[k]).Width = dataFile.ListAllShowCShape[k].DefaultSize.Width * zoomX;
-                        ((CControl)dataFile.ListAllShowCShape[k]).Height = dataFile.ListAllShowCShape[k].DefaultSize.Height * zoomY;
-                        ((CControl)dataFile.ListAllShowCShape[k]).X = Convert.ToInt32((float)dataFile.ListAllShowCShape[k].DefaultLocaion.X * zoomX);
-                        ((CControl)dataFile.ListAllShowCShape[k]).Y = Convert.ToInt32((float)dataFile.ListAllShowCShape[k].DefaultLocaion.Y * zoomY);
-                        float num3 = ((CControl)dataFile.ListAllShowCShape[k]).DefaultFontSize * ((zoomX < zoomY) ? zoomX : zoomY);
+                        control.Width = dataFile.ListAllShowCShape[k].DefaultSize.Width * zoomX;
+                        control.Height = dataFile.ListAllShowCShape[k].DefaultSize.Height * zoomY;
+                        control.X = Convert.ToInt32((float)dataFile.ListAllShowCShape[k].DefaultLocaion.X * zoomX);
+                        control.Y = Convert.ToInt32((float)dataFile.ListAllShowCShape[k].DefaultLocaion.Y * zoomY);
+                        float num3 = control.DefaultFontSize * ((zoomX < zoomY) ? zoomX : zoomY);
                         num3 = ((num3 < 8.25f) ? 8.25f : num3);
-                        ((CControl)dataFile.ListAllShowCShape[k])._c.Font = new Font(((CControl)dataFile.ListAllShowCShape[k])._c.Font.Name, num3);
+                        control._c.Font = new Font(control._c.Font.Name, num3);
                     }
                     catch (Exception)
                     {
@@ -1422,10 +1416,7 @@ public class MainControl : UserControl, IMessageFilter
 
     private string UserControl1_GetVarTableEvent(string controlname)
     {
-        if (varForm == null)
-        {
-            varForm = new VarTable(dhp, xmldoc, controlname);
-        }
+        varForm ??= new VarTable(dhp, xmldoc, controlname);
         if (varForm.VarTableType != controlname)
         {
             varForm.VarTableType = controlname;
@@ -1479,7 +1470,7 @@ public class MainControl : UserControl, IMessageFilter
         return GetValue(name);
     }
 
-    private void timer2Delay_Tick(object sender, EventArgs e)
+    private void Timer2Delay_Tick(object sender, EventArgs e)
     {
         if (nDelayTick <= 0)
         {
@@ -1497,10 +1488,7 @@ public class MainControl : UserControl, IMessageFilter
             {
                 SetPageVisible(startVisiblePage, Visible: true);
             }
-            if (this.InitOK != null)
-            {
-                this.InitOK(null, null);
-            }
+            InitOK?.Invoke(null, null);
             bOnInit = false;
             bInitOK = true;
         }
@@ -1512,7 +1500,7 @@ public class MainControl : UserControl, IMessageFilter
         }
     }
 
-    private void timer_Tick(object sender, EventArgs e)
+    private void Timer_Tick(object sender, EventArgs e)
     {
         try
         {
@@ -1585,7 +1573,7 @@ public class MainControl : UserControl, IMessageFilter
                     {
                         control.RefreshControl();
                     }
-                    else if (item is CRectangle && ((CRectangle)item).ld)
+                    else if (item is CRectangle rectangle && rectangle.ld)
                     {
                         LD(item);
                     }
@@ -1609,7 +1597,7 @@ public class MainControl : UserControl, IMessageFilter
         }
     }
 
-    private void comtimer_Tick(object sender, EventArgs e)
+    private void Comtimer_Tick(object sender, EventArgs e)
     {
         lock (ids)
         {
@@ -1629,7 +1617,7 @@ public class MainControl : UserControl, IMessageFilter
         _event.Set();
     }
 
-    private void systimer_Tick(object sender, EventArgs e)
+    private void Systimer_Tick(object sender, EventArgs e)
     {
         try
         {
@@ -1670,7 +1658,7 @@ public class MainControl : UserControl, IMessageFilter
         Mouse = new MouseEventArgs(e.Button, e.Clicks, num, num2, e.Delta);
         Mousedownx = num;
         Mousedowny = num2;
-        //object[] array = new object[2] { sender, e };
+
         Focus = null;
         List<CShape> listAllShowCShape = SD[((Control)sender).Name].ListAllShowCShape;
         for (int num5 = listAllShowCShape.Count - 1; num5 >= 0; num5--)
@@ -1678,10 +1666,10 @@ public class MainControl : UserControl, IMessageFilter
             CShape cShape = listAllShowCShape[num5];
             if (cShape.Visible && cShape.MouseOnMe(new Point(num, num2)))
             {
-                if (cShape is CPixieControl)
+                if (cShape is CPixieControl control)
                 {
                     MouseEventArgs e2 = new(e.Button, e.Clicks, Convert.ToInt32(Mousedownx), Convert.ToInt32(Mousedowny), e.Delta);
-                    ((CPixieControl)cShape).OnMouseDown(sender, e2);
+                    control.OnMouseDown(sender, e2);
                 }
                 if (e.Button == MouseButtons.Left && (cShape.sbsj || cShape.ai || cShape.di || cShape.zfcsr || cShape.ymqh || cShape.sptz || cShape.cztz || cShape.newtable || cShape.dbselect || cShape.dbinsert || cShape.dbupdate || cShape.dbdelete || cShape.dbmultoperation))
                 {
@@ -2058,7 +2046,7 @@ public class MainControl : UserControl, IMessageFilter
                 {
                     m_VisibleChangeIn = true;
                     ResetScriptEngine((ScriptEngine)((Control)sender).Tag);
-                    timer_Tick(null, null);
+                    Timer_Tick(null, null);
                     ((ScriptEngine)((Control)sender).Tag).ExecuteStatement(dataFile._pagedzqdLogic);
                     m_VisibleChangeIn = false;
                 }
@@ -2116,7 +2104,7 @@ public class MainControl : UserControl, IMessageFilter
         timer.Enabled = true;
     }
 
-    public void setvalue(int id, object value)
+    public void SetClientValue(int id, object value)
     {
         //client.setvalue(id, value);
     }
@@ -2326,7 +2314,7 @@ public class MainControl : UserControl, IMessageFilter
                 case 0:
                     if (varTableItem.Id <= MaxID)
                     {
-                        setvalue(varTableItem.Id, Convert.ToBoolean(val));
+                        SetClientValue(varTableItem.Id, Convert.ToBoolean(val));
                         GetValue(str);
                     }
                     else if (Varlist[DicIO[str].Id] == null)
@@ -2347,7 +2335,7 @@ public class MainControl : UserControl, IMessageFilter
                 case 1:
                     if (varTableItem.Id <= MaxID)
                     {
-                        setvalue(varTableItem.Id, Convert.ToByte(val));
+                        SetClientValue(varTableItem.Id, Convert.ToByte(val));
                         GetValue(str);
                     }
                     else if (Varlist[DicIO[str].Id] == null)
@@ -2368,7 +2356,7 @@ public class MainControl : UserControl, IMessageFilter
                 case 2:
                     if (varTableItem.Id <= MaxID)
                     {
-                        setvalue(varTableItem.Id, Convert.ToSByte(val));
+                        SetClientValue(varTableItem.Id, Convert.ToSByte(val));
                         GetValue(str);
                     }
                     else if (Varlist[DicIO[str].Id] == null)
@@ -2389,7 +2377,7 @@ public class MainControl : UserControl, IMessageFilter
                 case 3:
                     if (varTableItem.Id <= MaxID)
                     {
-                        setvalue(varTableItem.Id, Convert.ToInt16(val));
+                        SetClientValue(varTableItem.Id, Convert.ToInt16(val));
                         GetValue(str);
                     }
                     else if (Varlist[DicIO[str].Id] == null)
@@ -2410,7 +2398,7 @@ public class MainControl : UserControl, IMessageFilter
                 case 4:
                     if (varTableItem.Id <= MaxID)
                     {
-                        setvalue(varTableItem.Id, Convert.ToUInt16(val));
+                        SetClientValue(varTableItem.Id, Convert.ToUInt16(val));
                         GetValue(str);
                     }
                     else if (Varlist[DicIO[str].Id] == null)
@@ -2431,7 +2419,7 @@ public class MainControl : UserControl, IMessageFilter
                 case 5:
                     if (varTableItem.Id <= MaxID)
                     {
-                        setvalue(varTableItem.Id, Convert.ToInt32(val));
+                        SetClientValue(varTableItem.Id, Convert.ToInt32(val));
                         GetValue(str);
                     }
                     else if (Varlist[DicIO[str].Id] == null)
@@ -2452,7 +2440,7 @@ public class MainControl : UserControl, IMessageFilter
                 case 6:
                     if (varTableItem.Id <= MaxID)
                     {
-                        setvalue(varTableItem.Id, Convert.ToUInt32(val));
+                        SetClientValue(varTableItem.Id, Convert.ToUInt32(val));
                         GetValue(str);
                     }
                     else if (Varlist[DicIO[str].Id] == null)
@@ -2473,7 +2461,7 @@ public class MainControl : UserControl, IMessageFilter
                 case 7:
                     if (varTableItem.Id <= MaxID)
                     {
-                        setvalue(varTableItem.Id, Convert.ToSingle(val));
+                        SetClientValue(varTableItem.Id, Convert.ToSingle(val));
                         GetValue(str);
                     }
                     else if (Varlist[DicIO[str].Id] == null)
@@ -2494,7 +2482,7 @@ public class MainControl : UserControl, IMessageFilter
                 case 8:
                     if (varTableItem.Id <= MaxID)
                     {
-                        setvalue(varTableItem.Id, Convert.ToDouble(val));
+                        SetClientValue(varTableItem.Id, Convert.ToDouble(val));
                         GetValue(str);
                     }
                     else if (Varlist[DicIO[str].Id] == null)
@@ -2515,7 +2503,7 @@ public class MainControl : UserControl, IMessageFilter
                 case 9:
                     if (varTableItem.Id <= MaxID)
                     {
-                        setvalue(varTableItem.Id, val.ToString());
+                        SetClientValue(varTableItem.Id, val.ToString());
                         GetValue(str);
                     }
                     else if (Varlist[DicIO[str].Id] == null)
@@ -2536,7 +2524,7 @@ public class MainControl : UserControl, IMessageFilter
                 case 10:
                     if (varTableItem.Id <= MaxID)
                     {
-                        setvalue(varTableItem.Id, Convert.ToInt32(val));
+                        SetClientValue(varTableItem.Id, Convert.ToInt32(val));
                         GetValue(str);
                     }
                     else if (Varlist[DicIO[str].Id] == null)
@@ -2557,7 +2545,7 @@ public class MainControl : UserControl, IMessageFilter
                 case 11:
                     if (varTableItem.Id <= MaxID)
                     {
-                        setvalue(varTableItem.Id, Convert.ToInt32(val));
+                        SetClientValue(varTableItem.Id, Convert.ToInt32(val));
                         GetValue(str);
                     }
                     else if (Varlist[DicIO[str].Id] == null)
@@ -2578,7 +2566,7 @@ public class MainControl : UserControl, IMessageFilter
                 case 1024:
                     if (varTableItem.Id <= MaxID)
                     {
-                        setvalue(varTableItem.Id, val);
+                        SetClientValue(varTableItem.Id, val);
                         GetValue(str);
                     }
                     else if (Varlist[DicIO[str].Id] == null)
@@ -2718,8 +2706,8 @@ public class MainControl : UserControl, IMessageFilter
         m_ScriptEngine.AddObject("Globle", GlobleObj);
         m_ScriptEngine.AddObject("System", this);
         ResourceManager resourceManager = (ResourceManager)G.GetField("rm").GetValue(null);
-        timer.Tick += timer_Tick;
-        comtimer.Tick += comtimer_Tick;
+        timer.Tick += Timer_Tick;
+        comtimer.Tick += Comtimer_Tick;
         datathread = new Thread(DataWorkThread)
         {
             IsBackground = true
@@ -2742,7 +2730,7 @@ public class MainControl : UserControl, IMessageFilter
             }
             try
             {
-                if (base.Parent is Form)
+                if (Parent is Form)
                 {
                     ((Form)base.Parent).Close();
                 }
@@ -2775,7 +2763,7 @@ public class MainControl : UserControl, IMessageFilter
         base.Name = dhp.projectname;
         BackColor = dhp.ProjectBackColor;
         systimer.Interval = ((dhp.LogicTime < 50) ? 50 : dhp.LogicTime);
-        systimer.Tick += systimer_Tick;
+        systimer.Tick += Systimer_Tick;
         init.Say("加载变量信息..");
         //input = resourceManager.GetObject(dhp.IOfiles, new CultureInfo("")) as byte[];
         //byte[] buffer = ((!dhp.Compress) ? input : Operation.UncompressStream(input));
@@ -2814,10 +2802,7 @@ public class MainControl : UserControl, IMessageFilter
                 Id = num,
                 Name = "[" + projectIO.name + "]"
             };
-            if (projectIO.type == null)
-            {
-                projectIO.type = "1024";
-            }
+            projectIO.type ??= "1024";
             varTableItem2.Type = int.Parse(projectIO.type);
             varTableItem2.Emluator = projectIO.emluator;
             varTableItem2.Cycle = projectIO.T;
@@ -2888,8 +2873,6 @@ public class MainControl : UserControl, IMessageFilter
         //client.VariableAlarmEvent += client_VariableAlarmEvent;
         //client.DeviceAlarmEvent += client_DeviceAlarmEvent;
         base.Resize += MainControl_Resize;
-        oldsize = dhp.ProjectSize;
-        LastPageHeight = oldsize.Height;
         base.Size = dhp.ProjectSize;
         EventInfo event2 = G.GetEvent("SetValueEvent");
         Type eventHandlerType2 = event2.EventHandlerType;
@@ -2966,7 +2949,7 @@ public class MainControl : UserControl, IMessageFilter
             nDelayTick = 0;
         }
         timer2Delay.Interval = 1000;
-        timer2Delay.Tick += timer2Delay_Tick;
+        timer2Delay.Tick += Timer2Delay_Tick;
         timer2Delay.Start();
     }
 
@@ -3259,17 +3242,17 @@ public class MainControl : UserControl, IMessageFilter
             }
             for (int j = 0; j < dataFile.ListAllShowCShape.Count; j++)
             {
-                if (dataFile.ListAllShowCShape[j] is CControl)
+                if (dataFile.ListAllShowCShape[j] is CControl control)
                 {
                     try
                     {
-                        ((CControl)dataFile.ListAllShowCShape[j]).Width = df.ListAllShowCShape[j].DefaultSize.Width * zoomX;
-                        ((CControl)dataFile.ListAllShowCShape[j]).Height = df.ListAllShowCShape[j].DefaultSize.Height * zoomY;
-                        ((CControl)dataFile.ListAllShowCShape[j]).X = Convert.ToInt32((float)df.ListAllShowCShape[j].DefaultLocaion.X * zoomX);
-                        ((CControl)dataFile.ListAllShowCShape[j]).Y = Convert.ToInt32((float)df.ListAllShowCShape[j].DefaultLocaion.Y * zoomY);
-                        float num = ((CControl)dataFile.ListAllShowCShape[j]).DefaultFontSize * ((zoomX < zoomY) ? zoomX : zoomY);
+                        control.Width = df.ListAllShowCShape[j].DefaultSize.Width * zoomX;
+                        control.Height = df.ListAllShowCShape[j].DefaultSize.Height * zoomY;
+                        control.X = Convert.ToInt32((float)df.ListAllShowCShape[j].DefaultLocaion.X * zoomX);
+                        control.Y = Convert.ToInt32((float)df.ListAllShowCShape[j].DefaultLocaion.Y * zoomY);
+                        float num = control.DefaultFontSize * ((zoomX < zoomY) ? zoomX : zoomY);
                         num = ((num < 8.25f) ? 8.25f : num);
-                        ((CControl)dataFile.ListAllShowCShape[j])._c.Font = new Font(((CControl)dataFile.ListAllShowCShape[j])._c.Font.Name, num);
+                        control._c.Font = new Font(control._c.Font.Name, num);
                     }
                     catch (Exception)
                     {
@@ -3280,32 +3263,32 @@ public class MainControl : UserControl, IMessageFilter
         pageNeedResize.Add(df.name);
         foreach (Control control in ((Control)SO[pagename]).Controls)
         {
-            if (control is IDCCEControl)
+            if (control is IDCCEControl control1)
             {
-                ((IDCCEControl)control).GetValueEvent += UserControl1_GetValueEvent;
-                ((IDCCEControl)control).SetValueEvent += UserControl1_SetValueEvent;
+                control1.GetValueEvent += UserControl1_GetValueEvent;
+                control1.SetValueEvent += UserControl1_SetValueEvent;
                 //((IDCCEControl)control).GetDataBaseEvent += UserControl1_GetDataBaseEvent;
-                ((IDCCEControl)control).GetVarTableEvent += UserControl1_GetVarTableEvent;
-                ((IDCCEControl)control).GetSystemItemEvent += MainControl_GetSystemItemEvent;
-                if (control is CButton)
+                control1.GetVarTableEvent += UserControl1_GetVarTableEvent;
+                control1.GetSystemItemEvent += MainControl_GetSystemItemEvent;
+                if (control is CButton button)
                 {
-                    ((CButton)control).Click += UserDefButton_Clicked;
+                    button.Click += UserDefButton_Clicked;
                 }
-                if (control is CDataGridView)
+                if (control is CDataGridView view)
                 {
-                    ((CDataGridView)control).VisibleChanged += UserDefControl_VisibleChanged;
+                    view.VisibleChanged += UserDefControl_VisibleChanged;
                 }
-                ((IDCCEControl)control).isRuning = true;
+                control1.isRuning = true;
             }
         }
         foreach (CShape item in df.ListAllShowCShape)
         {
-            if (item is CPixieControl)
+            if (item is CPixieControl control)
             {
-                ((CPixieControl)item).GetValueEvent += UserControl1_GetValueEvent;
-                ((CPixieControl)item).SetValueEvent += UserControl1_SetValueEvent;
-                ((CPixieControl)item).OnGetVarTable += UserControl1_GetVarTableEvent;
-                ((CPixieControl)item).isRunning = true;
+                control.GetValueEvent += UserControl1_GetValueEvent;
+                control.SetValueEvent += UserControl1_SetValueEvent;
+                control.OnGetVarTable += UserControl1_GetVarTableEvent;
+                control.isRunning = true;
             }
             item.DBOperationOK += OnShapeDBOperationOK;
             item.DBOperationErr += OnShapeDBOperationErr;
@@ -3489,32 +3472,32 @@ public class MainControl : UserControl, IMessageFilter
                         {
                             continue;
                         }
-                        if (item2 is CControl)
+                        if (item2 is CControl control)
                         {
-                            if (((CControl)item2)._c is CLabel || ((CControl)item2)._c is CTextBox || ((CControl)item2)._c is CButton)
+                            if (control._c is CLabel || control._c is CTextBox || control._c is CButton)
                             {
-                                cmd = ((array.Length != 3 || !(array[2] == "Tag")) ? cmd.Replace(item.Value, ((CControl)item2)._c.Text.Replace("'", "''")) : cmd.Replace(item.Value, ((CControl)item2)._c.Tag.ToString().Replace("'", "''")));
+                                cmd = ((array.Length != 3 || !(array[2] == "Tag")) ? cmd.Replace(item.Value, control._c.Text.Replace("'", "''")) : cmd.Replace(item.Value, control._c.Tag.ToString().Replace("'", "''")));
                             }
-                            else if (((CControl)item2)._c is CComboBox)
+                            else if (control._c is CComboBox box2)
                             {
-                                cmd = ((array.Length == 3 && array[2] == "Tag") ? cmd.Replace(item.Value, ((CComboBox)((CControl)item2)._c).SelectedTag.ToString().Replace("'", "''")) : ((array.Length != 3 || !(array[2] == "Text")) ? cmd.Replace(item.Value, ((CComboBox)((CControl)item2)._c).SelectedItem.ToString().Replace("'", "''")) : cmd.Replace(item.Value, ((CComboBox)((CControl)item2)._c).Text.ToString().Replace("'", "''"))));
+                                cmd = ((array.Length == 3 && array[2] == "Tag") ? cmd.Replace(item.Value, box2.SelectedTag.ToString().Replace("'", "''")) : ((array.Length != 3 || !(array[2] == "Text")) ? cmd.Replace(item.Value, box2.SelectedItem.ToString().Replace("'", "''")) : cmd.Replace(item.Value, box2.Text.ToString().Replace("'", "''"))));
                             }
-                            else if (((CControl)item2)._c is CListBox)
+                            else if (control._c is CListBox box1)
                             {
-                                cmd = ((array.Length != 3 || !(array[2] == "Tag")) ? cmd.Replace(item.Value, ((CListBox)((CControl)item2)._c).SelectedItem.ToString().Replace("'", "''")) : cmd.Replace(item.Value, ((CListBox)((CControl)item2)._c).tags[((CListBox)((CControl)item2)._c).SelectedIndex].ToString().Replace("'", "''")));
+                                cmd = ((array.Length != 3 || !(array[2] == "Tag")) ? cmd.Replace(item.Value, box1.SelectedItem.ToString().Replace("'", "''")) : cmd.Replace(item.Value, box1.tags[box1.SelectedIndex].ToString().Replace("'", "''")));
                             }
-                            else if (((CControl)item2)._c is CCheckBox)
+                            else if (control._c is CCheckBox box)
                             {
-                                cmd = ((array.Length == 3 && array[2] == "Tag") ? cmd.Replace(item.Value, ((CCheckBox)((CControl)item2)._c).Tag.ToString().Replace("'", "''")) : ((array.Length != 3 || !(array[2] == "Value")) ? cmd.Replace(item.Value, ((CCheckBox)((CControl)item2)._c).Checked.ToString()) : cmd.Replace(item.Value, ((CCheckBox)((CControl)item2)._c).Checked.ToString())));
+                                cmd = ((array.Length == 3 && array[2] == "Tag") ? cmd.Replace(item.Value, box.Tag.ToString().Replace("'", "''")) : ((array.Length != 3 || !(array[2] == "Value")) ? cmd.Replace(item.Value, box.Checked.ToString()) : cmd.Replace(item.Value, box.Checked.ToString())));
                             }
-                            else if (((CControl)item2)._c is CDateTimePicker)
+                            else if (control._c is CDateTimePicker picker)
                             {
-                                cmd = ((array.Length != 3 || !(array[2] == "Tag")) ? cmd.Replace(item.Value, ((CDateTimePicker)((CControl)item2)._c).Value.ToString().Replace("'", "''")) : cmd.Replace(item.Value, ((CDateTimePicker)((CControl)item2)._c).Tag.ToString().Replace("'", "''")));
+                                cmd = ((array.Length != 3 || !(array[2] == "Tag")) ? cmd.Replace(item.Value, picker.Value.ToString().Replace("'", "''")) : cmd.Replace(item.Value, picker.Tag.ToString().Replace("'", "''")));
                             }
                         }
-                        else if (item2 is CString)
+                        else if (item2 is CString @string)
                         {
-                            cmd = ((array.Length != 3 || !(array[2] == "Tag")) ? cmd.Replace(item.Value, ((CString)item2).DisplayStr.Replace("'", "''")) : cmd.Replace(item.Value, ((CString)item2).Tag.ToString().Replace("'", "''")));
+                            cmd = ((array.Length != 3 || !(array[2] == "Tag")) ? cmd.Replace(item.Value, @string.DisplayStr.Replace("'", "''")) : cmd.Replace(item.Value, @string.Tag.ToString().Replace("'", "''")));
                         }
                         break;
                     }
@@ -3552,129 +3535,129 @@ public class MainControl : UserControl, IMessageFilter
                     {
                         continue;
                     }
-                    if (item is CControl)
+                    if (item is CControl control)
                     {
-                        if (((CControl)item)._c is CDataGridView)
+                        if (control._c is CDataGridView view)
                         {
                             if (array.Length == 3 && array[2] == "Tag")
                             {
-                                int count = ((CDataGridView)((CControl)item)._c).Rows.Count;
+                                int count = view.Rows.Count;
                                 int count2 = ds.Tables[0].Rows.Count;
                                 int num2 = 0;
                                 num2 = ((count >= count2) ? count2 : count);
                                 for (int j = 0; j < num2; j++)
                                 {
-                                    ((CDataGridView)((CControl)item)._c).Rows[j].Tag = ds.Tables[0].Rows[j][num];
+                                    view.Rows[j].Tag = ds.Tables[0].Rows[j][num];
                                 }
                             }
                             else
                             {
-                                ((CDataGridView)((CControl)item)._c).DataSource = ds.Tables[0];
-                                ((CDataGridView)((CControl)item)._c).AutoResizeColumns();
+                                view.DataSource = ds.Tables[0];
+                                view.AutoResizeColumns();
                             }
                         }
-                        else if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Columns.Count > 0 && (((CControl)item)._c is CLabel || ((CControl)item)._c is CTextBox || ((CControl)item)._c is CButton))
+                        else if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Columns.Count > 0 && (control._c is CLabel || control._c is CTextBox || control._c is CButton))
                         {
                             if (array.Length == 3 && array[2] == "Tag")
                             {
-                                ((CControl)item)._c.Tag = ds.Tables[0].Rows[0][num];
+                                control._c.Tag = ds.Tables[0].Rows[0][num];
                             }
                             else
                             {
-                                ((CControl)item)._c.Text = ds.Tables[0].Rows[0][num].ToString();
+                                control._c.Text = ds.Tables[0].Rows[0][num].ToString();
                             }
                         }
-                        else if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Columns.Count > 0 && ((CControl)item)._c is CListBox)
+                        else if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Columns.Count > 0 && control._c is CListBox box1)
                         {
                             if (array.Length == 3 && array[2] == "Tag")
                             {
-                                int count3 = ((CListBox)((CControl)item)._c).tags.Count;
+                                int count3 = box1.tags.Count;
                                 int count4 = ds.Tables[0].Rows.Count;
                                 int num3 = 0;
                                 num3 = ((count3 >= count4) ? count4 : count3);
                                 for (int k = 0; k < num3; k++)
                                 {
-                                    ((CListBox)((CControl)item)._c).tags[k] = ds.Tables[0].Rows[k][num];
+                                    box1.tags[k] = ds.Tables[0].Rows[k][num];
                                 }
                             }
                             else
                             {
-                                ((CListBox)((CControl)item)._c).Items.Clear();
-                                ((CListBox)((CControl)item)._c).tags.Clear();
+                                box1.Items.Clear();
+                                box1.tags.Clear();
                                 for (int l = 0; l < ds.Tables[0].Rows.Count; l++)
                                 {
-                                    ((CListBox)((CControl)item)._c).Items.Add(ds.Tables[0].Rows[l][num]);
-                                    ((CListBox)((CControl)item)._c).tags.Add(ds.Tables[0].Rows[l][num]);
+                                    box1.Items.Add(ds.Tables[0].Rows[l][num]);
+                                    box1.tags.Add(ds.Tables[0].Rows[l][num]);
                                 }
                             }
                         }
-                        else if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Columns.Count > 0 && ((CControl)item)._c is CComboBox)
+                        else if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Columns.Count > 0 && control._c is CComboBox box2)
                         {
                             if (array.Length == 3 && array[2] == "Tag")
                             {
-                                int count5 = ((CComboBox)((CControl)item)._c).Items.Count;
+                                int count5 = box2.Items.Count;
                                 int count6 = ds.Tables[0].Rows.Count;
                                 int num4 = 0;
                                 num4 = ((count5 >= count6) ? count6 : count5);
                                 for (int m = 0; m < num4; m++)
                                 {
-                                    ((CComboBox)((CControl)item)._c).tags[m] = ds.Tables[0].Rows[m][num];
+                                    box2.tags[m] = ds.Tables[0].Rows[m][num];
                                 }
                             }
                             else
                             {
-                                ((CComboBox)((CControl)item)._c).Items.Clear();
-                                ((CComboBox)((CControl)item)._c).tags.Clear();
+                                box2.Items.Clear();
+                                box2.tags.Clear();
                                 for (int n = 0; n < ds.Tables[0].Rows.Count; n++)
                                 {
-                                    ((CComboBox)((CControl)item)._c).Items.Add(ds.Tables[0].Rows[n][num]);
-                                    ((CComboBox)((CControl)item)._c).tags.Add(ds.Tables[0].Rows[n][num]);
+                                    box2.Items.Add(ds.Tables[0].Rows[n][num]);
+                                    box2.tags.Add(ds.Tables[0].Rows[n][num]);
                                 }
                             }
                         }
-                        else if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Columns.Count > 0 && ((CControl)item)._c is CCheckBox)
+                        else if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Columns.Count > 0 && control._c is CCheckBox box)
                         {
                             if (array.Length == 3 && array[2] == "Tag")
                             {
-                                ((CControl)item)._c.Tag = ds.Tables[0].Rows[0][num];
+                                control._c.Tag = ds.Tables[0].Rows[0][num];
                             }
                             else if (array.Length == 3 && array[2] == "Value")
                             {
                                 try
                                 {
-                                    ((CCheckBox)((CControl)item)._c).Checked = Convert.ToBoolean(ds.Tables[0].Rows[0][num]);
+                                    box.Checked = Convert.ToBoolean(ds.Tables[0].Rows[0][num]);
                                 }
                                 catch
                                 {
-                                    ((CCheckBox)((CControl)item)._c).Text = Convert.ToString(ds.Tables[0].Rows[0][num]);
+                                    box.Text = Convert.ToString(ds.Tables[0].Rows[0][num]);
                                 }
                             }
                             else
                             {
-                                ((CCheckBox)((CControl)item)._c).Text = Convert.ToString(ds.Tables[0].Rows[0][num]);
+                                box.Text = Convert.ToString(ds.Tables[0].Rows[0][num]);
                             }
                         }
-                        else if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Columns.Count > 0 && ((CControl)item)._c is CDateTimePicker)
+                        else if (ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Columns.Count > 0 && control._c is CDateTimePicker picker)
                         {
                             if (array.Length == 3 && array[2] == "Tag")
                             {
-                                ((CDateTimePicker)((CControl)item)._c).Tag = ds.Tables[0].Rows[0][num];
+                                picker.Tag = ds.Tables[0].Rows[0][num];
                             }
                             else
                             {
-                                ((CDateTimePicker)((CControl)item)._c).Value = Convert.ToDateTime(ds.Tables[0].Rows[0][num]);
+                                picker.Value = Convert.ToDateTime(ds.Tables[0].Rows[0][num]);
                             }
                         }
                     }
-                    else if (item is CString)
+                    else if (item is CString @string)
                     {
                         if (array.Length == 3 && array[2] == "Tag")
                         {
-                            ((CString)item).Tag = ds.Tables[0].Rows[0][num];
+                            @string.Tag = ds.Tables[0].Rows[0][num];
                         }
                         else
                         {
-                            ((CString)item).DisplayStr = ds.Tables[0].Rows[0][num].ToString();
+                            @string.DisplayStr = ds.Tables[0].Rows[0][num].ToString();
                         }
                     }
                     break;
@@ -3957,9 +3940,9 @@ public class MainControl : UserControl, IMessageFilter
 
     private object CallDBOperation(string cmd, string type)
     {
-        if (this.CallRuntimeDBOperation != null)
+        if (CallRuntimeDBOperation != null)
         {
-            return this.CallRuntimeDBOperation(type, cmd);
+            return CallRuntimeDBOperation(type, cmd);
         }
         throw new Exception("CallDBOperation Err.");
     }
@@ -3968,7 +3951,7 @@ public class MainControl : UserControl, IMessageFilter
     {
         if (isForm)
         {
-            if (this.CallRuntimeServerLogic == null)
+            if (CallRuntimeServerLogic == null)
             {
                 return;
             }
@@ -3986,7 +3969,7 @@ public class MainControl : UserControl, IMessageFilter
                         req.InputDict[item] = null;
                     }
                 }
-                Dictionary<string, object> dictionary = this.CallRuntimeServerLogic(req);
+                Dictionary<string, object> dictionary = CallRuntimeServerLogic(req);
                 foreach (string key in dictionary.Keys)
                 {
                     SetValue(key, dictionary[key]);
@@ -4777,17 +4760,17 @@ public class MainControl : UserControl, IMessageFilter
                         }
                         for (int j = 0; j < dataFile.ListAllShowCShape.Count; j++)
                         {
-                            if (dataFile.ListAllShowCShape[j] is CControl)
+                            if (dataFile.ListAllShowCShape[j] is CControl control)
                             {
                                 try
                                 {
-                                    ((CControl)dataFile.ListAllShowCShape[j]).Width = dataFile.ListAllShowCShape[j].DefaultSize.Width * zoomX;
-                                    ((CControl)dataFile.ListAllShowCShape[j]).Height = dataFile.ListAllShowCShape[j].DefaultSize.Height * zoomY;
-                                    ((CControl)dataFile.ListAllShowCShape[j]).X = Convert.ToInt32((float)dataFile.ListAllShowCShape[j].DefaultLocaion.X * zoomX);
-                                    ((CControl)dataFile.ListAllShowCShape[j]).Y = Convert.ToInt32((float)dataFile.ListAllShowCShape[j].DefaultLocaion.Y * zoomY);
-                                    float num = ((CControl)dataFile.ListAllShowCShape[j]).DefaultFontSize * ((zoomX < zoomY) ? zoomX : zoomY);
+                                    control.Width = dataFile.ListAllShowCShape[j].DefaultSize.Width * zoomX;
+                                    control.Height = dataFile.ListAllShowCShape[j].DefaultSize.Height * zoomY;
+                                    control.X = Convert.ToInt32((float)dataFile.ListAllShowCShape[j].DefaultLocaion.X * zoomX);
+                                    control.Y = Convert.ToInt32((float)dataFile.ListAllShowCShape[j].DefaultLocaion.Y * zoomY);
+                                    float num = control.DefaultFontSize * ((zoomX < zoomY) ? zoomX : zoomY);
                                     num = ((num < 8.25f) ? 8.25f : num);
-                                    ((CControl)dataFile.ListAllShowCShape[j])._c.Font = new Font(((CControl)dataFile.ListAllShowCShape[j])._c.Font.Name, num);
+                                    control._c.Font = new Font(control._c.Font.Name, num);
                                 }
                                 catch (Exception)
                                 {
@@ -4825,10 +4808,10 @@ public class MainControl : UserControl, IMessageFilter
     {
         try
         {
-            if (this.FullScreenEvent != null)
+            if (FullScreenEvent != null)
             {
                 EventArgs e = new();
-                this.FullScreenEvent(this, e);
+                FullScreenEvent(this, e);
                 return true;
             }
         }
@@ -4843,16 +4826,16 @@ public class MainControl : UserControl, IMessageFilter
 
     private void InitializeComponent()
     {
-        this.label1 = new System.Windows.Forms.Label();
+        label1 = new System.Windows.Forms.Label();
         base.SuspendLayout();
-        this.label1.AutoSize = true;
-        this.label1.BackColor = System.Drawing.Color.Transparent;
-        this.label1.Location = new System.Drawing.Point(0, 0);
-        this.label1.Name = "label1";
-        this.label1.Size = new System.Drawing.Size(0, 12);
-        this.label1.TabIndex = 0;
-        this.label1.Visible = false;
-        base.Controls.Add(this.label1);
+        label1.AutoSize = true;
+        label1.BackColor = System.Drawing.Color.Transparent;
+        label1.Location = new System.Drawing.Point(0, 0);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(0, 12);
+        label1.TabIndex = 0;
+        label1.Visible = false;
+        base.Controls.Add(label1);
         base.Name = "MainControl";
         base.Size = new System.Drawing.Size(1024, 768);
         base.Load += new System.EventHandler(MainControl_Load);

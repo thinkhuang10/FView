@@ -165,73 +165,46 @@ public class AxDCCEClient : AxHost
 
     internal void RaiseOnFireOnDataReady(object sender, _DDCCEClientEvents_FireOnDataReadyEvent e)
     {
-        if (this.FireOnDataReady != null)
-        {
-            this.FireOnDataReady(sender, e);
-        }
+        FireOnDataReady?.Invoke(sender, e);
     }
 
     internal void RaiseOnFireOnVariableAlarm(object sender, _DDCCEClientEvents_FireOnVariableAlarmEvent e)
     {
-        if (this.FireOnVariableAlarm != null)
-        {
-            this.FireOnVariableAlarm(sender, e);
-        }
+        FireOnVariableAlarm?.Invoke(sender, e);
     }
 
     internal void RaiseOnFireOnVariableLag(object sender, _DDCCEClientEvents_FireOnVariableLagEvent e)
     {
-        if (this.FireOnVariableLag != null)
-        {
-            this.FireOnVariableLag(sender, e);
-        }
+        FireOnVariableLag?.Invoke(sender, e);
     }
 
     internal void RaiseOnFireOnLoadOver(object sender, _DDCCEClientEvents_FireOnLoadOverEvent e)
     {
-        if (this.FireOnLoadOver != null)
-        {
-            this.FireOnLoadOver(sender, e);
-        }
+        FireOnLoadOver?.Invoke(sender, e);
     }
 
     internal void RaiseOnFireOnDeviceStatus(object sender, _DDCCEClientEvents_FireOnDeviceStatusEvent e)
     {
-        if (this.FireOnDeviceStatus != null)
-        {
-            this.FireOnDeviceStatus(sender, e);
-        }
+        FireOnDeviceStatus?.Invoke(sender, e);
     }
 
     internal void RaiseOnFireOnBehavior(object sender, _DDCCEClientEvents_FireOnBehaviorEvent e)
     {
-        if (this.FireOnBehavior != null)
-        {
-            this.FireOnBehavior(sender, e);
-        }
+        FireOnBehavior?.Invoke(sender, e);
     }
 
     internal void RaiseOnFireOnScan(object sender, _DDCCEClientEvents_FireOnScanEvent e)
     {
-        if (this.FireOnScan != null)
-        {
-            this.FireOnScan(sender, e);
-        }
+        FireOnScan?.Invoke(sender, e);
     }
 
     internal void RaiseOnFireOnScanBehavior(object sender, _DDCCEClientEvents_FireOnScanBehaviorEvent e)
     {
-        if (this.FireOnScanBehavior != null)
-        {
-            this.FireOnScanBehavior(sender, e);
-        }
+        FireOnScanBehavior?.Invoke(sender, e);
     }
 
     internal void RaiseOnFireOnSyncTime(object sender, _DDCCEClientEvents_FireOnSyncTimeEvent e)
     {
-        if (this.FireOnSyncTime != null)
-        {
-            this.FireOnSyncTime(sender, e);
-        }
+        FireOnSyncTime?.Invoke(sender, e);
     }
 }

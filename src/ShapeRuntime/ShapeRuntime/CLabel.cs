@@ -93,10 +93,7 @@ public class CLabel : Label, IDCCEControl, IControlShape
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -435,9 +432,9 @@ public class CLabel : Label, IDCCEControl, IControlShape
 
     public new event EventHandler Click;
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     public event EventHandler IDChanged;
 
@@ -452,7 +449,7 @@ public class CLabel : Label, IDCCEControl, IControlShape
         {
             if (textVarBind != null && textVarBind != "")
             {
-                base.Text = Convert.ToString(this.GetValueEvent("[" + textVarBind + "]"));
+                base.Text = Convert.ToString(GetValueEvent("[" + textVarBind + "]"));
             }
         }
         catch (Exception)
@@ -469,10 +466,7 @@ public class CLabel : Label, IDCCEControl, IControlShape
 
     private void CLabel_Click(object sender, EventArgs e)
     {
-        if (this.Click != null)
-        {
-            this.Click(sender, e);
-        }
+        Click?.Invoke(sender, e);
     }
 
     public byte[] Serialize()

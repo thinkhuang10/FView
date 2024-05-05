@@ -24,18 +24,9 @@ internal static class DBOperationGlobal
 
     public static void Refresh(string providerName, string dbConnString)
     {
-        if (conn != null)
-        {
-            conn.Dispose();
-        }
-        if (command != null)
-        {
-            command.Dispose();
-        }
-        if (adapter != null)
-        {
-            adapter.Dispose();
-        }
+        conn?.Dispose();
+        command?.Dispose();
+        adapter?.Dispose();
         DataTable factoryClasses = DbProviderFactories.GetFactoryClasses();
         tagdr = null;
         foreach (DataRow row in factoryClasses.Rows)

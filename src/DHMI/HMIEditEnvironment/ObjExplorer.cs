@@ -336,7 +336,7 @@ public class ObjExplorer : UserControl
 
 	private void InitializeComponent()
 	{
-		this.components = new System.ComponentModel.Container();
+		components = new System.ComponentModel.Container();
 		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIEditEnvironment.ObjExplorer));
 		System.Windows.Forms.ListViewItem listViewItem = new("1", "String.png");
 		System.Windows.Forms.ListViewItem listViewItem2 = new("10", "PictureEffectsShadowGallery.png");
@@ -354,12 +354,12 @@ public class ObjExplorer : UserControl
 		System.Windows.Forms.ListViewItem listViewItem14 = new("7", "CloseLine.png");
 		System.Windows.Forms.ListViewItem listViewItem15 = new("8", "Rectangle.png");
 		System.Windows.Forms.ListViewItem listViewItem16 = new("9", "Library.png");
-		this.m_ImgListObj = new System.Windows.Forms.ImageList(this.components);
-		this.m_ListViewObj = new System.Windows.Forms.ListView();
-		this.col_0 = new System.Windows.Forms.ColumnHeader();
+		m_ImgListObj = new System.Windows.Forms.ImageList(components);
+		m_ListViewObj = new System.Windows.Forms.ListView();
+		col_0 = new System.Windows.Forms.ColumnHeader();
 		base.SuspendLayout();
-		this.m_ImgListObj.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("m_ImgListObj.ImageStream");
-		this.m_ImgListObj.TransparentColor = System.Drawing.Color.Transparent;
+		m_ImgListObj.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("m_ImgListObj.ImageStream");
+		m_ImgListObj.TransparentColor = System.Drawing.Color.Transparent;
 		//this.m_ImgListObj.Images.SetKeyName(0, "String.png");
 		//this.m_ImgListObj.Images.SetKeyName(1, "Memory.png");
 		//this.m_ImgListObj.Images.SetKeyName(2, "Lines.png");
@@ -370,36 +370,36 @@ public class ObjExplorer : UserControl
 		//this.m_ImgListObj.Images.SetKeyName(7, "Rectangle.png");
 		//this.m_ImgListObj.Images.SetKeyName(8, "Library.png");
 		//this.m_ImgListObj.Images.SetKeyName(9, "PictureEffectsShadowGallery.png");
-		this.m_ListViewObj.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-		this.m_ListViewObj.Columns.AddRange(new System.Windows.Forms.ColumnHeader[1] { this.col_0 });
-		this.m_ListViewObj.FullRowSelect = true;
-		this.m_ListViewObj.GridLines = true;
+		m_ListViewObj.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+		m_ListViewObj.Columns.AddRange(new System.Windows.Forms.ColumnHeader[1] { col_0 });
+		m_ListViewObj.FullRowSelect = true;
+		m_ListViewObj.GridLines = true;
 		listViewItem.UseItemStyleForSubItems = false;
-		this.m_ListViewObj.Items.AddRange(new System.Windows.Forms.ListViewItem[16]
+		m_ListViewObj.Items.AddRange(new System.Windows.Forms.ListViewItem[16]
 		{
 			listViewItem, listViewItem2, listViewItem3, listViewItem4, listViewItem5, listViewItem6, listViewItem7, listViewItem8, listViewItem9, listViewItem10,
 			listViewItem11, listViewItem12, listViewItem13, listViewItem14, listViewItem15, listViewItem16
 		});
-		this.m_ListViewObj.Location = new System.Drawing.Point(0, 3);
-		this.m_ListViewObj.Name = "m_ListViewObj";
-		this.m_ListViewObj.Size = new System.Drawing.Size(187, 281);
-		this.m_ListViewObj.SmallImageList = this.m_ImgListObj;
-		this.m_ListViewObj.TabIndex = 0;
-		this.m_ListViewObj.UseCompatibleStateImageBehavior = false;
-		this.m_ListViewObj.View = System.Windows.Forms.View.Details;
-		this.m_ListViewObj.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(m_ListViewObj_ColumnClick);
-		this.m_ListViewObj.SelectedIndexChanged += new System.EventHandler(m_ListViewObj_SelectedIndexChanged);
-		this.m_ListViewObj.KeyDown += new System.Windows.Forms.KeyEventHandler(m_ListViewObj_KeyDown);
-		this.m_ListViewObj.MouseClick += new System.Windows.Forms.MouseEventHandler(m_ListViewObj_MouseClick);
-		this.m_ListViewObj.MouseUp += new System.Windows.Forms.MouseEventHandler(m_ListViewObj_MouseUp);
-		this.m_ListViewObj.Resize += new System.EventHandler(m_ListViewObj_Resize);
-		this.m_ListViewObj.Validated += new System.EventHandler(m_ListViewObj_Validated);
-		this.col_0.Text = "页面元素";
-		this.col_0.Width = 100;
+		m_ListViewObj.Location = new System.Drawing.Point(0, 3);
+		m_ListViewObj.Name = "m_ListViewObj";
+		m_ListViewObj.Size = new System.Drawing.Size(187, 281);
+		m_ListViewObj.SmallImageList = m_ImgListObj;
+		m_ListViewObj.TabIndex = 0;
+		m_ListViewObj.UseCompatibleStateImageBehavior = false;
+		m_ListViewObj.View = System.Windows.Forms.View.Details;
+		m_ListViewObj.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(m_ListViewObj_ColumnClick);
+		m_ListViewObj.SelectedIndexChanged += new System.EventHandler(m_ListViewObj_SelectedIndexChanged);
+		m_ListViewObj.KeyDown += new System.Windows.Forms.KeyEventHandler(m_ListViewObj_KeyDown);
+		m_ListViewObj.MouseClick += new System.Windows.Forms.MouseEventHandler(m_ListViewObj_MouseClick);
+		m_ListViewObj.MouseUp += new System.Windows.Forms.MouseEventHandler(m_ListViewObj_MouseUp);
+		m_ListViewObj.Resize += new System.EventHandler(m_ListViewObj_Resize);
+		m_ListViewObj.Validated += new System.EventHandler(m_ListViewObj_Validated);
+		col_0.Text = "页面元素";
+		col_0.Width = 100;
 		base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-		this.AutoScroll = true;
-		base.Controls.Add(this.m_ListViewObj);
+		AutoScroll = true;
+		base.Controls.Add(m_ListViewObj);
 		base.Name = "ObjExplorer";
 		base.Size = new System.Drawing.Size(215, 316);
 		base.Load += new System.EventHandler(ObjExplorer_Load);

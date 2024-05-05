@@ -341,9 +341,9 @@ public class drawbitmap : CPixieControl
                 }
                 else if (Value > high)
                 {
-                    if (!highalertflag && this.HighAlert != null)
+                    if (!highalertflag && HighAlert != null)
                     {
-                        this.HighAlert(this, null);
+                        HighAlert(this, null);
                         highalertflag = true;
                     }
                     Rectangle rect3 = new(50 * _width / 120, 40 * _height / 150, 20 * _width / 120, 80 * _height / 150);
@@ -351,9 +351,9 @@ public class drawbitmap : CPixieControl
                 }
                 else if (Value < low)
                 {
-                    if (!lowalertflag && this.LowAlert != null)
+                    if (!lowalertflag && LowAlert != null)
                     {
-                        this.LowAlert(this, null);
+                        LowAlert(this, null);
                         lowalertflag = true;
                     }
                     Rectangle rect4 = new(50 * _width / 120, 40 * _height / 150, 20 * _width / 120, 80 * _height / 150);

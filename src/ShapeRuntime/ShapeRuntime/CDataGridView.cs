@@ -110,10 +110,7 @@ public class CDataGridView : DataGridView, IDCCEControl, IControlShape, IDBAnima
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -1682,9 +1679,9 @@ public class CDataGridView : DataGridView, IDCCEControl, IControlShape, IDBAnima
 
     public event EventHandler OnCellClicked;
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     public event EventHandler DBOperationErr;
 
@@ -1707,7 +1704,7 @@ public class CDataGridView : DataGridView, IDCCEControl, IControlShape, IDBAnima
                 {
                     if (cell.Tag.ToString().StartsWith("#Bind:"))
                     {
-                        cell.Value = this.GetValueEvent("[" + cell.Tag.ToString().Substring(6) + "]");
+                        cell.Value = GetValueEvent("[" + cell.Tag.ToString().Substring(6) + "]");
                     }
                 }
             }
@@ -1838,7 +1835,7 @@ public class CDataGridView : DataGridView, IDCCEControl, IControlShape, IDBAnima
     {
         if (!isRuning && e.Button == MouseButtons.Right)
         {
-            string text = this.GetVarTableEvent("");
+            string text = GetVarTableEvent("");
             if (text != "")
             {
                 base.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "#Bind:" + text;
@@ -1850,20 +1847,14 @@ public class CDataGridView : DataGridView, IDCCEControl, IControlShape, IDBAnima
     {
         ClickRowIndex = e.RowIndex;
         ClickColumnIndex = e.ColumnIndex;
-        if (this.OnCellClicked != null)
-        {
-            this.OnCellClicked(sender, e);
-        }
+        OnCellClicked?.Invoke(sender, e);
     }
 
     private void CDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
         ClickRowIndex = e.RowIndex;
         ClickColumnIndex = e.ColumnIndex;
-        if (this.OnCellDoubleClicked != null)
-        {
-            this.OnCellDoubleClicked(sender, e);
-        }
+        OnCellDoubleClicked?.Invoke(sender, e);
     }
 
     private void CDataGridView_CurrentCellChanged(object sender, EventArgs e)
@@ -1873,19 +1864,13 @@ public class CDataGridView : DataGridView, IDCCEControl, IControlShape, IDBAnima
             if (oldrow == null || (oldrow != null && oldrow != base.CurrentCell.OwningRow))
             {
                 oldrow = base.CurrentCell.OwningRow;
-                if (this.SelectedRowChanged != null)
-                {
-                    this.SelectedRowChanged(sender, e);
-                }
+                SelectedRowChanged?.Invoke(sender, e);
             }
         }
         catch (Exception)
         {
         }
-        if (this.SelectedCellChanged != null)
-        {
-            this.SelectedCellChanged(sender, e);
-        }
+        SelectedCellChanged?.Invoke(sender, e);
     }
 
     public byte[] Serialize()
@@ -2504,17 +2489,11 @@ public class CDataGridView : DataGridView, IDCCEControl, IControlShape, IDBAnima
 
     public void FireDBOperationOK()
     {
-        if (this.DBOperationOK != null)
-        {
-            this.DBOperationOK(this, null);
-        }
+        DBOperationOK?.Invoke(this, null);
     }
 
     public void FireDBOperationErr()
     {
-        if (this.DBOperationErr != null)
-        {
-            this.DBOperationErr(this, null);
-        }
+        DBOperationErr?.Invoke(this, null);
     }
 }

@@ -61,10 +61,7 @@ public class CTimer : UserControl, IControlShape, IDCCEControl
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -928,10 +925,7 @@ public class CTimer : UserControl, IControlShape, IDCCEControl
         {
             ((Timer)sender).Stop();
         }
-        if (this.Tick != null)
-        {
-            this.Tick(this, e);
-        }
+        Tick?.Invoke(this, e);
     }
 
     protected override void Dispose(bool disposing)
@@ -945,25 +939,25 @@ public class CTimer : UserControl, IControlShape, IDCCEControl
 
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.timer1 = new System.Windows.Forms.Timer(this.components);
-        this.label1 = new System.Windows.Forms.Label();
+        components = new System.ComponentModel.Container();
+        timer1 = new System.Windows.Forms.Timer(components);
+        label1 = new System.Windows.Forms.Label();
         base.SuspendLayout();
-        this.timer1.Interval = 1000;
-        this.timer1.Tick += new System.EventHandler(timer1_Tick);
-        this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.label1.Location = new System.Drawing.Point(0, 0);
-        this.label1.Name = "label1";
-        this.label1.Size = new System.Drawing.Size(59, 27);
-        this.label1.TabIndex = 0;
-        this.label1.Text = "定时器";
-        this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+        timer1.Interval = 1000;
+        timer1.Tick += new System.EventHandler(timer1_Tick);
+        label1.Dock = System.Windows.Forms.DockStyle.Fill;
+        label1.Location = new System.Drawing.Point(0, 0);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(59, 27);
+        label1.TabIndex = 0;
+        label1.Text = "定时器";
+        label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.BackColor = System.Drawing.Color.Transparent;
-        base.Controls.Add(this.label1);
-        this.Name = "CTimer";
-        this.Size = new System.Drawing.Size(59, 27);
+        BackColor = System.Drawing.Color.Transparent;
+        base.Controls.Add(label1);
+        Name = "CTimer";
+        Size = new System.Drawing.Size(59, 27);
         base.ResumeLayout(false);
     }
 }

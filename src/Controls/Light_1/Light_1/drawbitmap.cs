@@ -213,10 +213,7 @@ public class drawbitmap : CPixieControl
         {
             if (this.value != value)
             {
-                if (this.ValueChanged != null)
-                {
-                    this.ValueChanged(this, null);
-                }
+                ValueChanged?.Invoke(this, null);
                 NeedRefresh = true;
                 this.value = value;
             }

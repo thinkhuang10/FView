@@ -44,9 +44,9 @@ public class CRectangle : CShape
     [OptionalField]
     public float ldstep;
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     protected CRectangle(SerializationInfo info, StreamingContext context)
         : base(info, context)
@@ -308,10 +308,7 @@ public class CRectangle : CShape
             graphicsPath.AddPath(item, connect: false);
         }
         graphicsPath.Transform(TranslateMatrix);
-        if (swapgp != null)
-        {
-            swapgp.Dispose();
-        }
+        swapgp?.Dispose();
         swapgp = graphicsPath;
         needRefreshShape = false;
         list.Add(graphicsPath);
@@ -337,10 +334,7 @@ public class CRectangle : CShape
                 graphicsPath.AddPath(item, connect: false);
             }
             graphicsPath.Transform(TranslateMatrix);
-            if (swapgp != null)
-            {
-                swapgp.Dispose();
-            }
+            swapgp?.Dispose();
             swapgp = graphicsPath;
             RefreshBrush();
             g.FillPath(_Brush, graphicsPath);
@@ -450,10 +444,7 @@ public class CRectangle : CShape
                 graphicsPath.AddPath(item, connect: false);
             }
             graphicsPath.Transform(TranslateMatrix);
-            if (swapgp != null)
-            {
-                swapgp.Dispose();
-            }
+            swapgp?.Dispose();
             swapgp = graphicsPath;
             RefreshBrush();
             g.FillPath(_Brush, graphicsPath);

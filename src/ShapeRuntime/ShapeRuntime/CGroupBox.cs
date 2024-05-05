@@ -48,10 +48,7 @@ public class CGroupBox : GroupBox, IDCCEControl, IControlShape
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -550,14 +547,6 @@ public class CGroupBox : GroupBox, IDCCEControl, IControlShape
     public Bitmap GetLogo()
     {
         return null;
-    }
-
-    private void t_Tick(object sender, EventArgs e)
-    {
-        if (Enabled)
-        {
-            Enabled = false;
-        }
     }
 
     public CGroupBox()

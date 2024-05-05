@@ -150,10 +150,10 @@ public partial class MDIParent1 : XtraForm
         return false;
     }
 
-    private void CopyResources(FileInfo f, bool ishtml5)
+    private void CopyResources(FileInfo f)
     {
         string text = f.Directory.FullName + "\\Resources\\";
-        string text2 = (ishtml5 ? "C:\\inetpub\\wwwroot\\Resources\\" : (AppDomain.CurrentDomain.BaseDirectory + "Output\\Resources\\"));
+        string text2 = AppDomain.CurrentDomain.BaseDirectory + "Output\\Resources\\";
         try
         {
             try
@@ -190,7 +190,7 @@ public partial class MDIParent1 : XtraForm
 
     private void CopyLocalFiles(FileInfo f)
     {
-        CopyResources(f, ishtml5: false);
+        CopyResources(f);
         DirectoryInfo directoryInfo = new(AppDomain.CurrentDomain.BaseDirectory + "HMIRun\\");
         FileInfo[] files = directoryInfo.GetFiles();
         foreach (FileInfo fileInfo in files)
@@ -688,17 +688,17 @@ public partial class MDIParent1 : XtraForm
         barButtonItem52_ItemClick(sender, e);
     }
 
-    private void barButtonItem111_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem111_ItemClick(object sender, ItemClickEventArgs e)
     {
         barButtonItem53_ItemClick(sender, e);
     }
 
-    private void barButtonItem117_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem117_ItemClick(object sender, ItemClickEventArgs e)
     {
         barButtonItem27_ItemClick(sender, e);
     }
 
-    private void barButtonItem118_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem118_ItemClick(object sender, ItemClickEventArgs e)
     {
         barButtonItem28_ItemClick(sender, e);
     }
@@ -4168,7 +4168,6 @@ public partial class MDIParent1 : XtraForm
         CEditEnvironmentGlobal.dhp.creattime = DateTime.Now;
         CEditEnvironmentGlobal.projectfile = fileInfo.DirectoryName + "\\hmi\\HMI.dhp";
         treeView_工程导航.Nodes[0].Nodes.RemoveByKey("Page");
-        treeView_工程导航.Nodes[0].Nodes.RemoveByKey("HTML5");
 
         treeView_工程导航.Nodes[0].Text = "本地工程(" + CEditEnvironmentGlobal.dhp.projectname + ")";
         TreeNode treeNode2 = treeView_工程导航.Nodes[0].Nodes.Insert(0, "Page", "FView页面", "NativeApp.png", "NativeApp.png");
@@ -4212,7 +4211,7 @@ public partial class MDIParent1 : XtraForm
 
         projectPathSave = new ProjectPathSaveHandler();
         var test = projectPathSave.FileList;
-        projectPathSave.RecentProjectItems = this.BarListItem_RecentlyProjece;//指定 最近文件 的菜单值，方便动态创建文件菜单
+        projectPathSave.RecentProjectItems = BarListItem_RecentlyProjece;//指定 最近文件 的菜单值，方便动态创建文件菜单
         projectPathSave.UpdateMenu();
 
         if (null != projectPathSave.RecentProjectItems)

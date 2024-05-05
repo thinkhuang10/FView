@@ -11,7 +11,7 @@ namespace HMIEditEnvironment
         {
             InitializeComponent();
 
-            this.ProjecePath = ProjectPath; 
+            ProjecePath = ProjectPath; 
         }
 
         private void button_OK_Click(object sender, EventArgs e)

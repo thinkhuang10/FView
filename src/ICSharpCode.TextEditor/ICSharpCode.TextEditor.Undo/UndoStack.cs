@@ -79,10 +79,7 @@ public class UndoStack
         {
             UndoQueue undoQueue = new(undostack, actionCountInUndoGroup);
             undostack.Push(undoQueue);
-            if (this.OperationPushed != null)
-            {
-                this.OperationPushed(this, new OperationEventArgs(undoQueue));
-            }
+            OperationPushed?.Invoke(this, new OperationEventArgs(undoQueue));
         }
     }
 
@@ -155,17 +152,11 @@ public class UndoStack
 
     protected void OnActionUndone()
     {
-        if (this.ActionUndone != null)
-        {
-            this.ActionUndone(null, null);
-        }
+        ActionUndone?.Invoke(null, null);
     }
 
     protected void OnActionRedone()
     {
-        if (this.ActionRedone != null)
-        {
-            this.ActionRedone(null, null);
-        }
+        ActionRedone?.Invoke(null, null);
     }
 }

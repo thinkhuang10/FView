@@ -158,10 +158,7 @@ public class CComboBox : ComboBox, IDCCEControl, IControlShape, IDBAnimation
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -1040,9 +1037,9 @@ public class CComboBox : ComboBox, IDCCEControl, IControlShape, IDBAnimation
 
     public event EventHandler SelectedItemChanged;
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     public event EventHandler IDChanged;
 
@@ -1061,7 +1058,7 @@ public class CComboBox : ComboBox, IDCCEControl, IControlShape, IDBAnimation
         {
             if (varBind != null && varBind != "")
             {
-                SelectedIndex = Convert.ToInt32(this.GetValueEvent("[" + varBind + "]"));
+                SelectedIndex = Convert.ToInt32(GetValueEvent("[" + varBind + "]"));
             }
         }
         catch (Exception)
@@ -1071,7 +1068,7 @@ public class CComboBox : ComboBox, IDCCEControl, IControlShape, IDBAnimation
         {
             if (textVarBind != null && textVarBind != "")
             {
-                Text = Convert.ToString(this.GetValueEvent("[" + textVarBind + "]"));
+                Text = Convert.ToString(GetValueEvent("[" + textVarBind + "]"));
             }
         }
         catch (Exception)
@@ -1094,10 +1091,7 @@ public class CComboBox : ComboBox, IDCCEControl, IControlShape, IDBAnimation
 
     private void CComboBox_SelectedValueChanged(object sender, EventArgs e)
     {
-        if (this.SelectedItemChanged != null)
-        {
-            this.SelectedItemChanged(sender, e);
-        }
+        SelectedItemChanged?.Invoke(sender, e);
     }
 
     public byte[] Serialize()
@@ -1356,17 +1350,11 @@ public class CComboBox : ComboBox, IDCCEControl, IControlShape, IDBAnimation
 
     public void FireDBOperationOK()
     {
-        if (this.DBOperationOK != null)
-        {
-            this.DBOperationOK(this, null);
-        }
+        DBOperationOK?.Invoke(this, null);
     }
 
     public void FireDBOperationErr()
     {
-        if (this.DBOperationErr != null)
-        {
-            this.DBOperationErr(this, null);
-        }
+        DBOperationErr?.Invoke(this, null);
     }
 }

@@ -68,18 +68,18 @@ public class VarExplore : UserControl
 
     private void InitializeComponent()
     {
-        this.treeVar = new System.Windows.Forms.TreeView();
+        treeVar = new System.Windows.Forms.TreeView();
         base.SuspendLayout();
-        this.treeVar.AllowDrop = true;
-        this.treeVar.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.treeVar.Location = new System.Drawing.Point(0, 0);
-        this.treeVar.Name = "treeVar";
-        this.treeVar.Size = new System.Drawing.Size(253, 373);
-        this.treeVar.TabIndex = 0;
-        this.treeVar.MouseDown += new System.Windows.Forms.MouseEventHandler(treeVar_MouseDown);
+        treeVar.AllowDrop = true;
+        treeVar.Dock = System.Windows.Forms.DockStyle.Fill;
+        treeVar.Location = new System.Drawing.Point(0, 0);
+        treeVar.Name = "treeVar";
+        treeVar.Size = new System.Drawing.Size(253, 373);
+        treeVar.TabIndex = 0;
+        treeVar.MouseDown += new System.Windows.Forms.MouseEventHandler(treeVar_MouseDown);
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        base.Controls.Add(this.treeVar);
+        base.Controls.Add(treeVar);
         base.Name = "VarExplore";
         base.Size = new System.Drawing.Size(253, 373);
         base.Load += new System.EventHandler(VarExplore_Load);

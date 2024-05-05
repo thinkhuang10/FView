@@ -236,10 +236,7 @@ public class CCircleRect : CShape
             graphicsPath.AddPath(item, connect: false);
         }
         graphicsPath.Transform(TranslateMatrix);
-        if (swapgp != null)
-        {
-            swapgp.Dispose();
-        }
+        swapgp?.Dispose();
         swapgp = graphicsPath;
         needRefreshShape = false;
         list.Add(graphicsPath);

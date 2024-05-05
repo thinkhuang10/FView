@@ -35,10 +35,7 @@ internal sealed class LineManager
             if (highlightingStrategy != value)
             {
                 highlightingStrategy = value;
-                if (highlightingStrategy != null)
-                {
-                    highlightingStrategy.MarkTokens(document);
-                }
+                highlightingStrategy?.MarkTokens(document);
             }
         }
     }
@@ -354,25 +351,16 @@ internal sealed class LineManager
 
     private void OnLineCountChanged(LineCountChangeEventArgs e)
     {
-        if (this.LineCountChanged != null)
-        {
-            this.LineCountChanged(this, e);
-        }
+        LineCountChanged?.Invoke(this, e);
     }
 
     private void OnLineLengthChanged(LineLengthChangeEventArgs e)
     {
-        if (this.LineLengthChanged != null)
-        {
-            this.LineLengthChanged(this, e);
-        }
+        LineLengthChanged?.Invoke(this, e);
     }
 
     private void OnLineDeleted(LineEventArgs e)
     {
-        if (this.LineDeleted != null)
-        {
-            this.LineDeleted(this, e);
-        }
+        LineDeleted?.Invoke(this, e);
     }
 }

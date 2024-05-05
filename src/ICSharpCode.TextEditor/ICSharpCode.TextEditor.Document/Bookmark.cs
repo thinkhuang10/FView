@@ -124,18 +124,12 @@ public class Bookmark
 
     protected virtual void OnDocumentChanged(EventArgs e)
     {
-        if (this.DocumentChanged != null)
-        {
-            this.DocumentChanged(this, e);
-        }
+        DocumentChanged?.Invoke(this, e);
     }
 
     protected virtual void OnIsEnabledChanged(EventArgs e)
     {
-        if (this.IsEnabledChanged != null)
-        {
-            this.IsEnabledChanged(this, e);
-        }
+        IsEnabledChanged?.Invoke(this, e);
     }
 
     public Bookmark(IDocument document, TextLocation location)

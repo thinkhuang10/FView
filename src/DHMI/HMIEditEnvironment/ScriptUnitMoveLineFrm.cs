@@ -64,10 +64,7 @@ public class ScriptUnitMoveLineFrm : Form
     {
         if (e.CloseReason != CloseReason.FormOwnerClosing)
         {
-            if (base.Owner != null)
-            {
-                base.Owner.Select();
-            }
+            base.Owner?.Select();
             e.Cancel = true;
             Hide();
             editor.Refresh();
@@ -96,53 +93,53 @@ public class ScriptUnitMoveLineFrm : Form
 
     private void InitializeComponent()
     {
-        this.label1 = new System.Windows.Forms.Label();
-        this.lineTxt = new System.Windows.Forms.TextBox();
-        this.moveToBtn = new System.Windows.Forms.Button();
-        this.cancleBtn = new System.Windows.Forms.Button();
+        label1 = new System.Windows.Forms.Label();
+        lineTxt = new System.Windows.Forms.TextBox();
+        moveToBtn = new System.Windows.Forms.Button();
+        cancleBtn = new System.Windows.Forms.Button();
         base.SuspendLayout();
-        this.label1.AutoSize = true;
-        this.label1.Location = new System.Drawing.Point(12, 9);
-        this.label1.Name = "label1";
-        this.label1.Size = new System.Drawing.Size(59, 12);
-        this.label1.TabIndex = 0;
-        this.label1.Text = "行号(&L)：";
-        this.lineTxt.Location = new System.Drawing.Point(12, 29);
-        this.lineTxt.Name = "lineTxt";
-        this.lineTxt.Size = new System.Drawing.Size(217, 21);
-        this.lineTxt.TabIndex = 1;
-        this.lineTxt.TextChanged += new System.EventHandler(lineTxt_TextChanged);
-        this.lineTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(lineTxt_KeyPress);
-        this.moveToBtn.Location = new System.Drawing.Point(78, 68);
-        this.moveToBtn.Name = "moveToBtn";
-        this.moveToBtn.Size = new System.Drawing.Size(75, 23);
-        this.moveToBtn.TabIndex = 2;
-        this.moveToBtn.Text = "转到";
-        this.moveToBtn.UseVisualStyleBackColor = true;
-        this.moveToBtn.Click += new System.EventHandler(moveToBtn_Click);
-        this.cancleBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-        this.cancleBtn.Location = new System.Drawing.Point(159, 68);
-        this.cancleBtn.Name = "cancleBtn";
-        this.cancleBtn.Size = new System.Drawing.Size(75, 23);
-        this.cancleBtn.TabIndex = 3;
-        this.cancleBtn.Text = "取消";
-        this.cancleBtn.UseVisualStyleBackColor = true;
-        this.cancleBtn.Click += new System.EventHandler(cancleBtn_Click);
-        base.AcceptButton = this.moveToBtn;
+        label1.AutoSize = true;
+        label1.Location = new System.Drawing.Point(12, 9);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(59, 12);
+        label1.TabIndex = 0;
+        label1.Text = "行号(&L)：";
+        lineTxt.Location = new System.Drawing.Point(12, 29);
+        lineTxt.Name = "lineTxt";
+        lineTxt.Size = new System.Drawing.Size(217, 21);
+        lineTxt.TabIndex = 1;
+        lineTxt.TextChanged += new System.EventHandler(lineTxt_TextChanged);
+        lineTxt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(lineTxt_KeyPress);
+        moveToBtn.Location = new System.Drawing.Point(78, 68);
+        moveToBtn.Name = "moveToBtn";
+        moveToBtn.Size = new System.Drawing.Size(75, 23);
+        moveToBtn.TabIndex = 2;
+        moveToBtn.Text = "转到";
+        moveToBtn.UseVisualStyleBackColor = true;
+        moveToBtn.Click += new System.EventHandler(moveToBtn_Click);
+        cancleBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+        cancleBtn.Location = new System.Drawing.Point(159, 68);
+        cancleBtn.Name = "cancleBtn";
+        cancleBtn.Size = new System.Drawing.Size(75, 23);
+        cancleBtn.TabIndex = 3;
+        cancleBtn.Text = "取消";
+        cancleBtn.UseVisualStyleBackColor = true;
+        cancleBtn.Click += new System.EventHandler(cancleBtn_Click);
+        base.AcceptButton = moveToBtn;
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        base.CancelButton = this.cancleBtn;
+        base.CancelButton = cancleBtn;
         base.ClientSize = new System.Drawing.Size(243, 103);
-        base.Controls.Add(this.cancleBtn);
-        base.Controls.Add(this.moveToBtn);
-        base.Controls.Add(this.lineTxt);
-        base.Controls.Add(this.label1);
+        base.Controls.Add(cancleBtn);
+        base.Controls.Add(moveToBtn);
+        base.Controls.Add(lineTxt);
+        base.Controls.Add(label1);
         base.MaximizeBox = false;
         base.MinimizeBox = false;
         base.Name = "ScriptUnitMoveLineFrm";
         base.ShowIcon = false;
         base.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-        this.Text = "转到指定行";
+        Text = "转到指定行";
         base.FormClosing += new System.Windows.Forms.FormClosingEventHandler(ScriptUnitMoveLineFrm_FormClosing);
         base.ResumeLayout(false);
         base.PerformLayout();

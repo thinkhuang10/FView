@@ -65,10 +65,7 @@ public sealed class TextAnchor
 
     internal void RaiseDeleted()
     {
-        if (this.Deleted != null)
-        {
-            this.Deleted(this, EventArgs.Empty);
-        }
+        Deleted?.Invoke(this, EventArgs.Empty);
     }
 
     internal TextAnchor(LineSegment lineSegment, int columnNumber)

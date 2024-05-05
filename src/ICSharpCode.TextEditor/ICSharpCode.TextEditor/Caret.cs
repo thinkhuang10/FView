@@ -506,19 +506,13 @@ public class Caret : IDisposable
         {
             textArea.Document.FoldingManager.NotifyFoldingsChanged(EventArgs.Empty);
         }
-        if (this.PositionChanged != null)
-        {
-            this.PositionChanged(this, e);
-        }
+        PositionChanged?.Invoke(this, e);
         textArea.ScrollToCaret();
     }
 
     protected virtual void OnCaretModeChanged(EventArgs e)
     {
-        if (this.CaretModeChanged != null)
-        {
-            this.CaretModeChanged(this, e);
-        }
+        CaretModeChanged?.Invoke(this, e);
         caretImplementation.Hide();
         caretImplementation.Destroy();
         caretCreated = false;

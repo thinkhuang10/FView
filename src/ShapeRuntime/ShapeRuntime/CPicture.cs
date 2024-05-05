@@ -27,9 +27,9 @@ public class CPicture : CShape
 
     private string[] _bKeys;
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     protected CPicture(SerializationInfo info, StreamingContext context)
         : base(info, context)
@@ -259,10 +259,7 @@ public class CPicture : CShape
             ImportantPoints[1],
             ImportantPoints[3]
         });
-        if (swapgp != null)
-        {
-            swapgp.Dispose();
-        }
+        swapgp?.Dispose();
         swapgp = graphicsPath;
         needRefreshShape = false;
         list.Add(graphicsPath);
@@ -275,10 +272,7 @@ public class CPicture : CShape
         if (v == 0)
         {
             VMirror = !VMirror;
-            if (_b[0] != null)
-            {
-                _b[0].RotateFlip(RotateFlipType.RotateNoneFlipX);
-            }
+            _b[0]?.RotateFlip(RotateFlipType.RotateNoneFlipX);
             RotateAtPoint.X = pointF.X * 2f - RotateAtPoint.X;
             RotateAngel = 0f - RotateAngel;
             TranslateMatrix.Reset();
@@ -287,10 +281,7 @@ public class CPicture : CShape
         if (v == 1)
         {
             HMirror = !HMirror;
-            if (_b[0] != null)
-            {
-                _b[0].RotateFlip(RotateFlipType.Rotate180FlipX);
-            }
+            _b[0]?.RotateFlip(RotateFlipType.Rotate180FlipX);
             RotateAtPoint.Y = pointF.Y * 2f - RotateAtPoint.Y;
             RotateAngel = 0f - RotateAngel;
             TranslateMatrix.Reset();

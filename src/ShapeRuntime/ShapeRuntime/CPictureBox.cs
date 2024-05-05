@@ -57,10 +57,7 @@ public class CPictureBox : PictureBox, IDCCEControl, IControlShape
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -362,9 +359,9 @@ public class CPictureBox : PictureBox, IDCCEControl, IControlShape
 
     public new event EventHandler Click;
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     public event EventHandler IDChanged;
 
@@ -382,10 +379,7 @@ public class CPictureBox : PictureBox, IDCCEControl, IControlShape
 
     private void CPictureBox_Click(object sender, EventArgs e)
     {
-        if (this.Click != null)
-        {
-            this.Click(sender, e);
-        }
+        Click?.Invoke(sender, e);
     }
 
     protected override void OnPaint(PaintEventArgs pe)

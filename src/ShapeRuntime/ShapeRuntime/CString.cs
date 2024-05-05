@@ -62,9 +62,9 @@ public class CString : CShape
         }
     }
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     protected CString(SerializationInfo info, StreamingContext context)
         : base(info, context)
@@ -257,10 +257,7 @@ public class CString : CShape
         graphicsPath.AddString(str, fontFamily, style, size, new RectangleF(Math.Min(array[0].X, array[1].X), Math.Min(array[0].Y, array[1].Y), Math.Abs(array[1].X - array[0].X), Math.Abs(array[1].Y - array[0].Y)), genericDefault);
         graphicsPath.CloseFigure();
         graphicsPath.Transform(TranslateMatrix);
-        if (swapgp != null)
-        {
-            swapgp.Dispose();
-        }
+        swapgp?.Dispose();
         swapgp = graphicsPath;
         needRefreshShape = false;
         list.Add(graphicsPath);

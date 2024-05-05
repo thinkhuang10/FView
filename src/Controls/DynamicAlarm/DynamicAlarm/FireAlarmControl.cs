@@ -48,10 +48,7 @@ public class FireAlarmControl : UserControl, IDCCEControl, IControlShape
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -590,7 +587,7 @@ public class FireAlarmControl : UserControl, IDCCEControl, IControlShape
             string text = "";
             try
             {
-                text = this.GetValueEvent("[" + saveData.strVar + "]").ToString();
+                text = GetValueEvent("[" + saveData.strVar + "]").ToString();
             }
             catch
             {
@@ -612,7 +609,7 @@ public class FireAlarmControl : UserControl, IDCCEControl, IControlShape
             double num = 0.0;
             try
             {
-                num = Convert.ToDouble(this.GetValueEvent("[" + saveData.strVar + "]"));
+                num = Convert.ToDouble(GetValueEvent("[" + saveData.strVar + "]"));
             }
             catch
             {
@@ -654,7 +651,7 @@ public class FireAlarmControl : UserControl, IDCCEControl, IControlShape
             string text = "";
             try
             {
-                text = this.GetValueEvent("[" + saveData.strVar + "]").ToString();
+                text = GetValueEvent("[" + saveData.strVar + "]").ToString();
             }
             catch
             {
@@ -676,7 +673,7 @@ public class FireAlarmControl : UserControl, IDCCEControl, IControlShape
             double num = 0.0;
             try
             {
-                num = Convert.ToDouble(this.GetValueEvent("[" + saveData.strVar + "]"));
+                num = Convert.ToDouble(GetValueEvent("[" + saveData.strVar + "]"));
             }
             catch
             {
@@ -720,7 +717,7 @@ public class FireAlarmControl : UserControl, IDCCEControl, IControlShape
         if (!isRuning)
         {
             FireAlarmSetForm fireAlarmSetForm = new(saveData);
-            fireAlarmSetForm.GetVarTableEvent += this.GetVarTableEvent;
+            fireAlarmSetForm.GetVarTableEvent += GetVarTableEvent;
             fireAlarmSetForm.ShowDialog();
         }
     }
@@ -745,10 +742,10 @@ public class FireAlarmControl : UserControl, IDCCEControl, IControlShape
 
     private void InitializeComponent()
     {
-        this.timer = new System.Windows.Forms.Timer();
+        timer = new System.Windows.Forms.Timer();
         base.SuspendLayout();
-        this.timer.Interval = 1000;
-        this.timer.Tick += new System.EventHandler(timer_Tick);
+        timer.Interval = 1000;
+        timer.Tick += new System.EventHandler(timer_Tick);
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         base.Name = "FireAlarmControl";

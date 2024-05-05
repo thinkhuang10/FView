@@ -595,9 +595,9 @@ public class drawbitmap7 : CPixieControl
             }
             if (Convert.ToSingle(value) > num && Convert.ToSingle(value) < num3)
             {
-                if (!lowalertflag && this.LowAlert != null)
+                if (!lowalertflag && LowAlert != null)
                 {
-                    this.LowAlert(this, null);
+                    LowAlert(this, null);
                     lowalertflag = true;
                 }
             }
@@ -607,9 +607,9 @@ public class drawbitmap7 : CPixieControl
             }
             if (Convert.ToSingle(value) > num2 && Convert.ToSingle(value) < num4)
             {
-                if (!highalertflag && this.HighAlert != null)
+                if (!highalertflag && HighAlert != null)
                 {
-                    this.HighAlert(this, null);
+                    HighAlert(this, null);
                     highalertflag = true;
                 }
             }

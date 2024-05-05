@@ -170,16 +170,16 @@ public class TextFindForm : XtraForm
             DataFile dataFile = CEditEnvironmentGlobal.dfs.Find((DataFile df) => df.pageName.Equals(options.PageName));
             if (dataFile != null)
             {
-                if (Find(options, dataFile) >= 0 && this.FindMessageHandler != null)
+                if (Find(options, dataFile) >= 0 && FindMessageHandler != null)
                 {
                     string message = $"查找已完成，共为您找到 {findResults.Count} 个结果。";
-                    Invoke(this.FindMessageHandler, this, new FindMessageEventArgs(message));
+                    Invoke(FindMessageHandler, this, new FindMessageEventArgs(message));
                 }
             }
-            else if (this.FindMessageHandler != null)
+            else if (FindMessageHandler != null)
             {
                 string message2 = $"不存在名为“{options.PageName}”的页面";
-                Invoke(this.FindMessageHandler, this, new FindMessageEventArgs(message2));
+                Invoke(FindMessageHandler, this, new FindMessageEventArgs(message2));
             }
             return;
         }
@@ -190,10 +190,10 @@ public class TextFindForm : XtraForm
                 return;
             }
         }
-        if (this.FindMessageHandler != null)
+        if (FindMessageHandler != null)
         {
             string message3 = $"查找已完成，共为您找到 {findResults.Count} 个结果。";
-            Invoke(this.FindMessageHandler, this, new FindMessageEventArgs(message3));
+            Invoke(FindMessageHandler, this, new FindMessageEventArgs(message3));
         }
     }
 
@@ -212,9 +212,9 @@ public class TextFindForm : XtraForm
                 };
                 FindResult findResult2 = findResult;
                 findResults.Add(findResult2);
-                if (this.FindResultHandler != null)
+                if (FindResultHandler != null)
                 {
-                    Invoke(this.FindResultHandler, this, new FindResultEventArgs(findResult2));
+                    Invoke(FindResultHandler, this, new FindResultEventArgs(findResult2));
                 }
                 int num = WaitHandle.WaitAny(waitHandles);
                 if (num != 0 && num == 1)
@@ -291,102 +291,102 @@ public class TextFindForm : XtraForm
 
     private void InitializeComponent()
     {
-        this.textBoxContent = new System.Windows.Forms.TextBox();
-        this.buttonFind = new System.Windows.Forms.Button();
-        this.checkBoxMatchCase = new System.Windows.Forms.CheckBox();
-        this.checkBoxWholeWord = new System.Windows.Forms.CheckBox();
-        this.groupBox1 = new System.Windows.Forms.GroupBox();
-        this.groupBox2 = new System.Windows.Forms.GroupBox();
-        this.comboBoxPage = new System.Windows.Forms.ComboBox();
-        this.comboBoxArea = new System.Windows.Forms.ComboBox();
-        this.groupBox3 = new System.Windows.Forms.GroupBox();
-        this.buttonClose = new System.Windows.Forms.Button();
-        this.groupBox1.SuspendLayout();
-        this.groupBox2.SuspendLayout();
-        this.groupBox3.SuspendLayout();
+        textBoxContent = new System.Windows.Forms.TextBox();
+        buttonFind = new System.Windows.Forms.Button();
+        checkBoxMatchCase = new System.Windows.Forms.CheckBox();
+        checkBoxWholeWord = new System.Windows.Forms.CheckBox();
+        groupBox1 = new System.Windows.Forms.GroupBox();
+        groupBox2 = new System.Windows.Forms.GroupBox();
+        comboBoxPage = new System.Windows.Forms.ComboBox();
+        comboBoxArea = new System.Windows.Forms.ComboBox();
+        groupBox3 = new System.Windows.Forms.GroupBox();
+        buttonClose = new System.Windows.Forms.Button();
+        groupBox1.SuspendLayout();
+        groupBox2.SuspendLayout();
+        groupBox3.SuspendLayout();
         base.SuspendLayout();
-        this.textBoxContent.Location = new System.Drawing.Point(6, 17);
-        this.textBoxContent.Name = "textBoxContent";
-        this.textBoxContent.Size = new System.Drawing.Size(353, 22);
-        this.textBoxContent.TabIndex = 0;
-        this.buttonFind.Location = new System.Drawing.Point(199, 224);
-        this.buttonFind.Name = "buttonFind";
-        this.buttonFind.Size = new System.Drawing.Size(114, 27);
-        this.buttonFind.TabIndex = 3;
-        this.buttonFind.Text = "查找/下一个(&F)";
-        this.buttonFind.UseVisualStyleBackColor = true;
-        this.buttonFind.Click += new System.EventHandler(buttonFind_Click);
-        this.checkBoxMatchCase.AutoSize = true;
-        this.checkBoxMatchCase.Checked = true;
-        this.checkBoxMatchCase.CheckState = System.Windows.Forms.CheckState.Checked;
-        this.checkBoxMatchCase.Location = new System.Drawing.Point(32, 21);
-        this.checkBoxMatchCase.Name = "checkBoxMatchCase";
-        this.checkBoxMatchCase.Size = new System.Drawing.Size(86, 18);
-        this.checkBoxMatchCase.TabIndex = 0;
-        this.checkBoxMatchCase.Text = "大小写匹配";
-        this.checkBoxMatchCase.UseVisualStyleBackColor = true;
-        this.checkBoxWholeWord.AutoSize = true;
-        this.checkBoxWholeWord.Location = new System.Drawing.Point(233, 21);
-        this.checkBoxWholeWord.Name = "checkBoxWholeWord";
-        this.checkBoxWholeWord.Size = new System.Drawing.Size(74, 18);
-        this.checkBoxWholeWord.TabIndex = 1;
-        this.checkBoxWholeWord.Text = "全字匹配";
-        this.checkBoxWholeWord.UseVisualStyleBackColor = true;
-        this.groupBox1.Controls.Add(this.textBoxContent);
-        this.groupBox1.Location = new System.Drawing.Point(12, 5);
-        this.groupBox1.Name = "groupBox1";
-        this.groupBox1.Size = new System.Drawing.Size(375, 49);
-        this.groupBox1.TabIndex = 0;
-        this.groupBox1.TabStop = false;
-        this.groupBox1.Text = "查找内容";
-        this.groupBox2.Controls.Add(this.comboBoxPage);
-        this.groupBox2.Controls.Add(this.comboBoxArea);
-        this.groupBox2.Location = new System.Drawing.Point(13, 60);
-        this.groupBox2.Name = "groupBox2";
-        this.groupBox2.Size = new System.Drawing.Size(374, 88);
-        this.groupBox2.TabIndex = 1;
-        this.groupBox2.TabStop = false;
-        this.groupBox2.Text = "查找范围";
-        this.comboBoxPage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        this.comboBoxPage.FormattingEnabled = true;
-        this.comboBoxPage.Location = new System.Drawing.Point(7, 55);
-        this.comboBoxPage.Name = "comboBoxPage";
-        this.comboBoxPage.Size = new System.Drawing.Size(349, 22);
-        this.comboBoxPage.TabIndex = 1;
-        this.comboBoxArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        this.comboBoxArea.FormattingEnabled = true;
-        this.comboBoxArea.Items.AddRange(new object[2] { "所有页面", "指定页面" });
-        this.comboBoxArea.Location = new System.Drawing.Point(7, 22);
-        this.comboBoxArea.Name = "comboBoxArea";
-        this.comboBoxArea.Size = new System.Drawing.Size(349, 22);
-        this.comboBoxArea.TabIndex = 0;
-        this.comboBoxArea.SelectedIndexChanged += new System.EventHandler(comboBoxArea_SelectedIndexChanged);
-        this.groupBox3.Controls.Add(this.checkBoxMatchCase);
-        this.groupBox3.Controls.Add(this.checkBoxWholeWord);
-        this.groupBox3.Location = new System.Drawing.Point(12, 154);
-        this.groupBox3.Name = "groupBox3";
-        this.groupBox3.Size = new System.Drawing.Size(375, 57);
-        this.groupBox3.TabIndex = 2;
-        this.groupBox3.TabStop = false;
-        this.groupBox3.Text = "查找选项";
-        this.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-        this.buttonClose.Location = new System.Drawing.Point(319, 224);
-        this.buttonClose.Name = "buttonClose";
-        this.buttonClose.Size = new System.Drawing.Size(66, 27);
-        this.buttonClose.TabIndex = 4;
-        this.buttonClose.Text = "关闭(&C)";
-        this.buttonClose.UseVisualStyleBackColor = true;
-        this.buttonClose.Click += new System.EventHandler(buttonClose_Click);
-        base.AcceptButton = this.buttonFind;
+        textBoxContent.Location = new System.Drawing.Point(6, 17);
+        textBoxContent.Name = "textBoxContent";
+        textBoxContent.Size = new System.Drawing.Size(353, 22);
+        textBoxContent.TabIndex = 0;
+        buttonFind.Location = new System.Drawing.Point(199, 224);
+        buttonFind.Name = "buttonFind";
+        buttonFind.Size = new System.Drawing.Size(114, 27);
+        buttonFind.TabIndex = 3;
+        buttonFind.Text = "查找/下一个(&F)";
+        buttonFind.UseVisualStyleBackColor = true;
+        buttonFind.Click += new System.EventHandler(buttonFind_Click);
+        checkBoxMatchCase.AutoSize = true;
+        checkBoxMatchCase.Checked = true;
+        checkBoxMatchCase.CheckState = System.Windows.Forms.CheckState.Checked;
+        checkBoxMatchCase.Location = new System.Drawing.Point(32, 21);
+        checkBoxMatchCase.Name = "checkBoxMatchCase";
+        checkBoxMatchCase.Size = new System.Drawing.Size(86, 18);
+        checkBoxMatchCase.TabIndex = 0;
+        checkBoxMatchCase.Text = "大小写匹配";
+        checkBoxMatchCase.UseVisualStyleBackColor = true;
+        checkBoxWholeWord.AutoSize = true;
+        checkBoxWholeWord.Location = new System.Drawing.Point(233, 21);
+        checkBoxWholeWord.Name = "checkBoxWholeWord";
+        checkBoxWholeWord.Size = new System.Drawing.Size(74, 18);
+        checkBoxWholeWord.TabIndex = 1;
+        checkBoxWholeWord.Text = "全字匹配";
+        checkBoxWholeWord.UseVisualStyleBackColor = true;
+        groupBox1.Controls.Add(textBoxContent);
+        groupBox1.Location = new System.Drawing.Point(12, 5);
+        groupBox1.Name = "groupBox1";
+        groupBox1.Size = new System.Drawing.Size(375, 49);
+        groupBox1.TabIndex = 0;
+        groupBox1.TabStop = false;
+        groupBox1.Text = "查找内容";
+        groupBox2.Controls.Add(comboBoxPage);
+        groupBox2.Controls.Add(comboBoxArea);
+        groupBox2.Location = new System.Drawing.Point(13, 60);
+        groupBox2.Name = "groupBox2";
+        groupBox2.Size = new System.Drawing.Size(374, 88);
+        groupBox2.TabIndex = 1;
+        groupBox2.TabStop = false;
+        groupBox2.Text = "查找范围";
+        comboBoxPage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        comboBoxPage.FormattingEnabled = true;
+        comboBoxPage.Location = new System.Drawing.Point(7, 55);
+        comboBoxPage.Name = "comboBoxPage";
+        comboBoxPage.Size = new System.Drawing.Size(349, 22);
+        comboBoxPage.TabIndex = 1;
+        comboBoxArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        comboBoxArea.FormattingEnabled = true;
+        comboBoxArea.Items.AddRange(new object[2] { "所有页面", "指定页面" });
+        comboBoxArea.Location = new System.Drawing.Point(7, 22);
+        comboBoxArea.Name = "comboBoxArea";
+        comboBoxArea.Size = new System.Drawing.Size(349, 22);
+        comboBoxArea.TabIndex = 0;
+        comboBoxArea.SelectedIndexChanged += new System.EventHandler(comboBoxArea_SelectedIndexChanged);
+        groupBox3.Controls.Add(checkBoxMatchCase);
+        groupBox3.Controls.Add(checkBoxWholeWord);
+        groupBox3.Location = new System.Drawing.Point(12, 154);
+        groupBox3.Name = "groupBox3";
+        groupBox3.Size = new System.Drawing.Size(375, 57);
+        groupBox3.TabIndex = 2;
+        groupBox3.TabStop = false;
+        groupBox3.Text = "查找选项";
+        buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+        buttonClose.Location = new System.Drawing.Point(319, 224);
+        buttonClose.Name = "buttonClose";
+        buttonClose.Size = new System.Drawing.Size(66, 27);
+        buttonClose.TabIndex = 4;
+        buttonClose.Text = "关闭(&C)";
+        buttonClose.UseVisualStyleBackColor = true;
+        buttonClose.Click += new System.EventHandler(buttonClose_Click);
+        base.AcceptButton = buttonFind;
         base.AutoScaleDimensions = new System.Drawing.SizeF(7f, 14f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        base.CancelButton = this.buttonClose;
+        base.CancelButton = buttonClose;
         base.ClientSize = new System.Drawing.Size(397, 263);
-        base.Controls.Add(this.groupBox3);
-        base.Controls.Add(this.groupBox2);
-        base.Controls.Add(this.groupBox1);
-        base.Controls.Add(this.buttonFind);
-        base.Controls.Add(this.buttonClose);
+        base.Controls.Add(groupBox3);
+        base.Controls.Add(groupBox2);
+        base.Controls.Add(groupBox1);
+        base.Controls.Add(buttonFind);
+        base.Controls.Add(buttonClose);
         base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
         base.MaximizeBox = false;
         base.MinimizeBox = false;
@@ -394,14 +394,14 @@ public class TextFindForm : XtraForm
         base.ShowIcon = false;
         base.ShowInTaskbar = false;
         base.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-        this.Text = "文本查找";
+        Text = "文本查找";
         base.FormClosing += new System.Windows.Forms.FormClosingEventHandler(TextFindForm_FormClosing);
         base.Load += new System.EventHandler(TextFindForm_Load);
-        this.groupBox1.ResumeLayout(false);
-        this.groupBox1.PerformLayout();
-        this.groupBox2.ResumeLayout(false);
-        this.groupBox3.ResumeLayout(false);
-        this.groupBox3.PerformLayout();
+        groupBox1.ResumeLayout(false);
+        groupBox1.PerformLayout();
+        groupBox2.ResumeLayout(false);
+        groupBox3.ResumeLayout(false);
+        groupBox3.PerformLayout();
         base.ResumeLayout(false);
     }
 }

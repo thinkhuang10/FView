@@ -17,11 +17,6 @@ public class CVectorGraph : CShape
 {
     public string type = "";
 
-    //public string dllfile = "VectorGraphProvider.dll";
-
-    [NonSerialized]
-    private readonly object svgObject;
-
     protected CVectorGraph(SerializationInfo info, StreamingContext context)
         : base(info, context)
     {
@@ -105,10 +100,7 @@ public class CVectorGraph : CShape
         if (v == 0)
         {
             VMirror = !VMirror;
-            if (_b[0] != null)
-            {
-                _b[0].RotateFlip(RotateFlipType.RotateNoneFlipX);
-            }
+            _b[0]?.RotateFlip(RotateFlipType.RotateNoneFlipX);
             RotateAtPoint.X = pointF.X * 2f - RotateAtPoint.X;
             RotateAngel = 0f - RotateAngel;
             TranslateMatrix.Reset();
@@ -117,10 +109,7 @@ public class CVectorGraph : CShape
         if (v == 1)
         {
             HMirror = !HMirror;
-            if (_b[0] != null)
-            {
-                _b[0].RotateFlip(RotateFlipType.Rotate180FlipX);
-            }
+            _b[0]?.RotateFlip(RotateFlipType.Rotate180FlipX);
             RotateAtPoint.Y = pointF.Y * 2f - RotateAtPoint.Y;
             RotateAngel = 0f - RotateAngel;
             TranslateMatrix.Reset();
@@ -257,10 +246,7 @@ public class CVectorGraph : CShape
             ImportantPoints[3]
         });
         list.Add(graphicsPath);
-        if (swapgp != null)
-        {
-            swapgp.Dispose();
-        }
+        swapgp?.Dispose();
         swapgp = graphicsPath;
         needRefreshShape = false;
         return list;
@@ -435,31 +421,8 @@ public class CVectorGraph : CShape
         matrix.Invert();
         matrix.TransformPoints(array);
         Bitmap bitmap = new(((int)Math.Abs(array[1].X - array[0].X) == 0) ? 1 : ((int)Math.Abs(array[1].X - array[0].X)), ((int)Math.Abs(array[1].Y - array[0].Y) == 0) ? 1 : ((int)Math.Abs(array[1].Y - array[0].Y)));
-        Graphics g = Graphics.FromImage(bitmap);
-        if (svgObject == null)
-        {
-            //Assembly assembly = Assembly.LoadFrom(AppDomain.CurrentDomain.BaseDirectory + dllfile);
-            //Type type = assembly.GetType(this.type);
-            //if (type == null)
-            //{
-            //	return;
-            //}
-            //obj = (svgObject = Activator.CreateInstance(type));
-        }
-        else
-        {
-        }
-        //if (obj != null)
-        //{
-        //	VectorGraph vectorGraph = obj as VectorGraph;
-        //	vectorGraph.DisplaySize = new SizeF((int)Math.Abs(array[1].X - array[0].X), (int)Math.Abs(array[1].Y - array[0].Y));
-        //	Scale(g, vectorGraph);
-        //	vectorGraph.Paint(g);
-        //}
-        if (_b[0] != null)
-        {
-            _b[0].Dispose();
-        }
+
+        _b[0]?.Dispose();
         _b[0] = bitmap;
         if (VMirror)
         {
@@ -470,13 +433,6 @@ public class CVectorGraph : CShape
             _b[0].RotateFlip(RotateFlipType.Rotate180FlipX);
         }
     }
-
-    //private void Scale(Graphics g, VectorGraph vg)
-    //{
-    //	vg.RateX = vg.DisplaySize.Width / vg.OriginalSize.Width;
-    //	vg.RateY = vg.DisplaySize.Height / vg.OriginalSize.Height;
-    //	g.ScaleTransform((vg.RateX == 0f) ? 1f : vg.RateX, (vg.RateY == 0f) ? 1f : vg.RateY);
-    //}
 
     public override int EditPoint(PointF OldPoint, PointF NewPoint, int r)
     {

@@ -291,10 +291,7 @@ public class DefaultHighlightingStrategy : IHighlightingStrategyUsingRuleSets, I
             }
             currentLineNumber = i;
             List<TextWord> words = ParseLine(document);
-            if (currentLine.Words != null)
-            {
-                currentLine.Words.Clear();
-            }
+            currentLine.Words?.Clear();
             currentLine.Words = words;
             currentLine.HighlightSpanStack = ((currentSpanStack == null || currentSpanStack.IsEmpty) ? null : currentSpanStack);
         }
@@ -413,10 +410,7 @@ public class DefaultHighlightingStrategy : IHighlightingStrategyUsingRuleSets, I
         {
             result = false;
         }
-        if (currentLine.Words != null)
-        {
-            currentLine.Words.Clear();
-        }
+        currentLine.Words?.Clear();
         currentLine.Words = words;
         currentLine.HighlightSpanStack = ((currentSpanStack != null && !currentSpanStack.IsEmpty) ? currentSpanStack : null);
         return result;

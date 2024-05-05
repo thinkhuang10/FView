@@ -48,10 +48,7 @@ public class CycleAlarmControl : UserControl, IDCCEControl, IControlShape
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -584,7 +581,7 @@ public class CycleAlarmControl : UserControl, IDCCEControl, IControlShape
             string text = "";
             try
             {
-                text = this.GetValueEvent("[" + saveData.strVar + "]").ToString();
+                text = GetValueEvent("[" + saveData.strVar + "]").ToString();
             }
             catch
             {
@@ -606,7 +603,7 @@ public class CycleAlarmControl : UserControl, IDCCEControl, IControlShape
             double num = 0.0;
             try
             {
-                num = Convert.ToDouble(this.GetValueEvent("[" + saveData.strVar + "]"));
+                num = Convert.ToDouble(GetValueEvent("[" + saveData.strVar + "]"));
             }
             catch
             {
@@ -663,7 +660,7 @@ public class CycleAlarmControl : UserControl, IDCCEControl, IControlShape
             string text = "";
             try
             {
-                text = this.GetValueEvent("[" + saveData.strVar + "]").ToString();
+                text = GetValueEvent("[" + saveData.strVar + "]").ToString();
             }
             catch
             {
@@ -685,7 +682,7 @@ public class CycleAlarmControl : UserControl, IDCCEControl, IControlShape
             double num = 0.0;
             try
             {
-                num = Convert.ToDouble(this.GetValueEvent("[" + saveData.strVar + "]"));
+                num = Convert.ToDouble(GetValueEvent("[" + saveData.strVar + "]"));
             }
             catch
             {
@@ -720,7 +717,7 @@ public class CycleAlarmControl : UserControl, IDCCEControl, IControlShape
         if (!isRuning)
         {
             CycleAlarmSetForm cycleAlarmSetForm = new(saveData);
-            cycleAlarmSetForm.GetVarTableEvent += this.GetVarTableEvent;
+            cycleAlarmSetForm.GetVarTableEvent += GetVarTableEvent;
             cycleAlarmSetForm.ShowDialog();
         }
     }
@@ -746,15 +743,15 @@ public class CycleAlarmControl : UserControl, IDCCEControl, IControlShape
 
     private void InitializeComponent()
     {
-        this.timer = new System.Windows.Forms.Timer();
+        timer = new System.Windows.Forms.Timer();
         base.SuspendLayout();
-        this.timer.Interval = 1000;
-        this.timer.Tick += new System.EventHandler(timer_Tick);
+        timer.Interval = 1000;
+        timer.Tick += new System.EventHandler(timer_Tick);
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.DoubleBuffered = true;
+        DoubleBuffered = true;
         base.Name = "CycleAlarmControl";
-        this.Size = new System.Drawing.Size(137, 123);
+        Size = new System.Drawing.Size(137, 123);
         base.Load += new System.EventHandler(CycleAlarmControl_Load);
         base.Click += new System.EventHandler(CycleAlarmControl_Click);
         base.ResumeLayout(false);

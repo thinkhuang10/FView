@@ -1,8 +1,6 @@
-using System;
-using System.ComponentModel;
-using System.Drawing;
-using System.Windows.Forms;
 using ShapeRuntime;
+using System;
+using System.Windows.Forms;
 
 namespace HMIRunForm;
 
@@ -11,8 +9,6 @@ public class ProjectEndForm : Form
 	private readonly CAuthoritySeiallize cas = new();
 
 	public static bool bProjectEndForm;
-
-	private readonly IContainer components;
 
 	private TextBox tbPassword;
 
@@ -34,11 +30,7 @@ public class ProjectEndForm : Form
 		this.cas = cas;
 	}
 
-	private void btCancel_Click(object sender, EventArgs e)
-	{
-	}
-
-	private void btSure_Click(object sender, EventArgs e)
+	private void BtSure_Click(object sender, EventArgs e)
 	{
 		if (cbUser.Text.Trim() == "")
 		{
@@ -67,89 +59,79 @@ public class ProjectEndForm : Form
 		}
 	}
 
-	protected override void Dispose(bool disposing)
-	{
-		if (disposing && components != null)
-		{
-			components.Dispose();
-		}
-		base.Dispose(disposing);
-	}
-
 	private void InitializeComponent()
 	{
 		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIRunForm.ProjectEndForm));
-		this.tbPassword = new System.Windows.Forms.TextBox();
-		this.cbUser = new System.Windows.Forms.ComboBox();
-		this.label2 = new System.Windows.Forms.Label();
-		this.label1 = new System.Windows.Forms.Label();
-		this.btCancel = new System.Windows.Forms.Button();
-		this.btSure = new System.Windows.Forms.Button();
-		this.pictureBox1 = new System.Windows.Forms.PictureBox();
-		((System.ComponentModel.ISupportInitialize)this.pictureBox1).BeginInit();
+		tbPassword = new System.Windows.Forms.TextBox();
+		cbUser = new System.Windows.Forms.ComboBox();
+		label2 = new System.Windows.Forms.Label();
+		label1 = new System.Windows.Forms.Label();
+		btCancel = new System.Windows.Forms.Button();
+		btSure = new System.Windows.Forms.Button();
+		pictureBox1 = new System.Windows.Forms.PictureBox();
+		((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
 		base.SuspendLayout();
-		this.tbPassword.Location = new System.Drawing.Point(146, 55);
-		this.tbPassword.Name = "tbPassword";
-		this.tbPassword.PasswordChar = '*';
-		this.tbPassword.Size = new System.Drawing.Size(121, 21);
-		this.tbPassword.TabIndex = 13;
-		this.cbUser.FormattingEnabled = true;
-		this.cbUser.Location = new System.Drawing.Point(146, 21);
-		this.cbUser.Name = "cbUser";
-		this.cbUser.Size = new System.Drawing.Size(121, 20);
-		this.cbUser.TabIndex = 12;
-		this.label2.AutoSize = true;
-		this.label2.Location = new System.Drawing.Point(99, 59);
-		this.label2.Name = "label2";
-		this.label2.Size = new System.Drawing.Size(41, 12);
-		this.label2.TabIndex = 10;
-		this.label2.Text = "口  令";
-		this.label1.AutoSize = true;
-		this.label1.Location = new System.Drawing.Point(99, 25);
-		this.label1.Name = "label1";
-		this.label1.Size = new System.Drawing.Size(41, 12);
-		this.label1.TabIndex = 9;
-		this.label1.Text = "用户名";
-		this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-		this.btCancel.Location = new System.Drawing.Point(148, 100);
-		this.btCancel.Name = "btCancel";
-		this.btCancel.Size = new System.Drawing.Size(75, 23);
-		this.btCancel.TabIndex = 8;
-		this.btCancel.Text = "取消";
-		this.btCancel.UseVisualStyleBackColor = true;
-		this.btCancel.Click += new System.EventHandler(btCancel_Click);
-		this.btSure.Location = new System.Drawing.Point(67, 100);
-		this.btSure.Name = "btSure";
-		this.btSure.Size = new System.Drawing.Size(75, 23);
-		this.btSure.TabIndex = 7;
-		this.btSure.Text = "确定";
-		this.btSure.UseVisualStyleBackColor = true;
-		this.btSure.Click += new System.EventHandler(btSure_Click);
-		this.pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
-		this.pictureBox1.Location = new System.Drawing.Point(14, 12);
-		this.pictureBox1.Name = "pictureBox1";
-		this.pictureBox1.Size = new System.Drawing.Size(72, 72);
-		this.pictureBox1.TabIndex = 11;
-		this.pictureBox1.TabStop = false;
-		base.AcceptButton = this.btCancel;
+		tbPassword.Location = new System.Drawing.Point(146, 55);
+		tbPassword.Name = "tbPassword";
+		tbPassword.PasswordChar = '*';
+		tbPassword.Size = new System.Drawing.Size(121, 21);
+		tbPassword.TabIndex = 13;
+		cbUser.FormattingEnabled = true;
+		cbUser.Location = new System.Drawing.Point(146, 21);
+		cbUser.Name = "cbUser";
+		cbUser.Size = new System.Drawing.Size(121, 20);
+		cbUser.TabIndex = 12;
+		label2.AutoSize = true;
+		label2.Location = new System.Drawing.Point(99, 59);
+		label2.Name = "label2";
+		label2.Size = new System.Drawing.Size(41, 12);
+		label2.TabIndex = 10;
+		label2.Text = "口  令";
+		label1.AutoSize = true;
+		label1.Location = new System.Drawing.Point(99, 25);
+		label1.Name = "label1";
+		label1.Size = new System.Drawing.Size(41, 12);
+		label1.TabIndex = 9;
+		label1.Text = "用户名";
+		btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+		btCancel.Location = new System.Drawing.Point(148, 100);
+		btCancel.Name = "btCancel";
+		btCancel.Size = new System.Drawing.Size(75, 23);
+		btCancel.TabIndex = 8;
+		btCancel.Text = "取消";
+		btCancel.UseVisualStyleBackColor = true;
+		btSure.Location = new System.Drawing.Point(67, 100);
+		btSure.Name = "btSure";
+		btSure.Size = new System.Drawing.Size(75, 23);
+		btSure.TabIndex = 7;
+		btSure.Text = "确定";
+		btSure.UseVisualStyleBackColor = true;
+		btSure.Click += new System.EventHandler(BtSure_Click);
+		pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
+		pictureBox1.Location = new System.Drawing.Point(14, 12);
+		pictureBox1.Name = "pictureBox1";
+		pictureBox1.Size = new System.Drawing.Size(72, 72);
+		pictureBox1.TabIndex = 11;
+		pictureBox1.TabStop = false;
+		base.AcceptButton = btCancel;
 		base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 		base.ClientSize = new System.Drawing.Size(284, 135);
-		base.Controls.Add(this.tbPassword);
-		base.Controls.Add(this.cbUser);
-		base.Controls.Add(this.pictureBox1);
-		base.Controls.Add(this.label2);
-		base.Controls.Add(this.label1);
-		base.Controls.Add(this.btCancel);
-		base.Controls.Add(this.btSure);
+		base.Controls.Add(tbPassword);
+		base.Controls.Add(cbUser);
+		base.Controls.Add(pictureBox1);
+		base.Controls.Add(label2);
+		base.Controls.Add(label1);
+		base.Controls.Add(btCancel);
+		base.Controls.Add(btSure);
 		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 		base.MaximizeBox = false;
 		base.MinimizeBox = false;
 		base.Name = "ProjectEndForm";
 		base.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-		this.Text = "退出";
+		Text = "退出";
 		base.Load += new System.EventHandler(ProjectEndForm_Load);
-		((System.ComponentModel.ISupportInitialize)this.pictureBox1).EndInit();
+		((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
 		base.ResumeLayout(false);
 		base.PerformLayout();
 	}

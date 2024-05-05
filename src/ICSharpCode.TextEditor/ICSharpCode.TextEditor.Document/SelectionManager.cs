@@ -383,9 +383,6 @@ public class SelectionManager : IDisposable
 
     protected virtual void OnSelectionChanged(EventArgs e)
     {
-        if (this.SelectionChanged != null)
-        {
-            this.SelectionChanged(this, e);
-        }
+        SelectionChanged?.Invoke(this, e);
     }
 }

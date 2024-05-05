@@ -40,9 +40,9 @@ public class PageOpenerForm : Form
 
 	private void btnOK_Click(object sender, EventArgs e)
 	{
-		if (listView_Pages.SelectedItems.Count > 0 && this.OpenPageEvent != null)
+		if (listView_Pages.SelectedItems.Count > 0 && OpenPageEvent != null)
 		{
-			this.OpenPageEvent(sender, new OpenPageEventArgs
+			OpenPageEvent(sender, new OpenPageEventArgs
 			{
 				PageName = listView_Pages.SelectedItems[0].Name
 			});
@@ -51,9 +51,9 @@ public class PageOpenerForm : Form
 
 	private void listView_Pages_DoubleClick(object sender, EventArgs e)
 	{
-		if (listView_Pages.SelectedItems.Count > 0 && this.OpenPageEvent != null)
+		if (listView_Pages.SelectedItems.Count > 0 && OpenPageEvent != null)
 		{
-			this.OpenPageEvent(sender, new OpenPageEventArgs
+			OpenPageEvent(sender, new OpenPageEventArgs
 			{
 				PageName = listView_Pages.SelectedItems[0].Name
 			});
@@ -76,56 +76,56 @@ public class PageOpenerForm : Form
 
 	private void InitializeComponent()
 	{
-		this.components = new System.ComponentModel.Container();
+		components = new System.ComponentModel.Container();
 		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIEditEnvironment.PageOpenerForm));
-		this.listView_Pages = new System.Windows.Forms.ListView();
-		this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-		this.btnOK = new System.Windows.Forms.Button();
-		this.btnCancel = new System.Windows.Forms.Button();
+		listView_Pages = new System.Windows.Forms.ListView();
+		imageList1 = new System.Windows.Forms.ImageList(components);
+		btnOK = new System.Windows.Forms.Button();
+		btnCancel = new System.Windows.Forms.Button();
 		base.SuspendLayout();
-		this.listView_Pages.HideSelection = false;
-		this.listView_Pages.LargeImageList = this.imageList1;
-		this.listView_Pages.Location = new System.Drawing.Point(12, 12);
-		this.listView_Pages.MultiSelect = false;
-		this.listView_Pages.Name = "listView_Pages";
-		this.listView_Pages.Size = new System.Drawing.Size(539, 192);
-		this.listView_Pages.SmallImageList = this.imageList1;
-		this.listView_Pages.TabIndex = 0;
-		this.listView_Pages.UseCompatibleStateImageBehavior = false;
-		this.listView_Pages.SelectedIndexChanged += new System.EventHandler(listView_Pages_SelectedIndexChanged);
-		this.listView_Pages.DoubleClick += new System.EventHandler(listView_Pages_DoubleClick);
-		this.imageList1.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imageList1.ImageStream");
-		this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+		listView_Pages.HideSelection = false;
+		listView_Pages.LargeImageList = imageList1;
+		listView_Pages.Location = new System.Drawing.Point(12, 12);
+		listView_Pages.MultiSelect = false;
+		listView_Pages.Name = "listView_Pages";
+		listView_Pages.Size = new System.Drawing.Size(539, 192);
+		listView_Pages.SmallImageList = imageList1;
+		listView_Pages.TabIndex = 0;
+		listView_Pages.UseCompatibleStateImageBehavior = false;
+		listView_Pages.SelectedIndexChanged += new System.EventHandler(listView_Pages_SelectedIndexChanged);
+		listView_Pages.DoubleClick += new System.EventHandler(listView_Pages_DoubleClick);
+		imageList1.ImageStream = (System.Windows.Forms.ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+		imageList1.TransparentColor = System.Drawing.Color.Transparent;
 		//this.imageList1.Images.SetKeyName(0, "Generic_Document.png");
-		this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-		this.btnOK.Enabled = false;
-		this.btnOK.Location = new System.Drawing.Point(374, 212);
-		this.btnOK.Name = "btnOK";
-		this.btnOK.Size = new System.Drawing.Size(75, 23);
-		this.btnOK.TabIndex = 1;
-		this.btnOK.Text = "确 定";
-		this.btnOK.UseVisualStyleBackColor = true;
-		this.btnOK.Click += new System.EventHandler(btnOK_Click);
-		this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-		this.btnCancel.Location = new System.Drawing.Point(455, 212);
-		this.btnCancel.Name = "btnCancel";
-		this.btnCancel.Size = new System.Drawing.Size(75, 23);
-		this.btnCancel.TabIndex = 2;
-		this.btnCancel.Text = "取 消";
-		this.btnCancel.UseVisualStyleBackColor = true;
-		base.AcceptButton = this.btnOK;
+		btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+		btnOK.Enabled = false;
+		btnOK.Location = new System.Drawing.Point(374, 212);
+		btnOK.Name = "btnOK";
+		btnOK.Size = new System.Drawing.Size(75, 23);
+		btnOK.TabIndex = 1;
+		btnOK.Text = "确 定";
+		btnOK.UseVisualStyleBackColor = true;
+		btnOK.Click += new System.EventHandler(btnOK_Click);
+		btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+		btnCancel.Location = new System.Drawing.Point(455, 212);
+		btnCancel.Name = "btnCancel";
+		btnCancel.Size = new System.Drawing.Size(75, 23);
+		btnCancel.TabIndex = 2;
+		btnCancel.Text = "取 消";
+		btnCancel.UseVisualStyleBackColor = true;
+		base.AcceptButton = btnOK;
 		base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-		base.CancelButton = this.btnCancel;
+		base.CancelButton = btnCancel;
 		base.ClientSize = new System.Drawing.Size(563, 247);
-		base.Controls.Add(this.btnCancel);
-		base.Controls.Add(this.btnOK);
-		base.Controls.Add(this.listView_Pages);
+		base.Controls.Add(btnCancel);
+		base.Controls.Add(btnOK);
+		base.Controls.Add(listView_Pages);
 		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
 		base.MaximizeBox = false;
 		base.Name = "PageOpenerForm";
 		base.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-		this.Text = "选择页面";
+		Text = "选择页面";
 		base.Load += new System.EventHandler(openPageForm_Load);
 		base.ResumeLayout(false);
 	}

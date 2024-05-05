@@ -64,33 +64,21 @@ public abstract class AbstractMargin
 
     public virtual void HandleMouseDown(Point mousepos, MouseButtons mouseButtons)
     {
-        if (this.MouseDown != null)
-        {
-            this.MouseDown(this, mousepos, mouseButtons);
-        }
+        MouseDown?.Invoke(this, mousepos, mouseButtons);
     }
 
     public virtual void HandleMouseMove(Point mousepos, MouseButtons mouseButtons)
     {
-        if (this.MouseMove != null)
-        {
-            this.MouseMove(this, mousepos, mouseButtons);
-        }
+        MouseMove?.Invoke(this, mousepos, mouseButtons);
     }
 
     public virtual void HandleMouseLeave(EventArgs e)
     {
-        if (this.MouseLeave != null)
-        {
-            this.MouseLeave(this, e);
-        }
+        MouseLeave?.Invoke(this, e);
     }
 
     public virtual void Paint(Graphics g, Rectangle rect)
     {
-        if (this.Painted != null)
-        {
-            this.Painted(this, g, rect);
-        }
+        Painted?.Invoke(this, g, rect);
     }
 }

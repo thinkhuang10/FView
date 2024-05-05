@@ -69,7 +69,7 @@ public class Light_11 : Form
     {
         try
         {
-            if (ckb_light.Checked && !this.ckvarevent(txt_var2.Text))
+            if (ckb_light.Checked && !ckvarevent(txt_var2.Text))
             {
                 MessageBox.Show("控制闪烁变量错误！请选择合适的变量类型！");
             }
@@ -100,7 +100,7 @@ public class Light_11 : Form
                     lighttype = 0;
                 }
             }
-            if (this.ckvarevent(txt_var.Text))
+            if (ckvarevent(txt_var.Text))
             {
                 if (!string.IsNullOrEmpty(txt_var.Text))
                 {
@@ -169,7 +169,7 @@ public class Light_11 : Form
 
     private void btn_view_Click(object sender, EventArgs e)
     {
-        string value = this.viewevent();
+        string value = viewevent();
         if (!string.IsNullOrEmpty(value))
         {
             txt_var.Text = value;
@@ -178,7 +178,7 @@ public class Light_11 : Form
 
     private void btn_var2_Click(object sender, EventArgs e)
     {
-        string value = this.viewevent();
+        string value = viewevent();
         if (!string.IsNullOrEmpty(value))
         {
             txt_var2.Text = value;
@@ -224,161 +224,161 @@ public class Light_11 : Form
 
     private void InitializeComponent()
     {
-        this.txt_var = new System.Windows.Forms.TextBox();
-        this.btn_view = new System.Windows.Forms.Button();
-        this.groupBox1 = new System.Windows.Forms.GroupBox();
-        this.lbl_fasle = new System.Windows.Forms.Label();
-        this.label2 = new System.Windows.Forms.Label();
-        this.lbl_true = new System.Windows.Forms.Label();
-        this.label6 = new System.Windows.Forms.Label();
-        this.groupBox2 = new System.Windows.Forms.GroupBox();
-        this.label3 = new System.Windows.Forms.Label();
-        this.btn_var2 = new System.Windows.Forms.Button();
-        this.txt_var2 = new System.Windows.Forms.TextBox();
-        this.cbx_spd = new System.Windows.Forms.ComboBox();
-        this.label1 = new System.Windows.Forms.Label();
-        this.ckb_light = new System.Windows.Forms.CheckBox();
-        this.btn_Cancel = new System.Windows.Forms.Button();
-        this.btn_OK = new System.Windows.Forms.Button();
-        this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-        this.groupBox1.SuspendLayout();
-        this.groupBox2.SuspendLayout();
+        txt_var = new System.Windows.Forms.TextBox();
+        btn_view = new System.Windows.Forms.Button();
+        groupBox1 = new System.Windows.Forms.GroupBox();
+        lbl_fasle = new System.Windows.Forms.Label();
+        label2 = new System.Windows.Forms.Label();
+        lbl_true = new System.Windows.Forms.Label();
+        label6 = new System.Windows.Forms.Label();
+        groupBox2 = new System.Windows.Forms.GroupBox();
+        label3 = new System.Windows.Forms.Label();
+        btn_var2 = new System.Windows.Forms.Button();
+        txt_var2 = new System.Windows.Forms.TextBox();
+        cbx_spd = new System.Windows.Forms.ComboBox();
+        label1 = new System.Windows.Forms.Label();
+        ckb_light = new System.Windows.Forms.CheckBox();
+        btn_Cancel = new System.Windows.Forms.Button();
+        btn_OK = new System.Windows.Forms.Button();
+        colorDialog1 = new System.Windows.Forms.ColorDialog();
+        groupBox1.SuspendLayout();
+        groupBox2.SuspendLayout();
         base.SuspendLayout();
-        this.txt_var.Location = new System.Drawing.Point(17, 20);
-        this.txt_var.Name = "txt_var";
-        this.txt_var.Size = new System.Drawing.Size(142, 21);
-        this.txt_var.TabIndex = 0;
-        this.btn_view.Location = new System.Drawing.Point(178, 20);
-        this.btn_view.Name = "btn_view";
-        this.btn_view.Size = new System.Drawing.Size(75, 23);
-        this.btn_view.TabIndex = 1;
-        this.btn_view.Text = "....";
-        this.btn_view.UseVisualStyleBackColor = true;
-        this.btn_view.Click += new System.EventHandler(btn_view_Click);
-        this.groupBox1.Controls.Add(this.lbl_fasle);
-        this.groupBox1.Controls.Add(this.label2);
-        this.groupBox1.Controls.Add(this.lbl_true);
-        this.groupBox1.Controls.Add(this.label6);
-        this.groupBox1.Controls.Add(this.txt_var);
-        this.groupBox1.Controls.Add(this.btn_view);
-        this.groupBox1.Location = new System.Drawing.Point(12, 12);
-        this.groupBox1.Name = "groupBox1";
-        this.groupBox1.Size = new System.Drawing.Size(268, 96);
-        this.groupBox1.TabIndex = 59;
-        this.groupBox1.TabStop = false;
-        this.groupBox1.Text = "一般";
-        this.lbl_fasle.AutoSize = true;
-        this.lbl_fasle.BackColor = System.Drawing.Color.FromArgb(192, 0, 0);
-        this.lbl_fasle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-        this.lbl_fasle.Location = new System.Drawing.Point(197, 57);
-        this.lbl_fasle.Name = "lbl_fasle";
-        this.lbl_fasle.Size = new System.Drawing.Size(37, 14);
-        this.lbl_fasle.TabIndex = 3;
-        this.lbl_fasle.Text = "     ";
-        this.lbl_fasle.Click += new System.EventHandler(lbl_fasle_Click);
-        this.label2.AutoSize = true;
-        this.label2.Location = new System.Drawing.Point(138, 57);
-        this.label2.Name = "label2";
-        this.label2.Size = new System.Drawing.Size(53, 12);
-        this.label2.TabIndex = 119;
-        this.label2.Text = "为假时：";
-        this.lbl_true.AutoSize = true;
-        this.lbl_true.BackColor = System.Drawing.Color.FromArgb(0, 192, 0);
-        this.lbl_true.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-        this.lbl_true.Location = new System.Drawing.Point(74, 57);
-        this.lbl_true.Name = "lbl_true";
-        this.lbl_true.Size = new System.Drawing.Size(37, 14);
-        this.lbl_true.TabIndex = 2;
-        this.lbl_true.Text = "     ";
-        this.lbl_true.Click += new System.EventHandler(lbl_true_Click);
-        this.label6.AutoSize = true;
-        this.label6.Location = new System.Drawing.Point(15, 57);
-        this.label6.Name = "label6";
-        this.label6.Size = new System.Drawing.Size(53, 12);
-        this.label6.TabIndex = 117;
-        this.label6.Text = "为真时：";
-        this.label6.Click += new System.EventHandler(label6_Click);
-        this.groupBox2.Controls.Add(this.label3);
-        this.groupBox2.Controls.Add(this.btn_var2);
-        this.groupBox2.Controls.Add(this.txt_var2);
-        this.groupBox2.Controls.Add(this.cbx_spd);
-        this.groupBox2.Controls.Add(this.label1);
-        this.groupBox2.Controls.Add(this.ckb_light);
-        this.groupBox2.Location = new System.Drawing.Point(12, 128);
-        this.groupBox2.Name = "groupBox2";
-        this.groupBox2.Size = new System.Drawing.Size(268, 89);
-        this.groupBox2.TabIndex = 60;
-        this.groupBox2.TabStop = false;
-        this.groupBox2.Text = "闪烁";
-        this.label3.AutoSize = true;
-        this.label3.Location = new System.Drawing.Point(173, 62);
-        this.label3.Name = "label3";
-        this.label3.Size = new System.Drawing.Size(71, 12);
-        this.label3.TabIndex = 60;
-        this.label3.Text = "不为0时闪烁";
-        this.btn_var2.Location = new System.Drawing.Point(125, 53);
-        this.btn_var2.Name = "btn_var2";
-        this.btn_var2.Size = new System.Drawing.Size(34, 23);
-        this.btn_var2.TabIndex = 7;
-        this.btn_var2.Text = "....";
-        this.btn_var2.UseVisualStyleBackColor = true;
-        this.btn_var2.Click += new System.EventHandler(btn_var2_Click);
-        this.txt_var2.Location = new System.Drawing.Point(17, 54);
-        this.txt_var2.Name = "txt_var2";
-        this.txt_var2.Size = new System.Drawing.Size(100, 21);
-        this.txt_var2.TabIndex = 6;
-        this.cbx_spd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-        this.cbx_spd.FormattingEnabled = true;
-        this.cbx_spd.Items.AddRange(new object[3] { "低速", "中速", "高速" });
-        this.cbx_spd.Location = new System.Drawing.Point(178, 15);
-        this.cbx_spd.Name = "cbx_spd";
-        this.cbx_spd.Size = new System.Drawing.Size(75, 20);
-        this.cbx_spd.TabIndex = 5;
-        this.label1.AutoSize = true;
-        this.label1.Location = new System.Drawing.Point(123, 21);
-        this.label1.Name = "label1";
-        this.label1.Size = new System.Drawing.Size(41, 12);
-        this.label1.TabIndex = 1;
-        this.label1.Text = "速度：";
-        this.ckb_light.AutoSize = true;
-        this.ckb_light.Location = new System.Drawing.Point(17, 21);
-        this.ckb_light.Name = "ckb_light";
-        this.ckb_light.Size = new System.Drawing.Size(72, 16);
-        this.ckb_light.TabIndex = 4;
-        this.ckb_light.Text = "允许闪烁";
-        this.ckb_light.UseVisualStyleBackColor = true;
-        this.ckb_light.CheckedChanged += new System.EventHandler(ckb_light_CheckedChanged);
-        this.btn_Cancel.Location = new System.Drawing.Point(196, 232);
-        this.btn_Cancel.Name = "btn_Cancel";
-        this.btn_Cancel.Size = new System.Drawing.Size(75, 23);
-        this.btn_Cancel.TabIndex = 9;
-        this.btn_Cancel.Text = "取消";
-        this.btn_Cancel.UseVisualStyleBackColor = true;
-        this.btn_Cancel.Click += new System.EventHandler(btn_Cancel_Click);
-        this.btn_OK.Location = new System.Drawing.Point(115, 232);
-        this.btn_OK.Name = "btn_OK";
-        this.btn_OK.Size = new System.Drawing.Size(75, 23);
-        this.btn_OK.TabIndex = 8;
-        this.btn_OK.Text = "确定";
-        this.btn_OK.UseVisualStyleBackColor = true;
-        this.btn_OK.Click += new System.EventHandler(btn_OK_Click);
+        txt_var.Location = new System.Drawing.Point(17, 20);
+        txt_var.Name = "txt_var";
+        txt_var.Size = new System.Drawing.Size(142, 21);
+        txt_var.TabIndex = 0;
+        btn_view.Location = new System.Drawing.Point(178, 20);
+        btn_view.Name = "btn_view";
+        btn_view.Size = new System.Drawing.Size(75, 23);
+        btn_view.TabIndex = 1;
+        btn_view.Text = "....";
+        btn_view.UseVisualStyleBackColor = true;
+        btn_view.Click += new System.EventHandler(btn_view_Click);
+        groupBox1.Controls.Add(lbl_fasle);
+        groupBox1.Controls.Add(label2);
+        groupBox1.Controls.Add(lbl_true);
+        groupBox1.Controls.Add(label6);
+        groupBox1.Controls.Add(txt_var);
+        groupBox1.Controls.Add(btn_view);
+        groupBox1.Location = new System.Drawing.Point(12, 12);
+        groupBox1.Name = "groupBox1";
+        groupBox1.Size = new System.Drawing.Size(268, 96);
+        groupBox1.TabIndex = 59;
+        groupBox1.TabStop = false;
+        groupBox1.Text = "一般";
+        lbl_fasle.AutoSize = true;
+        lbl_fasle.BackColor = System.Drawing.Color.FromArgb(192, 0, 0);
+        lbl_fasle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        lbl_fasle.Location = new System.Drawing.Point(197, 57);
+        lbl_fasle.Name = "lbl_fasle";
+        lbl_fasle.Size = new System.Drawing.Size(37, 14);
+        lbl_fasle.TabIndex = 3;
+        lbl_fasle.Text = "     ";
+        lbl_fasle.Click += new System.EventHandler(lbl_fasle_Click);
+        label2.AutoSize = true;
+        label2.Location = new System.Drawing.Point(138, 57);
+        label2.Name = "label2";
+        label2.Size = new System.Drawing.Size(53, 12);
+        label2.TabIndex = 119;
+        label2.Text = "为假时：";
+        lbl_true.AutoSize = true;
+        lbl_true.BackColor = System.Drawing.Color.FromArgb(0, 192, 0);
+        lbl_true.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        lbl_true.Location = new System.Drawing.Point(74, 57);
+        lbl_true.Name = "lbl_true";
+        lbl_true.Size = new System.Drawing.Size(37, 14);
+        lbl_true.TabIndex = 2;
+        lbl_true.Text = "     ";
+        lbl_true.Click += new System.EventHandler(lbl_true_Click);
+        label6.AutoSize = true;
+        label6.Location = new System.Drawing.Point(15, 57);
+        label6.Name = "label6";
+        label6.Size = new System.Drawing.Size(53, 12);
+        label6.TabIndex = 117;
+        label6.Text = "为真时：";
+        label6.Click += new System.EventHandler(label6_Click);
+        groupBox2.Controls.Add(label3);
+        groupBox2.Controls.Add(btn_var2);
+        groupBox2.Controls.Add(txt_var2);
+        groupBox2.Controls.Add(cbx_spd);
+        groupBox2.Controls.Add(label1);
+        groupBox2.Controls.Add(ckb_light);
+        groupBox2.Location = new System.Drawing.Point(12, 128);
+        groupBox2.Name = "groupBox2";
+        groupBox2.Size = new System.Drawing.Size(268, 89);
+        groupBox2.TabIndex = 60;
+        groupBox2.TabStop = false;
+        groupBox2.Text = "闪烁";
+        label3.AutoSize = true;
+        label3.Location = new System.Drawing.Point(173, 62);
+        label3.Name = "label3";
+        label3.Size = new System.Drawing.Size(71, 12);
+        label3.TabIndex = 60;
+        label3.Text = "不为0时闪烁";
+        btn_var2.Location = new System.Drawing.Point(125, 53);
+        btn_var2.Name = "btn_var2";
+        btn_var2.Size = new System.Drawing.Size(34, 23);
+        btn_var2.TabIndex = 7;
+        btn_var2.Text = "....";
+        btn_var2.UseVisualStyleBackColor = true;
+        btn_var2.Click += new System.EventHandler(btn_var2_Click);
+        txt_var2.Location = new System.Drawing.Point(17, 54);
+        txt_var2.Name = "txt_var2";
+        txt_var2.Size = new System.Drawing.Size(100, 21);
+        txt_var2.TabIndex = 6;
+        cbx_spd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        cbx_spd.FormattingEnabled = true;
+        cbx_spd.Items.AddRange(new object[3] { "低速", "中速", "高速" });
+        cbx_spd.Location = new System.Drawing.Point(178, 15);
+        cbx_spd.Name = "cbx_spd";
+        cbx_spd.Size = new System.Drawing.Size(75, 20);
+        cbx_spd.TabIndex = 5;
+        label1.AutoSize = true;
+        label1.Location = new System.Drawing.Point(123, 21);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(41, 12);
+        label1.TabIndex = 1;
+        label1.Text = "速度：";
+        ckb_light.AutoSize = true;
+        ckb_light.Location = new System.Drawing.Point(17, 21);
+        ckb_light.Name = "ckb_light";
+        ckb_light.Size = new System.Drawing.Size(72, 16);
+        ckb_light.TabIndex = 4;
+        ckb_light.Text = "允许闪烁";
+        ckb_light.UseVisualStyleBackColor = true;
+        ckb_light.CheckedChanged += new System.EventHandler(ckb_light_CheckedChanged);
+        btn_Cancel.Location = new System.Drawing.Point(196, 232);
+        btn_Cancel.Name = "btn_Cancel";
+        btn_Cancel.Size = new System.Drawing.Size(75, 23);
+        btn_Cancel.TabIndex = 9;
+        btn_Cancel.Text = "取消";
+        btn_Cancel.UseVisualStyleBackColor = true;
+        btn_Cancel.Click += new System.EventHandler(btn_Cancel_Click);
+        btn_OK.Location = new System.Drawing.Point(115, 232);
+        btn_OK.Name = "btn_OK";
+        btn_OK.Size = new System.Drawing.Size(75, 23);
+        btn_OK.TabIndex = 8;
+        btn_OK.Text = "确定";
+        btn_OK.UseVisualStyleBackColor = true;
+        btn_OK.Click += new System.EventHandler(btn_OK_Click);
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         base.ClientSize = new System.Drawing.Size(292, 276);
-        base.Controls.Add(this.btn_Cancel);
-        base.Controls.Add(this.groupBox2);
-        base.Controls.Add(this.btn_OK);
-        base.Controls.Add(this.groupBox1);
+        base.Controls.Add(btn_Cancel);
+        base.Controls.Add(groupBox2);
+        base.Controls.Add(btn_OK);
+        base.Controls.Add(groupBox1);
         base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
         base.MaximizeBox = false;
         base.MinimizeBox = false;
         base.Name = "Light_11";
-        this.Text = "警示灯";
+        Text = "警示灯";
         base.Load += new System.EventHandler(Light_11_Load);
-        this.groupBox1.ResumeLayout(false);
-        this.groupBox1.PerformLayout();
-        this.groupBox2.ResumeLayout(false);
-        this.groupBox2.PerformLayout();
+        groupBox1.ResumeLayout(false);
+        groupBox1.PerformLayout();
+        groupBox2.ResumeLayout(false);
+        groupBox2.PerformLayout();
         base.ResumeLayout(false);
     }
 }

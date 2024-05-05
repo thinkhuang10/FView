@@ -101,17 +101,17 @@ public abstract class AbstractCompletionWindow : Form
         base.Owner = parentForm;
         base.Enabled = true;
         Show();
-        this.control.Focus();
+        control.Focus();
         if (parentForm != null)
         {
             parentForm.LocationChanged += ParentFormLocationChanged;
         }
-        this.control.ActiveTextAreaControl.VScrollBar.ValueChanged += ParentFormLocationChanged;
-        this.control.ActiveTextAreaControl.HScrollBar.ValueChanged += ParentFormLocationChanged;
-        this.control.ActiveTextAreaControl.TextArea.DoProcessDialogKey += ProcessTextAreaKey;
-        this.control.ActiveTextAreaControl.Caret.PositionChanged += CaretOffsetChanged;
-        this.control.ActiveTextAreaControl.TextArea.LostFocus += TextEditorLostFocus;
-        this.control.Resize += ParentFormLocationChanged;
+        control.ActiveTextAreaControl.VScrollBar.ValueChanged += ParentFormLocationChanged;
+        control.ActiveTextAreaControl.HScrollBar.ValueChanged += ParentFormLocationChanged;
+        control.ActiveTextAreaControl.TextArea.DoProcessDialogKey += ProcessTextAreaKey;
+        control.ActiveTextAreaControl.Caret.PositionChanged += CaretOffsetChanged;
+        control.ActiveTextAreaControl.TextArea.LostFocus += TextEditorLostFocus;
+        control.Resize += ParentFormLocationChanged;
         foreach (Control control in base.Controls)
         {
             control.MouseMove += ControlMouseMove;
@@ -162,18 +162,18 @@ public abstract class AbstractCompletionWindow : Form
         {
             control.MouseMove -= ControlMouseMove;
         }
-        if (this.control.ActiveTextAreaControl.VScrollBar != null)
+        if (control.ActiveTextAreaControl.VScrollBar != null)
         {
-            this.control.ActiveTextAreaControl.VScrollBar.ValueChanged -= ParentFormLocationChanged;
+            control.ActiveTextAreaControl.VScrollBar.ValueChanged -= ParentFormLocationChanged;
         }
-        if (this.control.ActiveTextAreaControl.HScrollBar != null)
+        if (control.ActiveTextAreaControl.HScrollBar != null)
         {
-            this.control.ActiveTextAreaControl.HScrollBar.ValueChanged -= ParentFormLocationChanged;
+            control.ActiveTextAreaControl.HScrollBar.ValueChanged -= ParentFormLocationChanged;
         }
-        this.control.ActiveTextAreaControl.TextArea.LostFocus -= TextEditorLostFocus;
-        this.control.ActiveTextAreaControl.Caret.PositionChanged -= CaretOffsetChanged;
-        this.control.ActiveTextAreaControl.TextArea.DoProcessDialogKey -= ProcessTextAreaKey;
-        this.control.Resize -= ParentFormLocationChanged;
+        control.ActiveTextAreaControl.TextArea.LostFocus -= TextEditorLostFocus;
+        control.ActiveTextAreaControl.Caret.PositionChanged -= CaretOffsetChanged;
+        control.ActiveTextAreaControl.TextArea.DoProcessDialogKey -= ProcessTextAreaKey;
+        control.Resize -= ParentFormLocationChanged;
         Dispose();
     }
 

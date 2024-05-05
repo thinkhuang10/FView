@@ -198,10 +198,7 @@ public class drawbitmap6 : CPixieControl
     {
         try
         {
-            if (this.Click != null)
-            {
-                this.Click(this, null);
-            }
+            Click?.Invoke(this, null);
             if (!string.IsNullOrEmpty(varname) && e.X < weith)
             {
                 if (Convert.ToBoolean(GetValue(varname)))

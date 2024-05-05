@@ -20,9 +20,9 @@ public class CCloseLines : CShape
     [NonSerialized]
     private GraphicsPath swapgp0;
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     protected CCloseLines(SerializationInfo info, StreamingContext context)
         : base(info, context)
@@ -181,10 +181,7 @@ public class CCloseLines : CShape
             graphicsPath.AddPath(item, connect: false);
         }
         graphicsPath.Transform(TranslateMatrix);
-        if (swapgp != null)
-        {
-            swapgp.Dispose();
-        }
+        swapgp?.Dispose();
         swapgp = graphicsPath;
         swapgp0 = swapgp;
         needRefreshShape = false;

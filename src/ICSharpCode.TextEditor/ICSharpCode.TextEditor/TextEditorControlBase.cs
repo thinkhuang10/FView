@@ -704,9 +704,6 @@ public abstract class TextEditorControlBase : UserControl
 
     protected virtual void OnFileNameChanged(EventArgs e)
     {
-        if (this.FileNameChanged != null)
-        {
-            this.FileNameChanged(this, e);
-        }
+        FileNameChanged?.Invoke(this, e);
     }
 }

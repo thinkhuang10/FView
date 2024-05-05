@@ -32,14 +32,12 @@ public class TimerSet2 : Form
 
     private GroupBox groupBox1;
 
-    public event checkvarnamehandler ckvarevent;
-
     public TimerSet2()
     {
         InitializeComponent();
     }
 
-    private void btn_OK_Click(object sender, EventArgs e)
+    private void Btn_OK_Click(object sender, EventArgs e)
     {
         try
         {
@@ -62,12 +60,12 @@ public class TimerSet2 : Form
         lbl_font.BackColor = fontcolor;
     }
 
-    private void btn_Cancel_Click(object sender, EventArgs e)
+    private void Btn_Cancel_Click(object sender, EventArgs e)
     {
         Close();
     }
 
-    private void lbl_bgcolor_Click(object sender, EventArgs e)
+    private void Lbl_bgcolor_Click(object sender, EventArgs e)
     {
         if (colorDialog1.ShowDialog() == DialogResult.OK)
         {
@@ -75,7 +73,7 @@ public class TimerSet2 : Form
         }
     }
 
-    private void lbl_timer_Click(object sender, EventArgs e)
+    private void Lbl_timer_Click(object sender, EventArgs e)
     {
         if (colorDialog1.ShowDialog() == DialogResult.OK)
         {
@@ -83,7 +81,7 @@ public class TimerSet2 : Form
         }
     }
 
-    private void lbl_font_Click(object sender, EventArgs e)
+    private void Lbl_font_Click(object sender, EventArgs e)
     {
         if (colorDialog1.ShowDialog() == DialogResult.OK)
         {
@@ -93,103 +91,103 @@ public class TimerSet2 : Form
 
     private void InitializeComponent()
     {
-        this.btn_Cancel = new System.Windows.Forms.Button();
-        this.btn_OK = new System.Windows.Forms.Button();
-        this.label4 = new System.Windows.Forms.Label();
-        this.lbl_timer = new System.Windows.Forms.Label();
-        this.label2 = new System.Windows.Forms.Label();
-        this.lbl_bgcolor = new System.Windows.Forms.Label();
-        this.label1 = new System.Windows.Forms.Label();
-        this.lbl_font = new System.Windows.Forms.Label();
-        this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-        this.groupBox1 = new System.Windows.Forms.GroupBox();
-        this.groupBox1.SuspendLayout();
+        btn_Cancel = new System.Windows.Forms.Button();
+        btn_OK = new System.Windows.Forms.Button();
+        label4 = new System.Windows.Forms.Label();
+        lbl_timer = new System.Windows.Forms.Label();
+        label2 = new System.Windows.Forms.Label();
+        lbl_bgcolor = new System.Windows.Forms.Label();
+        label1 = new System.Windows.Forms.Label();
+        lbl_font = new System.Windows.Forms.Label();
+        colorDialog1 = new System.Windows.Forms.ColorDialog();
+        groupBox1 = new System.Windows.Forms.GroupBox();
+        groupBox1.SuspendLayout();
         base.SuspendLayout();
-        this.btn_Cancel.Location = new System.Drawing.Point(201, 187);
-        this.btn_Cancel.Name = "btn_Cancel";
-        this.btn_Cancel.Size = new System.Drawing.Size(73, 23);
-        this.btn_Cancel.TabIndex = 15;
-        this.btn_Cancel.Text = "取消";
-        this.btn_Cancel.UseVisualStyleBackColor = true;
-        this.btn_Cancel.Click += new System.EventHandler(btn_Cancel_Click);
-        this.btn_OK.Location = new System.Drawing.Point(122, 187);
-        this.btn_OK.Name = "btn_OK";
-        this.btn_OK.Size = new System.Drawing.Size(73, 23);
-        this.btn_OK.TabIndex = 14;
-        this.btn_OK.Text = "确定";
-        this.btn_OK.UseVisualStyleBackColor = true;
-        this.btn_OK.Click += new System.EventHandler(btn_OK_Click);
-        this.label4.AutoSize = true;
-        this.label4.Location = new System.Drawing.Point(23, 97);
-        this.label4.Name = "label4";
-        this.label4.Size = new System.Drawing.Size(65, 12);
-        this.label4.TabIndex = 13;
-        this.label4.Text = "时间颜色：";
-        this.lbl_timer.AutoSize = true;
-        this.lbl_timer.BackColor = System.Drawing.Color.Black;
-        this.lbl_timer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-        this.lbl_timer.Location = new System.Drawing.Point(108, 66);
-        this.lbl_timer.Name = "lbl_timer";
-        this.lbl_timer.Size = new System.Drawing.Size(103, 14);
-        this.lbl_timer.TabIndex = 11;
-        this.lbl_timer.Text = "                ";
-        this.lbl_timer.Click += new System.EventHandler(lbl_timer_Click);
-        this.label2.AutoSize = true;
-        this.label2.Location = new System.Drawing.Point(23, 66);
-        this.label2.Name = "label2";
-        this.label2.Size = new System.Drawing.Size(65, 12);
-        this.label2.TabIndex = 10;
-        this.label2.Text = "表盘颜色：";
-        this.lbl_bgcolor.AutoSize = true;
-        this.lbl_bgcolor.BackColor = System.Drawing.Color.FromArgb(192, 192, 0);
-        this.lbl_bgcolor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-        this.lbl_bgcolor.Location = new System.Drawing.Point(108, 37);
-        this.lbl_bgcolor.Name = "lbl_bgcolor";
-        this.lbl_bgcolor.Size = new System.Drawing.Size(103, 14);
-        this.lbl_bgcolor.TabIndex = 9;
-        this.lbl_bgcolor.Text = "                ";
-        this.lbl_bgcolor.Click += new System.EventHandler(lbl_bgcolor_Click);
-        this.label1.AutoSize = true;
-        this.label1.Location = new System.Drawing.Point(23, 37);
-        this.label1.Name = "label1";
-        this.label1.Size = new System.Drawing.Size(65, 12);
-        this.label1.TabIndex = 8;
-        this.label1.Text = "边缘颜色：";
-        this.lbl_font.AutoSize = true;
-        this.lbl_font.BackColor = System.Drawing.Color.FromArgb(0, 192, 0);
-        this.lbl_font.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-        this.lbl_font.Location = new System.Drawing.Point(108, 97);
-        this.lbl_font.Name = "lbl_font";
-        this.lbl_font.Size = new System.Drawing.Size(103, 14);
-        this.lbl_font.TabIndex = 16;
-        this.lbl_font.Text = "                ";
-        this.lbl_font.Click += new System.EventHandler(lbl_font_Click);
-        this.groupBox1.Controls.Add(this.label1);
-        this.groupBox1.Controls.Add(this.lbl_font);
-        this.groupBox1.Controls.Add(this.label2);
-        this.groupBox1.Controls.Add(this.label4);
-        this.groupBox1.Controls.Add(this.lbl_timer);
-        this.groupBox1.Controls.Add(this.lbl_bgcolor);
-        this.groupBox1.Location = new System.Drawing.Point(17, 17);
-        this.groupBox1.Name = "groupBox1";
-        this.groupBox1.Size = new System.Drawing.Size(256, 138);
-        this.groupBox1.TabIndex = 17;
-        this.groupBox1.TabStop = false;
-        this.groupBox1.Text = "颜色配置";
+        btn_Cancel.Location = new System.Drawing.Point(201, 187);
+        btn_Cancel.Name = "btn_Cancel";
+        btn_Cancel.Size = new System.Drawing.Size(73, 23);
+        btn_Cancel.TabIndex = 15;
+        btn_Cancel.Text = "取消";
+        btn_Cancel.UseVisualStyleBackColor = true;
+        btn_Cancel.Click += new System.EventHandler(Btn_Cancel_Click);
+        btn_OK.Location = new System.Drawing.Point(122, 187);
+        btn_OK.Name = "btn_OK";
+        btn_OK.Size = new System.Drawing.Size(73, 23);
+        btn_OK.TabIndex = 14;
+        btn_OK.Text = "确定";
+        btn_OK.UseVisualStyleBackColor = true;
+        btn_OK.Click += new System.EventHandler(Btn_OK_Click);
+        label4.AutoSize = true;
+        label4.Location = new System.Drawing.Point(23, 97);
+        label4.Name = "label4";
+        label4.Size = new System.Drawing.Size(65, 12);
+        label4.TabIndex = 13;
+        label4.Text = "时间颜色：";
+        lbl_timer.AutoSize = true;
+        lbl_timer.BackColor = System.Drawing.Color.Black;
+        lbl_timer.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        lbl_timer.Location = new System.Drawing.Point(108, 66);
+        lbl_timer.Name = "lbl_timer";
+        lbl_timer.Size = new System.Drawing.Size(103, 14);
+        lbl_timer.TabIndex = 11;
+        lbl_timer.Text = "                ";
+        lbl_timer.Click += new System.EventHandler(Lbl_timer_Click);
+        label2.AutoSize = true;
+        label2.Location = new System.Drawing.Point(23, 66);
+        label2.Name = "label2";
+        label2.Size = new System.Drawing.Size(65, 12);
+        label2.TabIndex = 10;
+        label2.Text = "表盘颜色：";
+        lbl_bgcolor.AutoSize = true;
+        lbl_bgcolor.BackColor = System.Drawing.Color.FromArgb(192, 192, 0);
+        lbl_bgcolor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        lbl_bgcolor.Location = new System.Drawing.Point(108, 37);
+        lbl_bgcolor.Name = "lbl_bgcolor";
+        lbl_bgcolor.Size = new System.Drawing.Size(103, 14);
+        lbl_bgcolor.TabIndex = 9;
+        lbl_bgcolor.Text = "                ";
+        lbl_bgcolor.Click += new System.EventHandler(Lbl_bgcolor_Click);
+        label1.AutoSize = true;
+        label1.Location = new System.Drawing.Point(23, 37);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(65, 12);
+        label1.TabIndex = 8;
+        label1.Text = "边缘颜色：";
+        lbl_font.AutoSize = true;
+        lbl_font.BackColor = System.Drawing.Color.FromArgb(0, 192, 0);
+        lbl_font.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        lbl_font.Location = new System.Drawing.Point(108, 97);
+        lbl_font.Name = "lbl_font";
+        lbl_font.Size = new System.Drawing.Size(103, 14);
+        lbl_font.TabIndex = 16;
+        lbl_font.Text = "                ";
+        lbl_font.Click += new System.EventHandler(Lbl_font_Click);
+        groupBox1.Controls.Add(label1);
+        groupBox1.Controls.Add(lbl_font);
+        groupBox1.Controls.Add(label2);
+        groupBox1.Controls.Add(label4);
+        groupBox1.Controls.Add(lbl_timer);
+        groupBox1.Controls.Add(lbl_bgcolor);
+        groupBox1.Location = new System.Drawing.Point(17, 17);
+        groupBox1.Name = "groupBox1";
+        groupBox1.Size = new System.Drawing.Size(256, 138);
+        groupBox1.TabIndex = 17;
+        groupBox1.TabStop = false;
+        groupBox1.Text = "颜色配置";
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         base.ClientSize = new System.Drawing.Size(296, 224);
-        base.Controls.Add(this.groupBox1);
-        base.Controls.Add(this.btn_Cancel);
-        base.Controls.Add(this.btn_OK);
+        base.Controls.Add(groupBox1);
+        base.Controls.Add(btn_Cancel);
+        base.Controls.Add(btn_OK);
         base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
         base.MaximizeBox = false;
         base.MinimizeBox = false;
         base.Name = "TimerSet2";
-        this.Text = "时间设置";
+        Text = "时间设置";
         base.Load += new System.EventHandler(TimerSet2_Load);
-        this.groupBox1.ResumeLayout(false);
-        this.groupBox1.PerformLayout();
+        groupBox1.ResumeLayout(false);
+        groupBox1.PerformLayout();
         base.ResumeLayout(false);
     }
 }

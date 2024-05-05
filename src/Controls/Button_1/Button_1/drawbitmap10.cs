@@ -198,10 +198,7 @@ public class drawbitmap10 : CPixieControl
     {
         try
         {
-            if (this.Click != null)
-            {
-                this.Click(this, null);
-            }
+            Click?.Invoke(this, null);
             if (e.X < width && e.Y < hight)
             {
                 mousedownflag = true;

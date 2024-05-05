@@ -1363,18 +1363,18 @@ public class drawbitmap4 : CPixieControl
             {
                 if (Value > maxval)
                 {
-                    if (!highalertflag && this.HighAlert != null)
+                    if (!highalertflag && HighAlert != null)
                     {
-                        this.HighAlert(this, null);
+                        HighAlert(this, null);
                         highalertflag = true;
                     }
                     array[0] = maxval;
                 }
                 else if (Value < minval)
                 {
-                    if (!lowalertflag && this.LowAlert != null)
+                    if (!lowalertflag && LowAlert != null)
                     {
-                        this.LowAlert(this, null);
+                        LowAlert(this, null);
                         lowalertflag = true;
                     }
                     array[0] = minval;
@@ -1387,18 +1387,18 @@ public class drawbitmap4 : CPixieControl
                 }
                 if (Value2 > maxval)
                 {
-                    if (!highalertflag2 && this.HighAlert2 != null)
+                    if (!highalertflag2 && HighAlert2 != null)
                     {
-                        this.HighAlert2(this, null);
+                        HighAlert2(this, null);
                         highalertflag2 = true;
                     }
                     array[1] = maxval;
                 }
                 else if (Value2 < minval)
                 {
-                    if (!lowalertflag2 && this.LowAlert2 != null)
+                    if (!lowalertflag2 && LowAlert2 != null)
                     {
-                        this.LowAlert2(this, null);
+                        LowAlert2(this, null);
                         lowalertflag2 = true;
                     }
                     array[1] = minval;
@@ -1411,18 +1411,18 @@ public class drawbitmap4 : CPixieControl
                 }
                 if (Value3 > maxval)
                 {
-                    if (!highalertflag3 && this.HighAlert3 != null)
+                    if (!highalertflag3 && HighAlert3 != null)
                     {
-                        this.HighAlert3(this, null);
+                        HighAlert3(this, null);
                         highalertflag3 = true;
                     }
                     array[2] = maxval;
                 }
                 else if (Value3 < minval)
                 {
-                    if (!lowalertflag3 && this.LowAlert3 != null)
+                    if (!lowalertflag3 && LowAlert3 != null)
                     {
-                        this.LowAlert3(this, null);
+                        LowAlert3(this, null);
                         lowalertflag3 = true;
                     }
                     array[2] = minval;
@@ -1435,18 +1435,18 @@ public class drawbitmap4 : CPixieControl
                 }
                 if (Value4 > maxval)
                 {
-                    if (!highalertflag4 && this.HighAlert4 != null)
+                    if (!highalertflag4 && HighAlert4 != null)
                     {
-                        this.HighAlert4(this, null);
+                        HighAlert4(this, null);
                         highalertflag4 = true;
                     }
                     array[3] = maxval;
                 }
                 else if (Value4 < minval)
                 {
-                    if (!lowalertflag4 && this.LowAlert4 != null)
+                    if (!lowalertflag4 && LowAlert4 != null)
                     {
-                        this.LowAlert4(this, null);
+                        LowAlert4(this, null);
                         lowalertflag4 = true;
                     }
                     array[3] = minval;
@@ -1459,18 +1459,18 @@ public class drawbitmap4 : CPixieControl
                 }
                 if (Value5 > maxval)
                 {
-                    if (!highalertflag5 && this.HighAlert5 != null)
+                    if (!highalertflag5 && HighAlert5 != null)
                     {
-                        this.HighAlert5(this, null);
+                        HighAlert5(this, null);
                         highalertflag5 = true;
                     }
                     array[4] = maxval;
                 }
                 else if (Value5 < minval)
                 {
-                    if (!lowalertflag5 && this.LowAlert5 != null)
+                    if (!lowalertflag5 && LowAlert5 != null)
                     {
-                        this.LowAlert5(this, null);
+                        LowAlert5(this, null);
                         lowalertflag5 = true;
                     }
                     array[4] = minval;

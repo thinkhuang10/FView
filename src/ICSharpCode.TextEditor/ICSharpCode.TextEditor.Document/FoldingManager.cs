@@ -86,9 +86,9 @@ public class FoldingManager
     public List<FoldMarker> GetFoldingsFromPosition(int line, int column)
     {
         List<FoldMarker> list = new();
-        if (this.foldMarker != null)
+        if (foldMarker != null)
         {
-            for (int i = 0; i < this.foldMarker.Count; i++)
+            for (int i = 0; i < foldMarker.Count; i++)
             {
                 FoldMarker foldMarker = this.foldMarker[i];
                 if ((foldMarker.StartLine == line && column > foldMarker.StartColumn && (foldMarker.EndLine != line || column < foldMarker.EndColumn)) || (foldMarker.EndLine == line && column < foldMarker.EndColumn && (foldMarker.StartLine != line || column > foldMarker.StartColumn)) || (line > foldMarker.StartLine && line < foldMarker.EndLine))
@@ -103,14 +103,14 @@ public class FoldingManager
     private List<FoldMarker> GetFoldingsByStartAfterColumn(int lineNumber, int column, bool forceFolded)
     {
         List<FoldMarker> list = new();
-        if (this.foldMarker != null)
+        if (foldMarker != null)
         {
-            int i = this.foldMarker.BinarySearch(new FoldMarker(document, lineNumber, column, lineNumber, column), StartComparer.Instance);
+            int i = foldMarker.BinarySearch(new FoldMarker(document, lineNumber, column, lineNumber, column), StartComparer.Instance);
             if (i < 0)
             {
                 i = ~i;
             }
-            for (; i < this.foldMarker.Count; i++)
+            for (; i < foldMarker.Count; i++)
             {
                 FoldMarker foldMarker = this.foldMarker[i];
                 if (foldMarker.StartLine > lineNumber)
@@ -144,7 +144,7 @@ public class FoldingManager
     private List<FoldMarker> GetFoldingsByEndAfterColumn(int lineNumber, int column, bool forceFolded)
     {
         List<FoldMarker> list = new();
-        if (this.foldMarker != null)
+        if (foldMarker != null)
         {
             int i = foldMarkerByEnd.BinarySearch(new FoldMarker(document, lineNumber, column, lineNumber, column), EndComparer.Instance);
             if (i < 0)
@@ -353,9 +353,6 @@ public class FoldingManager
 
     public void NotifyFoldingsChanged(EventArgs e)
     {
-        if (this.FoldingsChanged != null)
-        {
-            this.FoldingsChanged(this, e);
-        }
+        FoldingsChanged?.Invoke(this, e);
     }
 }

@@ -53,10 +53,7 @@ public class CDateTimePicker : DateTimePicker, IDCCEControl, IControlShape
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -533,9 +530,9 @@ public class CDateTimePicker : DateTimePicker, IDCCEControl, IControlShape
 
     public new event EventHandler ValueChanged;
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     public event EventHandler IDChanged;
 
@@ -566,10 +563,7 @@ public class CDateTimePicker : DateTimePicker, IDCCEControl, IControlShape
 
     private void CDateTimePicker_ValueChanged(object sender, EventArgs e)
     {
-        if (this.ValueChanged != null)
-        {
-            this.ValueChanged(sender, e);
-        }
+        ValueChanged?.Invoke(sender, e);
     }
 
     public byte[] Serialize()

@@ -1110,841 +1110,841 @@ public class dhljForm : XtraForm
 
     private void InitializeComponent()
     {
-            this.button_Close = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox_Move_R = new System.Windows.Forms.CheckBox();
-            this.checkBox_Move_H = new System.Windows.Forms.CheckBox();
-            this.checkBox_Move_V = new System.Windows.Forms.CheckBox();
-            this.button_Move_R = new System.Windows.Forms.Button();
-            this.button_Move_H = new System.Windows.Forms.Button();
-            this.button_Move_V = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox_Visable = new System.Windows.Forms.CheckBox();
-            this.button_Visable = new System.Windows.Forms.Button();
-            this.checkBox_Height = new System.Windows.Forms.CheckBox();
-            this.button_Height = new System.Windows.Forms.Button();
-            this.checkBox_Width = new System.Windows.Forms.CheckBox();
-            this.button_Width = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox_Color2 = new System.Windows.Forms.CheckBox();
-            this.button_Color2 = new System.Windows.Forms.Button();
-            this.checkBox_Color1 = new System.Windows.Forms.CheckBox();
-            this.button_Color1 = new System.Windows.Forms.Button();
-            this.checkBox_Line = new System.Windows.Forms.CheckBox();
-            this.button_Line = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.checkBox_Fill_H = new System.Windows.Forms.CheckBox();
-            this.button_Fill_H = new System.Windows.Forms.Button();
-            this.checkBox_Fill_V = new System.Windows.Forms.CheckBox();
-            this.button_Fill_V = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.checkBox_Out_S = new System.Windows.Forms.CheckBox();
-            this.button_Out_S = new System.Windows.Forms.Button();
-            this.checkBox_Out_D = new System.Windows.Forms.CheckBox();
-            this.button_Out_D = new System.Windows.Forms.Button();
-            this.checkBox_Out_A = new System.Windows.Forms.CheckBox();
-            this.button_Out_A = new System.Windows.Forms.Button();
-            this.checkBox_In_S = new System.Windows.Forms.CheckBox();
-            this.button_In_S = new System.Windows.Forms.Button();
-            this.checkBox_In_D = new System.Windows.Forms.CheckBox();
-            this.button_In_D = new System.Windows.Forms.Button();
-            this.checkBox_In_A = new System.Windows.Forms.CheckBox();
-            this.button_In_A = new System.Windows.Forms.Button();
-            this.checkBox_Change_Page = new System.Windows.Forms.CheckBox();
-            this.button_Change_Page = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.button_Enent_Mouse = new System.Windows.Forms.Button();
-            this.checkBox_Enent_Mouse = new System.Windows.Forms.CheckBox();
-            this.button_Drag_V = new System.Windows.Forms.Button();
-            this.checkBox_Drag_V = new System.Windows.Forms.CheckBox();
-            this.button_Drag_H = new System.Windows.Forms.Button();
-            this.checkBox_Drag_H = new System.Windows.Forms.CheckBox();
-            this.buttonJinglingPand = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.checkBox_DB_Creat = new System.Windows.Forms.CheckBox();
-            this.button_DB_Creat = new System.Windows.Forms.Button();
-            this.checkBox_DB_MultiOperate = new System.Windows.Forms.CheckBox();
-            this.button_DB_MultiOperate = new System.Windows.Forms.Button();
-            this.checkBox_DB_Delete = new System.Windows.Forms.CheckBox();
-            this.checkBox_DB_Update = new System.Windows.Forms.CheckBox();
-            this.checkBox_DB_Insert = new System.Windows.Forms.CheckBox();
-            this.button_DB_Delete = new System.Windows.Forms.Button();
-            this.checkBox_DB_Select = new System.Windows.Forms.CheckBox();
-            this.button_DB_Update = new System.Windows.Forms.Button();
-            this.button_DB_Insert = new System.Windows.Forms.Button();
-            this.button_DB_Select = new System.Windows.Forms.Button();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.buttonEventBind = new System.Windows.Forms.Button();
-            this.button_PropertyBind = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.SuspendLayout();
+            button_Close = new System.Windows.Forms.Button();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            checkBox_Move_R = new System.Windows.Forms.CheckBox();
+            checkBox_Move_H = new System.Windows.Forms.CheckBox();
+            checkBox_Move_V = new System.Windows.Forms.CheckBox();
+            button_Move_R = new System.Windows.Forms.Button();
+            button_Move_H = new System.Windows.Forms.Button();
+            button_Move_V = new System.Windows.Forms.Button();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            checkBox_Visable = new System.Windows.Forms.CheckBox();
+            button_Visable = new System.Windows.Forms.Button();
+            checkBox_Height = new System.Windows.Forms.CheckBox();
+            button_Height = new System.Windows.Forms.Button();
+            checkBox_Width = new System.Windows.Forms.CheckBox();
+            button_Width = new System.Windows.Forms.Button();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            checkBox_Color2 = new System.Windows.Forms.CheckBox();
+            button_Color2 = new System.Windows.Forms.Button();
+            checkBox_Color1 = new System.Windows.Forms.CheckBox();
+            button_Color1 = new System.Windows.Forms.Button();
+            checkBox_Line = new System.Windows.Forms.CheckBox();
+            button_Line = new System.Windows.Forms.Button();
+            groupBox4 = new System.Windows.Forms.GroupBox();
+            checkBox_Fill_H = new System.Windows.Forms.CheckBox();
+            button_Fill_H = new System.Windows.Forms.Button();
+            checkBox_Fill_V = new System.Windows.Forms.CheckBox();
+            button_Fill_V = new System.Windows.Forms.Button();
+            groupBox5 = new System.Windows.Forms.GroupBox();
+            checkBox_Out_S = new System.Windows.Forms.CheckBox();
+            button_Out_S = new System.Windows.Forms.Button();
+            checkBox_Out_D = new System.Windows.Forms.CheckBox();
+            button_Out_D = new System.Windows.Forms.Button();
+            checkBox_Out_A = new System.Windows.Forms.CheckBox();
+            button_Out_A = new System.Windows.Forms.Button();
+            checkBox_In_S = new System.Windows.Forms.CheckBox();
+            button_In_S = new System.Windows.Forms.Button();
+            checkBox_In_D = new System.Windows.Forms.CheckBox();
+            button_In_D = new System.Windows.Forms.Button();
+            checkBox_In_A = new System.Windows.Forms.CheckBox();
+            button_In_A = new System.Windows.Forms.Button();
+            checkBox_Change_Page = new System.Windows.Forms.CheckBox();
+            button_Change_Page = new System.Windows.Forms.Button();
+            textBox1 = new System.Windows.Forms.TextBox();
+            groupBox6 = new System.Windows.Forms.GroupBox();
+            button_Enent_Mouse = new System.Windows.Forms.Button();
+            checkBox_Enent_Mouse = new System.Windows.Forms.CheckBox();
+            button_Drag_V = new System.Windows.Forms.Button();
+            checkBox_Drag_V = new System.Windows.Forms.CheckBox();
+            button_Drag_H = new System.Windows.Forms.Button();
+            checkBox_Drag_H = new System.Windows.Forms.CheckBox();
+            buttonJinglingPand = new System.Windows.Forms.Button();
+            groupBox7 = new System.Windows.Forms.GroupBox();
+            checkBox_DB_Creat = new System.Windows.Forms.CheckBox();
+            button_DB_Creat = new System.Windows.Forms.Button();
+            checkBox_DB_MultiOperate = new System.Windows.Forms.CheckBox();
+            button_DB_MultiOperate = new System.Windows.Forms.Button();
+            checkBox_DB_Delete = new System.Windows.Forms.CheckBox();
+            checkBox_DB_Update = new System.Windows.Forms.CheckBox();
+            checkBox_DB_Insert = new System.Windows.Forms.CheckBox();
+            button_DB_Delete = new System.Windows.Forms.Button();
+            checkBox_DB_Select = new System.Windows.Forms.CheckBox();
+            button_DB_Update = new System.Windows.Forms.Button();
+            button_DB_Insert = new System.Windows.Forms.Button();
+            button_DB_Select = new System.Windows.Forms.Button();
+            groupBox8 = new System.Windows.Forms.GroupBox();
+            buttonEventBind = new System.Windows.Forms.Button();
+            button_PropertyBind = new System.Windows.Forms.Button();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            groupBox3.SuspendLayout();
+            groupBox4.SuspendLayout();
+            groupBox5.SuspendLayout();
+            groupBox6.SuspendLayout();
+            groupBox7.SuspendLayout();
+            groupBox8.SuspendLayout();
+            SuspendLayout();
             // 
             // button_Close
             // 
-            this.button_Close.Location = new System.Drawing.Point(675, 253);
-            this.button_Close.Name = "button_Close";
-            this.button_Close.Size = new System.Drawing.Size(87, 27);
-            this.button_Close.TabIndex = 55;
-            this.button_Close.Text = "退出";
-            this.button_Close.UseVisualStyleBackColor = true;
-            this.button_Close.Click += new System.EventHandler(this.button1_Click);
+            button_Close.Location = new System.Drawing.Point(675, 253);
+            button_Close.Name = "button_Close";
+            button_Close.Size = new System.Drawing.Size(87, 27);
+            button_Close.TabIndex = 55;
+            button_Close.Text = "退出";
+            button_Close.UseVisualStyleBackColor = true;
+            button_Close.Click += new System.EventHandler(button1_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox_Move_R);
-            this.groupBox1.Controls.Add(this.checkBox_Move_H);
-            this.groupBox1.Controls.Add(this.checkBox_Move_V);
-            this.groupBox1.Controls.Add(this.button_Move_R);
-            this.groupBox1.Controls.Add(this.button_Move_H);
-            this.groupBox1.Controls.Add(this.button_Move_V);
-            this.groupBox1.Location = new System.Drawing.Point(331, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(142, 125);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "目标移动";
+            groupBox1.Controls.Add(checkBox_Move_R);
+            groupBox1.Controls.Add(checkBox_Move_H);
+            groupBox1.Controls.Add(checkBox_Move_V);
+            groupBox1.Controls.Add(button_Move_R);
+            groupBox1.Controls.Add(button_Move_H);
+            groupBox1.Controls.Add(button_Move_V);
+            groupBox1.Location = new System.Drawing.Point(331, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(142, 125);
+            groupBox1.TabIndex = 3;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "目标移动";
             // 
             // checkBox_Move_R
             // 
-            this.checkBox_Move_R.AutoSize = true;
-            this.checkBox_Move_R.Location = new System.Drawing.Point(15, 93);
-            this.checkBox_Move_R.Name = "checkBox_Move_R";
-            this.checkBox_Move_R.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Move_R.TabIndex = 28;
-            this.checkBox_Move_R.UseVisualStyleBackColor = true;
-            this.checkBox_Move_R.CheckedChanged += new System.EventHandler(this.CheckBox3_CheckedChanged);
+            checkBox_Move_R.AutoSize = true;
+            checkBox_Move_R.Location = new System.Drawing.Point(15, 93);
+            checkBox_Move_R.Name = "checkBox_Move_R";
+            checkBox_Move_R.Size = new System.Drawing.Size(15, 14);
+            checkBox_Move_R.TabIndex = 28;
+            checkBox_Move_R.UseVisualStyleBackColor = true;
+            checkBox_Move_R.CheckedChanged += new System.EventHandler(CheckBox3_CheckedChanged);
             // 
             // checkBox_Move_H
             // 
-            this.checkBox_Move_H.AutoSize = true;
-            this.checkBox_Move_H.Location = new System.Drawing.Point(15, 58);
-            this.checkBox_Move_H.Name = "checkBox_Move_H";
-            this.checkBox_Move_H.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Move_H.TabIndex = 26;
-            this.checkBox_Move_H.UseVisualStyleBackColor = true;
-            this.checkBox_Move_H.CheckedChanged += new System.EventHandler(this.CheckBox2_CheckedChanged);
+            checkBox_Move_H.AutoSize = true;
+            checkBox_Move_H.Location = new System.Drawing.Point(15, 58);
+            checkBox_Move_H.Name = "checkBox_Move_H";
+            checkBox_Move_H.Size = new System.Drawing.Size(15, 14);
+            checkBox_Move_H.TabIndex = 26;
+            checkBox_Move_H.UseVisualStyleBackColor = true;
+            checkBox_Move_H.CheckedChanged += new System.EventHandler(CheckBox2_CheckedChanged);
             // 
             // checkBox_Move_V
             // 
-            this.checkBox_Move_V.AutoSize = true;
-            this.checkBox_Move_V.Location = new System.Drawing.Point(15, 23);
-            this.checkBox_Move_V.Name = "checkBox_Move_V";
-            this.checkBox_Move_V.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Move_V.TabIndex = 24;
-            this.checkBox_Move_V.UseVisualStyleBackColor = true;
-            this.checkBox_Move_V.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
+            checkBox_Move_V.AutoSize = true;
+            checkBox_Move_V.Location = new System.Drawing.Point(15, 23);
+            checkBox_Move_V.Name = "checkBox_Move_V";
+            checkBox_Move_V.Size = new System.Drawing.Size(15, 14);
+            checkBox_Move_V.TabIndex = 24;
+            checkBox_Move_V.UseVisualStyleBackColor = true;
+            checkBox_Move_V.CheckedChanged += new System.EventHandler(CheckBox1_CheckedChanged);
             // 
             // button_Move_R
             // 
-            this.button_Move_R.Location = new System.Drawing.Point(40, 87);
-            this.button_Move_R.Name = "button_Move_R";
-            this.button_Move_R.Size = new System.Drawing.Size(87, 27);
-            this.button_Move_R.TabIndex = 29;
-            this.button_Move_R.Text = "旋转";
-            this.button_Move_R.UseVisualStyleBackColor = true;
-            this.button_Move_R.Click += new System.EventHandler(this.Button4_Click);
+            button_Move_R.Location = new System.Drawing.Point(40, 87);
+            button_Move_R.Name = "button_Move_R";
+            button_Move_R.Size = new System.Drawing.Size(87, 27);
+            button_Move_R.TabIndex = 29;
+            button_Move_R.Text = "旋转";
+            button_Move_R.UseVisualStyleBackColor = true;
+            button_Move_R.Click += new System.EventHandler(Button4_Click);
             // 
             // button_Move_H
             // 
-            this.button_Move_H.Location = new System.Drawing.Point(40, 52);
-            this.button_Move_H.Name = "button_Move_H";
-            this.button_Move_H.Size = new System.Drawing.Size(87, 27);
-            this.button_Move_H.TabIndex = 27;
-            this.button_Move_H.Text = "水平";
-            this.button_Move_H.UseVisualStyleBackColor = true;
-            this.button_Move_H.Click += new System.EventHandler(this.button3_Click);
+            button_Move_H.Location = new System.Drawing.Point(40, 52);
+            button_Move_H.Name = "button_Move_H";
+            button_Move_H.Size = new System.Drawing.Size(87, 27);
+            button_Move_H.TabIndex = 27;
+            button_Move_H.Text = "水平";
+            button_Move_H.UseVisualStyleBackColor = true;
+            button_Move_H.Click += new System.EventHandler(button3_Click);
             // 
             // button_Move_V
             // 
-            this.button_Move_V.Location = new System.Drawing.Point(40, 17);
-            this.button_Move_V.Name = "button_Move_V";
-            this.button_Move_V.Size = new System.Drawing.Size(87, 27);
-            this.button_Move_V.TabIndex = 25;
-            this.button_Move_V.Text = "垂直";
-            this.button_Move_V.UseVisualStyleBackColor = true;
-            this.button_Move_V.Click += new System.EventHandler(this.Button2_Click);
+            button_Move_V.Location = new System.Drawing.Point(40, 17);
+            button_Move_V.Name = "button_Move_V";
+            button_Move_V.Size = new System.Drawing.Size(87, 27);
+            button_Move_V.TabIndex = 25;
+            button_Move_V.Text = "垂直";
+            button_Move_V.UseVisualStyleBackColor = true;
+            button_Move_V.Click += new System.EventHandler(Button2_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.checkBox_Visable);
-            this.groupBox2.Controls.Add(this.button_Visable);
-            this.groupBox2.Controls.Add(this.checkBox_Height);
-            this.groupBox2.Controls.Add(this.button_Height);
-            this.groupBox2.Controls.Add(this.checkBox_Width);
-            this.groupBox2.Controls.Add(this.button_Width);
-            this.groupBox2.Location = new System.Drawing.Point(331, 147);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(142, 125);
-            this.groupBox2.TabIndex = 4;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "尺寸";
+            groupBox2.Controls.Add(checkBox_Visable);
+            groupBox2.Controls.Add(button_Visable);
+            groupBox2.Controls.Add(checkBox_Height);
+            groupBox2.Controls.Add(button_Height);
+            groupBox2.Controls.Add(checkBox_Width);
+            groupBox2.Controls.Add(button_Width);
+            groupBox2.Location = new System.Drawing.Point(331, 147);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new System.Drawing.Size(142, 125);
+            groupBox2.TabIndex = 4;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "尺寸";
             // 
             // checkBox_Visable
             // 
-            this.checkBox_Visable.AutoSize = true;
-            this.checkBox_Visable.Location = new System.Drawing.Point(15, 93);
-            this.checkBox_Visable.Name = "checkBox_Visable";
-            this.checkBox_Visable.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Visable.TabIndex = 34;
-            this.checkBox_Visable.UseVisualStyleBackColor = true;
-            this.checkBox_Visable.CheckedChanged += new System.EventHandler(this.CheckBox21_CheckedChanged);
+            checkBox_Visable.AutoSize = true;
+            checkBox_Visable.Location = new System.Drawing.Point(15, 93);
+            checkBox_Visable.Name = "checkBox_Visable";
+            checkBox_Visable.Size = new System.Drawing.Size(15, 14);
+            checkBox_Visable.TabIndex = 34;
+            checkBox_Visable.UseVisualStyleBackColor = true;
+            checkBox_Visable.CheckedChanged += new System.EventHandler(CheckBox21_CheckedChanged);
             // 
             // button_Visable
             // 
-            this.button_Visable.Location = new System.Drawing.Point(40, 87);
-            this.button_Visable.Name = "button_Visable";
-            this.button_Visable.Size = new System.Drawing.Size(87, 27);
-            this.button_Visable.TabIndex = 35;
-            this.button_Visable.Text = "隐藏";
-            this.button_Visable.UseVisualStyleBackColor = true;
-            this.button_Visable.Click += new System.EventHandler(this.button22_Click);
+            button_Visable.Location = new System.Drawing.Point(40, 87);
+            button_Visable.Name = "button_Visable";
+            button_Visable.Size = new System.Drawing.Size(87, 27);
+            button_Visable.TabIndex = 35;
+            button_Visable.Text = "隐藏";
+            button_Visable.UseVisualStyleBackColor = true;
+            button_Visable.Click += new System.EventHandler(button22_Click);
             // 
             // checkBox_Height
             // 
-            this.checkBox_Height.AutoSize = true;
-            this.checkBox_Height.Location = new System.Drawing.Point(15, 58);
-            this.checkBox_Height.Name = "checkBox_Height";
-            this.checkBox_Height.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Height.TabIndex = 32;
-            this.checkBox_Height.UseVisualStyleBackColor = true;
-            this.checkBox_Height.CheckedChanged += new System.EventHandler(this.CheckBox5_CheckedChanged);
+            checkBox_Height.AutoSize = true;
+            checkBox_Height.Location = new System.Drawing.Point(15, 58);
+            checkBox_Height.Name = "checkBox_Height";
+            checkBox_Height.Size = new System.Drawing.Size(15, 14);
+            checkBox_Height.TabIndex = 32;
+            checkBox_Height.UseVisualStyleBackColor = true;
+            checkBox_Height.CheckedChanged += new System.EventHandler(CheckBox5_CheckedChanged);
             // 
             // button_Height
             // 
-            this.button_Height.Location = new System.Drawing.Point(40, 52);
-            this.button_Height.Name = "button_Height";
-            this.button_Height.Size = new System.Drawing.Size(87, 27);
-            this.button_Height.TabIndex = 33;
-            this.button_Height.Text = "高度";
-            this.button_Height.UseVisualStyleBackColor = true;
-            this.button_Height.Click += new System.EventHandler(this.Button6_Click);
+            button_Height.Location = new System.Drawing.Point(40, 52);
+            button_Height.Name = "button_Height";
+            button_Height.Size = new System.Drawing.Size(87, 27);
+            button_Height.TabIndex = 33;
+            button_Height.Text = "高度";
+            button_Height.UseVisualStyleBackColor = true;
+            button_Height.Click += new System.EventHandler(Button6_Click);
             // 
             // checkBox_Width
             // 
-            this.checkBox_Width.AutoSize = true;
-            this.checkBox_Width.Location = new System.Drawing.Point(15, 23);
-            this.checkBox_Width.Name = "checkBox_Width";
-            this.checkBox_Width.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Width.TabIndex = 30;
-            this.checkBox_Width.UseVisualStyleBackColor = true;
-            this.checkBox_Width.CheckedChanged += new System.EventHandler(this.CheckBox4_CheckedChanged);
+            checkBox_Width.AutoSize = true;
+            checkBox_Width.Location = new System.Drawing.Point(15, 23);
+            checkBox_Width.Name = "checkBox_Width";
+            checkBox_Width.Size = new System.Drawing.Size(15, 14);
+            checkBox_Width.TabIndex = 30;
+            checkBox_Width.UseVisualStyleBackColor = true;
+            checkBox_Width.CheckedChanged += new System.EventHandler(CheckBox4_CheckedChanged);
             // 
             // button_Width
             // 
-            this.button_Width.Location = new System.Drawing.Point(40, 17);
-            this.button_Width.Name = "button_Width";
-            this.button_Width.Size = new System.Drawing.Size(87, 27);
-            this.button_Width.TabIndex = 31;
-            this.button_Width.Text = "宽度";
-            this.button_Width.UseVisualStyleBackColor = true;
-            this.button_Width.Click += new System.EventHandler(this.Button5_Click);
+            button_Width.Location = new System.Drawing.Point(40, 17);
+            button_Width.Name = "button_Width";
+            button_Width.Size = new System.Drawing.Size(87, 27);
+            button_Width.TabIndex = 31;
+            button_Width.Text = "宽度";
+            button_Width.UseVisualStyleBackColor = true;
+            button_Width.Click += new System.EventHandler(Button5_Click);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.checkBox_Color2);
-            this.groupBox3.Controls.Add(this.button_Color2);
-            this.groupBox3.Controls.Add(this.checkBox_Color1);
-            this.groupBox3.Controls.Add(this.button_Color1);
-            this.groupBox3.Controls.Add(this.checkBox_Line);
-            this.groupBox3.Controls.Add(this.button_Line);
-            this.groupBox3.Location = new System.Drawing.Point(489, 12);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(142, 125);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "颜色变化";
+            groupBox3.Controls.Add(checkBox_Color2);
+            groupBox3.Controls.Add(button_Color2);
+            groupBox3.Controls.Add(checkBox_Color1);
+            groupBox3.Controls.Add(button_Color1);
+            groupBox3.Controls.Add(checkBox_Line);
+            groupBox3.Controls.Add(button_Line);
+            groupBox3.Location = new System.Drawing.Point(489, 12);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new System.Drawing.Size(142, 125);
+            groupBox3.TabIndex = 5;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "颜色变化";
             // 
             // checkBox_Color2
             // 
-            this.checkBox_Color2.AutoSize = true;
-            this.checkBox_Color2.Location = new System.Drawing.Point(15, 93);
-            this.checkBox_Color2.Name = "checkBox_Color2";
-            this.checkBox_Color2.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Color2.TabIndex = 40;
-            this.checkBox_Color2.UseVisualStyleBackColor = true;
-            this.checkBox_Color2.CheckedChanged += new System.EventHandler(this.CheckBox8_CheckedChanged);
+            checkBox_Color2.AutoSize = true;
+            checkBox_Color2.Location = new System.Drawing.Point(15, 93);
+            checkBox_Color2.Name = "checkBox_Color2";
+            checkBox_Color2.Size = new System.Drawing.Size(15, 14);
+            checkBox_Color2.TabIndex = 40;
+            checkBox_Color2.UseVisualStyleBackColor = true;
+            checkBox_Color2.CheckedChanged += new System.EventHandler(CheckBox8_CheckedChanged);
             // 
             // button_Color2
             // 
-            this.button_Color2.Location = new System.Drawing.Point(40, 87);
-            this.button_Color2.Name = "button_Color2";
-            this.button_Color2.Size = new System.Drawing.Size(87, 27);
-            this.button_Color2.TabIndex = 41;
-            this.button_Color2.Text = "填充色2";
-            this.button_Color2.UseVisualStyleBackColor = true;
-            this.button_Color2.Click += new System.EventHandler(this.Button9_Click);
+            button_Color2.Location = new System.Drawing.Point(40, 87);
+            button_Color2.Name = "button_Color2";
+            button_Color2.Size = new System.Drawing.Size(87, 27);
+            button_Color2.TabIndex = 41;
+            button_Color2.Text = "填充色2";
+            button_Color2.UseVisualStyleBackColor = true;
+            button_Color2.Click += new System.EventHandler(Button9_Click);
             // 
             // checkBox_Color1
             // 
-            this.checkBox_Color1.AutoSize = true;
-            this.checkBox_Color1.Location = new System.Drawing.Point(15, 58);
-            this.checkBox_Color1.Name = "checkBox_Color1";
-            this.checkBox_Color1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Color1.TabIndex = 38;
-            this.checkBox_Color1.UseVisualStyleBackColor = true;
-            this.checkBox_Color1.CheckedChanged += new System.EventHandler(this.CheckBox6_CheckedChanged);
+            checkBox_Color1.AutoSize = true;
+            checkBox_Color1.Location = new System.Drawing.Point(15, 58);
+            checkBox_Color1.Name = "checkBox_Color1";
+            checkBox_Color1.Size = new System.Drawing.Size(15, 14);
+            checkBox_Color1.TabIndex = 38;
+            checkBox_Color1.UseVisualStyleBackColor = true;
+            checkBox_Color1.CheckedChanged += new System.EventHandler(CheckBox6_CheckedChanged);
             // 
             // button_Color1
             // 
-            this.button_Color1.Location = new System.Drawing.Point(40, 52);
-            this.button_Color1.Name = "button_Color1";
-            this.button_Color1.Size = new System.Drawing.Size(87, 27);
-            this.button_Color1.TabIndex = 39;
-            this.button_Color1.Text = "填充色1";
-            this.button_Color1.UseVisualStyleBackColor = true;
-            this.button_Color1.Click += new System.EventHandler(this.Button7_Click);
+            button_Color1.Location = new System.Drawing.Point(40, 52);
+            button_Color1.Name = "button_Color1";
+            button_Color1.Size = new System.Drawing.Size(87, 27);
+            button_Color1.TabIndex = 39;
+            button_Color1.Text = "填充色1";
+            button_Color1.UseVisualStyleBackColor = true;
+            button_Color1.Click += new System.EventHandler(Button7_Click);
             // 
             // checkBox_Line
             // 
-            this.checkBox_Line.AutoSize = true;
-            this.checkBox_Line.Location = new System.Drawing.Point(15, 23);
-            this.checkBox_Line.Name = "checkBox_Line";
-            this.checkBox_Line.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Line.TabIndex = 36;
-            this.checkBox_Line.UseVisualStyleBackColor = true;
-            this.checkBox_Line.CheckedChanged += new System.EventHandler(this.CheckBox7_CheckedChanged);
+            checkBox_Line.AutoSize = true;
+            checkBox_Line.Location = new System.Drawing.Point(15, 23);
+            checkBox_Line.Name = "checkBox_Line";
+            checkBox_Line.Size = new System.Drawing.Size(15, 14);
+            checkBox_Line.TabIndex = 36;
+            checkBox_Line.UseVisualStyleBackColor = true;
+            checkBox_Line.CheckedChanged += new System.EventHandler(CheckBox7_CheckedChanged);
             // 
             // button_Line
             // 
-            this.button_Line.Location = new System.Drawing.Point(40, 17);
-            this.button_Line.Name = "button_Line";
-            this.button_Line.Size = new System.Drawing.Size(87, 27);
-            this.button_Line.TabIndex = 37;
-            this.button_Line.Text = "边线";
-            this.button_Line.UseVisualStyleBackColor = true;
-            this.button_Line.Click += new System.EventHandler(this.button8_Click);
+            button_Line.Location = new System.Drawing.Point(40, 17);
+            button_Line.Name = "button_Line";
+            button_Line.Size = new System.Drawing.Size(87, 27);
+            button_Line.TabIndex = 37;
+            button_Line.Text = "边线";
+            button_Line.UseVisualStyleBackColor = true;
+            button_Line.Click += new System.EventHandler(button8_Click);
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.checkBox_Fill_H);
-            this.groupBox4.Controls.Add(this.button_Fill_H);
-            this.groupBox4.Controls.Add(this.checkBox_Fill_V);
-            this.groupBox4.Controls.Add(this.button_Fill_V);
-            this.groupBox4.Location = new System.Drawing.Point(169, 178);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(142, 94);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "百分比填充";
+            groupBox4.Controls.Add(checkBox_Fill_H);
+            groupBox4.Controls.Add(button_Fill_H);
+            groupBox4.Controls.Add(checkBox_Fill_V);
+            groupBox4.Controls.Add(button_Fill_V);
+            groupBox4.Location = new System.Drawing.Point(169, 178);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new System.Drawing.Size(142, 94);
+            groupBox4.TabIndex = 2;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "百分比填充";
             // 
             // checkBox_Fill_H
             // 
-            this.checkBox_Fill_H.AutoSize = true;
-            this.checkBox_Fill_H.Location = new System.Drawing.Point(15, 61);
-            this.checkBox_Fill_H.Name = "checkBox_Fill_H";
-            this.checkBox_Fill_H.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Fill_H.TabIndex = 22;
-            this.checkBox_Fill_H.UseVisualStyleBackColor = true;
-            this.checkBox_Fill_H.CheckedChanged += new System.EventHandler(this.CheckBox9_CheckedChanged);
+            checkBox_Fill_H.AutoSize = true;
+            checkBox_Fill_H.Location = new System.Drawing.Point(15, 61);
+            checkBox_Fill_H.Name = "checkBox_Fill_H";
+            checkBox_Fill_H.Size = new System.Drawing.Size(15, 14);
+            checkBox_Fill_H.TabIndex = 22;
+            checkBox_Fill_H.UseVisualStyleBackColor = true;
+            checkBox_Fill_H.CheckedChanged += new System.EventHandler(CheckBox9_CheckedChanged);
             // 
             // button_Fill_H
             // 
-            this.button_Fill_H.Location = new System.Drawing.Point(40, 56);
-            this.button_Fill_H.Name = "button_Fill_H";
-            this.button_Fill_H.Size = new System.Drawing.Size(87, 27);
-            this.button_Fill_H.TabIndex = 23;
-            this.button_Fill_H.Text = "水平";
-            this.button_Fill_H.UseVisualStyleBackColor = true;
-            this.button_Fill_H.Click += new System.EventHandler(this.button10_Click);
+            button_Fill_H.Location = new System.Drawing.Point(40, 56);
+            button_Fill_H.Name = "button_Fill_H";
+            button_Fill_H.Size = new System.Drawing.Size(87, 27);
+            button_Fill_H.TabIndex = 23;
+            button_Fill_H.Text = "水平";
+            button_Fill_H.UseVisualStyleBackColor = true;
+            button_Fill_H.Click += new System.EventHandler(button10_Click);
             // 
             // checkBox_Fill_V
             // 
-            this.checkBox_Fill_V.AutoSize = true;
-            this.checkBox_Fill_V.Location = new System.Drawing.Point(15, 23);
-            this.checkBox_Fill_V.Name = "checkBox_Fill_V";
-            this.checkBox_Fill_V.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Fill_V.TabIndex = 20;
-            this.checkBox_Fill_V.UseVisualStyleBackColor = true;
-            this.checkBox_Fill_V.CheckedChanged += new System.EventHandler(this.CheckBox10_CheckedChanged);
+            checkBox_Fill_V.AutoSize = true;
+            checkBox_Fill_V.Location = new System.Drawing.Point(15, 23);
+            checkBox_Fill_V.Name = "checkBox_Fill_V";
+            checkBox_Fill_V.Size = new System.Drawing.Size(15, 14);
+            checkBox_Fill_V.TabIndex = 20;
+            checkBox_Fill_V.UseVisualStyleBackColor = true;
+            checkBox_Fill_V.CheckedChanged += new System.EventHandler(CheckBox10_CheckedChanged);
             // 
             // button_Fill_V
             // 
-            this.button_Fill_V.Location = new System.Drawing.Point(40, 17);
-            this.button_Fill_V.Name = "button_Fill_V";
-            this.button_Fill_V.Size = new System.Drawing.Size(87, 27);
-            this.button_Fill_V.TabIndex = 21;
-            this.button_Fill_V.Text = "垂直";
-            this.button_Fill_V.UseVisualStyleBackColor = true;
-            this.button_Fill_V.Click += new System.EventHandler(this.button11_Click);
+            button_Fill_V.Location = new System.Drawing.Point(40, 17);
+            button_Fill_V.Name = "button_Fill_V";
+            button_Fill_V.Size = new System.Drawing.Size(87, 27);
+            button_Fill_V.TabIndex = 21;
+            button_Fill_V.Text = "垂直";
+            button_Fill_V.UseVisualStyleBackColor = true;
+            button_Fill_V.Click += new System.EventHandler(button11_Click);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.checkBox_Out_S);
-            this.groupBox5.Controls.Add(this.button_Out_S);
-            this.groupBox5.Controls.Add(this.checkBox_Out_D);
-            this.groupBox5.Controls.Add(this.button_Out_D);
-            this.groupBox5.Controls.Add(this.checkBox_Out_A);
-            this.groupBox5.Controls.Add(this.button_Out_A);
-            this.groupBox5.Controls.Add(this.checkBox_In_S);
-            this.groupBox5.Controls.Add(this.button_In_S);
-            this.groupBox5.Controls.Add(this.checkBox_In_D);
-            this.groupBox5.Controls.Add(this.button_In_D);
-            this.groupBox5.Controls.Add(this.checkBox_In_A);
-            this.groupBox5.Controls.Add(this.button_In_A);
-            this.groupBox5.Location = new System.Drawing.Point(20, 12);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(142, 260);
-            this.groupBox5.TabIndex = 0;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "输入输出";
+            groupBox5.Controls.Add(checkBox_Out_S);
+            groupBox5.Controls.Add(button_Out_S);
+            groupBox5.Controls.Add(checkBox_Out_D);
+            groupBox5.Controls.Add(button_Out_D);
+            groupBox5.Controls.Add(checkBox_Out_A);
+            groupBox5.Controls.Add(button_Out_A);
+            groupBox5.Controls.Add(checkBox_In_S);
+            groupBox5.Controls.Add(button_In_S);
+            groupBox5.Controls.Add(checkBox_In_D);
+            groupBox5.Controls.Add(button_In_D);
+            groupBox5.Controls.Add(checkBox_In_A);
+            groupBox5.Controls.Add(button_In_A);
+            groupBox5.Location = new System.Drawing.Point(20, 12);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new System.Drawing.Size(142, 260);
+            groupBox5.TabIndex = 0;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "输入输出";
             // 
             // checkBox_Out_S
             // 
-            this.checkBox_Out_S.AutoSize = true;
-            this.checkBox_Out_S.Location = new System.Drawing.Point(15, 228);
-            this.checkBox_Out_S.Name = "checkBox_Out_S";
-            this.checkBox_Out_S.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Out_S.TabIndex = 10;
-            this.checkBox_Out_S.UseVisualStyleBackColor = true;
-            this.checkBox_Out_S.CheckedChanged += new System.EventHandler(this.CheckBox17_CheckedChanged);
+            checkBox_Out_S.AutoSize = true;
+            checkBox_Out_S.Location = new System.Drawing.Point(15, 228);
+            checkBox_Out_S.Name = "checkBox_Out_S";
+            checkBox_Out_S.Size = new System.Drawing.Size(15, 14);
+            checkBox_Out_S.TabIndex = 10;
+            checkBox_Out_S.UseVisualStyleBackColor = true;
+            checkBox_Out_S.CheckedChanged += new System.EventHandler(CheckBox17_CheckedChanged);
             // 
             // button_Out_S
             // 
-            this.button_Out_S.Location = new System.Drawing.Point(40, 222);
-            this.button_Out_S.Name = "button_Out_S";
-            this.button_Out_S.Size = new System.Drawing.Size(87, 27);
-            this.button_Out_S.TabIndex = 11;
-            this.button_Out_S.Text = "字符串输出";
-            this.button_Out_S.UseVisualStyleBackColor = true;
-            this.button_Out_S.Click += new System.EventHandler(this.Button18_Click);
+            button_Out_S.Location = new System.Drawing.Point(40, 222);
+            button_Out_S.Name = "button_Out_S";
+            button_Out_S.Size = new System.Drawing.Size(87, 27);
+            button_Out_S.TabIndex = 11;
+            button_Out_S.Text = "字符串输出";
+            button_Out_S.UseVisualStyleBackColor = true;
+            button_Out_S.Click += new System.EventHandler(Button18_Click);
             // 
             // checkBox_Out_D
             // 
-            this.checkBox_Out_D.AutoSize = true;
-            this.checkBox_Out_D.Location = new System.Drawing.Point(15, 190);
-            this.checkBox_Out_D.Name = "checkBox_Out_D";
-            this.checkBox_Out_D.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Out_D.TabIndex = 8;
-            this.checkBox_Out_D.UseVisualStyleBackColor = true;
-            this.checkBox_Out_D.CheckedChanged += new System.EventHandler(this.CheckBox14_CheckedChanged);
+            checkBox_Out_D.AutoSize = true;
+            checkBox_Out_D.Location = new System.Drawing.Point(15, 190);
+            checkBox_Out_D.Name = "checkBox_Out_D";
+            checkBox_Out_D.Size = new System.Drawing.Size(15, 14);
+            checkBox_Out_D.TabIndex = 8;
+            checkBox_Out_D.UseVisualStyleBackColor = true;
+            checkBox_Out_D.CheckedChanged += new System.EventHandler(CheckBox14_CheckedChanged);
             // 
             // button_Out_D
             // 
-            this.button_Out_D.Location = new System.Drawing.Point(40, 184);
-            this.button_Out_D.Name = "button_Out_D";
-            this.button_Out_D.Size = new System.Drawing.Size(87, 27);
-            this.button_Out_D.TabIndex = 9;
-            this.button_Out_D.Text = "数字量输出";
-            this.button_Out_D.UseVisualStyleBackColor = true;
-            this.button_Out_D.Click += new System.EventHandler(this.Button15_Click);
+            button_Out_D.Location = new System.Drawing.Point(40, 184);
+            button_Out_D.Name = "button_Out_D";
+            button_Out_D.Size = new System.Drawing.Size(87, 27);
+            button_Out_D.TabIndex = 9;
+            button_Out_D.Text = "数字量输出";
+            button_Out_D.UseVisualStyleBackColor = true;
+            button_Out_D.Click += new System.EventHandler(Button15_Click);
             // 
             // checkBox_Out_A
             // 
-            this.checkBox_Out_A.AutoSize = true;
-            this.checkBox_Out_A.Location = new System.Drawing.Point(15, 152);
-            this.checkBox_Out_A.Name = "checkBox_Out_A";
-            this.checkBox_Out_A.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Out_A.TabIndex = 6;
-            this.checkBox_Out_A.UseVisualStyleBackColor = true;
-            this.checkBox_Out_A.CheckedChanged += new System.EventHandler(this.CheckBox15_CheckedChanged);
+            checkBox_Out_A.AutoSize = true;
+            checkBox_Out_A.Location = new System.Drawing.Point(15, 152);
+            checkBox_Out_A.Name = "checkBox_Out_A";
+            checkBox_Out_A.Size = new System.Drawing.Size(15, 14);
+            checkBox_Out_A.TabIndex = 6;
+            checkBox_Out_A.UseVisualStyleBackColor = true;
+            checkBox_Out_A.CheckedChanged += new System.EventHandler(CheckBox15_CheckedChanged);
             // 
             // button_Out_A
             // 
-            this.button_Out_A.Location = new System.Drawing.Point(40, 146);
-            this.button_Out_A.Name = "button_Out_A";
-            this.button_Out_A.Size = new System.Drawing.Size(87, 27);
-            this.button_Out_A.TabIndex = 7;
-            this.button_Out_A.Text = "模拟量输出";
-            this.button_Out_A.UseVisualStyleBackColor = true;
-            this.button_Out_A.Click += new System.EventHandler(this.Button16_Click);
+            button_Out_A.Location = new System.Drawing.Point(40, 146);
+            button_Out_A.Name = "button_Out_A";
+            button_Out_A.Size = new System.Drawing.Size(87, 27);
+            button_Out_A.TabIndex = 7;
+            button_Out_A.Text = "模拟量输出";
+            button_Out_A.UseVisualStyleBackColor = true;
+            button_Out_A.Click += new System.EventHandler(Button16_Click);
             // 
             // checkBox_In_S
             // 
-            this.checkBox_In_S.AutoSize = true;
-            this.checkBox_In_S.Location = new System.Drawing.Point(15, 99);
-            this.checkBox_In_S.Name = "checkBox_In_S";
-            this.checkBox_In_S.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_In_S.TabIndex = 4;
-            this.checkBox_In_S.UseVisualStyleBackColor = true;
-            this.checkBox_In_S.CheckedChanged += new System.EventHandler(this.CheckBox_In_S_CheckedChanged);
+            checkBox_In_S.AutoSize = true;
+            checkBox_In_S.Location = new System.Drawing.Point(15, 99);
+            checkBox_In_S.Name = "checkBox_In_S";
+            checkBox_In_S.Size = new System.Drawing.Size(15, 14);
+            checkBox_In_S.TabIndex = 4;
+            checkBox_In_S.UseVisualStyleBackColor = true;
+            checkBox_In_S.CheckedChanged += new System.EventHandler(CheckBox_In_S_CheckedChanged);
             // 
             // button_In_S
             // 
-            this.button_In_S.Location = new System.Drawing.Point(40, 93);
-            this.button_In_S.Name = "button_In_S";
-            this.button_In_S.Size = new System.Drawing.Size(87, 27);
-            this.button_In_S.TabIndex = 5;
-            this.button_In_S.Text = "字符串输入";
-            this.button_In_S.UseVisualStyleBackColor = true;
-            this.button_In_S.Click += new System.EventHandler(this.Button17_Click);
+            button_In_S.Location = new System.Drawing.Point(40, 93);
+            button_In_S.Name = "button_In_S";
+            button_In_S.Size = new System.Drawing.Size(87, 27);
+            button_In_S.TabIndex = 5;
+            button_In_S.Text = "字符串输入";
+            button_In_S.UseVisualStyleBackColor = true;
+            button_In_S.Click += new System.EventHandler(Button17_Click);
             // 
             // checkBox_In_D
             // 
-            this.checkBox_In_D.AutoSize = true;
-            this.checkBox_In_D.Location = new System.Drawing.Point(15, 61);
-            this.checkBox_In_D.Name = "checkBox_In_D";
-            this.checkBox_In_D.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_In_D.TabIndex = 2;
-            this.checkBox_In_D.UseVisualStyleBackColor = true;
-            this.checkBox_In_D.CheckedChanged += new System.EventHandler(this.CheckBox_In_D_CheckedChanged);
+            checkBox_In_D.AutoSize = true;
+            checkBox_In_D.Location = new System.Drawing.Point(15, 61);
+            checkBox_In_D.Name = "checkBox_In_D";
+            checkBox_In_D.Size = new System.Drawing.Size(15, 14);
+            checkBox_In_D.TabIndex = 2;
+            checkBox_In_D.UseVisualStyleBackColor = true;
+            checkBox_In_D.CheckedChanged += new System.EventHandler(CheckBox_In_D_CheckedChanged);
             // 
             // button_In_D
             // 
-            this.button_In_D.Location = new System.Drawing.Point(40, 55);
-            this.button_In_D.Name = "button_In_D";
-            this.button_In_D.Size = new System.Drawing.Size(87, 27);
-            this.button_In_D.TabIndex = 3;
-            this.button_In_D.Text = "数字量输入";
-            this.button_In_D.UseVisualStyleBackColor = true;
-            this.button_In_D.Click += new System.EventHandler(this.Button12_Click);
+            button_In_D.Location = new System.Drawing.Point(40, 55);
+            button_In_D.Name = "button_In_D";
+            button_In_D.Size = new System.Drawing.Size(87, 27);
+            button_In_D.TabIndex = 3;
+            button_In_D.Text = "数字量输入";
+            button_In_D.UseVisualStyleBackColor = true;
+            button_In_D.Click += new System.EventHandler(Button12_Click);
             // 
             // checkBox_In_A
             // 
-            this.checkBox_In_A.AutoSize = true;
-            this.checkBox_In_A.Location = new System.Drawing.Point(15, 23);
-            this.checkBox_In_A.Name = "checkBox_In_A";
-            this.checkBox_In_A.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_In_A.TabIndex = 0;
-            this.checkBox_In_A.UseVisualStyleBackColor = true;
-            this.checkBox_In_A.CheckedChanged += new System.EventHandler(this.CheckBox_In_A_CheckedChanged);
+            checkBox_In_A.AutoSize = true;
+            checkBox_In_A.Location = new System.Drawing.Point(15, 23);
+            checkBox_In_A.Name = "checkBox_In_A";
+            checkBox_In_A.Size = new System.Drawing.Size(15, 14);
+            checkBox_In_A.TabIndex = 0;
+            checkBox_In_A.UseVisualStyleBackColor = true;
+            checkBox_In_A.CheckedChanged += new System.EventHandler(CheckBox_In_A_CheckedChanged);
             // 
             // button_In_A
             // 
-            this.button_In_A.Location = new System.Drawing.Point(40, 17);
-            this.button_In_A.Name = "button_In_A";
-            this.button_In_A.Size = new System.Drawing.Size(87, 27);
-            this.button_In_A.TabIndex = 1;
-            this.button_In_A.Text = "模拟量输入";
-            this.button_In_A.UseVisualStyleBackColor = true;
-            this.button_In_A.Click += new System.EventHandler(this.Button13_Click);
+            button_In_A.Location = new System.Drawing.Point(40, 17);
+            button_In_A.Name = "button_In_A";
+            button_In_A.Size = new System.Drawing.Size(87, 27);
+            button_In_A.TabIndex = 1;
+            button_In_A.Text = "模拟量输入";
+            button_In_A.UseVisualStyleBackColor = true;
+            button_In_A.Click += new System.EventHandler(Button13_Click);
             // 
             // checkBox_Change_Page
             // 
-            this.checkBox_Change_Page.AutoSize = true;
-            this.checkBox_Change_Page.Location = new System.Drawing.Point(15, 23);
-            this.checkBox_Change_Page.Name = "checkBox_Change_Page";
-            this.checkBox_Change_Page.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Change_Page.TabIndex = 12;
-            this.checkBox_Change_Page.UseVisualStyleBackColor = true;
-            this.checkBox_Change_Page.CheckedChanged += new System.EventHandler(this.CheckBox13_CheckedChanged);
+            checkBox_Change_Page.AutoSize = true;
+            checkBox_Change_Page.Location = new System.Drawing.Point(15, 23);
+            checkBox_Change_Page.Name = "checkBox_Change_Page";
+            checkBox_Change_Page.Size = new System.Drawing.Size(15, 14);
+            checkBox_Change_Page.TabIndex = 12;
+            checkBox_Change_Page.UseVisualStyleBackColor = true;
+            checkBox_Change_Page.CheckedChanged += new System.EventHandler(CheckBox13_CheckedChanged);
             // 
             // button_Change_Page
             // 
-            this.button_Change_Page.Location = new System.Drawing.Point(40, 17);
-            this.button_Change_Page.Name = "button_Change_Page";
-            this.button_Change_Page.Size = new System.Drawing.Size(87, 27);
-            this.button_Change_Page.TabIndex = 13;
-            this.button_Change_Page.Text = "页面切换";
-            this.button_Change_Page.UseVisualStyleBackColor = true;
-            this.button_Change_Page.Click += new System.EventHandler(this.Button14_Click);
+            button_Change_Page.Location = new System.Drawing.Point(40, 17);
+            button_Change_Page.Name = "button_Change_Page";
+            button_Change_Page.Size = new System.Drawing.Size(87, 27);
+            button_Change_Page.TabIndex = 13;
+            button_Change_Page.Text = "页面切换";
+            button_Change_Page.UseVisualStyleBackColor = true;
+            button_Change_Page.Click += new System.EventHandler(Button14_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(710, 582);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(476, 290);
-            this.textBox1.TabIndex = 19;
-            this.textBox1.Visible = false;
+            textBox1.Location = new System.Drawing.Point(710, 582);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            textBox1.Size = new System.Drawing.Size(476, 290);
+            textBox1.TabIndex = 19;
+            textBox1.Visible = false;
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.button_Enent_Mouse);
-            this.groupBox6.Controls.Add(this.checkBox_Enent_Mouse);
-            this.groupBox6.Controls.Add(this.button_Drag_V);
-            this.groupBox6.Controls.Add(this.checkBox_Drag_V);
-            this.groupBox6.Controls.Add(this.button_Drag_H);
-            this.groupBox6.Controls.Add(this.checkBox_Drag_H);
-            this.groupBox6.Controls.Add(this.button_Change_Page);
-            this.groupBox6.Controls.Add(this.checkBox_Change_Page);
-            this.groupBox6.Location = new System.Drawing.Point(169, 12);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(142, 159);
-            this.groupBox6.TabIndex = 1;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "鼠标动作";
+            groupBox6.Controls.Add(button_Enent_Mouse);
+            groupBox6.Controls.Add(checkBox_Enent_Mouse);
+            groupBox6.Controls.Add(button_Drag_V);
+            groupBox6.Controls.Add(checkBox_Drag_V);
+            groupBox6.Controls.Add(button_Drag_H);
+            groupBox6.Controls.Add(checkBox_Drag_H);
+            groupBox6.Controls.Add(button_Change_Page);
+            groupBox6.Controls.Add(checkBox_Change_Page);
+            groupBox6.Location = new System.Drawing.Point(169, 12);
+            groupBox6.Name = "groupBox6";
+            groupBox6.Size = new System.Drawing.Size(142, 159);
+            groupBox6.TabIndex = 1;
+            groupBox6.TabStop = false;
+            groupBox6.Text = "鼠标动作";
             // 
             // button_Enent_Mouse
             // 
-            this.button_Enent_Mouse.Location = new System.Drawing.Point(40, 122);
-            this.button_Enent_Mouse.Name = "button_Enent_Mouse";
-            this.button_Enent_Mouse.Size = new System.Drawing.Size(87, 27);
-            this.button_Enent_Mouse.TabIndex = 19;
-            this.button_Enent_Mouse.Text = "鼠标事件";
-            this.button_Enent_Mouse.UseVisualStyleBackColor = true;
-            this.button_Enent_Mouse.Click += new System.EventHandler(this.button21_Click);
+            button_Enent_Mouse.Location = new System.Drawing.Point(40, 122);
+            button_Enent_Mouse.Name = "button_Enent_Mouse";
+            button_Enent_Mouse.Size = new System.Drawing.Size(87, 27);
+            button_Enent_Mouse.TabIndex = 19;
+            button_Enent_Mouse.Text = "鼠标事件";
+            button_Enent_Mouse.UseVisualStyleBackColor = true;
+            button_Enent_Mouse.Click += new System.EventHandler(button21_Click);
             // 
             // checkBox_Enent_Mouse
             // 
-            this.checkBox_Enent_Mouse.AutoSize = true;
-            this.checkBox_Enent_Mouse.Location = new System.Drawing.Point(15, 128);
-            this.checkBox_Enent_Mouse.Name = "checkBox_Enent_Mouse";
-            this.checkBox_Enent_Mouse.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Enent_Mouse.TabIndex = 18;
-            this.checkBox_Enent_Mouse.UseVisualStyleBackColor = true;
-            this.checkBox_Enent_Mouse.CheckedChanged += new System.EventHandler(this.checkBox20_CheckedChanged);
+            checkBox_Enent_Mouse.AutoSize = true;
+            checkBox_Enent_Mouse.Location = new System.Drawing.Point(15, 128);
+            checkBox_Enent_Mouse.Name = "checkBox_Enent_Mouse";
+            checkBox_Enent_Mouse.Size = new System.Drawing.Size(15, 14);
+            checkBox_Enent_Mouse.TabIndex = 18;
+            checkBox_Enent_Mouse.UseVisualStyleBackColor = true;
+            checkBox_Enent_Mouse.CheckedChanged += new System.EventHandler(checkBox20_CheckedChanged);
             // 
             // button_Drag_V
             // 
-            this.button_Drag_V.Location = new System.Drawing.Point(40, 87);
-            this.button_Drag_V.Name = "button_Drag_V";
-            this.button_Drag_V.Size = new System.Drawing.Size(87, 27);
-            this.button_Drag_V.TabIndex = 17;
-            this.button_Drag_V.Text = "垂直拖拽";
-            this.button_Drag_V.UseVisualStyleBackColor = true;
-            this.button_Drag_V.Click += new System.EventHandler(this.button20_Click);
+            button_Drag_V.Location = new System.Drawing.Point(40, 87);
+            button_Drag_V.Name = "button_Drag_V";
+            button_Drag_V.Size = new System.Drawing.Size(87, 27);
+            button_Drag_V.TabIndex = 17;
+            button_Drag_V.Text = "垂直拖拽";
+            button_Drag_V.UseVisualStyleBackColor = true;
+            button_Drag_V.Click += new System.EventHandler(button20_Click);
             // 
             // checkBox_Drag_V
             // 
-            this.checkBox_Drag_V.AutoSize = true;
-            this.checkBox_Drag_V.Location = new System.Drawing.Point(15, 93);
-            this.checkBox_Drag_V.Name = "checkBox_Drag_V";
-            this.checkBox_Drag_V.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Drag_V.TabIndex = 16;
-            this.checkBox_Drag_V.UseVisualStyleBackColor = true;
-            this.checkBox_Drag_V.CheckedChanged += new System.EventHandler(this.checkBox19_CheckedChanged);
+            checkBox_Drag_V.AutoSize = true;
+            checkBox_Drag_V.Location = new System.Drawing.Point(15, 93);
+            checkBox_Drag_V.Name = "checkBox_Drag_V";
+            checkBox_Drag_V.Size = new System.Drawing.Size(15, 14);
+            checkBox_Drag_V.TabIndex = 16;
+            checkBox_Drag_V.UseVisualStyleBackColor = true;
+            checkBox_Drag_V.CheckedChanged += new System.EventHandler(checkBox19_CheckedChanged);
             // 
             // button_Drag_H
             // 
-            this.button_Drag_H.Location = new System.Drawing.Point(40, 52);
-            this.button_Drag_H.Name = "button_Drag_H";
-            this.button_Drag_H.Size = new System.Drawing.Size(87, 27);
-            this.button_Drag_H.TabIndex = 15;
-            this.button_Drag_H.Text = "水平拖拽";
-            this.button_Drag_H.UseVisualStyleBackColor = true;
-            this.button_Drag_H.Click += new System.EventHandler(this.Button19_Click);
+            button_Drag_H.Location = new System.Drawing.Point(40, 52);
+            button_Drag_H.Name = "button_Drag_H";
+            button_Drag_H.Size = new System.Drawing.Size(87, 27);
+            button_Drag_H.TabIndex = 15;
+            button_Drag_H.Text = "水平拖拽";
+            button_Drag_H.UseVisualStyleBackColor = true;
+            button_Drag_H.Click += new System.EventHandler(Button19_Click);
             // 
             // checkBox_Drag_H
             // 
-            this.checkBox_Drag_H.AutoSize = true;
-            this.checkBox_Drag_H.Location = new System.Drawing.Point(15, 58);
-            this.checkBox_Drag_H.Name = "checkBox_Drag_H";
-            this.checkBox_Drag_H.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Drag_H.TabIndex = 14;
-            this.checkBox_Drag_H.UseVisualStyleBackColor = true;
-            this.checkBox_Drag_H.CheckedChanged += new System.EventHandler(this.CheckBox18_CheckedChanged);
+            checkBox_Drag_H.AutoSize = true;
+            checkBox_Drag_H.Location = new System.Drawing.Point(15, 58);
+            checkBox_Drag_H.Name = "checkBox_Drag_H";
+            checkBox_Drag_H.Size = new System.Drawing.Size(15, 14);
+            checkBox_Drag_H.TabIndex = 14;
+            checkBox_Drag_H.UseVisualStyleBackColor = true;
+            checkBox_Drag_H.CheckedChanged += new System.EventHandler(CheckBox18_CheckedChanged);
             // 
             // buttonJinglingPand
             // 
-            this.buttonJinglingPand.Location = new System.Drawing.Point(15, 87);
-            this.buttonJinglingPand.Name = "buttonJinglingPand";
-            this.buttonJinglingPand.Size = new System.Drawing.Size(112, 27);
-            this.buttonJinglingPand.TabIndex = 44;
-            this.buttonJinglingPand.Text = "精灵面板";
-            this.buttonJinglingPand.UseVisualStyleBackColor = true;
-            this.buttonJinglingPand.Click += new System.EventHandler(this.Button24_Click);
+            buttonJinglingPand.Location = new System.Drawing.Point(15, 87);
+            buttonJinglingPand.Name = "buttonJinglingPand";
+            buttonJinglingPand.Size = new System.Drawing.Size(112, 27);
+            buttonJinglingPand.TabIndex = 44;
+            buttonJinglingPand.Text = "精灵面板";
+            buttonJinglingPand.UseVisualStyleBackColor = true;
+            buttonJinglingPand.Click += new System.EventHandler(Button24_Click);
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.checkBox_DB_Creat);
-            this.groupBox7.Controls.Add(this.button_DB_Creat);
-            this.groupBox7.Controls.Add(this.checkBox_DB_MultiOperate);
-            this.groupBox7.Controls.Add(this.button_DB_MultiOperate);
-            this.groupBox7.Controls.Add(this.checkBox_DB_Delete);
-            this.groupBox7.Controls.Add(this.checkBox_DB_Update);
-            this.groupBox7.Controls.Add(this.checkBox_DB_Insert);
-            this.groupBox7.Controls.Add(this.button_DB_Delete);
-            this.groupBox7.Controls.Add(this.checkBox_DB_Select);
-            this.groupBox7.Controls.Add(this.button_DB_Update);
-            this.groupBox7.Controls.Add(this.button_DB_Insert);
-            this.groupBox7.Controls.Add(this.button_DB_Select);
-            this.groupBox7.Location = new System.Drawing.Point(647, 12);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(142, 235);
-            this.groupBox7.TabIndex = 10;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "数据库操作";
+            groupBox7.Controls.Add(checkBox_DB_Creat);
+            groupBox7.Controls.Add(button_DB_Creat);
+            groupBox7.Controls.Add(checkBox_DB_MultiOperate);
+            groupBox7.Controls.Add(button_DB_MultiOperate);
+            groupBox7.Controls.Add(checkBox_DB_Delete);
+            groupBox7.Controls.Add(checkBox_DB_Update);
+            groupBox7.Controls.Add(checkBox_DB_Insert);
+            groupBox7.Controls.Add(button_DB_Delete);
+            groupBox7.Controls.Add(checkBox_DB_Select);
+            groupBox7.Controls.Add(button_DB_Update);
+            groupBox7.Controls.Add(button_DB_Insert);
+            groupBox7.Controls.Add(button_DB_Select);
+            groupBox7.Location = new System.Drawing.Point(647, 12);
+            groupBox7.Name = "groupBox7";
+            groupBox7.Size = new System.Drawing.Size(142, 235);
+            groupBox7.TabIndex = 10;
+            groupBox7.TabStop = false;
+            groupBox7.Text = "数据库操作";
             // 
             // checkBox_DB_Creat
             // 
-            this.checkBox_DB_Creat.AutoSize = true;
-            this.checkBox_DB_Creat.Location = new System.Drawing.Point(15, 23);
-            this.checkBox_DB_Creat.Name = "checkBox_DB_Creat";
-            this.checkBox_DB_Creat.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_DB_Creat.TabIndex = 58;
-            this.checkBox_DB_Creat.UseVisualStyleBackColor = true;
-            this.checkBox_DB_Creat.CheckedChanged += new System.EventHandler(this.checkBox28_CheckedChanged);
+            checkBox_DB_Creat.AutoSize = true;
+            checkBox_DB_Creat.Location = new System.Drawing.Point(15, 23);
+            checkBox_DB_Creat.Name = "checkBox_DB_Creat";
+            checkBox_DB_Creat.Size = new System.Drawing.Size(15, 14);
+            checkBox_DB_Creat.TabIndex = 58;
+            checkBox_DB_Creat.UseVisualStyleBackColor = true;
+            checkBox_DB_Creat.CheckedChanged += new System.EventHandler(checkBox28_CheckedChanged);
             // 
             // button_DB_Creat
             // 
-            this.button_DB_Creat.Location = new System.Drawing.Point(40, 17);
-            this.button_DB_Creat.Name = "button_DB_Creat";
-            this.button_DB_Creat.Size = new System.Drawing.Size(87, 27);
-            this.button_DB_Creat.TabIndex = 57;
-            this.button_DB_Creat.Text = "新建表";
-            this.button_DB_Creat.UseVisualStyleBackColor = true;
-            this.button_DB_Creat.Click += new System.EventHandler(this.button32_Click);
+            button_DB_Creat.Location = new System.Drawing.Point(40, 17);
+            button_DB_Creat.Name = "button_DB_Creat";
+            button_DB_Creat.Size = new System.Drawing.Size(87, 27);
+            button_DB_Creat.TabIndex = 57;
+            button_DB_Creat.Text = "新建表";
+            button_DB_Creat.UseVisualStyleBackColor = true;
+            button_DB_Creat.Click += new System.EventHandler(button32_Click);
             // 
             // checkBox_DB_MultiOperate
             // 
-            this.checkBox_DB_MultiOperate.AutoSize = true;
-            this.checkBox_DB_MultiOperate.Location = new System.Drawing.Point(15, 203);
-            this.checkBox_DB_MultiOperate.Name = "checkBox_DB_MultiOperate";
-            this.checkBox_DB_MultiOperate.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_DB_MultiOperate.TabIndex = 53;
-            this.checkBox_DB_MultiOperate.UseVisualStyleBackColor = true;
-            this.checkBox_DB_MultiOperate.CheckedChanged += new System.EventHandler(this.CheckBox27_CheckedChanged);
+            checkBox_DB_MultiOperate.AutoSize = true;
+            checkBox_DB_MultiOperate.Location = new System.Drawing.Point(15, 203);
+            checkBox_DB_MultiOperate.Name = "checkBox_DB_MultiOperate";
+            checkBox_DB_MultiOperate.Size = new System.Drawing.Size(15, 14);
+            checkBox_DB_MultiOperate.TabIndex = 53;
+            checkBox_DB_MultiOperate.UseVisualStyleBackColor = true;
+            checkBox_DB_MultiOperate.CheckedChanged += new System.EventHandler(CheckBox27_CheckedChanged);
             // 
             // button_DB_MultiOperate
             // 
-            this.button_DB_MultiOperate.Location = new System.Drawing.Point(40, 197);
-            this.button_DB_MultiOperate.Name = "button_DB_MultiOperate";
-            this.button_DB_MultiOperate.Size = new System.Drawing.Size(87, 27);
-            this.button_DB_MultiOperate.TabIndex = 54;
-            this.button_DB_MultiOperate.Text = "复合操作";
-            this.button_DB_MultiOperate.UseVisualStyleBackColor = true;
-            this.button_DB_MultiOperate.Click += new System.EventHandler(this.Button29_Click);
+            button_DB_MultiOperate.Location = new System.Drawing.Point(40, 197);
+            button_DB_MultiOperate.Name = "button_DB_MultiOperate";
+            button_DB_MultiOperate.Size = new System.Drawing.Size(87, 27);
+            button_DB_MultiOperate.TabIndex = 54;
+            button_DB_MultiOperate.Text = "复合操作";
+            button_DB_MultiOperate.UseVisualStyleBackColor = true;
+            button_DB_MultiOperate.Click += new System.EventHandler(Button29_Click);
             // 
             // checkBox_DB_Delete
             // 
-            this.checkBox_DB_Delete.AutoSize = true;
-            this.checkBox_DB_Delete.Location = new System.Drawing.Point(15, 167);
-            this.checkBox_DB_Delete.Name = "checkBox_DB_Delete";
-            this.checkBox_DB_Delete.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_DB_Delete.TabIndex = 51;
-            this.checkBox_DB_Delete.UseVisualStyleBackColor = true;
-            this.checkBox_DB_Delete.CheckedChanged += new System.EventHandler(this.checkBox26_CheckedChanged);
+            checkBox_DB_Delete.AutoSize = true;
+            checkBox_DB_Delete.Location = new System.Drawing.Point(15, 167);
+            checkBox_DB_Delete.Name = "checkBox_DB_Delete";
+            checkBox_DB_Delete.Size = new System.Drawing.Size(15, 14);
+            checkBox_DB_Delete.TabIndex = 51;
+            checkBox_DB_Delete.UseVisualStyleBackColor = true;
+            checkBox_DB_Delete.CheckedChanged += new System.EventHandler(checkBox26_CheckedChanged);
             // 
             // checkBox_DB_Update
             // 
-            this.checkBox_DB_Update.AutoSize = true;
-            this.checkBox_DB_Update.Location = new System.Drawing.Point(15, 131);
-            this.checkBox_DB_Update.Name = "checkBox_DB_Update";
-            this.checkBox_DB_Update.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_DB_Update.TabIndex = 49;
-            this.checkBox_DB_Update.UseVisualStyleBackColor = true;
-            this.checkBox_DB_Update.CheckedChanged += new System.EventHandler(this.CheckBox23_CheckedChanged);
+            checkBox_DB_Update.AutoSize = true;
+            checkBox_DB_Update.Location = new System.Drawing.Point(15, 131);
+            checkBox_DB_Update.Name = "checkBox_DB_Update";
+            checkBox_DB_Update.Size = new System.Drawing.Size(15, 14);
+            checkBox_DB_Update.TabIndex = 49;
+            checkBox_DB_Update.UseVisualStyleBackColor = true;
+            checkBox_DB_Update.CheckedChanged += new System.EventHandler(CheckBox23_CheckedChanged);
             // 
             // checkBox_DB_Insert
             // 
-            this.checkBox_DB_Insert.AutoSize = true;
-            this.checkBox_DB_Insert.Location = new System.Drawing.Point(15, 95);
-            this.checkBox_DB_Insert.Name = "checkBox_DB_Insert";
-            this.checkBox_DB_Insert.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_DB_Insert.TabIndex = 47;
-            this.checkBox_DB_Insert.UseVisualStyleBackColor = true;
-            this.checkBox_DB_Insert.CheckedChanged += new System.EventHandler(this.checkBox24_CheckedChanged);
+            checkBox_DB_Insert.AutoSize = true;
+            checkBox_DB_Insert.Location = new System.Drawing.Point(15, 95);
+            checkBox_DB_Insert.Name = "checkBox_DB_Insert";
+            checkBox_DB_Insert.Size = new System.Drawing.Size(15, 14);
+            checkBox_DB_Insert.TabIndex = 47;
+            checkBox_DB_Insert.UseVisualStyleBackColor = true;
+            checkBox_DB_Insert.CheckedChanged += new System.EventHandler(checkBox24_CheckedChanged);
             // 
             // button_DB_Delete
             // 
-            this.button_DB_Delete.Location = new System.Drawing.Point(40, 161);
-            this.button_DB_Delete.Name = "button_DB_Delete";
-            this.button_DB_Delete.Size = new System.Drawing.Size(87, 27);
-            this.button_DB_Delete.TabIndex = 52;
-            this.button_DB_Delete.Text = "删除数据";
-            this.button_DB_Delete.UseVisualStyleBackColor = true;
-            this.button_DB_Delete.Click += new System.EventHandler(this.Button28_Click);
+            button_DB_Delete.Location = new System.Drawing.Point(40, 161);
+            button_DB_Delete.Name = "button_DB_Delete";
+            button_DB_Delete.Size = new System.Drawing.Size(87, 27);
+            button_DB_Delete.TabIndex = 52;
+            button_DB_Delete.Text = "删除数据";
+            button_DB_Delete.UseVisualStyleBackColor = true;
+            button_DB_Delete.Click += new System.EventHandler(Button28_Click);
             // 
             // checkBox_DB_Select
             // 
-            this.checkBox_DB_Select.AutoSize = true;
-            this.checkBox_DB_Select.Location = new System.Drawing.Point(15, 59);
-            this.checkBox_DB_Select.Name = "checkBox_DB_Select";
-            this.checkBox_DB_Select.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_DB_Select.TabIndex = 45;
-            this.checkBox_DB_Select.UseVisualStyleBackColor = true;
-            this.checkBox_DB_Select.CheckedChanged += new System.EventHandler(this.CheckBox25_CheckedChanged);
+            checkBox_DB_Select.AutoSize = true;
+            checkBox_DB_Select.Location = new System.Drawing.Point(15, 59);
+            checkBox_DB_Select.Name = "checkBox_DB_Select";
+            checkBox_DB_Select.Size = new System.Drawing.Size(15, 14);
+            checkBox_DB_Select.TabIndex = 45;
+            checkBox_DB_Select.UseVisualStyleBackColor = true;
+            checkBox_DB_Select.CheckedChanged += new System.EventHandler(CheckBox25_CheckedChanged);
             // 
             // button_DB_Update
             // 
-            this.button_DB_Update.Location = new System.Drawing.Point(40, 125);
-            this.button_DB_Update.Name = "button_DB_Update";
-            this.button_DB_Update.Size = new System.Drawing.Size(87, 27);
-            this.button_DB_Update.TabIndex = 50;
-            this.button_DB_Update.Text = "更新数据";
-            this.button_DB_Update.UseVisualStyleBackColor = true;
-            this.button_DB_Update.Click += new System.EventHandler(this.button25_Click);
+            button_DB_Update.Location = new System.Drawing.Point(40, 125);
+            button_DB_Update.Name = "button_DB_Update";
+            button_DB_Update.Size = new System.Drawing.Size(87, 27);
+            button_DB_Update.TabIndex = 50;
+            button_DB_Update.Text = "更新数据";
+            button_DB_Update.UseVisualStyleBackColor = true;
+            button_DB_Update.Click += new System.EventHandler(button25_Click);
             // 
             // button_DB_Insert
             // 
-            this.button_DB_Insert.Location = new System.Drawing.Point(40, 89);
-            this.button_DB_Insert.Name = "button_DB_Insert";
-            this.button_DB_Insert.Size = new System.Drawing.Size(87, 27);
-            this.button_DB_Insert.TabIndex = 48;
-            this.button_DB_Insert.Text = "添加数据";
-            this.button_DB_Insert.UseVisualStyleBackColor = true;
-            this.button_DB_Insert.Click += new System.EventHandler(this.Button26_Click);
+            button_DB_Insert.Location = new System.Drawing.Point(40, 89);
+            button_DB_Insert.Name = "button_DB_Insert";
+            button_DB_Insert.Size = new System.Drawing.Size(87, 27);
+            button_DB_Insert.TabIndex = 48;
+            button_DB_Insert.Text = "添加数据";
+            button_DB_Insert.UseVisualStyleBackColor = true;
+            button_DB_Insert.Click += new System.EventHandler(Button26_Click);
             // 
             // button_DB_Select
             // 
-            this.button_DB_Select.Location = new System.Drawing.Point(40, 53);
-            this.button_DB_Select.Name = "button_DB_Select";
-            this.button_DB_Select.Size = new System.Drawing.Size(87, 27);
-            this.button_DB_Select.TabIndex = 46;
-            this.button_DB_Select.Text = "查询数据";
-            this.button_DB_Select.UseVisualStyleBackColor = true;
-            this.button_DB_Select.Click += new System.EventHandler(this.button27_Click);
+            button_DB_Select.Location = new System.Drawing.Point(40, 53);
+            button_DB_Select.Name = "button_DB_Select";
+            button_DB_Select.Size = new System.Drawing.Size(87, 27);
+            button_DB_Select.TabIndex = 46;
+            button_DB_Select.Text = "查询数据";
+            button_DB_Select.UseVisualStyleBackColor = true;
+            button_DB_Select.Click += new System.EventHandler(button27_Click);
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.buttonEventBind);
-            this.groupBox8.Controls.Add(this.buttonJinglingPand);
-            this.groupBox8.Controls.Add(this.button_PropertyBind);
-            this.groupBox8.Location = new System.Drawing.Point(489, 147);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(142, 125);
-            this.groupBox8.TabIndex = 9;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "控件绑定";
+            groupBox8.Controls.Add(buttonEventBind);
+            groupBox8.Controls.Add(buttonJinglingPand);
+            groupBox8.Controls.Add(button_PropertyBind);
+            groupBox8.Location = new System.Drawing.Point(489, 147);
+            groupBox8.Name = "groupBox8";
+            groupBox8.Size = new System.Drawing.Size(142, 125);
+            groupBox8.TabIndex = 9;
+            groupBox8.TabStop = false;
+            groupBox8.Text = "控件绑定";
             // 
             // buttonEventBind
             // 
-            this.buttonEventBind.Location = new System.Drawing.Point(15, 52);
-            this.buttonEventBind.Name = "buttonEventBind";
-            this.buttonEventBind.Size = new System.Drawing.Size(112, 27);
-            this.buttonEventBind.TabIndex = 43;
-            this.buttonEventBind.Text = "事件绑定";
-            this.buttonEventBind.UseVisualStyleBackColor = true;
-            this.buttonEventBind.Click += new System.EventHandler(this.button31_Click);
+            buttonEventBind.Location = new System.Drawing.Point(15, 52);
+            buttonEventBind.Name = "buttonEventBind";
+            buttonEventBind.Size = new System.Drawing.Size(112, 27);
+            buttonEventBind.TabIndex = 43;
+            buttonEventBind.Text = "事件绑定";
+            buttonEventBind.UseVisualStyleBackColor = true;
+            buttonEventBind.Click += new System.EventHandler(button31_Click);
             // 
             // button_PropertyBind
             // 
-            this.button_PropertyBind.Location = new System.Drawing.Point(15, 17);
-            this.button_PropertyBind.Name = "button_PropertyBind";
-            this.button_PropertyBind.Size = new System.Drawing.Size(112, 27);
-            this.button_PropertyBind.TabIndex = 42;
-            this.button_PropertyBind.Text = "属性绑定";
-            this.button_PropertyBind.UseVisualStyleBackColor = true;
-            this.button_PropertyBind.Click += new System.EventHandler(this.button30_Click);
+            button_PropertyBind.Location = new System.Drawing.Point(15, 17);
+            button_PropertyBind.Name = "button_PropertyBind";
+            button_PropertyBind.Size = new System.Drawing.Size(112, 27);
+            button_PropertyBind.TabIndex = 42;
+            button_PropertyBind.Text = "属性绑定";
+            button_PropertyBind.UseVisualStyleBackColor = true;
+            button_PropertyBind.Click += new System.EventHandler(button30_Click);
             // 
             // dhljForm
             // 
-            this.AcceptButton = this.button_Close;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 293);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox8);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button_Close);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximizeBox = false;
-            this.Name = "dhljForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "动画连接";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DhljForm_FormClosed);
-            this.Load += new System.EventHandler(this.Form2_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AcceptButton = button_Close;
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(811, 293);
+            Controls.Add(groupBox6);
+            Controls.Add(textBox1);
+            Controls.Add(groupBox5);
+            Controls.Add(groupBox4);
+            Controls.Add(groupBox8);
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox7);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Controls.Add(button_Close);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            MaximizeBox = false;
+            Name = "dhljForm";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "动画连接";
+            FormClosed += new System.Windows.Forms.FormClosedEventHandler(DhljForm_FormClosed);
+            Load += new System.EventHandler(Form2_Load);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
+            groupBox6.ResumeLayout(false);
+            groupBox6.PerformLayout();
+            groupBox7.ResumeLayout(false);
+            groupBox7.PerformLayout();
+            groupBox8.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
 
     }
 }

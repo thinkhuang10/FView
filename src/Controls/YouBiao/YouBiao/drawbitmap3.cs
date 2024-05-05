@@ -698,18 +698,18 @@ public class drawbitmap3 : CPixieControl
                 float num;
                 if (Value > maxval)
                 {
-                    if (!highalertflag && this.HighAlert != null)
+                    if (!highalertflag && HighAlert != null)
                     {
-                        this.HighAlert(this, null);
+                        HighAlert(this, null);
                         highalertflag = true;
                     }
                     num = maxval;
                 }
                 else if (Value < minval)
                 {
-                    if (!lowalertflag && this.LowAlert != null)
+                    if (!lowalertflag && LowAlert != null)
                     {
-                        this.LowAlert(this, null);
+                        LowAlert(this, null);
                         lowalertflag = true;
                     }
                     num = minval;
@@ -723,18 +723,18 @@ public class drawbitmap3 : CPixieControl
                 float num2;
                 if (Value2 > maxval2)
                 {
-                    if (!highalertflag2 && this.HighAlert2 != null)
+                    if (!highalertflag2 && HighAlert2 != null)
                     {
-                        this.HighAlert2(this, null);
+                        HighAlert2(this, null);
                         highalertflag2 = true;
                     }
                     num2 = maxval2;
                 }
                 else if (Value2 < minval2)
                 {
-                    if (!lowalertflag2 && this.LowAlert2 != null)
+                    if (!lowalertflag2 && LowAlert2 != null)
                     {
-                        this.LowAlert2(this, null);
+                        LowAlert2(this, null);
                         lowalertflag2 = true;
                     }
                     num2 = minval2;

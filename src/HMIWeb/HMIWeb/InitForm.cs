@@ -22,34 +22,34 @@ public class InitForm : Form
 
     private void InitializeComponent()
     {
-        this.label1 = new System.Windows.Forms.Label();
-        this.panel1 = new System.Windows.Forms.Panel();
-        this.panel1.SuspendLayout();
+        label1 = new System.Windows.Forms.Label();
+        panel1 = new System.Windows.Forms.Panel();
+        panel1.SuspendLayout();
         base.SuspendLayout();
-        this.label1.AutoSize = true;
-        this.label1.Location = new System.Drawing.Point(25, 20);
-        this.label1.Name = "label1";
-        this.label1.Size = new System.Drawing.Size(0, 12);
-        this.label1.TabIndex = 0;
-        this.panel1.BackColor = System.Drawing.Color.Gainsboro;
-        this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-        this.panel1.Controls.Add(this.label1);
-        this.panel1.Location = new System.Drawing.Point(12, 9);
-        this.panel1.Name = "panel1";
-        this.panel1.Size = new System.Drawing.Size(248, 53);
-        this.panel1.TabIndex = 1;
+        label1.AutoSize = true;
+        label1.Location = new System.Drawing.Point(25, 20);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(0, 12);
+        label1.TabIndex = 0;
+        panel1.BackColor = System.Drawing.Color.Gainsboro;
+        panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+        panel1.Controls.Add(label1);
+        panel1.Location = new System.Drawing.Point(12, 9);
+        panel1.Name = "panel1";
+        panel1.Size = new System.Drawing.Size(248, 53);
+        panel1.TabIndex = 1;
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        this.BackColor = System.Drawing.Color.DarkGray;
+        BackColor = System.Drawing.Color.DarkGray;
         base.ClientSize = new System.Drawing.Size(270, 73);
-        base.Controls.Add(this.panel1);
-        this.DoubleBuffered = true;
+        base.Controls.Add(panel1);
+        DoubleBuffered = true;
         base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         base.Name = "InitForm";
         base.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-        this.Text = "InitForm";
-        this.panel1.ResumeLayout(false);
-        this.panel1.PerformLayout();
+        Text = "InitForm";
+        panel1.ResumeLayout(false);
+        panel1.PerformLayout();
         base.ResumeLayout(false);
     }
 }

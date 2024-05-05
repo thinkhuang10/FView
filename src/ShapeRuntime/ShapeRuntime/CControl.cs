@@ -97,9 +97,9 @@ public class CControl : CShape
         }
     }
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     protected CControl(SerializationInfo info, StreamingContext context)
         : base(info, context)

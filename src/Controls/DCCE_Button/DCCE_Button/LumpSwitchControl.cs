@@ -42,10 +42,7 @@ public class LumpSwitchControl : UserControl, IDCCEControl, IControlShape
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -613,7 +610,7 @@ public class LumpSwitchControl : UserControl, IDCCEControl, IControlShape
                 {
                     try
                     {
-                        this.SetValueEvent("[" + saveData.strVar + "]", 1);
+                        SetValueEvent("[" + saveData.strVar + "]", 1);
                         return;
                     }
                     catch
@@ -624,7 +621,7 @@ public class LumpSwitchControl : UserControl, IDCCEControl, IControlShape
                 }
                 try
                 {
-                    this.SetValueEvent("[" + saveData.strVar + "]", saveData.iMaxValue);
+                    SetValueEvent("[" + saveData.strVar + "]", saveData.iMaxValue);
                     return;
                 }
                 catch
@@ -637,7 +634,7 @@ public class LumpSwitchControl : UserControl, IDCCEControl, IControlShape
             {
                 try
                 {
-                    this.SetValueEvent("[" + saveData.strVar + "]", 0);
+                    SetValueEvent("[" + saveData.strVar + "]", 0);
                     return;
                 }
                 catch
@@ -648,7 +645,7 @@ public class LumpSwitchControl : UserControl, IDCCEControl, IControlShape
             }
             try
             {
-                this.SetValueEvent("[" + saveData.strVar + "]", saveData.iMinValue);
+                SetValueEvent("[" + saveData.strVar + "]", saveData.iMinValue);
                 return;
             }
             catch
@@ -658,7 +655,7 @@ public class LumpSwitchControl : UserControl, IDCCEControl, IControlShape
             }
         }
         LumpSwitchSetForm lumpSwitchSetForm = new(saveData);
-        lumpSwitchSetForm.GetVarTableEvent += this.GetVarTableEvent;
+        lumpSwitchSetForm.GetVarTableEvent += GetVarTableEvent;
         lumpSwitchSetForm.ShowDialog();
     }
 
@@ -671,7 +668,7 @@ public class LumpSwitchControl : UserControl, IDCCEControl, IControlShape
         string text = "";
         try
         {
-            text = this.GetValueEvent("[" + saveData.strVar + "]").ToString();
+            text = GetValueEvent("[" + saveData.strVar + "]").ToString();
         }
         catch
         {
@@ -708,7 +705,7 @@ public class LumpSwitchControl : UserControl, IDCCEControl, IControlShape
             {
                 try
                 {
-                    if (!Convert.ToBoolean(this.GetValueEvent("[" + saveData.strVar + "]")))
+                    if (!Convert.ToBoolean(GetValueEvent("[" + saveData.strVar + "]")))
                     {
                         isCheck = false;
                         Invalidate();
@@ -729,12 +726,12 @@ public class LumpSwitchControl : UserControl, IDCCEControl, IControlShape
             }
             try
             {
-                if (saveData.iMaxValue == this.GetValueEvent("[" + saveData.strVar + "]").ToString())
+                if (saveData.iMaxValue == GetValueEvent("[" + saveData.strVar + "]").ToString())
                 {
                     isCheck = true;
                     Invalidate();
                 }
-                else if (saveData.iMinValue == this.GetValueEvent("[" + saveData.strVar + "]").ToString())
+                else if (saveData.iMinValue == GetValueEvent("[" + saveData.strVar + "]").ToString())
                 {
                     isCheck = false;
                     Invalidate();
@@ -764,10 +761,10 @@ public class LumpSwitchControl : UserControl, IDCCEControl, IControlShape
 
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.timer = new System.Windows.Forms.Timer(this.components);
+        components = new System.ComponentModel.Container();
+        timer = new System.Windows.Forms.Timer(components);
         base.SuspendLayout();
-        this.timer.Interval = 1000;
+        timer.Interval = 1000;
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         base.Name = "LumpSwitchControl";

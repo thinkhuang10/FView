@@ -47,13 +47,9 @@ public class RunForm : Form
 
 	public const uint SPI_SETSCREENSAVEACTIVE = 17u;
 
-	private const int WM_COPYDATA = 74;
-
 	private readonly MainControl MainControl = new();
 
 	private readonly object inDBOperation = new();
-
-	private readonly int count;
 
 	public string sleepTime;
 
@@ -78,12 +74,8 @@ public class RunForm : Form
 	private string dbProviderName = "SqlClient Data Provider";
 
 	private string dbConnString = "";
-	
-	//private int hwnd;
 
 	private CAuthoritySeiallize cas = new();
-
-	private readonly IContainer components;
 
 	private Panel TopPanel;
 
@@ -218,7 +210,7 @@ public class RunForm : Form
 				{
 					if (needRefreshDBFactory)
 					{
-						refreshDBFactory();
+						RefreshDBFactory();
 					}
 					command.CommandText = sqlcmd;
 					object result;
@@ -296,7 +288,7 @@ public class RunForm : Form
 		ProjectAuthorityStarter();
 	}
 
-	private void printdoc_PrintPage(object sender, PrintPageEventArgs e)
+	private void Printdoc_PrintPage(object sender, PrintPageEventArgs e)
 	{
 		try
 		{
@@ -504,20 +496,11 @@ public class RunForm : Form
 		}
 	}
 
-	private void refreshDBFactory()
+	private void RefreshDBFactory()
 	{
-		if (conn != null)
-		{
-			conn.Dispose();
-		}
-		if (command != null)
-		{
-			command.Dispose();
-		}
-		if (adapter != null)
-		{
-			adapter.Dispose();
-		}
+		conn?.Dispose();
+		command?.Dispose();
+		adapter?.Dispose();
 		DataTable factoryClasses = DbProviderFactories.GetFactoryClasses();
 		tagdr = null;
 		foreach (DataRow row in factoryClasses.Rows)
@@ -563,7 +546,7 @@ public class RunForm : Form
 		DbProviderName = hMIProjectFile.dbCfgPara.DBType;
 		DbConnString = hMIProjectFile.dbCfgPara.DBConnStr;
 		sleepTime = hMIProjectFile.gDXP_SleepTime;
-		printdoc.PrintPage += printdoc_PrintPage;
+		printdoc.PrintPage += Printdoc_PrintPage;
 		printdialog.Document = printdoc;
 		MainControl.InitOK += MainControl_InitOK;
 		MainControl.CallRuntimeDBOperation += MainControl_CallRuntimeDBOperation;
@@ -587,112 +570,103 @@ public class RunForm : Form
 		}
 	}
 
-	protected override void Dispose(bool disposing)
-	{
-		if (disposing && components != null)
-		{
-			components.Dispose();
-		}
-		base.Dispose(disposing);
-	}
-
 	private void InitializeComponent()
 	{
 		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIRunForm.RunForm));
-		this.TopPanel = new System.Windows.Forms.Panel();
-		this.menuStrip = new System.Windows.Forms.MenuStrip();
-		this.数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-		this.数据库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-		this.视图ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-		this.全屏ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-		this.标准ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-		this.工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-		this.屏幕键盘ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-		this.计算其ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-		this.截图ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-		this.保存到文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-		this.打印ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-		this.menuStrip.SuspendLayout();
+		TopPanel = new System.Windows.Forms.Panel();
+		menuStrip = new System.Windows.Forms.MenuStrip();
+		数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		数据库管理ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		视图ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		全屏ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		标准ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		屏幕键盘ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		计算其ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		截图ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		保存到文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		打印ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+		menuStrip.SuspendLayout();
 		base.SuspendLayout();
-		this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
-		this.TopPanel.Location = new System.Drawing.Point(0, 0);
-		this.TopPanel.Name = "TopPanel";
-		this.TopPanel.Size = new System.Drawing.Size(792, 1);
-		this.TopPanel.TabIndex = 1;
-		this.TopPanel.Visible = false;
-		this.TopPanel.Paint += new System.Windows.Forms.PaintEventHandler(TopPanel_Paint);
-		this.TopPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(TopPanel_MouseClick);
-		this.TopPanel.MouseEnter += new System.EventHandler(TopPanel_MouseEnter);
-		this.TopPanel.MouseLeave += new System.EventHandler(TopPanel_MouseLeave);
-		this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[4] { this.数据库ToolStripMenuItem, this.视图ToolStripMenuItem, this.工具ToolStripMenuItem, this.截图ToolStripMenuItem });
-		this.menuStrip.Location = new System.Drawing.Point(0, 0);
-		this.menuStrip.Name = "menuStrip";
-		this.menuStrip.Size = new System.Drawing.Size(792, 25);
-		this.menuStrip.TabIndex = 2;
-		this.menuStrip.Text = "menuStrip";
-		this.menuStrip.Visible = false;
-		this.数据库ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[1] { this.数据库管理ToolStripMenuItem });
-		this.数据库ToolStripMenuItem.Name = "数据库ToolStripMenuItem";
-		this.数据库ToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
-		this.数据库ToolStripMenuItem.Text = "数据库";
-		this.数据库管理ToolStripMenuItem.Name = "数据库管理ToolStripMenuItem";
-		this.数据库管理ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-		this.数据库管理ToolStripMenuItem.Text = "数据库管理";
-		this.数据库管理ToolStripMenuItem.Click += new System.EventHandler(数据库管理ToolStripMenuItem_Click);
-		this.视图ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2] { this.全屏ToolStripMenuItem, this.标准ToolStripMenuItem });
-		this.视图ToolStripMenuItem.Name = "视图ToolStripMenuItem";
-		this.视图ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-		this.视图ToolStripMenuItem.Text = "视图";
-		this.全屏ToolStripMenuItem.Name = "全屏ToolStripMenuItem";
-		this.全屏ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-		this.全屏ToolStripMenuItem.Text = "全屏";
-		this.全屏ToolStripMenuItem.Click += new System.EventHandler(全屏ToolStripMenuItem_Click);
-		this.标准ToolStripMenuItem.Name = "标准ToolStripMenuItem";
-		this.标准ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-		this.标准ToolStripMenuItem.Text = "标准";
-		this.标准ToolStripMenuItem.Click += new System.EventHandler(标准ToolStripMenuItem_Click);
-		this.工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2] { this.屏幕键盘ToolStripMenuItem, this.计算其ToolStripMenuItem });
-		this.工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
-		this.工具ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-		this.工具ToolStripMenuItem.Text = "工具";
-		this.屏幕键盘ToolStripMenuItem.Name = "屏幕键盘ToolStripMenuItem";
-		this.屏幕键盘ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-		this.屏幕键盘ToolStripMenuItem.Text = "屏幕键盘";
-		this.屏幕键盘ToolStripMenuItem.Click += new System.EventHandler(屏幕键盘ToolStripMenuItem_Click);
-		this.计算其ToolStripMenuItem.Name = "计算其ToolStripMenuItem";
-		this.计算其ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-		this.计算其ToolStripMenuItem.Text = "计算器";
-		this.计算其ToolStripMenuItem.Click += new System.EventHandler(计算其ToolStripMenuItem_Click);
-		this.截图ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2] { this.保存到文件ToolStripMenuItem, this.打印ToolStripMenuItem });
-		this.截图ToolStripMenuItem.Name = "截图ToolStripMenuItem";
-		this.截图ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-		this.截图ToolStripMenuItem.Text = "截图";
-		this.截图ToolStripMenuItem.Visible = false;
-		this.保存到文件ToolStripMenuItem.Name = "保存到文件ToolStripMenuItem";
-		this.保存到文件ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-		this.保存到文件ToolStripMenuItem.Text = "保存文件";
-		this.保存到文件ToolStripMenuItem.Click += new System.EventHandler(保存到文件ToolStripMenuItem_Click);
-		this.打印ToolStripMenuItem.Name = "打印ToolStripMenuItem";
-		this.打印ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
-		this.打印ToolStripMenuItem.Text = "打印";
-		this.打印ToolStripMenuItem.Click += new System.EventHandler(打印ToolStripMenuItem_Click);
+		TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
+		TopPanel.Location = new System.Drawing.Point(0, 0);
+		TopPanel.Name = "TopPanel";
+		TopPanel.Size = new System.Drawing.Size(792, 1);
+		TopPanel.TabIndex = 1;
+		TopPanel.Visible = false;
+		TopPanel.Paint += new System.Windows.Forms.PaintEventHandler(TopPanel_Paint);
+		TopPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(TopPanel_MouseClick);
+		TopPanel.MouseEnter += new System.EventHandler(TopPanel_MouseEnter);
+		TopPanel.MouseLeave += new System.EventHandler(TopPanel_MouseLeave);
+		menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[4] { 数据库ToolStripMenuItem, 视图ToolStripMenuItem, 工具ToolStripMenuItem, 截图ToolStripMenuItem });
+		menuStrip.Location = new System.Drawing.Point(0, 0);
+		menuStrip.Name = "menuStrip";
+		menuStrip.Size = new System.Drawing.Size(792, 25);
+		menuStrip.TabIndex = 2;
+		menuStrip.Text = "menuStrip";
+		menuStrip.Visible = false;
+		数据库ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[1] { 数据库管理ToolStripMenuItem });
+		数据库ToolStripMenuItem.Name = "数据库ToolStripMenuItem";
+		数据库ToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
+		数据库ToolStripMenuItem.Text = "数据库";
+		数据库管理ToolStripMenuItem.Name = "数据库管理ToolStripMenuItem";
+		数据库管理ToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+		数据库管理ToolStripMenuItem.Text = "数据库管理";
+		数据库管理ToolStripMenuItem.Click += new System.EventHandler(数据库管理ToolStripMenuItem_Click);
+		视图ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2] { 全屏ToolStripMenuItem, 标准ToolStripMenuItem });
+		视图ToolStripMenuItem.Name = "视图ToolStripMenuItem";
+		视图ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+		视图ToolStripMenuItem.Text = "视图";
+		全屏ToolStripMenuItem.Name = "全屏ToolStripMenuItem";
+		全屏ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+		全屏ToolStripMenuItem.Text = "全屏";
+		全屏ToolStripMenuItem.Click += new System.EventHandler(全屏ToolStripMenuItem_Click);
+		标准ToolStripMenuItem.Name = "标准ToolStripMenuItem";
+		标准ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+		标准ToolStripMenuItem.Text = "标准";
+		标准ToolStripMenuItem.Click += new System.EventHandler(标准ToolStripMenuItem_Click);
+		工具ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2] { 屏幕键盘ToolStripMenuItem, 计算其ToolStripMenuItem });
+		工具ToolStripMenuItem.Name = "工具ToolStripMenuItem";
+		工具ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+		工具ToolStripMenuItem.Text = "工具";
+		屏幕键盘ToolStripMenuItem.Name = "屏幕键盘ToolStripMenuItem";
+		屏幕键盘ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+		屏幕键盘ToolStripMenuItem.Text = "屏幕键盘";
+		屏幕键盘ToolStripMenuItem.Click += new System.EventHandler(屏幕键盘ToolStripMenuItem_Click);
+		计算其ToolStripMenuItem.Name = "计算其ToolStripMenuItem";
+		计算其ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+		计算其ToolStripMenuItem.Text = "计算器";
+		计算其ToolStripMenuItem.Click += new System.EventHandler(计算其ToolStripMenuItem_Click);
+		截图ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[2] { 保存到文件ToolStripMenuItem, 打印ToolStripMenuItem });
+		截图ToolStripMenuItem.Name = "截图ToolStripMenuItem";
+		截图ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+		截图ToolStripMenuItem.Text = "截图";
+		截图ToolStripMenuItem.Visible = false;
+		保存到文件ToolStripMenuItem.Name = "保存到文件ToolStripMenuItem";
+		保存到文件ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+		保存到文件ToolStripMenuItem.Text = "保存文件";
+		保存到文件ToolStripMenuItem.Click += new System.EventHandler(保存到文件ToolStripMenuItem_Click);
+		打印ToolStripMenuItem.Name = "打印ToolStripMenuItem";
+		打印ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+		打印ToolStripMenuItem.Text = "打印";
+		打印ToolStripMenuItem.Click += new System.EventHandler(打印ToolStripMenuItem_Click);
 		base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
 		base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 		base.ClientSize = new System.Drawing.Size(792, 573);
-		base.Controls.Add(this.TopPanel);
-		base.Controls.Add(this.menuStrip);
-		this.DoubleBuffered = true;
+		base.Controls.Add(TopPanel);
+		base.Controls.Add(menuStrip);
+		DoubleBuffered = true;
 		base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 		base.Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
 		base.KeyPreview = true;
-		base.MainMenuStrip = this.menuStrip;
+		base.MainMenuStrip = menuStrip;
 		base.Name = "RunForm";
 		base.ShowIcon = false;
 		base.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 		base.FormClosing += new System.Windows.Forms.FormClosingEventHandler(Form1_FormClosing);
 		base.Load += new System.EventHandler(RunForm_Load);
-		this.menuStrip.ResumeLayout(false);
-		this.menuStrip.PerformLayout();
+		menuStrip.ResumeLayout(false);
+		menuStrip.PerformLayout();
 		base.ResumeLayout(false);
 		base.PerformLayout();
 	}

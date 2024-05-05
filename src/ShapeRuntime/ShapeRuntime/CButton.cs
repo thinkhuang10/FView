@@ -550,10 +550,7 @@ public class CButton : Button, IDCCEControl, IDBAnimation, IControlShape
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -977,9 +974,9 @@ public class CButton : Button, IDCCEControl, IDBAnimation, IControlShape
 
     public event EventHandler DBOperationOK;
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     public event EventHandler IDChanged;
 
@@ -1017,40 +1014,28 @@ public class CButton : Button, IDCCEControl, IDBAnimation, IControlShape
         {
             if (varBind != null && varBind != "")
             {
-                this.SetValueEvent("[" + varBind + "]", !Convert.ToBoolean(this.GetValueEvent("[" + varBind + "]")));
+                SetValueEvent("[" + varBind + "]", !Convert.ToBoolean(GetValueEvent("[" + varBind + "]")));
             }
         }
         catch
         {
         }
-        if (this.Click != null)
-        {
-            this.Click(this, e);
-        }
+        Click?.Invoke(this, e);
     }
 
     public void FireDBOperationOK()
     {
-        if (this.DBOperationOK != null)
-        {
-            this.DBOperationOK(this, null);
-        }
+        DBOperationOK?.Invoke(this, null);
     }
 
     public void FireDBOperationErr()
     {
-        if (this.DBOperationErr != null)
-        {
-            this.DBOperationErr(this, null);
-        }
+        DBOperationErr?.Invoke(this, null);
     }
 
     public void Fire()
     {
-        if (this.Click != null)
-        {
-            this.Click(this, null);
-        }
+        Click?.Invoke(this, null);
     }
 
     public byte[] Serialize()

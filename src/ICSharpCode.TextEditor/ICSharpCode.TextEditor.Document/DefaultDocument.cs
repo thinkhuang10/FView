@@ -360,18 +360,12 @@ internal sealed class DefaultDocument : IDocument
 
     private void OnDocumentAboutToBeChanged(DocumentEventArgs e)
     {
-        if (this.DocumentAboutToBeChanged != null)
-        {
-            this.DocumentAboutToBeChanged(this, e);
-        }
+        DocumentAboutToBeChanged?.Invoke(this, e);
     }
 
     private void OnDocumentChanged(DocumentEventArgs e)
     {
-        if (this.DocumentChanged != null)
-        {
-            this.DocumentChanged(this, e);
-        }
+        DocumentChanged?.Invoke(this, e);
     }
 
     public void RequestUpdate(TextAreaUpdate update)
@@ -388,18 +382,12 @@ internal sealed class DefaultDocument : IDocument
 
     public void CommitUpdate()
     {
-        if (this.UpdateCommited != null)
-        {
-            this.UpdateCommited(this, EventArgs.Empty);
-        }
+        UpdateCommited?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnTextContentChanged(EventArgs e)
     {
-        if (this.TextContentChanged != null)
-        {
-            this.TextContentChanged(this, e);
-        }
+        TextContentChanged?.Invoke(this, e);
     }
 
     [Conditional("DEBUG")]

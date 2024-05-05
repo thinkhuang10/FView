@@ -84,10 +84,7 @@ public class CCheckBox : CheckBox, IDCCEControl, IControlShape
         set
         {
             id = value;
-            if (this.IDChanged != null)
-            {
-                this.IDChanged(this, null);
-            }
+            IDChanged?.Invoke(this, null);
         }
     }
 
@@ -491,9 +488,9 @@ public class CCheckBox : CheckBox, IDCCEControl, IControlShape
 
     public event EventHandler CheckedChange;
 
-    public event requestEventBindDictDele requestEventBindDict;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     public event EventHandler IDChanged;
 
@@ -502,13 +499,13 @@ public class CCheckBox : CheckBox, IDCCEControl, IControlShape
         return null;
     }
 
-    private void timer_Tick(object sender, EventArgs e)
+    private void Timer_Tick(object sender, EventArgs e)
     {
         try
         {
             if (varBind != null && varBind != "")
             {
-                base.Checked = Convert.ToBoolean(this.GetValueEvent("[" + varBind + "]"));
+                base.Checked = Convert.ToBoolean(GetValueEvent("[" + varBind + "]"));
             }
         }
         catch (Exception)
@@ -518,7 +515,7 @@ public class CCheckBox : CheckBox, IDCCEControl, IControlShape
         {
             if (textVarBind != null && textVarBind != "")
             {
-                base.Text = Convert.ToString(this.GetValueEvent("[" + textVarBind + "]"));
+                base.Text = Convert.ToString(GetValueEvent("[" + textVarBind + "]"));
             }
         }
         catch (Exception)
@@ -539,7 +536,7 @@ public class CCheckBox : CheckBox, IDCCEControl, IControlShape
         if (Runing && varBind != null && varBind != "")
         {
             userclick = true;
-            this.SetValueEvent("[" + varBind + "]", base.Checked);
+            SetValueEvent("[" + varBind + "]", base.Checked);
             base.Checked = !base.Checked;
             userclick = false;
         }
@@ -547,9 +544,9 @@ public class CCheckBox : CheckBox, IDCCEControl, IControlShape
 
     private void CCheckBox_CheckedChanged(object sender, EventArgs e)
     {
-        if (this.CheckedChange != null && !userclick)
+        if (CheckedChange != null && !userclick)
         {
-            this.CheckedChange(sender, e);
+            CheckedChange(sender, e);
         }
     }
 

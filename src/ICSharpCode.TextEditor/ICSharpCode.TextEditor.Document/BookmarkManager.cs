@@ -174,17 +174,11 @@ public class BookmarkManager
 
     protected virtual void OnRemoved(BookmarkEventArgs e)
     {
-        if (this.Removed != null)
-        {
-            this.Removed(this, e);
-        }
+        Removed?.Invoke(this, e);
     }
 
     protected virtual void OnAdded(BookmarkEventArgs e)
     {
-        if (this.Added != null)
-        {
-            this.Added(this, e);
-        }
+        Added?.Invoke(this, e);
     }
 }

@@ -308,10 +308,7 @@ public class drawbitmap : CPixieControl
         {
             if (value1 != value)
             {
-                if (this.FlowDirectionChanged != null)
-                {
-                    this.FlowDirectionChanged(this, null);
-                }
+                FlowDirectionChanged?.Invoke(this, null);
                 value1 = value;
             }
         }
@@ -331,10 +328,7 @@ public class drawbitmap : CPixieControl
         {
             if (value2 != value)
             {
-                if (this.IsFlowChanged != null)
-                {
-                    this.IsFlowChanged(this, null);
-                }
+                IsFlowChanged?.Invoke(this, null);
                 value2 = value;
             }
         }

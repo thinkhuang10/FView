@@ -273,17 +273,11 @@ public class CodeCompletionListView : UserControl
 
     protected virtual void OnSelectedItemChanged(EventArgs e)
     {
-        if (this.SelectedItemChanged != null)
-        {
-            this.SelectedItemChanged(this, e);
-        }
+        SelectedItemChanged?.Invoke(this, e);
     }
 
     protected virtual void OnFirstItemChanged(EventArgs e)
     {
-        if (this.FirstItemChanged != null)
-        {
-            this.FirstItemChanged(this, e);
-        }
+        FirstItemChanged?.Invoke(this, e);
     }
 }

@@ -19,11 +19,9 @@ public class CLines : CShape
     [NonSerialized]
     private GraphicsPath swapgp2;
 
-    private GraphicsPath swapgp3;
+    public event requestEventBindDictDele RequestEventBindDict;
 
-    public event requestEventBindDictDele requestEventBindDict;
-
-    public event requestPropertyBindDataDele requestPropertyBindData;
+    public event requestPropertyBindDataDele RequestPropertyBindData;
 
     protected CLines(SerializationInfo info, StreamingContext context)
         : base(info, context)
@@ -228,10 +226,7 @@ public class CLines : CShape
         }
         graphicsPath.AddLines(array2);
         graphicsPath.Transform(TranslateMatrix);
-        if (swapgp != null)
-        {
-            swapgp.Dispose();
-        }
+        swapgp?.Dispose();
         swapgp = graphicsPath;
         needRefreshShape = false;
         list.Add(graphicsPath);

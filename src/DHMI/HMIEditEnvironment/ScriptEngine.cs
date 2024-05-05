@@ -152,18 +152,12 @@ public class ScriptEngine
 
     private void OnError()
     {
-        if (this.RunError != null)
-        {
-            this.RunError();
-        }
+        RunError?.Invoke();
     }
 
     private void OnTimeout()
     {
-        if (this.RunTimeout != null)
-        {
-            this.RunTimeout();
-        }
+        RunTimeout?.Invoke();
     }
 
     private void ScriptEngine_Error()

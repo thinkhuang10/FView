@@ -140,7 +140,7 @@ public class VarTable : XtraForm
             {
                 foreach (XmlNode item2 in list)
                 {
-                    TreeNode treeNode3 = findNode(item2.Attributes["ParentID"].Value, startNode);
+                    TreeNode treeNode3 = FindNode(item2.Attributes["ParentID"].Value, startNode);
                     if (treeNode3 != null)
                     {
                         treeNode3.Nodes.Add(item2.Attributes["id"].Value, item2.Attributes["Name"].Value, "G");
@@ -189,23 +189,21 @@ public class VarTable : XtraForm
         }
     }
 
-    public TreeNode findNode(string id, TreeNode startNode)
+    public TreeNode FindNode(string id, TreeNode startNode)
     {
         if (startNode.Name == id)
-        {
             return startNode;
-        }
+
         foreach (TreeNode node in startNode.Nodes)
         {
-            if (findNode(id, node) != null)
-            {
-                return findNode(id, node);
-            }
+            if (FindNode(id, node) != null)
+                return FindNode(id, node);
         }
+
         return null;
     }
 
-    private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+    private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
     {
         if (e.Node.Name == "PageItem" || e.Node.Name == "PageShapeItem" || e.Node.Name == "Page")
         {
@@ -213,7 +211,7 @@ public class VarTable : XtraForm
         }
         if (e.Node.Name == "ProjectIO")
         {
-            renewProjectIOs(treeView1.SelectedNode.Text);
+            RenewProjectIOs(treeView1.SelectedNode.Text);
         }
         else if (e.Node.Name.StartsWith("PageRoot") && e.Node.Tag is CShape)
         {
@@ -336,7 +334,7 @@ public class VarTable : XtraForm
                     DataRow dataRow3 = dataTable2.NewRow();
                     dataRow3[0] = item.Attributes["ParaID"].Value;
                     dataRow3[1] = e.Node.Text + item.Attributes["ParaName"].Value;
-                    dataRow3[2] = changenumtotype(new string[1] { item.Attributes["DataType"].Value })[0];
+                    dataRow3[2] = Changenumtotype(new string[1] { item.Attributes["DataType"].Value })[0];
                     dataTable2.Rows.Add(dataRow3);
                 }
             }
@@ -376,7 +374,7 @@ public class VarTable : XtraForm
                             dataRow4[0] = xnitem2.Attributes["Name"].Value;
                             dataRow4[1] = xnitem2.Attributes["id"].Value;
                             dataRow4[2] = xnitem2.Attributes["Tag"].Value;
-                            dataRow4[3] = changenumtotype(new string[1] { xnitem2.Attributes["ValType"].Value })[0];
+                            dataRow4[3] = Changenumtotype(new string[1] { xnitem2.Attributes["ValType"].Value })[0];
                             dataRow4[4] = xnitem2.Attributes["DefaultValue"].Value;
                             dataTable3.Rows.Add(dataRow4);
                         }
@@ -384,12 +382,12 @@ public class VarTable : XtraForm
                     break;
                 }
                 dataRow4 = dataTable3.NewRow();
-                if (!(this.type == "history") || !(xnitem.Attributes["ReservDB"].Value != "1"))
+                if (!(type == "history") || !(xnitem.Attributes["ReservDB"].Value != "1"))
                 {
                     dataRow4[0] = xnitem.Attributes["Name"].Value;
                     dataRow4[1] = xnitem.Attributes["id"].Value;
                     dataRow4[2] = xnitem.Attributes["Tag"].Value;
-                    dataRow4[3] = changenumtotype(new string[1] { xnitem.Attributes["ValType"].Value })[0];
+                    dataRow4[3] = Changenumtotype(new string[1] { xnitem.Attributes["ValType"].Value })[0];
                     dataRow4[4] = xnitem.Attributes["DefaultValue"].Value;
                     dataTable3.Rows.Add(dataRow4);
                 }
@@ -429,7 +427,7 @@ public class VarTable : XtraForm
                             dataRow5[0] = xnitem4.Attributes["Name"].Value;
                             dataRow5[1] = xnitem4.Attributes["id"].Value;
                             dataRow5[2] = xnitem4.Attributes["Tag"].Value;
-                            dataRow5[3] = changenumtotype(new string[1] { xnitem4.Attributes["ValType"].Value })[0];
+                            dataRow5[3] = Changenumtotype(new string[1] { xnitem4.Attributes["ValType"].Value })[0];
                             dataRow5[4] = xnitem4.Attributes["DefaultValue"].Value;
                             dataTable4.Rows.Add(dataRow5);
                         }
@@ -439,12 +437,12 @@ public class VarTable : XtraForm
                 if (xnitem3.Attributes["GroupID"].Value == e.Node.Name)
                 {
                     DataRow dataRow5 = dataTable4.NewRow();
-                    if (!(this.type == "history") || !(xnitem3.Attributes["ReservDB"].Value != "1"))
+                    if (!(type == "history") || !(xnitem3.Attributes["ReservDB"].Value != "1"))
                     {
                         dataRow5[0] = xnitem3.Attributes["Name"].Value;
                         dataRow5[1] = xnitem3.Attributes["id"].Value;
                         dataRow5[2] = xnitem3.Attributes["Tag"].Value;
-                        dataRow5[3] = changenumtotype(new string[1] { xnitem3.Attributes["ValType"].Value })[0];
+                        dataRow5[3] = Changenumtotype(new string[1] { xnitem3.Attributes["ValType"].Value })[0];
                         dataRow5[4] = xnitem3.Attributes["DefaultValue"].Value;
                         dataTable4.Rows.Add(dataRow5);
                     }
@@ -477,7 +475,7 @@ public class VarTable : XtraForm
                     dataRow[0] = xnitem.Attributes["Name"].Value;
                     dataRow[1] = xnitem.Attributes["id"].Value;
                     dataRow[2] = xnitem.Attributes["Tag"].Value;
-                    dataRow[3] = changenumtotype(new string[1] { xnitem.Attributes["ValType"].Value })[0];
+                    dataRow[3] = Changenumtotype(new string[1] { xnitem.Attributes["ValType"].Value })[0];
                     dataRow[4] = xnitem.Attributes["DefaultValue"].Value;
                     dataTable.Rows.Add(dataRow);
                 }
@@ -486,7 +484,7 @@ public class VarTable : XtraForm
         dataGridView1.DataSource = dataTable;
     }
 
-    public void renewProjectIOs(string _GroupName)
+    public void RenewProjectIOs(string _GroupName)
     {
         if (ProjectIOTreeRoot != null)
         {
@@ -521,7 +519,7 @@ public class VarTable : XtraForm
                 dataRow[1] = projectIO.ID;
                 dataRow[2] = projectIO.tag;
                 dataRow[3] = projectIO.description;
-                dataRow[4] = changenumtotype(new string[1] { projectIO.type })[0];
+                dataRow[4] = Changenumtotype(new string[1] { projectIO.type })[0];
                 dataRow[5] = projectIO.access;
                 dataRow[6] = projectIO.emluator;
                 dataRow[7] = projectIO.max;
@@ -534,7 +532,7 @@ public class VarTable : XtraForm
         dataGridView1.DataSource = dataTable;
     }
 
-    public string[] changetypetonum(string[] type)
+    public string[] Changetypetonum(string[] type)
     {
         string[] array = new string[type.Length];
         for (int i = 0; i < type.Length; i++)
@@ -560,7 +558,7 @@ public class VarTable : XtraForm
         return array;
     }
 
-    public string[] changenumtotype(string[] num)
+    public string[] Changenumtotype(string[] num)
     {
         string[] array = new string[num.Length];
         for (int i = 0; i < num.Length; i++)
@@ -586,7 +584,7 @@ public class VarTable : XtraForm
         return array;
     }
 
-    private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+    private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
     {
         try
         {
@@ -818,7 +816,7 @@ public class VarTable : XtraForm
             }
         }
         dhp.ProjectIOs.Add(pio);
-        renewProjectIOs(pio.GroupName);
+        RenewProjectIOs(pio.GroupName);
         foreach (DataGridViewRow item in (IEnumerable)dataGridView1.Rows)
         {
             if (item.Cells["名称"].Value.ToString() == pio.name)
@@ -858,7 +856,7 @@ public class VarTable : XtraForm
                 CEditEnvironmentGlobal.dhp.dirtyPageAdd(df.name);
             }
         }
-        renewProjectIOs(projectIO.GroupName);
+        RenewProjectIOs(projectIO.GroupName);
         foreach (DataGridViewRow item in (IEnumerable)dataGridView1.Rows)
         {
             if (item.Cells["名称"].Value.ToString() == projectIO.name)
@@ -893,7 +891,7 @@ public class VarTable : XtraForm
             return;
         }
         dhp.ProjectIOs.Remove(projectIO);
-        renewProjectIOs(treeView1.SelectedNode.Text);
+        RenewProjectIOs(treeView1.SelectedNode.Text);
         CEditEnvironmentGlobal.varFileNeedReLoad = true;
         foreach (DataFile df in CEditEnvironmentGlobal.dfs)
         {
@@ -944,7 +942,7 @@ public class VarTable : XtraForm
                             break;
                         }
                     }
-                    renewProjectIOs(dhp.ProjectIOTreeRoot.Text);
+                    RenewProjectIOs(dhp.ProjectIOTreeRoot.Text);
                 }
                 else if (fileInfo.Extension == ".vxp")
                 {
@@ -979,7 +977,7 @@ public class VarTable : XtraForm
                             break;
                         }
                     }
-                    renewProjectIOs(dhp.ProjectIOTreeRoot.Text);
+                    RenewProjectIOs(dhp.ProjectIOTreeRoot.Text);
                 }
             }
             CEditEnvironmentGlobal.varFileNeedReLoad = true;
@@ -1039,7 +1037,7 @@ public class VarTable : XtraForm
             nowNo = 0;
             CEditEnvironmentGlobal.dhp.ProjectIOs.Remove(projectIO);
             CEditEnvironmentGlobal.varFileNeedReLoad = true;
-            renewProjectIOs(copypio.GroupName);
+            RenewProjectIOs(copypio.GroupName);
             {
                 foreach (DataFile df in CEditEnvironmentGlobal.dfs)
                 {
@@ -1093,7 +1091,7 @@ public class VarTable : XtraForm
         {
             CEditEnvironmentGlobal.dhp.dirtyPageAdd(df.name);
         }
-        renewProjectIOs(projectIO.GroupName);
+        RenewProjectIOs(projectIO.GroupName);
         foreach (DataGridViewRow item in (IEnumerable)dataGridView1.Rows)
         {
             if (item.Cells["名称"].Value.ToString() == projectIO.name)
@@ -1177,7 +1175,7 @@ public class VarTable : XtraForm
         tn.Remove();
     }
 
-    private void button2_Click(object sender, EventArgs e)
+    private void Button2_Click(object sender, EventArgs e)
     {
         foreach (ProjectIO projectIO in dhp.ProjectIOs)
         {
@@ -1189,7 +1187,7 @@ public class VarTable : XtraForm
         }
         if (_iCount == 1)
         {
-            renewProjectIOs(ListFind[0].GroupName);
+            RenewProjectIOs(ListFind[0].GroupName);
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 if (dataGridView1.Rows[i].Cells[0].Value.ToString().Contains(textBox1.Text))
@@ -1250,195 +1248,195 @@ public class VarTable : XtraForm
 
     private void InitializeComponent()
     {
-        this.components = new System.ComponentModel.Container();
-        this.treeView1 = new System.Windows.Forms.TreeView();
-        this.dataGridView1 = new System.Windows.Forms.DataGridView();
-        this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-        this.添加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.button1 = new System.Windows.Forms.Button();
-        this.label1 = new System.Windows.Forms.Label();
-        this.textBox1 = new System.Windows.Forms.TextBox();
-        this.panel1 = new System.Windows.Forms.Panel();
-        this.button2 = new System.Windows.Forms.Button();
-        this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-        this.变量操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.添加内部变量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.修改内部变量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.删除内部变量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-        this.导入变量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.导出内部变量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-        this.复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.剪切ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.战列ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-        this.组操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.添加变量组ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.编辑变量组ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.删除变量组ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-        ((System.ComponentModel.ISupportInitialize)this.dataGridView1).BeginInit();
-        this.contextMenuStrip1.SuspendLayout();
-        this.panel1.SuspendLayout();
-        this.menuStrip1.SuspendLayout();
+        components = new System.ComponentModel.Container();
+        treeView1 = new System.Windows.Forms.TreeView();
+        dataGridView1 = new System.Windows.Forms.DataGridView();
+        contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(components);
+        添加ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        button1 = new System.Windows.Forms.Button();
+        label1 = new System.Windows.Forms.Label();
+        textBox1 = new System.Windows.Forms.TextBox();
+        panel1 = new System.Windows.Forms.Panel();
+        button2 = new System.Windows.Forms.Button();
+        menuStrip1 = new System.Windows.Forms.MenuStrip();
+        变量操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        添加内部变量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        修改内部变量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        删除内部变量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+        导入变量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        导出内部变量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+        复制ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        剪切ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        战列ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+        组操作ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        添加变量组ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        编辑变量组ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        删除变量组ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        toolTip1 = new System.Windows.Forms.ToolTip(components);
+        ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+        contextMenuStrip1.SuspendLayout();
+        panel1.SuspendLayout();
+        menuStrip1.SuspendLayout();
         base.SuspendLayout();
-        this.treeView1.Dock = System.Windows.Forms.DockStyle.Left;
-        this.treeView1.Location = new System.Drawing.Point(0, 0);
-        this.treeView1.Name = "treeView1";
-        this.treeView1.Size = new System.Drawing.Size(217, 531);
-        this.treeView1.TabIndex = 0;
-        this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(treeView1_AfterSelect);
-        this.dataGridView1.AllowUserToAddRows = false;
-        this.dataGridView1.AllowUserToDeleteRows = false;
-        this.dataGridView1.AllowUserToResizeRows = false;
-        this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-        this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-        this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        this.dataGridView1.Location = new System.Drawing.Point(217, 65);
-        this.dataGridView1.Name = "dataGridView1";
-        this.dataGridView1.ReadOnly = true;
-        this.dataGridView1.RowTemplate.Height = 23;
-        this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-        this.dataGridView1.Size = new System.Drawing.Size(785, 466);
-        this.dataGridView1.TabIndex = 1;
-        this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellDoubleClick);
-        this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(DataGridView1_MouseClick);
-        this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[1] { this.添加ToolStripMenuItem });
-        this.contextMenuStrip1.Name = "contextMenuStrip1";
-        this.contextMenuStrip1.Size = new System.Drawing.Size(95, 26);
-        this.添加ToolStripMenuItem.Name = "添加ToolStripMenuItem";
-        this.添加ToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
-        this.添加ToolStripMenuItem.Text = "添加";
-        this.添加ToolStripMenuItem.Click += new System.EventHandler(添加ToolStripMenuItem_Click);
-        this.button1.Location = new System.Drawing.Point(427, 37);
-        this.button1.Name = "button1";
-        this.button1.Size = new System.Drawing.Size(75, 23);
-        this.button1.TabIndex = 2;
-        this.button1.Text = "局部查询";
-        this.toolTip1.SetToolTip(this.button1, "提供对当前组的变量查询，支持模糊查询");
-        this.button1.UseVisualStyleBackColor = true;
-        this.button1.Click += new System.EventHandler(Button1_Click);
-        this.label1.AutoSize = true;
-        this.label1.Location = new System.Drawing.Point(223, 40);
-        this.label1.Name = "label1";
-        this.label1.Size = new System.Drawing.Size(63, 14);
-        this.label1.TabIndex = 3;
-        this.label1.Text = "变 量 名：";
-        this.textBox1.Location = new System.Drawing.Point(287, 37);
-        this.textBox1.Name = "textBox1";
-        this.textBox1.Size = new System.Drawing.Size(132, 22);
-        this.textBox1.TabIndex = 4;
-        this.toolTip1.SetToolTip(this.textBox1, "请输入要查询的变量名");
-        this.panel1.Controls.Add(this.button2);
-        this.panel1.Location = new System.Drawing.Point(217, 27);
-        this.panel1.Name = "panel1";
-        this.panel1.Size = new System.Drawing.Size(773, 38);
-        this.panel1.TabIndex = 5;
-        this.button2.Location = new System.Drawing.Point(291, 10);
-        this.button2.Name = "button2";
-        this.button2.Size = new System.Drawing.Size(75, 23);
-        this.button2.TabIndex = 0;
-        this.button2.Text = "全局查询";
-        this.toolTip1.SetToolTip(this.button2, "提供对所有变量的查询，不支持模糊查询");
-        this.button2.UseVisualStyleBackColor = true;
-        this.button2.Click += new System.EventHandler(button2_Click);
-        this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[2] { this.变量操作ToolStripMenuItem, this.组操作ToolStripMenuItem });
-        this.menuStrip1.Location = new System.Drawing.Point(217, 0);
-        this.menuStrip1.Name = "menuStrip1";
-        this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-        this.menuStrip1.Size = new System.Drawing.Size(785, 24);
-        this.menuStrip1.TabIndex = 6;
-        this.menuStrip1.Text = "menuStrip1";
-        this.变量操作ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[11]
+        treeView1.Dock = System.Windows.Forms.DockStyle.Left;
+        treeView1.Location = new System.Drawing.Point(0, 0);
+        treeView1.Name = "treeView1";
+        treeView1.Size = new System.Drawing.Size(217, 531);
+        treeView1.TabIndex = 0;
+        treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(TreeView1_AfterSelect);
+        dataGridView1.AllowUserToAddRows = false;
+        dataGridView1.AllowUserToDeleteRows = false;
+        dataGridView1.AllowUserToResizeRows = false;
+        dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+        dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+        dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        dataGridView1.Location = new System.Drawing.Point(217, 65);
+        dataGridView1.Name = "dataGridView1";
+        dataGridView1.ReadOnly = true;
+        dataGridView1.RowTemplate.Height = 23;
+        dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+        dataGridView1.Size = new System.Drawing.Size(785, 466);
+        dataGridView1.TabIndex = 1;
+        dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(DataGridView1_CellDoubleClick);
+        dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(DataGridView1_MouseClick);
+        contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[1] { 添加ToolStripMenuItem });
+        contextMenuStrip1.Name = "contextMenuStrip1";
+        contextMenuStrip1.Size = new System.Drawing.Size(95, 26);
+        添加ToolStripMenuItem.Name = "添加ToolStripMenuItem";
+        添加ToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
+        添加ToolStripMenuItem.Text = "添加";
+        添加ToolStripMenuItem.Click += new System.EventHandler(添加ToolStripMenuItem_Click);
+        button1.Location = new System.Drawing.Point(427, 37);
+        button1.Name = "button1";
+        button1.Size = new System.Drawing.Size(75, 23);
+        button1.TabIndex = 2;
+        button1.Text = "局部查询";
+        toolTip1.SetToolTip(button1, "提供对当前组的变量查询，支持模糊查询");
+        button1.UseVisualStyleBackColor = true;
+        button1.Click += new System.EventHandler(Button1_Click);
+        label1.AutoSize = true;
+        label1.Location = new System.Drawing.Point(223, 40);
+        label1.Name = "label1";
+        label1.Size = new System.Drawing.Size(63, 14);
+        label1.TabIndex = 3;
+        label1.Text = "变 量 名：";
+        textBox1.Location = new System.Drawing.Point(287, 37);
+        textBox1.Name = "textBox1";
+        textBox1.Size = new System.Drawing.Size(132, 22);
+        textBox1.TabIndex = 4;
+        toolTip1.SetToolTip(textBox1, "请输入要查询的变量名");
+        panel1.Controls.Add(button2);
+        panel1.Location = new System.Drawing.Point(217, 27);
+        panel1.Name = "panel1";
+        panel1.Size = new System.Drawing.Size(773, 38);
+        panel1.TabIndex = 5;
+        button2.Location = new System.Drawing.Point(291, 10);
+        button2.Name = "button2";
+        button2.Size = new System.Drawing.Size(75, 23);
+        button2.TabIndex = 0;
+        button2.Text = "全局查询";
+        toolTip1.SetToolTip(button2, "提供对所有变量的查询，不支持模糊查询");
+        button2.UseVisualStyleBackColor = true;
+        button2.Click += new System.EventHandler(Button2_Click);
+        menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[2] { 变量操作ToolStripMenuItem, 组操作ToolStripMenuItem });
+        menuStrip1.Location = new System.Drawing.Point(217, 0);
+        menuStrip1.Name = "menuStrip1";
+        menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+        menuStrip1.Size = new System.Drawing.Size(785, 24);
+        menuStrip1.TabIndex = 6;
+        menuStrip1.Text = "menuStrip1";
+        变量操作ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[11]
         {
-            this.添加内部变量ToolStripMenuItem, this.修改内部变量ToolStripMenuItem, this.删除内部变量ToolStripMenuItem, this.toolStripSeparator3, this.导入变量ToolStripMenuItem, this.导出内部变量ToolStripMenuItem, this.toolStripSeparator1, this.复制ToolStripMenuItem, this.剪切ToolStripMenuItem, this.战列ToolStripMenuItem,
-            this.toolStripSeparator2
+            添加内部变量ToolStripMenuItem, 修改内部变量ToolStripMenuItem, 删除内部变量ToolStripMenuItem, toolStripSeparator3, 导入变量ToolStripMenuItem, 导出内部变量ToolStripMenuItem, toolStripSeparator1, 复制ToolStripMenuItem, 剪切ToolStripMenuItem, 战列ToolStripMenuItem,
+            toolStripSeparator2
         });
-        this.变量操作ToolStripMenuItem.Name = "变量操作ToolStripMenuItem";
-        this.变量操作ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
-        this.变量操作ToolStripMenuItem.Text = "变量操作";
-        this.添加内部变量ToolStripMenuItem.Name = "添加内部变量ToolStripMenuItem";
-        this.添加内部变量ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-        this.添加内部变量ToolStripMenuItem.Text = "添加内部变量";
-        this.添加内部变量ToolStripMenuItem.Click += new System.EventHandler(添加内部变量ToolStripMenuItem_Click);
-        this.修改内部变量ToolStripMenuItem.Name = "修改内部变量ToolStripMenuItem";
-        this.修改内部变量ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-        this.修改内部变量ToolStripMenuItem.Text = "编辑内部变量";
-        this.修改内部变量ToolStripMenuItem.Click += new System.EventHandler(修改内部变量ToolStripMenuItem_Click);
-        this.删除内部变量ToolStripMenuItem.Name = "删除内部变量ToolStripMenuItem";
-        this.删除内部变量ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
-        this.删除内部变量ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-        this.删除内部变量ToolStripMenuItem.Text = "删除内部变量";
-        this.删除内部变量ToolStripMenuItem.Click += new System.EventHandler(删除内部变量ToolStripMenuItem_Click);
-        this.toolStripSeparator3.Name = "toolStripSeparator3";
-        this.toolStripSeparator3.Size = new System.Drawing.Size(180, 6);
-        this.导入变量ToolStripMenuItem.Name = "导入变量ToolStripMenuItem";
-        this.导入变量ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-        this.导入变量ToolStripMenuItem.Text = "导入内部变量";
-        this.导入变量ToolStripMenuItem.Click += new System.EventHandler(导入变量ToolStripMenuItem_Click);
-        this.导出内部变量ToolStripMenuItem.Name = "导出内部变量ToolStripMenuItem";
-        this.导出内部变量ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-        this.导出内部变量ToolStripMenuItem.Text = "导出内部变量";
-        this.导出内部变量ToolStripMenuItem.Click += new System.EventHandler(导出内部变量ToolStripMenuItem_Click);
-        this.toolStripSeparator1.Name = "toolStripSeparator1";
-        this.toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
-        this.复制ToolStripMenuItem.Name = "复制ToolStripMenuItem";
-        this.复制ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.C | System.Windows.Forms.Keys.Control;
-        this.复制ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-        this.复制ToolStripMenuItem.Text = "复制";
-        this.复制ToolStripMenuItem.Click += new System.EventHandler(复制ToolStripMenuItem_Click);
-        this.剪切ToolStripMenuItem.Name = "剪切ToolStripMenuItem";
-        this.剪切ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.X | System.Windows.Forms.Keys.Control;
-        this.剪切ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-        this.剪切ToolStripMenuItem.Text = "剪切";
-        this.剪切ToolStripMenuItem.Click += new System.EventHandler(剪切ToolStripMenuItem_Click);
-        this.战列ToolStripMenuItem.Name = "战列ToolStripMenuItem";
-        this.战列ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.V | System.Windows.Forms.Keys.Control;
-        this.战列ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-        this.战列ToolStripMenuItem.Text = "粘贴";
-        this.战列ToolStripMenuItem.Click += new System.EventHandler(战列ToolStripMenuItem_Click);
-        this.toolStripSeparator2.Name = "toolStripSeparator2";
-        this.toolStripSeparator2.Size = new System.Drawing.Size(180, 6);
-        this.组操作ToolStripMenuItem.Checked = true;
-        this.组操作ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-        this.组操作ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[3] { this.添加变量组ToolStripMenuItem, this.编辑变量组ToolStripMenuItem, this.删除变量组ToolStripMenuItem });
-        this.组操作ToolStripMenuItem.Enabled = false;
-        this.组操作ToolStripMenuItem.Name = "组操作ToolStripMenuItem";
-        this.组操作ToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-        this.组操作ToolStripMenuItem.Text = "组操作";
-        this.添加变量组ToolStripMenuItem.Name = "添加变量组ToolStripMenuItem";
-        this.添加变量组ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-        this.添加变量组ToolStripMenuItem.Text = "添加变量组";
-        this.添加变量组ToolStripMenuItem.Click += new System.EventHandler(添加变量组ToolStripMenuItem_Click);
-        this.编辑变量组ToolStripMenuItem.Name = "编辑变量组ToolStripMenuItem";
-        this.编辑变量组ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-        this.编辑变量组ToolStripMenuItem.Text = "编辑变量组";
-        this.编辑变量组ToolStripMenuItem.Click += new System.EventHandler(编辑变量组ToolStripMenuItem_Click);
-        this.删除变量组ToolStripMenuItem.Name = "删除变量组ToolStripMenuItem";
-        this.删除变量组ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-        this.删除变量组ToolStripMenuItem.Text = "删除变量组";
-        this.删除变量组ToolStripMenuItem.Click += new System.EventHandler(删除变量组ToolStripMenuItem_Click);
+        变量操作ToolStripMenuItem.Name = "变量操作ToolStripMenuItem";
+        变量操作ToolStripMenuItem.Size = new System.Drawing.Size(65, 20);
+        变量操作ToolStripMenuItem.Text = "变量操作";
+        添加内部变量ToolStripMenuItem.Name = "添加内部变量ToolStripMenuItem";
+        添加内部变量ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+        添加内部变量ToolStripMenuItem.Text = "添加内部变量";
+        添加内部变量ToolStripMenuItem.Click += new System.EventHandler(添加内部变量ToolStripMenuItem_Click);
+        修改内部变量ToolStripMenuItem.Name = "修改内部变量ToolStripMenuItem";
+        修改内部变量ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+        修改内部变量ToolStripMenuItem.Text = "编辑内部变量";
+        修改内部变量ToolStripMenuItem.Click += new System.EventHandler(修改内部变量ToolStripMenuItem_Click);
+        删除内部变量ToolStripMenuItem.Name = "删除内部变量ToolStripMenuItem";
+        删除内部变量ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete;
+        删除内部变量ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+        删除内部变量ToolStripMenuItem.Text = "删除内部变量";
+        删除内部变量ToolStripMenuItem.Click += new System.EventHandler(删除内部变量ToolStripMenuItem_Click);
+        toolStripSeparator3.Name = "toolStripSeparator3";
+        toolStripSeparator3.Size = new System.Drawing.Size(180, 6);
+        导入变量ToolStripMenuItem.Name = "导入变量ToolStripMenuItem";
+        导入变量ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+        导入变量ToolStripMenuItem.Text = "导入内部变量";
+        导入变量ToolStripMenuItem.Click += new System.EventHandler(导入变量ToolStripMenuItem_Click);
+        导出内部变量ToolStripMenuItem.Name = "导出内部变量ToolStripMenuItem";
+        导出内部变量ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+        导出内部变量ToolStripMenuItem.Text = "导出内部变量";
+        导出内部变量ToolStripMenuItem.Click += new System.EventHandler(导出内部变量ToolStripMenuItem_Click);
+        toolStripSeparator1.Name = "toolStripSeparator1";
+        toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
+        复制ToolStripMenuItem.Name = "复制ToolStripMenuItem";
+        复制ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.C | System.Windows.Forms.Keys.Control;
+        复制ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+        复制ToolStripMenuItem.Text = "复制";
+        复制ToolStripMenuItem.Click += new System.EventHandler(复制ToolStripMenuItem_Click);
+        剪切ToolStripMenuItem.Name = "剪切ToolStripMenuItem";
+        剪切ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.X | System.Windows.Forms.Keys.Control;
+        剪切ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+        剪切ToolStripMenuItem.Text = "剪切";
+        剪切ToolStripMenuItem.Click += new System.EventHandler(剪切ToolStripMenuItem_Click);
+        战列ToolStripMenuItem.Name = "战列ToolStripMenuItem";
+        战列ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.V | System.Windows.Forms.Keys.Control;
+        战列ToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+        战列ToolStripMenuItem.Text = "粘贴";
+        战列ToolStripMenuItem.Click += new System.EventHandler(战列ToolStripMenuItem_Click);
+        toolStripSeparator2.Name = "toolStripSeparator2";
+        toolStripSeparator2.Size = new System.Drawing.Size(180, 6);
+        组操作ToolStripMenuItem.Checked = true;
+        组操作ToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+        组操作ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[3] { 添加变量组ToolStripMenuItem, 编辑变量组ToolStripMenuItem, 删除变量组ToolStripMenuItem });
+        组操作ToolStripMenuItem.Enabled = false;
+        组操作ToolStripMenuItem.Name = "组操作ToolStripMenuItem";
+        组操作ToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+        组操作ToolStripMenuItem.Text = "组操作";
+        添加变量组ToolStripMenuItem.Name = "添加变量组ToolStripMenuItem";
+        添加变量组ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+        添加变量组ToolStripMenuItem.Text = "添加变量组";
+        添加变量组ToolStripMenuItem.Click += new System.EventHandler(添加变量组ToolStripMenuItem_Click);
+        编辑变量组ToolStripMenuItem.Name = "编辑变量组ToolStripMenuItem";
+        编辑变量组ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+        编辑变量组ToolStripMenuItem.Text = "编辑变量组";
+        编辑变量组ToolStripMenuItem.Click += new System.EventHandler(编辑变量组ToolStripMenuItem_Click);
+        删除变量组ToolStripMenuItem.Name = "删除变量组ToolStripMenuItem";
+        删除变量组ToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+        删除变量组ToolStripMenuItem.Text = "删除变量组";
+        删除变量组ToolStripMenuItem.Click += new System.EventHandler(删除变量组ToolStripMenuItem_Click);
         base.AutoScaleDimensions = new System.Drawing.SizeF(7f, 14f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         base.ClientSize = new System.Drawing.Size(1002, 531);
-        base.Controls.Add(this.menuStrip1);
-        base.Controls.Add(this.label1);
-        base.Controls.Add(this.textBox1);
-        base.Controls.Add(this.dataGridView1);
-        base.Controls.Add(this.button1);
-        base.Controls.Add(this.panel1);
-        base.Controls.Add(this.treeView1);
+        base.Controls.Add(menuStrip1);
+        base.Controls.Add(label1);
+        base.Controls.Add(textBox1);
+        base.Controls.Add(dataGridView1);
+        base.Controls.Add(button1);
+        base.Controls.Add(panel1);
+        base.Controls.Add(treeView1);
         base.Name = "VarTable";
         base.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-        this.Text = "参数绑定";
+        Text = "参数绑定";
         base.Load += new System.EventHandler(VarTable_Load);
         base.FormClosing += new System.Windows.Forms.FormClosingEventHandler(VarTable_FormClosing);
-        ((System.ComponentModel.ISupportInitialize)this.dataGridView1).EndInit();
-        this.contextMenuStrip1.ResumeLayout(false);
-        this.panel1.ResumeLayout(false);
-        this.menuStrip1.ResumeLayout(false);
-        this.menuStrip1.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+        contextMenuStrip1.ResumeLayout(false);
+        panel1.ResumeLayout(false);
+        menuStrip1.ResumeLayout(false);
+        menuStrip1.PerformLayout();
         base.ResumeLayout(false);
         base.PerformLayout();
     }

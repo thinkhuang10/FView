@@ -5162,40 +5162,40 @@ public class yytjForm : XtraForm
 
     private void InitializeComponent()
     {
-        this.dataGridView1 = new System.Windows.Forms.DataGridView();
-        ((System.ComponentModel.ISupportInitialize)this.dataGridView1).BeginInit();
+        dataGridView1 = new System.Windows.Forms.DataGridView();
+        ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
         base.SuspendLayout();
-        this.dataGridView1.AllowUserToAddRows = false;
-        this.dataGridView1.AllowUserToDeleteRows = false;
-        this.dataGridView1.AllowUserToResizeRows = false;
-        this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-        this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-        this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-        this.dataGridView1.MultiSelect = false;
-        this.dataGridView1.Name = "dataGridView1";
-        this.dataGridView1.ReadOnly = true;
-        this.dataGridView1.RowHeadersVisible = false;
-        this.dataGridView1.RowTemplate.Height = 23;
-        this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-        this.dataGridView1.ShowCellErrors = false;
-        this.dataGridView1.ShowCellToolTips = false;
-        this.dataGridView1.ShowEditingIcon = false;
-        this.dataGridView1.ShowRowErrors = false;
-        this.dataGridView1.Size = new System.Drawing.Size(729, 537);
-        this.dataGridView1.TabIndex = 0;
-        this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellClick);
-        this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellContentClick);
-        this.dataGridView1.DoubleClick += new System.EventHandler(dataGridView1_DoubleClick);
+        dataGridView1.AllowUserToAddRows = false;
+        dataGridView1.AllowUserToDeleteRows = false;
+        dataGridView1.AllowUserToResizeRows = false;
+        dataGridView1.BackgroundColor = System.Drawing.Color.White;
+        dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+        dataGridView1.Location = new System.Drawing.Point(0, 0);
+        dataGridView1.MultiSelect = false;
+        dataGridView1.Name = "dataGridView1";
+        dataGridView1.ReadOnly = true;
+        dataGridView1.RowHeadersVisible = false;
+        dataGridView1.RowTemplate.Height = 23;
+        dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+        dataGridView1.ShowCellErrors = false;
+        dataGridView1.ShowCellToolTips = false;
+        dataGridView1.ShowEditingIcon = false;
+        dataGridView1.ShowRowErrors = false;
+        dataGridView1.Size = new System.Drawing.Size(729, 537);
+        dataGridView1.TabIndex = 0;
+        dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellClick);
+        dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellContentClick);
+        dataGridView1.DoubleClick += new System.EventHandler(dataGridView1_DoubleClick);
         base.AutoScaleDimensions = new System.Drawing.SizeF(7f, 14f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         base.ClientSize = new System.Drawing.Size(729, 537);
-        base.Controls.Add(this.dataGridView1);
+        base.Controls.Add(dataGridView1);
         base.Name = "yytjForm";
         base.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-        this.Text = "引用统计";
+        Text = "引用统计";
         base.Load += new System.EventHandler(yytjForm_Load);
-        ((System.ComponentModel.ISupportInitialize)this.dataGridView1).EndInit();
+        ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
         base.ResumeLayout(false);
     }
 }

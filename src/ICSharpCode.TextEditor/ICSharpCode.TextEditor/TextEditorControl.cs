@@ -59,10 +59,7 @@ public class TextEditorControl : TextEditorControlBase
         if (activeTextAreaControl != value)
         {
             activeTextAreaControl = value;
-            if (this.ActiveTextAreaControlChanged != null)
-            {
-                this.ActiveTextAreaControlChanged(this, EventArgs.Empty);
-            }
+            ActiveTextAreaControlChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 
@@ -96,10 +93,7 @@ public class TextEditorControl : TextEditorControlBase
     public override void OptionsChanged()
     {
         primaryTextArea.OptionsChanged();
-        if (secondaryTextArea != null)
-        {
-            secondaryTextArea.OptionsChanged();
-        }
+        secondaryTextArea?.OptionsChanged();
     }
 
     public void Split()
@@ -146,10 +140,7 @@ public class TextEditorControl : TextEditorControlBase
             base.Document.UndoStack.Undo();
             base.Document.RequestUpdate(new TextAreaUpdate(TextAreaUpdateType.WholeTextArea));
             primaryTextArea.TextArea.UpdateMatchingBracket();
-            if (secondaryTextArea != null)
-            {
-                secondaryTextArea.TextArea.UpdateMatchingBracket();
-            }
+            secondaryTextArea?.TextArea.UpdateMatchingBracket();
             EndUpdate();
         }
     }
@@ -162,10 +153,7 @@ public class TextEditorControl : TextEditorControlBase
             base.Document.UndoStack.Redo();
             base.Document.RequestUpdate(new TextAreaUpdate(TextAreaUpdateType.WholeTextArea));
             primaryTextArea.TextArea.UpdateMatchingBracket();
-            if (secondaryTextArea != null)
-            {
-                secondaryTextArea.TextArea.UpdateMatchingBracket();
-            }
+            secondaryTextArea?.TextArea.UpdateMatchingBracket();
             EndUpdate();
         }
     }
@@ -196,10 +184,7 @@ public class TextEditorControl : TextEditorControlBase
                     secondaryTextArea = null;
                     textAreaSplitter = null;
                 }
-                if (primaryTextArea != null)
-                {
-                    primaryTextArea.Dispose();
-                }
+                primaryTextArea?.Dispose();
                 textAreaPanel.Dispose();
                 textAreaPanel = null;
             }
@@ -229,39 +214,24 @@ public class TextEditorControl : TextEditorControlBase
             {
                 case TextAreaUpdateType.PositionToEnd:
                     primaryTextArea.TextArea.UpdateToEnd(item.Position.Y);
-                    if (secondaryTextArea != null)
-                    {
-                        secondaryTextArea.TextArea.UpdateToEnd(item.Position.Y);
-                    }
+                    secondaryTextArea?.TextArea.UpdateToEnd(item.Position.Y);
                     break;
                 case TextAreaUpdateType.SingleLine:
                 case TextAreaUpdateType.PositionToLineEnd:
                     primaryTextArea.TextArea.UpdateLine(item.Position.Y);
-                    if (secondaryTextArea != null)
-                    {
-                        secondaryTextArea.TextArea.UpdateLine(item.Position.Y);
-                    }
+                    secondaryTextArea?.TextArea.UpdateLine(item.Position.Y);
                     break;
                 case TextAreaUpdateType.SinglePosition:
                     primaryTextArea.TextArea.UpdateLine(item.Position.Y, item.Position.X, item.Position.X);
-                    if (secondaryTextArea != null)
-                    {
-                        secondaryTextArea.TextArea.UpdateLine(item.Position.Y, item.Position.X, item.Position.X);
-                    }
+                    secondaryTextArea?.TextArea.UpdateLine(item.Position.Y, item.Position.X, item.Position.X);
                     break;
                 case TextAreaUpdateType.LinesBetween:
                     primaryTextArea.TextArea.UpdateLines(item.Position.X, item.Position.Y);
-                    if (secondaryTextArea != null)
-                    {
-                        secondaryTextArea.TextArea.UpdateLines(item.Position.X, item.Position.Y);
-                    }
+                    secondaryTextArea?.TextArea.UpdateLines(item.Position.X, item.Position.Y);
                     break;
                 case TextAreaUpdateType.WholeTextArea:
                     primaryTextArea.TextArea.Invalidate();
-                    if (secondaryTextArea != null)
-                    {
-                        secondaryTextArea.TextArea.Invalidate();
-                    }
+                    secondaryTextArea?.TextArea.Invalidate();
                     break;
             }
         }
