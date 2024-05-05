@@ -1,3 +1,0 @@
-namespace AxDCCECLIENTLib;
-
-public delegate void _DDCCEClientEvents_FireOnVariableAlarmEventHandler(object sender, _DDCCEClientEvents_FireOnVariableAlarmEvent e);

@@ -1,3 +1,0 @@
-namespace AxDCCECLIENTLib;
-
-public delegate void _DDCCEClientEvents_FireOnScanBehaviorEventHandler(object sender, _DDCCEClientEvents_FireOnScanBehaviorEvent e);

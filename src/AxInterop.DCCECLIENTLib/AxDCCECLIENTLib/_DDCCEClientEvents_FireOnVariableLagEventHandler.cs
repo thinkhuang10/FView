@@ -1,3 +1,0 @@
-namespace AxDCCECLIENTLib;
-
-public delegate void _DDCCEClientEvents_FireOnVariableLagEventHandler(object sender, _DDCCEClientEvents_FireOnVariableLagEvent e);

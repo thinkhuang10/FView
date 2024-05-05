@@ -1,3 +1,0 @@
-namespace AxDCCECLIENTLib;
-
-public delegate void _DDCCEClientEvents_FireOnLoadOverEventHandler(object sender, _DDCCEClientEvents_FireOnLoadOverEvent e);

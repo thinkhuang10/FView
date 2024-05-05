@@ -1,3 +1,0 @@
-namespace AxDCCECLIENTLib;
-
-public delegate void _DDCCEClientEvents_FireOnSyncTimeEventHandler(object sender, _DDCCEClientEvents_FireOnSyncTimeEvent e);

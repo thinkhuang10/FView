@@ -100,7 +100,6 @@ Section "FTView服务端" FTViewServer
   CreateShortCut "$DESKTOP\DHMI.lnk" "$INSTDIR\DHMI.exe"
   
   File /r "${InstallFilesDir}\ActiveXFinder.dll"
-  File /r "${InstallFilesDir}\AxInterop.DCCECLIENTLib.dll"
   File /r "${InstallFilesDir}\Beng_1.dll"
   File /r "${InstallFilesDir}\Button_1.dll"
   File /r "${InstallFilesDir}\CommonSnappableTypes.dll"
@@ -169,7 +168,6 @@ Section "FTView客户端" FTViewClient
   CreateDirectory "$SMPROGRAMS\${PRODUCT_NAME}"
   CreateShortCut "$SMPROGRAMS\${PRODUCT_NAME}\DHMIRUN.lnk" "$INSTDIR\DHMIRUN.exe"
   
-  File /r "${InstallFilesDir}\HMIRUN\AxInterop.DCCECLIENTLib.dll"
   File /r "${InstallFilesDir}\HMIRUN\CommonSnappableTypes.dll"
   File /r "${InstallFilesDir}\HMIRUN\DHMIRUN.exe.config"
   File /r "${InstallFilesDir}\HMIRUN\HMIWeb.dll"
