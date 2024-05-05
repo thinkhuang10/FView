@@ -896,7 +896,7 @@ public partial class MDIParent1 : XtraForm
         var form = new PageOpenerForm();
         form.OpenPageEvent += delegate (object s1, PageOpenerForm.OpenPageEventArgs e1)
         {
-            页面_打开(e1.PageName);
+            OpenPage(e1.PageName);
         };
         form.ShowDialog();
     }
@@ -1150,7 +1150,7 @@ public partial class MDIParent1 : XtraForm
             if (e1.Result != null)
             {
                 CEditEnvironmentGlobal.msgbox.Say("找到匹配项: \"" + e1.Result.PageDisplayName + "\"[" + e1.Result.ShapeName + "]");
-                页面_打开(e1.Result.PageName);
+                OpenPage(e1.Result.PageName);
                 CGlobal theglobal = CEditEnvironmentGlobal.childform.theglobal;
                 theglobal.SelectedShapeList.Clear();
                 foreach (CShape item in theglobal.g_ListAllShowCShape)
@@ -1758,7 +1758,7 @@ public partial class MDIParent1 : XtraForm
                     }
                     else if (e.Node.Tag is HmiPage)
                     {
-                        if (页面_重命名(e.Node.Name, e.Label))
+                        if (RenamePage(e.Node.Name, e.Label))
                         {
                             (e.Node.Tag as HmiPage).Text = e.Label;
                             e.Node.EndEdit(cancel: false);
@@ -1835,7 +1835,7 @@ public partial class MDIParent1 : XtraForm
 
         if (e.Node.Tag is HmiPage)
         {
-            页面_打开(e.Node.Name);
+            OpenPage(e.Node.Name);
             return;
         }
 
@@ -1982,7 +1982,7 @@ public partial class MDIParent1 : XtraForm
 
     private void ToolStripMenuItem_页面组_新建页面组_Click(object sender, EventArgs e)
     {
-        页面组_新建();
+        NewPageGroup();
     }
 
     private void ToolStripMenuItem_页面组_重命名_Click(object sender, EventArgs e)
@@ -2009,7 +2009,7 @@ public partial class MDIParent1 : XtraForm
 
     private void ToolStripMenuItem_页面组_新建页面_Click(object sender, EventArgs e)
     {
-        页面_新建();
+        CreateNewPage();
     }
 
     private void ToolStripMenuItem_页面组_导入页面_Click(object sender, EventArgs e)
@@ -2021,7 +2021,7 @@ public partial class MDIParent1 : XtraForm
         OpenFileDialog openFileDialog2 = openFileDialog;
         if (openFileDialog2.ShowDialog(this) == DialogResult.OK)
         {
-            页面_导入(openFileDialog2.FileName);
+            ImportPage(openFileDialog2.FileName);
         }
     }
 
@@ -2030,7 +2030,7 @@ public partial class MDIParent1 : XtraForm
         TreeNode selectedNode = treeView_工程导航.SelectedNode;
         if (selectedNode != null)
         {
-            页面_粘贴();
+            PastePage();
         }
     }
 
@@ -2104,7 +2104,7 @@ public partial class MDIParent1 : XtraForm
         TreeNode selectedNode = treeView_工程导航.SelectedNode;
         if (selectedNode != null)
         {
-            页面_打开(selectedNode.Name);
+            OpenPage(selectedNode.Name);
         }
     }
 
@@ -2113,7 +2113,7 @@ public partial class MDIParent1 : XtraForm
         TreeNode selectedNode = treeView_工程导航.SelectedNode;
         if (selectedNode != null)
         {
-            页面_关闭(selectedNode.Name);
+            ClosePage(selectedNode.Name);
         }
     }
 
@@ -2122,7 +2122,7 @@ public partial class MDIParent1 : XtraForm
         TreeNode selectedNode = treeView_工程导航.SelectedNode;
         if (selectedNode != null)
         {
-            页面_保存(selectedNode.Name);
+            SavePage(selectedNode.Name);
         }
     }
 
@@ -2131,7 +2131,7 @@ public partial class MDIParent1 : XtraForm
         TreeNode selectedNode = treeView_工程导航.SelectedNode;
         if (selectedNode != null)
         {
-            页面_删除(selectedNode.Name);
+            DeletePage(selectedNode.Name);
         }
     }
 
@@ -2196,7 +2196,7 @@ public partial class MDIParent1 : XtraForm
         TreeNode selectedNode = treeView_工程导航.SelectedNode;
         if (selectedNode != null)
         {
-            页面_复制(selectedNode.Name);
+            CopyPage(selectedNode.Name);
         }
     }
 
@@ -2231,7 +2231,7 @@ public partial class MDIParent1 : XtraForm
         TreeNode selectedNode = treeView_工程导航.SelectedNode;
         if (selectedNode != null)
         {
-            页面_属性(selectedNode.Name);
+            PropertyPage(selectedNode.Name);
         }
     }
 
@@ -2809,7 +2809,7 @@ public partial class MDIParent1 : XtraForm
                     hmiPage.Text = e.ChangedItem.Value.ToString();
                 }
             }
-            页面_打开(text);
+            OpenPage(text);
         }
         catch
         {
@@ -3353,9 +3353,9 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void 页面_新建()
+    private void CreateNewPage()
     {
-        TreeNode parentTreeNode = 页面组_GetSelectedNode();
+        TreeNode parentTreeNode = PageGroup_GetSelectedNode();
         ChildForm childForm = new()
         {
             MdiParent = this
@@ -3405,12 +3405,11 @@ public partial class MDIParent1 : XtraForm
         CEditEnvironmentGlobal.dhp.dirtyPageAdd(df.name);
     }
 
-    private bool 页面_重命名(string pageName, string pageText)
+    private bool RenamePage(string pageName, string pageText)
     {
         if (string.IsNullOrEmpty(pageName))
-        {
             return false;
-        }
+
         TreeNode[] array = treeView_工程导航.Nodes[0].Nodes[0].Nodes.Find(pageName, searchAllChildren: true);
         foreach (TreeNode treeNode in array)
         {
@@ -3440,12 +3439,11 @@ public partial class MDIParent1 : XtraForm
         return false;
     }
 
-    private void 页面_删除(string pageName, bool showConfirm = true)
+    private void DeletePage(string pageName, bool showConfirm = true)
     {
         if (string.IsNullOrEmpty(pageName))
-        {
             return;
-        }
+
         if (showConfirm)
         {
             List<string> list = CheckIOExists.PageInUse(pageName);
@@ -3462,7 +3460,7 @@ public partial class MDIParent1 : XtraForm
                 return;
             }
         }
-        页面_关闭(pageName);
+        ClosePage(pageName);
         TreeNode[] array = treeView_工程导航.Nodes[0].Nodes[0].Nodes.Find(pageName, searchAllChildren: true);
         foreach (TreeNode treeNode in array)
         {
@@ -3477,7 +3475,7 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void 页面_打开(string pageName)
+    private void OpenPage(string pageName)
     {
         if (string.IsNullOrEmpty(pageName))
             return;
@@ -3576,20 +3574,17 @@ public partial class MDIParent1 : XtraForm
         CEditEnvironmentGlobal.childform = childForm2;
     }
 
-    private void 页面_关闭(string pageName)
+    private void ClosePage(string pageName)
     {
         if (string.IsNullOrEmpty(pageName))
-        {
             return;
-        }
-        Form[] mdiChildren = base.MdiChildren;
-        foreach (Form form in mdiChildren)
+
+        foreach (Form form in MdiChildren)
         {
             if (form is not ChildForm)
-            {
                 continue;
-            }
-            ChildForm childForm = form as ChildForm;
+
+            var childForm = form as ChildForm;
             if (pageName.Equals(childForm.theglobal.pageProp.PageName))
             {
                 if (objView_Page.m_ObjGbl == childForm.theglobal)
@@ -3601,11 +3596,11 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void 页面_保存(string pageName)
+    private void SavePage(string pageName)
     {
         if (!string.IsNullOrEmpty(pageName))
         {
-            页面_打开(pageName);
+            OpenPage(pageName);
             if (CEditEnvironmentGlobal.childform != null)
             {
                 SaveOnePage(CEditEnvironmentGlobal.childform);
@@ -3614,17 +3609,15 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void 页面_复制(string pageName)
+    private void CopyPage(string pageName)
     {
         if (string.IsNullOrEmpty(pageName))
-        {
             return;
-        }
-        DataFile dataFile = CEditEnvironmentGlobal.PageManager.DFM.Find(pageName);
-        if (dataFile == null)
-        {
+
+        var dataFile = CEditEnvironmentGlobal.PageManager.DFM.Find(pageName);
+        if (null == dataFile)
             return;
-        }
+
         dataFile.PIO = CEditEnvironmentGlobal.dhp.ProjectIOs.ToArray();
         foreach (CShape item in dataFile.ListAllShowCShape)
         {
@@ -3661,25 +3654,25 @@ public partial class MDIParent1 : XtraForm
         dataFile.PIO = null;
     }
 
-    private void 页面_属性(string pageName)
+    private void PropertyPage(string pageName)
     {
-        if (!string.IsNullOrEmpty(pageName))
+        if (string.IsNullOrEmpty(pageName))
+            return;
+
+        OpenPage(pageName);
+        if (CEditEnvironmentGlobal.childform != null)
         {
-            页面_打开(pageName);
-            if (CEditEnvironmentGlobal.childform != null)
-            {
-                PagePropertyForm pagePropertyForm = new();
-                pagePropertyForm.ShowDialog();
-            }
+            PagePropertyForm pagePropertyForm = new();
+            pagePropertyForm.ShowDialog();
         }
     }
 
-    private void 页面_导入(string fileName)
+    private void ImportPage(string fileName)
     {
         string currentDirectory = Environment.CurrentDirectory;
         try
         {
-            DataFile df = Operation.BinaryLoadFile(fileName);
+            var df = Operation.BinaryLoadFile(fileName);
         }
         catch
         {
@@ -3688,7 +3681,7 @@ public partial class MDIParent1 : XtraForm
         Environment.CurrentDirectory = currentDirectory;
     }
 
-    private void 页面_粘贴()
+    private void PastePage()
     {
         DataFile df = null;
         try
@@ -3702,10 +3695,10 @@ public partial class MDIParent1 : XtraForm
         {
             MessageBox.Show("无法从剪切板获取页面数据", "粘贴失败");
         }
+
         if (df == null)
-        {
             return;
-        }
+
         while (CEditEnvironmentGlobal.dfs.Exists((DataFile item) => item.name.Equals(df.name)))
         {
             df.name += "_";
@@ -3756,12 +3749,12 @@ public partial class MDIParent1 : XtraForm
             }
             df.PIO = null;
         }
-        TreeNode treeNode = AddPage(df, 页面组_GetSelectedNode());
-        页面_打开(treeNode.Name);
+        TreeNode treeNode = AddPage(df, PageGroup_GetSelectedNode());
+        OpenPage(treeNode.Name);
         treeView_工程导航.SelectedNode = treeNode;
     }
 
-    private TreeNode 页面组_GetSelectedNode()
+    private TreeNode PageGroup_GetSelectedNode()
     {
         TreeNode treeNode = treeView_工程导航.Nodes[0].Nodes[0];
         TreeNode treeNode2 = treeView_工程导航.SelectedNode ?? treeNode;
@@ -3779,10 +3772,11 @@ public partial class MDIParent1 : XtraForm
         return treeNode2;
     }
 
-    private void 页面组_新建()
+    private void NewPageGroup()
     {
-        TreeNode parentTreeNode = 页面组_GetSelectedNode();
+        TreeNode parentTreeNode = PageGroup_GetSelectedNode();
         string text = "PageGroup_" + pageGroupNumber++;
+
         bool flag;
         do
         {
@@ -3795,6 +3789,7 @@ public partial class MDIParent1 : XtraForm
             }
         }
         while (flag);
+
         string text2 = text.Replace("PageGroup_", "页面组_");
         TreeNode treeNode = AddPageGroupToTreeView(text, text2, parentTreeNode);
         treeView_工程导航.SelectedNode = treeNode;
@@ -3820,9 +3815,8 @@ public partial class MDIParent1 : XtraForm
     private void 页面组_删除(string pageGroupName, bool showConfim = true)
     {
         if (string.IsNullOrEmpty(pageGroupName) || (showConfim && MessageBox.Show("您确认将要删除该页面组吗?\n该组包含的所有页面和页面组将会被全部删除，请慎重选择!", "删除警告", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes))
-        {
             return;
-        }
+
         TreeNode[] array = treeView_工程导航.Nodes[0].Nodes[0].Nodes.Find(pageGroupName, searchAllChildren: true);
         foreach (TreeNode treeNode in array)
         {
@@ -3834,7 +3828,7 @@ public partial class MDIParent1 : XtraForm
                 }
                 else if (firstNode.Tag is HmiPage)
                 {
-                    页面_删除(firstNode.Name, showConfirm: false);
+                    DeletePage(firstNode.Name, showConfirm: false);
                 }
             }
             if (treeNode.Tag is HmiPageGroup)
@@ -3873,7 +3867,7 @@ public partial class MDIParent1 : XtraForm
                 }
                 else if (node.Tag is HmiPage)
                 {
-                    页面_关闭(node.Name);
+                    ClosePage(node.Name);
                 }
             }
         }
@@ -3929,17 +3923,16 @@ public partial class MDIParent1 : XtraForm
     {
         try
         {
-            //initForm.say("工程信息传入");
+            CEditEnvironmentGlobal.msgbox.Say("开始载入工程.");
+
             EnableAllControl(true);
             childFormNumber = (pageGroupNumber = 0);
-            //initForm.say("正在解析DSL文件");
             OpenProjectFromDSL(dslProjectFile.FullName);
-            //initForm.say("正在解析HPF文件");
             if (!OpenProjectByHPF(CEditEnvironmentGlobal.projectfile))
                 return;
 
             CheckIOExists.IOTableOld = true;
-            //initForm.say("成功载入工程");
+
             CEditEnvironmentGlobal.msgbox.Say("成功载入工程.");
         }
         catch (Exception ex)
@@ -3947,9 +3940,10 @@ public partial class MDIParent1 : XtraForm
             CEditEnvironmentGlobal.msgbox.Say("加载工程失败.");
             CEditEnvironmentGlobal.msgbox.Say("原因:" + ex.Message);
         }
-        if (CEditEnvironmentGlobal.dfs.Count == 0)
+
+        if (0 == CEditEnvironmentGlobal.dfs.Count)
         {
-            页面_新建();
+            CreateNewPage();
         }
     }
 
@@ -4190,7 +4184,7 @@ public partial class MDIParent1 : XtraForm
         }
         if (CEditEnvironmentGlobal.dfs.Count == 0)
         {
-            页面_新建();
+            CreateNewPage();
         }
     }
 
