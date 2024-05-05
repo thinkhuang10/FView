@@ -4,6 +4,7 @@ using System.Data;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
+using HMIWeb;
 using ShapeRuntime;
 
 namespace HMIRunForm.ServerLogic;
@@ -168,26 +169,9 @@ public class ServerLogicWorker
         return cmd;
     }
 
-    private static string LogicToScript(string str)
-    {
-        StringBuilder stringBuilder = new(str);
-        Regex regex = new("\\[[^\\]]+\\]");
-        MatchCollection matchCollection = regex.Matches(str);
-        List<string> list = new();
-        foreach (Match item in matchCollection)
-        {
-            if (!list.Contains(item.Value))
-            {
-                stringBuilder = stringBuilder.Replace(item.Value, "System.GetValue(\"" + item.Value + "\")");
-                list.Add(item.Value);
-            }
-        }
-        return stringBuilder.ToString();
-    }
-
     private object EvalLogic(string logicStr)
     {
-        return EvalScript(LogicToScript(logicStr));
+        return EvalScript(Utils.GetLogicToScript(logicStr));
     }
 
     private object EvalScript(string scriptStr)

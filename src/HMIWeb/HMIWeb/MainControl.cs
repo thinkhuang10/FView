@@ -912,7 +912,7 @@ public class MainControl : UserControl, IMessageFilter
 
     public double MySin(int time, int cycle, double max, double min, double delay)
     {
-        if (!Check.CheckZero(cycle))
+        if (!Utils.CheckZero(cycle))
             return 0.0;
 
         return Math.Sin(Math.PI * 2.0 / (double)cycle * (((double)time - delay) % (double)cycle)) * (max - min) / 2.0 + (max + min) / 2.0;
@@ -920,7 +920,7 @@ public class MainControl : UserControl, IMessageFilter
 
     public double increase(int time, int cycle, double max, double min, double delay)
     {
-        if (!Check.CheckZero(cycle))
+        if (!Utils.CheckZero(cycle))
             return 0.0;
 
         double num = (max - min) / (double)cycle;
@@ -929,7 +929,7 @@ public class MainControl : UserControl, IMessageFilter
 
     public double degress(int time, int cycle, double max, double min, double delay)
     {
-        if (!Check.CheckZero(cycle))
+        if (!Utils.CheckZero(cycle))
             return 0.0;
 
         double num = (float)(min - max) / (float)cycle;
@@ -938,7 +938,7 @@ public class MainControl : UserControl, IMessageFilter
 
     public double triangle(int time, int cycle, double max, double min, double delay)
     {
-        if (!Check.CheckZero(cycle))
+        if (!Utils.CheckZero(cycle))
             return 0.0;
 
         double num = (float)(max - min) / (float)(cycle / 2);
@@ -2316,19 +2316,8 @@ public class MainControl : UserControl, IMessageFilter
 
     public object Eval(string str)
     {
-        StringBuilder stringBuilder = new(str);
-        Regex regex = new("\\[[^\\]]+\\]");
-        MatchCollection matchCollection = regex.Matches(str);
-        List<string> list = new();
-        foreach (Match item in matchCollection)
-        {
-            if (!list.Contains(item.Value))
-            {
-                stringBuilder = stringBuilder.Replace(item.Value, "System.GetValue(\"" + item.Value + "\")");
-                list.Add(item.Value);
-            }
-        }
-        return m_ScriptEngine.Eval(stringBuilder.ToString(), null);
+        var logicScript = Utils.GetLogicToScript(str);
+        return m_ScriptEngine.Eval(logicScript, null);
     }
 
     public object GetValue(string str)
@@ -2801,20 +2790,7 @@ public class MainControl : UserControl, IMessageFilter
                 ((ScriptEngine)((Control)SO[name]).Tag).ExecuteStatement(statement);
                 return;
             }
-            StringBuilder stringBuilder = new(statement);
-            Regex regex = new("\\[[^\\]]+\\]");
-            MatchCollection matchCollection = regex.Matches(statement);
-            List<string> list = new();
-            foreach (Match item in matchCollection)
-            {
-                if (!list.Contains(item.Value))
-                {
-                    stringBuilder = stringBuilder.Replace(item.Value, "System.GetValue(\"" + item.Value + "\")");
-                    list.Add(item.Value);
-                }
-            }
-            statement = stringBuilder.ToString();
-            m_ScriptEngine.ExecuteStatement(statement);
+            m_ScriptEngine.ExecuteStatement(Utils.GetLogicToScript(statement));
         }
         catch (COMException ex)
         {

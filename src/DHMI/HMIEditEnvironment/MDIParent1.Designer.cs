@@ -2164,7 +2164,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_DrawLine.Enabled = false;
             this.barButtonItem_DrawLine.Hint = "直线";
             this.barButtonItem_DrawLine.Id = 249;
-            this.barButtonItem_DrawLine.ImageOptions.Image = global::HMIEditEnvironment_图标.line_small;
+            this.barButtonItem_DrawLine.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_DrawLine.ImageOptions.Image")));
             this.barButtonItem_DrawLine.Name = "barButtonItem_DrawLine";
             this.barButtonItem_DrawLine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制直线_ItemClick);
             // 
@@ -2174,7 +2174,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_CurveLine.Enabled = false;
             this.barButtonItem_CurveLine.Hint = "折线";
             this.barButtonItem_CurveLine.Id = 250;
-            this.barButtonItem_CurveLine.ImageOptions.Image = global::HMIEditEnvironment_图标.polyline_small;
+            this.barButtonItem_CurveLine.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_CurveLine.ImageOptions.Image")));
             this.barButtonItem_CurveLine.Name = "barButtonItem_CurveLine";
             this.barButtonItem_CurveLine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制折线_ItemClick);
             // 
@@ -2184,7 +2184,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_DrawEllipse.Enabled = false;
             this.barButtonItem_DrawEllipse.Hint = "椭圆";
             this.barButtonItem_DrawEllipse.Id = 251;
-            this.barButtonItem_DrawEllipse.ImageOptions.Image = global::HMIEditEnvironment_图标.ell_small;
+            this.barButtonItem_DrawEllipse.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_DrawEllipse.ImageOptions.Image")));
             this.barButtonItem_DrawEllipse.Name = "barButtonItem_DrawEllipse";
             this.barButtonItem_DrawEllipse.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制椭圆_ItemClick);
             // 
@@ -2194,7 +2194,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_Rectangle.Enabled = false;
             this.barButtonItem_Rectangle.Hint = "矩形";
             this.barButtonItem_Rectangle.Id = 252;
-            this.barButtonItem_Rectangle.ImageOptions.Image = global::HMIEditEnvironment_图标.rect_small;
+            this.barButtonItem_Rectangle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Rectangle.ImageOptions.Image")));
             this.barButtonItem_Rectangle.Name = "barButtonItem_Rectangle";
             this.barButtonItem_Rectangle.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制矩形_ItemClick);
             // 
@@ -2204,7 +2204,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_Polygon.Enabled = false;
             this.barButtonItem_Polygon.Hint = "多边形";
             this.barButtonItem_Polygon.Id = 253;
-            this.barButtonItem_Polygon.ImageOptions.Image = global::HMIEditEnvironment_图标.polygon_small;
+            this.barButtonItem_Polygon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Polygon.ImageOptions.Image")));
             this.barButtonItem_Polygon.Name = "barButtonItem_Polygon";
             this.barButtonItem_Polygon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制多边形_ItemClick);
             // 
@@ -2224,7 +2224,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_String.Enabled = false;
             this.barButtonItem_String.Hint = "文字";
             this.barButtonItem_String.Id = 256;
-            this.barButtonItem_String.ImageOptions.Image = global::HMIEditEnvironment_图标.str_small;
+            this.barButtonItem_String.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_String.ImageOptions.Image")));
             this.barButtonItem_String.Name = "barButtonItem_String";
             this.barButtonItem_String.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制文字_ItemClick);
             // 

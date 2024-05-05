@@ -546,6 +546,7 @@
     <EmbeddedResource Include="HMIEditEnvironment.图标.resx" LogicalName="HMIEditEnvironment.图标.resources">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>HMIEditEnvironment.图标.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="HMIEditEnvironment\AboutBox.resx" LogicalName="HMIEditEnvironment.AboutBox.resources">
       <DependentUpon>AboutBox.cs</DependentUpon>
@@ -631,6 +632,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\str_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\rect_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\san_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\str_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\bezier_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\circleRect_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\ell_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\line_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\polygon_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\polyline_small.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

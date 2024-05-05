@@ -55,7 +55,7 @@
     <Compile Include="HMIWeb\BoolForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HMIWeb\Check.cs" />
+    <Compile Include="HMIWeb\Utils.cs" />
     <Compile Include="HMIWeb\DbConnType.cs" />
     <Compile Include="HMIWeb\DeflateCompress.cs" />
     <Compile Include="HMIWeb\ErrorException.cs" />

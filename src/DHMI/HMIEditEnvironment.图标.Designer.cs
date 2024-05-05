@@ -63,6 +63,16 @@ internal class HMIEditEnvironment_图标 {
     /// <summary>
     ///   查找 System.Drawing.Bitmap 类型的本地化资源。
     /// </summary>
+    internal static System.Drawing.Bitmap bezier_small {
+        get {
+            object obj = ResourceManager.GetObject("bezier_small", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+    /// </summary>
     internal static System.Drawing.Bitmap circleRect_small {
         get {
             object obj = ResourceManager.GetObject("circleRect_small", resourceCulture);
@@ -116,6 +126,16 @@ internal class HMIEditEnvironment_图标 {
     internal static System.Drawing.Bitmap rect_small {
         get {
             object obj = ResourceManager.GetObject("rect_small", resourceCulture);
+            return ((System.Drawing.Bitmap)(obj));
+        }
+    }
+    
+    /// <summary>
+    ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+    /// </summary>
+    internal static System.Drawing.Bitmap san_small {
+        get {
+            object obj = ResourceManager.GetObject("san_small", resourceCulture);
             return ((System.Drawing.Bitmap)(obj));
         }
     }
