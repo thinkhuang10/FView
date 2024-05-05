@@ -68,9 +68,8 @@ public static class HighlightingDefinitionParser
             {
                 foreach (XmlNode childNode in xmlElement.ChildNodes)
                 {
-                    if (childNode is XmlElement)
+                    if (childNode is XmlElement xmlElement2)
                     {
-                        XmlElement xmlElement2 = (XmlElement)childNode;
                         if (xmlElement2.Name == "Custom")
                         {
                             highlighter.SetColorFor(xmlElement2.GetAttribute("name"), xmlElement2.HasAttribute("bgcolor") ? new HighlightBackground(xmlElement2) : new HighlightColor(xmlElement2));

@@ -186,7 +186,7 @@ public class FoldMarker : AbstractSegment, IComparable
 
     public int CompareTo(object o)
     {
-        if (!(o is FoldMarker))
+        if (o is not FoldMarker)
         {
             throw new ArgumentException();
         }

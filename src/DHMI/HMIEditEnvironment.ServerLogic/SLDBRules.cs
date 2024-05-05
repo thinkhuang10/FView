@@ -9,13 +9,13 @@ namespace HMIEditEnvironment.ServerLogic;
 
 public class SLDBRules : Form
 {
-	public List<string> vars = new List<string>();
+	public List<string> vars = new();
 
-	public DataTable RecordDatatable = new DataTable();
+	public DataTable RecordDatatable = new();
 
 	public string Wherestr = "";
 
-	private List<string> CanUseVars;
+	private readonly List<string> CanUseVars;
 
 	private Label label1;
 

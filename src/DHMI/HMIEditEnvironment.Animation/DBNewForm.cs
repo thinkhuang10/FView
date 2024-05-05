@@ -24,7 +24,7 @@ public class DBNewForm : Form
 
 	private string tableName = string.Empty;
 
-	private DataTable DgDatatable = new DataTable();
+	private DataTable DgDatatable = new();
 
 	private List<string> _datatypes;
 
@@ -137,7 +137,7 @@ public class DBNewForm : Form
 				DBOperationGlobal.conn.Open();
 			}
 			DBOperationGlobal.command.CommandText = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND ( TABLE_SCHEMA = '" + DBOperationGlobal.conn.Database + "' OR TABLE_CATALOG = '" + DBOperationGlobal.conn.Database + "' )";
-			List<string> list = new List<string>();
+			List<string> list = new();
 			using (DbDataReader dbDataReader = DBOperationGlobal.command.ExecuteReader())
 			{
 				while (dbDataReader.Read())
@@ -345,13 +345,15 @@ public class DBNewForm : Form
 	public byte[] Serialize()
 	{
 		IFormatter formatter = new BinaryFormatter();
-		MemoryStream memoryStream = new MemoryStream();
-		DBNewSerializeCopy dBNewSerializeCopy = new DBNewSerializeCopy();
-		dBNewSerializeCopy.ansync = Ansync;
-		dBNewSerializeCopy.sqlString = sqlString;
-		dBNewSerializeCopy.tableName = textBox2.Text;
-		dBNewSerializeCopy.DgDatatable = DgDatatable;
-		formatter.Serialize(memoryStream, dBNewSerializeCopy);
+		MemoryStream memoryStream = new();
+        DBNewSerializeCopy dBNewSerializeCopy = new()
+        {
+            ansync = Ansync,
+            sqlString = sqlString,
+            tableName = textBox2.Text,
+            DgDatatable = DgDatatable
+        };
+        formatter.Serialize(memoryStream, dBNewSerializeCopy);
 		byte[] result = memoryStream.ToArray();
 		memoryStream.Close();
 		return result;
@@ -592,9 +594,9 @@ public class DBNewForm : Form
 	private void InitializeComponent()
 	{
 		this.components = new System.ComponentModel.Container();
-		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle = new System.Windows.Forms.DataGridViewCellStyle();
-		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle = new();
+		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new();
+		System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new();
 		this.label2 = new System.Windows.Forms.Label();
 		this.label4 = new System.Windows.Forms.Label();
 		this.label3 = new System.Windows.Forms.Label();

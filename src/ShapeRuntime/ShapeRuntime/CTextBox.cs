@@ -18,7 +18,7 @@ namespace ShapeRuntime;
 [ClassInterface(ClassInterfaceType.AutoDispatch)]
 [Guid("C8CAC342-CBBC-4e5f-885D-B8FEBA72980C")]
 [ComVisible(true)]
-public class CTextBox : TextBox, IDCCEControl, IControlShape, ISupportHtml5
+public class CTextBox : TextBox, IDCCEControl, IControlShape
 {
     private bool Runing;
 
@@ -905,52 +905,6 @@ public class CTextBox : TextBox, IDCCEControl, IControlShape, ISupportHtml5
         sb.AppendLine("\t\t\tbreak labelFinish;");
         sb.AppendLine("\t\t}");
         sb.AppendLine("\t}");
-    }
-
-    public string makeHTML()
-    {
-        StringBuilder stringBuilder = new();
-        string text = (base.Visible ? "visible" : "hidden");
-        string text2 = ((!base.UseSystemPasswordChar) ? "text" : "password");
-        bool bold = Font.Bold;
-        string text3 = ((!bold) ? "normal" : "bold");
-        bool italic = Font.Italic;
-        string text4 = ((!italic) ? "normal" : "Italic");
-        bool underline = Font.Underline;
-        string text5 = ((!underline) ? "none" : "underline");
-        string text6 = ((!base.ReadOnly) ? "" : "readonly=\"readonly\"");
-        if (base.Multiline)
-        {
-            stringBuilder.Append("<textarea id=\"" + id + "\" " + text6 + " onclick=\"_onclick('" + id + "');\" onmouseover=\"_onMouseEnter('" + id + "');\" onmouseout=\"_onMouseLeave('" + id + "');\" onkeydown=\"_onText_Textchange('" + id + "');\"  onkeyup=\"_onText_Textchange('" + id + "');\"  ondblclick=\"_onDBClick('" + id + "');\"  tabIndex=\"" + base.TabIndex + "\" style=\"z-index:{Z_INDEX_REPLACE_BY_CCONTROL};visibility:" + text + "; display:inline;resize:none; position:absolute; left:" + base.Location.X + "px; top:" + base.Location.Y + "px;width:" + base.Width.ToString() + "px;height:" + base.Height.ToString() + "px;background-color:" + ColorTranslator.ToHtml(BackColor) + ";color:" + ColorTranslator.ToHtml(ForeColor) + ";font-Size:" + base.Font.Size + "pt; font-Style:" + text4 + "; font-family:" + Font.Name + "; font-Weight:" + text3 + ";text-decoration:" + text5 + ";\"width=\"" + base.Width.ToString() + "px\" height=\"" + base.Height.ToString() + "px\" value=\"" + Text.ToString() + " maxlength = '" + MaxLength + "'\" ></textarea>");
-        }
-        else
-        {
-            stringBuilder.Append(string.Concat("<input type=\"", text2, "\"  id=\"", id, "\" ", text6, " onclick=\"_onclick('", id, "');\" onmouseover=\"_onMouseEnter('", id, "');\" onmouseout=\"_onMouseLeave('", id, "');\"   onkeyup=\"", id, "_onTextChangeClick();\"  ondblclick=\"_onDBClick('", id, "');\"  tabIndex=\"", base.TabIndex, "\" style=\"z-index:{Z_INDEX_REPLACE_BY_CCONTROL}; visibility:", text, ";text-align:", base.TextAlign, ";display:inline; position:absolute; left:", base.Location.X, "px; top:", base.Location.Y, "px;width:", base.Width.ToString(), "px;height:", base.Height.ToString(), "px;background-color:", ColorTranslator.ToHtml(BackColor), ";color:", ColorTranslator.ToHtml(ForeColor), ";font-Size:", base.Font.Size, "pt; font-Style:", text4, "; font-family:", Font.Name, "; font-Weight:", text3, ";text-decoration:", text5, ";\"width=\"", base.Width.ToString(), "px\" height=\"", base.Height.ToString(), "px\" value=\"", Text.ToString(), "\" maxlength = '", MaxLength, "'></input>"));
-        }
-        return stringBuilder.ToString();
-    }
-
-    public string makeCycleScript()
-    {
-        StringBuilder stringBuilder = new();
-        if (this.requestPropertyBindData != null)
-        {
-            DataTable dataTable = this.requestPropertyBindData();
-            if (dataTable != null)
-            {
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    stringBuilder.AppendLine("parent.VarOperation.SetValueByName(\"[\"+pagename+\"." + id + "." + row["PropertyName"].ToString() + "]\",parent.VarOperation.GetValueByName(\"[" + row["Bind"].ToString() + "]\"));");
-                }
-            }
-        }
-        return stringBuilder.ToString();
-    }
-
-    public CTextBox()
-    {
-        base.TextChanged += CTextBox_TextChanged;
-        ForeColor = Color.Black;
     }
 
     public Bitmap GetLogo()

@@ -165,12 +165,12 @@ public class EventSetFunction : Form
     private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
     {
         CShape value = ((KVPart<string, CShape>)comboBox2.SelectedItem).Value;
-        object obj = ((!(value is CControl)) ? ((object)value) : ((object)(value as CControl)._c));
+        object obj = ((value is not CControl) ? ((object)value) : ((object)(value as CControl)._c));
         Type type = obj.GetType();
         MethodInfo[] methods = type.GetMethods();
         List<string> list = new();
         DataTable dataTable = new();
-        dataTable = ((!(value is CControl)) ? CEditEnvironmentGlobal.controlMembersSetting.Tables[type.Name] : CEditEnvironmentGlobal.controlMembersSetting.Tables[type.Name]);
+        dataTable = ((value is not CControl) ? CEditEnvironmentGlobal.controlMembersSetting.Tables[type.Name] : CEditEnvironmentGlobal.controlMembersSetting.Tables[type.Name]);
         bool flag = true;
         if (dataTable == null)
         {

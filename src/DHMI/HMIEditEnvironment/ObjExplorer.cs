@@ -10,7 +10,7 @@ public class ObjExplorer : UserControl
 {
 	public CGlobal m_ObjGbl;
 
-	public ObjExplorerSortor m_ObjSortor = new ObjExplorerSortor();
+	public ObjExplorerSortor m_ObjSortor = new();
 
 	private IContainer components;
 
@@ -337,23 +337,23 @@ public class ObjExplorer : UserControl
 	private void InitializeComponent()
 	{
 		this.components = new System.ComponentModel.Container();
-		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HMIEditEnvironment.ObjExplorer));
-		System.Windows.Forms.ListViewItem listViewItem = new System.Windows.Forms.ListViewItem("1", "String.png");
-		System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("10", "PictureEffectsShadowGallery.png");
-		System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("11", "String.png");
-		System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("12", "String.png");
-		System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("13", "String.png");
-		System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("14", "String.png");
-		System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("15", "String.png");
-		System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("16", "String.png");
-		System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("2", "Memory.png");
-		System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("3", "Lines.png");
-		System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("4", "ControlToolboxOutlook.png");
-		System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("5", "crectsmall.png");
-		System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("6", "Ellipse.png");
-		System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("7", "CloseLine.png");
-		System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("8", "Rectangle.png");
-		System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("9", "Library.png");
+		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIEditEnvironment.ObjExplorer));
+		System.Windows.Forms.ListViewItem listViewItem = new("1", "String.png");
+		System.Windows.Forms.ListViewItem listViewItem2 = new("10", "PictureEffectsShadowGallery.png");
+		System.Windows.Forms.ListViewItem listViewItem3 = new("11", "String.png");
+		System.Windows.Forms.ListViewItem listViewItem4 = new("12", "String.png");
+		System.Windows.Forms.ListViewItem listViewItem5 = new("13", "String.png");
+		System.Windows.Forms.ListViewItem listViewItem6 = new("14", "String.png");
+		System.Windows.Forms.ListViewItem listViewItem7 = new("15", "String.png");
+		System.Windows.Forms.ListViewItem listViewItem8 = new("16", "String.png");
+		System.Windows.Forms.ListViewItem listViewItem9 = new("2", "Memory.png");
+		System.Windows.Forms.ListViewItem listViewItem10 = new("3", "Lines.png");
+		System.Windows.Forms.ListViewItem listViewItem11 = new("4", "ControlToolboxOutlook.png");
+		System.Windows.Forms.ListViewItem listViewItem12 = new("5", "crectsmall.png");
+		System.Windows.Forms.ListViewItem listViewItem13 = new("6", "Ellipse.png");
+		System.Windows.Forms.ListViewItem listViewItem14 = new("7", "CloseLine.png");
+		System.Windows.Forms.ListViewItem listViewItem15 = new("8", "Rectangle.png");
+		System.Windows.Forms.ListViewItem listViewItem16 = new("9", "Library.png");
 		this.m_ImgListObj = new System.Windows.Forms.ImageList(this.components);
 		this.m_ListViewObj = new System.Windows.Forms.ListView();
 		this.col_0 = new System.Windows.Forms.ColumnHeader();

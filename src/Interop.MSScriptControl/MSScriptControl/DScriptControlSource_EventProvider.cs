@@ -21,8 +21,7 @@ internal sealed class DScriptControlSource_EventProvider : DScriptControlSource_
             96, 125, 22, 139, 5, 134, 208, 17, 171, 203,
             0, 160, 201, 15, 255, 192
         });
-        IConnectionPoint ppCP;
-        m_ConnectionPointContainer.FindConnectionPoint(ref riid, out ppCP);
+        m_ConnectionPointContainer.FindConnectionPoint(ref riid, out IConnectionPoint ppCP);
         m_ConnectionPoint = ppCP;
         m_aEventSinkHelpers = new ArrayList();
     }
@@ -39,8 +38,7 @@ internal sealed class DScriptControlSource_EventProvider : DScriptControlSource_
                     Init();
                 }
                 DScriptControlSource_SinkHelper dScriptControlSource_SinkHelper = new();
-                int pdwCookie;
-                m_ConnectionPoint.Advise(dScriptControlSource_SinkHelper, out pdwCookie);
+                m_ConnectionPoint.Advise(dScriptControlSource_SinkHelper, out int pdwCookie);
                 dScriptControlSource_SinkHelper.m_dwCookie = pdwCookie;
                 dScriptControlSource_SinkHelper.m_ErrorDelegate = value;
                 m_aEventSinkHelpers.Add(dScriptControlSource_SinkHelper);
@@ -105,8 +103,7 @@ internal sealed class DScriptControlSource_EventProvider : DScriptControlSource_
                     Init();
                 }
                 DScriptControlSource_SinkHelper dScriptControlSource_SinkHelper = new();
-                int pdwCookie;
-                m_ConnectionPoint.Advise(dScriptControlSource_SinkHelper, out pdwCookie);
+                m_ConnectionPoint.Advise(dScriptControlSource_SinkHelper, out int pdwCookie);
                 dScriptControlSource_SinkHelper.m_dwCookie = pdwCookie;
                 dScriptControlSource_SinkHelper.m_TimeoutDelegate = value;
                 m_aEventSinkHelpers.Add(dScriptControlSource_SinkHelper);

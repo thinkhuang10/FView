@@ -123,7 +123,7 @@ public class ScriptUnitAddUserDefineEvent : XtraForm
             foreach (CShape item3 in list2)
             {
                 List<TreeNode> list3 = new();
-                if (!(item3 is CControl))
+                if (item3 is not CControl)
                 {
                     TreeNode treeNode = new("鼠标左键按下")
                     {

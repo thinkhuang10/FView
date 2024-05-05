@@ -183,7 +183,7 @@ public class CEditEnvironmentGlobal
 
         public static void MovePageGroupToPageGroup(TreeNode srcNode, TreeNode dstNode)
         {
-            if (dstNode == null || !(dstNode.Tag is HmiPageGroup))
+            if (dstNode == null || dstNode.Tag is not HmiPageGroup)
             {
                 return;
             }
@@ -220,7 +220,7 @@ public class CEditEnvironmentGlobal
 
         public static void MovePageToPageGroup(TreeNode srcNode, TreeNode dstNode)
         {
-            if (dstNode == null || !(dstNode.Tag is HmiPageGroup))
+            if (dstNode == null || dstNode.Tag is not HmiPageGroup)
             {
                 return;
             }
@@ -251,7 +251,7 @@ public class CEditEnvironmentGlobal
 
         public static void AddPageToPageGroup(TreeNode pageNode, TreeNode pageGroupNode)
         {
-            if (pageNode == null || !(pageNode.Tag is HmiPage) || pageGroupNode == null || !(pageGroupNode.Tag is HmiPageGroup))
+            if (pageNode == null || pageNode.Tag is not HmiPage || pageGroupNode == null || pageGroupNode.Tag is not HmiPageGroup)
             {
                 return;
             }
@@ -285,7 +285,7 @@ public class CEditEnvironmentGlobal
 
         private static void FindAllPageInGroupNode(TreeNode pageGroupNode, ref List<TreeNode> pageNodeList)
         {
-            if (pageGroupNode == null || !(pageGroupNode.Tag is HmiPageGroup))
+            if (pageGroupNode == null || pageGroupNode.Tag is not HmiPageGroup)
             {
                 return;
             }
@@ -304,7 +304,7 @@ public class CEditEnvironmentGlobal
 
         private static void FindAllPageInGroupNode(TreeNode pageGroupNode, ref List<string> pageNameList)
         {
-            if (pageGroupNode == null || !(pageGroupNode.Tag is HmiPageGroup))
+            if (pageGroupNode == null || pageGroupNode.Tag is not HmiPageGroup)
             {
                 return;
             }

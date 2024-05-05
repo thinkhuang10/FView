@@ -90,9 +90,8 @@ public class CGlobal
     {
         if (SelectedShapeList.Count == 1)
         {
-            if (SelectedShapeList[0] is CControl)
+            if (SelectedShapeList[0] is CControl cControl2)
             {
-                CControl cControl2 = (CControl)SelectedShapeList[0];
                 pg.SelectedObject = cControl2._c;
             }
             else
@@ -125,9 +124,8 @@ public class CGlobal
         {
             return;
         }
-        if (SelectedShapeList[0] is CControl)
+        if (SelectedShapeList[0] is CControl cControl3)
         {
-            CControl cControl3 = (CControl)SelectedShapeList[0];
             if (cControl3._c is AxHost || cControl3._c is IDCCEControl)
             {
                 EventInfo[] events = ((CControl)SelectedShapeList[0])._c.GetType().GetEvents();

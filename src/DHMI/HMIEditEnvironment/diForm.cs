@@ -38,7 +38,7 @@ public class diForm : XtraForm
         InitializeComponent();
     }
 
-    private void button1_Click(object sender, EventArgs e)
+    private void Button1_Click(object sender, EventArgs e)
     {
         try
         { 
@@ -113,7 +113,7 @@ public class diForm : XtraForm
         this.button1.TabIndex = 6;
         this.button1.Text = "确定";
         this.button1.UseVisualStyleBackColor = true;
-        this.button1.Click += new System.EventHandler(button1_Click);
+        this.button1.Click += new System.EventHandler(Button1_Click);
         this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         this.button2.Location = new System.Drawing.Point(231, 129);
         this.button2.Name = "button2";

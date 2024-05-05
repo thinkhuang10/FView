@@ -1,9 +1,11 @@
+using CommonSnappableTypes;
+using DevExpress.XtraEditors;
+using ShapeRuntime;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -11,16 +13,11 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
-using CommonSnappableTypes;
-using DevExpress.XtraEditors;
-using ShapeRuntime;
 
 namespace HMIEditEnvironment;
 
 public class VarTable : XtraForm
 {
-    private readonly List<DataFile> ldf = new();
-
     private int nowNo;
 
     private readonly HMIProjectFile dhp;
@@ -35,7 +32,7 @@ public class VarTable : XtraForm
 
     private readonly XmlDocument doc;
 
-    private TreeNode DeviceIORootNode = new();
+    private readonly TreeNode DeviceIORootNode = new();
 
     private readonly XmlDocument tpdoc = new();
 
@@ -227,7 +224,7 @@ public class VarTable : XtraForm
             dataTable.Columns.Add("类型");
             dataTable.Columns.Add("说明");
             CShape cShape = e.Node.Tag as CShape;
-            object obj = ((!(cShape is CControl)) ? ((object)cShape) : ((object)(cShape as CControl)._c));
+            object obj = ((cShape is not CControl) ? ((object)cShape) : ((object)(cShape as CControl)._c));
             Type type = obj.GetType();
             PropertyInfo[] properties = type.GetProperties();
             int num = 0;
@@ -542,51 +539,23 @@ public class VarTable : XtraForm
         string[] array = new string[type.Length];
         for (int i = 0; i < type.Length; i++)
         {
-            switch (type[i])
+            array[i] = type[i] switch
             {
-                case "Boolean":
-                    array[i] = "0";
-                    break;
-                case "SByte":
-                    array[i] = "1";
-                    break;
-                case "Byte":
-                    array[i] = "2";
-                    break;
-                case "Int16":
-                    array[i] = "3";
-                    break;
-                case "UInt16":
-                    array[i] = "4";
-                    break;
-                case "Int32":
-                    array[i] = "5";
-                    break;
-                case "UInt32":
-                    array[i] = "6";
-                    break;
-                case "Single":
-                    array[i] = "7";
-                    break;
-                case "Double":
-                    array[i] = "8";
-                    break;
-                case "String":
-                    array[i] = "9";
-                    break;
-                case "IPAddress":
-                    array[i] = "10";
-                    break;
-                case "Enum":
-                    array[i] = "11";
-                    break;
-                case "Object":
-                    array[i] = "1024";
-                    break;
-                default:
-                    array[i] = "1024";
-                    break;
-            }
+                "Boolean" => "0",
+                "SByte" => "1",
+                "Byte" => "2",
+                "Int16" => "3",
+                "UInt16" => "4",
+                "Int32" => "5",
+                "UInt32" => "6",
+                "Single" => "7",
+                "Double" => "8",
+                "String" => "9",
+                "IPAddress" => "10",
+                "Enum" => "11",
+                "Object" => "1024",
+                _ => "1024",
+            };
         }
         return array;
     }
@@ -596,51 +565,23 @@ public class VarTable : XtraForm
         string[] array = new string[num.Length];
         for (int i = 0; i < num.Length; i++)
         {
-            switch (num[i])
+            array[i] = num[i] switch
             {
-                case "0":
-                    array[i] = "Boolean";
-                    break;
-                case "1":
-                    array[i] = "SByte";
-                    break;
-                case "2":
-                    array[i] = "Byte";
-                    break;
-                case "3":
-                    array[i] = "Int16";
-                    break;
-                case "4":
-                    array[i] = "UInt16";
-                    break;
-                case "5":
-                    array[i] = "Int32";
-                    break;
-                case "6":
-                    array[i] = "UInt32";
-                    break;
-                case "7":
-                    array[i] = "Single";
-                    break;
-                case "8":
-                    array[i] = "Double";
-                    break;
-                case "9":
-                    array[i] = "String";
-                    break;
-                case "10":
-                    array[i] = "IPAddress";
-                    break;
-                case "11":
-                    array[i] = "Enum";
-                    break;
-                case "1024":
-                    array[i] = "Object";
-                    break;
-                default:
-                    array[i] = "Object";
-                    break;
-            }
+                "0" => "Boolean",
+                "1" => "SByte",
+                "2" => "Byte",
+                "3" => "Int16",
+                "4" => "UInt16",
+                "5" => "Int32",
+                "6" => "UInt32",
+                "7" => "Single",
+                "8" => "Double",
+                "9" => "String",
+                "10" => "IPAddress",
+                "11" => "Enum",
+                "1024" => "Object",
+                _ => "Object",
+            };
         }
         return array;
     }
@@ -769,11 +710,11 @@ public class VarTable : XtraForm
             tagvalue = tagvalue.Substring(1);
             value = value.Substring(1);
         }
-        base.DialogResult = DialogResult.OK;
+        DialogResult = DialogResult.OK;
         Close();
     }
 
-    private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+    private void DataGridView1_MouseClick(object sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Right && dataGridView1.SelectedRows.Count != 0)
         {
@@ -781,12 +722,11 @@ public class VarTable : XtraForm
         }
     }
 
-    private void button1_Click(object sender, EventArgs e)
+    private void Button1_Click(object sender, EventArgs e)
     {
         if (textBox1.Text == "")
-        {
             return;
-        }
+
         if (_strText == "")
         {
             _strText = textBox1.Text;
@@ -864,10 +804,10 @@ public class VarTable : XtraForm
             groupName = treeView1.SelectedNode.Text;
         }
         projectIOEditForm projectIOEditForm2 = new(groupName);
+
         if (projectIOEditForm2.ShowDialog() != DialogResult.OK)
-        {
             return;
-        }
+
         ProjectIO pio = projectIOEditForm2.pio;
         foreach (ProjectIO projectIO in CEditEnvironmentGlobal.dhp.ProjectIOs)
         {
@@ -1363,7 +1303,7 @@ public class VarTable : XtraForm
         this.dataGridView1.Size = new System.Drawing.Size(785, 466);
         this.dataGridView1.TabIndex = 1;
         this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellDoubleClick);
-        this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(dataGridView1_MouseClick);
+        this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(DataGridView1_MouseClick);
         this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[1] { this.添加ToolStripMenuItem });
         this.contextMenuStrip1.Name = "contextMenuStrip1";
         this.contextMenuStrip1.Size = new System.Drawing.Size(95, 26);
@@ -1378,7 +1318,7 @@ public class VarTable : XtraForm
         this.button1.Text = "局部查询";
         this.toolTip1.SetToolTip(this.button1, "提供对当前组的变量查询，支持模糊查询");
         this.button1.UseVisualStyleBackColor = true;
-        this.button1.Click += new System.EventHandler(button1_Click);
+        this.button1.Click += new System.EventHandler(Button1_Click);
         this.label1.AutoSize = true;
         this.label1.Location = new System.Drawing.Point(223, 40);
         this.label1.Name = "label1";

@@ -389,8 +389,7 @@ public class TextView : AbstractMargin, IDisposable
                     TextWordType.Tab => colorFor2.Color,
                     _ => word.Color,
                 };
-                IList<TextMarker> markers;
-                Brush brush3 = GetMarkerBrushAt(lineSegment.Offset + num, word.Length, ref foreColor, out markers);
+                Brush brush3 = GetMarkerBrushAt(lineSegment.Offset + num, word.Length, ref foreColor, out IList<TextMarker> markers);
                 if (word.Length > 1)
                 {
                     int num3 = int.MaxValue;
@@ -642,14 +641,12 @@ public class TextView : AbstractMargin, IDisposable
 
     public TextLocation GetLogicalPosition(Point mousePosition)
     {
-        FoldMarker inFoldMarker;
-        return GetLogicalColumn(GetLogicalLine(mousePosition.Y), mousePosition.X, out inFoldMarker);
+        return GetLogicalColumn(GetLogicalLine(mousePosition.Y), mousePosition.X, out FoldMarker inFoldMarker);
     }
 
     public TextLocation GetLogicalPosition(int visualPosX, int visualPosY)
     {
-        FoldMarker inFoldMarker;
-        return GetLogicalColumn(GetLogicalLine(visualPosY), visualPosX, out inFoldMarker);
+        return GetLogicalColumn(GetLogicalLine(visualPosY), visualPosX, out FoldMarker inFoldMarker);
     }
 
     public FoldMarker GetFoldMarkerFromPosition(int visualPosX, int visualPosY)

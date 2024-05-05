@@ -8,11 +8,11 @@ namespace HMIRunForm;
 
 public class ProjectEndForm : Form
 {
-	private CAuthoritySeiallize cas = new CAuthoritySeiallize();
+	private readonly CAuthoritySeiallize cas = new();
 
 	public static bool bProjectEndForm;
 
-	private IContainer components;
+	private readonly IContainer components;
 
 	private TextBox tbPassword;
 
@@ -78,7 +78,7 @@ public class ProjectEndForm : Form
 
 	private void InitializeComponent()
 	{
-		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HMIRunForm.ProjectEndForm));
+		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIRunForm.ProjectEndForm));
 		this.tbPassword = new System.Windows.Forms.TextBox();
 		this.cbUser = new System.Windows.Forms.ComboBox();
 		this.label2 = new System.Windows.Forms.Label();

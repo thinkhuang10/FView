@@ -146,7 +146,7 @@ public class Compiler
             for (int i = 0; i < strshapeDictionary[key].Count; i++)
             {
                 CShape cShape = strshapeDictionary[key][i];
-                object obj = ((!(cShape is CControl)) ? ((object)cShape) : ((object)(cShape as CControl)._c));
+                object obj = ((cShape is not CControl) ? ((object)cShape) : ((object)(cShape as CControl)._c));
                 Type type = obj.GetType();
                 EventInfo[] events = type.GetEvents();
                 EventInfo[] array = events;

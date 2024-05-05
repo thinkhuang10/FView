@@ -13,7 +13,7 @@ namespace HMIEditEnvironment
 
         public StringCollection FileList;
 
-        private int FileNumbers;
+        private readonly int FileNumbers;
 
         public ProjectPathSaveHandler()
         {

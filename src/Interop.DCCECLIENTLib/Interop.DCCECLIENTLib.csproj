@@ -45,8 +45,8 @@
     <Compile Include="DCCECLIENTLib\DCCEClientClass.cs" />
     <Compile Include="DCCECLIENTLib\_DDCCEClient.cs" />
     <Compile Include="DCCECLIENTLib\_DDCCEClientEvents.cs" />
-    <Compile Include="DCCECLIENTLib\_DDCCEClientEvents_Event.cs" />
-    <Compile Include="DCCECLIENTLib\_DDCCEClientEvents_EventProvider.cs" />
+    <Compile Include="DCCECLIENTLib\DDCCEClientEvents_Event.cs" />
+    <Compile Include="DCCECLIENTLib\DDCCEClientEvents_EventProvider.cs" />
     <Compile Include="DCCECLIENTLib\_DDCCEClientEvents_FireOnBehaviorEventHandler.cs" />
     <Compile Include="DCCECLIENTLib\_DDCCEClientEvents_FireOnDataReadyEventHandler.cs" />
     <Compile Include="DCCECLIENTLib\_DDCCEClientEvents_FireOnDeviceStatusEventHandler.cs" />

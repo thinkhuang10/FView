@@ -21,9 +21,9 @@ public class UserShapeEditControl : UserControl
 {
 	public List<DataFile> dfs;
 
-	private Rectangle dragDropRect = new Rectangle(1, 1, 1, 1);
+	private Rectangle dragDropRect = new(1, 1, 1, 1);
 
-	private Rectangle dragRightDropRect = new Rectangle(1, 1, 1, 1);
+	private Rectangle dragRightDropRect = new(1, 1, 1, 1);
 
 	public Size OldSize;
 
@@ -39,11 +39,11 @@ public class UserShapeEditControl : UserControl
 
 	private Point BeginDrawShapeFirstPoint;
 
-	private SolidBrush otherBrush = new SolidBrush(Color.FromArgb(100, 192, 255, 255));
+	private SolidBrush otherBrush = new(Color.FromArgb(100, 192, 255, 255));
 
-	private Pen otherPen0 = new Pen(Color.White, 0f);
+	private readonly Pen otherPen0 = new(Color.White, 0f);
 
-	private Pen otherPen1 = new Pen(Color.SkyBlue, 0f);
+	private readonly Pen otherPen1 = new(Color.SkyBlue, 0f);
 
 	private IContainer components;
 
@@ -160,14 +160,14 @@ public class UserShapeEditControl : UserControl
 			if (backgroundImageResult == null)
 			{
 				backgroundImageResult = new Bitmap(base.Width, base.Height);
-				PaintEventArgs e2 = new PaintEventArgs(Graphics.FromImage(backgroundImageResult), new Rectangle(0, 0, base.Width, base.Height));
+				PaintEventArgs e2 = new(Graphics.FromImage(backgroundImageResult), new Rectangle(0, 0, base.Width, base.Height));
 				base.OnPaintBackground(e2);
 			}
 			else if (backgroundReDraw || backgroundImageResult.Width != base.Width || backgroundImageResult.Height != base.Height)
 			{
 				backgroundImageResult.Dispose();
 				backgroundImageResult = new Bitmap(base.Width, base.Height);
-				PaintEventArgs e3 = new PaintEventArgs(Graphics.FromImage(backgroundImageResult), e.ClipRectangle);
+				PaintEventArgs e3 = new(Graphics.FromImage(backgroundImageResult), e.ClipRectangle);
 				base.OnPaintBackground(e3);
 				backgroundReDraw = false;
 			}
@@ -209,7 +209,7 @@ public class UserShapeEditControl : UserControl
 			}
 			if (theglobal.str_IMDoingWhat == "BeginDrawShape" && BeginDrawShapeFirstPoint != Point.Empty)
 			{
-				Pen pen = new Pen(Color.Gray, 1.5f);
+				Pen pen = new(Color.Gray, 1.5f);
 				float[] dashPattern = new float[2] { 1f, 2f };
 				pen.DashPattern = dashPattern;
 				if (theglobal.g_ListAllShowCShape[theglobal.g_ListAllShowCShape.Count - 1] is CLine)
@@ -247,32 +247,31 @@ public class UserShapeEditControl : UserControl
 		CShape[] array = theglobal.SelectedShapeList.ToArray();
 		foreach (CShape cShape in array)
 		{
-			if (cShape is CControl)
-			{
-				CControl cControl = (CControl)cShape;
-				string[] array2 = cControl.type.Split('.');
-				if ("ShapeRuntime" == array2[0])
-				{
-					barButtonItem1_ItemClick(null, null);
-					continue;
-				}
-				cControl._c.Enabled = true;
-				theglobal.OldShape = cControl;
-				theglobal.str_IMDoingWhat = "ControlTrue";
-			}
-			else if (cShape is CPixieControl)
-			{
-				barButtonItem8_ItemClick(null, null);
-			}
-			else if (cShape is CPicture)
-			{
-				barButtonItem1_ItemClick(null, null);
-			}
-			else
-			{
-				barButtonItem1_ItemClick(null, null);
-			}
-		}
+            if (cShape is CControl cControl)
+            {
+                string[] array2 = cControl.type.Split('.');
+                if ("ShapeRuntime" == array2[0])
+                {
+                    barButtonItem1_ItemClick(null, null);
+                    continue;
+                }
+                cControl._c.Enabled = true;
+                theglobal.OldShape = cControl;
+                theglobal.str_IMDoingWhat = "ControlTrue";
+            }
+            else if (cShape is CPixieControl)
+            {
+                barButtonItem8_ItemClick(null, null);
+            }
+            else if (cShape is CPicture)
+            {
+                barButtonItem1_ItemClick(null, null);
+            }
+            else
+            {
+                barButtonItem1_ItemClick(null, null);
+            }
+        }
 	}
 
 	private void UserControl2_KeyDown(object sender, KeyEventArgs e)
@@ -400,7 +399,7 @@ public class UserShapeEditControl : UserControl
 				{
 					UserCommandControl2.GiveName(theglobal.g_ListAllShowCShape[theglobal.g_ListAllShowCShape.Count - 1]);
 					CShape cShape = theglobal.g_ListAllShowCShape[theglobal.g_ListAllShowCShape.Count - 1].Copy();
-					List<CShape> list = new List<CShape>
+					List<CShape> list = new()
                     {
                         cShape
                     };
@@ -446,7 +445,7 @@ public class UserShapeEditControl : UserControl
 									num4 = item4.ImportantPoints[i].Y;
 								}
 							}
-							List<CShape> list2 = new List<CShape>();
+							List<CShape> list2 = new();
 							bool flag2 = false;
 							if (num > Math.Min(e.Location.X, theglobal.mselectfirstp.X) && num < Math.Max(e.Location.X, theglobal.mselectfirstp.X) && num2 > Math.Min(e.Location.Y, theglobal.mselectfirstp.Y) && num2 < Math.Max(e.Location.Y, theglobal.mselectfirstp.Y))
 							{
@@ -541,7 +540,7 @@ public class UserShapeEditControl : UserControl
 					BeginDrawShapeFirstPoint = Point.Empty;
 					UserCommandControl2.GiveName(cShape2);
 					CShape item2 = cShape2.Copy();
-					List<CShape> list3 = new List<CShape>
+					List<CShape> list3 = new()
                     {
                         item2
                     };
@@ -570,8 +569,8 @@ public class UserShapeEditControl : UserControl
 					{
 						continue;
 					}
-					List<CShape> list4 = new List<CShape>();
-					List<CShape> list5 = new List<CShape>();
+					List<CShape> list4 = new();
+					List<CShape> list5 = new();
 					foreach (CShape oldShape in theglobal.OldShapes)
 					{
 						foreach (CShape item5 in theglobal.g_ListAllShowCShape)
@@ -591,8 +590,8 @@ public class UserShapeEditControl : UserControl
 				{
 					if (theglobal.OldShapes != null && theglobal.OldShapes.Count != 0)
 					{
-						List<CShape> list6 = new List<CShape>();
-						List<CShape> list7 = new List<CShape>();
+						List<CShape> list6 = new();
+						List<CShape> list7 = new();
 						foreach (CShape oldShape2 in theglobal.OldShapes)
 						{
 							foreach (CShape item6 in theglobal.g_ListAllShowCShape)
@@ -616,8 +615,8 @@ public class UserShapeEditControl : UserControl
 					{
 						continue;
 					}
-					List<CShape> list8 = new List<CShape>();
-					List<CShape> list9 = new List<CShape>();
+					List<CShape> list8 = new();
+					List<CShape> list9 = new();
 					foreach (CShape oldShape3 in theglobal.OldShapes)
 					{
 						foreach (CShape item7 in theglobal.g_ListAllShowCShape)
@@ -641,8 +640,8 @@ public class UserShapeEditControl : UserControl
 						Focus();
 						theglobal.SelectedShapeList.Remove(item3);
 					}
-					List<CShape> list10 = new List<CShape>();
-					List<CShape> list11 = new List<CShape>();
+					List<CShape> list10 = new();
+					List<CShape> list11 = new();
 					list10.Add(cShape3);
 					list11.Add(theglobal.OldShape);
 					theglobal.ForUndo(list10, list11);
@@ -773,12 +772,12 @@ public class UserShapeEditControl : UserControl
 		theglobal.uc1.button9_Click(sender, e);
 	}
 
-	private void barButtonItem28_ItemClick(object sender, ItemClickEventArgs e)
+	private void BarButtonItem28_ItemClick(object sender, ItemClickEventArgs e)
 	{
 		theglobal.uc1.button10_Click(sender, e);
 	}
 
-	private void barButtonItem29_ItemClick(object sender, ItemClickEventArgs e)
+	private void BarButtonItem29_ItemClick(object sender, ItemClickEventArgs e)
 	{
 		theglobal.uc1.button17_Click(sender, e);
 	}
@@ -800,7 +799,7 @@ public class UserShapeEditControl : UserControl
 
 	private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
 	{
-		List<CShape> list = new List<CShape>();
+		List<CShape> list = new();
 		CEditEnvironmentGlobal.CLS.Clear();
 		CShape[] array = theglobal.SelectedShapeList.ToArray();
 		foreach (CShape cShape in array)
@@ -808,7 +807,7 @@ public class UserShapeEditControl : UserControl
 			List<string> list2 = CheckIOExists.ShapeInUse(theglobal.df.name + "." + cShape.Name);
 			if (list2.Count != 0)
 			{
-				delPage delPage2 = new delPage(list2, "该图形正在被引用,是否仍继续操作.");
+				delPage delPage2 = new(list2, "该图形正在被引用,是否仍继续操作.");
 				if (delPage2.ShowDialog() != DialogResult.Yes)
 				{
 					return;
@@ -833,14 +832,14 @@ public class UserShapeEditControl : UserControl
 
 	private void barButtonItem_Delete_ItemClick(object sender, ItemClickEventArgs e)
 	{
-		List<CShape> list = new List<CShape>();
+		List<CShape> list = new();
 		CShape[] array = theglobal.SelectedShapeList.ToArray();
 		foreach (CShape cShape in array)
 		{
 			List<string> list2 = CheckIOExists.ShapeInUse(theglobal.df.name + "." + cShape.Name);
 			if (list2.Count != 0)
 			{
-				delPage delPage2 = new delPage(list2, "该图形正在被引用,是否仍继续操作.");
+				delPage delPage2 = new(list2, "该图形正在被引用,是否仍继续操作.");
 				if (delPage2.ShowDialog() != DialogResult.Yes)
 				{
 					return;
@@ -864,7 +863,7 @@ public class UserShapeEditControl : UserControl
 
 	private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
 	{
-		List<CShape> list = new List<CShape>();
+		List<CShape> list = new();
 		theglobal.SelectedShapeList.Clear();
 		CEditEnvironmentGlobal.mdiparent.objView_Page.FreshSelect(theglobal);
 		CEditEnvironmentGlobal.CLS.Sort(CEditEnvironmentGlobal.CompareByLayer);
@@ -914,10 +913,12 @@ public class UserShapeEditControl : UserControl
 	{
 		if (theglobal.SelectedShapeList.Count != 0)
 		{
-			dhljForm dhljForm2 = new dhljForm();
-			dhljForm2.theglobal = theglobal;
-			dhljForm2.dfs = dfs;
-			dhljForm2.ShowDialog();
+            dhljForm dhljForm2 = new()
+            {
+                theglobal = theglobal,
+                dfs = dfs
+            };
+            dhljForm2.ShowDialog();
 		}
 	}
 
@@ -946,16 +947,18 @@ public class UserShapeEditControl : UserControl
 			else if (text.Substring(9, 2) == "1:")
 			{
 				string type = text.Substring(11);
-				CVectorGraph cVectorGraph = new CVectorGraph();
-				cVectorGraph.type = type;
-				cVectorGraph.AddPoint(PointF.Empty);
+                CVectorGraph cVectorGraph = new()
+                {
+                    type = type
+                };
+                cVectorGraph.AddPoint(PointF.Empty);
 				theglobal.str_IMDoingWhat = "DragDrop";
 				dragDropRect = new Rectangle(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X - Size.Ceiling(cVectorGraph.Size).Width / 2), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y - Size.Ceiling(cVectorGraph.Size).Height / 2)), Size.Ceiling(cVectorGraph.Size));
 			}
 			else if (text.Substring(9, 2) == "2:")
 			{
 				string text2 = text.Substring(11);
-				CControl cControl = new CControl();
+				CControl cControl = new();
 				switch (text2)
 				{
 				case "按钮":
@@ -1013,10 +1016,12 @@ public class UserShapeEditControl : UserControl
 				string[] array = text.Substring(11).Split('|');
 				string type2 = array[0];
 				string dllfile = array[1];
-				CControl cControl2 = new CControl();
-				cControl2.type = type2;
-				cControl2._dllfile = dllfile;
-				List<string> list = new List<string>();
+                CControl cControl2 = new()
+                {
+                    type = type2,
+                    _dllfile = dllfile
+                };
+                List<string> list = new();
 				for (int i = 2; i < array.Length; i++)
 				{
 					list.Add(array[i]);
@@ -1031,10 +1036,12 @@ public class UserShapeEditControl : UserControl
 				string[] array2 = text.Substring(11).Split('|');
 				string type3 = array2[0];
 				string dllfile2 = array2[1];
-				CControl cControl3 = new CControl();
-				cControl3.type = type3;
-				cControl3._dllfile = dllfile2;
-				List<string> list2 = new List<string>();
+                CControl cControl3 = new()
+                {
+                    type = type3,
+                    _dllfile = dllfile2
+                };
+                List<string> list2 = new();
 				for (int j = 2; j < array2.Length; j++)
 				{
 					list2.Add(array2[j]);
@@ -1058,10 +1065,12 @@ public class UserShapeEditControl : UserControl
 				string[] array4 = text.Substring(11).Split('|');
 				string type4 = array4[0];
 				string dllfile3 = array4[1];
-				CControl cControl4 = new CControl();
-				cControl4.type = type4;
-				cControl4._dllfile = dllfile3;
-				List<string> list3 = new List<string>();
+                CControl cControl4 = new()
+                {
+                    type = type4,
+                    _dllfile = dllfile3
+                };
+                List<string> list3 = new();
 				for (int k = 2; k < array4.Length; k++)
 				{
 					list3.Add(array4[k]);
@@ -1108,7 +1117,7 @@ public class UserShapeEditControl : UserControl
 			{
 			case "直线":
 			{
-				CLine cLine = new CLine();
+				CLine cLine = new();
 				UserCommandControl2.GiveName(cLine);
 				cLine.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) - new Size(75, 50));
 				cLine.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) + new Size(75, 50));
@@ -1117,7 +1126,7 @@ public class UserShapeEditControl : UserControl
 			}
 			case "椭圆":
 			{
-				CEllipse cEllipse = new CEllipse();
+				CEllipse cEllipse = new();
 				UserCommandControl2.GiveName(cEllipse);
 				cEllipse.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) - new Size(75, 50));
 				cEllipse.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) + new Size(75, 50));
@@ -1126,7 +1135,7 @@ public class UserShapeEditControl : UserControl
 			}
 			case "矩形":
 			{
-				CRectangle cRectangle = new CRectangle();
+				CRectangle cRectangle = new();
 				UserCommandControl2.GiveName(cRectangle);
 				cRectangle.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) - new Size(75, 50));
 				cRectangle.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) + new Size(75, 50));
@@ -1135,7 +1144,7 @@ public class UserShapeEditControl : UserControl
 			}
 			case "圆角矩形":
 			{
-				CCircleRect cCircleRect = new CCircleRect();
+				CCircleRect cCircleRect = new();
 				UserCommandControl2.GiveName(cCircleRect);
 				cCircleRect.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) - new Size(75, 50));
 				cCircleRect.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) + new Size(75, 50));
@@ -1144,7 +1153,7 @@ public class UserShapeEditControl : UserControl
 			}
 			case "贝塞尔曲线":
 			{
-				CBezier cBezier = new CBezier();
+				CBezier cBezier = new();
 				UserCommandControl2.GiveName(cBezier);
 				cBezier.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) - new Size(75, 50));
 				cBezier.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) + new Size(75, 50));
@@ -1153,7 +1162,7 @@ public class UserShapeEditControl : UserControl
 			}
 			case "三角形":
 			{
-				CCloseLines cCloseLines = new CCloseLines();
+				CCloseLines cCloseLines = new();
 				UserCommandControl2.GiveName(cCloseLines);
 				cCloseLines.AddPoint(PointToClient(new Point(e.X, e.Y - 50)));
 				cCloseLines.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) + new Size(75, 50));
@@ -1163,7 +1172,7 @@ public class UserShapeEditControl : UserControl
 			}
 			case "文字":
 			{
-				CString cString2 = new CString();
+				CString cString2 = new();
 				UserCommandControl2.GiveName(cString2);
 				cString2.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) - new Size(75, 50));
 				cString2.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) + new Size(75, 50));
@@ -1173,7 +1182,7 @@ public class UserShapeEditControl : UserControl
 			}
 			default:
 			{
-				CString cString = new CString();
+				CString cString = new();
 				UserCommandControl2.GiveName(cString);
 				cString.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) - new Size(30, 10));
 				cString.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) + new Size(30, 10));
@@ -1192,7 +1201,7 @@ public class UserShapeEditControl : UserControl
 		else if (text.Substring(9, 2) == "1:")
 		{
 			string type = text.Substring(11);
-			CVectorGraph cVectorGraph = new CVectorGraph();
+			CVectorGraph cVectorGraph = new();
 			UserCommandControl2.GiveName(cVectorGraph);
 			cVectorGraph.type = type;
 			if (cVectorGraph.AddPoint(new Point(Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).X), Convert.ToInt32(PointToClient(new Point(e.X, e.Y)).Y)) - new Size(Convert.ToInt32(dragDropRect.Size.Width / 2), Convert.ToInt32(dragDropRect.Size.Height / 2))))
@@ -1205,10 +1214,9 @@ public class UserShapeEditControl : UserControl
 		else if (text.Substring(9, 2) == "2:")
 		{
 			string text3 = text.Substring(11);
-			CControl cControl = new CControl();
-			cControl.IsHTML5_Control = false;
+			CControl cControl = new();
 
-			switch (text3)
+            switch (text3)
 			{
 			case "按钮":
 				cControl.type = "ShapeRuntime.CButton";
@@ -1269,10 +1277,12 @@ public class UserShapeEditControl : UserControl
 			string[] array = text.Substring(11).Split('|');
 			string type2 = array[0];
 			string dllfile = array[1];
-			CControl cControl2 = new CControl();
-			cControl2.type = type2;
-			cControl2._dllfile = dllfile;
-			List<string> list = new List<string>();
+            CControl cControl2 = new()
+            {
+                type = type2,
+                _dllfile = dllfile
+            };
+            List<string> list = new();
 			for (int i = 2; i < array.Length; i++)
 			{
 				list.Add(array[i]);
@@ -1292,10 +1302,12 @@ public class UserShapeEditControl : UserControl
 			string[] array2 = text.Substring(11).Split('|');
 			string type3 = array2[0];
 			string dllfile2 = array2[1];
-			CControl cControl3 = new CControl();
-			cControl3.type = type3;
-			cControl3._dllfile = dllfile2;
-			List<string> list2 = new List<string>();
+            CControl cControl3 = new()
+            {
+                type = type3,
+                _dllfile = dllfile2
+            };
+            List<string> list2 = new();
 			for (int j = 2; j < array2.Length; j++)
 			{
 				list2.Add(array2[j]);
@@ -1320,7 +1332,7 @@ public class UserShapeEditControl : UserControl
 			cPixieControl.ValidateVar += CForDCCEControl.ValidateVarEvent;
 			cPixieControl.type = text4;
 			cPixieControl._dllfile = text5;
-			List<string> list3 = new List<string>();
+			List<string> list3 = new();
 			for (int k = 4; k < array3.Length; k++)
 			{
 				list3.Add(array3[k]);
@@ -1333,10 +1345,9 @@ public class UserShapeEditControl : UserControl
 		}
 		else if (text.Substring(9, 2) == "6:")
 		{
-			CControl cControl4 = new CControl();
-			cControl4.IsHTML5_Control = false;
+			CControl cControl4 = new();
 
-			if (text.EndsWith("|"))
+            if (text.EndsWith("|"))
 			{
 				text = text.Substring(0, text.Length - 1);
 			}
@@ -1345,7 +1356,7 @@ public class UserShapeEditControl : UserControl
 			string dllfile3 = array4[1];
 			cControl4.type = type5;
 			cControl4._dllfile = dllfile3;
-			List<string> list4 = new List<string>();
+			List<string> list4 = new();
 			for (int l = 2; l < array4.Length; l++)
 			{
 				list4.Add(array4[l]);
@@ -1372,7 +1383,7 @@ public class UserShapeEditControl : UserControl
 			theglobal.SelectedShapeList.Clear();
 			theglobal.SelectedShapeList.Add(cShape);
 			CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape.ShapeID.ToString());
-			List<CShape> list5 = new List<CShape>
+			List<CShape> list5 = new()
             {
                 cShape
             };
@@ -1382,7 +1393,7 @@ public class UserShapeEditControl : UserControl
 		CEditEnvironmentGlobal.dhp.dirtyPageAdd(theglobal.df.name);
 	}
 
-	private void barSubItem1_Popup(object sender, EventArgs e)
+	private void BarSubItem1_Popup(object sender, EventArgs e)
 	{
 		CEditEnvironmentGlobal.NotEditValue = true;
 		if (theglobal.SelectedShapeList.Count == 1)
@@ -1413,13 +1424,13 @@ public class UserShapeEditControl : UserControl
 		List<string> list = CheckIOExists.ShapeInUse(CEditEnvironmentGlobal.childform.theglobal.df.name + "." + theglobal.SelectedShapeList[0].ShapeName);
 		if (list.Count != 0)
 		{
-			delPage delPage2 = new delPage(list, "该图形正在被引用,是否仍继续操作.");
+			delPage delPage2 = new(list, "该图形正在被引用,是否仍继续操作.");
 			if (delPage2.ShowDialog(this) != DialogResult.Yes)
 			{
 				return;
 			}
 		}
-		Regex regex = new Regex("^[a-zA-Z_][a-zA-Z0-9_]*$");
+		Regex regex = new("^[a-zA-Z_][a-zA-Z0-9_]*$");
 		if (!regex.IsMatch((string)barEditItemControlName.EditValue))
 		{
 			MessageBox.Show("名称中包含非法字符.", "错误");
@@ -1444,8 +1455,8 @@ public class UserShapeEditControl : UserControl
 		}
 		theglobal.OldShape = theglobal.SelectedShapeList[0].Copy();
 		theglobal.SelectedShapeList[0].Name = (string)barEditItemControlName.EditValue;
-		List<CShape> list2 = new List<CShape>();
-		List<CShape> list3 = new List<CShape>();
+		List<CShape> list2 = new();
+		List<CShape> list3 = new();
 		list2.Add(theglobal.SelectedShapeList[0]);
 		list3.Add(theglobal.OldShape);
 		theglobal.ForUndo(list2, list3);
@@ -1459,8 +1470,8 @@ public class UserShapeEditControl : UserControl
 		{
 			theglobal.OldShape = theglobal.SelectedShapeList[0].Copy();
 			theglobal.SelectedShapeList[0].Color1 = (Color)barEditItem2.EditValue;
-			List<CShape> list = new List<CShape>();
-			List<CShape> list2 = new List<CShape>();
+			List<CShape> list = new();
+			List<CShape> list2 = new();
 			list.Add(theglobal.SelectedShapeList[0]);
 			list2.Add(theglobal.OldShape);
 			theglobal.ForUndo(list, list2);
@@ -1475,8 +1486,8 @@ public class UserShapeEditControl : UserControl
 		{
 			theglobal.OldShape = theglobal.SelectedShapeList[0].Copy();
 			theglobal.SelectedShapeList[0].PenColor = (Color)barEditItem3.EditValue;
-			List<CShape> list = new List<CShape>();
-			List<CShape> list2 = new List<CShape>();
+			List<CShape> list = new();
+			List<CShape> list2 = new();
 			list.Add(theglobal.SelectedShapeList[0]);
 			list2.Add(theglobal.OldShape);
 			theglobal.ForUndo(list, list2);
@@ -1488,7 +1499,7 @@ public class UserShapeEditControl : UserControl
 	private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
 	{
 		theglobal.pg.SelectedObject = theglobal.pageProp;
-		PagePropertyForm pagePropertyForm = new PagePropertyForm();
+		PagePropertyForm pagePropertyForm = new();
 		if (pagePropertyForm.ShowDialog() == DialogResult.OK)
 		{
 			CEditEnvironmentGlobal.dhp.dirtyPageAdd(theglobal.df.name);
@@ -1497,7 +1508,7 @@ public class UserShapeEditControl : UserControl
 
 	private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
 	{
-		EventBindForm eventBindForm = new EventBindForm(theglobal.df);
+		EventBindForm eventBindForm = new(theglobal.df);
 		if (eventBindForm.ShowDialog() == DialogResult.OK)
 		{
 			CEditEnvironmentGlobal.dhp.dirtyPageAdd(theglobal.df.name);
@@ -1635,7 +1646,7 @@ public class UserShapeEditControl : UserControl
 		foreach (CShape selectedShape in theglobal.SelectedShapeList)
 		{
 			_ = selectedShape;
-			if (!(theglobal.SelectedShapeList[0] is CControl))
+			if (theglobal.SelectedShapeList[0] is not CControl)
 			{
 				num++;
 				if (num >= 2)
@@ -1668,7 +1679,7 @@ public class UserShapeEditControl : UserControl
 		bool flag = false;
 		foreach (CShape selectedShape3 in theglobal.SelectedShapeList)
 		{
-			if (!(selectedShape3 is CControl) && !(selectedShape3 is CPixieControl) && !(selectedShape3 is CVectorGraph) && !(selectedShape3 is CPicture))
+			if (selectedShape3 is not CControl && selectedShape3 is not CPixieControl && selectedShape3 is not CVectorGraph && selectedShape3 is not CPicture)
 			{
 				flag = true;
 			}
@@ -1996,8 +2007,8 @@ public class UserShapeEditControl : UserControl
 	{
 		try
 		{
-			List<CShape> oldshapelist = new List<CShape>(theglobal.SelectedShapeList.ToArray());
-			List<CShape> list = new List<CShape>();
+			List<CShape> oldshapelist = new(theglobal.SelectedShapeList.ToArray());
+			List<CShape> list = new();
 			CShape[] array = theglobal.SelectedShapeList.ToArray();
 			foreach (CShape cShape in array)
 			{
@@ -2018,8 +2029,8 @@ public class UserShapeEditControl : UserControl
 	{
 		try
 		{
-			List<CShape> oldshapelist = new List<CShape>(theglobal.SelectedShapeList.ToArray());
-			List<CShape> list = new List<CShape>();
+			List<CShape> oldshapelist = new(theglobal.SelectedShapeList.ToArray());
+			List<CShape> list = new();
 			CShape[] array = theglobal.SelectedShapeList.ToArray();
 			foreach (CShape cShape in array)
 			{
@@ -2040,8 +2051,8 @@ public class UserShapeEditControl : UserControl
 	{
 		try
 		{
-			List<CShape> oldshapelist = new List<CShape>(theglobal.SelectedShapeList.ToArray());
-			List<CShape> list = new List<CShape>();
+			List<CShape> oldshapelist = new(theglobal.SelectedShapeList.ToArray());
+			List<CShape> list = new();
 			CShape[] array = theglobal.SelectedShapeList.ToArray();
 			foreach (CShape cShape in array)
 			{
@@ -2062,8 +2073,8 @@ public class UserShapeEditControl : UserControl
 	{
 		try
 		{
-			List<CShape> oldshapelist = new List<CShape>(theglobal.SelectedShapeList.ToArray());
-			List<CShape> list = new List<CShape>();
+			List<CShape> oldshapelist = new(theglobal.SelectedShapeList.ToArray());
+			List<CShape> list = new();
 			CShape[] array = theglobal.SelectedShapeList.ToArray();
 			foreach (CShape cShape in array)
 			{
@@ -2114,7 +2125,7 @@ public class UserShapeEditControl : UserControl
 			graphics.DrawRectangle(Pens.Black, 0, 0, theglobal.df.size.Width - 1, theglobal.df.size.Height - 1);
 			if (theglobal.df.IsWindow)
 			{
-				LinearGradientBrush brush = new LinearGradientBrush(new Rectangle(0, 0, theglobal.df.size.Width - 1, 22), SystemColors.GradientActiveCaption, SystemColors.ActiveCaption, 0f);
+				LinearGradientBrush brush = new(new Rectangle(0, 0, theglobal.df.size.Width - 1, 22), SystemColors.GradientActiveCaption, SystemColors.ActiveCaption, 0f);
 				graphics.FillRectangle(brush, new Rectangle(0, 0, theglobal.df.size.Width - 1, 22));
 				ControlPaint.DrawBorder3D(graphics, new Rectangle(0, 0, Convert.ToInt32(theglobal.df.size.Width - 1), 22), Border3DStyle.Bump);
 				ControlPaint.DrawBorder3D(graphics, new Rectangle(0, 0, Convert.ToInt32(theglobal.df.size.Width - 1), Convert.ToInt32(theglobal.df.size.Height - 1)), Border3DStyle.Bump);
@@ -2373,20 +2384,20 @@ public class UserShapeEditControl : UserControl
 		base.SuspendLayout();
 		this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[14]
 		{
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem8),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3, true),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem5),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem_Delete),
-			new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Caption | DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barEditItemControlName, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem5),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem2),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem3),
-			new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem6, DevExpress.XtraBars.BarItemPaintStyle.Standard),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem10, true),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem11)
+			new(this.barButtonItem8),
+			new(this.barButtonItem1),
+			new(this.barButtonItem3, true),
+			new(this.barButtonItem4),
+			new(this.barButtonItem5),
+			new(this.barButtonItem_Delete),
+			new(DevExpress.XtraBars.BarLinkUserDefines.Caption | DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barEditItemControlName, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu),
+			new(this.barSubItem1),
+			new(this.barSubItem5),
+			new(this.barSubItem2),
+			new(this.barSubItem3),
+			new(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barSubItem6, DevExpress.XtraBars.BarItemPaintStyle.Standard),
+			new(this.barButtonItem10, true),
+			new(this.barButtonItem11)
 		});
 		this.popupMenu1.Manager = this.barManager1;
 		this.popupMenu1.Name = "popupMenu1";
@@ -2426,12 +2437,12 @@ public class UserShapeEditControl : UserControl
 		this.barSubItem1.Id = 9;
 		this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[3]
 		{
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem12),
-			new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.barEditItem2, "", false, true, true, 30),
-			new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.Width, this.barEditItem3, "", false, true, true, 50)
+			new(this.barButtonItem12),
+			new(DevExpress.XtraBars.BarLinkUserDefines.Width, this.barEditItem2, "", false, true, true, 30),
+			new(DevExpress.XtraBars.BarLinkUserDefines.Width, this.barEditItem3, "", false, true, true, 50)
 		});
 		this.barSubItem1.Name = "barSubItem1";
-		this.barSubItem1.Popup += new System.EventHandler(barSubItem1_Popup);
+		this.barSubItem1.Popup += new System.EventHandler(BarSubItem1_Popup);
 		this.barButtonItem12.ActAsDropDown = true;
 		this.barButtonItem12.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
 		this.barButtonItem12.Caption = "填充样式";
@@ -2483,9 +2494,9 @@ public class UserShapeEditControl : UserControl
 		this.barSubItem2.Id = 10;
 		this.barSubItem2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[3]
 		{
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15)
+			new(this.barButtonItem13),
+			new(this.barButtonItem14),
+			new(this.barButtonItem15)
 		});
 		this.barSubItem2.Name = "barSubItem2";
 		this.barButtonItem13.Caption = "相同宽度(&W)";
@@ -2504,14 +2515,14 @@ public class UserShapeEditControl : UserControl
 		this.barSubItem3.Id = 11;
 		this.barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[8]
 		{
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem16),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem19),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem20),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem21),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem22, true),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem23)
+			new(this.barButtonItem16),
+			new(this.barButtonItem17),
+			new(this.barButtonItem18),
+			new(this.barButtonItem19),
+			new(this.barButtonItem20),
+			new(this.barButtonItem21),
+			new(this.barButtonItem22, true),
+			new(this.barButtonItem23)
 		});
 		this.barSubItem3.Name = "barSubItem3";
 		this.barButtonItem16.Caption = "上对齐(&T)";
@@ -2563,7 +2574,7 @@ public class UserShapeEditControl : UserControl
 		this.repositoryItemColorEdit1.AutoHeight = false;
 		this.repositoryItemColorEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[1]
 		{
-			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)
+			new(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)
 		});
 		this.repositoryItemColorEdit1.Name = "repositoryItemColorEdit1";
 		this.barEditItem3.Caption = "边线颜色";
@@ -2575,15 +2586,15 @@ public class UserShapeEditControl : UserControl
 		this.repositoryItemColorEdit2.AutoHeight = false;
 		this.repositoryItemColorEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[1]
 		{
-			new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)
+			new(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)
 		});
 		this.repositoryItemColorEdit2.Name = "repositoryItemColorEdit2";
 		this.barSubItem5.Caption = "组合拆解(&G)";
 		this.barSubItem5.Id = 30;
 		this.barSubItem5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[2]
 		{
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem24),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem25)
+			new(this.barButtonItem24),
+			new(this.barButtonItem25)
 		});
 		this.barSubItem5.Name = "barSubItem5";
 		this.barButtonItem24.Caption = "组合(&G)";
@@ -2598,10 +2609,10 @@ public class UserShapeEditControl : UserControl
 		this.barSubItem6.Id = 34;
 		this.barSubItem6.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[4]
 		{
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem27),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem28),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem29, true),
-			new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem30)
+			new(this.barButtonItem27),
+			new(this.barButtonItem28),
+			new(this.barButtonItem29, true),
+			new(this.barButtonItem30)
 		});
 		this.barSubItem6.Name = "barSubItem6";
 		this.barButtonItem27.Caption = "移动至顶层(&F)";
@@ -2611,11 +2622,11 @@ public class UserShapeEditControl : UserControl
 		this.barButtonItem28.Caption = "移动至底层(&B)";
 		this.barButtonItem28.Id = 36;
 		this.barButtonItem28.Name = "barButtonItem28";
-		this.barButtonItem28.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem28_ItemClick);
+		this.barButtonItem28.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(BarButtonItem28_ItemClick);
 		this.barButtonItem29.Caption = "水平翻转(&H)";
 		this.barButtonItem29.Id = 37;
 		this.barButtonItem29.Name = "barButtonItem29";
-		this.barButtonItem29.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem29_ItemClick);
+		this.barButtonItem29.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(BarButtonItem29_ItemClick);
 		this.barButtonItem30.Caption = "垂直翻转(&V)";
 		this.barButtonItem30.Id = 38;
 		this.barButtonItem30.Name = "barButtonItem30";

@@ -197,7 +197,7 @@ public class DefaultHighlightingStrategy : IHighlightingStrategyUsingRuleSets, I
                 {
                     throw new HighlightingDefinitionInvalidException("The mode defintion " + rule.Reference + " which is refered from the " + Name + " mode definition could not be found");
                 }
-                if (!(highlightingStrategy is IHighlightingStrategyUsingRuleSets))
+                if (highlightingStrategy is not IHighlightingStrategyUsingRuleSets)
                 {
                     throw new HighlightingDefinitionInvalidException("The mode defintion " + rule.Reference + " which is refered from the " + Name + " mode definition does not implement IHighlightingStrategyUsingRuleSets");
                 }

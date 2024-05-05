@@ -386,9 +386,8 @@ public class CGraphicsPath : CShape
                     graphicsPath.Transform(TranslateMatrix);
                     if (templb[i] != null)
                     {
-                        if (templb[i] is PathGradientBrush)
+                        if (templb[i] is PathGradientBrush pathGradientBrush)
                         {
-                            PathGradientBrush pathGradientBrush = (PathGradientBrush)templb[i];
                             Color centerColor = pathGradientBrush.CenterColor;
                             Color color = pathGradientBrush.SurroundColors[0];
                             pathGradientBrush = new PathGradientBrush(graphicsPath)
@@ -404,9 +403,8 @@ public class CGraphicsPath : CShape
                             g.FillPath(pathGradientBrush, graphicsPath);
                             templb[i] = pathGradientBrush;
                         }
-                        else if (templb[i] is LinearGradientBrush)
+                        else if (templb[i] is LinearGradientBrush linearGradientBrush)
                         {
-                            LinearGradientBrush linearGradientBrush = (LinearGradientBrush)templb[i];
                             float angle = Convert.ToSingle(Math.Acos(linearGradientBrush.Transform.Elements[0] / Convert.ToSingle(Math.Pow(Math.Pow(linearGradientBrush.Transform.Elements[0], 2.0) + Math.Pow(linearGradientBrush.Transform.Elements[2], 2.0), 0.5))) / Math.PI * 180.0);
                             float[] factors = (float[])linearGradientBrush.Blend.Factors.Clone();
                             float[] positions = (float[])linearGradientBrush.Blend.Positions.Clone();
@@ -500,9 +498,8 @@ public class CGraphicsPath : CShape
                 graphicsPath.Transform(TranslateMatrix);
                 if (templb[i] != null)
                 {
-                    if (templb[i] is PathGradientBrush)
+                    if (templb[i] is PathGradientBrush pathGradientBrush)
                     {
-                        PathGradientBrush pathGradientBrush = (PathGradientBrush)templb[i];
                         Color centerColor = pathGradientBrush.CenterColor;
                         Color color = pathGradientBrush.SurroundColors[0];
                         pathGradientBrush = new PathGradientBrush(graphicsPath)
@@ -518,9 +515,8 @@ public class CGraphicsPath : CShape
                         g.FillPath(pathGradientBrush, graphicsPath);
                         templb[i] = pathGradientBrush;
                     }
-                    else if (templb[i] is LinearGradientBrush)
+                    else if (templb[i] is LinearGradientBrush linearGradientBrush)
                     {
-                        LinearGradientBrush linearGradientBrush = (LinearGradientBrush)templb[i];
                         float angle = Convert.ToSingle(Math.Acos(linearGradientBrush.Transform.Elements[0] / Convert.ToSingle(Math.Pow(Math.Pow(linearGradientBrush.Transform.Elements[0], 2.0) + Math.Pow(linearGradientBrush.Transform.Elements[2], 2.0), 0.5))) / Math.PI * 180.0);
                         float[] factors = (float[])linearGradientBrush.Blend.Factors.Clone();
                         float[] positions = (float[])linearGradientBrush.Blend.Positions.Clone();

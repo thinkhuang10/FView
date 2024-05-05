@@ -45,7 +45,7 @@ internal class CheckScript
             foreach (CShape item in df.ListAllShowCShape)
             {
                 Dictionary<string, List<string>> dictionary3 = new();
-                Type type = ((!(item is CControl)) ? item.GetType() : ((CControl)item)._c.GetType());
+                Type type = ((item is not CControl) ? item.GetType() : ((CControl)item)._c.GetType());
                 MemberInfo[] members = type.GetMembers();
                 foreach (MemberInfo memberInfo in members)
                 {

@@ -9,7 +9,7 @@ namespace HMIEditEnvironment.ServerLogic;
 
 public class SLSetGoto : Form
 {
-	private List<string> usefulvar = new List<string>();
+	private readonly List<string> usefulvar = new();
 
 	private ServerLogicItem result;
 
@@ -72,7 +72,7 @@ public class SLSetGoto : Form
 
 	private void button5_Click(object sender, EventArgs e)
 	{
-		SLChooseVar sLChooseVar = new SLChooseVar(usefulvar, tb_condition.Text);
+		SLChooseVar sLChooseVar = new(usefulvar, tb_condition.Text);
 		if (sLChooseVar.ShowDialog() == DialogResult.OK)
 		{
 			tb_condition.Text = sLChooseVar.Result;
@@ -83,14 +83,16 @@ public class SLSetGoto : Form
 	{
 		if (!(tb_condition.Text == "") && !(cb_label.Text == ""))
 		{
-			ServerLogicItem serverLogicItem = new ServerLogicItem();
-			serverLogicItem.LogicType = "跳转标签";
-			serverLogicItem.DataDict = new Dictionary<string, object>
+            ServerLogicItem serverLogicItem = new()
+            {
+                LogicType = "跳转标签",
+                DataDict = new Dictionary<string, object>
             {
                 { "Name", cb_label.Text }
+            },
+                ConditionalExpression = tb_condition.Text
             };
-			serverLogicItem.ConditionalExpression = tb_condition.Text;
-			result = serverLogicItem;
+            result = serverLogicItem;
 			base.DialogResult = DialogResult.OK;
 			Close();
 		}

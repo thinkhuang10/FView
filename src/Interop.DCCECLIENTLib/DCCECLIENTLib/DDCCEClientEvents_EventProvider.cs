@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace DCCECLIENTLib;
 
-internal sealed class _DDCCEClientEvents_EventProvider : _DDCCEClientEvents_Event, IDisposable
+internal sealed class DDCCEClientEvents_EventProvider : DDCCEClientEvents_Event, IDisposable
 {
     private readonly IConnectionPointContainer m_ConnectionPointContainer;
 
@@ -21,8 +21,7 @@ internal sealed class _DDCCEClientEvents_EventProvider : _DDCCEClientEvents_Even
             24, 115, 116, 185, 1, 246, 109, 70, 155, 24,
             139, 53, 58, 16, 49, 118
         });
-        IConnectionPoint ppCP;
-        m_ConnectionPointContainer.FindConnectionPoint(ref riid, out ppCP);
+        m_ConnectionPointContainer.FindConnectionPoint(ref riid, out IConnectionPoint ppCP);
         m_ConnectionPoint = ppCP;
         m_aEventSinkHelpers = new ArrayList();
     }
@@ -40,8 +39,7 @@ internal sealed class _DDCCEClientEvents_EventProvider : _DDCCEClientEvents_Even
                     Init();
                 }
                 _DDCCEClientEvents_SinkHelper dDCCEClientEvents_SinkHelper = new();
-                int pdwCookie;
-                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out pdwCookie);
+                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out int pdwCookie);
                 dDCCEClientEvents_SinkHelper.m_dwCookie = pdwCookie;
                 dDCCEClientEvents_SinkHelper.m_FireOnDataReadyDelegate = value;
                 m_aEventSinkHelpers.Add(dDCCEClientEvents_SinkHelper);
@@ -105,8 +103,7 @@ internal sealed class _DDCCEClientEvents_EventProvider : _DDCCEClientEvents_Even
                     Init();
                 }
                 _DDCCEClientEvents_SinkHelper dDCCEClientEvents_SinkHelper = new();
-                int pdwCookie;
-                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out pdwCookie);
+                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out int pdwCookie);
                 dDCCEClientEvents_SinkHelper.m_dwCookie = pdwCookie;
                 dDCCEClientEvents_SinkHelper.m_FireOnVariableAlarmDelegate = value;
                 m_aEventSinkHelpers.Add(dDCCEClientEvents_SinkHelper);
@@ -170,8 +167,7 @@ internal sealed class _DDCCEClientEvents_EventProvider : _DDCCEClientEvents_Even
                     Init();
                 }
                 _DDCCEClientEvents_SinkHelper dDCCEClientEvents_SinkHelper = new();
-                int pdwCookie;
-                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out pdwCookie);
+                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out int pdwCookie);
                 dDCCEClientEvents_SinkHelper.m_dwCookie = pdwCookie;
                 dDCCEClientEvents_SinkHelper.m_FireOnVariableLagDelegate = value;
                 m_aEventSinkHelpers.Add(dDCCEClientEvents_SinkHelper);
@@ -235,8 +231,7 @@ internal sealed class _DDCCEClientEvents_EventProvider : _DDCCEClientEvents_Even
                     Init();
                 }
                 _DDCCEClientEvents_SinkHelper dDCCEClientEvents_SinkHelper = new();
-                int pdwCookie;
-                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out pdwCookie);
+                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out int pdwCookie);
                 dDCCEClientEvents_SinkHelper.m_dwCookie = pdwCookie;
                 dDCCEClientEvents_SinkHelper.m_FireOnLoadOverDelegate = value;
                 m_aEventSinkHelpers.Add(dDCCEClientEvents_SinkHelper);
@@ -300,8 +295,7 @@ internal sealed class _DDCCEClientEvents_EventProvider : _DDCCEClientEvents_Even
                     Init();
                 }
                 _DDCCEClientEvents_SinkHelper dDCCEClientEvents_SinkHelper = new();
-                int pdwCookie;
-                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out pdwCookie);
+                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out int pdwCookie);
                 dDCCEClientEvents_SinkHelper.m_dwCookie = pdwCookie;
                 dDCCEClientEvents_SinkHelper.m_FireOnDeviceStatusDelegate = value;
                 m_aEventSinkHelpers.Add(dDCCEClientEvents_SinkHelper);
@@ -366,8 +360,7 @@ internal sealed class _DDCCEClientEvents_EventProvider : _DDCCEClientEvents_Even
                     Init();
                 }
                 _DDCCEClientEvents_SinkHelper dDCCEClientEvents_SinkHelper = new();
-                int pdwCookie;
-                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out pdwCookie);
+                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out int pdwCookie);
                 dDCCEClientEvents_SinkHelper.m_dwCookie = pdwCookie;
                 dDCCEClientEvents_SinkHelper.m_FireOnBehaviorDelegate = value;
                 m_aEventSinkHelpers.Add(dDCCEClientEvents_SinkHelper);
@@ -431,8 +424,7 @@ internal sealed class _DDCCEClientEvents_EventProvider : _DDCCEClientEvents_Even
                     Init();
                 }
                 _DDCCEClientEvents_SinkHelper dDCCEClientEvents_SinkHelper = new();
-                int pdwCookie;
-                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out pdwCookie);
+                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out int pdwCookie);
                 dDCCEClientEvents_SinkHelper.m_dwCookie = pdwCookie;
                 dDCCEClientEvents_SinkHelper.m_FireOnScanDelegate = value;
                 m_aEventSinkHelpers.Add(dDCCEClientEvents_SinkHelper);
@@ -496,8 +488,7 @@ internal sealed class _DDCCEClientEvents_EventProvider : _DDCCEClientEvents_Even
                     Init();
                 }
                 _DDCCEClientEvents_SinkHelper dDCCEClientEvents_SinkHelper = new();
-                int pdwCookie;
-                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out pdwCookie);
+                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out int pdwCookie);
                 dDCCEClientEvents_SinkHelper.m_dwCookie = pdwCookie;
                 dDCCEClientEvents_SinkHelper.m_FireOnScanBehaviorDelegate = value;
                 m_aEventSinkHelpers.Add(dDCCEClientEvents_SinkHelper);
@@ -561,8 +552,7 @@ internal sealed class _DDCCEClientEvents_EventProvider : _DDCCEClientEvents_Even
                     Init();
                 }
                 _DDCCEClientEvents_SinkHelper dDCCEClientEvents_SinkHelper = new();
-                int pdwCookie;
-                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out pdwCookie);
+                m_ConnectionPoint.Advise(dDCCEClientEvents_SinkHelper, out int pdwCookie);
                 dDCCEClientEvents_SinkHelper.m_dwCookie = pdwCookie;
                 dDCCEClientEvents_SinkHelper.m_FireOnSyncTimeDelegate = value;
                 m_aEventSinkHelpers.Add(dDCCEClientEvents_SinkHelper);
@@ -614,7 +604,7 @@ internal sealed class _DDCCEClientEvents_EventProvider : _DDCCEClientEvents_Even
         }
     }
 
-    public _DDCCEClientEvents_EventProvider(object P_0)
+    public DDCCEClientEvents_EventProvider(object P_0)
     {
         //Error decoding local variables: Signature type sequence must have at least one element.
         m_ConnectionPointContainer = (IConnectionPointContainer)P_0;

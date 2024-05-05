@@ -4,7 +4,6 @@ using System.Data;
 using System.Drawing;
 using System.Runtime.Serialization;
 using System.Windows.Forms;
-using ShapeRuntime.DBAnimation;
 
 namespace ShapeRuntime;
 
@@ -53,10 +52,6 @@ public class CDataGridViewSaveItems
     public int RowCount;
 
     public int ColumnCount;
-
-    public bool html5_border;
-
-    public bool html5_HScroll;
 
     public bool newtable;
 

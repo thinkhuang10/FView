@@ -8,7 +8,7 @@ namespace HMIRunForm;
 
 public class ProjectStartForm : Form
 {
-	private CAuthoritySeiallize cas = new CAuthoritySeiallize();
+	private readonly CAuthoritySeiallize cas = new();
 
 	public EventHandler EventCloseForm;
 
@@ -16,7 +16,7 @@ public class ProjectStartForm : Form
 
 	public string strCurrentUser;
 
-	private IContainer components;
+	private readonly IContainer components;
 
 	private Button btSure;
 
@@ -84,7 +84,7 @@ public class ProjectStartForm : Form
 
 	private void InitializeComponent()
 	{
-		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HMIRunForm.ProjectStartForm));
+		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIRunForm.ProjectStartForm));
 		this.btSure = new System.Windows.Forms.Button();
 		this.btCancel = new System.Windows.Forms.Button();
 		this.label1 = new System.Windows.Forms.Label();

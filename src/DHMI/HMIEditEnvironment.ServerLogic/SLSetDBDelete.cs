@@ -23,11 +23,11 @@ public class SLSetDBDelete : Form
 
 	public bool Ansync;
 
-	private List<string> ListboxContentstr = new List<string>();
+	private List<string> ListboxContentstr = new();
 
-	private DataTable DgDatatable = new DataTable();
+	private DataTable DgDatatable = new();
 
-	private List<string> CanUseVars;
+	private readonly List<string> CanUseVars;
 
 	public ServerLogicItem result;
 
@@ -144,12 +144,14 @@ public class SLSetDBDelete : Form
 	public byte[] Serialize()
 	{
 		IFormatter formatter = new BinaryFormatter();
-		MemoryStream memoryStream = new MemoryStream();
-		DBSelectSerializeCopy dBSelectSerializeCopy = new DBSelectSerializeCopy();
-		dBSelectSerializeCopy.ansync = Ansync;
-		dBSelectSerializeCopy.ListboxContentstr = ListboxContentstr;
-		dBSelectSerializeCopy.DgDatatable = DgDatatable;
-		formatter.Serialize(memoryStream, dBSelectSerializeCopy);
+		MemoryStream memoryStream = new();
+        DBSelectSerializeCopy dBSelectSerializeCopy = new()
+        {
+            ansync = Ansync,
+            ListboxContentstr = ListboxContentstr,
+            DgDatatable = DgDatatable
+        };
+        formatter.Serialize(memoryStream, dBSelectSerializeCopy);
 		byte[] array = memoryStream.ToArray();
 		memoryStream.Close();
 		return array;
@@ -198,7 +200,7 @@ public class SLSetDBDelete : Form
 				DBOperationGlobal.conn.Open();
 			}
 			DBOperationGlobal.command.CommandText = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND ( TABLE_SCHEMA = '" + DBOperationGlobal.conn.Database + "' OR TABLE_CATALOG = '" + DBOperationGlobal.conn.Database + "' )";
-			List<string> list = new List<string>();
+			List<string> list = new();
 			using (DbDataReader dbDataReader = DBOperationGlobal.command.ExecuteReader())
 			{
 				while (dbDataReader.Read())
@@ -264,7 +266,7 @@ public class SLSetDBDelete : Form
 			DBOperationGlobal.conn.Open();
 		}
 		DBOperationGlobal.command.CommandText = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME  = '" + text + "' AND ( TABLE_SCHEMA = '" + DBOperationGlobal.conn.Database + "' OR TABLE_CATALOG = '" + DBOperationGlobal.conn.Database + "' )";
-		DataSet dataSet = new DataSet();
+		DataSet dataSet = new();
 		DBOperationGlobal.adapter.Fill(dataSet);
 		foreach (DataRow row in dataSet.Tables[0].Rows)
 		{
@@ -282,7 +284,7 @@ public class SLSetDBDelete : Form
 
 	private void btn_removetable_Click(object sender, EventArgs e)
 	{
-		List<object> list = new List<object>();
+		List<object> list = new();
 		foreach (object selectedItem in listBox1.SelectedItems)
 		{
 			list.Add(selectedItem);
@@ -390,17 +392,19 @@ public class SLSetDBDelete : Form
 		}
 		OtherData = Serialize();
 		ResultSQL = textBox1.Text;
-		result = new ServerLogicItem();
-		result.LogicType = "删除数据";
-		result.ConditionalExpression = textBox2.Text;
-		result.DataDict = new Dictionary<string, object>
+        result = new ServerLogicItem
+        {
+            LogicType = "删除数据",
+            ConditionalExpression = textBox2.Text,
+            DataDict = new Dictionary<string, object>
         {
             { "ResultSQL", ResultSQL },
             { "Ansync", Ansync },
             { "OtherData", OtherData },
             { "ResultTo", textBox3.Text }
+        }
         };
-		base.DialogResult = DialogResult.OK;
+        base.DialogResult = DialogResult.OK;
 		Close();
 	}
 
@@ -460,7 +464,7 @@ public class SLSetDBDelete : Form
 
 	private void button1_Click(object sender, EventArgs e)
 	{
-		SLChooseVar sLChooseVar = new SLChooseVar(CanUseVars, textBox2.Text);
+		SLChooseVar sLChooseVar = new(CanUseVars, textBox2.Text);
 		if (sLChooseVar.ShowDialog() == DialogResult.OK)
 		{
 			textBox2.Text = sLChooseVar.Result;
@@ -469,7 +473,7 @@ public class SLSetDBDelete : Form
 
 	private void button2_Click(object sender, EventArgs e)
 	{
-		SLChooseVar sLChooseVar = new SLChooseVar(CanUseVars, textBox3.Text);
+		SLChooseVar sLChooseVar = new(CanUseVars, textBox3.Text);
 		if (sLChooseVar.ShowDialog() == DialogResult.OK)
 		{
 			textBox3.Text = sLChooseVar.Result;

@@ -25,8 +25,6 @@ public partial class ScriptUnit : XtraForm
 
     private TreeNode iot;
 
-    private TreeNode roottn;
-
     public static TreeNode ClickNode;
 
     public static CShape ShapeCtrl;
@@ -343,7 +341,7 @@ public partial class ScriptUnit : XtraForm
         Form[] mdiChildren = CEditEnvironmentGlobal.mdiparent.MdiChildren;
         foreach (Form form in mdiChildren)
         {
-            if (!(form is ChildForm))
+            if (form is not ChildForm)
             {
                 continue;
             }
@@ -534,7 +532,7 @@ public partial class ScriptUnit : XtraForm
                 {
                     TreeNode tnParent2 = tnParent.Nodes.Add("shape.png", item2.Name);
                     int num = 0;
-                    if (!(item2 is CControl))
+                    if (item2 is not CControl)
                     {
                         object whenOutThenDo = new ObjectBoolean(item2.sbsjWhenOutThenDo);
                         if (item2.UserLogic[1] != null)
@@ -1029,7 +1027,7 @@ public partial class ScriptUnit : XtraForm
         Console.WriteLine("ERR:用户所申请的脚本路径没找到." + Environment.NewLine + "MSG:" + scpritName);
     }
 
-    private bool Save(TreeNode tn, object obj)
+    private bool Save(TreeNode tn)
     {
         if (tn.Text == "全局脚本")
         {
@@ -1577,98 +1575,7 @@ public partial class ScriptUnit : XtraForm
         return true;
     }
 
-    private void AddIOToTree(List<XmlNode> xnitems, TreeNode treenode, string groupid, bool addalarmscript)
-    {
-        XmlNode[] array = xnitems.ToArray();
-        foreach (XmlNode xmlNode in array)
-        {
-            if (xmlNode == null)
-            {
-                continue;
-            }
-            if (xmlNode.Attributes["GroupID"] == null)
-            {
-                break;
-            }
-            if (!(xmlNode.Attributes["GroupID"].Value == groupid))
-            {
-                continue;
-            }
-            xnitems.Remove(xmlNode);
-            TreeNode treeNode = treenode.Nodes.Add("io", xmlNode.Attributes["Name"].Value);
-            if (!addalarmscript)
-            {
-                continue;
-            }
-            TreeNode treeNode2;
-            if (xmlNode.Attributes["ValType"].Value == "0")
-            {
-                foreach (CIOAlarm iOAlarm in CEditEnvironmentGlobal.dhp.IOAlarms)
-                {
-                    if (!(iOAlarm.name == "[" + xmlNode.Attributes["Name"].Value + "]"))
-                    {
-                        continue;
-                    }
-                    treeNode2 = treeNode.Nodes.Add("位变量开");
-                    treeNode2.Tag = new TempTag(null, iOAlarm.boolAlarmScript[5], iOAlarm);
-                    treeNode2 = treeNode.Nodes.Add("位变量关");
-                    treeNode2.Tag = new TempTag(null, iOAlarm.boolAlarmScript[6], iOAlarm);
-                    treeNode2 = treeNode.Nodes.Add("位变量由开到关");
-                    treeNode2.Tag = new TempTag(null, iOAlarm.boolAlarmScript[7], iOAlarm);
-                    treeNode2 = treeNode.Nodes.Add("位变量由关到开");
-                    treeNode2.Tag = new TempTag(null, iOAlarm.boolAlarmScript[8], iOAlarm);
-                    treeNode2 = treeNode.Nodes.Add("位变量变化");
-                    treeNode2.Tag = new TempTag(null, iOAlarm.boolAlarmScript[9], iOAlarm);
-                    goto IL_0581;
-                }
-                treeNode2 = treeNode.Nodes.Add("位变量开");
-                treeNode2.Tag = new TempTag(null, null, null);
-                treeNode2 = treeNode.Nodes.Add("位变量关");
-                treeNode2.Tag = new TempTag(null, null, null);
-                treeNode2 = treeNode.Nodes.Add("位变量由开到关");
-                treeNode2.Tag = new TempTag(null, null, null);
-                treeNode2 = treeNode.Nodes.Add("位变量由关到开");
-                treeNode2.Tag = new TempTag(null, null, null);
-                treeNode2 = treeNode.Nodes.Add("位变量变化");
-                treeNode2.Tag = new TempTag(null, null, null);
-                continue;
-            }
-            foreach (CIOAlarm iOAlarm2 in CEditEnvironmentGlobal.dhp.IOAlarms)
-            {
-                if (!(iOAlarm2.name == "[" + xmlNode.Attributes["Name"].Value + "]"))
-                    continue;
-
-                treeNode2 = treeNode.Nodes.Add("下下限报警");
-                treeNode2.Tag = new TempTag(null, iOAlarm2.script[6], iOAlarm2);
-                treeNode2 = treeNode.Nodes.Add("下限报警");
-                treeNode2.Tag = new TempTag(null, iOAlarm2.script[7], iOAlarm2);
-                treeNode2 = treeNode.Nodes.Add( "上限报警");
-                treeNode2.Tag = new TempTag(null, iOAlarm2.script[8], iOAlarm2);
-                treeNode2 = treeNode.Nodes.Add("上上限报警");
-                treeNode2.Tag = new TempTag(null, iOAlarm2.script[9], iOAlarm2);
-                treeNode2 = treeNode.Nodes.Add("目标值报警");
-                treeNode2.Tag = new TempTag(null, iOAlarm2.script[10], iOAlarm2);
-                treeNode2 = treeNode.Nodes.Add("变化率报警");
-                treeNode2.Tag = new TempTag(null, iOAlarm2.script[11], iOAlarm2);
-                goto IL_0581;
-            }
-            treeNode2 = treeNode.Nodes.Add("下下限报警");
-            treeNode2.Tag = new TempTag(null, null, null);
-            treeNode2 = treeNode.Nodes.Add("下限报警");
-            treeNode2.Tag = new TempTag(null, null, null);
-            treeNode2 = treeNode.Nodes.Add("上限报警");
-            treeNode2.Tag = new TempTag(null, null, null);
-            treeNode2 = treeNode.Nodes.Add("上上限报警");
-            treeNode2.Tag = new TempTag(null, null, null);
-            treeNode2 = treeNode.Nodes.Add("目标值报警");
-            treeNode2.Tag = new TempTag(null, null, null);
-            treeNode2 = treeNode.Nodes.Add("变化率报警");
-            treeNode2.Tag = new TempTag(null, null, null);
-        IL_0581:;
-        }
-    }
-
-    private TreeNode findNode(string id, TreeNode startNode)
+    private TreeNode FindNode(string id, TreeNode startNode)
     {
         if (startNode.Name == id)
         {
@@ -1676,13 +1583,13 @@ public partial class ScriptUnit : XtraForm
         }
         foreach (TreeNode node in startNode.Nodes)
         {
-            if (findNode(id, node) != null)
-                return findNode(id, node);
+            if (FindNode(id, node) != null)
+                return FindNode(id, node);
         }
         return null;
     }
 
-    private void treeView2_AfterSelect(object sender, TreeViewEventArgs e)
+    private void TreeView2_AfterSelect(object sender, TreeViewEventArgs e)
     {
         TreeNode node = e.Node;
         if (node.Tag != null)
@@ -1695,7 +1602,7 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
     {
         if (currentTempTag != null)
         {
@@ -1711,13 +1618,13 @@ public partial class ScriptUnit : XtraForm
         }
         foreach (TreeNode dirtyNode in dirtyNodes)
         {
-            Save(dirtyNode, null);
+            Save(dirtyNode);
         }
         dirtyNodes.Clear();
         makeRedoAndUndo();
     }
 
-    private void checkEdit1_CheckedChanged(object sender, EventArgs e)
+    private void CheckEdit1_CheckedChanged(object sender, EventArgs e)
     {
         if (usereditit)
         {
@@ -1725,7 +1632,7 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void textEditorControl1_TextChanged(object sender, EventArgs e)
+    private void TextEditorControl1_TextChanged(object sender, EventArgs e)
     {
         if (treeView1.SelectedNode != null && !dirtyNodes.Contains(treeView1.SelectedNode))
         {
@@ -1824,7 +1731,7 @@ public partial class ScriptUnit : XtraForm
                 {
                     foreach (TreeNode dirtyNode in dirtyNodes)
                     {
-                        Save(dirtyNode, dirtyNode);
+                        Save(dirtyNode);
                     }
                     dirtyNodes.Clear();
                     makeRedoAndUndo();
@@ -1917,7 +1824,7 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void undoBarBtn_ItemClick(object sender, EventArgs e)
+    private void UndoBarBtn_ItemClick(object sender, EventArgs e)
     {
         DoEditAction(ActiveTextEditor, new Undo());
     }
@@ -1956,16 +1863,7 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void findBarBtn_ItemClick(object sender, EventArgs e)
-    {
-        TextEditorControl activeTextEditor = ActiveTextEditor;
-        if (activeTextEditor != null)
-        {
-            FindAndReplaceFrm.ShowFor(activeTextEditor, replaceMode: false);
-        }
-    }
-
-    private void repBarBtn_ItemClick(object sender, EventArgs e)
+    private void RepBarBtn_ItemClick(object sender, EventArgs e)
     {
         TextEditorControl activeTextEditor = ActiveTextEditor;
         if (activeTextEditor != null)
@@ -2039,7 +1937,7 @@ public partial class ScriptUnit : XtraForm
         DoEditAction(ActiveTextEditor, new Paste());
     }
 
-    private void undoBarBtn_ItemClick(object sender, ItemClickEventArgs e)
+    private void UndoBarBtn_ItemClick(object sender, ItemClickEventArgs e)
     {
         DoEditAction(ActiveTextEditor, new Undo());
     }

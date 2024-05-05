@@ -850,7 +850,7 @@ public class UserCommandControl2 : UserControl
         CShape[] array = theglobal.SelectedShapeList.ToArray();
         foreach (CShape cShape in array)
         {
-            if (!(cShape is CControl))
+            if (cShape is not CControl)
             {
                 flag = true;
                 theglobal.g_ListAllShowCShape.Remove(cShape);
@@ -866,7 +866,7 @@ public class UserCommandControl2 : UserControl
         CShape[] array2 = theglobal.SelectedShapeList.ToArray();
         foreach (CShape cShape2 in array2)
         {
-            if (!(cShape2 is CControl))
+            if (cShape2 is not CControl)
             {
                 if (cShape2 is CPixieControl)
                 {

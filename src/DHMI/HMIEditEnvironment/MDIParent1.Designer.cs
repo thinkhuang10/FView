@@ -557,18 +557,18 @@ namespace HMIEditEnvironment
             treeNode11});
             this.treeView_工程导航.Size = new System.Drawing.Size(227, 587);
             this.treeView_工程导航.TabIndex = 11;
-            this.treeView_工程导航.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeView_工程导航_AfterLabelEdit);
+            this.treeView_工程导航.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.TreeView_工程导航_AfterLabelEdit);
             this.treeView_工程导航.BeforeCollapse += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_工程导航_BeforeCollapse);
             this.treeView_工程导航.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView_工程导航_AfterCollapse);
             this.treeView_工程导航.BeforeExpand += new System.Windows.Forms.TreeViewCancelEventHandler(this.treeView_工程导航_BeforeExpand);
             this.treeView_工程导航.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView_工程导航_AfterExpand);
             this.treeView_工程导航.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.treeView_工程导航_ItemDrag);
             this.treeView_工程导航.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView_工程导航_AfterSelect);
-            this.treeView_工程导航.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_工程导航_NodeMouseDoubleClick);
-            this.treeView_工程导航.DragDrop += new System.Windows.Forms.DragEventHandler(this.treeView_工程导航_DragDrop);
+            this.treeView_工程导航.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeView_工程导航_NodeMouseDoubleClick);
+            this.treeView_工程导航.DragDrop += new System.Windows.Forms.DragEventHandler(this.TreeView_工程导航_DragDrop);
             this.treeView_工程导航.DragOver += new System.Windows.Forms.DragEventHandler(this.treeView_工程导航_DragOver);
             this.treeView_工程导航.KeyDown += new System.Windows.Forms.KeyEventHandler(this.treeView_工程导航_KeyDown);
-            this.treeView_工程导航.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeView_工程导航_MouseDown);
+            this.treeView_工程导航.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TreeView_工程导航_MouseDown);
             // 
             // toolStripSeparator21
             // 
@@ -1362,7 +1362,7 @@ namespace HMIEditEnvironment
             this.barButtonItem14.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C));
             this.barButtonItem14.Name = "barButtonItem14";
             this.barButtonItem14.ShortcutKeyDisplayString = "Ctrl+C";
-            this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem14_ItemClick);
+            this.barButtonItem14.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem14_ItemClick);
             // 
             // barButtonItem15
             // 
@@ -1372,7 +1372,7 @@ namespace HMIEditEnvironment
             this.barButtonItem15.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V));
             this.barButtonItem15.Name = "barButtonItem15";
             this.barButtonItem15.ShortcutKeyDisplayString = "Ctrl+V";
-            this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem15_ItemClick);
+            this.barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem15_ItemClick);
             // 
             // barButtonItem17
             // 
@@ -1382,7 +1382,7 @@ namespace HMIEditEnvironment
             this.barButtonItem17.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Delete);
             this.barButtonItem17.Name = "barButtonItem17";
             this.barButtonItem17.ShortcutKeyDisplayString = "Delete";
-            this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem17_ItemClick);
+            this.barButtonItem17.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem17_ItemClick);
             // 
             // barButtonItem16
             // 
@@ -1391,7 +1391,7 @@ namespace HMIEditEnvironment
             this.barButtonItem16.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A));
             this.barButtonItem16.Name = "barButtonItem16";
             this.barButtonItem16.ShortcutKeyDisplayString = "Ctrl+A";
-            this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem16_ItemClick);
+            this.barButtonItem16.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem16_ItemClick);
             // 
             // barButtonItem18
             // 
@@ -1460,7 +1460,7 @@ namespace HMIEditEnvironment
             this.menubarCheckItem_输出栏.Checked = true;
             this.menubarCheckItem_输出栏.Id = 41;
             this.menubarCheckItem_输出栏.Name = "menubarCheckItem_输出栏";
-            this.menubarCheckItem_输出栏.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.menubarCheckItem_输出栏_CheckedChanged);
+            this.menubarCheckItem_输出栏.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.MenubarCheckItem_输出栏_CheckedChanged);
             // 
             // menubarCheckItem_对象浏览器
             // 
@@ -1469,7 +1469,7 @@ namespace HMIEditEnvironment
             this.menubarCheckItem_对象浏览器.Checked = true;
             this.menubarCheckItem_对象浏览器.Id = 257;
             this.menubarCheckItem_对象浏览器.Name = "menubarCheckItem_对象浏览器";
-            this.menubarCheckItem_对象浏览器.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.menubarCheckItem_对象浏览器_CheckedChanged);
+            this.menubarCheckItem_对象浏览器.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.MenubarCheckItem_对象浏览器_CheckedChanged);
             // 
             // menubarCheckItem_变量浏览器
             // 
@@ -1478,7 +1478,7 @@ namespace HMIEditEnvironment
             this.menubarCheckItem_变量浏览器.Checked = true;
             this.menubarCheckItem_变量浏览器.Id = 272;
             this.menubarCheckItem_变量浏览器.Name = "menubarCheckItem_变量浏览器";
-            this.menubarCheckItem_变量浏览器.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.menubarCheckItem_变量浏览器_CheckedChanged);
+            this.menubarCheckItem_变量浏览器.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.MenubarCheckItem_变量浏览器_CheckedChanged);
             // 
             // menubarCheckItem_属性
             // 
@@ -1516,7 +1516,7 @@ namespace HMIEditEnvironment
             this.menubarCheckItem_基本控件.Checked = true;
             this.menubarCheckItem_基本控件.Id = 205;
             this.menubarCheckItem_基本控件.Name = "menubarCheckItem_基本控件";
-            this.menubarCheckItem_基本控件.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.menubarCheckItem_Windows控件_CheckedChanged);
+            this.menubarCheckItem_基本控件.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.MenubarCheckItem_Windows控件_CheckedChanged);
             // 
             // menubarCheckItem_DCCE工控组件
             // 
@@ -1525,7 +1525,7 @@ namespace HMIEditEnvironment
             this.menubarCheckItem_DCCE工控组件.Checked = true;
             this.menubarCheckItem_DCCE工控组件.Id = 206;
             this.menubarCheckItem_DCCE工控组件.Name = "menubarCheckItem_DCCE工控组件";
-            this.menubarCheckItem_DCCE工控组件.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.menubarCheckItem_DCCE工控组件_CheckedChanged);
+            this.menubarCheckItem_DCCE工控组件.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.MenubarCheckItem_DCCE工控组件_CheckedChanged);
             // 
             // menubarCheckItem_精灵控件
             // 
@@ -1534,7 +1534,7 @@ namespace HMIEditEnvironment
             this.menubarCheckItem_精灵控件.Checked = true;
             this.menubarCheckItem_精灵控件.Id = 208;
             this.menubarCheckItem_精灵控件.Name = "menubarCheckItem_精灵控件";
-            this.menubarCheckItem_精灵控件.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.menubarCheckItem_精灵控件_CheckedChanged);
+            this.menubarCheckItem_精灵控件.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.MenubarCheckItem_精灵控件_CheckedChanged);
             // 
             // menubarCheckItem_ActiveX控件
             // 
@@ -1543,7 +1543,7 @@ namespace HMIEditEnvironment
             this.menubarCheckItem_ActiveX控件.Checked = true;
             this.menubarCheckItem_ActiveX控件.Id = 207;
             this.menubarCheckItem_ActiveX控件.Name = "menubarCheckItem_ActiveX控件";
-            this.menubarCheckItem_ActiveX控件.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.menubarCheckItem_ActiveX控件_CheckedChanged);
+            this.menubarCheckItem_ActiveX控件.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.MenubarCheckItem_ActiveX控件_CheckedChanged);
             // 
             // barSubItem_主菜单_操作
             // 
@@ -1740,7 +1740,7 @@ namespace HMIEditEnvironment
             this.barButtonItem9.Id = 259;
             this.barButtonItem9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem9.ImageOptions.Image")));
             this.barButtonItem9.Name = "barButtonItem9";
-            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem115_ItemClick);
+            this.barButtonItem9.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem115_ItemClick);
             // 
             // barButtonItem12
             // 
@@ -1749,7 +1749,7 @@ namespace HMIEditEnvironment
             this.barButtonItem12.Id = 260;
             this.barButtonItem12.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem12.ImageOptions.Image")));
             this.barButtonItem12.Name = "barButtonItem12";
-            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem116_ItemClick);
+            this.barButtonItem12.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem116_ItemClick);
             // 
             // barCheckItem10
             // 
@@ -1886,7 +1886,7 @@ namespace HMIEditEnvironment
             this.toolbarButtonItem_DCCE工控组件.Id = 131;
             this.toolbarButtonItem_DCCE工控组件.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("toolbarButtonItem_DCCE工控组件.ImageOptions.Image")));
             this.toolbarButtonItem_DCCE工控组件.Name = "toolbarButtonItem_DCCE工控组件";
-            this.toolbarButtonItem_DCCE工控组件.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.toolbarButtonItem_DCCE工控组件_ItemClick);
+            this.toolbarButtonItem_DCCE工控组件.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ToolbarButtonItem_DCCE工控组件_ItemClick);
             // 
             // toolbarButtonItem_精灵控件
             // 
@@ -1906,7 +1906,7 @@ namespace HMIEditEnvironment
             this.toolbarButtonItem_ActiveX控件.Id = 132;
             this.toolbarButtonItem_ActiveX控件.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("toolbarButtonItem_ActiveX控件.ImageOptions.Image")));
             this.toolbarButtonItem_ActiveX控件.Name = "toolbarButtonItem_ActiveX控件";
-            this.toolbarButtonItem_ActiveX控件.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.toolbarButtonItem_ActiveX控件_ItemClick);
+            this.toolbarButtonItem_ActiveX控件.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ToolbarButtonItem_ActiveX控件_ItemClick);
             // 
             // toolbar_操作
             // 
@@ -1948,7 +1948,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_ElementTop.Id = 150;
             this.barButtonItem_ElementTop.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_ElementTop.ImageOptions.Image")));
             this.barButtonItem_ElementTop.Name = "barButtonItem_ElementTop";
-            this.barButtonItem_ElementTop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem102_ItemClick);
+            this.barButtonItem_ElementTop.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem102_ItemClick);
             // 
             // barButtonItem_ElementBottom
             // 
@@ -1958,7 +1958,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_ElementBottom.Id = 151;
             this.barButtonItem_ElementBottom.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_ElementBottom.ImageOptions.Image")));
             this.barButtonItem_ElementBottom.Name = "barButtonItem_ElementBottom";
-            this.barButtonItem_ElementBottom.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem103_ItemClick);
+            this.barButtonItem_ElementBottom.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem103_ItemClick);
             // 
             // barButtonItem_ElementCombine
             // 
@@ -1968,7 +1968,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_ElementCombine.Id = 148;
             this.barButtonItem_ElementCombine.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_ElementCombine.ImageOptions.Image")));
             this.barButtonItem_ElementCombine.Name = "barButtonItem_ElementCombine";
-            this.barButtonItem_ElementCombine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem100_ItemClick);
+            this.barButtonItem_ElementCombine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem100_ItemClick);
             // 
             // barButtonItem_ElementSeparate
             // 
@@ -1978,7 +1978,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_ElementSeparate.Id = 149;
             this.barButtonItem_ElementSeparate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_ElementSeparate.ImageOptions.Image")));
             this.barButtonItem_ElementSeparate.Name = "barButtonItem_ElementSeparate";
-            this.barButtonItem_ElementSeparate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem101_ItemClick);
+            this.barButtonItem_ElementSeparate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem101_ItemClick);
             // 
             // barButtonItem_HorizontalEquidistance
             // 
@@ -2008,7 +2008,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_TopAlign.Id = 154;
             this.barButtonItem_TopAlign.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_TopAlign.ImageOptions.Image")));
             this.barButtonItem_TopAlign.Name = "barButtonItem_TopAlign";
-            this.barButtonItem_TopAlign.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem106_ItemClick);
+            this.barButtonItem_TopAlign.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem106_ItemClick);
             // 
             // barButtonItem_VerticalAlign
             // 
@@ -2098,7 +2098,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_HorizontalRotate.Id = 152;
             this.barButtonItem_HorizontalRotate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_HorizontalRotate.ImageOptions.Image")));
             this.barButtonItem_HorizontalRotate.Name = "barButtonItem_HorizontalRotate";
-            this.barButtonItem_HorizontalRotate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem104_ItemClick);
+            this.barButtonItem_HorizontalRotate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem104_ItemClick);
             // 
             // barButtonItem_VerticalRotate
             // 
@@ -2108,7 +2108,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_VerticalRotate.Id = 153;
             this.barButtonItem_VerticalRotate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_VerticalRotate.ImageOptions.Image")));
             this.barButtonItem_VerticalRotate.Name = "barButtonItem_VerticalRotate";
-            this.barButtonItem_VerticalRotate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem105_ItemClick);
+            this.barButtonItem_VerticalRotate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem105_ItemClick);
             // 
             // barButtonItem_RightRotate
             // 
@@ -2118,7 +2118,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_RightRotate.Id = 163;
             this.barButtonItem_RightRotate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_RightRotate.ImageOptions.Image")));
             this.barButtonItem_RightRotate.Name = "barButtonItem_RightRotate";
-            this.barButtonItem_RightRotate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem115_ItemClick);
+            this.barButtonItem_RightRotate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem115_ItemClick);
             // 
             // barButtonItem_LeftRotate
             // 
@@ -2128,7 +2128,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_LeftRotate.Id = 164;
             this.barButtonItem_LeftRotate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_LeftRotate.ImageOptions.Image")));
             this.barButtonItem_LeftRotate.Name = "barButtonItem_LeftRotate";
-            this.barButtonItem_LeftRotate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem116_ItemClick);
+            this.barButtonItem_LeftRotate.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem116_ItemClick);
             // 
             // barCheckItem_LockElements
             // 
@@ -2138,7 +2138,7 @@ namespace HMIEditEnvironment
             this.barCheckItem_LockElements.Id = 168;
             this.barCheckItem_LockElements.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barCheckItem_LockElements.ImageOptions.Image")));
             this.barCheckItem_LockElements.Name = "barCheckItem_LockElements";
-            this.barCheckItem_LockElements.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.barCheckItem17_CheckedChanged);
+            this.barCheckItem_LockElements.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.BarCheckItem17_CheckedChanged);
             // 
             // toolbar_绘制基本图元
             // 
@@ -2196,7 +2196,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_Rectangle.Id = 252;
             this.barButtonItem_Rectangle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Rectangle.ImageOptions.Image")));
             this.barButtonItem_Rectangle.Name = "barButtonItem_Rectangle";
-            this.barButtonItem_Rectangle.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制矩形_ItemClick);
+            this.barButtonItem_Rectangle.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem_绘制矩形_ItemClick);
             // 
             // barButtonItem_Polygon
             // 
@@ -2206,7 +2206,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_Polygon.Id = 253;
             this.barButtonItem_Polygon.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Polygon.ImageOptions.Image")));
             this.barButtonItem_Polygon.Name = "barButtonItem_Polygon";
-            this.barButtonItem_Polygon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制多边形_ItemClick);
+            this.barButtonItem_Polygon.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem_绘制多边形_ItemClick);
             // 
             // barButtonItem_RoundedRectangle
             // 
@@ -2216,7 +2216,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_RoundedRectangle.Id = 254;
             this.barButtonItem_RoundedRectangle.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_RoundedRectangle.ImageOptions.Image")));
             this.barButtonItem_RoundedRectangle.Name = "barButtonItem_RoundedRectangle";
-            this.barButtonItem_RoundedRectangle.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制圆角矩形_ItemClick);
+            this.barButtonItem_RoundedRectangle.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem_绘制圆角矩形_ItemClick);
             // 
             // barButtonItem_String
             // 
@@ -2226,7 +2226,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_String.Id = 256;
             this.barButtonItem_String.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_String.ImageOptions.Image")));
             this.barButtonItem_String.Name = "barButtonItem_String";
-            this.barButtonItem_String.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_绘制文字_ItemClick);
+            this.barButtonItem_String.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem_绘制文字_ItemClick);
             // 
             // barButtonItem_Picture
             // 
@@ -2237,7 +2237,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_Picture.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Picture.ImageOptions.Image")));
             this.barButtonItem_Picture.Name = "barButtonItem_Picture";
             this.barButtonItem_Picture.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
-            this.barButtonItem_Picture.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem_导入图片_ItemClick);
+            this.barButtonItem_Picture.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem_导入图片_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -2319,7 +2319,7 @@ namespace HMIEditEnvironment
             this.dockPanel_基本控件.Size = new System.Drawing.Size(236, 643);
             this.dockPanel_基本控件.Text = "基本控件";
             this.dockPanel_基本控件.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-            this.dockPanel_基本控件.VisibilityChanged += new DevExpress.XtraBars.Docking.VisibilityChangedEventHandler(this.dockPanel_Windows控件_VisibilityChanged);
+            this.dockPanel_基本控件.VisibilityChanged += new DevExpress.XtraBars.Docking.VisibilityChangedEventHandler(this.DockPanel_Windows控件_VisibilityChanged);
             this.dockPanel_基本控件.SizeChanged += new System.EventHandler(this.dockPanel_基本控件_SizeChanged);
             // 
             // controlContainer_基本控件
@@ -2479,7 +2479,7 @@ namespace HMIEditEnvironment
             this.dockPanel_DCCE工控组件.Size = new System.Drawing.Size(234, 643);
             this.dockPanel_DCCE工控组件.Text = "DCCE工控组件";
             this.dockPanel_DCCE工控组件.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-            this.dockPanel_DCCE工控组件.VisibilityChanged += new DevExpress.XtraBars.Docking.VisibilityChangedEventHandler(this.dockPanel_DCCE工控组件_VisibilityChanged);
+            this.dockPanel_DCCE工控组件.VisibilityChanged += new DevExpress.XtraBars.Docking.VisibilityChangedEventHandler(this.DockPanel_DCCE工控组件_VisibilityChanged);
             // 
             // controlContainer_DCCE工控组件
             // 
@@ -2569,7 +2569,7 @@ namespace HMIEditEnvironment
             this.dockPanel_精灵控件.Size = new System.Drawing.Size(237, 605);
             this.dockPanel_精灵控件.Text = "精灵控件";
             this.dockPanel_精灵控件.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
-            this.dockPanel_精灵控件.VisibilityChanged += new DevExpress.XtraBars.Docking.VisibilityChangedEventHandler(this.dockPanel_精灵控件_VisibilityChanged);
+            this.dockPanel_精灵控件.VisibilityChanged += new DevExpress.XtraBars.Docking.VisibilityChangedEventHandler(this.DockPanel_精灵控件_VisibilityChanged);
             // 
             // controlContainer_精灵控件
             // 
@@ -2677,7 +2677,7 @@ namespace HMIEditEnvironment
             this.dockPanel_ActiveX控件.Size = new System.Drawing.Size(234, 605);
             this.dockPanel_ActiveX控件.Text = "ActiveX";
             this.dockPanel_ActiveX控件.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden;
-            this.dockPanel_ActiveX控件.VisibilityChanged += new DevExpress.XtraBars.Docking.VisibilityChangedEventHandler(this.dockPanel_ActiveX控件_VisibilityChanged);
+            this.dockPanel_ActiveX控件.VisibilityChanged += new DevExpress.XtraBars.Docking.VisibilityChangedEventHandler(this.DockPanel_ActiveX控件_VisibilityChanged);
             this.dockPanel_ActiveX控件.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dockPanel_ActiveX控件_MouseClick);
             // 
             // controlContainer_ActiveX控件
@@ -3162,7 +3162,7 @@ namespace HMIEditEnvironment
             this.barEditItem4.Id = 191;
             this.barEditItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barEditItem4.ImageOptions.Image")));
             this.barEditItem4.Name = "barEditItem4";
-            this.barEditItem4.EditValueChanged += new System.EventHandler(this.barEditItem4_EditValueChanged);
+            this.barEditItem4.EditValueChanged += new System.EventHandler(this.BarEditItem4_EditValueChanged);
             // 
             // repositoryItemColorEdit1
             // 

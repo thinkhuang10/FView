@@ -32,15 +32,15 @@ public class SLSetDBSelect : Form
 
 	private string Orderstr = "";
 
-	private List<string> ListboxContentstr = new List<string>();
+	private List<string> ListboxContentstr = new();
 
-	private DataTable DgDatatable = new DataTable();
+	private DataTable DgDatatable = new();
 
-	private DataTable WhereDatatable = new DataTable();
+	private DataTable WhereDatatable = new();
 
-	private DataTable OrderDatatable = new DataTable();
+	private DataTable OrderDatatable = new();
 
-	private List<string> CanUseVars;
+	private readonly List<string> CanUseVars;
 
 	public ServerLogicItem result;
 
@@ -201,17 +201,19 @@ public class SLSetDBSelect : Form
 	public byte[] Serialize()
 	{
 		IFormatter formatter = new BinaryFormatter();
-		MemoryStream memoryStream = new MemoryStream();
-		DBSelectSerializeCopy dBSelectSerializeCopy = new DBSelectSerializeCopy();
-		dBSelectSerializeCopy.ansync = Ansync;
-		dBSelectSerializeCopy.ResultString = ResultString;
-		dBSelectSerializeCopy.Wherestr = Wherestr;
-		dBSelectSerializeCopy.Orderstr = Orderstr;
-		dBSelectSerializeCopy.ListboxContentstr = ListboxContentstr;
-		dBSelectSerializeCopy.DgDatatable = DgDatatable;
-		dBSelectSerializeCopy.WhereDatatable = WhereDatatable;
-		dBSelectSerializeCopy.OrderDatatable = OrderDatatable;
-		formatter.Serialize(memoryStream, dBSelectSerializeCopy);
+		MemoryStream memoryStream = new();
+        DBSelectSerializeCopy dBSelectSerializeCopy = new()
+        {
+            ansync = Ansync,
+            ResultString = ResultString,
+            Wherestr = Wherestr,
+            Orderstr = Orderstr,
+            ListboxContentstr = ListboxContentstr,
+            DgDatatable = DgDatatable,
+            WhereDatatable = WhereDatatable,
+            OrderDatatable = OrderDatatable
+        };
+        formatter.Serialize(memoryStream, dBSelectSerializeCopy);
 		byte[] array = memoryStream.ToArray();
 		memoryStream.Close();
 		return array;
@@ -282,7 +284,7 @@ public class SLSetDBSelect : Form
 				DBOperationGlobal.conn.Open();
 			}
 			DBOperationGlobal.command.CommandText = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND ( TABLE_SCHEMA = '" + DBOperationGlobal.conn.Database + "' OR TABLE_CATALOG = '" + DBOperationGlobal.conn.Database + "' )";
-			List<string> list = new List<string>();
+			List<string> list = new();
 			using (DbDataReader dbDataReader = DBOperationGlobal.command.ExecuteReader())
 			{
 				while (dbDataReader.Read())
@@ -345,7 +347,7 @@ public class SLSetDBSelect : Form
 					DBOperationGlobal.conn.Open();
 				}
 				DBOperationGlobal.command.CommandText = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME  = '" + text2 + "' AND ( TABLE_SCHEMA = '" + DBOperationGlobal.conn.Database + "' OR TABLE_CATALOG = '" + DBOperationGlobal.conn.Database + "' )";
-				DataSet dataSet = new DataSet();
+				DataSet dataSet = new();
 				DBOperationGlobal.adapter.Fill(dataSet);
 				foreach (DataRow row in dataSet.Tables[0].Rows)
 				{
@@ -391,7 +393,7 @@ public class SLSetDBSelect : Form
 				DBOperationGlobal.conn.Open();
 			}
 			DBOperationGlobal.command.CommandText = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME  = '" + text + "' AND ( TABLE_SCHEMA = '" + DBOperationGlobal.conn.Database + "' OR TABLE_CATALOG = '" + DBOperationGlobal.conn.Database + "' )";
-			DataSet dataSet = new DataSet();
+			DataSet dataSet = new();
 			DBOperationGlobal.adapter.Fill(dataSet);
 			foreach (DataRow row in dataSet.Tables[0].Rows)
 			{
@@ -406,7 +408,7 @@ public class SLSetDBSelect : Form
 
 	private void btn_removetable_Click(object sender, EventArgs e)
 	{
-		List<object> list = new List<object>();
+		List<object> list = new();
 		foreach (object selectedItem in listBox1.SelectedItems)
 		{
 			list.Add(selectedItem);
@@ -448,16 +450,18 @@ public class SLSetDBSelect : Form
 
 	private void btntiaojian_Click(object sender, EventArgs e)
 	{
-		SLDBRules sLDBRules = new SLDBRules(CanUseVars);
-		sLDBRules.RecordDatatable = WhereDatatable;
-		foreach (object item in listBox1.Items)
+        SLDBRules sLDBRules = new(CanUseVars)
+        {
+            RecordDatatable = WhereDatatable
+        };
+        foreach (object item in listBox1.Items)
 		{
 			if (DBOperationGlobal.conn.State != ConnectionState.Open)
 			{
 				DBOperationGlobal.conn.Open();
 			}
 			DBOperationGlobal.command.CommandText = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME  = '" + item.ToString() + "' AND ( TABLE_SCHEMA = '" + DBOperationGlobal.conn.Database + "' OR TABLE_CATALOG = '" + DBOperationGlobal.conn.Database + "' )";
-			DataSet dataSet = new DataSet();
+			DataSet dataSet = new();
 			DBOperationGlobal.adapter.Fill(dataSet);
 			foreach (DataRow row in dataSet.Tables[0].Rows)
 			{
@@ -513,16 +517,18 @@ public class SLSetDBSelect : Form
 
 	private void btn_sort_Click(object sender, EventArgs e)
 	{
-		SortForm sortForm = new SortForm();
-		sortForm.RecordDatatable = OrderDatatable;
-		foreach (object item in listBox1.Items)
+        SortForm sortForm = new()
+        {
+            RecordDatatable = OrderDatatable
+        };
+        foreach (object item in listBox1.Items)
 		{
 			if (DBOperationGlobal.conn.State != ConnectionState.Open)
 			{
 				DBOperationGlobal.conn.Open();
 			}
 			DBOperationGlobal.command.CommandText = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME  = '" + item.ToString() + "' AND ( TABLE_SCHEMA = '" + DBOperationGlobal.conn.Database + "' OR TABLE_CATALOG = '" + DBOperationGlobal.conn.Database + "' )";
-			DataSet dataSet = new DataSet();
+			DataSet dataSet = new();
 			DBOperationGlobal.adapter.Fill(dataSet);
 			foreach (DataRow row in dataSet.Tables[0].Rows)
 			{
@@ -647,17 +653,19 @@ public class SLSetDBSelect : Form
 			text = text.Substring(0, text.Length - 1);
 		}
 		ResultTo = text;
-		result = new ServerLogicItem();
-		result.LogicType = "查询数据";
-		result.ConditionalExpression = textBox2.Text;
-		result.DataDict = new Dictionary<string, object>
+        result = new ServerLogicItem
+        {
+            LogicType = "查询数据",
+            ConditionalExpression = textBox2.Text,
+            DataDict = new Dictionary<string, object>
         {
             { "ResultSQL", ResultSQL },
             { "ResultTo", ResultTo },
             { "Ansync", Ansync },
             { "OtherData", OtherData }
+        }
         };
-		base.DialogResult = DialogResult.OK;
+        base.DialogResult = DialogResult.OK;
 		Close();
 	}
 
@@ -767,7 +775,7 @@ public class SLSetDBSelect : Form
 
 	private void 上移ToolStripMenuItem_Click(object sender, EventArgs e)
 	{
-		Dictionary<int, object> dictionary = new Dictionary<int, object>();
+		Dictionary<int, object> dictionary = new();
 		foreach (int selectedIndex in listBox2.SelectedIndices)
 		{
 			dictionary.Add(selectedIndex, listBox2.Items[selectedIndex]);
@@ -788,13 +796,13 @@ public class SLSetDBSelect : Form
 
 	private void 下移ToolStripMenuItem_Click(object sender, EventArgs e)
 	{
-		Dictionary<int, object> dictionary = new Dictionary<int, object>();
+		Dictionary<int, object> dictionary = new();
 		foreach (int selectedIndex in listBox2.SelectedIndices)
 		{
 			dictionary.Add(selectedIndex, listBox2.Items[selectedIndex]);
 		}
 		listBox2.SelectedItems.Clear();
-		SortedList<int, int> sortedList = new SortedList<int, int>();
+		SortedList<int, int> sortedList = new();
 		foreach (int key in dictionary.Keys)
 		{
 			if (key == listBox2.Items.Count - 1)
@@ -838,7 +846,7 @@ public class SLSetDBSelect : Form
 
 	private void button5_Click(object sender, EventArgs e)
 	{
-		SLChooseVar sLChooseVar = new SLChooseVar(CanUseVars, textBox2.Text);
+		SLChooseVar sLChooseVar = new(CanUseVars, textBox2.Text);
 		if (sLChooseVar.ShowDialog() == DialogResult.OK)
 		{
 			textBox2.Text = sLChooseVar.Result;

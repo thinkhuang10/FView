@@ -43,7 +43,7 @@ public class BlockCommentRegion
 
     public override bool Equals(object obj)
     {
-        if (!(obj is BlockCommentRegion blockCommentRegion))
+        if (obj is not BlockCommentRegion blockCommentRegion)
         {
             return false;
         }

@@ -8,7 +8,7 @@ namespace HMIEditEnvironment;
 
 public class AuthoritySettingForm : Form
 {
-	private Dictionary<string, CAuthorityInfo> dicAuthority = new Dictionary<string, CAuthorityInfo>();
+	private Dictionary<string, CAuthorityInfo> dicAuthority = new();
 
 	private IContainer components;
 
@@ -59,8 +59,8 @@ public class AuthoritySettingForm : Form
 	private void AuthoritySettingForm_Load(object sender, EventArgs e)
 	{
 		cbAuthorityLevel.SelectedIndex = 0;
-		CAuthoritySeiallize cAuthoritySeiallize = new CAuthoritySeiallize();
-		BinarySerialize<CAuthoritySeiallize> binarySerialize = new BinarySerialize<CAuthoritySeiallize>();
+		CAuthoritySeiallize cAuthoritySeiallize = new();
+		BinarySerialize<CAuthoritySeiallize> binarySerialize = new();
 		cAuthoritySeiallize = binarySerialize.DeSerialize(CEditEnvironmentGlobal.path + "\\Authority.data");
 		if (cAuthoritySeiallize == null)
 		{
@@ -148,7 +148,7 @@ public class AuthoritySettingForm : Form
 			}
 			node.ExpandAll();
 		}
-		CAuthorityInfo cAuthorityInfo = new CAuthorityInfo();
+		CAuthorityInfo cAuthorityInfo = new();
 		foreach (string checkedItem in clbSafeArea.CheckedItems)
 		{
 			cAuthorityInfo.ltSafeRegion.Add(checkedItem);
@@ -306,11 +306,13 @@ public class AuthoritySettingForm : Form
 	{
 		try
 		{
-			CAuthoritySeiallize cAuthoritySeiallize = new CAuthoritySeiallize();
-			cAuthoritySeiallize.dicAuthority = dicAuthority;
-			cAuthoritySeiallize.bProjectStart = false;
-			cAuthoritySeiallize.bProjectEnd = false;
-			foreach (string checkedItem in clbSystemAuthority.CheckedItems)
+            CAuthoritySeiallize cAuthoritySeiallize = new()
+            {
+                dicAuthority = dicAuthority,
+                bProjectStart = false,
+                bProjectEnd = false
+            };
+            foreach (string checkedItem in clbSystemAuthority.CheckedItems)
 			{
 				if (checkedItem == "进入运行")
 				{
@@ -321,7 +323,7 @@ public class AuthoritySettingForm : Form
 					cAuthoritySeiallize.bProjectEnd = true;
 				}
 			}
-			BinarySerialize<CAuthoritySeiallize> binarySerialize = new BinarySerialize<CAuthoritySeiallize>();
+			BinarySerialize<CAuthoritySeiallize> binarySerialize = new();
 			binarySerialize.Serialize(cAuthoritySeiallize, CEditEnvironmentGlobal.path + "\\Authority.data");
 			Close();
 		}
@@ -343,11 +345,11 @@ public class AuthoritySettingForm : Form
 	private void InitializeComponent()
 	{
 		this.components = new System.ComponentModel.Container();
-		System.Windows.Forms.TreeNode treeNode = new System.Windows.Forms.TreeNode("操作工级");
-		System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("班长级", 0, 0);
-		System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("工程师级");
-		System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("系统管理员级");
-		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HMIEditEnvironment.AuthoritySettingForm));
+		System.Windows.Forms.TreeNode treeNode = new("操作工级");
+		System.Windows.Forms.TreeNode treeNode2 = new("班长级", 0, 0);
+		System.Windows.Forms.TreeNode treeNode3 = new("工程师级");
+		System.Windows.Forms.TreeNode treeNode4 = new("系统管理员级");
+		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIEditEnvironment.AuthoritySettingForm));
 		this.btModify = new System.Windows.Forms.Button();
 		this.btCancel = new System.Windows.Forms.Button();
 		this.label1 = new System.Windows.Forms.Label();

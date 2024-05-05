@@ -102,8 +102,7 @@ public class ServerLogicWorker
         {
             return name.Substring(2, name.Length - 4);
         }
-        float result;
-        if (name.StartsWith("[") && name.EndsWith("]") && float.TryParse(name.Substring(1, name.Length - 2), out result))
+        if (name.StartsWith("[") && name.EndsWith("]") && float.TryParse(name.Substring(1, name.Length - 2), out float result))
         {
             if (!name.Contains("."))
             {

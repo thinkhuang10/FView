@@ -49,13 +49,9 @@ public class MainControl : UserControl, IMessageFilter
 
     private delegate void DBAnsyncOperationCompleteDelegate(object obj);
 
-    private const int WM_COPYDATA = 74;
-
     public CAuthoritySeiallize cas;
 
     public string strCurrentUser;
-
-    private bool databaseError;
 
     public HMIProjectFile dhp;
 
@@ -287,26 +283,26 @@ public class MainControl : UserControl, IMessageFilter
 
     public void LD(CShape s)
     {
-        if (s is CRectangle)
+        if (s is CRectangle rectangle)
         {
             float num = 0f;
             try
             {
-                num = Convert.ToSingle(Eval(((CRectangle)s).ldbianliang));
+                num = Convert.ToSingle(Eval(rectangle.ldbianliang));
             }
             catch
             {
             }
             if (num != 0f)
             {
-                ((CRectangle)s).flow();
+                rectangle.flow();
             }
         }
     }
 
     public void ZFXS(CShape s)
     {
-        if (!(s is CString))
+        if (s is not CString)
         {
             return;
         }
@@ -327,7 +323,7 @@ public class MainControl : UserControl, IMessageFilter
 
     public void MNSC(CShape s)
     {
-        if (!(s is CString))
+        if (s is not CString)
         {
             return;
         }
@@ -918,7 +914,7 @@ public class MainControl : UserControl, IMessageFilter
         return Math.Sin(Math.PI * 2.0 / (double)cycle * (((double)time - delay) % (double)cycle)) * (max - min) / 2.0 + (max + min) / 2.0;
     }
 
-    public double increase(int time, int cycle, double max, double min, double delay)
+    public double Increase(int time, int cycle, double max, double min, double delay)
     {
         if (!Utils.CheckZero(cycle))
             return 0.0;
@@ -927,7 +923,7 @@ public class MainControl : UserControl, IMessageFilter
         return min + num * (((double)time - delay) % (double)cycle);
     }
 
-    public double degress(int time, int cycle, double max, double min, double delay)
+    public double Degress(int time, int cycle, double max, double min, double delay)
     {
         if (!Utils.CheckZero(cycle))
             return 0.0;
@@ -936,7 +932,7 @@ public class MainControl : UserControl, IMessageFilter
         return max + num * (((double)time - delay) % (double)cycle);
     }
 
-    public double triangle(int time, int cycle, double max, double min, double delay)
+    public double Triangle(int time, int cycle, double max, double min, double delay)
     {
         if (!Utils.CheckZero(cycle))
             return 0.0;
@@ -953,168 +949,10 @@ public class MainControl : UserControl, IMessageFilter
         return 0.0;
     }
 
-    public double random(double max, double min)
+    public double Random(double max, double min)
     {
         Random random = new(Guid.NewGuid().GetHashCode());
         return random.NextDouble() * (max - min) + min;
-    }
-
-    private MySqlConnection GetConn(string _uid, string _pwd, string _source, string _host, string _port)
-    {
-        if (_port == "0")
-        {
-            _port = "3306";
-        }
-        string connectionString = " Database=" + _source + ";Data Source=" + _host + ";User Id=" + _uid + ";Password=" + _pwd + ";Port=" + _port;
-        return new MySqlConnection(connectionString);
-    }
-
-    private DataTable ReadDataFromDataBase(DateTime BeginDateTime, DateTime EndDataTime, string name)
-    {
-        int num = 0;
-        while (true)
-        {
-            try
-            {
-                string key = "[" + name + "]";
-                DataTable dataTable = new(name);
-                int id = DicIO[key].Id2;
-                if (id >= 0)
-                {
-                    MySqlConnection conn = GetConn(dhp.databaseusername, dhp.databasepwd, "db_dcce", dhp.ipaddress, dhp.databaseport.ToString());
-                    MySqlDataAdapter mySqlDataAdapter = new(SystemANSIPage_ISO8859("Select * from project_dbmanager where project_name='" + dhp.projectname + "'"), conn);
-                    DataTable dataTable2 = new();
-                    mySqlDataAdapter.Fill(dataTable2);
-                    if (dataTable2.Rows.Count == 0)
-                    {
-                        DataTable dataTable3 = new(name);
-                        dataTable3.Columns.Add("DateTime", typeof(DateTime));
-                        dataTable3.Columns.Add("Var", typeof(double));
-                        return dataTable3;
-                    }
-                    MySqlConnection conn2 = GetConn(dhp.databaseusername, dhp.databasepwd, dataTable2.Rows[0]["db_name"].ToString(), dhp.ipaddress, dhp.databaseport.ToString());
-                    MySqlDataAdapter mySqlDataAdapter2 = new("Select * from tbmanager_dcce where ( StartTime<'" + BeginDateTime.ToString() + "' and EndTime>'" + BeginDateTime.ToString() + "' ) or ( StartTime<'" + EndDataTime.ToString() + "' and EndTime>'" + EndDataTime.ToString() + "' ) or ( StartTime>'" + BeginDateTime.ToString() + "' and EndTime<'" + EndDataTime.ToString() + "' ) or ( StartTime<'" + BeginDateTime.ToString() + "' and Active=1 )", conn2);
-                    DataTable dataTable4 = new();
-                    DataTable dataTable5 = new(name);
-                    dataTable5.Columns.Add("DateTime", typeof(DateTime));
-                    dataTable5.Columns.Add("Var", typeof(double));
-                    mySqlDataAdapter2.Fill(dataTable4);
-                    foreach (DataRow row in dataTable4.Rows)
-                    {
-                        if (row["TableName"].ToString().Contains("hmi") || Convert.ToInt32(row["TableName"].ToString().Split('_')[0].Replace("realtime", "")) != id - id % 512)
-                        {
-                            continue;
-                        }
-                        MySqlDataAdapter mySqlDataAdapter3 = new("Select wtime,var" + id + " from " + row["TableName"].ToString() + " where wtime>'" + BeginDateTime.ToString() + "' and wtime<'" + EndDataTime.ToString() + "'", conn2);
-                        DataTable dataTable6 = new();
-                        mySqlDataAdapter3.Fill(dataTable6);
-                        foreach (DataRow row2 in dataTable6.Rows)
-                        {
-                            if (row2[1] != DBNull.Value)
-                            {
-                                DataRow dataRow3 = dataTable5.NewRow();
-                                dataRow3[0] = row2[0];
-                                dataRow3[1] = row2[1];
-                                dataTable5.Rows.Add(dataRow3);
-                            }
-                        }
-                    }
-                    DataRow[] array = dataTable5.Select("", "DateTime");
-                    dataTable.Columns.Add("DateTime", typeof(DateTime));
-                    dataTable.Columns.Add("Var", typeof(double));
-                    DataRow[] array2 = array;
-                    foreach (DataRow dataRow4 in array2)
-                    {
-                        DataRow dataRow5 = dataTable.NewRow();
-                        dataRow5[0] = dataRow4[0];
-                        dataRow5[1] = dataRow4[1];
-                        dataTable.Rows.Add(dataRow5);
-                    }
-                }
-                else
-                {
-                    id *= -1;
-                    MySqlConnection conn3 = GetConn(dhp.databaseusername, dhp.databasepwd, "db_dcce", dhp.ipaddress, dhp.databaseport.ToString());
-                    MySqlDataAdapter mySqlDataAdapter4 = new(SystemANSIPage_ISO8859("Select * from project_dbmanager where project_name='" + dhp.projectname + "'"), conn3);
-                    DataTable dataTable7 = new();
-                    mySqlDataAdapter4.Fill(dataTable7);
-                    if (dataTable7.Rows.Count == 0)
-                    {
-                        DataTable dataTable8 = new(name);
-                        dataTable8.Columns.Add("DateTime", typeof(DateTime));
-                        dataTable8.Columns.Add("Var", typeof(double));
-                        return dataTable8;
-                    }
-                    MySqlConnection conn4 = GetConn(dhp.databaseusername, dhp.databasepwd, dataTable7.Rows[0]["db_name"].ToString(), dhp.ipaddress, dhp.databaseport.ToString());
-                    MySqlDataAdapter mySqlDataAdapter5 = new("Select * from tbmanager_dcce where ( StartTime<'" + BeginDateTime.ToString() + "' and EndTime>'" + BeginDateTime.ToString() + "' ) or ( StartTime<'" + EndDataTime.ToString() + "' and EndTime>'" + EndDataTime.ToString() + "' ) or ( StartTime>'" + BeginDateTime.ToString() + "' and EndTime<'" + EndDataTime.ToString() + "' ) or ( StartTime<'" + BeginDateTime.ToString() + "' and Active=1 )", conn4);
-                    DataTable dataTable9 = new();
-                    DataTable dataTable10 = new(name);
-                    dataTable10.Columns.Add("DateTime", typeof(DateTime));
-                    dataTable10.Columns.Add("Var", typeof(double));
-                    mySqlDataAdapter5.Fill(dataTable9);
-                    foreach (DataRow row3 in dataTable9.Rows)
-                    {
-                        if (!row3["TableName"].ToString().Contains("hmi") || Convert.ToInt32(row3["TableName"].ToString().Split('_')[1].Replace("hmi", "")) != id - id % 512)
-                        {
-                            continue;
-                        }
-                        MySqlDataAdapter mySqlDataAdapter6 = new("Select wtime,var" + id + " from " + row3["TableName"].ToString() + " where wtime>'" + BeginDateTime.ToString() + "' and wtime<'" + EndDataTime.ToString() + "'", conn4);
-                        DataTable dataTable11 = new();
-                        mySqlDataAdapter6.Fill(dataTable11);
-                        foreach (DataRow row4 in dataTable11.Rows)
-                        {
-                            try
-                            {
-                                DataRow dataRow8 = dataTable10.NewRow();
-                                dataRow8[0] = row4[0];
-                                dataRow8[1] = ((row4[0].ToString() == "1.#INF00e+000") ? 3.4028234663852886E+38 : Convert.ToDouble(row4[0]));
-                                dataTable10.Rows.Add(dataRow8);
-                            }
-                            catch (Exception)
-                            {
-                            }
-                        }
-                    }
-                    DataRow[] array3 = dataTable10.Select("", "DateTime");
-                    dataTable.Columns.Add("DateTime", typeof(DateTime));
-                    dataTable.Columns.Add("Var", typeof(double));
-                    DataRow[] array4 = array3;
-                    foreach (DataRow dataRow9 in array4)
-                    {
-                        DataRow dataRow10 = dataTable.NewRow();
-                        dataRow10[0] = dataRow9[0];
-                        dataRow10[1] = dataRow9[1];
-                        dataTable.Rows.Add(dataRow10);
-                    }
-                }
-                databaseError = false;
-                return dataTable;
-            }
-            catch (Exception ex2)
-            {
-                if (num++ < 3)
-                {
-                    continue;
-                }
-                if (!databaseError)
-                {
-                    databaseError = true;
-                    MessageBox.Show("访问历史数据库发生异常." + Environment.NewLine + ex2.Message);
-                }
-                DataTable dataTable12 = new(name);
-                dataTable12.Columns.Add("DateTime", typeof(DateTime));
-                dataTable12.Columns.Add("Var", typeof(double));
-                return dataTable12;
-            }
-        }
-    }
-
-    public string SystemANSIPage_ISO8859(string write)
-    {
-        Encoding encoding = Encoding.GetEncoding("iso8859-1");
-        Encoding @default = Encoding.Default;
-        byte[] bytes = @default.GetBytes(write);
-        return encoding.GetString(bytes);
     }
 
     private void DataWorkThread()
@@ -1202,20 +1040,6 @@ public class MainControl : UserControl, IMessageFilter
     public void ShutDown()
     {
         Process.GetCurrentProcess().Close();
-    }
-
-    private string GetHostIP(string host)
-    {
-        IPAddress[] hostAddresses = Dns.GetHostAddresses(host);
-        IPAddress[] array = hostAddresses;
-        foreach (IPAddress iPAddress in array)
-        {
-            if (iPAddress.AddressFamily == AddressFamily.InterNetwork)
-            {
-                return iPAddress.ToString();
-            }
-        }
-        return "127.0.0.1";
     }
 
     public void BeginInit()
@@ -1471,14 +1295,14 @@ public class MainControl : UserControl, IMessageFilter
                 float num2 = dic_zoomy[dataFile.name];
                 for (int j = 0; j < dataFile.ListAllShowCShape.Count; j++)
                 {
-                    if (dataFile.ListAllShowCShape[j] is CControl)
+                    if (dataFile.ListAllShowCShape[j] is CControl control)
                     {
                         try
                         {
-                            ((CControl)dataFile.ListAllShowCShape[j]).Width = dataFile.ListAllShowCShape[j].DefaultSize.Width * zoomX * num;
-                            ((CControl)dataFile.ListAllShowCShape[j]).Height = dataFile.ListAllShowCShape[j].DefaultSize.Height * zoomY * num2;
-                            ((CControl)dataFile.ListAllShowCShape[j]).X = Convert.ToInt32((float)dataFile.ListAllShowCShape[j].DefaultLocaion.X * zoomX * num);
-                            ((CControl)dataFile.ListAllShowCShape[j]).Y = Convert.ToInt32((float)dataFile.ListAllShowCShape[j].DefaultLocaion.Y * zoomY * num2);
+                            control.Width = dataFile.ListAllShowCShape[j].DefaultSize.Width * zoomX * num;
+                            control.Height = dataFile.ListAllShowCShape[j].DefaultSize.Height * zoomY * num2;
+                            control.X = Convert.ToInt32((float)dataFile.ListAllShowCShape[j].DefaultLocaion.X * zoomX * num);
+                            control.Y = Convert.ToInt32((float)dataFile.ListAllShowCShape[j].DefaultLocaion.Y * zoomY * num2);
                         }
                         catch (Exception)
                         {
@@ -1645,11 +1469,6 @@ public class MainControl : UserControl, IMessageFilter
         return "";
     }
 
-    private DataTable UserControl1_GetDataBaseEvent(DateTime dt1, DateTime dt2, string name)
-    {
-        return ReadDataFromDataBase(dt1, dt2, name);
-    }
-
     private void UserControl1_SetValueEvent(string name, object value)
     {
         SetValue(name, value);
@@ -1762,9 +1581,9 @@ public class MainControl : UserControl, IMessageFilter
                     {
                         KGSC(item);
                     }
-                    if (item is CPixieControl)
+                    if (item is CPixieControl control)
                     {
-                        ((CPixieControl)item).RefreshControl();
+                        control.RefreshControl();
                     }
                     else if (item is CRectangle && ((CRectangle)item).ld)
                     {
@@ -1851,7 +1670,7 @@ public class MainControl : UserControl, IMessageFilter
         Mouse = new MouseEventArgs(e.Button, e.Clicks, num, num2, e.Delta);
         Mousedownx = num;
         Mousedowny = num2;
-        object[] array = new object[2] { sender, e };
+        //object[] array = new object[2] { sender, e };
         Focus = null;
         List<CShape> listAllShowCShape = SD[((Control)sender).Name].ListAllShowCShape;
         for (int num5 = listAllShowCShape.Count - 1; num5 >= 0; num5--)
@@ -1887,7 +1706,7 @@ public class MainControl : UserControl, IMessageFilter
                     AIinput(cShape);
                     DIinput(cShape);
                     STRinput(cShape);
-                    if (cShape != null && !(cShape is CControl))
+                    if (cShape != null && cShape is not CControl)
                     {
                         CallDBAnimation(cShape);
                     }
@@ -2006,10 +1825,10 @@ public class MainControl : UserControl, IMessageFilter
             {
                 continue;
             }
-            if (item is CPixieControl)
+            if (item is CPixieControl control)
             {
                 MouseEventArgs e2 = new(e.Button, e.Clicks, Convert.ToInt32((int)((float)e.X / zoomX)), Convert.ToInt32((int)((float)e.X / zoomY)), e.Delta);
-                ((CPixieControl)item).OnMouseUp(sender, e2);
+                control.OnMouseUp(sender, e2);
             }
             if (item == Moving)
             {
@@ -2097,10 +1916,10 @@ public class MainControl : UserControl, IMessageFilter
             CShape cShape = listAllShowCShape[num5];
             if (cShape.Visible)
             {
-                if (cShape is CPixieControl)
+                if (cShape is CPixieControl control)
                 {
                     MouseEventArgs e2 = new(e.Button, e.Clicks, Convert.ToInt32((int)((float)e.X / zoomX)), Convert.ToInt32((int)((float)e.Y / zoomY)), e.Delta);
-                    ((CPixieControl)cShape).OnMouseMove(sender, e2);
+                    control.OnMouseMove(sender, e2);
                 }
                 if (e.Button == MouseButtons.Left && cShape == Focus && (cShape.sptz || cShape.cztz))
                 {
@@ -2338,8 +2157,7 @@ public class MainControl : UserControl, IMessageFilter
                 if (str.StartsWith("[\"") && str.EndsWith("\"]"))
                     return str.Substring(2, str.Length - 4);
 
-                float result = 0f;
-                if (str.StartsWith("[") && str.EndsWith("]") && float.TryParse(str.Substring(1, str.Length - 2), out result))
+                if (str.StartsWith("[") && str.EndsWith("]") && float.TryParse(str.Substring(1, str.Length - 2), out float result))
                 {
                     if (!str.Contains("."))
                     {
@@ -2400,11 +2218,11 @@ public class MainControl : UserControl, IMessageFilter
             }
             if (DicIO[str].Emluator == "递增")
             {
-                return increase(Convert.ToInt32(DateTime.Now.TimeOfDay.TotalMilliseconds - begintime.TimeOfDay.TotalMilliseconds), int.Parse(DicIO[str].Cycle), double.Parse(DicIO[str].Max), double.Parse(DicIO[str].Min), double.Parse(DicIO[str].Delay));
+                return Increase(Convert.ToInt32(DateTime.Now.TimeOfDay.TotalMilliseconds - begintime.TimeOfDay.TotalMilliseconds), int.Parse(DicIO[str].Cycle), double.Parse(DicIO[str].Max), double.Parse(DicIO[str].Min), double.Parse(DicIO[str].Delay));
             }
             if (DicIO[str].Emluator == "递减")
             {
-                return degress(Convert.ToInt32(DateTime.Now.TimeOfDay.TotalMilliseconds - begintime.TimeOfDay.TotalMilliseconds), int.Parse(DicIO[str].Cycle), double.Parse(DicIO[str].Max), double.Parse(DicIO[str].Min), double.Parse(DicIO[str].Delay));
+                return Degress(Convert.ToInt32(DateTime.Now.TimeOfDay.TotalMilliseconds - begintime.TimeOfDay.TotalMilliseconds), int.Parse(DicIO[str].Cycle), double.Parse(DicIO[str].Max), double.Parse(DicIO[str].Min), double.Parse(DicIO[str].Delay));
             }
             if (DicIO[str].Emluator == "正弦")
             {
@@ -2412,11 +2230,11 @@ public class MainControl : UserControl, IMessageFilter
             }
             if (DicIO[str].Emluator == "三角")
             {
-                return triangle(Convert.ToInt32(DateTime.Now.TimeOfDay.TotalMilliseconds - begintime.TimeOfDay.TotalMilliseconds), int.Parse(DicIO[str].Cycle), double.Parse(DicIO[str].Max), double.Parse(DicIO[str].Min), double.Parse(DicIO[str].Delay));
+                return Triangle(Convert.ToInt32(DateTime.Now.TimeOfDay.TotalMilliseconds - begintime.TimeOfDay.TotalMilliseconds), int.Parse(DicIO[str].Cycle), double.Parse(DicIO[str].Max), double.Parse(DicIO[str].Min), double.Parse(DicIO[str].Delay));
             }
             if (DicIO[str].Emluator == "随机")
             {
-                return random(double.Parse(DicIO[str].Max), double.Parse(DicIO[str].Min));
+                return Random(double.Parse(DicIO[str].Max), double.Parse(DicIO[str].Min));
             }
             return Varlist[DicIO[str].Id];
         }
@@ -2458,7 +2276,7 @@ public class MainControl : UserControl, IMessageFilter
         {
             return new Guid(value as string);
         }
-        if (!(value is IConvertible))
+        if (value is not IConvertible)
         {
             return value;
         }
@@ -3014,51 +2832,23 @@ public class MainControl : UserControl, IMessageFilter
             }
             varTableItem2.Isalive = false;
             DicMe.Add(varTableItem2.Id2, varTableItem2);
-            switch (projectIO.type)
+            Varlist[num] = projectIO.type switch
             {
-                case "0":
-                    Varlist[num] = false;
-                    break;
-                case "1":
-                    Varlist[num] = Convert.ToSByte(0);
-                    break;
-                case "2":
-                    Varlist[num] = Convert.ToByte(0);
-                    break;
-                case "3":
-                    Varlist[num] = Convert.ToInt16(0);
-                    break;
-                case "4":
-                    Varlist[num] = Convert.ToUInt16(0);
-                    break;
-                case "5":
-                    Varlist[num] = Convert.ToInt32(0);
-                    break;
-                case "6":
-                    Varlist[num] = Convert.ToUInt16(0);
-                    break;
-                case "7":
-                    Varlist[num] = Convert.ToSingle(0);
-                    break;
-                case "8":
-                    Varlist[num] = Convert.ToDouble(0);
-                    break;
-                case "9":
-                    Varlist[num] = "";
-                    break;
-                case "10":
-                    Varlist[num] = Convert.ToInt32(0);
-                    break;
-                case "11":
-                    Varlist[num] = Convert.ToInt32(0);
-                    break;
-                case "1024":
-                    Varlist[num] = null;
-                    break;
-                default:
-                    Varlist[num] = null;
-                    break;
-            }
+                "0" => false,
+                "1" => Convert.ToSByte(0),
+                "2" => Convert.ToByte(0),
+                "3" => Convert.ToInt16(0),
+                "4" => Convert.ToUInt16(0),
+                "5" => Convert.ToInt32(0),
+                "6" => Convert.ToUInt16(0),
+                "7" => Convert.ToSingle(0),
+                "8" => Convert.ToDouble(0),
+                "9" => "",
+                "10" => Convert.ToInt32(0),
+                "11" => Convert.ToInt32(0),
+                "1024" => null,
+                _ => null,
+            };
             num++;
         }
         init.Say("构建通信组件..");
@@ -3494,7 +3284,7 @@ public class MainControl : UserControl, IMessageFilter
             {
                 ((IDCCEControl)control).GetValueEvent += UserControl1_GetValueEvent;
                 ((IDCCEControl)control).SetValueEvent += UserControl1_SetValueEvent;
-                ((IDCCEControl)control).GetDataBaseEvent += UserControl1_GetDataBaseEvent;
+                //((IDCCEControl)control).GetDataBaseEvent += UserControl1_GetDataBaseEvent;
                 ((IDCCEControl)control).GetVarTableEvent += UserControl1_GetVarTableEvent;
                 ((IDCCEControl)control).GetSystemItemEvent += MainControl_GetSystemItemEvent;
                 if (control is CButton)
@@ -3944,7 +3734,7 @@ public class MainControl : UserControl, IMessageFilter
                             SetInformationLabel("操作数据库错误:" + (obj9 as Exception).Message, visible: true);
                             throw obj9 as Exception;
                         }
-                        if (!(obj9 is int dBResult6))
+                        if (obj9 is not int dBResult6)
                         {
                             throw new Exception();
                         }
@@ -3963,7 +3753,7 @@ public class MainControl : UserControl, IMessageFilter
                             SetInformationLabel("操作数据库错误:" + (obj4 as Exception).Message, visible: true);
                             throw obj4 as Exception;
                         }
-                        if (!(obj4 is int dBResult2))
+                        if (obj4 is not int dBResult2)
                         {
                             throw new Exception();
                         }
@@ -3982,7 +3772,7 @@ public class MainControl : UserControl, IMessageFilter
                             SetInformationLabel("操作数据库错误:" + (obj5 as Exception).Message, visible: true);
                             throw obj5 as Exception;
                         }
-                        if (!(obj5 is int dBResult3))
+                        if (obj5 is not int dBResult3)
                         {
                             throw new Exception();
                         }
@@ -4023,7 +3813,7 @@ public class MainControl : UserControl, IMessageFilter
                             SetInformationLabel("操作数据库错误:" + (obj6 as Exception).Message, visible: true);
                             throw obj6 as Exception;
                         }
-                        if (!(obj6 is int dBResult4))
+                        if (obj6 is not int dBResult4)
                         {
                             throw new Exception();
                         }
@@ -4043,7 +3833,7 @@ public class MainControl : UserControl, IMessageFilter
                             SetInformationLabel("操作数据库错误:" + (obj7 as Exception).Message, visible: true);
                             throw obj7 as Exception;
                         }
-                        if (!(obj7 is int dBResult5))
+                        if (obj7 is not int dBResult5)
                         {
                             throw new Exception();
                         }
@@ -4063,7 +3853,7 @@ public class MainControl : UserControl, IMessageFilter
                             SetInformationLabel("操作数据库错误:" + (obj2 as Exception).Message, visible: true);
                             throw obj2 as Exception;
                         }
-                        if (!(obj2 is int dBResult))
+                        if (obj2 is not int dBResult)
                         {
                             throw new Exception();
                         }
@@ -4334,7 +4124,7 @@ public class MainControl : UserControl, IMessageFilter
                 SetInformationLabel("操作数据库错误:" + (obj as Exception).Message, visible: true);
                 throw obj as Exception;
             }
-            if (!(obj is int dBResult))
+            if (obj is not int dBResult)
             {
                 throw new Exception();
             }
@@ -4470,7 +4260,7 @@ public class MainControl : UserControl, IMessageFilter
                 SetInformationLabel("操作数据库错误:" + (obj as Exception).Message, visible: true);
                 throw obj as Exception;
             }
-            if (!(obj is int dBResult))
+            if (obj is not int dBResult)
             {
                 throw new Exception();
             }
@@ -4508,7 +4298,7 @@ public class MainControl : UserControl, IMessageFilter
                 SetInformationLabel("操作数据库错误:" + (obj as Exception).Message, visible: true);
                 throw obj as Exception;
             }
-            if (!(obj is int dBResult))
+            if (obj is not int dBResult)
             {
                 throw new Exception();
             }
@@ -4547,7 +4337,7 @@ public class MainControl : UserControl, IMessageFilter
                 SetInformationLabel("操作数据库错误:" + (obj as Exception).Message, visible: true);
                 throw obj as Exception;
             }
-            if (!(obj is int dBResult))
+            if (obj is not int dBResult)
             {
                 throw new Exception();
             }
@@ -4585,7 +4375,7 @@ public class MainControl : UserControl, IMessageFilter
                 SetInformationLabel("操作数据库错误:" + (obj as Exception).Message, visible: true);
                 throw obj as Exception;
             }
-            if (!(obj is int dBResult))
+            if (obj is not int dBResult)
             {
                 throw new Exception("");
             }
@@ -4660,12 +4450,15 @@ public class MainControl : UserControl, IMessageFilter
                 SetInformationLabel("操作数据库错误:" + (obj as Exception).Message, visible: true);
                 throw obj as Exception;
             }
-            if (!(obj is int dBResult))
+            if (obj is int dBResult)
+            {
+                c.DBResult = dBResult;
+                c.FireDBOperationOK();
+            }
+            else
             {
                 throw new Exception();
             }
-            c.DBResult = dBResult;
-            c.FireDBOperationOK();
         }
         catch
         {
@@ -4739,18 +4532,12 @@ public class MainControl : UserControl, IMessageFilter
 
     public string SetDbType(int i)
     {
-        switch (i)
+        dbType = i switch
         {
-            case 0:
-                dbType = DbConnType.MS_SQL_Server;
-                break;
-            case 1:
-                dbType = DbConnType.ODBC;
-                break;
-            default:
-                dbType = DbConnType.MS_SQL_Server;
-                break;
-        }
+            0 => DbConnType.MS_SQL_Server,
+            1 => DbConnType.ODBC,
+            _ => DbConnType.MS_SQL_Server,
+        };
         return dbType.ToString();
     }
 

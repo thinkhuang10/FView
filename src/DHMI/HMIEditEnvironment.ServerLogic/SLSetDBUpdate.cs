@@ -15,7 +15,7 @@ namespace HMIEditEnvironment.ServerLogic;
 
 public class SLSetDBUpdate : Form
 {
-	public List<int> SafeRegion = new List<int>();
+	public List<int> SafeRegion = new();
 
 	public byte[] OtherData;
 
@@ -25,15 +25,15 @@ public class SLSetDBUpdate : Form
 
 	private string NowTable = "";
 
-	private Dictionary<string, string[]> ResultStrings = new Dictionary<string, string[]>();
+	private Dictionary<string, string[]> ResultStrings = new();
 
-	private List<string> ListboxContentstr = new List<string>();
+	private List<string> ListboxContentstr = new();
 
-	private DataSet DgDatatables = new DataSet();
+	private DataSet DgDatatables = new();
 
-	private DataSet WhereDatatables = new DataSet();
+	private DataSet WhereDatatables = new();
 
-	private List<string> CanUseVars;
+	private readonly List<string> CanUseVars;
 
 	public ServerLogicItem result;
 
@@ -136,15 +136,17 @@ public class SLSetDBUpdate : Form
 	public byte[] Serialize()
 	{
 		IFormatter formatter = new BinaryFormatter();
-		MemoryStream memoryStream = new MemoryStream();
-		DBUpdateSerializeCopy dBUpdateSerializeCopy = new DBUpdateSerializeCopy();
-		dBUpdateSerializeCopy.ansync = Ansync;
-		dBUpdateSerializeCopy.ListboxContentstr = ListboxContentstr;
-		dBUpdateSerializeCopy.DgDatatables = DgDatatables;
-		dBUpdateSerializeCopy.ResultStrings = ResultStrings;
-		dBUpdateSerializeCopy.NowTable = NowTable;
-		dBUpdateSerializeCopy.WhereDatatables = WhereDatatables;
-		formatter.Serialize(memoryStream, dBUpdateSerializeCopy);
+		MemoryStream memoryStream = new();
+        DBUpdateSerializeCopy dBUpdateSerializeCopy = new()
+        {
+            ansync = Ansync,
+            ListboxContentstr = ListboxContentstr,
+            DgDatatables = DgDatatables,
+            ResultStrings = ResultStrings,
+            NowTable = NowTable,
+            WhereDatatables = WhereDatatables
+        };
+        formatter.Serialize(memoryStream, dBUpdateSerializeCopy);
 		byte[] array = memoryStream.ToArray();
 		memoryStream.Close();
 		return array;
@@ -192,7 +194,7 @@ public class SLSetDBUpdate : Form
 				DBOperationGlobal.conn.Open();
 			}
 			DBOperationGlobal.command.CommandText = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND ( TABLE_SCHEMA = '" + DBOperationGlobal.conn.Database + "' OR TABLE_CATALOG = '" + DBOperationGlobal.conn.Database + "' )";
-			List<string> list = new List<string>();
+			List<string> list = new();
 			using (DbDataReader dbDataReader = DBOperationGlobal.command.ExecuteReader())
 			{
 				while (dbDataReader.Read())
@@ -273,7 +275,7 @@ public class SLSetDBUpdate : Form
 		{
 			ResultStrings.Remove(listBox1.SelectedItem.ToString());
 		}
-		List<object> list = new List<object>();
+		List<object> list = new();
 		foreach (object selectedItem in listBox1.SelectedItems)
 		{
 			list.Add(selectedItem);
@@ -365,7 +367,7 @@ public class SLSetDBUpdate : Form
 		}
 		if (!DgDatatables.Tables.Contains(NowTable))
 		{
-			DataTable dataTable = new DataTable(NowTable);
+			DataTable dataTable = new(NowTable);
 			dataTable.Columns.Add("ck1");
 			dataTable.Columns.Add("varname");
 			dataTable.Columns.Add("vartype");
@@ -458,7 +460,7 @@ public class SLSetDBUpdate : Form
 		}
 		if (!DgDatatables.Tables.Contains(NowTable))
 		{
-			DataTable dataTable = new DataTable(NowTable);
+			DataTable dataTable = new(NowTable);
 			dataTable.Columns.Add("ck1");
 			dataTable.Columns.Add("varname");
 			dataTable.Columns.Add("vartype");
@@ -494,17 +496,19 @@ public class SLSetDBUpdate : Form
 		}
 		OtherData = Serialize();
 		ResultSQL = textBox1.Text;
-		result = new ServerLogicItem();
-		result.LogicType = "更新数据";
-		result.ConditionalExpression = textBox2.Text;
-		result.DataDict = new Dictionary<string, object>
+        result = new ServerLogicItem
+        {
+            LogicType = "更新数据",
+            ConditionalExpression = textBox2.Text,
+            DataDict = new Dictionary<string, object>
         {
             { "ResultSQL", ResultSQL },
             { "Ansync", Ansync },
             { "OtherData", OtherData },
             { "ResultTo", textBox3.Text }
+        }
         };
-		base.DialogResult = DialogResult.OK;
+        base.DialogResult = DialogResult.OK;
 		Close();
 	}
 
@@ -569,7 +573,7 @@ public class SLSetDBUpdate : Form
 			}
 			if (!DgDatatables.Tables.Contains(NowTable))
 			{
-				DataTable dataTable = new DataTable(NowTable);
+				DataTable dataTable = new(NowTable);
 				dataTable.Columns.Add("ck1");
 				dataTable.Columns.Add("varname");
 				dataTable.Columns.Add("vartype");
@@ -619,7 +623,7 @@ public class SLSetDBUpdate : Form
 				DBOperationGlobal.conn.Open();
 			}
 			DBOperationGlobal.command.CommandText = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME  = '" + text4 + "' AND ( TABLE_SCHEMA = '" + DBOperationGlobal.conn.Database + "' OR TABLE_CATALOG = '" + DBOperationGlobal.conn.Database + "' )";
-			DataSet dataSet = new DataSet();
+			DataSet dataSet = new();
 			DBOperationGlobal.adapter.Fill(dataSet);
 			foreach (DataRow row2 in dataSet.Tables[0].Rows)
 			{
@@ -635,7 +639,7 @@ public class SLSetDBUpdate : Form
 
 	private void btn_tiaojian_Click(object sender, EventArgs e)
 	{
-		SLDBRules sLDBRules = new SLDBRules(CanUseVars);
+		SLDBRules sLDBRules = new(CanUseVars);
 		if (listBox1.SelectedItem == null)
 		{
 			return;
@@ -669,7 +673,7 @@ public class SLSetDBUpdate : Form
 			DBOperationGlobal.conn.Open();
 		}
 		DBOperationGlobal.command.CommandText = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME  = '" + listBox1.SelectedItem.ToString() + "' AND ( TABLE_SCHEMA = '" + DBOperationGlobal.conn.Database + "' OR TABLE_CATALOG = '" + DBOperationGlobal.conn.Database + "' )";
-		DataSet dataSet = new DataSet();
+		DataSet dataSet = new();
 		DBOperationGlobal.adapter.Fill(dataSet);
 		foreach (DataRow row2 in dataSet.Tables[0].Rows)
 		{
@@ -683,9 +687,11 @@ public class SLSetDBUpdate : Form
 		{
 			WhereDatatables.Tables.Remove(listBox1.SelectedItem.ToString());
 		}
-		DataTable dataTable = new DataTable();
-		dataTable.TableName = listBox1.SelectedItem.ToString();
-		dataTable.Columns.Add("逻辑关系");
+        DataTable dataTable = new()
+        {
+            TableName = listBox1.SelectedItem.ToString()
+        };
+        dataTable.Columns.Add("逻辑关系");
 		dataTable.Columns.Add("字段");
 		dataTable.Columns.Add("匹配运算符");
 		dataTable.Columns.Add("值");
@@ -796,7 +802,7 @@ public class SLSetDBUpdate : Form
 
 	private void button1_Click(object sender, EventArgs e)
 	{
-		SLChooseVar sLChooseVar = new SLChooseVar(CanUseVars, textBox2.Text);
+		SLChooseVar sLChooseVar = new(CanUseVars, textBox2.Text);
 		if (sLChooseVar.ShowDialog() == DialogResult.OK)
 		{
 			textBox2.Text = sLChooseVar.Result;
@@ -805,7 +811,7 @@ public class SLSetDBUpdate : Form
 
 	private void button2_Click(object sender, EventArgs e)
 	{
-		SLChooseVar sLChooseVar = new SLChooseVar(CanUseVars, textBox3.Text);
+		SLChooseVar sLChooseVar = new(CanUseVars, textBox3.Text);
 		if (sLChooseVar.ShowDialog() == DialogResult.OK)
 		{
 			textBox3.Text = sLChooseVar.Result;

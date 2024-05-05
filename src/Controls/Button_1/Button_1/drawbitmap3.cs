@@ -179,7 +179,7 @@ public class drawbitmap3 : CPixieControl
         MemberInfo[] serializableMembers = FormatterServices.GetSerializableMembers(typeof(drawbitmap3), context);
         for (int i = 0; i < serializableMembers.Length; i++)
         {
-            if (!(serializableMembers[i] is FieldInfo))
+            if (serializableMembers[i] is not FieldInfo)
             {
                 continue;
             }

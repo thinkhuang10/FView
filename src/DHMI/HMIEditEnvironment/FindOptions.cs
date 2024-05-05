@@ -12,9 +12,8 @@ public class FindOptions
 
     public override bool Equals(object obj)
     {
-        if (obj is FindOptions)
+        if (obj is FindOptions findOptions)
         {
-            FindOptions findOptions = (FindOptions)obj;
             if (Content.Equals(findOptions.Content) && PageName.Equals(findOptions.PageName) && MatchCase == findOptions.MatchCase && WholeWord == findOptions.WholeWord)
             {
                 return true;

@@ -88,7 +88,7 @@ public struct TextLocation : IComparable<TextLocation>, IEquatable<TextLocation>
 
     public override bool Equals(object obj)
     {
-        if (!(obj is TextLocation))
+        if (obj is not TextLocation)
         {
             return false;
         }

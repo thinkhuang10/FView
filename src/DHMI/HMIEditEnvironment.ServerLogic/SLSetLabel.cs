@@ -12,7 +12,7 @@ public class SLSetLabel : Form
 {
 	private ServerLogicItem result;
 
-	private List<string> inusestr = new List<string>();
+	private readonly List<string> inusestr = new();
 
 	private Label label1;
 
@@ -51,7 +51,7 @@ public class SLSetLabel : Form
 		{
 			return;
 		}
-		Regex regex = new Regex("^[a-zA-Z_][a-zA-Z0-9_]*$");
+		Regex regex = new("^[a-zA-Z_][a-zA-Z0-9_]*$");
 		if (!regex.IsMatch(tb_LabelName.Text))
 		{
 			MessageBox.Show("标签中仅可以由字母数字以及下划线组成，并且不能以数字开头。", "错误");
@@ -65,13 +65,15 @@ public class SLSetLabel : Form
 				return;
 			}
 		}
-		ServerLogicItem serverLogicItem = new ServerLogicItem();
-		serverLogicItem.LogicType = "定义标签";
-		serverLogicItem.DataDict = new Dictionary<string, object>
+        ServerLogicItem serverLogicItem = new()
+        {
+            LogicType = "定义标签",
+            DataDict = new Dictionary<string, object>
         {
             { "Name", tb_LabelName.Text }
+        }
         };
-		result = serverLogicItem;
+        result = serverLogicItem;
 		base.DialogResult = DialogResult.OK;
 		Close();
 	}

@@ -9,7 +9,7 @@ namespace HMIEditEnvironment.ServerLogic;
 
 public class SLSetVar : Form
 {
-	private List<string> serverVars = new List<string>();
+	private readonly List<string> serverVars = new();
 
 	private ServerLogicItem result;
 
@@ -62,7 +62,7 @@ public class SLSetVar : Form
 
 	private void button4_Click(object sender, EventArgs e)
 	{
-		List<string> list = new List<string>(serverVars)
+		List<string> list = new(serverVars)
         {
             "System.AddRow([dataTable])",
             "System.AddRowAt([dataTable],[index])",
@@ -76,7 +76,7 @@ public class SLSetVar : Form
             "System.GetCellValue([dataTable],[i],[j])",
             "System.SetCellValue([dataTable],[i],[j],[value])"
         };
-		SLChooseVar sLChooseVar = new SLChooseVar(list);
+		SLChooseVar sLChooseVar = new(list);
 		if (sLChooseVar.ShowDialog() == DialogResult.OK)
 		{
 			textBox2.Text += sLChooseVar.Result;
@@ -87,10 +87,12 @@ public class SLSetVar : Form
 	{
 		if (!(textBox2.Text == "") && comboBox1.SelectedItem != null)
 		{
-			result = new ServerLogicItem();
-			result.LogicType = "变量赋值";
-			result.ConditionalExpression = textBox3.Text;
-			Dictionary<string, object> dictionary = new Dictionary<string, object>
+            result = new ServerLogicItem
+            {
+                LogicType = "变量赋值",
+                ConditionalExpression = textBox3.Text
+            };
+            Dictionary<string, object> dictionary = new()
             {
                 { "Name", comboBox1.SelectedItem }
             };
@@ -134,7 +136,7 @@ public class SLSetVar : Form
 
 	private void button5_Click(object sender, EventArgs e)
 	{
-		SLChooseVar sLChooseVar = new SLChooseVar(serverVars, textBox3.Text);
+		SLChooseVar sLChooseVar = new(serverVars, textBox3.Text);
 		if (sLChooseVar.ShowDialog() == DialogResult.OK)
 		{
 			textBox3.Text = sLChooseVar.Result;

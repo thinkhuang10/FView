@@ -29,13 +29,13 @@ public class SLSetDBInsert : Form
 
 	private string NowTable = "";
 
-	private Dictionary<string, string> ResultStrings = new Dictionary<string, string>();
+	private Dictionary<string, string> ResultStrings = new();
 
-	private List<string> ListboxContentstr = new List<string>();
+	private List<string> ListboxContentstr = new();
 
-	private DataSet DgDatatables = new DataSet();
+	private DataSet DgDatatables = new();
 
-	private List<string> CanUseVars;
+	private readonly List<string> CanUseVars;
 
 	public ServerLogicItem result;
 
@@ -136,17 +136,19 @@ public class SLSetDBInsert : Form
 	public byte[] Serialize()
 	{
 		IFormatter formatter = new BinaryFormatter();
-		MemoryStream memoryStream = new MemoryStream();
-		DBInsertSerializeCopy dBInsertSerializeCopy = new DBInsertSerializeCopy();
-		dBInsertSerializeCopy.ansync = Ansync;
-		dBInsertSerializeCopy.ResultString = ResultString;
-		dBInsertSerializeCopy.HeadString = HeadString;
-		dBInsertSerializeCopy.JoinString = JoinString;
-		dBInsertSerializeCopy.ListboxContentstr = ListboxContentstr;
-		dBInsertSerializeCopy.DgDatatables = DgDatatables;
-		dBInsertSerializeCopy.ResultStrings = ResultStrings;
-		dBInsertSerializeCopy.NowTable = NowTable;
-		formatter.Serialize(memoryStream, dBInsertSerializeCopy);
+		MemoryStream memoryStream = new();
+        DBInsertSerializeCopy dBInsertSerializeCopy = new()
+        {
+            ansync = Ansync,
+            ResultString = ResultString,
+            HeadString = HeadString,
+            JoinString = JoinString,
+            ListboxContentstr = ListboxContentstr,
+            DgDatatables = DgDatatables,
+            ResultStrings = ResultStrings,
+            NowTable = NowTable
+        };
+        formatter.Serialize(memoryStream, dBInsertSerializeCopy);
 		byte[] array = memoryStream.ToArray();
 		memoryStream.Close();
 		return array;
@@ -200,7 +202,7 @@ public class SLSetDBInsert : Form
 				DBOperationGlobal.conn.Open();
 			}
 			DBOperationGlobal.command.CommandText = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND ( TABLE_SCHEMA = '" + DBOperationGlobal.conn.Database + "' OR TABLE_CATALOG = '" + DBOperationGlobal.conn.Database + "' )";
-			List<string> list = new List<string>();
+			List<string> list = new();
 			using (DbDataReader dbDataReader = DBOperationGlobal.command.ExecuteReader())
 			{
 				while (dbDataReader.Read())
@@ -280,7 +282,7 @@ public class SLSetDBInsert : Form
 			return;
 		}
 		string text = listBox1.SelectedItem.ToString();
-		List<object> list = new List<object>();
+		List<object> list = new();
 		foreach (object selectedItem in listBox1.SelectedItems)
 		{
 			list.Add(selectedItem);
@@ -377,7 +379,7 @@ public class SLSetDBInsert : Form
 			}
 			if (!DgDatatables.Tables.Contains(NowTable))
 			{
-				DataTable dataTable = new DataTable(NowTable);
+				DataTable dataTable = new(NowTable);
 				dataTable.Columns.Add("ck1");
 				dataTable.Columns.Add("varname");
 				dataTable.Columns.Add("vartype");
@@ -431,7 +433,7 @@ public class SLSetDBInsert : Form
 			}
 			string text2 = listBox1.SelectedItem.ToString();
 			DBOperationGlobal.command.CommandText = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME  = '" + text2 + "' AND ( TABLE_SCHEMA = '" + DBOperationGlobal.conn.Database + "' OR TABLE_CATALOG = '" + DBOperationGlobal.conn.Database + "' )";
-			DataSet dataSet = new DataSet();
+			DataSet dataSet = new();
 			DBOperationGlobal.adapter.Fill(dataSet);
 			foreach (DataRow row2 in dataSet.Tables[0].Rows)
 			{
@@ -486,7 +488,7 @@ public class SLSetDBInsert : Form
 		}
 		if (!DgDatatables.Tables.Contains(NowTable))
 		{
-			DataTable dataTable = new DataTable(NowTable);
+			DataTable dataTable = new(NowTable);
 			dataTable.Columns.Add("ck1");
 			dataTable.Columns.Add("varname");
 			dataTable.Columns.Add("vartype");
@@ -558,7 +560,7 @@ public class SLSetDBInsert : Form
 		}
 		if (!DgDatatables.Tables.Contains(NowTable))
 		{
-			DataTable dataTable = new DataTable(NowTable);
+			DataTable dataTable = new(NowTable);
 			dataTable.Columns.Add("ck1");
 			dataTable.Columns.Add("varname");
 			dataTable.Columns.Add("vartype");
@@ -594,17 +596,19 @@ public class SLSetDBInsert : Form
 		}
 		OtherData = Serialize();
 		ResultSQL = textBox1.Text;
-		result = new ServerLogicItem();
-		result.LogicType = "添加数据";
-		result.ConditionalExpression = textBox2.Text;
-		result.DataDict = new Dictionary<string, object>
+        result = new ServerLogicItem
+        {
+            LogicType = "添加数据",
+            ConditionalExpression = textBox2.Text,
+            DataDict = new Dictionary<string, object>
         {
             { "ResultSQL", ResultSQL },
             { "Ansync", Ansync },
             { "OtherData", OtherData },
             { "ResultTo", textBox3.Text }
+        }
         };
-		base.DialogResult = DialogResult.OK;
+        base.DialogResult = DialogResult.OK;
 		Close();
 	}
 
@@ -637,7 +641,7 @@ public class SLSetDBInsert : Form
 
 	private void button1_Click(object sender, EventArgs e)
 	{
-		SLChooseVar sLChooseVar = new SLChooseVar(CanUseVars, textBox2.Text);
+		SLChooseVar sLChooseVar = new(CanUseVars, textBox2.Text);
 		if (sLChooseVar.ShowDialog() == DialogResult.OK)
 		{
 			textBox2.Text = sLChooseVar.Result;
@@ -654,7 +658,7 @@ public class SLSetDBInsert : Form
 
 	private void button2_Click(object sender, EventArgs e)
 	{
-		SLChooseVar sLChooseVar = new SLChooseVar(CanUseVars, textBox3.Text);
+		SLChooseVar sLChooseVar = new(CanUseVars, textBox3.Text);
 		if (sLChooseVar.ShowDialog() == DialogResult.OK)
 		{
 			textBox3.Text = sLChooseVar.Result;

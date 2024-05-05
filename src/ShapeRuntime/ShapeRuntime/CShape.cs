@@ -1462,24 +1462,20 @@ public class CShape : IDBAnimation, IEventBind, IPropertyBind, ISerializable
         get
         {
             Color result = Color.Azure;
-            if (_Brush is SolidBrush)
+            if (_Brush is SolidBrush solidBrush)
             {
-                SolidBrush solidBrush = (SolidBrush)_Brush;
                 result = solidBrush.Color;
             }
-            else if (_Brush is LinearGradientBrush)
+            else if (_Brush is LinearGradientBrush linearGradientBrush)
             {
-                LinearGradientBrush linearGradientBrush = (LinearGradientBrush)_Brush;
                 result = linearGradientBrush.LinearColors[0];
             }
-            else if (_Brush is PathGradientBrush)
+            else if (_Brush is PathGradientBrush pathGradientBrush)
             {
-                PathGradientBrush pathGradientBrush = (PathGradientBrush)_Brush;
                 result = pathGradientBrush.CenterColor;
             }
-            else if (_Brush is HatchBrush)
+            else if (_Brush is HatchBrush hatchBrush)
             {
-                HatchBrush hatchBrush = (HatchBrush)_Brush;
                 try
                 {
                     result = hatchBrush.ForegroundColor;
@@ -1555,24 +1551,20 @@ public class CShape : IDBAnimation, IEventBind, IPropertyBind, ISerializable
         get
         {
             Color result = Color.Azure;
-            if (_Brush is SolidBrush)
+            if (_Brush is SolidBrush solidBrush)
             {
-                SolidBrush solidBrush = (SolidBrush)_Brush;
                 result = solidBrush.Color;
             }
-            else if (_Brush is LinearGradientBrush)
+            else if (_Brush is LinearGradientBrush linearGradientBrush)
             {
-                LinearGradientBrush linearGradientBrush = (LinearGradientBrush)_Brush;
                 result = linearGradientBrush.LinearColors[1];
             }
-            else if (_Brush is PathGradientBrush)
+            else if (_Brush is PathGradientBrush pathGradientBrush)
             {
-                PathGradientBrush pathGradientBrush = (PathGradientBrush)_Brush;
                 result = pathGradientBrush.SurroundColors[0];
             }
-            else if (_Brush is HatchBrush)
+            else if (_Brush is HatchBrush hatchBrush)
             {
-                HatchBrush hatchBrush = (HatchBrush)_Brush;
                 try
                 {
                     result = hatchBrush.BackgroundColor;
@@ -1652,9 +1644,8 @@ public class CShape : IDBAnimation, IEventBind, IPropertyBind, ISerializable
                 _ = (SolidBrush)_Brush;
                 result = _BrushStyle.单色填充;
             }
-            else if (_Brush is LinearGradientBrush)
+            else if (_Brush is LinearGradientBrush linearGradientBrush)
             {
-                LinearGradientBrush linearGradientBrush = (LinearGradientBrush)_Brush;
                 result = ((linearGradientBrush.Blend.Factors.Length == 1) ? _BrushStyle.线性渐变填充 : _BrushStyle.百分比填充);
             }
             else if (_Brush is PathGradientBrush)

@@ -2,10 +2,10 @@ using System.Runtime.InteropServices;
 
 namespace DCCECLIENTLib;
 
-[ComEventInterface(typeof(_DDCCEClientEvents), typeof(_DDCCEClientEvents_EventProvider))]
+[ComEventInterface(typeof(_DDCCEClientEvents), typeof(DDCCEClientEvents_EventProvider))]
 [TypeLibType(16)]
 [ComVisible(false)]
-public interface _DDCCEClientEvents_Event
+public interface DDCCEClientEvents_Event
 {
     event _DDCCEClientEvents_FireOnDataReadyEventHandler FireOnDataReady;
 

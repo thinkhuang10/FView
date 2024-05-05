@@ -160,7 +160,7 @@ public class dhljForm : XtraForm
     {
         foreach (object control in base.Controls)
         {
-            if (!(control is GroupBox))
+            if (control is not GroupBox)
             {
                 continue;
             }
@@ -189,7 +189,7 @@ public class dhljForm : XtraForm
         }
         oldshape = theglobal.SelectedShapeList[0].Copy();
         textBox1.Text = theglobal.SelectedShapeList[0].UserLogic[0];
-        if (!(theglobal.SelectedShapeList[0] is CString))
+        if (theglobal.SelectedShapeList[0] is not CString)
         {
             CheckBox checkBox = checkBox_In_A;
             CheckBox checkBox2 = checkBox_In_D;
@@ -242,7 +242,7 @@ public class dhljForm : XtraForm
             return;
         }
         buttonJinglingPand.Enabled = false;
-        if (DBOperationGlobal.effect && ((theglobal.SelectedShapeList[0] is CControl && ((CControl)theglobal.SelectedShapeList[0])._c is IDBAnimation) || (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))))
+        if (DBOperationGlobal.effect && ((theglobal.SelectedShapeList[0] is CControl && ((CControl)theglobal.SelectedShapeList[0])._c is IDBAnimation) || (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)))
         {
             button_DB_Update.Enabled = true;
             button_DB_Insert.Enabled = true;
@@ -305,7 +305,7 @@ public class dhljForm : XtraForm
         {
             checkBox_Color1.Checked = theglobal.SelectedShapeList[0].boolysbh;
         }
-        if (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))
+        if (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)
         {
             CShape cShape = theglobal.SelectedShapeList[0];
             checkBox_DB_Creat.Checked = cShape.newtable;
@@ -333,27 +333,27 @@ public class dhljForm : XtraForm
         Close();
     }
 
-    private void checkBox5_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox5_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].gdbh = checkBox_Height.Checked;
     }
 
-    private void checkBox1_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox1_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].czyd = checkBox_Move_V.Checked;
     }
 
-    private void checkBox2_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox2_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].spyd = checkBox_Move_H.Checked;
     }
 
-    private void checkBox3_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox3_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].mbxz = checkBox_Move_R.Checked;
     }
 
-    private void button4_Click(object sender, EventArgs e)
+    private void Button4_Click(object sender, EventArgs e)
     {
         xzForm xzForm2 = new(theglobal);
         if (xzForm2.ShowDialog() == DialogResult.OK)
@@ -363,16 +363,12 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void label1_Click(object sender, EventArgs e)
-    {
-    }
-
-    private void checkBox4_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox4_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].kdbh = checkBox_Width.Checked;
     }
 
-    private void button5_Click(object sender, EventArgs e)
+    private void Button5_Click(object sender, EventArgs e)
     {
         kdbhForm kdbhForm2 = new(theglobal);
         if (kdbhForm2.ShowDialog() == DialogResult.OK)
@@ -382,7 +378,7 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void button6_Click(object sender, EventArgs e)
+    private void Button6_Click(object sender, EventArgs e)
     {
         gdbhForm gdbhForm2 = new(theglobal);
         if (gdbhForm2.ShowDialog() == DialogResult.OK)
@@ -392,7 +388,7 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void button2_Click(object sender, EventArgs e)
+    private void Button2_Click(object sender, EventArgs e)
     {
         czydForm czydForm2 = new(theglobal);
         if (czydForm2.ShowDialog() == DialogResult.OK)
@@ -422,7 +418,7 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void button7_Click(object sender, EventArgs e)
+    private void Button7_Click(object sender, EventArgs e)
     {
         ysForm ysForm2 = new(theglobal, 2);
         if (ysForm2.ShowDialog() == DialogResult.OK)
@@ -432,7 +428,7 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void button9_Click(object sender, EventArgs e)
+    private void Button9_Click(object sender, EventArgs e)
     {
         ysForm ysForm2 = new(theglobal, 3);
         if (ysForm2.ShowDialog() == DialogResult.OK)
@@ -442,27 +438,27 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void checkBox7_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox7_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].bxysbh = checkBox_Line.Checked;
     }
 
-    private void checkBox6_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox6_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].tcs1ysbh = checkBox_Color1.Checked;
     }
 
-    private void checkBox8_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox8_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].tcs2ysbh = checkBox_Color2.Checked;
     }
 
-    private void checkBox10_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox10_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].czbfb = checkBox_Fill_V.Checked;
     }
 
-    private void button13_Click(object sender, EventArgs e)
+    private void Button13_Click(object sender, EventArgs e)
     {
         aiForm aiForm2 = new(theglobal);
         if (aiForm2.ShowDialog() == DialogResult.OK)
@@ -472,7 +468,7 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void checkBox_In_A_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox_In_A_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].ai = checkBox_In_A.Checked;
         if (theglobal.SelectedShapeList[0].aibianliang == "")
@@ -485,7 +481,7 @@ public class dhljForm : XtraForm
         }
     }
 
-    private void checkBox_In_D_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox_In_D_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].di = checkBox_In_D.Checked;
         if (theglobal.SelectedShapeList[0].dibianlaing == "")
@@ -498,7 +494,7 @@ public class dhljForm : XtraForm
         }
     }
 
-    private void checkBox_In_S_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox_In_S_CheckedChanged(object sender, EventArgs e)
     {
         if (theglobal.SelectedShapeList[0].zfcsrbianliang == "")
         {
@@ -510,7 +506,7 @@ public class dhljForm : XtraForm
         }
     }
 
-    private void button12_Click(object sender, EventArgs e)
+    private void Button12_Click(object sender, EventArgs e)
     {
         diForm diForm2 = new(theglobal);
         if (diForm2.ShowDialog() == DialogResult.OK)
@@ -520,7 +516,7 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void button17_Click(object sender, EventArgs e)
+    private void Button17_Click(object sender, EventArgs e)
     {
         zfcsrForm form = new(theglobal);
         if (form.ShowDialog() == DialogResult.OK)
@@ -530,22 +526,22 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void checkBox15_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox15_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].ao = checkBox_Out_A.Checked;
     }
 
-    private void checkBox14_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox14_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].doo = checkBox_Out_D.Checked;
     }
 
-    private void checkBox17_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox17_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].zfcsc = checkBox_Out_S.Checked;
     }
 
-    private void button16_Click(object sender, EventArgs e)
+    private void Button16_Click(object sender, EventArgs e)
     {
         aoForm aoForm2 = new(theglobal);
         if (aoForm2.ShowDialog() == DialogResult.OK)
@@ -555,7 +551,7 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void button15_Click(object sender, EventArgs e)
+    private void Button15_Click(object sender, EventArgs e)
     {
         doForm doForm2 = new(theglobal);
         if (doForm2.ShowDialog() == DialogResult.OK)
@@ -565,7 +561,7 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void button18_Click(object sender, EventArgs e)
+    private void Button18_Click(object sender, EventArgs e)
     {
         zfcscForm zfcscForm2 = new(theglobal);
         if (zfcscForm2.ShowDialog() == DialogResult.OK)
@@ -575,12 +571,12 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void checkBox13_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox13_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].ymqh = checkBox_Change_Page.Checked;
     }
 
-    private void button14_Click(object sender, EventArgs e)
+    private void Button14_Click(object sender, EventArgs e)
     {
         pageForm pageForm2 = new(theglobal, dfs);
         if (pageForm2.ShowDialog() == DialogResult.OK)
@@ -590,7 +586,7 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void button19_Click(object sender, EventArgs e)
+    private void Button19_Click(object sender, EventArgs e)
     {
         sptzForm sptzForm2 = new(theglobal);
         if (sptzForm2.ShowDialog() == DialogResult.OK)
@@ -600,7 +596,7 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void checkBox18_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox18_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].sptz = checkBox_Drag_H.Checked;
         if (theglobal.SelectedShapeList[0].sptzbianliang == "")
@@ -686,7 +682,7 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void checkBox9_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox9_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].spbfb = checkBox_Fill_H.Checked;
     }
@@ -717,28 +713,15 @@ public class dhljForm : XtraForm
         RefreshCheckBoxs();
     }
 
-    private void checkBox21_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox21_CheckedChanged(object sender, EventArgs e)
     {
         theglobal.SelectedShapeList[0].txyc = checkBox_Visable.Checked;
     }
 
-    private void label2_Click(object sender, EventArgs e)
+    private void Button24_Click(object sender, EventArgs e)
     {
-    }
-
-    private void label3_Click(object sender, EventArgs e)
-    {
-    }
-
-    private void label4_Click(object sender, EventArgs e)
-    {
-    }
-
-    private void button24_Click(object sender, EventArgs e)
-    {
-        if (theglobal.SelectedShapeList[0] is CPixieControl)
+        if (theglobal.SelectedShapeList[0] is CPixieControl cPixieControl)
         {
-            CPixieControl cPixieControl = (CPixieControl)theglobal.SelectedShapeList[0];
             cPixieControl.ShowPropertyDialog();
             Invalidate(invalidateChildren: false);
             Update();
@@ -746,7 +729,7 @@ public class dhljForm : XtraForm
         }
     }
 
-    private void dhljForm_FormClosed(object sender, FormClosedEventArgs e)
+    private void DhljForm_FormClosed(object sender, FormClosedEventArgs e)
     {
         oldshape = theglobal.SelectedShapeList[0].Copy();
         if (oldshape.czyd != theglobal.SelectedShapeList[0].czyd || oldshape.spyd != theglobal.SelectedShapeList[0].spyd || oldshape.mbxz != theglobal.SelectedShapeList[0].mbxz || oldshape.kdbh != theglobal.SelectedShapeList[0].kdbh || oldshape.gdbh != theglobal.SelectedShapeList[0].gdbh || oldshape.tcs1ysbh != theglobal.SelectedShapeList[0].tcs1ysbh || oldshape.bxysbh != theglobal.SelectedShapeList[0].bxysbh || oldshape.tcs2ysbh != theglobal.SelectedShapeList[0].tcs2ysbh || oldshape.spbfb != theglobal.SelectedShapeList[0].spbfb || oldshape.czbfb != theglobal.SelectedShapeList[0].czbfb || oldshape.di != theglobal.SelectedShapeList[0].di || oldshape.ai != theglobal.SelectedShapeList[0].ai || oldshape.ymqh != theglobal.SelectedShapeList[0].ymqh || oldshape.doo != theglobal.SelectedShapeList[0].doo || oldshape.ao != theglobal.SelectedShapeList[0].ao || oldshape.zfcsr != theglobal.SelectedShapeList[0].zfcsr || oldshape.zfcsc != theglobal.SelectedShapeList[0].zfcsc || oldshape.sptz != theglobal.SelectedShapeList[0].sptz || oldshape.cztz != theglobal.SelectedShapeList[0].cztz || oldshape.sbsj != theglobal.SelectedShapeList[0].sbsj || oldshape.txyc != theglobal.SelectedShapeList[0].txyc || oldshape.Dbselect != theglobal.SelectedShapeList[0].Dbselect || oldshape.Dbinsert != theglobal.SelectedShapeList[0].Dbinsert || oldshape.Dbupdate != theglobal.SelectedShapeList[0].Dbupdate || oldshape.Dbdelete != theglobal.SelectedShapeList[0].Dbdelete)
@@ -775,7 +758,7 @@ public class dhljForm : XtraForm
 
     private void button27_Click(object sender, EventArgs e)
     {
-        if (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))
+        if (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)
         {
             CShape cShape = theglobal.SelectedShapeList[0];
             DBSelectForm dBSelectForm = new();
@@ -826,7 +809,7 @@ public class dhljForm : XtraForm
 
     private void checkBox28_CheckedChanged(object sender, EventArgs e)
     {
-        if (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))
+        if (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)
         {
             theglobal.SelectedShapeList[0].newtable = checkBox_DB_Creat.Checked;
         }
@@ -839,7 +822,7 @@ public class dhljForm : XtraForm
 
     private void button32_Click(object sender, EventArgs e)
     {
-        if (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))
+        if (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)
         {
             CShape cShape = theglobal.SelectedShapeList[0];
             DBNewForm dBNewForm = new();
@@ -877,9 +860,9 @@ public class dhljForm : XtraForm
         }
     }
 
-    private void checkBox25_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox25_CheckedChanged(object sender, EventArgs e)
     {
-        if (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))
+        if (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)
         {
             theglobal.SelectedShapeList[0].dbselect = checkBox_DB_Select.Checked;
         }
@@ -890,9 +873,9 @@ public class dhljForm : XtraForm
         }
     }
 
-    private void button26_Click(object sender, EventArgs e)
+    private void Button26_Click(object sender, EventArgs e)
     {
-        if (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))
+        if (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)
         {
             CShape cShape = theglobal.SelectedShapeList[0];
             DBInsertForm dBInsertForm = new();
@@ -932,7 +915,7 @@ public class dhljForm : XtraForm
 
     private void checkBox24_CheckedChanged(object sender, EventArgs e)
     {
-        if (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))
+        if (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)
         {
             theglobal.SelectedShapeList[0].dbinsert = checkBox_DB_Insert.Checked;
         }
@@ -943,9 +926,9 @@ public class dhljForm : XtraForm
         }
     }
 
-    private void button28_Click(object sender, EventArgs e)
+    private void Button28_Click(object sender, EventArgs e)
     {
-        if (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))
+        if (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)
         {
             CShape cShape = theglobal.SelectedShapeList[0];
             DBDeleteForm dBDeleteForm = new();
@@ -963,9 +946,9 @@ public class dhljForm : XtraForm
                 dirty = true;
             }
         }
-        if (theglobal.SelectedShapeList[0] is CControl && ((CControl)theglobal.SelectedShapeList[0])._c is IDBAnimation)
+        if (theglobal.SelectedShapeList[0] is CControl control && control._c is IDBAnimation)
         {
-            IDBAnimation iDBAnimation = (IDBAnimation)((CControl)theglobal.SelectedShapeList[0])._c;
+            IDBAnimation iDBAnimation = (IDBAnimation)control._c;
             DBDeleteForm dBDeleteForm2 = new();
             dBDeleteForm2.label4.Text = theglobal.SelectedShapeList[0].Name;
             dBDeleteForm2.ResultSQL = iDBAnimation.DbdeleteSQL;
@@ -985,7 +968,7 @@ public class dhljForm : XtraForm
 
     private void checkBox26_CheckedChanged(object sender, EventArgs e)
     {
-        if (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))
+        if (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)
         {
             theglobal.SelectedShapeList[0].dbdelete = checkBox_DB_Delete.Checked;
         }
@@ -996,9 +979,9 @@ public class dhljForm : XtraForm
         }
     }
 
-    private void checkBox23_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox23_CheckedChanged(object sender, EventArgs e)
     {
-        if (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))
+        if (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)
         {
             theglobal.SelectedShapeList[0].dbupdate = checkBox_DB_Update.Checked;
         }
@@ -1011,7 +994,7 @@ public class dhljForm : XtraForm
 
     private void button25_Click(object sender, EventArgs e)
     {
-        if (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))
+        if (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)
         {
             CShape cShape = theglobal.SelectedShapeList[0];
             DBUpdateForm dBUpdateForm = new();
@@ -1049,9 +1032,9 @@ public class dhljForm : XtraForm
         }
     }
 
-    private void button29_Click(object sender, EventArgs e)
+    private void Button29_Click(object sender, EventArgs e)
     {
-        if (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))
+        if (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)
         {
             CShape cShape = theglobal.SelectedShapeList[0];
             DBMultOperation dBMultOperation = new()
@@ -1083,15 +1066,15 @@ public class dhljForm : XtraForm
         }
     }
 
-    private void checkBox27_CheckedChanged(object sender, EventArgs e)
+    private void CheckBox27_CheckedChanged(object sender, EventArgs e)
     {
-        if (theglobal.SelectedShapeList[0] != null && !(theglobal.SelectedShapeList[0] is CControl))
+        if (theglobal.SelectedShapeList[0] != null && theglobal.SelectedShapeList[0] is not CControl)
         {
             theglobal.SelectedShapeList[0].dbmultoperation = checkBox_DB_MultiOperate.Checked;
         }
-        else if (theglobal.SelectedShapeList[0] is CControl && ((CControl)theglobal.SelectedShapeList[0])._c is IDBAnimation)
+        else if (theglobal.SelectedShapeList[0] is CControl control && control._c is IDBAnimation)
         {
-            IDBAnimation iDBAnimation = (IDBAnimation)((CControl)theglobal.SelectedShapeList[0])._c;
+            IDBAnimation iDBAnimation = (IDBAnimation)control._c;
             iDBAnimation.Dbmultoperation = checkBox_DB_MultiOperate.Checked;
         }
     }
@@ -1237,7 +1220,7 @@ public class dhljForm : XtraForm
             this.checkBox_Move_R.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Move_R.TabIndex = 28;
             this.checkBox_Move_R.UseVisualStyleBackColor = true;
-            this.checkBox_Move_R.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.checkBox_Move_R.CheckedChanged += new System.EventHandler(this.CheckBox3_CheckedChanged);
             // 
             // checkBox_Move_H
             // 
@@ -1247,7 +1230,7 @@ public class dhljForm : XtraForm
             this.checkBox_Move_H.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Move_H.TabIndex = 26;
             this.checkBox_Move_H.UseVisualStyleBackColor = true;
-            this.checkBox_Move_H.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.checkBox_Move_H.CheckedChanged += new System.EventHandler(this.CheckBox2_CheckedChanged);
             // 
             // checkBox_Move_V
             // 
@@ -1257,7 +1240,7 @@ public class dhljForm : XtraForm
             this.checkBox_Move_V.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Move_V.TabIndex = 24;
             this.checkBox_Move_V.UseVisualStyleBackColor = true;
-            this.checkBox_Move_V.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox_Move_V.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // button_Move_R
             // 
@@ -1267,7 +1250,7 @@ public class dhljForm : XtraForm
             this.button_Move_R.TabIndex = 29;
             this.button_Move_R.Text = "旋转";
             this.button_Move_R.UseVisualStyleBackColor = true;
-            this.button_Move_R.Click += new System.EventHandler(this.button4_Click);
+            this.button_Move_R.Click += new System.EventHandler(this.Button4_Click);
             // 
             // button_Move_H
             // 
@@ -1287,7 +1270,7 @@ public class dhljForm : XtraForm
             this.button_Move_V.TabIndex = 25;
             this.button_Move_V.Text = "垂直";
             this.button_Move_V.UseVisualStyleBackColor = true;
-            this.button_Move_V.Click += new System.EventHandler(this.button2_Click);
+            this.button_Move_V.Click += new System.EventHandler(this.Button2_Click);
             // 
             // groupBox2
             // 
@@ -1312,7 +1295,7 @@ public class dhljForm : XtraForm
             this.checkBox_Visable.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Visable.TabIndex = 34;
             this.checkBox_Visable.UseVisualStyleBackColor = true;
-            this.checkBox_Visable.CheckedChanged += new System.EventHandler(this.checkBox21_CheckedChanged);
+            this.checkBox_Visable.CheckedChanged += new System.EventHandler(this.CheckBox21_CheckedChanged);
             // 
             // button_Visable
             // 
@@ -1332,7 +1315,7 @@ public class dhljForm : XtraForm
             this.checkBox_Height.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Height.TabIndex = 32;
             this.checkBox_Height.UseVisualStyleBackColor = true;
-            this.checkBox_Height.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            this.checkBox_Height.CheckedChanged += new System.EventHandler(this.CheckBox5_CheckedChanged);
             // 
             // button_Height
             // 
@@ -1342,7 +1325,7 @@ public class dhljForm : XtraForm
             this.button_Height.TabIndex = 33;
             this.button_Height.Text = "高度";
             this.button_Height.UseVisualStyleBackColor = true;
-            this.button_Height.Click += new System.EventHandler(this.button6_Click);
+            this.button_Height.Click += new System.EventHandler(this.Button6_Click);
             // 
             // checkBox_Width
             // 
@@ -1352,7 +1335,7 @@ public class dhljForm : XtraForm
             this.checkBox_Width.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Width.TabIndex = 30;
             this.checkBox_Width.UseVisualStyleBackColor = true;
-            this.checkBox_Width.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            this.checkBox_Width.CheckedChanged += new System.EventHandler(this.CheckBox4_CheckedChanged);
             // 
             // button_Width
             // 
@@ -1362,7 +1345,7 @@ public class dhljForm : XtraForm
             this.button_Width.TabIndex = 31;
             this.button_Width.Text = "宽度";
             this.button_Width.UseVisualStyleBackColor = true;
-            this.button_Width.Click += new System.EventHandler(this.button5_Click);
+            this.button_Width.Click += new System.EventHandler(this.Button5_Click);
             // 
             // groupBox3
             // 
@@ -1387,7 +1370,7 @@ public class dhljForm : XtraForm
             this.checkBox_Color2.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Color2.TabIndex = 40;
             this.checkBox_Color2.UseVisualStyleBackColor = true;
-            this.checkBox_Color2.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
+            this.checkBox_Color2.CheckedChanged += new System.EventHandler(this.CheckBox8_CheckedChanged);
             // 
             // button_Color2
             // 
@@ -1397,7 +1380,7 @@ public class dhljForm : XtraForm
             this.button_Color2.TabIndex = 41;
             this.button_Color2.Text = "填充色2";
             this.button_Color2.UseVisualStyleBackColor = true;
-            this.button_Color2.Click += new System.EventHandler(this.button9_Click);
+            this.button_Color2.Click += new System.EventHandler(this.Button9_Click);
             // 
             // checkBox_Color1
             // 
@@ -1407,7 +1390,7 @@ public class dhljForm : XtraForm
             this.checkBox_Color1.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Color1.TabIndex = 38;
             this.checkBox_Color1.UseVisualStyleBackColor = true;
-            this.checkBox_Color1.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            this.checkBox_Color1.CheckedChanged += new System.EventHandler(this.CheckBox6_CheckedChanged);
             // 
             // button_Color1
             // 
@@ -1417,7 +1400,7 @@ public class dhljForm : XtraForm
             this.button_Color1.TabIndex = 39;
             this.button_Color1.Text = "填充色1";
             this.button_Color1.UseVisualStyleBackColor = true;
-            this.button_Color1.Click += new System.EventHandler(this.button7_Click);
+            this.button_Color1.Click += new System.EventHandler(this.Button7_Click);
             // 
             // checkBox_Line
             // 
@@ -1427,7 +1410,7 @@ public class dhljForm : XtraForm
             this.checkBox_Line.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Line.TabIndex = 36;
             this.checkBox_Line.UseVisualStyleBackColor = true;
-            this.checkBox_Line.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            this.checkBox_Line.CheckedChanged += new System.EventHandler(this.CheckBox7_CheckedChanged);
             // 
             // button_Line
             // 
@@ -1460,7 +1443,7 @@ public class dhljForm : XtraForm
             this.checkBox_Fill_H.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Fill_H.TabIndex = 22;
             this.checkBox_Fill_H.UseVisualStyleBackColor = true;
-            this.checkBox_Fill_H.CheckedChanged += new System.EventHandler(this.checkBox9_CheckedChanged);
+            this.checkBox_Fill_H.CheckedChanged += new System.EventHandler(this.CheckBox9_CheckedChanged);
             // 
             // button_Fill_H
             // 
@@ -1480,7 +1463,7 @@ public class dhljForm : XtraForm
             this.checkBox_Fill_V.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Fill_V.TabIndex = 20;
             this.checkBox_Fill_V.UseVisualStyleBackColor = true;
-            this.checkBox_Fill_V.CheckedChanged += new System.EventHandler(this.checkBox10_CheckedChanged);
+            this.checkBox_Fill_V.CheckedChanged += new System.EventHandler(this.CheckBox10_CheckedChanged);
             // 
             // button_Fill_V
             // 
@@ -1521,7 +1504,7 @@ public class dhljForm : XtraForm
             this.checkBox_Out_S.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Out_S.TabIndex = 10;
             this.checkBox_Out_S.UseVisualStyleBackColor = true;
-            this.checkBox_Out_S.CheckedChanged += new System.EventHandler(this.checkBox17_CheckedChanged);
+            this.checkBox_Out_S.CheckedChanged += new System.EventHandler(this.CheckBox17_CheckedChanged);
             // 
             // button_Out_S
             // 
@@ -1531,7 +1514,7 @@ public class dhljForm : XtraForm
             this.button_Out_S.TabIndex = 11;
             this.button_Out_S.Text = "字符串输出";
             this.button_Out_S.UseVisualStyleBackColor = true;
-            this.button_Out_S.Click += new System.EventHandler(this.button18_Click);
+            this.button_Out_S.Click += new System.EventHandler(this.Button18_Click);
             // 
             // checkBox_Out_D
             // 
@@ -1541,7 +1524,7 @@ public class dhljForm : XtraForm
             this.checkBox_Out_D.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Out_D.TabIndex = 8;
             this.checkBox_Out_D.UseVisualStyleBackColor = true;
-            this.checkBox_Out_D.CheckedChanged += new System.EventHandler(this.checkBox14_CheckedChanged);
+            this.checkBox_Out_D.CheckedChanged += new System.EventHandler(this.CheckBox14_CheckedChanged);
             // 
             // button_Out_D
             // 
@@ -1551,7 +1534,7 @@ public class dhljForm : XtraForm
             this.button_Out_D.TabIndex = 9;
             this.button_Out_D.Text = "数字量输出";
             this.button_Out_D.UseVisualStyleBackColor = true;
-            this.button_Out_D.Click += new System.EventHandler(this.button15_Click);
+            this.button_Out_D.Click += new System.EventHandler(this.Button15_Click);
             // 
             // checkBox_Out_A
             // 
@@ -1561,7 +1544,7 @@ public class dhljForm : XtraForm
             this.checkBox_Out_A.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Out_A.TabIndex = 6;
             this.checkBox_Out_A.UseVisualStyleBackColor = true;
-            this.checkBox_Out_A.CheckedChanged += new System.EventHandler(this.checkBox15_CheckedChanged);
+            this.checkBox_Out_A.CheckedChanged += new System.EventHandler(this.CheckBox15_CheckedChanged);
             // 
             // button_Out_A
             // 
@@ -1571,7 +1554,7 @@ public class dhljForm : XtraForm
             this.button_Out_A.TabIndex = 7;
             this.button_Out_A.Text = "模拟量输出";
             this.button_Out_A.UseVisualStyleBackColor = true;
-            this.button_Out_A.Click += new System.EventHandler(this.button16_Click);
+            this.button_Out_A.Click += new System.EventHandler(this.Button16_Click);
             // 
             // checkBox_In_S
             // 
@@ -1581,7 +1564,7 @@ public class dhljForm : XtraForm
             this.checkBox_In_S.Size = new System.Drawing.Size(15, 14);
             this.checkBox_In_S.TabIndex = 4;
             this.checkBox_In_S.UseVisualStyleBackColor = true;
-            this.checkBox_In_S.CheckedChanged += new System.EventHandler(this.checkBox_In_S_CheckedChanged);
+            this.checkBox_In_S.CheckedChanged += new System.EventHandler(this.CheckBox_In_S_CheckedChanged);
             // 
             // button_In_S
             // 
@@ -1591,7 +1574,7 @@ public class dhljForm : XtraForm
             this.button_In_S.TabIndex = 5;
             this.button_In_S.Text = "字符串输入";
             this.button_In_S.UseVisualStyleBackColor = true;
-            this.button_In_S.Click += new System.EventHandler(this.button17_Click);
+            this.button_In_S.Click += new System.EventHandler(this.Button17_Click);
             // 
             // checkBox_In_D
             // 
@@ -1601,7 +1584,7 @@ public class dhljForm : XtraForm
             this.checkBox_In_D.Size = new System.Drawing.Size(15, 14);
             this.checkBox_In_D.TabIndex = 2;
             this.checkBox_In_D.UseVisualStyleBackColor = true;
-            this.checkBox_In_D.CheckedChanged += new System.EventHandler(this.checkBox_In_D_CheckedChanged);
+            this.checkBox_In_D.CheckedChanged += new System.EventHandler(this.CheckBox_In_D_CheckedChanged);
             // 
             // button_In_D
             // 
@@ -1611,7 +1594,7 @@ public class dhljForm : XtraForm
             this.button_In_D.TabIndex = 3;
             this.button_In_D.Text = "数字量输入";
             this.button_In_D.UseVisualStyleBackColor = true;
-            this.button_In_D.Click += new System.EventHandler(this.button12_Click);
+            this.button_In_D.Click += new System.EventHandler(this.Button12_Click);
             // 
             // checkBox_In_A
             // 
@@ -1621,7 +1604,7 @@ public class dhljForm : XtraForm
             this.checkBox_In_A.Size = new System.Drawing.Size(15, 14);
             this.checkBox_In_A.TabIndex = 0;
             this.checkBox_In_A.UseVisualStyleBackColor = true;
-            this.checkBox_In_A.CheckedChanged += new System.EventHandler(this.checkBox_In_A_CheckedChanged);
+            this.checkBox_In_A.CheckedChanged += new System.EventHandler(this.CheckBox_In_A_CheckedChanged);
             // 
             // button_In_A
             // 
@@ -1631,7 +1614,7 @@ public class dhljForm : XtraForm
             this.button_In_A.TabIndex = 1;
             this.button_In_A.Text = "模拟量输入";
             this.button_In_A.UseVisualStyleBackColor = true;
-            this.button_In_A.Click += new System.EventHandler(this.button13_Click);
+            this.button_In_A.Click += new System.EventHandler(this.Button13_Click);
             // 
             // checkBox_Change_Page
             // 
@@ -1641,7 +1624,7 @@ public class dhljForm : XtraForm
             this.checkBox_Change_Page.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Change_Page.TabIndex = 12;
             this.checkBox_Change_Page.UseVisualStyleBackColor = true;
-            this.checkBox_Change_Page.CheckedChanged += new System.EventHandler(this.checkBox13_CheckedChanged);
+            this.checkBox_Change_Page.CheckedChanged += new System.EventHandler(this.CheckBox13_CheckedChanged);
             // 
             // button_Change_Page
             // 
@@ -1651,7 +1634,7 @@ public class dhljForm : XtraForm
             this.button_Change_Page.TabIndex = 13;
             this.button_Change_Page.Text = "页面切换";
             this.button_Change_Page.UseVisualStyleBackColor = true;
-            this.button_Change_Page.Click += new System.EventHandler(this.button14_Click);
+            this.button_Change_Page.Click += new System.EventHandler(this.Button14_Click);
             // 
             // textBox1
             // 
@@ -1727,7 +1710,7 @@ public class dhljForm : XtraForm
             this.button_Drag_H.TabIndex = 15;
             this.button_Drag_H.Text = "水平拖拽";
             this.button_Drag_H.UseVisualStyleBackColor = true;
-            this.button_Drag_H.Click += new System.EventHandler(this.button19_Click);
+            this.button_Drag_H.Click += new System.EventHandler(this.Button19_Click);
             // 
             // checkBox_Drag_H
             // 
@@ -1737,7 +1720,7 @@ public class dhljForm : XtraForm
             this.checkBox_Drag_H.Size = new System.Drawing.Size(15, 14);
             this.checkBox_Drag_H.TabIndex = 14;
             this.checkBox_Drag_H.UseVisualStyleBackColor = true;
-            this.checkBox_Drag_H.CheckedChanged += new System.EventHandler(this.checkBox18_CheckedChanged);
+            this.checkBox_Drag_H.CheckedChanged += new System.EventHandler(this.CheckBox18_CheckedChanged);
             // 
             // buttonJinglingPand
             // 
@@ -1747,7 +1730,7 @@ public class dhljForm : XtraForm
             this.buttonJinglingPand.TabIndex = 44;
             this.buttonJinglingPand.Text = "精灵面板";
             this.buttonJinglingPand.UseVisualStyleBackColor = true;
-            this.buttonJinglingPand.Click += new System.EventHandler(this.button24_Click);
+            this.buttonJinglingPand.Click += new System.EventHandler(this.Button24_Click);
             // 
             // groupBox7
             // 
@@ -1798,7 +1781,7 @@ public class dhljForm : XtraForm
             this.checkBox_DB_MultiOperate.Size = new System.Drawing.Size(15, 14);
             this.checkBox_DB_MultiOperate.TabIndex = 53;
             this.checkBox_DB_MultiOperate.UseVisualStyleBackColor = true;
-            this.checkBox_DB_MultiOperate.CheckedChanged += new System.EventHandler(this.checkBox27_CheckedChanged);
+            this.checkBox_DB_MultiOperate.CheckedChanged += new System.EventHandler(this.CheckBox27_CheckedChanged);
             // 
             // button_DB_MultiOperate
             // 
@@ -1808,7 +1791,7 @@ public class dhljForm : XtraForm
             this.button_DB_MultiOperate.TabIndex = 54;
             this.button_DB_MultiOperate.Text = "复合操作";
             this.button_DB_MultiOperate.UseVisualStyleBackColor = true;
-            this.button_DB_MultiOperate.Click += new System.EventHandler(this.button29_Click);
+            this.button_DB_MultiOperate.Click += new System.EventHandler(this.Button29_Click);
             // 
             // checkBox_DB_Delete
             // 
@@ -1828,7 +1811,7 @@ public class dhljForm : XtraForm
             this.checkBox_DB_Update.Size = new System.Drawing.Size(15, 14);
             this.checkBox_DB_Update.TabIndex = 49;
             this.checkBox_DB_Update.UseVisualStyleBackColor = true;
-            this.checkBox_DB_Update.CheckedChanged += new System.EventHandler(this.checkBox23_CheckedChanged);
+            this.checkBox_DB_Update.CheckedChanged += new System.EventHandler(this.CheckBox23_CheckedChanged);
             // 
             // checkBox_DB_Insert
             // 
@@ -1848,7 +1831,7 @@ public class dhljForm : XtraForm
             this.button_DB_Delete.TabIndex = 52;
             this.button_DB_Delete.Text = "删除数据";
             this.button_DB_Delete.UseVisualStyleBackColor = true;
-            this.button_DB_Delete.Click += new System.EventHandler(this.button28_Click);
+            this.button_DB_Delete.Click += new System.EventHandler(this.Button28_Click);
             // 
             // checkBox_DB_Select
             // 
@@ -1858,7 +1841,7 @@ public class dhljForm : XtraForm
             this.checkBox_DB_Select.Size = new System.Drawing.Size(15, 14);
             this.checkBox_DB_Select.TabIndex = 45;
             this.checkBox_DB_Select.UseVisualStyleBackColor = true;
-            this.checkBox_DB_Select.CheckedChanged += new System.EventHandler(this.checkBox25_CheckedChanged);
+            this.checkBox_DB_Select.CheckedChanged += new System.EventHandler(this.CheckBox25_CheckedChanged);
             // 
             // button_DB_Update
             // 
@@ -1878,7 +1861,7 @@ public class dhljForm : XtraForm
             this.button_DB_Insert.TabIndex = 48;
             this.button_DB_Insert.Text = "添加数据";
             this.button_DB_Insert.UseVisualStyleBackColor = true;
-            this.button_DB_Insert.Click += new System.EventHandler(this.button26_Click);
+            this.button_DB_Insert.Click += new System.EventHandler(this.Button26_Click);
             // 
             // button_DB_Select
             // 
@@ -1943,7 +1926,7 @@ public class dhljForm : XtraForm
             this.Name = "dhljForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "动画连接";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.dhljForm_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DhljForm_FormClosed);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

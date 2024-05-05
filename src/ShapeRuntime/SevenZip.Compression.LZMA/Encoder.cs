@@ -143,7 +143,7 @@ public class Encoder : ICoder, ISetCoderProperties, IWriteCoderProperties
 
         private readonly BitTreeEncoder[] _midCoder = new BitTreeEncoder[16];
 
-        private BitTreeEncoder _highCoder = new(8);
+        private readonly BitTreeEncoder _highCoder = new(8);
 
         public LenEncoder()
         {
@@ -348,7 +348,7 @@ public class Encoder : ICoder, ISetCoderProperties, IWriteCoderProperties
 
     private readonly BitEncoder[] _posEncoders = new BitEncoder[114];
 
-    private BitTreeEncoder _posAlignEncoder = new(4);
+    private readonly BitTreeEncoder _posAlignEncoder = new(4);
 
     private readonly LenPriceTableEncoder _lenEncoder = new();
 
@@ -1206,8 +1206,7 @@ public class Encoder : ICoder, ISetCoderProperties, IWriteCoderProperties
         }
         while (true)
         {
-            uint backRes;
-            uint optimum = GetOptimum((uint)nowPos64, out backRes);
+            uint optimum = GetOptimum((uint)nowPos64, out uint backRes);
             uint num3 = (uint)(int)nowPos64 & _posStateMask;
             uint num4 = (_state.Index << 4) + num3;
             if (optimum == 1 && backRes == uint.MaxValue)
@@ -1478,7 +1477,7 @@ public class Encoder : ICoder, ISetCoderProperties, IWriteCoderProperties
             switch (propIDs[num])
             {
                 case CoderPropID.NumFastBytes:
-                    if (!(obj is int num2))
+                    if (obj is not int num2)
                     {
                         throw new InvalidParamException();
                     }
@@ -1490,7 +1489,7 @@ public class Encoder : ICoder, ISetCoderProperties, IWriteCoderProperties
                     break;
                 case CoderPropID.MatchFinder:
                     {
-                        if (!(obj is string))
+                        if (obj is not string)
                         {
                             throw new InvalidParamException();
                         }
@@ -1510,7 +1509,7 @@ public class Encoder : ICoder, ISetCoderProperties, IWriteCoderProperties
                     }
                 case CoderPropID.DictionarySize:
                     {
-                        if (!(obj is int num7))
+                        if (obj is not int num7)
                         {
                             throw new InvalidParamException();
                         }
@@ -1527,7 +1526,7 @@ public class Encoder : ICoder, ISetCoderProperties, IWriteCoderProperties
                         break;
                     }
                 case CoderPropID.PosStateBits:
-                    if (!(obj is int num3))
+                    if (obj is not int num3)
                     {
                         throw new InvalidParamException();
                     }
@@ -1539,7 +1538,7 @@ public class Encoder : ICoder, ISetCoderProperties, IWriteCoderProperties
                     _posStateMask = (uint)((1 << _posStateBits) - 1);
                     break;
                 case CoderPropID.LitPosBits:
-                    if (!(obj is int num5))
+                    if (obj is not int num5)
                     {
                         throw new InvalidParamException();
                     }
@@ -1550,7 +1549,7 @@ public class Encoder : ICoder, ISetCoderProperties, IWriteCoderProperties
                     _numLiteralPosStateBits = num5;
                     break;
                 case CoderPropID.LitContextBits:
-                    if (!(obj is int num4))
+                    if (obj is not int num4)
                     {
                         throw new InvalidParamException();
                     }
@@ -1561,7 +1560,7 @@ public class Encoder : ICoder, ISetCoderProperties, IWriteCoderProperties
                     _numLiteralContextBits = num4;
                     break;
                 case CoderPropID.EndMarker:
-                    if (!(obj is bool))
+                    if (obj is not bool)
                     {
                         throw new InvalidParamException();
                     }

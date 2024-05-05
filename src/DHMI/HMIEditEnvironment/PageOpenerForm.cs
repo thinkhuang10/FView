@@ -77,7 +77,7 @@ public class PageOpenerForm : Form
 	private void InitializeComponent()
 	{
 		this.components = new System.ComponentModel.Container();
-		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HMIEditEnvironment.PageOpenerForm));
+		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIEditEnvironment.PageOpenerForm));
 		this.listView_Pages = new System.Windows.Forms.ListView();
 		this.imageList1 = new System.Windows.Forms.ImageList(this.components);
 		this.btnOK = new System.Windows.Forms.Button();

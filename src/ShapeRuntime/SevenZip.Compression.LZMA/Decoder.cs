@@ -17,7 +17,7 @@ public class Decoder : ICoder, ISetDecoderProperties
 
         private readonly BitTreeDecoder[] m_MidCoder = new BitTreeDecoder[16];
 
-        private BitTreeDecoder m_HighCoder = new(8);
+        private readonly BitTreeDecoder m_HighCoder = new(8);
 
         private uint m_NumPosStates;
 
@@ -183,7 +183,7 @@ public class Decoder : ICoder, ISetDecoderProperties
 
     private readonly BitDecoder[] m_PosDecoders = new BitDecoder[114];
 
-    private BitTreeDecoder m_PosAlignDecoder = new(4);
+    private readonly BitTreeDecoder m_PosAlignDecoder = new(4);
 
     private readonly LenDecoder m_LenDecoder = new();
 

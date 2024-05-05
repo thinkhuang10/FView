@@ -156,7 +156,7 @@ public class EventSetProperty : Form
     private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
     {
         CShape value = ((KVPart<string, CShape>)comboBox2.SelectedItem).Value;
-        object obj = ((!(value is CControl)) ? ((object)value) : ((object)(value as CControl)._c));
+        object obj = ((value is not CControl) ? ((object)value) : ((object)(value as CControl)._c));
         Type type = obj.GetType();
         PropertyInfo[] properties = type.GetProperties();
         comboBox1.Items.Clear();

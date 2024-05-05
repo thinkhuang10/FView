@@ -8,7 +8,7 @@ namespace DCCECLIENTLib;
 [TypeLibType(34)]
 [ClassInterface(0.0)]
 [Guid("6301125A-4B83-402E-9361-4829C6591B31")]
-public class DCCEClientClass : _DDCCEClient, DCCEClient, _DDCCEClientEvents_Event
+public class DCCEClientClass : _DDCCEClient, DCCEClient, DDCCEClientEvents_Event
 {
     public virtual extern event _DDCCEClientEvents_FireOnDataReadyEventHandler FireOnDataReady;
 

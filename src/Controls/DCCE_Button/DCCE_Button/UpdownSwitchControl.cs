@@ -527,7 +527,7 @@ public class UpdownSwitchControl : UserControl, IDCCEControl, IControlShape
 
     public event EventHandler TreeNodeDoubleClicked;
 
-    public event EventHandler TreeNodeSelectedChanged;
+    //public event EventHandler TreeNodeSelectedChanged;
 
     public event EventHandler IDChanged;
 

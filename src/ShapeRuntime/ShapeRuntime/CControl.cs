@@ -1,7 +1,7 @@
+using CommonSnappableTypes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Globalization;
@@ -10,9 +10,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Windows.Forms;
-using CommonSnappableTypes;
 
 namespace ShapeRuntime;
 
@@ -20,7 +18,7 @@ namespace ShapeRuntime;
 [Guid("14B6FDFA-A3BA-4701-AA70-E455A45A89CB")]
 [ComVisible(true)]
 [ClassInterface(ClassInterfaceType.AutoDispatch)]
-public class CControl : CShape, ISupportHtml5
+public class CControl : CShape
 {
     private delegate Control CallCreatControlDele(Assembly ExtraAssembly);
 
@@ -28,9 +26,6 @@ public class CControl : CShape, ISupportHtml5
 
     [NonSerialized]
     public static Control UIThreadControl = new();
-
-    [NonSerialized]
-    public bool IsHTML5_Control;
 
     [NonSerialized]
     public Control _c = new();
@@ -381,7 +376,7 @@ public class CControl : CShape, ISupportHtml5
             }
             try
             {
-                if (!(type2.Name == "CButton") || !(propertyInfo.Name == "BackgroundImage") || !(propertySerializeDict["BackgroundImage"] is Image))
+                if (!(type2.Name == "CButton") || !(propertyInfo.Name == "BackgroundImage") || propertySerializeDict["BackgroundImage"] is not Image)
                 {
                     goto IL_016d;
                 }
@@ -837,64 +832,5 @@ public class CControl : CShape, ISupportHtml5
             }
         }
         return r;
-    }
-
-    public string makeHTML()
-    {
-        StringBuilder stringBuilder = new();
-        if (_c is ISupportHtml5)
-        {
-            stringBuilder.Append(((ISupportHtml5)_c).makeHTML().Replace("{Z_INDEX_REPLACE_BY_CCONTROL}", Layer.ToString()));
-        }
-        return stringBuilder.ToString();
-    }
-
-    public string makeCycleScript()
-    {
-        StringBuilder stringBuilder = new();
-        if (_c is ISupportHtml5)
-        {
-            requestPropertyBindDataDele value = onRequestPropertyBindData;
-            (_c as ISupportHtml5).requestPropertyBindData += value;
-            stringBuilder.Append(((ISupportHtml5)_c).makeCycleScript());
-            (_c as ISupportHtml5).requestPropertyBindData -= value;
-        }
-        return stringBuilder.ToString();
-    }
-
-    public string makeStyle()
-    {
-        StringBuilder stringBuilder = new();
-        if (_c is ISupportHtml5)
-        {
-            requestEventBindDictDele value = onRequestEventBindDict;
-            (_c as ISupportHtml5).requestEventBindDict += value;
-            stringBuilder.Append((_c as ISupportHtml5).makeStyle());
-            (_c as ISupportHtml5).requestEventBindDict -= value;
-        }
-        return stringBuilder.ToString();
-    }
-
-    public string makeScript()
-    {
-        StringBuilder stringBuilder = new();
-        if (_c is ISupportHtml5)
-        {
-            requestEventBindDictDele value = onRequestEventBindDict;
-            (_c as ISupportHtml5).requestEventBindDict += value;
-            stringBuilder.Append((_c as ISupportHtml5).makeScript());
-            (_c as ISupportHtml5).requestEventBindDict -= value;
-        }
-        return stringBuilder.ToString();
-    }
-
-    private Dictionary<string, List<EventSetItem>> onRequestEventBindDict()
-    {
-        return eventBindDict;
-    }
-
-    private DataTable onRequestPropertyBindData()
-    {
-        return propertyBindDT;
     }
 }

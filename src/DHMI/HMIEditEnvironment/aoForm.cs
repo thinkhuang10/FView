@@ -1,13 +1,12 @@
 using DevExpress.XtraEditors;
 using System;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace HMIEditEnvironment;
 
 public class aoForm : Form
 {
-	private CGlobal theglobal;
+	private readonly CGlobal theglobal;
 
 	private Button button1;
 
@@ -207,8 +206,8 @@ public class aoForm : Form
 		this.radioGroup1.Name = "radioGroup1";
 		this.radioGroup1.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[2]
 		{
-			new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "十进制"),
-			new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "十六进制")
+			new(null, "十进制"),
+			new(null, "十六进制")
 		});
 		this.radioGroup1.Size = new System.Drawing.Size(215, 24);
 		this.radioGroup1.TabIndex = 11;

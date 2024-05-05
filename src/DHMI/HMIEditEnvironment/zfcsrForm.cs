@@ -58,18 +58,18 @@ public class zfcsrForm : XtraForm
         }
     }
 
-    private void button2_Click(object sender, EventArgs e)
+    private void Button2_Click(object sender, EventArgs e)
     {
         Close();
     }
 
-    private void zfcsrForm_Load(object sender, EventArgs e)
+    private void ZfcsrForm_Load(object sender, EventArgs e)
     {
         textBox1.Text = theglobal.SelectedShapeList[0].zfcsrbianliang;
         textBox2.Text = theglobal.SelectedShapeList[0].zfcsrtishi;
     }
 
-    private void button3_Click(object sender, EventArgs e)
+    private void Button3_Click(object sender, EventArgs e)
     {
         IOForm iOForm = new()
         {
@@ -107,7 +107,7 @@ public class zfcsrForm : XtraForm
         this.button2.TabIndex = 4;
         this.button2.Text = "取消";
         this.button2.UseVisualStyleBackColor = true;
-        this.button2.Click += new System.EventHandler(button2_Click);
+        this.button2.Click += new System.EventHandler(Button2_Click);
         this.label1.AutoSize = true;
         this.label1.Location = new System.Drawing.Point(26, 26);
         this.label1.Name = "label1";
@@ -135,7 +135,7 @@ public class zfcsrForm : XtraForm
         this.button3.TabIndex = 1;
         this.button3.Text = "选择变量";
         this.button3.UseVisualStyleBackColor = true;
-        this.button3.Click += new System.EventHandler(button3_Click);
+        this.button3.Click += new System.EventHandler(Button3_Click);
         this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
         this.pictureBox1.Location = new System.Drawing.Point(17, 86);
         this.pictureBox1.Name = "pictureBox1";
@@ -160,7 +160,7 @@ public class zfcsrForm : XtraForm
         base.Name = "zfcsrForm";
         base.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         this.Text = "字符串输入";
-        base.Load += new System.EventHandler(zfcsrForm_Load);
+        base.Load += new System.EventHandler(ZfcsrForm_Load);
         ((System.ComponentModel.ISupportInitialize)this.pictureBox1).EndInit();
         base.ResumeLayout(false);
         base.PerformLayout();

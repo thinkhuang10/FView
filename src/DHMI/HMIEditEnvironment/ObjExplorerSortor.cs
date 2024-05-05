@@ -16,12 +16,8 @@ public class ObjExplorerSortor : IComparer
     {
         string text = ((ListViewItem)x).SubItems[0].Text;
         string text2 = ((ListViewItem)y).SubItems[0].Text;
-        string strS;
-        string strN;
-        bool flag = SplitStr(text, out strS, out strN);
-        string strS2;
-        string strN2;
-        bool flag2 = SplitStr(text2, out strS2, out strN2);
+        bool flag = SplitStr(text, out string strS, out string strN);
+        bool flag2 = SplitStr(text2, out string strS2, out string strN2);
         if (flag && flag2 && strS == strS2)
         {
             while (strN.Length < strN2.Length)

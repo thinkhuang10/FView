@@ -705,7 +705,7 @@ public class EventBindForm : Form
 
     private void 配置控件常用属性PToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        object obj = ((!(selectST is CControl)) ? ((object)selectST) : ((object)(selectST as CControl)._c));
+        object obj = ((selectST is not CControl) ? ((object)selectST) : ((object)(selectST as CControl)._c));
         Type type = obj.GetType();
         ControlInfoSetting controlInfoSetting = new(type.Name);
         controlInfoSetting.ShowDialog();

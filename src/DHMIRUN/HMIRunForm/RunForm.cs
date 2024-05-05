@@ -49,17 +49,17 @@ public class RunForm : Form
 
 	private const int WM_COPYDATA = 74;
 
-	private MainControl MainControl = new MainControl();
+	private readonly MainControl MainControl = new();
 
-	private object inDBOperation = new object();
+	private readonly object inDBOperation = new();
 
-	private int count;
+	private readonly int count;
 
 	public string sleepTime;
 
-	private PrintDocument printdoc = new PrintDocument();
+	private readonly PrintDocument printdoc = new();
 
-	private PrintDialog printdialog = new PrintDialog();
+	private readonly PrintDialog printdialog = new();
 
 	private Bitmap btmaip;
 
@@ -81,9 +81,9 @@ public class RunForm : Form
 	
 	//private int hwnd;
 
-	private CAuthoritySeiallize cas = new CAuthoritySeiallize();
+	private CAuthoritySeiallize cas = new();
 
-	private IContainer components;
+	private readonly IContainer components;
 
 	private Panel TopPanel;
 
@@ -184,12 +184,12 @@ public class RunForm : Form
 			{
 				return;
 			}
-			CAuthoritySeiallize cAuthoritySeiallize = new CAuthoritySeiallize();
-			BinarySerialize<CAuthoritySeiallize> binarySerialize = new BinarySerialize<CAuthoritySeiallize>();
+			CAuthoritySeiallize cAuthoritySeiallize = new();
+			BinarySerialize<CAuthoritySeiallize> binarySerialize = new();
 			cAuthoritySeiallize = binarySerialize.DeSerialize(text);
 			if (cAuthoritySeiallize != null && cAuthoritySeiallize.bProjectEnd)
 			{
-				ProjectEndForm projectEndForm = new ProjectEndForm(cAuthoritySeiallize);
+				ProjectEndForm projectEndForm = new(cAuthoritySeiallize);
 				DialogResult dialogResult = projectEndForm.ShowDialog();
 				if (dialogResult == DialogResult.Cancel)
 				{
@@ -229,7 +229,7 @@ public class RunForm : Form
 							conn.Open();
 						}
 						adapter.SelectCommand = command;
-						DataSet dataSet = new DataSet();
+						DataSet dataSet = new();
 						adapter.Fill(dataSet);
 						result = dataSet;
 					}
@@ -302,7 +302,7 @@ public class RunForm : Form
 		{
 			Rectangle marginBounds = e.MarginBounds;
 			float num = ((Convert.ToSingle(marginBounds.Width) / Convert.ToSingle(MainControl.dhp.ProjectSize.Width) < Convert.ToSingle(marginBounds.Height) / Convert.ToSingle(MainControl.dhp.ProjectSize.Height)) ? (Convert.ToSingle(marginBounds.Width) / Convert.ToSingle(MainControl.dhp.ProjectSize.Width)) : (Convert.ToSingle(marginBounds.Height) / Convert.ToSingle(MainControl.dhp.ProjectSize.Height)));
-			RectangleF rect = new RectangleF(e.MarginBounds.Location, new SizeF((float)MainControl.dhp.ProjectSize.Width * num, (float)MainControl.dhp.ProjectSize.Height * num));
+			RectangleF rect = new(e.MarginBounds.Location, new SizeF((float)MainControl.dhp.ProjectSize.Width * num, (float)MainControl.dhp.ProjectSize.Height * num));
 			rect.Location = new PointF((float)(e.PageBounds.Width / 2) - rect.Width / 2f, (float)(e.PageBounds.Height / 2) - rect.Height / 2f);
 			e.Graphics.DrawImage(btmaip, rect);
 		}
@@ -357,10 +357,12 @@ public class RunForm : Form
 
 	private void 数据库管理ToolStripMenuItem_Click(object sender, EventArgs e)
 	{
-		DBConnForm dBConnForm = new DBConnForm();
-		dBConnForm.DbType = DbProviderName;
-		dBConnForm.DbConnStr = DbConnString;
-		if (dBConnForm.ShowDialog() == DialogResult.OK)
+        DBConnForm dBConnForm = new()
+        {
+            DbType = DbProviderName,
+            DbConnStr = DbConnString
+        };
+        if (dBConnForm.ShowDialog() == DialogResult.OK)
 		{
 			DbProviderName = dBConnForm.DbType;
 			DbConnString = dBConnForm.DbConnStr;
@@ -372,11 +374,13 @@ public class RunForm : Form
 	{
 		btmaip = new Bitmap(MainControl.Width, MainControl.Height);
 		MainControl.DrawToBitmap(btmaip, new Rectangle(0, 0, btmaip.Width, btmaip.Height));
-		SaveFileDialog saveFileDialog = new SaveFileDialog();
-		saveFileDialog.AddExtension = true;
-		saveFileDialog.DefaultExt = ".bmp";
-		saveFileDialog.Filter = "图片文件(*.jpg;*.tiff;*.bmp;*.png)|*.jpg;*.tiff;*.bmp;*.png|所有文件(*.*)|*.*";
-		if (saveFileDialog.ShowDialog() == DialogResult.OK)
+        SaveFileDialog saveFileDialog = new()
+        {
+            AddExtension = true,
+            DefaultExt = ".bmp",
+            Filter = "图片文件(*.jpg;*.tiff;*.bmp;*.png)|*.jpg;*.tiff;*.bmp;*.png|所有文件(*.*)|*.*"
+        };
+        if (saveFileDialog.ShowDialog() == DialogResult.OK)
 		{
 			btmaip.Save(saveFileDialog.FileName);
 		}
@@ -459,7 +463,7 @@ public class RunForm : Form
 			Marshal.Copy(data.lpData, array, 0, array.Length);
 			string @string = Encoding.GetEncoding("gb2312").GetString(array, 0, array.Length);
 			string[] array2 = @string.Split('|');
-			Dictionary<string, string> dictionary = new Dictionary<string, string>();
+			Dictionary<string, string> dictionary = new();
 			for (int i = 0; i < array2.Length; i++)
 			{
 				if (array2[i] != "" && array2[i].Contains("?"))
@@ -482,11 +486,11 @@ public class RunForm : Form
 			string text = MainControl.dhp.EnvironmentPath + "\\Authority.data";
 			if (File.Exists(text))
 			{
-				BinarySerialize<CAuthoritySeiallize> binarySerialize = new BinarySerialize<CAuthoritySeiallize>();
+				BinarySerialize<CAuthoritySeiallize> binarySerialize = new();
 				cas = binarySerialize.DeSerialize(text);
 				if (cas != null && cas.bProjectStart)
 				{
-					ProjectStartForm projectStartForm = new ProjectStartForm(cas);
+					ProjectStartForm projectStartForm = new(cas);
 					projectStartForm.EventCloseForm = (EventHandler)Delegate.Combine(projectStartForm.EventCloseForm, new EventHandler(CloseRunForm));
 					projectStartForm.ShowDialog();
 					MainControl.cas = cas;
@@ -594,7 +598,7 @@ public class RunForm : Form
 
 	private void InitializeComponent()
 	{
-		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HMIRunForm.RunForm));
+		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIRunForm.RunForm));
 		this.TopPanel = new System.Windows.Forms.Panel();
 		this.menuStrip = new System.Windows.Forms.MenuStrip();
 		this.数据库ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();

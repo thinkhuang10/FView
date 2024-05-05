@@ -154,9 +154,8 @@ public class TextFindForm : XtraForm
 
     private void DoFind(object data)
     {
-        if (data is FindOptions)
+        if (data is FindOptions findOptions)
         {
-            FindOptions findOptions = (FindOptions)data;
             if (!string.IsNullOrEmpty(findOptions.Content))
             {
                 Find(findOptions);
@@ -234,9 +233,8 @@ public class TextFindForm : XtraForm
     private bool IsMatch(FindOptions options, CShape st)
     {
         bool result = false;
-        if (st is CString)
+        if (st is CString cString)
         {
-            CString cString = (CString)st;
             if (options.WholeWord)
             {
                 if (options.MatchCase)

@@ -87,7 +87,7 @@ public class setFirstPageForm : Form
 	private void InitializeComponent()
 	{
 		this.components = new System.ComponentModel.Container();
-		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HMIEditEnvironment.setFirstPageForm));
+		System.ComponentModel.ComponentResourceManager resources = new(typeof(HMIEditEnvironment.setFirstPageForm));
 		this.listView1 = new System.Windows.Forms.ListView();
 		this.imageList1 = new System.Windows.Forms.ImageList(this.components);
 		this.button1 = new System.Windows.Forms.Button();

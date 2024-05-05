@@ -189,7 +189,7 @@ namespace HMIEditEnvironment
             this.barButtonItem10.Caption = "保存";
             this.barButtonItem10.Id = 12;
             this.barButtonItem10.Name = "barButtonItem10";
-            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
+            this.barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem10_ItemClick);
             // 
             // barButtonItem4
             // 
@@ -227,7 +227,7 @@ namespace HMIEditEnvironment
             this.undoBarBtn.Id = 19;
             this.undoBarBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z));
             this.undoBarBtn.Name = "undoBarBtn";
-            this.undoBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.undoBarBtn_ItemClick);
+            this.undoBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.UndoBarBtn_ItemClick);
             // 
             // redoBarBtn
             // 
@@ -282,7 +282,7 @@ namespace HMIEditEnvironment
             this.repBarBtn.Id = 26;
             this.repBarBtn.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H));
             this.repBarBtn.Name = "repBarBtn";
-            this.repBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.repBarBtn_ItemClick);
+            this.repBarBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.RepBarBtn_ItemClick);
             // 
             // moveBarBtn
             // 
@@ -423,7 +423,7 @@ namespace HMIEditEnvironment
             this.barButtonItem_Save.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Save.ImageOptions.Image")));
             this.barButtonItem_Save.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem_Save.ImageOptions.LargeImage")));
             this.barButtonItem_Save.Name = "barButtonItem_Save";
-            this.barButtonItem_Save.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem10_ItemClick);
+            this.barButtonItem_Save.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem10_ItemClick);
             // 
             // barButtonItem_Compile
             // 
@@ -548,7 +548,7 @@ namespace HMIEditEnvironment
             this.treeView2.Name = "treeView2";
             this.treeView2.Size = new System.Drawing.Size(199, 497);
             this.treeView2.TabIndex = 8;
-            this.treeView2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView2_AfterSelect);
+            this.treeView2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView2_AfterSelect);
             this.treeView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.treeView2_MouseDoubleClick);
             // 
             // splitterControl2
@@ -586,7 +586,7 @@ namespace HMIEditEnvironment
             this.textEditorControl1.Name = "textEditorControl1";
             this.textEditorControl1.Size = new System.Drawing.Size(329, 447);
             this.textEditorControl1.TabIndex = 15;
-            this.textEditorControl1.TextChanged += new System.EventHandler(this.textEditorControl1_TextChanged);
+            this.textEditorControl1.TextChanged += new System.EventHandler(this.TextEditorControl1_TextChanged);
             // 
             // editContextMenu
             // 
@@ -607,7 +607,7 @@ namespace HMIEditEnvironment
             this.UndoMenuItem.Name = "UndoMenuItem";
             this.UndoMenuItem.Size = new System.Drawing.Size(117, 22);
             this.UndoMenuItem.Text = "撤销(&U)";
-            this.UndoMenuItem.Click += new System.EventHandler(this.undoBarBtn_ItemClick);
+            this.UndoMenuItem.Click += new System.EventHandler(this.UndoBarBtn_ItemClick);
             // 
             // RedoMenuItem
             // 
@@ -724,7 +724,7 @@ namespace HMIEditEnvironment
             this.checkEdit1.Properties.Caption = "当鼠标在按下状态进入或移开图形时是否执行相应事件";
             this.checkEdit1.Size = new System.Drawing.Size(311, 20);
             this.checkEdit1.TabIndex = 3;
-            this.checkEdit1.CheckedChanged += new System.EventHandler(this.checkEdit1_CheckedChanged);
+            this.checkEdit1.CheckedChanged += new System.EventHandler(this.CheckEdit1_CheckedChanged);
             // 
             // deleteEventPopMenu
             // 
