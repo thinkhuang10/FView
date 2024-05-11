@@ -486,7 +486,7 @@ public class CEditEnvironmentGlobal
 
     public static Dictionary<string, string> ProCmdDict;
 
-    public static MsgForm msgbox = new();
+    public static MsgForm OutputMessage = new();
 
     public static string path = "";
 
@@ -498,7 +498,7 @@ public class CEditEnvironmentGlobal
 
     public static List<DataFile> dfs = new();
 
-    public static Process debugprocess;
+    public static Process HMIRunProcess;
 
     public static List<CShape> CLS = new();
 
@@ -512,37 +512,34 @@ public class CEditEnvironmentGlobal
 
     public static bool NotEditValue = false;
 
-    public static string projectfile = "";
+    public static string ProjectFile = "";
 
     public static int CompareByLayer(CShape x, CShape y)
     {
         if (x == null)
         {
             if (y == null)
-            {
                 return 0;
-            }
+
             return -1;
         }
+
         if (y == null)
-        {
             return 1;
-        }
+
         if (x.Layer > y.Layer)
-        {
             return 1;
-        }
+
         if (x.Layer == y.Layer)
-        {
             return 0;
-        }
+
         return -1;
     }
 
     public static void UnSelectAllShapesIfNotSender(object sender)
     {
-        Form[] mdiChildren = mdiparent.MdiChildren;
-        foreach (Form form in mdiChildren)
+       var mdiChildren = mdiparent.MdiChildren;
+        foreach (var form in mdiChildren)
         {
             if (form is ChildForm && ((ChildForm)form).theglobal.uc2 != (UserShapeEditControl)sender)
             {

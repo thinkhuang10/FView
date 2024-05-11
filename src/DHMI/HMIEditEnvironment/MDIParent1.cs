@@ -25,6 +25,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Forms;
+using Util;
 
 namespace HMIEditEnvironment;
 
@@ -60,7 +61,7 @@ public partial class MDIParent1 : XtraForm
 
     private ProjectPathSaveHandler projectPathSave;
 
-    private bool PreCompile()
+    private bool SetFirstPage()
     {
         if (!CEditEnvironmentGlobal.dfs.Exists((DataFile df) => df.visable))
         {
@@ -78,53 +79,61 @@ public partial class MDIParent1 : XtraForm
 
     private bool Compile()
     {
-        if (!PreCompile())
-            return false;
-
         try
         {
-            CEditEnvironmentGlobal.msgbox.Show();
-            ClassForScript.old = true;
-            StatSize();
-            if (CEditEnvironmentGlobal.debugprocess != null && !CEditEnvironmentGlobal.debugprocess.HasExited)
-            {
-                CEditEnvironmentGlobal.msgbox.Say("关闭当前调试工程.");
-                CEditEnvironmentGlobal.debugprocess.Kill();
-            }
+            CEditEnvironmentGlobal.OutputMessage.Show();
 
-            CEditEnvironmentGlobal.msgbox.Say("开始准备本地发布.");
-            if (string.IsNullOrEmpty(CEditEnvironmentGlobal.projectfile))
+            if (string.IsNullOrEmpty(CEditEnvironmentGlobal.ProjectFile))
             {
-                CEditEnvironmentGlobal.msgbox.Hide();
+                CEditEnvironmentGlobal.OutputMessage.Say("工程文件为空.");
                 return false;
             }
 
+            if (!SetFirstPage())
+                return false;
+
+            ClassForScript.old = true;
+
+            if (CEditEnvironmentGlobal.HMIRunProcess != null && !CEditEnvironmentGlobal.HMIRunProcess.HasExited)
+            {
+                CEditEnvironmentGlobal.OutputMessage.Say("关闭当前调试工程.");
+                CEditEnvironmentGlobal.HMIRunProcess.Kill();
+            }
+
+            CEditEnvironmentGlobal.OutputMessage.Say("开始准备本地发布.");
+
+            SetProjectRunSize();
             OrganizeDeviceParameterVariables();
             ReplaceScriptVar();
-            OrganizeFiles();
+            OrganizeFiles();    
 
             if (!CompileProject())
                 return false;
 
-            CEditEnvironmentGlobal.msgbox.Say("开始启动工程.");
-            string currentDirectory = Environment.CurrentDirectory;
-            Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory + "Output\\";
-            Process process = new();
-            ProcessStartInfo startInfo = new(AppDomain.CurrentDomain.BaseDirectory + "Output\\DHMIRUN.exe", "");
-            process.StartInfo = startInfo;
-            process.StartInfo.UseShellExecute = false;
+            CEditEnvironmentGlobal.OutputMessage.Say("开始启动工程.");
+
+            var process = new Process()
+            {
+                StartInfo = new ProcessStartInfo(PathHelper.GetOutputPath() + "DHMIRUN.exe")
+                {
+                    UseShellExecute = false
+                }
+            };
             process.Start();
-            CEditEnvironmentGlobal.debugprocess = process;
-            Environment.CurrentDirectory = currentDirectory;
-            CEditEnvironmentGlobal.msgbox.Say("成功启动工程.");
-            CEditEnvironmentGlobal.msgbox.Say("完成本地发布.");
+
+            CEditEnvironmentGlobal.HMIRunProcess = process;
+
+            CEditEnvironmentGlobal.OutputMessage.Say("成功启动工程.");
+            CEditEnvironmentGlobal.OutputMessage.Say("完成本地发布.");
 
             foreach (string item in CompileWarning)
             {
-                CEditEnvironmentGlobal.msgbox.Say(item);
+                CEditEnvironmentGlobal.OutputMessage.Say(item);
             }
-            CEditEnvironmentGlobal.msgbox.Say("编译结果:0个错误," + CompileWarning.Count + "个警告");
-            CEditEnvironmentGlobal.msgbox.Hide();
+
+            CEditEnvironmentGlobal.OutputMessage.Say("编译结果:0个错误," + CompileWarning.Count + "个警告");
+            CEditEnvironmentGlobal.OutputMessage.Hide();
+
             return true;
         }
         catch (Exception ex)
@@ -135,26 +144,40 @@ public partial class MDIParent1 : XtraForm
             {
                 foreach (var item in CompileWarning)
                 {
-                    CEditEnvironmentGlobal.msgbox.Say(item);
+                    CEditEnvironmentGlobal.OutputMessage.Say(item);
                 }
 
                 foreach (var item in CompileError)
                 {
-                    CEditEnvironmentGlobal.msgbox.Say(item);
+                    CEditEnvironmentGlobal.OutputMessage.Say(item);
                 }
 
-                CEditEnvironmentGlobal.msgbox.Say("编译结果:" + CompileError.Count + "个错误," + CompileWarning.Count + "个警告");
+                CEditEnvironmentGlobal.OutputMessage.Say("编译结果:" + CompileError.Count + "个错误," + CompileWarning.Count + "个警告");
                 CompileWarning.Clear();
                 CompileError.Clear();
             }
         }
+
         return false;
     }
 
-    private void CopyResources(FileInfo f)
+    private void CopyProjectHMIFiles()
     {
-        string text = f.Directory.FullName + "\\Resources\\";
-        string text2 = AppDomain.CurrentDomain.BaseDirectory + "Output\\Resources\\";
+        foreach (var fileInfo in DirectoryHelper.GetProjectHMIPath().GetFiles())
+        {
+            if (fileInfo.Extension.ToLower() == ".ocx" || fileInfo.Extension.ToLower() == ".dll"
+                || fileInfo.Extension.ToLower() == ".exe" || fileInfo.Extension.ToLower() == ".uim"
+                || fileInfo.Extension.ToLower() == ".data")
+            {
+                File.Copy(fileInfo.FullName, PathHelper.GetOutputPath() + fileInfo.Name, overwrite: true);
+            }
+        }
+    }
+
+    private void CopyResources()
+    {
+        string text = DirectoryHelper.GetProjectHMIPath().FullName + "\\Resources\\";
+        string text2 = PathHelper.GetOutputPath() + "Resources\\";
         try
         {
             try
@@ -189,9 +212,9 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    private void CopyLocalFiles(FileInfo f)
+    private void CopyLocalFiles()
     {
-        CopyResources(f);
+        
         DirectoryInfo directoryInfo = new(AppDomain.CurrentDomain.BaseDirectory + "HMIRun\\");
         FileInfo[] files = directoryInfo.GetFiles();
         foreach (FileInfo fileInfo in files)
@@ -201,7 +224,7 @@ public partial class MDIParent1 : XtraForm
             {
                 try
                 {
-                    File.Copy(fileInfo.FullName, AppDomain.CurrentDomain.BaseDirectory + "Output\\" + fileInfo.Name, overwrite: true);
+                    File.Copy(fileInfo.FullName, PathHelper.GetOutputPath() + fileInfo.Name, overwrite: true);
                 }
                 catch (Exception)
                 {
@@ -232,7 +255,7 @@ public partial class MDIParent1 : XtraForm
                 {
                     try
                     {
-                        File.Copy(fileInfo2.FullName, AppDomain.CurrentDomain.BaseDirectory + "Output\\" + fileInfo2.Name, overwrite: true);
+                        File.Copy(fileInfo2.FullName, PathHelper.GetOutputPath() + fileInfo2.Name, overwrite: true);
                     }
                     catch (Exception)
                     {
@@ -246,19 +269,11 @@ public partial class MDIParent1 : XtraForm
                 }
             }
         }
-        try
-        {
-            File.Copy(AppDomain.CurrentDomain.BaseDirectory + "HMIRun\\Web\\HMIClient.dll", AppDomain.CurrentDomain.BaseDirectory + "Output\\HMIClientWeb.dll", overwrite: true);
-        }
-        catch (Exception ex3)
-        {
-            Trace.WriteLine(ex3.Message);
-        }
     }
 
     private void OrganizeDeviceParameterVariables()
     {
-        CEditEnvironmentGlobal.msgbox.Say("开始整理设备参数变量.");
+        CEditEnvironmentGlobal.OutputMessage.Say("开始整理设备参数变量.");
         if (null == CEditEnvironmentGlobal.dhp.ParaIOs)
         {
             CEditEnvironmentGlobal.dhp.ParaIOs = new List<ParaIO>();
@@ -269,7 +284,7 @@ public partial class MDIParent1 : XtraForm
     {
         Dictionary<string, string> dictionary = new();
         List<string> list = new();
-        CEditEnvironmentGlobal.msgbox.Say("开始替换脚本变量.");
+        CEditEnvironmentGlobal.OutputMessage.Say("开始替换脚本变量.");
         foreach (DataFile df in CEditEnvironmentGlobal.dfs)
         {
             Operation.ReplaceIOName(df.ListAllShowCShape, CEditEnvironmentGlobal.ioitemroot, CEditEnvironmentGlobal.dhp.ProjectIOs, CEditEnvironmentGlobal.dhp.ParaIOs);
@@ -300,74 +315,70 @@ public partial class MDIParent1 : XtraForm
         CEditEnvironmentGlobal.dhp._cxdzqdLogic = Operation.ReplaceIO(CEditEnvironmentGlobal.dhp.cxdzqdLogic, CEditEnvironmentGlobal.ioitemroot, CEditEnvironmentGlobal.dhp.ProjectIOs, CEditEnvironmentGlobal.dhp.ParaIOs);
         CEditEnvironmentGlobal.dhp.devLogic = Operation.ReplaceIO(CEditEnvironmentGlobal.dhp.devjiaoben, CEditEnvironmentGlobal.ioitemroot, CEditEnvironmentGlobal.dhp.ProjectIOs, CEditEnvironmentGlobal.dhp.ParaIOs);
         CEditEnvironmentGlobal.dhp.DstGlobalLogic = Operation.ReplaceIO(CEditEnvironmentGlobal.dhp.SrcGlobalLogic, CEditEnvironmentGlobal.ioitemroot, CEditEnvironmentGlobal.dhp.ProjectIOs, CEditEnvironmentGlobal.dhp.ParaIOs);
-        CEditEnvironmentGlobal.msgbox.Say("完成替换脚本变量.");
-        string projectfile = CEditEnvironmentGlobal.projectfile;
+        CEditEnvironmentGlobal.OutputMessage.Say("完成替换脚本变量.");
+        string projectfile = CEditEnvironmentGlobal.ProjectFile;
         CEditEnvironmentGlobal.dhp.PageGroup = treeView_工程导航.Nodes[0].Nodes[0].Tag as HmiPageGroup;
         CEditEnvironmentGlobal.dhp.pages = dictionary;
         CEditEnvironmentGlobal.dhp.startVisiblePages = list;
         CEditEnvironmentGlobal.dirtyPageTemp = new List<string>(CEditEnvironmentGlobal.dhp.dirtyPage);
         CEditEnvironmentGlobal.dhp.dirtyPage.Clear();
         Operation.BinarySaveProject(projectfile, CEditEnvironmentGlobal.dhp);
-        CEditEnvironmentGlobal.msgbox.Say("成功保存" + projectfile);
+        CEditEnvironmentGlobal.OutputMessage.Say("成功保存" + projectfile);
     }
 
     private void OrganizeFiles()
     {
-        CEditEnvironmentGlobal.msgbox.Say("开始整理文件.");
+        CEditEnvironmentGlobal.OutputMessage.Say("开始整理文件.");
 
-        if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "Output\\"))
+        var outputDirectory = PathHelper.GetOutputPath();
+        if (Directory.Exists(outputDirectory))
         {
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "Output\\");
+            Directory.Delete(outputDirectory, true);
+            Directory.CreateDirectory(outputDirectory);
         }
 
-        if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "LogicCode\\"))
+        var logicCodeDirectory = PathHelper.GetLogicCodePath();
+        if (Directory.Exists(logicCodeDirectory))
         {
-            Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "LogicCode\\");
+            Directory.Delete(logicCodeDirectory, true);
+            Directory.CreateDirectory(logicCodeDirectory);
         }
 
-        FileInfo fileInfo = new(CEditEnvironmentGlobal.projectfile);
-        FileInfo[] files = fileInfo.Directory.GetFiles();
-        foreach (FileInfo fileInfo2 in files)
-        {
-            if (fileInfo2.Extension.ToLower() == ".ocx" || fileInfo2.Extension.ToLower() == ".dll" || fileInfo2.Extension.ToLower() == ".exe" || fileInfo2.Extension.ToLower() == ".uim" || fileInfo2.Extension.ToLower() == ".data")
-            {
-                File.Copy(fileInfo2.FullName, AppDomain.CurrentDomain.BaseDirectory + "Output\\" + fileInfo2.Name, overwrite: true);
-            }
-        }
+        CopyProjectHMIFiles();
+        CopyResources();
+        CopyLocalFiles();
 
-        CopyLocalFiles(fileInfo);
-
-        CEditEnvironmentGlobal.msgbox.Say("整理文件成功.");
+        CEditEnvironmentGlobal.OutputMessage.Say("整理文件成功.");
     }
 
     private bool CompileProject()
     {
-        CEditEnvironmentGlobal.msgbox.Say("进入编译过程.");
+        CEditEnvironmentGlobal.OutputMessage.Say("进入编译过程.");
         string currentDirectory = Environment.CurrentDirectory;
         Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        FileInfo fileInfo = new(CEditEnvironmentGlobal.projectfile);
-        Compiler compiler = new(fileInfo.FullName, AppDomain.CurrentDomain.BaseDirectory + "LogicCode\\", AppDomain.CurrentDomain.BaseDirectory + "Output\\", CEditEnvironmentGlobal.dhp, CEditEnvironmentGlobal.dfs);
-        CEditEnvironmentGlobal.msgbox.Say("生成用户逻辑代码.");
+        FileInfo fileInfo = new(CEditEnvironmentGlobal.ProjectFile);
+        Compiler compiler = new(fileInfo.FullName, PathHelper.GetLogicCodePath(), PathHelper.GetOutputPath(), CEditEnvironmentGlobal.dhp, CEditEnvironmentGlobal.dfs);
+        CEditEnvironmentGlobal.OutputMessage.Say("生成用户逻辑代码.");
         compiler.CreateScript();
-        CEditEnvironmentGlobal.msgbox.Say("生成用户逻辑代码成功.");
-        CEditEnvironmentGlobal.msgbox.Say("开始压缩资源数据.");
-        compiler.ZipResource(CEditEnvironmentGlobal.dhp.Compress, CEditEnvironmentGlobal.dhp.dirtyCompile, CEditEnvironmentGlobal.dirtyPageTemp, CEditEnvironmentGlobal.msgbox.Say);
-        CEditEnvironmentGlobal.msgbox.Say("压缩资源数据成功.");
-        CEditEnvironmentGlobal.msgbox.Say("开始执行编译.");
+        CEditEnvironmentGlobal.OutputMessage.Say("生成用户逻辑代码成功.");
+        CEditEnvironmentGlobal.OutputMessage.Say("开始压缩资源数据.");
+        compiler.ZipResource(CEditEnvironmentGlobal.dhp.Compress, CEditEnvironmentGlobal.dhp.dirtyCompile, CEditEnvironmentGlobal.dirtyPageTemp, CEditEnvironmentGlobal.OutputMessage.Say);
+        CEditEnvironmentGlobal.OutputMessage.Say("压缩资源数据成功.");
+        CEditEnvironmentGlobal.OutputMessage.Say("开始执行编译.");
         if (!compiler.DynamicCompile())
         {
-            CEditEnvironmentGlobal.msgbox.Hide();
+            CEditEnvironmentGlobal.OutputMessage.Hide();
             return false;
         }
-        CEditEnvironmentGlobal.msgbox.Say("编译工程成功.");
-        CEditEnvironmentGlobal.msgbox.Say("开始创建ActiveX控件安装包.");
+        CEditEnvironmentGlobal.OutputMessage.Say("编译工程成功.");
+        CEditEnvironmentGlobal.OutputMessage.Say("开始创建ActiveX控件安装包.");
         compiler.CreateCab();
-        CEditEnvironmentGlobal.msgbox.Say("创建ActiveX控件安装包成功.");
-        CEditEnvironmentGlobal.msgbox.Say("开始创建网络版页面文件.");
+        CEditEnvironmentGlobal.OutputMessage.Say("创建ActiveX控件安装包成功.");
+        CEditEnvironmentGlobal.OutputMessage.Say("开始创建网络版页面文件.");
         compiler.CreateHTML();
-        CEditEnvironmentGlobal.msgbox.Say("创建网络版页面文件成功.");
+        CEditEnvironmentGlobal.OutputMessage.Say("创建网络版页面文件成功.");
         Environment.CurrentDirectory = currentDirectory;
-        CEditEnvironmentGlobal.msgbox.Say("编译过程完成.");
+        CEditEnvironmentGlobal.OutputMessage.Say("编译过程完成.");
         return true;
     }
 
@@ -874,11 +885,11 @@ public partial class MDIParent1 : XtraForm
 
     public void BarButtonItem_保存工程_ItemClick(object sender, ItemClickEventArgs e)
     {
-        if (CEditEnvironmentGlobal.path == "" || CEditEnvironmentGlobal.projectfile == "")
+        if (CEditEnvironmentGlobal.path == "" || CEditEnvironmentGlobal.ProjectFile == "")
             return;
 
-        StatSize();
-        var projectfile = CEditEnvironmentGlobal.projectfile;
+        SetProjectRunSize();
+        var projectfile = CEditEnvironmentGlobal.ProjectFile;
         var dictionary = new Dictionary<string, string>();
         List<string> list = new();
         foreach (DataFile df in CEditEnvironmentGlobal.dfs)
@@ -890,7 +901,7 @@ public partial class MDIParent1 : XtraForm
             }
             catch (ArgumentException)
             {
-                CEditEnvironmentGlobal.msgbox.Say("页面脚本名称为==" + df.name + "==脚本名称重复！页面名称为" + df.pageName);
+                CEditEnvironmentGlobal.OutputMessage.Say("页面脚本名称为==" + df.name + "==脚本名称重复！页面名称为" + df.pageName);
             }
             if (df.visable)
             {
@@ -901,7 +912,7 @@ public partial class MDIParent1 : XtraForm
         CEditEnvironmentGlobal.dhp.pages = dictionary;
         CEditEnvironmentGlobal.dhp.startVisiblePages = list;
         Operation.BinarySaveProject(projectfile, CEditEnvironmentGlobal.dhp);
-        CEditEnvironmentGlobal.msgbox.Say("成功保存到" + projectfile);
+        CEditEnvironmentGlobal.OutputMessage.Say("成功保存到" + projectfile);
     }
 
     private void BarButtonItem70_ItemClick(object sender, ItemClickEventArgs e)
@@ -1120,7 +1131,7 @@ public partial class MDIParent1 : XtraForm
         {
             if (e1.Result != null)
             {
-                CEditEnvironmentGlobal.msgbox.Say("找到匹配项: \"" + e1.Result.PageDisplayName + "\"[" + e1.Result.ShapeName + "]");
+                CEditEnvironmentGlobal.OutputMessage.Say("找到匹配项: \"" + e1.Result.PageDisplayName + "\"[" + e1.Result.ShapeName + "]");
                 OpenPage(e1.Result.PageName);
                 CGlobal theglobal = CEditEnvironmentGlobal.childform.theglobal;
                 theglobal.SelectedShapeList.Clear();
@@ -1555,10 +1566,10 @@ public partial class MDIParent1 : XtraForm
         }
         try
         {
-            if (CEditEnvironmentGlobal.debugprocess != null)
+            if (CEditEnvironmentGlobal.HMIRunProcess != null)
             {
-                CEditEnvironmentGlobal.debugprocess.Kill();
-                CEditEnvironmentGlobal.debugprocess = null;
+                CEditEnvironmentGlobal.HMIRunProcess.Kill();
+                CEditEnvironmentGlobal.HMIRunProcess = null;
             }
         }
         catch (Exception)
@@ -3201,7 +3212,7 @@ public partial class MDIParent1 : XtraForm
         HmiPageGroup hmiPageGroup2 = hmiPageGroup;
         hmiPageGroup2.Parent.Children.Add(hmiPageGroup2);
         treeNode.Tag = hmiPageGroup2;
-        CEditEnvironmentGlobal.msgbox.Say("新建页面组\"" + treeNode.Text + "\"[" + treeNode.Name + "]@\"" + treeNode.Parent.Text + "\"成功.");
+        CEditEnvironmentGlobal.OutputMessage.Say("新建页面组\"" + treeNode.Text + "\"[" + treeNode.Name + "]@\"" + treeNode.Parent.Text + "\"成功.");
         return treeNode;
     }
 
@@ -3229,7 +3240,7 @@ public partial class MDIParent1 : XtraForm
         TreeNode treeNode = AddPageToTreeView(df.name, df.pageName, parentTreeNode);
         (treeNode.Tag as HmiPage).DataFile = df;
         CEditEnvironmentGlobal.PageManager.AddPageToPageGroup(treeNode, parentTreeNode);
-        CEditEnvironmentGlobal.msgbox.Say("新建页面\"" + treeNode.Text + "\"[" + treeNode.Name + "]@\"" + treeNode.Parent.Text + "\"成功.");
+        CEditEnvironmentGlobal.OutputMessage.Say("新建页面\"" + treeNode.Text + "\"[" + treeNode.Name + "]@\"" + treeNode.Parent.Text + "\"成功.");
         return treeNode;
     }
 
@@ -3274,7 +3285,7 @@ public partial class MDIParent1 : XtraForm
                 try
                 {
                     //initForm.say("加载页面" + value + ".");
-                    CEditEnvironmentGlobal.msgbox.Say("加载页面" + value + ".");
+                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + value + ".");
                     DataFile dataFile = Operation.BinaryLoadFile(value);
                     SetCPixieControlEvent(dataFile);
                     CEditEnvironmentGlobal.dfs.Add(dataFile);
@@ -3283,14 +3294,14 @@ public partial class MDIParent1 : XtraForm
                         AddPageToTreeView(dataFile.name, dataFile.pageName);
                     }
                     //initForm.say("加载页面" + value + "成功.");
-                    CEditEnvironmentGlobal.msgbox.Say("加载页面" + value + "成功.");
+                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + value + "成功.");
                     Refresh();
                 }
                 catch (Exception ex)
                 {
                     //initForm.say("加载页面" + value + "失败.");
-                    CEditEnvironmentGlobal.msgbox.Say("加载页面" + value + "失败.");
-                    CEditEnvironmentGlobal.msgbox.Say("失败原因：" + ex.ToString());
+                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + value + "失败.");
+                    CEditEnvironmentGlobal.OutputMessage.Say("失败原因：" + ex.ToString());
                     return false;
                 }
             }
@@ -3444,7 +3455,7 @@ public partial class MDIParent1 : XtraForm
                 hmiPage.Parent.Children.Remove(hmiPage);
             }
             treeNode.Remove();
-            CEditEnvironmentGlobal.msgbox.Say("删除页面\"" + treeNode.Text + "\"[" + treeNode.Name + "]成功.");
+            CEditEnvironmentGlobal.OutputMessage.Say("删除页面\"" + treeNode.Text + "\"[" + treeNode.Name + "]成功.");
         }
     }
 
@@ -3810,7 +3821,7 @@ public partial class MDIParent1 : XtraForm
                 hmiPageGroup.Parent.Children.Remove(hmiPageGroup);
             }
             treeNode.Remove();
-            CEditEnvironmentGlobal.msgbox.Say("删除页面组\"" + treeNode.Text + "\"[" + treeNode.Name + "]成功.");
+            CEditEnvironmentGlobal.OutputMessage.Say("删除页面组\"" + treeNode.Text + "\"[" + treeNode.Name + "]成功.");
         }
     }
 
@@ -3896,22 +3907,22 @@ public partial class MDIParent1 : XtraForm
     {
         try
         {
-            CEditEnvironmentGlobal.msgbox.Say("开始载入工程.");
+            CEditEnvironmentGlobal.OutputMessage.Say("开始载入工程.");
 
             EnableAllControl(true);
             childFormNumber = (pageGroupNumber = 0);
             OpenProjectFromDSL(dslProjectFile.FullName);
-            if (!OpenProjectByHPF(CEditEnvironmentGlobal.projectfile))
+            if (!OpenProjectByHPF(CEditEnvironmentGlobal.ProjectFile))
                 return;
 
             CheckIOExists.IOTableOld = true;
 
-            CEditEnvironmentGlobal.msgbox.Say("成功载入工程.");
+            CEditEnvironmentGlobal.OutputMessage.Say("成功载入工程.");
         }
         catch (Exception ex)
         {
-            CEditEnvironmentGlobal.msgbox.Say("加载工程失败.");
-            CEditEnvironmentGlobal.msgbox.Say("原因:" + ex.Message);
+            CEditEnvironmentGlobal.OutputMessage.Say("加载工程失败.");
+            CEditEnvironmentGlobal.OutputMessage.Say("原因:" + ex.Message);
         }
 
         if (0 == CEditEnvironmentGlobal.dfs.Count)
@@ -3946,7 +3957,7 @@ public partial class MDIParent1 : XtraForm
         }
 
         CEditEnvironmentGlobal.dhp.creattime = DateTime.Now;
-        CEditEnvironmentGlobal.projectfile = fileInfo.DirectoryName + "\\hmi\\HMI.dhp";
+        CEditEnvironmentGlobal.ProjectFile = fileInfo.DirectoryName + "\\hmi\\HMI.dhp";
         treeView_工程导航.Nodes[0].Nodes.RemoveByKey("Page");
 
         treeView_工程导航.Nodes[0].Text = "本地工程(" + CEditEnvironmentGlobal.dhp.projectname + ")";
@@ -4141,19 +4152,19 @@ public partial class MDIParent1 : XtraForm
             CEditEnvironmentGlobal.dfs.Clear();
             fileSystemWatcher1.Filter = "noenfaw5325dsfseonoeonfowenfsjfkljsadlk";
             CEditEnvironmentGlobal.dhp = new HMIProjectFile();
-            CEditEnvironmentGlobal.projectfile = "";
+            CEditEnvironmentGlobal.ProjectFile = "";
             页面组_关闭所有();
             OpenProjectFromDSL(dslProjectFile.FullName);
-            OpenProjectByHPF(CEditEnvironmentGlobal.projectfile);
+            OpenProjectByHPF(CEditEnvironmentGlobal.ProjectFile);
             CheckIOExists.IOTableOld = true;
-            CEditEnvironmentGlobal.msgbox.Say("成功载入工程.");
+            CEditEnvironmentGlobal.OutputMessage.Say("成功载入工程.");
             ReloadBarLayout();
         }
         catch (Exception ex)
         {
             Console.WriteLine(ex.Message);
-            CEditEnvironmentGlobal.msgbox.Say("加载工程失败.");
-            CEditEnvironmentGlobal.msgbox.Say("原因:" + ex.Message);
+            CEditEnvironmentGlobal.OutputMessage.Say("加载工程失败.");
+            CEditEnvironmentGlobal.OutputMessage.Say("原因:" + ex.Message);
         }
         if (CEditEnvironmentGlobal.dfs.Count == 0)
         {
@@ -4176,7 +4187,7 @@ public partial class MDIParent1 : XtraForm
         barManager1.SaveLayoutToXml(AppDomain.CurrentDomain.BaseDirectory + DockConfigFileName);
     }
 
-    public Size StatSize()
+    public Size SetProjectRunSize()
     {
         Size size = default;
         foreach (DataFile df in CEditEnvironmentGlobal.dfs)
@@ -4201,7 +4212,7 @@ public partial class MDIParent1 : XtraForm
     {
         if (form == null)
         {
-            CEditEnvironmentGlobal.msgbox.Say("请选择页面再保存！");
+            CEditEnvironmentGlobal.OutputMessage.Say("请选择页面再保存！");
             return;
         }
         CEditEnvironmentGlobal.childform = base.ActiveMdiChild as ChildForm;
@@ -4209,11 +4220,11 @@ public partial class MDIParent1 : XtraForm
         try
         {
             Operation.BinarySaveFile(text, CEditEnvironmentGlobal.childform.theglobal.df);
-            CEditEnvironmentGlobal.msgbox.Say("成功保存到" + text);
+            CEditEnvironmentGlobal.OutputMessage.Say("成功保存到" + text);
         }
         catch(Exception ex)
         {
-            CEditEnvironmentGlobal.msgbox.Say("保存到" + text + "失败!");
+            CEditEnvironmentGlobal.OutputMessage.Say("保存到" + text + "失败!");
             LogUtil.Error("保存到页面" + text + "失败! 失败原因：" + ex);
         }
     }

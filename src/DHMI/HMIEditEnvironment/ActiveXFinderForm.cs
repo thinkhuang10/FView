@@ -165,11 +165,11 @@ public class ActiveXFinderForm : XtraForm, ICallBack
             FileInfo fileInfo = new(filename.Replace("\"", ""));
             File.Copy(fileInfo.FullName, (AppDomain.CurrentDomain.BaseDirectory + "UserControl\\" + controlname + "\\ActiveX." + clsid + "." + ver + "." + fileInfo.Name).Replace("file:///", ""), overwrite: true);
             imageList.Images[imageindex].Save(AppDomain.CurrentDomain.BaseDirectory + "UserControl\\" + controlname + "\\Image.img");
-            CEditEnvironmentGlobal.msgbox.Say("成功转换控件" + controlname + ".");
+            CEditEnvironmentGlobal.OutputMessage.Say("成功转换控件" + controlname + ".");
         }
         catch (Exception ex)
         {
-            CEditEnvironmentGlobal.msgbox.Say("转换控件" + controlname + "失败.");
+            CEditEnvironmentGlobal.OutputMessage.Say("转换控件" + controlname + "失败.");
             MessageBox.Show(ex.Message);
         }
     }
@@ -180,7 +180,7 @@ public class ActiveXFinderForm : XtraForm, ICallBack
         {
             if (e.Data != null && e.Data.Trim() != "")
             {
-                CEditEnvironmentGlobal.msgbox.Say(e.Data);
+                CEditEnvironmentGlobal.OutputMessage.Say(e.Data);
             }
         }
         catch (Exception)

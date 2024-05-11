@@ -107,7 +107,7 @@ public class ChildForm : Form
                     }
                     catch
                     {
-                        CEditEnvironmentGlobal.msgbox.Say("页面" + userControl21.theglobal.df.pageName + "图形" + cShape.Name + "序列化时出现问题.");
+                        CEditEnvironmentGlobal.OutputMessage.Say("页面" + userControl21.theglobal.df.pageName + "图形" + cShape.Name + "序列化时出现问题.");
                         userControl21.theglobal.g_ListAllShowCShape.Remove(cShape);
                         break;
                     }
