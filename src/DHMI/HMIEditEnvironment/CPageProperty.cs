@@ -34,7 +34,7 @@ public class CPageProperty
 
     [DisplayName("页面权限")]
     [Category("权限设置")]
-    [Description("设置页面曲线，范围A~J。")]
+    [Description("设置页面权限，范围A~J。")]
     [ReadOnly(false)]
     public string PageAuthority
     {

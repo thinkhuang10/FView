@@ -1172,7 +1172,7 @@ namespace HMIEditEnvironment
             this.BarButtonItem_Debug.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("BarButtonItem_Debug.ImageOptions.LargeImage")));
             this.BarButtonItem_Debug.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
             this.BarButtonItem_Debug.Name = "BarButtonItem_Debug";
-            this.BarButtonItem_Debug.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem91_ItemClick);
+            this.BarButtonItem_Debug.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarButtonItem_Debug_ItemClick);
             // 
             // menubar_菜单栏
             // 

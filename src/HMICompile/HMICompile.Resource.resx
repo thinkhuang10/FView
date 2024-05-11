@@ -1,18 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -27,100 +105,20 @@
       </xsd:complexType>
     </xsd:element>
   </xsd:schema>
-<resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>1.3</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="index_html" xml:space="preserve"><value>&lt;html&gt;
-&lt;head&gt;
-    &lt;link rel="Configuration" href="HMIWeb.cfg" /&gt;
-    &lt;meta http-equiv="Content-Type" content="text/html;charset=utf-16" /&gt;
-    &lt;title&gt;&lt;/title&gt;
-&lt;/head&gt;
-&lt;body style="font-size: 12px; font-family: 宋体, arial, helvetica, sans-serif;"&gt;
-    &lt;div id="div1" style="width:#[ProjectWidth];height:#[ProjectHeight];display:block;font-size:18px;"&gt;
-        组态页面加载中，请等待
-    &lt;/div&gt;
-    &lt;div id="div2" style="width:100%;height:100%;display:none;"&gt;
-        &lt;object id="MiniConfigRun1" classid="http:HMIWeb.dll#HMIWeb.MainControl" height="100%" width="100%" viewastext&gt;
-        &lt;/object&gt;
-    &lt;/div&gt;
-    &lt;script type="text/javascript"&gt;
-    try {
-        MiniConfigRun1.seturl(location.href);
-        MiniConfigRun1.setipaddress(location.hostname, location.port);
-        MiniConfigRun1.BeginInit();
-        if (MiniConfigRun1.isauthority == true) {
-            div1.style.display = "none";
-            div2.style.display = "block";
-        } else {
-            throw "load error";
-        }
-    } catch (err) {
-        LoadError();
-    }
-
-    function LoadError() {
-        alert("加载页面出错，可能是安全级别不够：请将本站加到可信站点并点击确定进行.net安全设置");
-        var shell = new ActiveXObject("WScript.Shell");
-
-        var systemobject = shell.Environment("SYSTEM");
-        var path = systemobject("WINDIR") + "\\Microsoft.NET\\Framework\\v2.0.50727\\caspol.exe  -quiet -machine -addgroup All_Code -zone Trusted FullTrust";
-        shell.Run(path);
-
-        /** 
-            安装.NET Framework 4.5及以上版本时，IE浏览器不会加载.NET托管控件，
-            修改注册表可以解决此问题。（必须以管理员身份运行）
-        */
-        var keyname = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\\EnableIEHosting";
-        try {
-            var key = shell.RegRead(keyname);
-            if (key != 1) {
-                throw "key value is error";
-            }
-        } catch (err) {
-            shell.RegWrite(keyname, 1, "REG_DWORD");
-        }
-
-        if (navigator.userAgent.indexOf("WOW64") &gt; -1) {
-            keyname = "HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\.NETFramework\\EnableIEHosting";
-            try {
-                var key = shell.RegRead(keyname);
-                if (key != 1) {
-                    throw "key value is error";
-                }
-            } catch (err) {
-                shell.RegWrite(keyname, 1, "REG_DWORD");
-            }
-        }
-
-        shell = null;
-        alert("请重新启动IE浏览DCCE HMI");
-    }
-
-    window.onbeforeunload = function () {
-        if (MiniConfigRun1.isauthority == true) {
-            MiniConfigRun1.close();
-        }
-    }
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</value></data>
-  <data name="project_html" xml:space="preserve"><value>&lt;html&gt;
-&lt;head&gt;
-    &lt;meta http-equiv="Content-Type" content="text/html;charset=utf-16" /&gt;
-    &lt;title&gt;&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div style="display:none"&gt;
-    &lt;/div&gt;
-#[EmbbedBlock]
-    &lt;script type="text/javascript"&gt;
-        if (navigator.userAgent.indexOf(".NET CLR 2.0") &gt; -1) {
-            window.location = "index.html";
-        } else {
-            document.write("对不起，您还没有安装.Net Framework 2.0。&lt;a href='framework2.exe' target='_self'&gt;请点击这里安装&lt;/a&gt;");
-        }
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</value></data>
-  <data name="Logic_cs" xml:space="preserve"><value>using System;
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Logic_cs" xml:space="preserve">
+    <value>using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -172,5 +170,6 @@ namespace LogicPage
     public delegate object CallRuntimeDele(string str, object obj);
 
 }
-</value></data>
-  </root>
+</value>
+  </data>
+</root>

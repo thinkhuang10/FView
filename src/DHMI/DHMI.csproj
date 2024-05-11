@@ -513,6 +513,7 @@
     <Compile Include="HMIEditEnvironment\图标.cs" />
     <Compile Include="Model\OPCDATagInfo.cs" />
     <Compile Include="Model\OPCDADeviceInfo.cs" />
+    <Compile Include="Model\ProjectCompiler.cs" />
     <Compile Include="Model\ProjectInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -524,6 +525,7 @@
     <Compile Include="Util\DirectoryHelper.cs" />
     <Compile Include="Util\PathHelper.cs" />
     <Compile Include="Util\CSVHelper.cs" />
+    <Compile Include="Util\SizeHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="HMIEditEnvironment.AuthoritySettingForm.resx" LogicalName="HMIEditEnvironment.AuthoritySettingForm.resources">

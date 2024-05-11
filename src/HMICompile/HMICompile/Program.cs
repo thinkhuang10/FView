@@ -14,6 +14,5 @@ internal class Program
         compiler.ZipResource(compress: true, dirtyCompile: true, null, Console.WriteLine);
         compiler.DynamicCompile();
         compiler.CreateCab();
-        compiler.CreateHTML();
     }
 }

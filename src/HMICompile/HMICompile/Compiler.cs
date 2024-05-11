@@ -896,20 +896,6 @@ public class Compiler
             }
         }
 
-        //using (FileStream fileStream2 = new FileStream(fiProjectFile.Directory.FullName + "\\" + dhp.IOfiles, FileMode.Open, FileAccess.Read, FileShare.Read))
-        //{
-        //	byte[] array2 = new byte[fileStream2.Length];
-        //	fileStream2.Read(array2, 0, array2.Length);
-        //	if (compress)
-        //	{
-        //		resourceWriter.AddResource(dhp.IOfiles, Operation.CompressStream(array2));
-        //	}
-        //	else
-        //	{
-        //		resourceWriter.AddResource(dhp.IOfiles, array2);
-        //	}
-        //}
-
         foreach (string value in dhp.pages.Values)
         {
             if (!dirtyCompile || dirtyList.Contains(value.Replace(".hpg", "")) || !File.Exists(fiProjectFile.DirectoryName + "\\CompileTemp\\" + value))
@@ -934,26 +920,6 @@ public class Compiler
             msgCall("拷贝" + value + "成功.");
         }
         resourceWriter.Generate();
-    }
-
-    public bool CreatCustomLogicDLL()
-    {
-        try
-        {
-            string path = OutputDir + "CustomLogic.dll";
-            if (!File.Exists(path))
-            {
-                using (File.Create(path))
-                {
-                }
-            }
-            return true;
-        }
-        catch
-        {
-            MessageBox.Show("编译失败：请关闭杀毒软件重新编译！", "提示");
-            return false;
-        }
     }
 
     public bool DynamicCompile()
@@ -1135,38 +1101,6 @@ public class Compiler
         process.StartInfo = processStartInfo;
         process.Start();
         Environment.CurrentDirectory = currentDirectory;
-    }
-
-    public void CreateHTML()
-    {
-        using (StreamWriter streamWriter = new(OutputDir + dhp.projectname + ".html"))
-        {
-            StringBuilder stringBuilder = new();
-            FileInfo[] files = fiProjectFile.Directory.GetFiles();
-            foreach (FileInfo fileInfo in files)
-            {
-                if (fileInfo.Name.Contains("ActiveX."))
-                {
-                    string[] array = fileInfo.Name.Split('.');
-                    int num = array.Length;
-                    string[] array2 = new string[4]
-                    {
-                        fileInfo.Name,
-                        array[num - 4],
-                        array[num - 3].Replace('_', ','),
-                        array[num - 2]
-                    };
-                    stringBuilder.AppendLine("    <object classid=\"clsid:" + array[1].Substring(1, array[1].Length - 2) + "\" codebase=\"main.cab\"></object>");
-                }
-            }
-            StringBuilder stringBuilder2 = new();
-            stringBuilder2.Append(Resource.project_html.Replace("#[EmbbedBlock]", stringBuilder.ToString()));
-            streamWriter.Write(stringBuilder2.ToString());
-        }
-        using StreamWriter streamWriter2 = new(OutputDir + "index.html");
-        StringBuilder stringBuilder3 = new();
-        stringBuilder3.Append(Resource.index_html.Replace("#[ProjectWidth]", dhp.ProjectSize.Width + "px").Replace("#[ProjectHeight]", dhp.ProjectSize.Height + "px"));
-        streamWriter2.Write(stringBuilder3.ToString());
     }
 
     private string GenerateVarBlock()
