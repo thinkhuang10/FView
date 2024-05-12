@@ -91,6 +91,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\bin\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\bin\Serilog.dll</HintPath>
@@ -100,7 +104,6 @@
       <HintPath>..\bin\Serilog.Sinks.File.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Text.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="DevExpress.XtraBars.v23.2">
     </Reference>
@@ -511,6 +514,10 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HMIEditEnvironment\图标.cs" />
+    <Compile Include="Model\DeviceModel.cs" />
+    <Compile Include="Model\DeviceTypeEnum.cs" />
+    <Compile Include="Model\DeviceInfo.cs" />
+    <Compile Include="Model\ModbusTCPDeviceInfo.cs" />
     <Compile Include="Model\OPCDATagInfo.cs" />
     <Compile Include="Model\OPCDADeviceInfo.cs" />
     <Compile Include="Model\ProjectCompiler.cs" />
@@ -524,6 +531,7 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Util\ConstantHelper.cs" />
     <Compile Include="Util\DirectoryHelper.cs" />
+    <Compile Include="Util\JSONHelper.cs" />
     <Compile Include="Util\PathHelper.cs" />
     <Compile Include="Util\CSVHelper.cs" />
     <Compile Include="Util\SizeHelper.cs" />

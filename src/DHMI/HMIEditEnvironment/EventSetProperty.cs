@@ -71,7 +71,7 @@ public class EventSetProperty : Form
         {
             comboBox3.Items.Add(new KVPart<string, DataFile>(df.pageName, df));
         }
-        comboBox3.Text = CEditEnvironmentGlobal.childform.theglobal.df.pageName;
+        comboBox3.Text = CEditEnvironmentGlobal.ChildForm.theglobal.df.pageName;
         if (comboBox3.SelectedIndex == -1 && comboBox3.Items.Count > 0)
         {
             comboBox3.SelectedIndex = 0;

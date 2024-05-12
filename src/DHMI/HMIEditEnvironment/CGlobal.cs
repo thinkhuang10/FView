@@ -214,7 +214,7 @@ public class CGlobal
             {
                 g_ListAllShowCShape.Add(oldShape);
                 SelectedShapeList.Add(oldShape);
-                CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(oldShape.ShapeID.ToString());
+                CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(oldShape.ShapeID.ToString());
                 if (oldShape is CControl)
                 {
                     ((CControl)oldShape)._c.Enabled = false;
@@ -239,7 +239,7 @@ public class CGlobal
                         {
                             uc2.Controls.Remove(((CControl)cShape)._c);
                         }
-                        CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape.ShapeID.ToString());
+                        CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cShape.ShapeID.ToString());
                     }
                 }
             }
@@ -248,7 +248,7 @@ public class CGlobal
             {
                 g_ListAllShowCShape.Add(oldShape2);
                 SelectedShapeList.Add(oldShape2);
-                CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(oldShape2.ShapeID.ToString());
+                CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(oldShape2.ShapeID.ToString());
                 if (oldShape2 is CControl)
                 {
                     ((CControl)oldShape2)._c.Enabled = false;
@@ -274,12 +274,12 @@ public class CGlobal
                         {
                             uc2.Controls.Remove(((CControl)cShape2)._c);
                         }
-                        CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape2.ShapeID.ToString());
+                        CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cShape2.ShapeID.ToString());
                     }
                 }
             }
         }
-        CEditEnvironmentGlobal.mdiparent.objView_Page.FreshSelect(this);
+        CEditEnvironmentGlobal.MdiParent.objView_Page.FreshSelect(this);
         str_IMDoingWhat = "Select";
     }
 
@@ -299,7 +299,7 @@ public class CGlobal
             {
                 g_ListAllShowCShape.Add(newShape);
                 SelectedShapeList.Add(newShape);
-                CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(newShape.ShapeID.ToString());
+                CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(newShape.ShapeID.ToString());
                 try
                 {
                     ((CControl)newShape)._c.Enabled = false;
@@ -326,7 +326,7 @@ public class CGlobal
                         {
                             uc2.Controls.Remove(((CControl)cShape)._c);
                         }
-                        CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape.ShapeID.ToString());
+                        CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cShape.ShapeID.ToString());
                     }
                 }
             }
@@ -335,7 +335,7 @@ public class CGlobal
             {
                 g_ListAllShowCShape.Add(newShape2);
                 SelectedShapeList.Add(newShape2);
-                CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(newShape2.ShapeID.ToString());
+                CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(newShape2.ShapeID.ToString());
                 if (newShape2.GetType() == typeof(CControl))
                 {
                     ((CControl)newShape2)._c.Enabled = false;
@@ -361,12 +361,12 @@ public class CGlobal
                         {
                             uc2.Controls.Remove(((CControl)cShape2)._c);
                         }
-                        CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape2.ShapeID.ToString());
+                        CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cShape2.ShapeID.ToString());
                     }
                 }
             }
         }
-        CEditEnvironmentGlobal.mdiparent.objView_Page.FreshSelect(this);
+        CEditEnvironmentGlobal.MdiParent.objView_Page.FreshSelect(this);
         str_IMDoingWhat = "Select";
     }
 

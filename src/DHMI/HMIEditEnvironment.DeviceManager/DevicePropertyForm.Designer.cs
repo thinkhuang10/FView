@@ -30,14 +30,15 @@
         {
             this.Button_Cancel = new DevExpress.XtraEditors.SimpleButton();
             this.Button_OK = new DevExpress.XtraEditors.SimpleButton();
-            this.propertyGridControl = new DevExpress.XtraVerticalGrid.PropertyGridControl();
-            this.tablePanel = new DevExpress.Utils.Layout.TablePanel();
-            this.panelControl = new DevExpress.XtraEditors.PanelControl();
-            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablePanel)).BeginInit();
-            this.tablePanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl)).BeginInit();
-            this.panelControl.SuspendLayout();
+            this.PropertyGridControl = new DevExpress.XtraVerticalGrid.PropertyGridControl();
+            this.TablePanel = new DevExpress.Utils.Layout.TablePanel();
+            this.PanelControl = new DevExpress.XtraEditors.PanelControl();
+            this.TreeView_Device = new System.Windows.Forms.TreeView();
+            ((System.ComponentModel.ISupportInitialize)(this.PropertyGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablePanel)).BeginInit();
+            this.TablePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PanelControl)).BeginInit();
+            this.PanelControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // Button_Cancel
@@ -58,65 +59,79 @@
             this.Button_OK.Text = "确定";
             this.Button_OK.Click += new System.EventHandler(this.Button_OK_Click);
             // 
-            // propertyGridControl
+            // PropertyGridControl
             // 
-            this.tablePanel.SetColumn(this.propertyGridControl, 0);
-            this.propertyGridControl.Cursor = System.Windows.Forms.Cursors.Default;
-            this.propertyGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGridControl.Location = new System.Drawing.Point(11, 10);
-            this.propertyGridControl.Margin = new System.Windows.Forms.Padding(0);
-            this.propertyGridControl.Name = "propertyGridControl";
-            this.propertyGridControl.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.True;
-            this.tablePanel.SetRow(this.propertyGridControl, 0);
-            this.propertyGridControl.Size = new System.Drawing.Size(376, 298);
-            this.propertyGridControl.TabIndex = 1;
-            this.propertyGridControl.CustomPropertyDescriptors += new DevExpress.XtraVerticalGrid.Events.CustomPropertyDescriptorsEventHandler(this.PropertyGridControl_CustomPropertyDescriptors);
+            this.TablePanel.SetColumn(this.PropertyGridControl, 1);
+            this.PropertyGridControl.Cursor = System.Windows.Forms.Cursors.Default;
+            this.PropertyGridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PropertyGridControl.Location = new System.Drawing.Point(203, 10);
+            this.PropertyGridControl.Margin = new System.Windows.Forms.Padding(0);
+            this.PropertyGridControl.Name = "PropertyGridControl";
+            this.PropertyGridControl.OptionsView.AllowReadOnlyRowAppearance = DevExpress.Utils.DefaultBoolean.True;
+            this.TablePanel.SetRow(this.PropertyGridControl, 0);
+            this.PropertyGridControl.Size = new System.Drawing.Size(384, 298);
+            this.PropertyGridControl.TabIndex = 1;
+            this.PropertyGridControl.CustomPropertyDescriptors += new DevExpress.XtraVerticalGrid.Events.CustomPropertyDescriptorsEventHandler(this.PropertyGridControl_CustomPropertyDescriptors);
             // 
-            // tablePanel
+            // TablePanel
             // 
-            this.tablePanel.Columns.AddRange(new DevExpress.Utils.Layout.TablePanelColumn[] {
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 5F)});
-            this.tablePanel.Controls.Add(this.panelControl);
-            this.tablePanel.Controls.Add(this.propertyGridControl);
-            this.tablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tablePanel.Location = new System.Drawing.Point(0, 0);
-            this.tablePanel.Name = "tablePanel";
-            this.tablePanel.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
+            this.TablePanel.Columns.AddRange(new DevExpress.Utils.Layout.TablePanelColumn[] {
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 5F),
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 10F)});
+            this.TablePanel.Controls.Add(this.TreeView_Device);
+            this.TablePanel.Controls.Add(this.PanelControl);
+            this.TablePanel.Controls.Add(this.PropertyGridControl);
+            this.TablePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TablePanel.Location = new System.Drawing.Point(0, 0);
+            this.TablePanel.Name = "TablePanel";
+            this.TablePanel.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 298F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 26F)});
-            this.tablePanel.Size = new System.Drawing.Size(398, 368);
-            this.tablePanel.TabIndex = 2;
-            this.tablePanel.UseSkinIndents = true;
+            this.TablePanel.Size = new System.Drawing.Size(598, 368);
+            this.TablePanel.TabIndex = 2;
+            this.TablePanel.UseSkinIndents = true;
             // 
-            // panelControl
+            // PanelControl
             // 
-            this.tablePanel.SetColumn(this.panelControl, 0);
-            this.panelControl.Controls.Add(this.Button_OK);
-            this.panelControl.Controls.Add(this.Button_Cancel);
-            this.panelControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl.Location = new System.Drawing.Point(11, 308);
-            this.panelControl.Margin = new System.Windows.Forms.Padding(0);
-            this.panelControl.Name = "panelControl";
-            this.tablePanel.SetRow(this.panelControl, 1);
-            this.panelControl.Size = new System.Drawing.Size(376, 49);
-            this.panelControl.TabIndex = 2;
+            this.TablePanel.SetColumn(this.PanelControl, 1);
+            this.PanelControl.Controls.Add(this.Button_OK);
+            this.PanelControl.Controls.Add(this.Button_Cancel);
+            this.PanelControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelControl.Location = new System.Drawing.Point(203, 308);
+            this.PanelControl.Margin = new System.Windows.Forms.Padding(0);
+            this.PanelControl.Name = "PanelControl";
+            this.TablePanel.SetRow(this.PanelControl, 1);
+            this.PanelControl.Size = new System.Drawing.Size(384, 49);
+            this.PanelControl.TabIndex = 2;
+            // 
+            // TreeView_Device
+            // 
+            this.TablePanel.SetColumn(this.TreeView_Device, 0);
+            this.TreeView_Device.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TreeView_Device.Location = new System.Drawing.Point(11, 10);
+            this.TreeView_Device.Margin = new System.Windows.Forms.Padding(0);
+            this.TreeView_Device.Name = "TreeView_Device";
+            this.TablePanel.SetRow(this.TreeView_Device, 0);
+            this.TreeView_Device.Size = new System.Drawing.Size(192, 298);
+            this.TreeView_Device.TabIndex = 3;
+            this.TreeView_Device.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeView_Device_NodeMouseClick);
             // 
             // DevicePropertyForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 368);
-            this.Controls.Add(this.tablePanel);
+            this.ClientSize = new System.Drawing.Size(598, 368);
+            this.Controls.Add(this.TablePanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "DevicePropertyForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "设备属性";
             this.Load += new System.EventHandler(this.DeviceProperty_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.propertyGridControl)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tablePanel)).EndInit();
-            this.tablePanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.panelControl)).EndInit();
-            this.panelControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PropertyGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.TablePanel)).EndInit();
+            this.TablePanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PanelControl)).EndInit();
+            this.PanelControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -124,8 +139,9 @@
         #endregion
         private DevExpress.XtraEditors.SimpleButton Button_Cancel;
         private DevExpress.XtraEditors.SimpleButton Button_OK;
-        private DevExpress.XtraVerticalGrid.PropertyGridControl propertyGridControl;
-        private DevExpress.Utils.Layout.TablePanel tablePanel;
-        private DevExpress.XtraEditors.PanelControl panelControl;
+        private DevExpress.XtraVerticalGrid.PropertyGridControl PropertyGridControl;
+        private DevExpress.Utils.Layout.TablePanel TablePanel;
+        private DevExpress.XtraEditors.PanelControl PanelControl;
+        private System.Windows.Forms.TreeView TreeView_Device;
     }
 }

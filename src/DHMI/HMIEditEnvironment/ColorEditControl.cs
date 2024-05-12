@@ -21,7 +21,7 @@ public class ColorEditControl : PopupControlContainer
 
     protected override void OnPopup()
     {
-        theglobal = CEditEnvironmentGlobal.mdiparent.userCommandControl21.theglobal;
+        theglobal = CEditEnvironmentGlobal.MdiParent.userCommandControl21.theglobal;
         if (theglobal.SelectedShapeList.Count != 0)
         {
             st = theglobal.SelectedShapeList[0];

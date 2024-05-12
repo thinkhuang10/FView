@@ -20,13 +20,13 @@ public class MsgForm : XtraForm
     {
         try
         {
-            if (CEditEnvironmentGlobal.mdiparent.dockPanel_输出栏.Visibility == DockVisibility.AutoHide && CEditEnvironmentGlobal.mdiparent.dockPanel_输出栏.DockManager.ActivePanel != CEditEnvironmentGlobal.mdiparent.dockPanel_输出栏)
+            if (CEditEnvironmentGlobal.MdiParent.dockPanel_输出栏.Visibility == DockVisibility.AutoHide && CEditEnvironmentGlobal.MdiParent.dockPanel_输出栏.DockManager.ActivePanel != CEditEnvironmentGlobal.MdiParent.dockPanel_输出栏)
             {
-                CEditEnvironmentGlobal.mdiparent.dockPanel_输出栏.Show();
+                CEditEnvironmentGlobal.MdiParent.dockPanel_输出栏.Show();
             }
-            CEditEnvironmentGlobal.mdiparent.richTextBox1.AppendText(string.Concat(DateTime.Now, " (", DateTime.Now.Millisecond.ToString("D3"), ") --- ", text, "\n"));
-            CEditEnvironmentGlobal.mdiparent.richTextBox1.Refresh();
-            CEditEnvironmentGlobal.mdiparent.richTextBox1.ScrollToCaret();
+            CEditEnvironmentGlobal.MdiParent.richTextBox1.AppendText(string.Concat(DateTime.Now, " (", DateTime.Now.Millisecond.ToString("D3"), ") --- ", text, "\n"));
+            CEditEnvironmentGlobal.MdiParent.richTextBox1.Refresh();
+            CEditEnvironmentGlobal.MdiParent.richTextBox1.ScrollToCaret();
         }
         catch
         {
@@ -35,7 +35,7 @@ public class MsgForm : XtraForm
 
     public void Clear()
     {
-        CEditEnvironmentGlobal.mdiparent.richTextBox1.Clear();
+        CEditEnvironmentGlobal.MdiParent.richTextBox1.Clear();
     }
 
     public new void Show()

@@ -1,13 +1,11 @@
 ﻿using DevExpress.Utils;
 using DevExpress.XtraEditors;
-using DevExpress.XtraExport.Helpers;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using Model;
 using System;
 using System.Data;
-using System.Drawing;
 using System.Windows.Forms;
 using Util;
 

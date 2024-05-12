@@ -102,7 +102,7 @@ public class UserCommandControl2 : UserControl
         DataTable dataTable = new();
         dataTable.Columns.Add("ID", Type.GetType("System.Int32"));
         dataTable.Columns.Add("CShapeName", Type.GetType("System.String"));
-        foreach (CShape item in CEditEnvironmentGlobal.childform.theglobal.g_ListAllShowCShape)
+        foreach (CShape item in CEditEnvironmentGlobal.ChildForm.theglobal.g_ListAllShowCShape)
         {
             if (regex.IsMatch(item.ShapeName ?? ""))
             {
@@ -131,20 +131,20 @@ public class UserCommandControl2 : UserControl
 
     public void LockShape()
     {
-        if (CEditEnvironmentGlobal.mdiparent.barCheckItem10.Checked)
+        if (CEditEnvironmentGlobal.MdiParent.barCheckItem10.Checked)
         {
             foreach (CShape selectedShape in theglobal.SelectedShapeList)
             {
                 selectedShape.locked = true;
             }
-            CEditEnvironmentGlobal.mdiparent.barCheckItem10.Checked = true;
+            CEditEnvironmentGlobal.MdiParent.barCheckItem10.Checked = true;
             return;
         }
         foreach (CShape selectedShape2 in theglobal.SelectedShapeList)
         {
             selectedShape2.locked = false;
         }
-        CEditEnvironmentGlobal.mdiparent.barCheckItem10.Checked = false;
+        CEditEnvironmentGlobal.MdiParent.barCheckItem10.Checked = false;
     }
 
     public void button_绘制直线_Click(object sender, EventArgs e)
@@ -210,7 +210,7 @@ public class UserCommandControl2 : UserControl
                 theglobal.g_ListAllShowCShape.Add(cPicture);
                 theglobal.SelectedShapeList.Clear();
                 theglobal.SelectedShapeList.Add(cPicture);
-                CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cPicture.ShapeID.ToString());
+                CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cPicture.ShapeID.ToString());
                 CShape item = cPicture.Copy();
                 List<CShape> list = new()
                 {
@@ -852,7 +852,7 @@ public class UserCommandControl2 : UserControl
                 flag = true;
                 theglobal.g_ListAllShowCShape.Remove(cShape);
                 list2.Add(cShape);
-                CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape.ShapeID.ToString());
+                CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cShape.ShapeID.ToString());
             }
         }
         if (!flag)
@@ -876,7 +876,7 @@ public class UserCommandControl2 : UserControl
         theglobal.g_ListAllShowCShape.Add(cGraphicsPath);
         theglobal.SelectedShapeList.Add(cGraphicsPath);
         list.Add(cGraphicsPath);
-        CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cGraphicsPath.ShapeID.ToString());
+        CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cGraphicsPath.ShapeID.ToString());
         theglobal.ForUndo(list, list2);
         theglobal.ReFreshReUnDo((Button)base.Controls.Find("button_撤消", searchAllChildren: false)[0], (Button)base.Controls.Find("button_重复", searchAllChildren: false)[0]);
         ReFreshEnable();
@@ -923,7 +923,7 @@ public class UserCommandControl2 : UserControl
                 theglobal.g_ListAllShowCShape.Add(cShape2);
                 theglobal.SelectedShapeList.Add(cShape2);
                 list.Add(cShape2);
-                CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape2.ShapeID.ToString());
+                CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cShape2.ShapeID.ToString());
             }
             theglobal.ForUndo(list, list2);
         }
@@ -931,7 +931,7 @@ public class UserCommandControl2 : UserControl
         ReFreshEnable();
         theglobal.uc2.RefreshGraphics();
         CEditEnvironmentGlobal.dhp.dirtyPageAdd(theglobal.df.name);
-        CEditEnvironmentGlobal.mdiparent.objView_Page.FreshAll();
+        CEditEnvironmentGlobal.MdiParent.objView_Page.FreshAll();
     }
 
     public void Button_撤消_Click(object sender, EventArgs e)
@@ -985,9 +985,9 @@ public class UserCommandControl2 : UserControl
         theglobal.SelectedShapeList.Clear();
         DataFile dataFile = Operation.BinaryLoadFile(openFileDialog1.FileName);
         theglobal.g_ListAllShowCShape = dataFile.ListAllShowCShape;
-        CEditEnvironmentGlobal.mdiparent.objView_Page.OnClear();
-        CEditEnvironmentGlobal.mdiparent.objView_Page.m_ObjGbl = theglobal;
-        CEditEnvironmentGlobal.mdiparent.objView_Page.OnShow();
+        CEditEnvironmentGlobal.MdiParent.objView_Page.OnClear();
+        CEditEnvironmentGlobal.MdiParent.objView_Page.m_ObjGbl = theglobal;
+        CEditEnvironmentGlobal.MdiParent.objView_Page.OnShow();
         foreach (CShape item in theglobal.g_ListAllShowCShape)
         {
             if (item.GetType() == typeof(CControl))

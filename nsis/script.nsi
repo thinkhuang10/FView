@@ -147,7 +147,7 @@ Section "FTView·þÎñ¶Ë" FTViewServer
   File /r "${InstallFilesDir}\System.Numerics.Vectors.dll"
   File /r "${InstallFilesDir}\System.Runtime.CompilerServices.Unsafe.dll"
   File /r "${InstallFilesDir}\System.Text.Encodings.Web.dll"
-  File /r "${InstallFilesDir}\System.Text.Json.dll"
+  File /r "${InstallFilesDir}\Newtonsoft.Json.dll"
   File /r "${InstallFilesDir}\System.Threading.Tasks.Extensions.dll"
   File /r "${InstallFilesDir}\System.ValueTuple.dll"
   File /r "${InstallFilesDir}\Timer_1.dll"

@@ -32,11 +32,11 @@
             this.panel = new System.Windows.Forms.Panel();
             this.Button_Delete = new DevExpress.XtraEditors.SimpleButton();
             this.Button_Add = new DevExpress.XtraEditors.SimpleButton();
-            this.GridControl = new DevExpress.XtraGrid.GridControl();
+            this.GridControl_Device = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tableLayoutPanel.SuspendLayout();
             this.panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.GridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridControl_Device)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +45,7 @@
             this.tableLayoutPanel.ColumnCount = 1;
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel.Controls.Add(this.panel, 0, 0);
-            this.tableLayoutPanel.Controls.Add(this.GridControl, 0, 1);
+            this.tableLayoutPanel.Controls.Add(this.GridControl_Device, 0, 1);
             this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
@@ -72,6 +72,7 @@
             this.Button_Delete.Size = new System.Drawing.Size(75, 23);
             this.Button_Delete.TabIndex = 1;
             this.Button_Delete.Text = "删除";
+            this.Button_Delete.Click += new System.EventHandler(this.Button_Delete_Click);
             // 
             // Button_Add
             // 
@@ -82,20 +83,20 @@
             this.Button_Add.Text = "添加";
             this.Button_Add.Click += new System.EventHandler(this.Button_Add_Click);
             // 
-            // GridControl
+            // GridControl_Device
             // 
-            this.GridControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridControl.Location = new System.Drawing.Point(3, 51);
-            this.GridControl.MainView = this.gridView;
-            this.GridControl.Name = "GridControl";
-            this.GridControl.Size = new System.Drawing.Size(792, 514);
-            this.GridControl.TabIndex = 2;
-            this.GridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.GridControl_Device.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridControl_Device.Location = new System.Drawing.Point(3, 51);
+            this.GridControl_Device.MainView = this.gridView;
+            this.GridControl_Device.Name = "GridControl_Device";
+            this.GridControl_Device.Size = new System.Drawing.Size(792, 514);
+            this.GridControl_Device.TabIndex = 2;
+            this.GridControl_Device.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
             // 
             // gridView
             // 
-            this.gridView.GridControl = this.GridControl;
+            this.gridView.GridControl = this.GridControl_Device;
             this.gridView.Name = "gridView";
             // 
             // DeviceManagerForm
@@ -110,7 +111,7 @@
             this.Load += new System.EventHandler(this.DeviceManagerForm_Load);
             this.tableLayoutPanel.ResumeLayout(false);
             this.panel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.GridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GridControl_Device)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -121,7 +122,7 @@
         private System.Windows.Forms.Panel panel;
         private DevExpress.XtraEditors.SimpleButton Button_Delete;
         private DevExpress.XtraEditors.SimpleButton Button_Add;
-        private DevExpress.XtraGrid.GridControl GridControl;
+        private DevExpress.XtraGrid.GridControl GridControl_Device;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
     }
 }

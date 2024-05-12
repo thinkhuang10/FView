@@ -47,31 +47,31 @@ public class PagePropertyForm : XtraForm
     public PagePropertyForm()
     {
         InitializeComponent();
-        if (CEditEnvironmentGlobal.childform == null)
+        if (CEditEnvironmentGlobal.ChildForm == null)
         {
             Close();
         }
 
-        Text = CEditEnvironmentGlobal.childform.theglobal.pageProp.ShowName + " 属性";
-        textBox3.Text = CEditEnvironmentGlobal.childform.theglobal.pageProp.PageLocation.X.ToString();
-        textBox4.Text = CEditEnvironmentGlobal.childform.theglobal.pageProp.PageLocation.Y.ToString();
-        textBox5.Text = CEditEnvironmentGlobal.childform.theglobal.pageProp.PageSize.Width.ToString();
-        textBox6.Text = CEditEnvironmentGlobal.childform.theglobal.pageProp.PageSize.Height.ToString();
-        checkBox8.Checked = CEditEnvironmentGlobal.childform.theglobal.pageProp.PageVisible;
-        checkBox7.Checked = CEditEnvironmentGlobal.childform.theglobal.pageProp.CloseOnBestrow;
-        comboBox1.SelectedIndex = (CEditEnvironmentGlobal.childform.theglobal.pageProp.IsWindow ? 1 : 0);
+        Text = CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.ShowName + " 属性";
+        textBox3.Text = CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.PageLocation.X.ToString();
+        textBox4.Text = CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.PageLocation.Y.ToString();
+        textBox5.Text = CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.PageSize.Width.ToString();
+        textBox6.Text = CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.PageSize.Height.ToString();
+        checkBox8.Checked = CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.PageVisible;
+        checkBox7.Checked = CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.CloseOnBestrow;
+        comboBox1.SelectedIndex = (CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.IsWindow ? 1 : 0);
     }
 
     private void btnOK_Click(object sender, EventArgs e)
     {
         try
         {
-            CEditEnvironmentGlobal.childform.theglobal.pageProp.PageLocation = new Point(Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text));
-            CEditEnvironmentGlobal.childform.theglobal.pageProp.PageSize = new Size(Convert.ToInt32(textBox5.Text), Convert.ToInt32(textBox6.Text));
-            CEditEnvironmentGlobal.childform.theglobal.pageProp.PageVisible = checkBox8.Checked;
-            CEditEnvironmentGlobal.childform.theglobal.pageProp.CloseOnBestrow = checkBox7.Checked;
-            CEditEnvironmentGlobal.childform.theglobal.pageProp.CloseOnPart = checkBox2.Checked;
-            CEditEnvironmentGlobal.childform.theglobal.pageProp.IsWindow = comboBox1.SelectedIndex == 1;
+            CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.PageLocation = new Point(Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text));
+            CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.PageSize = new Size(Convert.ToInt32(textBox5.Text), Convert.ToInt32(textBox6.Text));
+            CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.PageVisible = checkBox8.Checked;
+            CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.CloseOnBestrow = checkBox7.Checked;
+            CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.CloseOnPart = checkBox2.Checked;
+            CEditEnvironmentGlobal.ChildForm.theglobal.pageProp.IsWindow = comboBox1.SelectedIndex == 1;
         }
         catch (Exception)
         {

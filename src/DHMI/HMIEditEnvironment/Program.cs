@@ -1,3 +1,4 @@
+using HMIEditEnvironment.DeviceManager;
 using HMIEditEnvironment.TagManager;
 using System;
 using System.Windows.Forms;
@@ -12,7 +13,8 @@ internal static class Program
         Control.CheckForIllegalCrossThreadCalls = false;
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(defaultValue: false);
-        Application.Run(new MDIParent1());
-        //Application.Run(new TagManagerForm());
+        // Application.Run(new MDIParent1());
+        // Application.Run(new TagManagerForm());
+        Application.Run(new DeviceManagerForm());
     }
 }

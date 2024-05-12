@@ -609,22 +609,22 @@ public partial class MDIParent1 : XtraForm
             };
             cControl.AddPoint(PointF.Empty);
             cControl.initLocationErr = true;
-            CEditEnvironmentGlobal.childform.theglobal.uc2.Controls.Add(cControl._c);
+            CEditEnvironmentGlobal.ChildForm.theglobal.uc2.Controls.Add(cControl._c);
             cControl.initLocationErr = false;
             cControl._c.Enabled = false;
             UserCommandControl2.GiveName(cControl);
-            CEditEnvironmentGlobal.childform.theglobal.g_ListAllShowCShape.Add(cControl);
-            CEditEnvironmentGlobal.childform.theglobal.SelectedShapeList.Clear();
-            CEditEnvironmentGlobal.childform.theglobal.SelectedShapeList.Add(cControl);
+            CEditEnvironmentGlobal.ChildForm.theglobal.g_ListAllShowCShape.Add(cControl);
+            CEditEnvironmentGlobal.ChildForm.theglobal.SelectedShapeList.Clear();
+            CEditEnvironmentGlobal.ChildForm.theglobal.SelectedShapeList.Add(cControl);
             objView_Page.OnFresh(cControl.ShapeID.ToString());
-            CShape item = CEditEnvironmentGlobal.childform.theglobal.g_ListAllShowCShape[CEditEnvironmentGlobal.childform.theglobal.g_ListAllShowCShape.Count - 1].Copy();
+            CShape item = CEditEnvironmentGlobal.ChildForm.theglobal.g_ListAllShowCShape[CEditEnvironmentGlobal.ChildForm.theglobal.g_ListAllShowCShape.Count - 1].Copy();
             List<CShape> list = new()
             {
                 item
             };
             userCommandControl21.theglobal.ForUndo(list, null);
-            CEditEnvironmentGlobal.childform.theglobal.str_IMDoingWhat = "Select";
-            CEditEnvironmentGlobal.childform.theglobal.uc2.RefreshGraphics();
+            CEditEnvironmentGlobal.ChildForm.theglobal.str_IMDoingWhat = "Select";
+            CEditEnvironmentGlobal.ChildForm.theglobal.uc2.RefreshGraphics();
             if (cControl._c is IDCCEControl)
             {
                 ((IDCCEControl)cControl._c).GetVarTableEvent += CForDCCEControl.GetVarTableEvent;
@@ -653,22 +653,22 @@ public partial class MDIParent1 : XtraForm
             };
             cControl.AddPoint(PointF.Empty);
             cControl.initLocationErr = true;
-            CEditEnvironmentGlobal.childform.theglobal.uc2.Controls.Add(cControl._c);
+            CEditEnvironmentGlobal.ChildForm.theglobal.uc2.Controls.Add(cControl._c);
             cControl.initLocationErr = false;
             cControl._c.Enabled = false;
             UserCommandControl2.GiveName(cControl);
-            CEditEnvironmentGlobal.childform.theglobal.g_ListAllShowCShape.Add(cControl);
-            CEditEnvironmentGlobal.childform.theglobal.SelectedShapeList.Clear();
-            CEditEnvironmentGlobal.childform.theglobal.SelectedShapeList.Add(cControl);
+            CEditEnvironmentGlobal.ChildForm.theglobal.g_ListAllShowCShape.Add(cControl);
+            CEditEnvironmentGlobal.ChildForm.theglobal.SelectedShapeList.Clear();
+            CEditEnvironmentGlobal.ChildForm.theglobal.SelectedShapeList.Add(cControl);
             objView_Page.OnFresh(cControl.ShapeID.ToString());
-            CShape item = CEditEnvironmentGlobal.childform.theglobal.g_ListAllShowCShape[CEditEnvironmentGlobal.childform.theglobal.g_ListAllShowCShape.Count - 1].Copy();
+            CShape item = CEditEnvironmentGlobal.ChildForm.theglobal.g_ListAllShowCShape[CEditEnvironmentGlobal.ChildForm.theglobal.g_ListAllShowCShape.Count - 1].Copy();
             List<CShape> list = new()
             {
                 item
             };
             userCommandControl21.theglobal.ForUndo(list, null);
-            CEditEnvironmentGlobal.childform.theglobal.str_IMDoingWhat = "Select";
-            CEditEnvironmentGlobal.childform.theglobal.uc2.RefreshGraphics();
+            CEditEnvironmentGlobal.ChildForm.theglobal.str_IMDoingWhat = "Select";
+            CEditEnvironmentGlobal.ChildForm.theglobal.uc2.RefreshGraphics();
             if (cControl._c is IDCCEControl)
             {
                 ((IDCCEControl)cControl._c).GetVarTableEvent += CForDCCEControl.GetVarTableEvent;
@@ -815,17 +815,17 @@ public partial class MDIParent1 : XtraForm
             {
                 CEditEnvironmentGlobal.OutputMessage.Say("找到匹配项: \"" + e1.Result.PageDisplayName + "\"[" + e1.Result.ShapeName + "]");
                 OpenPage(e1.Result.PageName);
-                CGlobal theglobal = CEditEnvironmentGlobal.childform.theglobal;
+                CGlobal theglobal = CEditEnvironmentGlobal.ChildForm.theglobal;
                 theglobal.SelectedShapeList.Clear();
                 foreach (CShape item in theglobal.g_ListAllShowCShape)
                 {
                     if (item.Name.Equals(e1.Result.ShapeName))
                     {
                         theglobal.SelectedShapeList.Add(item);
-                        CEditEnvironmentGlobal.mdiparent.PropertyGrid_Attrubute.SelectedObject = item;
+                        CEditEnvironmentGlobal.MdiParent.PropertyGrid_Attrubute.SelectedObject = item;
                     }
                 }
-                CEditEnvironmentGlobal.mdiparent.objView_Page.FreshSelect(theglobal);
+                CEditEnvironmentGlobal.MdiParent.objView_Page.FreshSelect(theglobal);
                 theglobal.uc2.RefreshGraphics();
             }
         };
@@ -1210,7 +1210,7 @@ public partial class MDIParent1 : XtraForm
             ((ChildForm)base.ActiveMdiChild).theglobal.dataGridView = dataGridView1;
             ((ChildForm)base.ActiveMdiChild).theglobal.listView2 = listView_事件;
             ((ChildForm)base.ActiveMdiChild).theglobal.pg = PropertyGrid_Attrubute;
-            CEditEnvironmentGlobal.childform = (ChildForm)base.ActiveMdiChild;
+            CEditEnvironmentGlobal.ChildForm = (ChildForm)base.ActiveMdiChild;
             userCommandControl21.theglobal = ((ChildForm)base.ActiveMdiChild).theglobal;
             userCommandControl21.ReFreshEnable();
 
@@ -2374,11 +2374,11 @@ public partial class MDIParent1 : XtraForm
         {
             if (PropertyGrid_Attrubute.SelectedObject is CShape)
             {
-                CEditEnvironmentGlobal.dhp.dirtyPageAdd(CEditEnvironmentGlobal.childform.theglobal.df.name);
+                CEditEnvironmentGlobal.dhp.dirtyPageAdd(CEditEnvironmentGlobal.ChildForm.theglobal.df.name);
             }
             else if (PropertyGrid_Attrubute.SelectedObject is CPageProperty && e.ChangedItem.Label != "脚本名称")
             {
-                CEditEnvironmentGlobal.dhp.dirtyPageAdd(CEditEnvironmentGlobal.childform.theglobal.df.name);
+                CEditEnvironmentGlobal.dhp.dirtyPageAdd(CEditEnvironmentGlobal.ChildForm.theglobal.df.name);
             }
         }
         catch
@@ -2404,7 +2404,7 @@ public partial class MDIParent1 : XtraForm
             {
                 ((IControlShape)PropertyGrid_Attrubute.SelectedObject).ID = (string)e.OldValue;
             }
-            List<string> list = CheckIOExists.ShapeInUse(CEditEnvironmentGlobal.childform.theglobal.df.name + "." + text);
+            List<string> list = CheckIOExists.ShapeInUse(CEditEnvironmentGlobal.ChildForm.theglobal.df.name + "." + text);
             if (list.Count != 0)
             {
                 DelPage delPage2 = new(list, "该图形正在被引用,是否仍继续操作.");
@@ -2420,7 +2420,7 @@ public partial class MDIParent1 : XtraForm
                 MessageBox.Show("名称中包含非法字符.", "错误");
                 return;
             }
-            foreach (CShape item in CEditEnvironmentGlobal.childform.theglobal.g_ListAllShowCShape)
+            foreach (CShape item in CEditEnvironmentGlobal.ChildForm.theglobal.g_ListAllShowCShape)
             {
                 if ((PropertyGrid_Attrubute.SelectedObject is not CShape || item != (CShape)PropertyGrid_Attrubute.SelectedObject) && (item is not CControl || ((CControl)item)._c != PropertyGrid_Attrubute.SelectedObject) && item.ShapeName == text)
                 {
@@ -2517,7 +2517,7 @@ public partial class MDIParent1 : XtraForm
 
             ((CPageProperty)PropertyGrid_Attrubute.SelectedObject).PageName = (string)e.OldValue;
 
-            List<string> list = CheckIOExists.PageInUse(CEditEnvironmentGlobal.childform.theglobal.df.name);
+            List<string> list = CheckIOExists.PageInUse(CEditEnvironmentGlobal.ChildForm.theglobal.df.name);
             if (list.Count != 0)
             {
                 DelPage delPage2 = new(list);
@@ -2833,20 +2833,20 @@ public partial class MDIParent1 : XtraForm
 
     private void RotateShape(float ang)
     {
-        if (CEditEnvironmentGlobal.childform.theglobal.SelectedShapeList.Count == 0)
+        if (CEditEnvironmentGlobal.ChildForm.theglobal.SelectedShapeList.Count == 0)
         {
             return;
         }
         List<CShape> list = new();
         List<CShape> list2 = new();
-        foreach (CShape selectedShape in CEditEnvironmentGlobal.childform.theglobal.SelectedShapeList)
+        foreach (CShape selectedShape in CEditEnvironmentGlobal.ChildForm.theglobal.SelectedShapeList)
         {
             list2.Add(selectedShape.Copy());
             selectedShape.Angel += ang;
             list.Add(selectedShape);
         }
-        CEditEnvironmentGlobal.childform.theglobal.ForUndo(list, list2);
-        CEditEnvironmentGlobal.childform.theglobal.uc2.RefreshGraphics();
+        CEditEnvironmentGlobal.ChildForm.theglobal.ForUndo(list, list2);
+        CEditEnvironmentGlobal.ChildForm.theglobal.uc2.RefreshGraphics();
     }
 
     private void AddWindowsControl(string type)
@@ -2864,11 +2864,11 @@ public partial class MDIParent1 : XtraForm
             cControl.initLocationErr = false;
             cControl._c.Enabled = false;
             UserCommandControl2.GiveName(cControl);
-            CEditEnvironmentGlobal.childform.theglobal.g_ListAllShowCShape.Add(cControl);
-            CEditEnvironmentGlobal.childform.theglobal.SelectedShapeList.Clear();
-            CEditEnvironmentGlobal.childform.theglobal.SelectedShapeList.Add(cControl);
+            CEditEnvironmentGlobal.ChildForm.theglobal.g_ListAllShowCShape.Add(cControl);
+            CEditEnvironmentGlobal.ChildForm.theglobal.SelectedShapeList.Clear();
+            CEditEnvironmentGlobal.ChildForm.theglobal.SelectedShapeList.Add(cControl);
             objView_Page.OnFresh(cControl.ShapeID.ToString());
-            CShape item = CEditEnvironmentGlobal.childform.theglobal.g_ListAllShowCShape[CEditEnvironmentGlobal.childform.theglobal.g_ListAllShowCShape.Count - 1].Copy();
+            CShape item = CEditEnvironmentGlobal.ChildForm.theglobal.g_ListAllShowCShape[CEditEnvironmentGlobal.ChildForm.theglobal.g_ListAllShowCShape.Count - 1].Copy();
             List<CShape> list = new()
             {
                 item
@@ -3118,7 +3118,7 @@ public partial class MDIParent1 : XtraForm
                     ActivateMdiChild(childForm);
                     childForm.Text = CEditEnvironmentGlobal.PageManager.DFM.Find(pageName).pageName;
                     childForm.BringToFront();
-                    CEditEnvironmentGlobal.childform = childForm;
+                    CEditEnvironmentGlobal.ChildForm = childForm;
                     return;
                 }
             }
@@ -3199,7 +3199,7 @@ public partial class MDIParent1 : XtraForm
             }
         }
         theglobal.uc2.RefreshGraphics();
-        CEditEnvironmentGlobal.childform = childForm2;
+        CEditEnvironmentGlobal.ChildForm = childForm2;
     }
 
     private void ClosePage(string pageName)
@@ -3229,10 +3229,10 @@ public partial class MDIParent1 : XtraForm
         if (!string.IsNullOrEmpty(pageName))
         {
             OpenPage(pageName);
-            if (CEditEnvironmentGlobal.childform != null)
+            if (CEditEnvironmentGlobal.ChildForm != null)
             {
-                SaveOnePage(CEditEnvironmentGlobal.childform);
-                CEditEnvironmentGlobal.dhp.dirtyPageAdd(CEditEnvironmentGlobal.childform.theglobal.df.name);
+                SaveOnePage(CEditEnvironmentGlobal.ChildForm);
+                CEditEnvironmentGlobal.dhp.dirtyPageAdd(CEditEnvironmentGlobal.ChildForm.theglobal.df.name);
             }
         }
     }
@@ -3288,7 +3288,7 @@ public partial class MDIParent1 : XtraForm
             return;
 
         OpenPage(pageName);
-        if (CEditEnvironmentGlobal.childform != null)
+        if (CEditEnvironmentGlobal.ChildForm != null)
         {
             PagePropertyForm pagePropertyForm = new();
             pagePropertyForm.ShowDialog();
@@ -3559,7 +3559,7 @@ public partial class MDIParent1 : XtraForm
     {
         LogUtil.Init(); // 初始化日志控件
 
-        CEditEnvironmentGlobal.mdiparent = this;
+        CEditEnvironmentGlobal.MdiParent = this;
 
         InitFormLook();
         LoadBarLayout();
@@ -3810,11 +3810,11 @@ public partial class MDIParent1 : XtraForm
             CEditEnvironmentGlobal.OutputMessage.Say("请选择页面再保存！");
             return;
         }
-        CEditEnvironmentGlobal.childform = base.ActiveMdiChild as ChildForm;
-        string text = CEditEnvironmentGlobal.HMIPath + "\\" + CEditEnvironmentGlobal.childform.theglobal.df.name + ".hpg";
+        CEditEnvironmentGlobal.ChildForm = base.ActiveMdiChild as ChildForm;
+        string text = CEditEnvironmentGlobal.HMIPath + "\\" + CEditEnvironmentGlobal.ChildForm.theglobal.df.name + ".hpg";
         try
         {
-            Operation.BinarySaveFile(text, CEditEnvironmentGlobal.childform.theglobal.df);
+            Operation.BinarySaveFile(text, CEditEnvironmentGlobal.ChildForm.theglobal.df);
             CEditEnvironmentGlobal.OutputMessage.Say("成功保存到" + text);
         }
         catch(Exception ex)

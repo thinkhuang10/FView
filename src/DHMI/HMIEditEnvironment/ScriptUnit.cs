@@ -338,7 +338,7 @@ public partial class ScriptUnit : XtraForm
     {
         List<CShape> list = new();
         List<CShape> list2 = new();
-        Form[] mdiChildren = CEditEnvironmentGlobal.mdiparent.MdiChildren;
+        Form[] mdiChildren = CEditEnvironmentGlobal.MdiParent.MdiChildren;
         foreach (Form form in mdiChildren)
         {
             if (form is not ChildForm)
@@ -1735,20 +1735,20 @@ public partial class ScriptUnit : XtraForm
                     }
                     dirtyNodes.Clear();
                     MakeRedoAndUndo();
-                    CEditEnvironmentGlobal.mdiparent.Focus();
-                    CEditEnvironmentGlobal.mdiparent.Select();
+                    CEditEnvironmentGlobal.MdiParent.Focus();
+                    CEditEnvironmentGlobal.MdiParent.Select();
                     Hide();
                 }
                 else if (MessageBox.Show("放弃脚本并退出?", "警告", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    CEditEnvironmentGlobal.mdiparent.Focus();
-                    CEditEnvironmentGlobal.mdiparent.Select();
+                    CEditEnvironmentGlobal.MdiParent.Focus();
+                    CEditEnvironmentGlobal.MdiParent.Select();
                     Hide();
                 }
                 break;
             case DialogResult.No:
-                CEditEnvironmentGlobal.mdiparent.Focus();
-                CEditEnvironmentGlobal.mdiparent.Select();
+                CEditEnvironmentGlobal.MdiParent.Focus();
+                CEditEnvironmentGlobal.MdiParent.Select();
                 Hide();
                 break;
         }

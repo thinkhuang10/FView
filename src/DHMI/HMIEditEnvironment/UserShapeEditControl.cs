@@ -314,7 +314,7 @@ public class UserShapeEditControl : UserControl
 		e = new MouseEventArgs(e.Button, e.Clicks, Convert.ToInt32(e.X), Convert.ToInt32(e.Y), e.Delta);
 		theglobal.lastmouseeventargs = e;
 		theglobal.theform.BringToFront();
-		CEditEnvironmentGlobal.mdiparent.Activeform(theglobal.theform);
+		CEditEnvironmentGlobal.MdiParent.Activeform(theglobal.theform);
 		if (theglobal.str_IMDoingWhat == "BeginDrawShape")
 		{
 			CShape cShape = theglobal.g_ListAllShowCShape[theglobal.g_ListAllShowCShape.Count - 1];
@@ -340,7 +340,7 @@ public class UserShapeEditControl : UserControl
 		RefreshGraphics();
 		theglobal.str_IMDoingWhat = "MSelect";
 		theglobal.mselectfirstp = e.Location;
-		CEditEnvironmentGlobal.mdiparent.objView_Page.FreshSelect(theglobal);
+		CEditEnvironmentGlobal.MdiParent.objView_Page.FreshSelect(theglobal);
 	}
 
 	public void UserControl2_MouseMove(object sender, MouseEventArgs e)
@@ -385,7 +385,7 @@ public class UserShapeEditControl : UserControl
 			if (!flag)
 			{
 				theglobal.SelectedShapeList.Clear();
-				CEditEnvironmentGlobal.mdiparent.objView_Page.FreshSelect(theglobal);
+				CEditEnvironmentGlobal.MdiParent.objView_Page.FreshSelect(theglobal);
 			}
 			if (theglobal.str_IMDoingWhat == "Select" || theglobal.str_IMDoingWhat == "MSelect")
 			{
@@ -406,7 +406,7 @@ public class UserShapeEditControl : UserControl
 					theglobal.ForUndo(list, null);
 					CEditEnvironmentGlobal.dhp.dirtyPageAdd(theglobal.df.name);
 					Trace.WriteLine("Draw Shape Finished: " + cShape.ShapeName);
-					CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape.ShapeID.ToString());
+					CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cShape.ShapeID.ToString());
 				}
 				theglobal.str_IMDoingWhat = "Select";
 				theglobal.IMContorlWhatPoint = -1;
@@ -550,11 +550,11 @@ public class UserShapeEditControl : UserControl
 					{
 						theglobal.g_ListAllShowCShape.Remove(cShape2);
 						theglobal.SelectedShapeList.Remove(cShape2);
-						CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape2.ShapeID.ToString());
+						CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cShape2.ShapeID.ToString());
 					}
 					CEditEnvironmentGlobal.dhp.dirtyPageAdd(theglobal.df.name);
 					Trace.WriteLine("Draw Shape Finished: " + cShape2.ShapeName);
-					CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape2.ShapeID.ToString());
+					CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cShape2.ShapeID.ToString());
 				}
 			}
 		}
@@ -686,19 +686,19 @@ public class UserShapeEditControl : UserControl
 		}
 		RefreshDHLJDataGridViewItems();
 		theglobal.uc1.ReFreshEnable();
-		CEditEnvironmentGlobal.mdiparent.objView_Page.FreshSelect(theglobal);
+		CEditEnvironmentGlobal.MdiParent.objView_Page.FreshSelect(theglobal);
 		RefreshGraphics();
-		CEditEnvironmentGlobal.mdiparent.barCheckItem10.Tag = false;
-		CEditEnvironmentGlobal.mdiparent.barCheckItem10.Checked = false;
+		CEditEnvironmentGlobal.MdiParent.barCheckItem10.Tag = false;
+		CEditEnvironmentGlobal.MdiParent.barCheckItem10.Checked = false;
 		foreach (CShape selectedShape2 in theglobal.SelectedShapeList)
 		{
 			if (selectedShape2.locked)
 			{
-				CEditEnvironmentGlobal.mdiparent.barCheckItem10.Checked = true;
+				CEditEnvironmentGlobal.MdiParent.barCheckItem10.Checked = true;
 				break;
 			}
 		}
-		CEditEnvironmentGlobal.mdiparent.barCheckItem10.Tag = null;
+		CEditEnvironmentGlobal.MdiParent.barCheckItem10.Tag = null;
 		theglobal.SLS_Changed(sender, null);
 	}
 
@@ -819,14 +819,14 @@ public class UserShapeEditControl : UserControl
 			}
 			theglobal.g_ListAllShowCShape.Remove(cShape);
 			CShape item = cShape;
-			CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape.ShapeID.ToString());
+			CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cShape.ShapeID.ToString());
 			CEditEnvironmentGlobal.CLS.Add(item);
 			list.Add(item);
 			CEditEnvironmentGlobal.dhp.dirtyPageAdd(theglobal.df.name);
 		}
 		theglobal.ForUndo(null, list);
 		theglobal.SelectedShapeList.Clear();
-		CEditEnvironmentGlobal.mdiparent.objView_Page.FreshSelect(theglobal);
+		CEditEnvironmentGlobal.MdiParent.objView_Page.FreshSelect(theglobal);
 		RefreshGraphics();
 	}
 
@@ -851,13 +851,13 @@ public class UserShapeEditControl : UserControl
 			}
 			theglobal.g_ListAllShowCShape.Remove(cShape);
 			CShape item = cShape;
-			CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape.ShapeID.ToString());
+			CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cShape.ShapeID.ToString());
 			list.Add(item);
 			CEditEnvironmentGlobal.dhp.dirtyPageAdd(theglobal.df.name);
 		}
 		theglobal.ForUndo(null, list);
 		theglobal.SelectedShapeList.Clear();
-		CEditEnvironmentGlobal.mdiparent.objView_Page.FreshSelect(theglobal);
+		CEditEnvironmentGlobal.MdiParent.objView_Page.FreshSelect(theglobal);
 		RefreshGraphics();
 	}
 
@@ -865,7 +865,7 @@ public class UserShapeEditControl : UserControl
 	{
 		List<CShape> list = new();
 		theglobal.SelectedShapeList.Clear();
-		CEditEnvironmentGlobal.mdiparent.objView_Page.FreshSelect(theglobal);
+		CEditEnvironmentGlobal.MdiParent.objView_Page.FreshSelect(theglobal);
 		CEditEnvironmentGlobal.CLS.Sort(CEditEnvironmentGlobal.CompareByLayer);
 		CShape[] array = CEditEnvironmentGlobal.CLS.ToArray();
 		foreach (CShape cShape in array)
@@ -901,7 +901,7 @@ public class UserShapeEditControl : UserControl
 			theglobal.g_ListAllShowCShape.Add(cShape2);
 			theglobal.SelectedShapeList.Add(cShape2);
 			list.Add(cShape2);
-			CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape2.ShapeID.ToString());
+			CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cShape2.ShapeID.ToString());
 		}
 		theglobal.ForUndo(list, null);
 		RefreshGraphics();
@@ -1370,7 +1370,7 @@ public class UserShapeEditControl : UserControl
 			theglobal.g_ListAllShowCShape.Add(cShape);
 			theglobal.SelectedShapeList.Clear();
 			theglobal.SelectedShapeList.Add(cShape);
-			CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(cShape.ShapeID.ToString());
+			CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(cShape.ShapeID.ToString());
 			List<CShape> list5 = new()
             {
                 cShape
@@ -1409,7 +1409,7 @@ public class UserShapeEditControl : UserControl
 		{
 			return;
 		}
-		List<string> list = CheckIOExists.ShapeInUse(CEditEnvironmentGlobal.childform.theglobal.df.name + "." + theglobal.SelectedShapeList[0].ShapeName);
+		List<string> list = CheckIOExists.ShapeInUse(CEditEnvironmentGlobal.ChildForm.theglobal.df.name + "." + theglobal.SelectedShapeList[0].ShapeName);
 		if (list.Count != 0)
 		{
 			DelPage delPage2 = new(list, "该图形正在被引用,是否仍继续操作.");
@@ -1448,7 +1448,7 @@ public class UserShapeEditControl : UserControl
 		list2.Add(theglobal.SelectedShapeList[0]);
 		list3.Add(theglobal.OldShape);
 		theglobal.ForUndo(list2, list3);
-		CEditEnvironmentGlobal.mdiparent.objView_Page.OnFresh(theglobal.SelectedShapeList[0].ShapeID.ToString());
+		CEditEnvironmentGlobal.MdiParent.objView_Page.OnFresh(theglobal.SelectedShapeList[0].ShapeID.ToString());
 		CEditEnvironmentGlobal.dhp.dirtyPageAdd(theglobal.df.name);
 	}
 
@@ -1697,7 +1697,7 @@ public class UserShapeEditControl : UserControl
 		{
 			e = new MouseEventArgs(e.Button, e.Clicks, Convert.ToInt32(e.X), Convert.ToInt32(e.Y), e.Delta);
 			pDrawStartPoint = e.Location;
-			CEditEnvironmentGlobal.mdiparent.BarStaticItem_Status.Caption = "状态 鼠标 (" + e.X + "," + e.Y + ")";
+			CEditEnvironmentGlobal.MdiParent.BarStaticItem_Status.Caption = "状态 鼠标 (" + e.X + "," + e.Y + ")";
 			return true;
 		}
 		catch
@@ -1830,7 +1830,7 @@ public class UserShapeEditControl : UserControl
 							flag3 = true;
 							theglobal.SelectedShapeList.Clear();
 							theglobal.SelectedShapeList.Add(theglobal.g_ListAllShowCShape[num]);
-							CEditEnvironmentGlobal.mdiparent.objView_Page.FreshSelect(theglobal);
+							CEditEnvironmentGlobal.MdiParent.objView_Page.FreshSelect(theglobal);
 							theglobal.OldShapes.Clear();
 							foreach (CShape selectedShape in theglobal.SelectedShapeList)
 							{
@@ -1846,7 +1846,7 @@ public class UserShapeEditControl : UserControl
 					{
 						theglobal.mousedownp = e.Location;
 					}
-					CEditEnvironmentGlobal.mdiparent.objView_Page.FreshSelect(theglobal);
+					CEditEnvironmentGlobal.MdiParent.objView_Page.FreshSelect(theglobal);
 				}
 				else
 				{

@@ -2,7 +2,6 @@
 using Model;
 using System;
 using System.IO;
-using System.Text.Json;
 using System.Windows.Forms;
 using Util;
 
@@ -64,14 +63,11 @@ namespace HMIEditEnvironment
                 Directory.CreateDirectory(directoryPath);
 
                 var filePath = Path.Combine(directoryPath, projectName + ConstantHelper.ProjectSuffixName);
-                using (var fileWriter = new StreamWriter(filePath))
+                var projectInfo = new ProjectInfo
                 {
-                    var projectInfo = new ProjectInfo
-                    {
-                        Description = RichTextBox_ProjectDescription.Text.Trim()
-                    };
-                    fileWriter.Write(JsonSerializer.Serialize(projectInfo));
-                }
+                    Description = RichTextBox_ProjectDescription.Text.Trim()
+                };
+                JSONHelper.WriteFile(projectInfo, filePath);
 
                 ProjeceFilePath = filePath;
 

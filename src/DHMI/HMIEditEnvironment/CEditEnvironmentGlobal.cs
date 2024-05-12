@@ -506,9 +506,9 @@ public class CEditEnvironmentGlobal
 
     public static XmlDocument xmldoc = new();
 
-    public static ChildForm childform = new();
+    public static ChildForm ChildForm = new();
 
-    public static MDIParent1 mdiparent;
+    public static MDIParent1 MdiParent;
 
     public static bool NotEditValue = false;
 
@@ -538,7 +538,7 @@ public class CEditEnvironmentGlobal
 
     public static void UnSelectAllShapesIfNotSender(object sender)
     {
-       var mdiChildren = mdiparent.MdiChildren;
+       var mdiChildren = MdiParent.MdiChildren;
         foreach (var form in mdiChildren)
         {
             if (form is ChildForm && ((ChildForm)form).theglobal.uc2 != (UserShapeEditControl)sender)
@@ -547,6 +547,6 @@ public class CEditEnvironmentGlobal
                 ((ChildForm)form).theglobal.uc2.RefreshGraphics();
             }
         }
-        mdiparent.objView_Page.FreshSelect(childform.theglobal);
+        MdiParent.objView_Page.FreshSelect(ChildForm.theglobal);
     }
 }
