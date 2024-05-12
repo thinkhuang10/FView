@@ -225,7 +225,7 @@ public class ActiveXFinderForm : XtraForm, ICallBack
         }
     }
 
-    private void listViewCom_MouseClick(object sender, MouseEventArgs e)
+    private void ListViewCom_MouseClick(object sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Right)
         {
@@ -276,7 +276,7 @@ public class ActiveXFinderForm : XtraForm, ICallBack
         listViewCom.UseCompatibleStateImageBehavior = false;
         listViewCom.View = System.Windows.Forms.View.Details;
         listViewCom.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(listViewCom_ColumnClick);
-        listViewCom.MouseClick += new System.Windows.Forms.MouseEventHandler(listViewCom_MouseClick);
+        listViewCom.MouseClick += new System.Windows.Forms.MouseEventHandler(ListViewCom_MouseClick);
         listViewCom.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(listViewCom_MouseDoubleClick);
         imageList.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
         imageList.ImageSize = new System.Drawing.Size(16, 16);

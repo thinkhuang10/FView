@@ -261,7 +261,7 @@ public class UserShapeEditControl : UserControl
             }
             else if (cShape is CPixieControl)
             {
-                barButtonItem8_ItemClick(null, null);
+                BarButtonItem8_ItemClick(null, null);
             }
             else if (cShape is CPicture)
             {
@@ -704,12 +704,12 @@ public class UserShapeEditControl : UserControl
 
 	private void barButtonItem24_ItemClick(object sender, ItemClickEventArgs e)
 	{
-		theglobal.uc1.button19_Click(sender, e);
+		theglobal.uc1.Button19_Click(sender, e);
 	}
 
 	private void barButtonItem25_ItemClick(object sender, ItemClickEventArgs e)
 	{
-		theglobal.uc1.button20_Click(sender, e);
+		theglobal.uc1.Button20_Click(sender, e);
 	}
 
 	private void barButtonItem13_ItemClick(object sender, ItemClickEventArgs e)
@@ -722,7 +722,7 @@ public class UserShapeEditControl : UserControl
 		theglobal.uc1.SameHeight();
 	}
 
-	private void barButtonItem15_ItemClick(object sender, ItemClickEventArgs e)
+	private void BarButtonItem15_ItemClick(object sender, ItemClickEventArgs e)
 	{
 		theglobal.uc1.button27_Click(sender, e);
 	}
@@ -764,7 +764,7 @@ public class UserShapeEditControl : UserControl
 
 	private void barButtonItem23_ItemClick(object sender, ItemClickEventArgs e)
 	{
-		theglobal.uc1.button8_Click(sender, e);
+		theglobal.uc1.Button8_Click(sender, e);
 	}
 
 	private void BarButtonItem27_ItemClick(object sender, ItemClickEventArgs e)
@@ -774,12 +774,12 @@ public class UserShapeEditControl : UserControl
 
 	private void BarButtonItem28_ItemClick(object sender, ItemClickEventArgs e)
 	{
-		theglobal.uc1.button10_Click(sender, e);
+		theglobal.uc1.Button10_Click(sender, e);
 	}
 
 	private void BarButtonItem29_ItemClick(object sender, ItemClickEventArgs e)
 	{
-		theglobal.uc1.button17_Click(sender, e);
+		theglobal.uc1.Button17_Click(sender, e);
 	}
 
 	private void barButtonItem30_ItemClick(object sender, ItemClickEventArgs e)
@@ -793,7 +793,7 @@ public class UserShapeEditControl : UserControl
 		CShape[] array = theglobal.SelectedShapeList.ToArray();
 		foreach (CShape cShape in array)
 		{
-			CEditEnvironmentGlobal.CLS.Add(cShape.clone());
+			CEditEnvironmentGlobal.CLS.Add(cShape.Clone());
 		}
 	}
 
@@ -870,7 +870,7 @@ public class UserShapeEditControl : UserControl
 		CShape[] array = CEditEnvironmentGlobal.CLS.ToArray();
 		foreach (CShape cShape in array)
 		{
-			CShape cShape2 = cShape.clone();
+			CShape cShape2 = cShape.Clone();
 			while (true)
 			{
 				IL_0062:
@@ -1494,7 +1494,7 @@ public class UserShapeEditControl : UserControl
 		}
 	}
 
-	private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
+	private void BarButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
 	{
 		EventBindForm eventBindForm = new(theglobal.df);
 		if (eventBindForm.ShowDialog() == DialogResult.OK)
@@ -1680,7 +1680,7 @@ public class UserShapeEditControl : UserControl
 		}
 	}
 
-	private void barButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
+	private void BarButtonItem8_ItemClick(object sender, ItemClickEventArgs e)
 	{
 		if (theglobal.SelectedShapeList.Count != 0 && theglobal.SelectedShapeList[0] is CPixieControl)
 		{
@@ -2393,7 +2393,7 @@ public class UserShapeEditControl : UserControl
 		barButtonItem8.Caption = "精灵面板(&P)";
 		barButtonItem8.Id = 56;
 		barButtonItem8.Name = "barButtonItem8";
-		barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem8_ItemClick);
+		barButtonItem8.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(BarButtonItem8_ItemClick);
 		barButtonItem1.Caption = "对象动画(&A)";
 		barButtonItem1.Id = 0;
 		barButtonItem1.Name = "barButtonItem1";
@@ -2498,7 +2498,7 @@ public class UserShapeEditControl : UserControl
 		barButtonItem15.Caption = "相同大小(&S)";
 		barButtonItem15.Id = 21;
 		barButtonItem15.Name = "barButtonItem15";
-		barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem15_ItemClick);
+		barButtonItem15.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(BarButtonItem15_ItemClick);
 		barSubItem3.Caption = "排列对齐(&N)";
 		barSubItem3.Id = 11;
 		barSubItem3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[8]
@@ -2548,7 +2548,7 @@ public class UserShapeEditControl : UserControl
 		barButtonItem10.Caption = "页面事件(&E)";
 		barButtonItem10.Id = 13;
 		barButtonItem10.Name = "barButtonItem10";
-		barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(barButtonItem10_ItemClick);
+		barButtonItem10.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(BarButtonItem10_ItemClick);
 		barButtonItem11.Caption = "页面属性(&R)";
 		barButtonItem11.Id = 14;
 		barButtonItem11.Name = "barButtonItem11";

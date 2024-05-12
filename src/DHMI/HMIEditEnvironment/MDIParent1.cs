@@ -687,12 +687,12 @@ public partial class MDIParent1 : XtraForm
 
     private void BarButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
     {
-        userCommandControl21.button_撤消_Click(sender, e);
+        userCommandControl21.Button_撤消_Click(sender, e);
     }
 
     private void BarButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
     {
-        userCommandControl21.button_重复_Click(sender, e);
+        userCommandControl21.Button_重复_Click(sender, e);
     }
 
     private void BarButtonItem13_ItemClick(object sender, ItemClickEventArgs e)
@@ -744,7 +744,7 @@ public partial class MDIParent1 : XtraForm
         CShape[] array = CEditEnvironmentGlobal.CLS.ToArray();
         foreach (CShape cShape in array)
         {
-            CShape cShape2 = cShape.clone();
+            CShape cShape2 = cShape.Clone();
             cShape2.Location = new PointF(cShape2.Location.X + 25f, cShape2.Location.Y + 25f);
             if (cShape is CControl)
             {
@@ -845,17 +845,17 @@ public partial class MDIParent1 : XtraForm
 
     private void BarButtonItem24_ItemClick(object sender, ItemClickEventArgs e)
     {
-        userCommandControl21.button10_Click(sender, e);
+        userCommandControl21.Button10_Click(sender, e);
     }
 
     private void BarButtonItem25_ItemClick(object sender, ItemClickEventArgs e)
     {
-        userCommandControl21.button19_Click(sender, e);
+        userCommandControl21.Button19_Click(sender, e);
     }
 
     private void BarButtonItem26_ItemClick(object sender, ItemClickEventArgs e)
     {
-        userCommandControl21.button20_Click(sender, e);
+        userCommandControl21.Button20_Click(sender, e);
     }
 
     private void BarButtonItem27_ItemClick(object sender, ItemClickEventArgs e)
@@ -865,7 +865,7 @@ public partial class MDIParent1 : XtraForm
 
     private void BarButtonItem28_ItemClick(object sender, ItemClickEventArgs e)
     {
-        userCommandControl21.button8_Click(sender, e);
+        userCommandControl21.Button8_Click(sender, e);
     }
 
     private void BarButtonItem48_ItemClick(object sender, ItemClickEventArgs e)
@@ -915,7 +915,7 @@ public partial class MDIParent1 : XtraForm
 
     private void BarButtonItem29_ItemClick(object sender, ItemClickEventArgs e)
     {
-        userCommandControl21.button17_Click(sender, e);
+        userCommandControl21.Button17_Click(sender, e);
     }
 
     private void BarButtonItem30_ItemClick(object sender, ItemClickEventArgs e)
@@ -1312,7 +1312,7 @@ public partial class MDIParent1 : XtraForm
     private void BarButtonItem_导入图片_ItemClick(object sender, ItemClickEventArgs e)
     {
         BarStaticItem_Status.Caption = "开始导入图片";
-        userCommandControl21.button_导入图片_Click(sender, e);
+        userCommandControl21.Button_导入图片_Click(sender, e);
     }
 
     private void MenubarCheckItem_Windows控件_CheckedChanged(object sender, ItemClickEventArgs e)
@@ -1566,7 +1566,7 @@ public partial class MDIParent1 : XtraForm
         }
         else if (e.Node.Name == "Setting")
         {
-            setForm setForm2 = new(CEditEnvironmentGlobal.dhp);
+            SetForm setForm2 = new(CEditEnvironmentGlobal.dhp);
             setForm2.ShowDialog();
         }
         else

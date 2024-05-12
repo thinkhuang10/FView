@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace HMIEditEnvironment;
 
-public class setForm : Form
+public class SetForm : Form
 {
     private readonly HMIProjectFile dhp;
 
@@ -56,7 +56,7 @@ public class setForm : Form
 
     private Label label13;
 
-    private void setForm_Load(object sender, EventArgs e)
+    private void SetForm_Load(object sender, EventArgs e)
     {
         textBox9.Text = dhp.ProjectSize.Width.ToString();
         textBox10.Text = dhp.ProjectSize.Height.ToString();
@@ -134,13 +134,13 @@ public class setForm : Form
         }
     }
 
-    private void button2_Click(object sender, EventArgs e)
+    private void Button2_Click(object sender, EventArgs e)
     {
         base.DialogResult = DialogResult.Cancel;
         Close();
     }
 
-    public setForm(HMIProjectFile dhp)
+    public SetForm(HMIProjectFile dhp)
     {
         InitializeComponent();
         this.dhp = dhp;
@@ -190,7 +190,7 @@ public class setForm : Form
         button2.TabIndex = 17;
         button2.Text = "取消";
         button2.UseVisualStyleBackColor = true;
-        button2.Click += new System.EventHandler(button2_Click);
+        button2.Click += new System.EventHandler(Button2_Click);
         label1.AutoSize = true;
         label1.Location = new System.Drawing.Point(18, 28);
         label1.Name = "label1";
@@ -352,7 +352,7 @@ public class setForm : Form
         base.Name = "setForm";
         base.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
         Text = "工程设置";
-        base.Load += new System.EventHandler(setForm_Load);
+        base.Load += new System.EventHandler(SetForm_Load);
         groupBox1.ResumeLayout(false);
         groupBox1.PerformLayout();
         groupBox2.ResumeLayout(false);

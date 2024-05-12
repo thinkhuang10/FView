@@ -2570,7 +2570,7 @@ public class CShape : IDBAnimation, IEventBind, IPropertyBind, ISerializable
         return new CShape();
     }
 
-    public virtual CShape clone()
+    public virtual CShape Clone()
     {
         CShape cShape = Copy();
         cShape.Layer = SumLayer++;

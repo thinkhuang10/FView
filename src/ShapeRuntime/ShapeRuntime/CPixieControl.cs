@@ -466,7 +466,7 @@ public class CPixieControl : CShape
         _b = new Bitmap[1];
     }
 
-    public void clearEvent()
+    public void ClearEvent()
     {
         OnGetVarTable = null;
         ValidateVar = null;

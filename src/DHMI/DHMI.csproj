@@ -447,7 +447,7 @@
     <Compile Include="HMIEditEnvironment\setFirstPageForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HMIEditEnvironment\setForm.cs">
+    <Compile Include="HMIEditEnvironment\SetForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="HMIEditEnvironment\spbfbForm.cs">

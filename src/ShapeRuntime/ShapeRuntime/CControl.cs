@@ -490,7 +490,7 @@ public class CControl : CShape
         return cControl;
     }
 
-    public override CShape clone()
+    public override CShape Clone()
     {
         CControl cControl = new();
         Type type = cControl.GetType();

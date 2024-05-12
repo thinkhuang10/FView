@@ -196,7 +196,7 @@ public class UserCommandControl2 : UserControl
         theglobal.str_IMDoingWhat = "BeginDrawShape";
     }
 
-    public void button_导入图片_Click(object sender, EventArgs e)
+    public void Button_导入图片_Click(object sender, EventArgs e)
     {
         try
         {
@@ -364,7 +364,7 @@ public class UserCommandControl2 : UserControl
         return -1;
     }
 
-    public void button8_Click(object sender, EventArgs e)
+    public void Button8_Click(object sender, EventArgs e)
     {
         if (theglobal.SelectedShapeList.Count < 3)
         {
@@ -474,7 +474,7 @@ public class UserCommandControl2 : UserControl
         CEditEnvironmentGlobal.dhp.dirtyPageAdd(theglobal.df.name);
     }
 
-    public void button10_Click(object sender, EventArgs e)
+    public void Button10_Click(object sender, EventArgs e)
     {
         if (theglobal.SelectedShapeList.Count == 0)
         {
@@ -703,7 +703,7 @@ public class UserCommandControl2 : UserControl
         CEditEnvironmentGlobal.dhp.dirtyPageAdd(theglobal.df.name);
     }
 
-    public void button17_Click(object sender, EventArgs e)
+    public void Button17_Click(object sender, EventArgs e)
     {
         if (theglobal.SelectedShapeList.Count == 0)
         {
@@ -833,7 +833,7 @@ public class UserCommandControl2 : UserControl
         OnButtonEnableChanged?.Invoke(null, null);
     }
 
-    public void button19_Click(object sender, EventArgs e)
+    public void Button19_Click(object sender, EventArgs e)
     {
         if (theglobal.SelectedShapeList.Count == 0)
         {
@@ -867,7 +867,7 @@ public class UserCommandControl2 : UserControl
             {
                 if (cShape2 is CPixieControl)
                 {
-                    ((CPixieControl)cShape2).clearEvent();
+                    ((CPixieControl)cShape2).ClearEvent();
                 }
                 cGraphicsPath.AddPath(cShape2);
             }
@@ -884,7 +884,7 @@ public class UserCommandControl2 : UserControl
         CEditEnvironmentGlobal.dhp.dirtyPageAdd(theglobal.df.name);
     }
 
-    public void button20_Click(object sender, EventArgs e)
+    public void Button20_Click(object sender, EventArgs e)
     {
         if (theglobal.SelectedShapeList.Count == 0)
         {
@@ -934,7 +934,7 @@ public class UserCommandControl2 : UserControl
         CEditEnvironmentGlobal.mdiparent.objView_Page.FreshAll();
     }
 
-    public void button_撤消_Click(object sender, EventArgs e)
+    public void Button_撤消_Click(object sender, EventArgs e)
     {
         theglobal.UnDo();
         theglobal.ReFreshReUnDo((Button)base.Controls.Find("button_撤消", searchAllChildren: false)[0], (Button)base.Controls.Find("button_重复", searchAllChildren: false)[0]);
@@ -944,7 +944,7 @@ public class UserCommandControl2 : UserControl
         CEditEnvironmentGlobal.dhp.dirtyPageAdd(theglobal.df.name);
     }
 
-    public void button_重复_Click(object sender, EventArgs e)
+    public void Button_重复_Click(object sender, EventArgs e)
     {
         theglobal.ReDo();
         theglobal.ReFreshReUnDo((Button)base.Controls.Find("button_撤消", searchAllChildren: false)[0], (Button)base.Controls.Find("button_重复", searchAllChildren: false)[0]);
@@ -975,7 +975,7 @@ public class UserCommandControl2 : UserControl
         }
     }
 
-    public void button26_Click(object sender, EventArgs e)
+    public void Button26_Click(object sender, EventArgs e)
     {
         if (openFileDialog1.ShowDialog() != DialogResult.OK)
         {
@@ -1143,7 +1143,7 @@ public class UserCommandControl2 : UserControl
         button_竖直等间距.TabIndex = 7;
         button_竖直等间距.Text = "竖直等间距";
         button_竖直等间距.UseVisualStyleBackColor = true;
-        button_竖直等间距.Click += new System.EventHandler(button8_Click);
+        button_竖直等间距.Click += new System.EventHandler(Button8_Click);
         button_顶层.Location = new System.Drawing.Point(0, 150);
         button_顶层.Name = "button_顶层";
         button_顶层.Size = new System.Drawing.Size(37, 23);
@@ -1157,7 +1157,7 @@ public class UserCommandControl2 : UserControl
         button_底层.TabIndex = 9;
         button_底层.Text = "底层";
         button_底层.UseVisualStyleBackColor = true;
-        button_底层.Click += new System.EventHandler(button10_Click);
+        button_底层.Click += new System.EventHandler(Button10_Click);
         button_左对齐.Location = new System.Drawing.Point(3, 5);
         button_左对齐.Name = "button_左对齐";
         button_左对齐.Size = new System.Drawing.Size(21, 23);
@@ -1206,7 +1206,7 @@ public class UserCommandControl2 : UserControl
         button_水平镜像.TabIndex = 16;
         button_水平镜像.Text = "水平镜像";
         button_水平镜像.UseVisualStyleBackColor = true;
-        button_水平镜像.Click += new System.EventHandler(button17_Click);
+        button_水平镜像.Click += new System.EventHandler(Button17_Click);
         button_竖直镜像.Location = new System.Drawing.Point(163, 179);
         button_竖直镜像.Name = "button_竖直镜像";
         button_竖直镜像.Size = new System.Drawing.Size(75, 23);
@@ -1220,28 +1220,28 @@ public class UserCommandControl2 : UserControl
         button_组合.TabIndex = 18;
         button_组合.Text = "组合";
         button_组合.UseVisualStyleBackColor = true;
-        button_组合.Click += new System.EventHandler(button19_Click);
+        button_组合.Click += new System.EventHandler(Button19_Click);
         button_拆解.Location = new System.Drawing.Point(163, 121);
         button_拆解.Name = "button_拆解";
         button_拆解.Size = new System.Drawing.Size(75, 23);
         button_拆解.TabIndex = 19;
         button_拆解.Text = "拆解";
         button_拆解.UseVisualStyleBackColor = true;
-        button_拆解.Click += new System.EventHandler(button20_Click);
+        button_拆解.Click += new System.EventHandler(Button20_Click);
         button_撤消.Location = new System.Drawing.Point(0, 63);
         button_撤消.Name = "button_撤消";
         button_撤消.Size = new System.Drawing.Size(75, 23);
         button_撤消.TabIndex = 20;
         button_撤消.Text = "撤销";
         button_撤消.UseVisualStyleBackColor = true;
-        button_撤消.Click += new System.EventHandler(button_撤消_Click);
+        button_撤消.Click += new System.EventHandler(Button_撤消_Click);
         button_重复.Location = new System.Drawing.Point(0, 92);
         button_重复.Name = "button_重复";
         button_重复.Size = new System.Drawing.Size(75, 23);
         button_重复.TabIndex = 21;
         button_重复.Text = "重复";
         button_重复.UseVisualStyleBackColor = true;
-        button_重复.Click += new System.EventHandler(button_重复_Click);
+        button_重复.Click += new System.EventHandler(Button_重复_Click);
         button_保存.Location = new System.Drawing.Point(0, 121);
         button_保存.Name = "button_保存";
         button_保存.Size = new System.Drawing.Size(37, 23);
@@ -1255,7 +1255,7 @@ public class UserCommandControl2 : UserControl
         button_读取.TabIndex = 25;
         button_读取.Text = "读取";
         button_读取.UseVisualStyleBackColor = true;
-        button_读取.Click += new System.EventHandler(button26_Click);
+        button_读取.Click += new System.EventHandler(Button26_Click);
         openFileDialog1.FileName = "openFileDialog1";
         button_大小相等.Location = new System.Drawing.Point(1, 179);
         button_大小相等.Name = "button_大小相等";
@@ -1284,7 +1284,7 @@ public class UserCommandControl2 : UserControl
         button_导入图片.TabIndex = 29;
         button_导入图片.Text = "图片";
         button_导入图片.UseVisualStyleBackColor = true;
-        button_导入图片.Click += new System.EventHandler(button_导入图片_Click);
+        button_导入图片.Click += new System.EventHandler(Button_导入图片_Click);
         base.AutoScaleDimensions = new System.Drawing.SizeF(6f, 12f);
         base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         base.Controls.Add(button_导入图片);

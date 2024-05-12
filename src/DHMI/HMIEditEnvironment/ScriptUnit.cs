@@ -78,7 +78,7 @@ public partial class ScriptUnit : XtraForm
         apiitems = CheckScript.MakeSystemApiDict();
         foreach (TreeNode dirtyNode in dirtyNodes)
         {
-            if (!iterativeCheckScript(dirtyNode))
+            if (!IterativeCheckScript(dirtyNode))
             {
                 return false;
             }
@@ -86,11 +86,11 @@ public partial class ScriptUnit : XtraForm
         return true;
     }
 
-    private bool iterativeCheckScript(TreeNode tn)
+    private bool IterativeCheckScript(TreeNode tn)
     {
         foreach (TreeNode node in tn.Nodes)
         {
-            if (!iterativeCheckScript(node))
+            if (!IterativeCheckScript(node))
             {
                 return false;
             }
@@ -140,7 +140,7 @@ public partial class ScriptUnit : XtraForm
         return true;
     }
 
-    private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+    private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
     {
         AfterSelectHandler(e.Node);
     }
@@ -334,7 +334,7 @@ public partial class ScriptUnit : XtraForm
         return result;
     }
 
-    private void makeRedoAndUndo()
+    private void MakeRedoAndUndo()
     {
         List<CShape> list = new();
         List<CShape> list2 = new();
@@ -1621,7 +1621,7 @@ public partial class ScriptUnit : XtraForm
             Save(dirtyNode);
         }
         dirtyNodes.Clear();
-        makeRedoAndUndo();
+        MakeRedoAndUndo();
     }
 
     private void CheckEdit1_CheckedChanged(object sender, EventArgs e)
@@ -1680,7 +1680,7 @@ public partial class ScriptUnit : XtraForm
         textEditorControl1.Focus();
     }
 
-    private void barButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem4_ItemClick(object sender, ItemClickEventArgs e)
     {
         if (currentTempTag != null)
         {
@@ -1698,7 +1698,7 @@ public partial class ScriptUnit : XtraForm
         barButtonItem5_ItemClick(null, null);
     }
 
-    private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
     {
         if (saveFileDialog1.ShowDialog() == DialogResult.OK)
         {
@@ -1734,7 +1734,7 @@ public partial class ScriptUnit : XtraForm
                         Save(dirtyNode);
                     }
                     dirtyNodes.Clear();
-                    makeRedoAndUndo();
+                    MakeRedoAndUndo();
                     CEditEnvironmentGlobal.mdiparent.Focus();
                     CEditEnvironmentGlobal.mdiparent.Select();
                     Hide();
@@ -1754,7 +1754,7 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    public void treeView1_MouseClick(object sender, MouseEventArgs e)
+    public void TreeView1_MouseClick(object sender, MouseEventArgs e)
     {
         TreeNode nodeAt;
         if (e.Button == MouseButtons.Right && (nodeAt = treeView1.GetNodeAt(e.Location)) != null)
@@ -1773,12 +1773,12 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void deleteEventBtnItem_ItemClick(object sender, ItemClickEventArgs e)
+    private void DeleteEventBtnItem_ItemClick(object sender, ItemClickEventArgs e)
     {
         DeleteEventNode(treeView1.SelectedNode);
     }
 
-    private void addEventScriptBtn_ItemClick(object sender, ItemClickEventArgs e)
+    private void AddEventScriptBtn_ItemClick(object sender, ItemClickEventArgs e)
     {
         eventScriptFrm = new ScriptUnitAddUserDefineEvent
         {
@@ -1829,12 +1829,12 @@ public partial class ScriptUnit : XtraForm
         DoEditAction(ActiveTextEditor, new Undo());
     }
 
-    private void redoBarBtn_ItemClick(object sender, EventArgs e)
+    private void RedoBarBtn_ItemClick(object sender, EventArgs e)
     {
         DoEditAction(ActiveTextEditor, new Redo());
     }
 
-    private void cutBarBtn_ItemClick(object sender, EventArgs e)
+    private void CutBarBtn_ItemClick(object sender, EventArgs e)
     {
         if (HaveSelection())
         {
@@ -1842,7 +1842,7 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void copyBarBtn_ItemClick(object sender, EventArgs e)
+    private void CopyBarBtn_ItemClick(object sender, EventArgs e)
     {
         if (HaveSelection())
         {
@@ -1850,7 +1850,7 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void pasteBarBtn_ItemClick(object sender, EventArgs e)
+    private void PasteBarBtn_ItemClick(object sender, EventArgs e)
     {
         DoEditAction(ActiveTextEditor, new Paste());
     }
@@ -1914,7 +1914,7 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void findBarBtn_ItemClick(object sender, ItemClickEventArgs e)
+    private void FindBarBtn_ItemClick(object sender, ItemClickEventArgs e)
     {
         TextEditorControl activeTextEditor = ActiveTextEditor;
         if (activeTextEditor != null)
@@ -1963,12 +1963,12 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void barButtonItem_Paste_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_Paste_ItemClick(object sender, ItemClickEventArgs e)
     {
         DoEditAction(ActiveTextEditor, new Paste());
     }
 
-    private void barButtonItem_Cut_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_Cut_ItemClick(object sender, ItemClickEventArgs e)
     {
         if (HaveSelection())
         {
@@ -1976,7 +1976,7 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void barButtonItem_Delete_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_Delete_ItemClick(object sender, ItemClickEventArgs e)
     {
         if (HaveSelection())
         {
@@ -1984,17 +1984,17 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void barButtonItem_Undo_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_Undo_ItemClick(object sender, ItemClickEventArgs e)
     {
         DoEditAction(ActiveTextEditor, new Undo());
     }
 
-    private void barButtonItem_Redo_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_Redo_ItemClick(object sender, ItemClickEventArgs e)
     {
         DoEditAction(ActiveTextEditor, new Redo());
     }
 
-    private void barButtonItem_Find_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_Find_ItemClick(object sender, ItemClickEventArgs e)
     {
         TextEditorControl activeTextEditor = ActiveTextEditor;
         if (activeTextEditor != null)
@@ -2003,7 +2003,7 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void barButtonItem_Replace_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_Replace_ItemClick(object sender, ItemClickEventArgs e)
     {
         TextEditorControl activeTextEditor = ActiveTextEditor;
         if (activeTextEditor != null)
@@ -2012,7 +2012,7 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void barButtonItem_Goto_ItemClick(object sender, ItemClickEventArgs e)
+    private void BarButtonItem_Goto_ItemClick(object sender, ItemClickEventArgs e)
     {
         TextEditorControl activeTextEditor = ActiveTextEditor;
         if (activeTextEditor != null)
