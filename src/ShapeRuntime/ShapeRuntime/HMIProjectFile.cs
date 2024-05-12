@@ -17,7 +17,7 @@ public class HMIProjectFile
 
     public List<string> dirtyPage;
 
-    public Dictionary<string, string> Pages;
+    public Dictionary<string, string> pages;
 
     public List<string> startVisiblePages;
 
@@ -212,7 +212,7 @@ public class HMIProjectFile
         get
         {
             List<HmiPageFile> list = new();
-            foreach (KeyValuePair<string, string> page in Pages)
+            foreach (KeyValuePair<string, string> page in pages)
             {
                 list.Add(new HmiPageFile
                 {

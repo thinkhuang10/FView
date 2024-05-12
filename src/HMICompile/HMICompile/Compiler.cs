@@ -118,9 +118,9 @@ public class Compiler
             };
             vartableitem.Add(item3);
         }
-        foreach (string key in dhp.Pages.Keys)
+        foreach (string key in dhp.pages.Keys)
         {
-            DataFile dataFile = Operation.BinaryLoadFile(fiProjectFile.DirectoryName + "\\" + dhp.Pages[key]);
+            DataFile dataFile = Operation.BinaryLoadFile(fiProjectFile.DirectoryName + "\\" + dhp.pages[key]);
             strshapeDictionary.Add(key, dataFile.ListAllShowCShape);
             strfileDictionary.Add(key, dataFile);
         }
@@ -130,7 +130,7 @@ public class Compiler
     {
         string text = "    ";
         StringBuilder stringBuilder = new();
-        foreach (string key in dhp.Pages.Keys)
+        foreach (string key in dhp.pages.Keys)
         {
             StringBuilder stringBuilder2 = new();
             new StringBuilder();
@@ -896,7 +896,7 @@ public class Compiler
             }
         }
 
-        foreach (string value in dhp.Pages.Values)
+        foreach (string value in dhp.pages.Values)
         {
             if (!dirtyCompile || dirtyList.Contains(value.Replace(".hpg", "")) || !File.Exists(fiProjectFile.DirectoryName + "\\CompileTemp\\" + value))
             {

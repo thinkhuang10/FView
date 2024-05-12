@@ -584,13 +584,13 @@ public class Operation
         CShape.SumLayer = 0L;
         hMIProjectFile.ProjectIOs = new List<ProjectIO>(hMIProjectFile.tprojectios);
         hMIProjectFile.IOAlarms = new List<CIOAlarm>(hMIProjectFile.tioalarms);
-        if (hMIProjectFile.Pages == null)
+        if (hMIProjectFile.pages == null)
         {
-            hMIProjectFile.Pages = new Dictionary<string, string>();
+            hMIProjectFile.pages = new Dictionary<string, string>();
             string[] pagefiles = hMIProjectFile.pagefiles;
             foreach (string value in pagefiles)
             {
-                hMIProjectFile.Pages.Add(Guid.NewGuid().ToString(), value);
+                hMIProjectFile.pages.Add(Guid.NewGuid().ToString(), value);
             }
         }
         foreach (CIOAlarm iOAlarm in hMIProjectFile.IOAlarms)

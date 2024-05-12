@@ -180,7 +180,7 @@ namespace Model
             CEditEnvironmentGlobal.OutputMessage.Say("完成替换脚本变量.");
             string projectfile = CEditEnvironmentGlobal.ProjectHPFFilePath;
             //CEditEnvironmentGlobal.dhp.PageGroup = treeView_工程导航.Nodes[0].Nodes[0].Tag as HmiPageGroup;
-            CEditEnvironmentGlobal.dhp.Pages = dictionary;
+            CEditEnvironmentGlobal.dhp.pages = dictionary;
             CEditEnvironmentGlobal.dhp.startVisiblePages = list;
             CEditEnvironmentGlobal.dirtyPageTemp = new List<string>(CEditEnvironmentGlobal.dhp.dirtyPage);
             CEditEnvironmentGlobal.dhp.dirtyPage.Clear();

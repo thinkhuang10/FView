@@ -591,7 +591,7 @@ public partial class MDIParent1 : XtraForm
             }
         }
         CEditEnvironmentGlobal.dhp.PageGroup = treeView_工程导航.Nodes[0].Nodes[0].Tag as HmiPageGroup;
-        CEditEnvironmentGlobal.dhp.Pages = dictionary;
+        CEditEnvironmentGlobal.dhp.pages = dictionary;
         CEditEnvironmentGlobal.dhp.startVisiblePages = list;
         Operation.BinarySaveProject(projectfile, CEditEnvironmentGlobal.dhp);
         CEditEnvironmentGlobal.OutputMessage.Say("成功保存到" + projectfile);
@@ -3758,7 +3758,7 @@ public partial class MDIParent1 : XtraForm
             CEditEnvironmentGlobal.dhp = Operation.BinaryLoadProject(CEditEnvironmentGlobal.ProjectHPFFilePath);
             HmiPageGroup hmiPageGroup = Operation.LoadProjectGroups(CEditEnvironmentGlobal.ProjectHPFFilePath);
             BuildPageGroupTreeView(hmiPageGroup);
-            foreach (var pageName in CEditEnvironmentGlobal.dhp.Pages.Values)
+            foreach (var pageName in CEditEnvironmentGlobal.dhp.pages.Values)
             {
                 try
                 {
