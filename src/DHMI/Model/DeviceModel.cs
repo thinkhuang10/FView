@@ -4,11 +4,11 @@ namespace Model
 {
     public class DeviceModel
     {
-        private readonly Dictionary<string, object> Devices;
+        private readonly Dictionary<string, DeviceInfo> Devices;
 
         public DeviceModel() 
         {
-            Devices = new Dictionary<string, object>();
+            Devices = new Dictionary<string, DeviceInfo>();
         }
 
         public bool ContainDevice(string name)
@@ -16,12 +16,12 @@ namespace Model
             return Devices.ContainsKey(name);
         }
 
-        public Dictionary<string, object> GetDevices()
+        public Dictionary<string, DeviceInfo> GetDevices()
         {
             return Devices;
         }
 
-        public void AddDevice(string name, object devInfo)
+        public void AddDevice(string name, DeviceInfo devInfo)
         {
             if (!Devices.ContainsKey(name))
             { 

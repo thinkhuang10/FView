@@ -534,6 +534,7 @@
     <Compile Include="Util\JSONHelper.cs" />
     <Compile Include="Util\PathHelper.cs" />
     <Compile Include="Util\CSVHelper.cs" />
+    <Compile Include="Util\RegexHelper.cs" />
     <Compile Include="Util\SizeHelper.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,9 @@
 using DevExpress.XtraVerticalGrid.Events;
 using Model;
 using System;
+using System.Linq;
 using System.Windows.Forms;
+using Util;
 
 namespace HMIEditEnvironment.DeviceManager
 {
@@ -12,7 +14,9 @@ namespace HMIEditEnvironment.DeviceManager
 
         private readonly DeviceModel deviceModel;
 
-        private string deviceName;
+        private string devName = "新建设备";
+
+        private int devID;
 
         public DevicePropertyForm(DeviceModel deviceModel)
         {
@@ -25,15 +29,52 @@ namespace HMIEditEnvironment.DeviceManager
         {
             var deviceInfo = PropertyGridControl.SelectedObject as DeviceInfo;
 
+            if (string.IsNullOrEmpty(deviceInfo.DevName))
+            {
+                MessageBox.Show("请输入设备名称.");
+                return;
+            }
+
             if (deviceModel.GetDevices().ContainsKey(deviceInfo.DevName))
             {
                 MessageBox.Show("设备名称已经存在，请重新输入.");
                 return;
             }
 
+            if (DeviceTypeEnum.OPCDA == deviceInfo.DevType && !ValidateOPCDA())
+                return;
+
+            if (DeviceTypeEnum.OPCDA == deviceInfo.DevType && !ValidateModbusTCP())
+               return;
+
             SelectedObject = PropertyGridControl.SelectedObject;
 
             DialogResult = DialogResult.OK;
+        }
+
+        private bool ValidateOPCDA()
+        {
+            var deviceInfo = PropertyGridControl.SelectedObject as OPCDADeviceInfo;
+
+            if (!RegexHelper.IsIPAddress(deviceInfo.IP.ToString()))
+            {
+                MessageBox.Show("请输入正确IP地址.");
+                return false;
+            }
+
+            if (!RegexHelper.IsIntergerNonZero(deviceInfo.Port.ToString()))
+            {
+                MessageBox.Show("请输入正确的端口号.");
+                return false;
+            }
+
+            return true;
+        }
+
+        private bool ValidateModbusTCP()
+        {
+
+            return true;
         }
 
         private void Button_Cancel_Click(object sender, EventArgs e)
@@ -51,12 +92,14 @@ namespace HMIEditEnvironment.DeviceManager
 
             PropertyGridControl.OptionsBehavior.PropertySort = DevExpress.XtraVerticalGrid.PropertySort.NoSort;
 
-            deviceName = GetDeviceName();
+            devName = GetDeviceName();
+            devID = GetDeviceID();
 
             var deviceInfo = new OPCDADeviceInfo
             {
-                DevType = DeviceTypeEnum.OPCDA,
-                DevName = deviceName
+                DevID = devID,
+                DevName = devName,
+                DevType = DeviceTypeEnum.OPCDA
             };
             PropertyGridControl.SelectedObject = deviceInfo;
         }
@@ -79,8 +122,9 @@ namespace HMIEditEnvironment.DeviceManager
             {
                 var deviceInfo = new OPCDADeviceInfo
                 {
-                    DevType = DeviceTypeEnum.OPCDA,
-                    DevName = deviceName
+                    DevID = devID,
+                    DevName = devName,
+                    DevType = DeviceTypeEnum.OPCDA
                 };
                 PropertyGridControl.SelectedObject = deviceInfo;
             }
@@ -88,11 +132,23 @@ namespace HMIEditEnvironment.DeviceManager
             {
                 var deviceInfo = new ModbusTCPDeviceInfo
                 {
-                    DevType = DeviceTypeEnum.ModbusTCP,
-                    DevName = deviceName
+                    DevID = devID,
+                    DevName = devName,
+                    DevType = DeviceTypeEnum.ModbusTCP
                 };
                 PropertyGridControl.SelectedObject = deviceInfo;
             }
+        }
+
+        private int GetDeviceID()
+        {
+            var devices = deviceModel.GetDevices().Values;
+            if (0 == devices.Count)
+                return 0;
+
+            var maxID = devices.Max(p => p.DevID);
+
+            return ++maxID;
         }
 
         private string GetDeviceName()
