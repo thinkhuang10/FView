@@ -95,12 +95,11 @@ public partial class MDIParent1 : XtraForm
         graphics.DrawRectangle(Pens.Black, e.ClipRectangle);
     }
 
-    private void MyPropertyGrid1_Enter(object sender, EventArgs e)
+    private void PropertyGrid_Attrubute_Enter(object sender, EventArgs e)
     {
-        if (myPropertyGrid1.SelectedObject is not CShape)
-        {
+        if (PropertyGrid_Attrubute.SelectedObject is not CShape)
             return;
-        }
+
         foreach (CShape selectedShape in userCommandControl21.theglobal.SelectedShapeList)
         {
             userCommandControl21.theglobal.OldShapes.Add(selectedShape.Copy());
@@ -817,7 +816,7 @@ public partial class MDIParent1 : XtraForm
                     if (item.Name.Equals(e1.Result.ShapeName))
                     {
                         theglobal.SelectedShapeList.Add(item);
-                        CEditEnvironmentGlobal.mdiparent.myPropertyGrid1.SelectedObject = item;
+                        CEditEnvironmentGlobal.mdiparent.PropertyGrid_Attrubute.SelectedObject = item;
                     }
                 }
                 CEditEnvironmentGlobal.mdiparent.objView_Page.FreshSelect(theglobal);
@@ -1204,12 +1203,12 @@ public partial class MDIParent1 : XtraForm
             ((ChildForm)base.ActiveMdiChild).theglobal.uc1 = userCommandControl21;
             ((ChildForm)base.ActiveMdiChild).theglobal.dataGridView = dataGridView1;
             ((ChildForm)base.ActiveMdiChild).theglobal.listView2 = listView_事件;
-            ((ChildForm)base.ActiveMdiChild).theglobal.pg = myPropertyGrid1;
+            ((ChildForm)base.ActiveMdiChild).theglobal.pg = PropertyGrid_Attrubute;
             CEditEnvironmentGlobal.childform = (ChildForm)base.ActiveMdiChild;
             userCommandControl21.theglobal = ((ChildForm)base.ActiveMdiChild).theglobal;
             userCommandControl21.ReFreshEnable();
 
-            myPropertyGrid1.SelectedObject = ((ChildForm)base.ActiveMdiChild).theglobal.pageProp;
+            PropertyGrid_Attrubute.SelectedObject = ((ChildForm)base.ActiveMdiChild).theglobal.pageProp;
 
             barButtonItem10.Enabled = userCommandControl21.button_撤消.Enabled;
             barButtonItem_Undo.Enabled = userCommandControl21.button_撤消.Enabled;
@@ -2345,11 +2344,11 @@ public partial class MDIParent1 : XtraForm
     {
         try
         {
-            if (myPropertyGrid1.SelectedObject is CShape)
+            if (PropertyGrid_Attrubute.SelectedObject is CShape)
             {
                 CEditEnvironmentGlobal.dhp.dirtyPageAdd(CEditEnvironmentGlobal.childform.theglobal.df.name);
             }
-            else if (myPropertyGrid1.SelectedObject is CPageProperty && e.ChangedItem.Label != "脚本名称")
+            else if (PropertyGrid_Attrubute.SelectedObject is CPageProperty && e.ChangedItem.Label != "脚本名称")
             {
                 CEditEnvironmentGlobal.dhp.dirtyPageAdd(CEditEnvironmentGlobal.childform.theglobal.df.name);
             }
@@ -2369,13 +2368,13 @@ public partial class MDIParent1 : XtraForm
                 return;
             }
             string text = (string)e.ChangedItem.Value;
-            if (myPropertyGrid1.SelectedObject is CShape)
+            if (PropertyGrid_Attrubute.SelectedObject is CShape)
             {
-                ((CShape)myPropertyGrid1.SelectedObject).Name = (string)e.OldValue;
+                ((CShape)PropertyGrid_Attrubute.SelectedObject).Name = (string)e.OldValue;
             }
-            else if (myPropertyGrid1.SelectedObject is IControlShape)
+            else if (PropertyGrid_Attrubute.SelectedObject is IControlShape)
             {
-                ((IControlShape)myPropertyGrid1.SelectedObject).ID = (string)e.OldValue;
+                ((IControlShape)PropertyGrid_Attrubute.SelectedObject).ID = (string)e.OldValue;
             }
             List<string> list = CheckIOExists.ShapeInUse(CEditEnvironmentGlobal.childform.theglobal.df.name + "." + text);
             if (list.Count != 0)
@@ -2395,10 +2394,10 @@ public partial class MDIParent1 : XtraForm
             }
             foreach (CShape item in CEditEnvironmentGlobal.childform.theglobal.g_ListAllShowCShape)
             {
-                if ((myPropertyGrid1.SelectedObject is not CShape || item != (CShape)myPropertyGrid1.SelectedObject) && (item is not CControl || ((CControl)item)._c != myPropertyGrid1.SelectedObject) && item.ShapeName == text)
+                if ((PropertyGrid_Attrubute.SelectedObject is not CShape || item != (CShape)PropertyGrid_Attrubute.SelectedObject) && (item is not CControl || ((CControl)item)._c != PropertyGrid_Attrubute.SelectedObject) && item.ShapeName == text)
                 {
                     MessageBox.Show("名称重复", "错误");
-                    myPropertyGrid1.Refresh();
+                    PropertyGrid_Attrubute.Refresh();
                     userCommandControl21.theglobal.OldShapes.Clear();
                     return;
                 }
@@ -2413,14 +2412,14 @@ public partial class MDIParent1 : XtraForm
                     return;
                 }
             }
-            if (myPropertyGrid1.SelectedObject is CShape)
+            if (PropertyGrid_Attrubute.SelectedObject is CShape)
             {
-                ((CShape)myPropertyGrid1.SelectedObject).Name = text;
-                objView_Page.OnFresh(((CShape)myPropertyGrid1.SelectedObject).ShapeID.ToString());
+                ((CShape)PropertyGrid_Attrubute.SelectedObject).Name = text;
+                objView_Page.OnFresh(((CShape)PropertyGrid_Attrubute.SelectedObject).ShapeID.ToString());
             }
-            else if (myPropertyGrid1.SelectedObject is IControlShape)
+            else if (PropertyGrid_Attrubute.SelectedObject is IControlShape)
             {
-                ((IControlShape)myPropertyGrid1.SelectedObject).ID = text;
+                ((IControlShape)PropertyGrid_Attrubute.SelectedObject).ID = text;
             }
         }
         catch
@@ -2440,8 +2439,8 @@ public partial class MDIParent1 : XtraForm
             string text = string.Empty;
             string text2 = (string)e.ChangedItem.Value;
 
-            ((CPageProperty)myPropertyGrid1.SelectedObject).ShowName = (string)e.OldValue;
-            text = ((CPageProperty)myPropertyGrid1.SelectedObject).PageName;
+            ((CPageProperty)PropertyGrid_Attrubute.SelectedObject).ShowName = (string)e.OldValue;
+            text = ((CPageProperty)PropertyGrid_Attrubute.SelectedObject).PageName;
 
             if (text2 == "")
             {
@@ -2459,7 +2458,7 @@ public partial class MDIParent1 : XtraForm
                 }
             }
 
-            ((CPageProperty)myPropertyGrid1.SelectedObject).ShowName = text2;
+            ((CPageProperty)PropertyGrid_Attrubute.SelectedObject).ShowName = text2;
 
             TreeNode[] array = treeView_工程导航.Nodes[0].Nodes[0].Nodes.Find(text, searchAllChildren: true);
             foreach (TreeNode treeNode in array)
@@ -2488,7 +2487,7 @@ public partial class MDIParent1 : XtraForm
             }
             string text = (string)e.ChangedItem.Value;
 
-            ((CPageProperty)myPropertyGrid1.SelectedObject).PageName = (string)e.OldValue;
+            ((CPageProperty)PropertyGrid_Attrubute.SelectedObject).PageName = (string)e.OldValue;
 
             List<string> list = CheckIOExists.PageInUse(CEditEnvironmentGlobal.childform.theglobal.df.name);
             if (list.Count != 0)
@@ -2523,7 +2522,7 @@ public partial class MDIParent1 : XtraForm
                 return;
             }
 
-            ((CPageProperty)myPropertyGrid1.SelectedObject).PageName = text;
+            ((CPageProperty)PropertyGrid_Attrubute.SelectedObject).PageName = text;
 
             CEditEnvironmentGlobal.dhp.dirtyPageAdd(text);
             TreeNode[] array = treeView_工程导航.Nodes[0].Nodes[0].Nodes.Find(e.OldValue.ToString(), searchAllChildren: true);
@@ -2548,7 +2547,7 @@ public partial class MDIParent1 : XtraForm
         {
             var list = new List<CShape>();
             var list2 = new List<CShape>();
-            if (myPropertyGrid1.SelectedObject is not CShape)
+            if (PropertyGrid_Attrubute.SelectedObject is not CShape)
             {
                 return;
             }
@@ -3638,7 +3637,7 @@ public partial class MDIParent1 : XtraForm
         treeView_工程导航.Nodes[0].Nodes.RemoveByKey("Page");
 
         treeView_工程导航.Nodes[0].Text = "本地工程(" + CEditEnvironmentGlobal.dhp.projectname + ")";
-        TreeNode treeNode2 = treeView_工程导航.Nodes[0].Nodes.Insert(0, "Page", "FView页面", "NativeApp.png", "NativeApp.png");
+        TreeNode treeNode2 = treeView_工程导航.Nodes[0].Nodes.Insert(0, "Page", $"{ConstantHelper.SoftwareName}页面", "NativeApp.png", "NativeApp.png");
         treeNode2.ContextMenuStrip = contextMenuStrip_本地页面根节点;
         treeNode2.Tag = new HmiPageGroup
         {
@@ -3669,9 +3668,8 @@ public partial class MDIParent1 : XtraForm
 
     private void MDIParent1_Load(object sender, EventArgs e)
     {
-        LogUtil.Init();
+        LogUtil.Init(); // 初始化日志控件
 
-        Operation.bEditEnvironment = true;
         CEditEnvironmentGlobal.mdiparent = this;
 
         InitFormLook();
@@ -3681,7 +3679,7 @@ public partial class MDIParent1 : XtraForm
 
         projectPathSave = new ProjectPathSaveHandler();
         var test = projectPathSave.FileList;
-        projectPathSave.RecentProjectItems = BarListItem_RecentlyProjece;//指定 最近文件 的菜单值，方便动态创建文件菜单
+        projectPathSave.RecentProjectItems = BarListItem_RecentlyProjece;//指定最近文件的菜单值，方便动态创建文件菜单
         projectPathSave.UpdateMenu();
 
         if (null != projectPathSave.RecentProjectItems)
@@ -3782,7 +3780,7 @@ public partial class MDIParent1 : XtraForm
 
     private void BarButtonItem_OpenProject_ItemClick(object sender, ItemClickEventArgs e)
     {
-        openFileDialog_OpenProject.Filter = "工程文件|*.fview";
+        openFileDialog_OpenProject.Filter = $"工程文件|*{ConstantHelper.ProjectSuffixName}";
         if (DialogResult.OK != openFileDialog_OpenProject.ShowDialog())
             return;
 

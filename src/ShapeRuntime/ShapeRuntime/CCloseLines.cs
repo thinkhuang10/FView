@@ -236,14 +236,12 @@ public class CCloseLines : CShape
 
     public override bool EditLocation(PointF OldPoint, PointF NewPoint)
     {
-        if (locked && Operation.bEditEnvironment)
-        {
+        if (locked)
             return false;
-        }
+
         if (!MouseOnMe(OldPoint))
-        {
             return false;
-        }
+        
         PointF location = Location;
         SizeF size = Size;
         float angel = base.Angel;
@@ -275,14 +273,12 @@ public class CCloseLines : CShape
 
     public override int EditPoint(PointF OldPoint, PointF NewPoint, int r)
     {
-        if (locked && Operation.bEditEnvironment)
-        {
+        if (locked)
             return -1;
-        }
+
         if (ImportantPoints.Length < 10)
-        {
             return -1;
-        }
+
         float height = Height;
         PointF location = Location;
         SizeF size = Size;

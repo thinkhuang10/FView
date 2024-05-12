@@ -72,7 +72,7 @@ namespace HMIEditEnvironment
             System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("三角形", "san.png");
             System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("文字", "str.png");
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.myPropertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.PropertyGrid_Attrubute = new System.Windows.Forms.PropertyGrid();
             this.listView_事件 = new System.Windows.Forms.ListView();
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -429,18 +429,18 @@ namespace HMIEditEnvironment
             ((System.ComponentModel.ISupportInitialize)(this.ImageCollection_ProjectNavigation)).BeginInit();
             this.SuspendLayout();
             // 
-            // myPropertyGrid1
+            // PropertyGrid_Attrubute
             // 
-            this.myPropertyGrid1.BackColor = System.Drawing.SystemColors.Control;
-            this.myPropertyGrid1.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.myPropertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.myPropertyGrid1.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.myPropertyGrid1.Location = new System.Drawing.Point(0, 0);
-            this.myPropertyGrid1.Name = "myPropertyGrid1";
-            this.myPropertyGrid1.Size = new System.Drawing.Size(198, 587);
-            this.myPropertyGrid1.TabIndex = 0;
-            this.myPropertyGrid1.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.MyPropertyGrid1_PropertyValueChanged);
-            this.myPropertyGrid1.Enter += new System.EventHandler(this.MyPropertyGrid1_Enter);
+            this.PropertyGrid_Attrubute.BackColor = System.Drawing.SystemColors.Control;
+            this.PropertyGrid_Attrubute.CategoryForeColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.PropertyGrid_Attrubute.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PropertyGrid_Attrubute.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.PropertyGrid_Attrubute.Location = new System.Drawing.Point(0, 0);
+            this.PropertyGrid_Attrubute.Name = "PropertyGrid_Attrubute";
+            this.PropertyGrid_Attrubute.Size = new System.Drawing.Size(198, 587);
+            this.PropertyGrid_Attrubute.TabIndex = 0;
+            this.PropertyGrid_Attrubute.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.MyPropertyGrid1_PropertyValueChanged);
+            this.PropertyGrid_Attrubute.Enter += new System.EventHandler(this.PropertyGrid_Attrubute_Enter);
             // 
             // listView_事件
             // 
@@ -2739,7 +2739,7 @@ namespace HMIEditEnvironment
             // 
             // controlContainer_属性
             // 
-            this.controlContainer_属性.Controls.Add(this.myPropertyGrid1);
+            this.controlContainer_属性.Controls.Add(this.PropertyGrid_Attrubute);
             this.controlContainer_属性.Location = new System.Drawing.Point(0, 0);
             this.controlContainer_属性.Name = "controlContainer_属性";
             this.controlContainer_属性.Size = new System.Drawing.Size(198, 587);
@@ -3563,7 +3563,7 @@ namespace HMIEditEnvironment
 
         public TreeView treeView_工程导航;
 
-        public PropertyGrid myPropertyGrid1;
+        public PropertyGrid PropertyGrid_Attrubute;
 
         private ToolStripMenuItem ToolStripMenuItem_本地页面_导出;
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Util
 {
@@ -12,6 +13,12 @@ namespace Util
         public static string GetLogicCodePath()
         {
             return AppDomain.CurrentDomain.BaseDirectory + "LogicCode\\";
+        }
+
+        public static string GetDefaultProjectPath()
+        {
+            return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), 
+                ConstantHelper.SoftwareName, "Projects");
         }
     }
 }

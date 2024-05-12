@@ -3253,10 +3253,9 @@ public class CShape : IDBAnimation, IEventBind, IPropertyBind, ISerializable
 
     public virtual bool EditLocationByPoint(PointF OldPoint, PointF NewPoint)
     {
-        if (locked && Operation.bEditEnvironment)
-        {
+        if (locked)
             return false;
-        }
+        
         NeedRefreshShape = true;
         PointF[] array = (PointF[])ImportantPoints.Clone();
         PointF[] array2 = new PointF[2] { OldPoint, NewPoint };

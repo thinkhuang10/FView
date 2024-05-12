@@ -767,14 +767,12 @@ public class CPixieControl : CShape
 
     public override bool EditLocation(PointF OldPoint, PointF NewPoint)
     {
-        if (locked && Operation.bEditEnvironment)
-        {
+        if (locked)
             return false;
-        }
+        
         if (!MouseOnMe(OldPoint))
-        {
             return false;
-        }
+        
         PointF[] array = (PointF[])ImportantPoints.Clone();
         PointF[] array2 = new PointF[2] { OldPoint, NewPoint };
         TranslateMatrix.Invert();
@@ -805,14 +803,12 @@ public class CPixieControl : CShape
 
     public override int EditPoint(PointF OldPoint, PointF NewPoint, int r)
     {
-        if (locked && Operation.bEditEnvironment)
-        {
+        if (locked)
             return -1;
-        }
+        
         if (ImportantPoints.Length < 10)
-        {
             return -1;
-        }
+        
         float height = Height;
         UpdateSVG();
         PointF[] array = (PointF[])ImportantPoints.Clone();

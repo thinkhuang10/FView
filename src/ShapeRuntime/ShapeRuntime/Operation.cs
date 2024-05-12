@@ -20,8 +20,6 @@ public class Operation
 {
     public static Dictionary<string, ServerLogicRequest> ServerLogicDict = new();
 
-    public static bool bEditEnvironment = false;
-
     public static LZMACoder coder = new();
 
     public static List<CIOItem> LIO;

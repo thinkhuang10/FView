@@ -1,14 +1,15 @@
-﻿using Model;
+﻿using LogHelper;
+using Model;
 using System;
 using System.IO;
 using System.Text.Json;
 using System.Windows.Forms;
+using Util;
 
 namespace HMIEditEnvironment
 {
     public partial class NewProject : Form
     {
-
         public string ProjeceFilePath;
 
         public NewProject()
@@ -16,33 +17,58 @@ namespace HMIEditEnvironment
             InitializeComponent();
         }
 
-        private void button_OpenFileDialog_Click(object sender, EventArgs e)
+        private void NewProject_Load(object sender, EventArgs e)
+        {
+            TextBox_ProjectLocation.Text = PathHelper.GetDefaultProjectPath();
+        }
+
+        private void Button_OpenFileDialog_Click(object sender, EventArgs e)
         {
             var result = folderBrowserDialog.ShowDialog();
             if (DialogResult.OK == result)
             {
-                textBox_ProjectLocation.Text = folderBrowserDialog.SelectedPath;
+                TextBox_ProjectLocation.Text = folderBrowserDialog.SelectedPath;
             }
         }
 
-        private void button_Cancel_Click(object sender, EventArgs e)
+        private void Button_Cancel_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
-        private void button_OK_Click(object sender, EventArgs e)
+        private void Button_OK_Click(object sender, EventArgs e)
         {
-            var directoryPath = Path.Combine(textBox_ProjectLocation.Text.Trim(), textBox_ProjectName.Text.Trim());
-            if (!Directory.Exists(directoryPath))
+            var projectName = TextBox_ProjectName.Text.Trim();
+            var projectPath = TextBox_ProjectLocation.Text.Trim();
+            if (string.IsNullOrEmpty(projectName))
+            {
+                MessageBox.Show("请输入工程名称！", ConstantHelper.SoftwareName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(projectPath))
+            {
+                MessageBox.Show("请输入工程路径！", ConstantHelper.SoftwareName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            var directoryPath = Path.Combine(projectPath, projectName);
+            if (Directory.Exists(directoryPath))
+            {
+                MessageBox.Show("工程名称已存在，请修改！", ConstantHelper.SoftwareName, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;            
+            }
+
+            try
             {
                 Directory.CreateDirectory(directoryPath);
 
-                var filePath = Path.Combine(directoryPath, textBox_ProjectName.Text.Trim() + ".fview");
+                var filePath = Path.Combine(directoryPath, projectName + ConstantHelper.ProjectSuffixName);
                 using (var fileWriter = new StreamWriter(filePath))
                 {
                     var projectInfo = new ProjectInfo
                     {
-                        Description = richTextBox_ProjectDescription.Text.Trim()
+                        Description = RichTextBox_ProjectDescription.Text.Trim()
                     };
                     fileWriter.Write(JsonSerializer.Serialize(projectInfo));
                 }
@@ -51,15 +77,11 @@ namespace HMIEditEnvironment
 
                 DialogResult = DialogResult.OK;
             }
-            else
+            catch(Exception ex)
             {
-                MessageBox.Show("工程名称已存在，请修改！", "FView", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("新建工程失败:" + ex.Message, ConstantHelper.SoftwareName, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LogUtil.Error("新建工程失败:" + ex);
             }
-        }
-
-        private void NewProject_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

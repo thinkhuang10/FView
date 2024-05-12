@@ -691,17 +691,15 @@ public class CControl : CShape
 
     public override bool EditLocation(PointF OldPoint, PointF NewPoint)
     {
-        if (locked && Operation.bEditEnvironment)
-        {
+        if (locked)
             return false;
-        }
+        
         PointF location = Location;
         SizeF size = Size;
         float angel = base.Angel;
         if (!MouseOnMe(OldPoint))
-        {
             return false;
-        }
+        
         PointF[] array = (PointF[])ImportantPoints.Clone();
         PointF[] array2 = new PointF[2] { OldPoint, NewPoint };
         TranslateMatrix.Invert();
@@ -741,14 +739,12 @@ public class CControl : CShape
 
     public override int EditPoint(PointF OldPoint, PointF NewPoint, int r)
     {
-        if (locked && Operation.bEditEnvironment)
-        {
+        if (locked)
             return -1;
-        }
+
         if (ImportantPoints.Length < 10)
-        {
             return -1;
-        }
+        
         PointF location = Location;
         SizeF size = Size;
         float angel = base.Angel;

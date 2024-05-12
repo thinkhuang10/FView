@@ -28,113 +28,112 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label_ProjectName = new System.Windows.Forms.Label();
-            this.label_ProjectLocation = new System.Windows.Forms.Label();
-            this.textBox_ProjectName = new System.Windows.Forms.TextBox();
-            this.textBox_ProjectLocation = new System.Windows.Forms.TextBox();
-            this.richTextBox_ProjectDescription = new System.Windows.Forms.RichTextBox();
-            this.button_OK = new System.Windows.Forms.Button();
-            this.button_Cancel = new System.Windows.Forms.Button();
-            this.label_ProjectDescription = new System.Windows.Forms.Label();
-            this.button_OpenFileDialog = new System.Windows.Forms.Button();
+            this.Label_ProjectName = new System.Windows.Forms.Label();
+            this.Label_ProjectLocation = new System.Windows.Forms.Label();
+            this.TextBox_ProjectName = new System.Windows.Forms.TextBox();
+            this.TextBox_ProjectLocation = new System.Windows.Forms.TextBox();
+            this.RichTextBox_ProjectDescription = new System.Windows.Forms.RichTextBox();
+            this.Button_OK = new System.Windows.Forms.Button();
+            this.Button_Cancel = new System.Windows.Forms.Button();
+            this.Label_ProjectDescription = new System.Windows.Forms.Label();
+            this.Button_OpenFileDialog = new System.Windows.Forms.Button();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
-            // label_ProjectName
+            // Label_ProjectName
             // 
-            this.label_ProjectName.AutoSize = true;
-            this.label_ProjectName.Location = new System.Drawing.Point(15, 23);
-            this.label_ProjectName.Name = "label_ProjectName";
-            this.label_ProjectName.Size = new System.Drawing.Size(41, 12);
-            this.label_ProjectName.TabIndex = 0;
-            this.label_ProjectName.Text = "名称：";
+            this.Label_ProjectName.AutoSize = true;
+            this.Label_ProjectName.Location = new System.Drawing.Point(15, 23);
+            this.Label_ProjectName.Name = "Label_ProjectName";
+            this.Label_ProjectName.Size = new System.Drawing.Size(41, 12);
+            this.Label_ProjectName.TabIndex = 0;
+            this.Label_ProjectName.Text = "名称：";
             // 
-            // label_ProjectLocation
+            // Label_ProjectLocation
             // 
-            this.label_ProjectLocation.AutoSize = true;
-            this.label_ProjectLocation.Location = new System.Drawing.Point(15, 59);
-            this.label_ProjectLocation.Name = "label_ProjectLocation";
-            this.label_ProjectLocation.Size = new System.Drawing.Size(41, 12);
-            this.label_ProjectLocation.TabIndex = 1;
-            this.label_ProjectLocation.Text = "路径：";
+            this.Label_ProjectLocation.AutoSize = true;
+            this.Label_ProjectLocation.Location = new System.Drawing.Point(15, 59);
+            this.Label_ProjectLocation.Name = "Label_ProjectLocation";
+            this.Label_ProjectLocation.Size = new System.Drawing.Size(41, 12);
+            this.Label_ProjectLocation.TabIndex = 1;
+            this.Label_ProjectLocation.Text = "路径：";
             // 
-            // textBox_ProjectName
+            // TextBox_ProjectName
             // 
-            this.textBox_ProjectName.Location = new System.Drawing.Point(62, 20);
-            this.textBox_ProjectName.Name = "textBox_ProjectName";
-            this.textBox_ProjectName.Size = new System.Drawing.Size(433, 21);
-            this.textBox_ProjectName.TabIndex = 2;
-            this.textBox_ProjectName.Text = "新建工程";
+            this.TextBox_ProjectName.Location = new System.Drawing.Point(62, 20);
+            this.TextBox_ProjectName.Name = "TextBox_ProjectName";
+            this.TextBox_ProjectName.Size = new System.Drawing.Size(433, 21);
+            this.TextBox_ProjectName.TabIndex = 2;
+            this.TextBox_ProjectName.Text = "新建工程";
             // 
-            // textBox_ProjectLocation
+            // TextBox_ProjectLocation
             // 
-            this.textBox_ProjectLocation.Location = new System.Drawing.Point(62, 56);
-            this.textBox_ProjectLocation.Name = "textBox_ProjectLocation";
-            this.textBox_ProjectLocation.Size = new System.Drawing.Size(352, 21);
-            this.textBox_ProjectLocation.TabIndex = 3;
-            this.textBox_ProjectLocation.Text = "C:\\FView\\Projects\\";
+            this.TextBox_ProjectLocation.Location = new System.Drawing.Point(62, 56);
+            this.TextBox_ProjectLocation.Name = "TextBox_ProjectLocation";
+            this.TextBox_ProjectLocation.Size = new System.Drawing.Size(352, 21);
+            this.TextBox_ProjectLocation.TabIndex = 3;
             // 
-            // richTextBox_ProjectDescription
+            // RichTextBox_ProjectDescription
             // 
-            this.richTextBox_ProjectDescription.Location = new System.Drawing.Point(62, 92);
-            this.richTextBox_ProjectDescription.Name = "richTextBox_ProjectDescription";
-            this.richTextBox_ProjectDescription.Size = new System.Drawing.Size(433, 69);
-            this.richTextBox_ProjectDescription.TabIndex = 4;
-            this.richTextBox_ProjectDescription.Text = "";
+            this.RichTextBox_ProjectDescription.Location = new System.Drawing.Point(62, 92);
+            this.RichTextBox_ProjectDescription.Name = "RichTextBox_ProjectDescription";
+            this.RichTextBox_ProjectDescription.Size = new System.Drawing.Size(433, 69);
+            this.RichTextBox_ProjectDescription.TabIndex = 4;
+            this.RichTextBox_ProjectDescription.Text = "";
             // 
-            // button_OK
+            // Button_OK
             // 
-            this.button_OK.Location = new System.Drawing.Point(339, 178);
-            this.button_OK.Name = "button_OK";
-            this.button_OK.Size = new System.Drawing.Size(75, 23);
-            this.button_OK.TabIndex = 5;
-            this.button_OK.Text = "确定";
-            this.button_OK.UseVisualStyleBackColor = true;
-            this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
+            this.Button_OK.Location = new System.Drawing.Point(339, 178);
+            this.Button_OK.Name = "Button_OK";
+            this.Button_OK.Size = new System.Drawing.Size(75, 23);
+            this.Button_OK.TabIndex = 5;
+            this.Button_OK.Text = "确定";
+            this.Button_OK.UseVisualStyleBackColor = true;
+            this.Button_OK.Click += new System.EventHandler(this.Button_OK_Click);
             // 
-            // button_Cancel
+            // Button_Cancel
             // 
-            this.button_Cancel.Location = new System.Drawing.Point(420, 178);
-            this.button_Cancel.Name = "button_Cancel";
-            this.button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_Cancel.TabIndex = 6;
-            this.button_Cancel.Text = "取消";
-            this.button_Cancel.UseVisualStyleBackColor = true;
-            this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
+            this.Button_Cancel.Location = new System.Drawing.Point(420, 178);
+            this.Button_Cancel.Name = "Button_Cancel";
+            this.Button_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.Button_Cancel.TabIndex = 6;
+            this.Button_Cancel.Text = "取消";
+            this.Button_Cancel.UseVisualStyleBackColor = true;
+            this.Button_Cancel.Click += new System.EventHandler(this.Button_Cancel_Click);
             // 
-            // label_ProjectDescription
+            // Label_ProjectDescription
             // 
-            this.label_ProjectDescription.AutoSize = true;
-            this.label_ProjectDescription.Location = new System.Drawing.Point(15, 95);
-            this.label_ProjectDescription.Name = "label_ProjectDescription";
-            this.label_ProjectDescription.Size = new System.Drawing.Size(41, 12);
-            this.label_ProjectDescription.TabIndex = 7;
-            this.label_ProjectDescription.Text = "描述：";
+            this.Label_ProjectDescription.AutoSize = true;
+            this.Label_ProjectDescription.Location = new System.Drawing.Point(15, 95);
+            this.Label_ProjectDescription.Name = "Label_ProjectDescription";
+            this.Label_ProjectDescription.Size = new System.Drawing.Size(41, 12);
+            this.Label_ProjectDescription.TabIndex = 7;
+            this.Label_ProjectDescription.Text = "描述：";
             // 
-            // button_OpenFileDialog
+            // Button_OpenFileDialog
             // 
-            this.button_OpenFileDialog.Location = new System.Drawing.Point(420, 56);
-            this.button_OpenFileDialog.Name = "button_OpenFileDialog";
-            this.button_OpenFileDialog.Size = new System.Drawing.Size(75, 23);
-            this.button_OpenFileDialog.TabIndex = 8;
-            this.button_OpenFileDialog.Text = "浏览";
-            this.button_OpenFileDialog.UseVisualStyleBackColor = true;
-            this.button_OpenFileDialog.Click += new System.EventHandler(this.button_OpenFileDialog_Click);
+            this.Button_OpenFileDialog.Location = new System.Drawing.Point(420, 56);
+            this.Button_OpenFileDialog.Name = "Button_OpenFileDialog";
+            this.Button_OpenFileDialog.Size = new System.Drawing.Size(75, 23);
+            this.Button_OpenFileDialog.TabIndex = 8;
+            this.Button_OpenFileDialog.Text = "浏览";
+            this.Button_OpenFileDialog.UseVisualStyleBackColor = true;
+            this.Button_OpenFileDialog.Click += new System.EventHandler(this.Button_OpenFileDialog_Click);
             // 
             // NewProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 215);
-            this.Controls.Add(this.button_OpenFileDialog);
-            this.Controls.Add(this.label_ProjectDescription);
-            this.Controls.Add(this.button_Cancel);
-            this.Controls.Add(this.button_OK);
-            this.Controls.Add(this.richTextBox_ProjectDescription);
-            this.Controls.Add(this.textBox_ProjectLocation);
-            this.Controls.Add(this.textBox_ProjectName);
-            this.Controls.Add(this.label_ProjectLocation);
-            this.Controls.Add(this.label_ProjectName);
+            this.Controls.Add(this.Button_OpenFileDialog);
+            this.Controls.Add(this.Label_ProjectDescription);
+            this.Controls.Add(this.Button_Cancel);
+            this.Controls.Add(this.Button_OK);
+            this.Controls.Add(this.RichTextBox_ProjectDescription);
+            this.Controls.Add(this.TextBox_ProjectLocation);
+            this.Controls.Add(this.TextBox_ProjectName);
+            this.Controls.Add(this.Label_ProjectLocation);
+            this.Controls.Add(this.Label_ProjectName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "NewProject";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -147,15 +146,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label_ProjectName;
-        private System.Windows.Forms.Label label_ProjectLocation;
-        private System.Windows.Forms.TextBox textBox_ProjectName;
-        private System.Windows.Forms.TextBox textBox_ProjectLocation;
-        private System.Windows.Forms.RichTextBox richTextBox_ProjectDescription;
-        private System.Windows.Forms.Button button_OK;
-        private System.Windows.Forms.Button button_Cancel;
-        private System.Windows.Forms.Label label_ProjectDescription;
-        private System.Windows.Forms.Button button_OpenFileDialog;
+        private System.Windows.Forms.Label Label_ProjectName;
+        private System.Windows.Forms.Label Label_ProjectLocation;
+        private System.Windows.Forms.TextBox TextBox_ProjectName;
+        private System.Windows.Forms.TextBox TextBox_ProjectLocation;
+        private System.Windows.Forms.RichTextBox RichTextBox_ProjectDescription;
+        private System.Windows.Forms.Button Button_OK;
+        private System.Windows.Forms.Button Button_Cancel;
+        private System.Windows.Forms.Label Label_ProjectDescription;
+        private System.Windows.Forms.Button Button_OpenFileDialog;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
     }
 }
