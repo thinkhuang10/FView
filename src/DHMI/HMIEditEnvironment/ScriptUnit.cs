@@ -1655,7 +1655,7 @@ public partial class ScriptUnit : XtraForm
         }
     }
 
-    private void treeView2_MouseDoubleClick(object sender, MouseEventArgs e)
+    private void TreeView2_MouseDoubleClick(object sender, MouseEventArgs e)
     {
         TreeNode nodeAt = treeView2.GetNodeAt(e.Location);
         treeView2.SelectedNode = nodeAt;

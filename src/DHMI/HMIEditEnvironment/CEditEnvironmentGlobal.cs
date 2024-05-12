@@ -488,9 +488,9 @@ public class CEditEnvironmentGlobal
 
     public static MsgForm OutputMessage = new();
 
-    public static string path = "";
-
     public static string ProjectPath = "";
+
+    public static string HMIPath = "";
 
     public static bool OnMoveMode = false;
 
@@ -512,7 +512,7 @@ public class CEditEnvironmentGlobal
 
     public static bool NotEditValue = false;
 
-    public static string ProjectFile = "";
+    public static string ProjectHPFFilePath = "";
 
     public static int CompareByLayer(CShape x, CShape y)
     {

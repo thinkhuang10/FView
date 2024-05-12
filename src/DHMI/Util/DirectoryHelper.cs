@@ -8,7 +8,7 @@ namespace Util
     {
         public static DirectoryInfo GetProjectHMIDirectory()
         {
-            return new FileInfo(CEditEnvironmentGlobal.ProjectFile).Directory;
+            return new FileInfo(CEditEnvironmentGlobal.ProjectHPFFilePath).Directory;
         }
 
         public static DirectoryInfo GetHMIRunDirectory()

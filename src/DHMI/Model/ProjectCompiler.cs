@@ -23,7 +23,7 @@ namespace Model
             {
                 CEditEnvironmentGlobal.OutputMessage.Show();
 
-                if (string.IsNullOrEmpty(CEditEnvironmentGlobal.ProjectFile))
+                if (string.IsNullOrEmpty(CEditEnvironmentGlobal.ProjectHPFFilePath))
                 {
                     CEditEnvironmentGlobal.OutputMessage.Say("工程文件为空.");
                     return false;
@@ -161,7 +161,7 @@ namespace Model
                     item._sbsjlcLogic = Operation.ReplaceIO(item.sbsjlcLogic, CEditEnvironmentGlobal.ioitemroot, CEditEnvironmentGlobal.dhp.ProjectIOs, CEditEnvironmentGlobal.dhp.ParaIOs);
                     item._sbsjrcLogic = Operation.ReplaceIO(item.sbsjrcLogic, CEditEnvironmentGlobal.ioitemroot, CEditEnvironmentGlobal.dhp.ProjectIOs, CEditEnvironmentGlobal.dhp.ParaIOs);
                 }
-                Operation.BinarySaveFile(CEditEnvironmentGlobal.path + "\\" + df.name + ".hpg", df);
+                Operation.BinarySaveFile(CEditEnvironmentGlobal.HMIPath + "\\" + df.name + ".hpg", df);
                 dictionary.Add(df.name, df.name + ".hpg");
                 if (df.visable)
                 {
@@ -178,7 +178,7 @@ namespace Model
             CEditEnvironmentGlobal.dhp.devLogic = Operation.ReplaceIO(CEditEnvironmentGlobal.dhp.devjiaoben, CEditEnvironmentGlobal.ioitemroot, CEditEnvironmentGlobal.dhp.ProjectIOs, CEditEnvironmentGlobal.dhp.ParaIOs);
             CEditEnvironmentGlobal.dhp.DstGlobalLogic = Operation.ReplaceIO(CEditEnvironmentGlobal.dhp.SrcGlobalLogic, CEditEnvironmentGlobal.ioitemroot, CEditEnvironmentGlobal.dhp.ProjectIOs, CEditEnvironmentGlobal.dhp.ParaIOs);
             CEditEnvironmentGlobal.OutputMessage.Say("完成替换脚本变量.");
-            string projectfile = CEditEnvironmentGlobal.ProjectFile;
+            string projectfile = CEditEnvironmentGlobal.ProjectHPFFilePath;
             //CEditEnvironmentGlobal.dhp.PageGroup = treeView_工程导航.Nodes[0].Nodes[0].Tag as HmiPageGroup;
             CEditEnvironmentGlobal.dhp.pages = dictionary;
             CEditEnvironmentGlobal.dhp.startVisiblePages = list;
@@ -292,7 +292,7 @@ namespace Model
         {
             CEditEnvironmentGlobal.OutputMessage.Say("进入编译过程.");
 
-            var compiler = new Compiler(CEditEnvironmentGlobal.ProjectFile, PathHelper.GetLogicCodePath(), 
+            var compiler = new Compiler(CEditEnvironmentGlobal.ProjectHPFFilePath, PathHelper.GetLogicCodePath(), 
                 PathHelper.GetOutputPath(), CEditEnvironmentGlobal.dhp, CEditEnvironmentGlobal.dfs);
             
             CEditEnvironmentGlobal.OutputMessage.Say("生成用户逻辑代码.");

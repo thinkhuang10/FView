@@ -10,7 +10,7 @@ internal class CForDCCEControl
     {
         if (controlname == "ProjectPath")
         {
-            return CEditEnvironmentGlobal.path;
+            return CEditEnvironmentGlobal.HMIPath;
         }
         if (controlname == "PageNames")
         {

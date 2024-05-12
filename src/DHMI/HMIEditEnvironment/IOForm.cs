@@ -307,7 +307,7 @@ public class IOForm : XtraForm
             dataTable.Columns.Add("类型");
             XmlNode xmlNode = tpdoc.SelectSingleNode("/DocumentRoot/DevInfo[@Name='" + e.Node.Text + "']");
             string value = xmlNode.Attributes["Path"].Value;
-            FileInfo fileInfo = new(CEditEnvironmentGlobal.path + "\\" + CEditEnvironmentGlobal.dhp.DTPfiles);
+            FileInfo fileInfo = new(CEditEnvironmentGlobal.HMIPath + "\\" + CEditEnvironmentGlobal.dhp.DTPfiles);
             if (File.Exists(fileInfo.DirectoryName + "\\" + value))
             {
                 XmlDocument xmlDocument = new();
@@ -888,7 +888,7 @@ public class IOForm : XtraForm
 
     private void 导入变量ToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        if (CEditEnvironmentGlobal.path == "")
+        if (CEditEnvironmentGlobal.HMIPath == "")
         {
             return;
         }
@@ -900,7 +900,7 @@ public class IOForm : XtraForm
                 FileInfo fileInfo = new(opfdlg.FileName);
                 if (fileInfo.Extension == ".dhp")
                 {
-                    Environment.CurrentDirectory = CEditEnvironmentGlobal.path;
+                    Environment.CurrentDirectory = CEditEnvironmentGlobal.HMIPath;
                     HMIProjectFile hMIProjectFile = new();
                     hMIProjectFile = Operation.BinaryLoadProject(opfdlg.FileName);
                     foreach (ProjectIO projectIO2 in hMIProjectFile.ProjectIOs)
@@ -981,7 +981,7 @@ public class IOForm : XtraForm
 
     private void 导出内部变量ToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        if (!(CEditEnvironmentGlobal.path == ""))
+        if (!(CEditEnvironmentGlobal.HMIPath == ""))
         {
             svfdlg.Filter = "变量导出文件(*.vxp)|*.vxp";
             if (svfdlg.ShowDialog() == DialogResult.OK)
@@ -1032,7 +1032,7 @@ public class IOForm : XtraForm
 
     private void 导出内部变量ToolStripMenuItem1_Click(object sender, EventArgs e)
     {
-        if (CEditEnvironmentGlobal.path == "" || ((DataTable)dataGridView1.DataSource).Columns.Count != 11)
+        if (CEditEnvironmentGlobal.HMIPath == "" || ((DataTable)dataGridView1.DataSource).Columns.Count != 11)
         {
             return;
         }

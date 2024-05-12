@@ -60,9 +60,9 @@ public class setForm : Form
     {
         textBox9.Text = dhp.ProjectSize.Width.ToString();
         textBox10.Text = dhp.ProjectSize.Height.ToString();
-        textBox1.Text = dhp.projectname;
-        textBox2.Text = dhp.creattime.ToString();
-        tbVarRefreshTime.Text = dhp.refreshtime.ToString();
+        textBox1.Text = dhp.ProjectName;
+        textBox2.Text = dhp.CreatTime.ToString();
+        tbVarRefreshTime.Text = dhp.RefreshTime.ToString();
         tbSleepTime.Text = dhp.gDXP_SleepTime ?? "0";
         textBox4.Text = dhp.port;
         tbPageRefreshTime.Text = ((dhp.InvalidateTime.ToString() == "0") ? "100" : dhp.InvalidateTime.ToString());
@@ -118,9 +118,9 @@ public class setForm : Form
             dhp.gDXP_SleepTime = tbSleepTime.Text.ToString().Replace(" ", "");
             dhp.ProjectSize.Width = Convert.ToInt32(textBox9.Text);
             dhp.ProjectSize.Height = Convert.ToInt32(textBox10.Text);
-            dhp.projectname = textBox1.Text;
-            dhp.creattime = Convert.ToDateTime(textBox2.Text);
-            dhp.refreshtime = Convert.ToInt32(tbVarRefreshTime.Text);
+            dhp.ProjectName = textBox1.Text;
+            dhp.CreatTime = Convert.ToDateTime(textBox2.Text);
+            dhp.RefreshTime = Convert.ToInt32(tbVarRefreshTime.Text);
             dhp.port = textBox4.Text;
             dhp.InvalidateTime = Convert.ToInt32(tbPageRefreshTime.Text);
             dhp.Compress = checkBox4.Checked;

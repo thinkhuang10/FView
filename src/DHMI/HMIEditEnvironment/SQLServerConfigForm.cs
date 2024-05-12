@@ -43,7 +43,7 @@ public class SQLServerConfigForm : Form
 
     private void SQLServerConfigForm_Load(object sender, EventArgs e)
     {
-        strPath = CEditEnvironmentGlobal.path + "\\DBConnectionInfo.cfg";
+        strPath = CEditEnvironmentGlobal.HMIPath + "\\DBConnectionInfo.cfg";
         if (!File.Exists(strPath))
         {
             XmlElement xmlElement = xmlDoc.CreateElement("DocumentRoot");

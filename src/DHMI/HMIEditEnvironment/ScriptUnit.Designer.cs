@@ -549,7 +549,7 @@ namespace HMIEditEnvironment
             this.treeView2.Size = new System.Drawing.Size(199, 497);
             this.treeView2.TabIndex = 8;
             this.treeView2.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView2_AfterSelect);
-            this.treeView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.treeView2_MouseDoubleClick);
+            this.treeView2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TreeView2_MouseDoubleClick);
             // 
             // splitterControl2
             // 

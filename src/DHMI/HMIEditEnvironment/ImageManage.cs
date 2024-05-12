@@ -44,11 +44,11 @@ public class ImageManage : Form
 
     private void ImageManage_Load(object sender, EventArgs e)
     {
-        if (!Directory.Exists(CEditEnvironmentGlobal.path + "\\Resources"))
+        if (!Directory.Exists(CEditEnvironmentGlobal.HMIPath + "\\Resources"))
         {
-            Directory.CreateDirectory(CEditEnvironmentGlobal.path + "\\Resources");
+            Directory.CreateDirectory(CEditEnvironmentGlobal.HMIPath + "\\Resources");
         }
-        List<string> list = new(Directory.GetFiles(CEditEnvironmentGlobal.path + "\\Resources"));
+        List<string> list = new(Directory.GetFiles(CEditEnvironmentGlobal.HMIPath + "\\Resources"));
         List<string> list2 = new()
         {
             ".GIF",
@@ -111,7 +111,7 @@ public class ImageManage : Form
             {
                 FileInfo fileInfo = new(fileName);
                 string text = Guid.NewGuid().ToString() + fileInfo.Extension;
-                fileInfo.CopyTo(CEditEnvironmentGlobal.path + "\\Resources\\" + text);
+                fileInfo.CopyTo(CEditEnvironmentGlobal.HMIPath + "\\Resources\\" + text);
                 ListViewItem listViewItem = new()
                 {
                     Tag = text
@@ -130,7 +130,7 @@ public class ImageManage : Form
         {
             if (selectLvi != null && selectLvi.Tag != null && MessageBox.Show("确定删除吗？", "确认删除？", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                File.Delete(CEditEnvironmentGlobal.path + "\\Resources\\" + selectLvi.Tag.ToString());
+                File.Delete(CEditEnvironmentGlobal.HMIPath + "\\Resources\\" + selectLvi.Tag.ToString());
                 myCache.Remove(selectLvi);
                 listView1.VirtualListSize--;
                 selectLvi = null;

@@ -95,11 +95,11 @@ public class HMIProjectFile
 
     public string password = "123";
 
-    public string projectname = "NewProject";
+    public string ProjectName = "NewProject";
 
-    public DateTime creattime = DateTime.Now;
+    public DateTime CreatTime = DateTime.Now;
 
-    public int refreshtime = 50;
+    public int RefreshTime = 50;
 
     public string IOfiles = "..\\变量表.var";
 

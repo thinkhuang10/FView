@@ -56,6 +56,11 @@ public partial class MDIParent1 : XtraForm
 
     private ProjectPathSaveHandler projectPathSave;
 
+    public MDIParent1()
+    {
+        InitializeComponent();
+    }
+
     private void Panel_横向标尺_Paint(object sender, PaintEventArgs e)
     {
         Graphics graphics = e.Graphics;
@@ -124,9 +129,10 @@ public partial class MDIParent1 : XtraForm
     {
         if (menubarCheckItem_工具栏.Checked)
         {
-            ReloadBarLayout();
+            LoadBarLayout();
             return;
         }
+
         SaveBarLayout();
         foreach (var bar in barManager1.Bars.Cast<Bar>())
         {
@@ -375,7 +381,7 @@ public partial class MDIParent1 : XtraForm
     {
         BarButtonItem_Debug.ItemClick -= BarButtonItem_Debug_ItemClick;
 
-        if (CEditEnvironmentGlobal.path != null && !(CEditEnvironmentGlobal.path == ""))
+        if (CEditEnvironmentGlobal.HMIPath != null && !(CEditEnvironmentGlobal.HMIPath == ""))
         {
             string key = CEditEnvironmentGlobal.dhp.key;
             CEditEnvironmentGlobal.dhp.key = "";
@@ -543,9 +549,9 @@ public partial class MDIParent1 : XtraForm
                 CEditEnvironmentGlobal.dhp.dirtyPageAdd(df.name);
             }
         }
-        catch
+        catch(Exception ex)
         {
-            MessageBox.Show("更新变量表出现异常！", "提示");
+            LogUtil.Error("文件系统监视变化处理出现异常:" + ex);
         }
     }
 
@@ -561,16 +567,16 @@ public partial class MDIParent1 : XtraForm
 
     public void BarButtonItem_保存工程_ItemClick(object sender, ItemClickEventArgs e)
     {
-        if (CEditEnvironmentGlobal.path == "" || CEditEnvironmentGlobal.ProjectFile == "")
+        if (CEditEnvironmentGlobal.HMIPath == "" || CEditEnvironmentGlobal.ProjectHPFFilePath == "")
             return;
 
         SizeHelper.SetProjectRunSize();
-        var projectfile = CEditEnvironmentGlobal.ProjectFile;
+        var projectfile = CEditEnvironmentGlobal.ProjectHPFFilePath;
         var dictionary = new Dictionary<string, string>();
         List<string> list = new();
         foreach (DataFile df in CEditEnvironmentGlobal.dfs)
         {
-            Operation.BinarySaveFile(CEditEnvironmentGlobal.path + "\\" + df.name + ".hpg", df);
+            Operation.BinarySaveFile(CEditEnvironmentGlobal.HMIPath + "\\" + df.name + ".hpg", df);
             try
             {
                 dictionary.Add(df.name, df.name + ".hpg");
@@ -1225,7 +1231,7 @@ public partial class MDIParent1 : XtraForm
 
     private void MDIParent1_FormClosing(object sender, FormClosingEventArgs e)
     {
-        if (CEditEnvironmentGlobal.path != "")
+        if (CEditEnvironmentGlobal.HMIPath != "")
         {
             switch (MessageBox.Show("HMI将关闭,是否将更改保存到工程中?", "警告", MessageBoxButtons.YesNoCancel))
             {
@@ -2106,12 +2112,34 @@ public partial class MDIParent1 : XtraForm
         }
     }
 
-    public void InitNavigation()
+    private void InitDockerLayout()
+    {
+        dockPanel_事件.Visibility = DockVisibility.Hidden;
+        menubarCheckItem_事件.Visibility = BarItemVisibility.Never;
+        dockPanel_动画.Visibility = DockVisibility.Hidden;
+        menubarCheckItem_动画.Visibility = BarItemVisibility.Never;
+        dockPanel_导航栏.Visibility = DockVisibility.Visible;
+        menubarCheckItem_导航栏.Visibility = BarItemVisibility.Always;
+        barSubItem_主菜单_脚本.Visibility = BarItemVisibility.Always;
+        menubarCheckItem_精灵控件.Visibility = BarItemVisibility.Always;
+        toolbarButtonItem_精灵控件.Visibility = BarItemVisibility.Always;
+        dockPanel_精灵控件.Visibility = DockVisibility.AutoHide;
+        menubarCheckItem_DCCE工控组件.Visibility = BarItemVisibility.Always;
+        toolbarButtonItem_DCCE工控组件.Visibility = BarItemVisibility.Always;
+        dockPanel_DCCE工控组件.Visibility = DockVisibility.AutoHide;
+        menubarCheckItem_ActiveX控件.Visibility = BarItemVisibility.Always;
+        toolbarButtonItem_ActiveX控件.Visibility = BarItemVisibility.Always;
+        dockPanel_ActiveX控件.Visibility = DockVisibility.AutoHide;
+        barButtonItem_Polygon.Visibility = BarItemVisibility.Always;
+        barButtonItem_RoundedRectangle.Visibility = BarItemVisibility.Always;
+    }
+
+    private void InitNavigation()
     {
         try
         {
             //initForm.say("正在初始化工程导航栏");
-            treeView_工程导航.Nodes[0].Text = "工程(" + CEditEnvironmentGlobal.dhp.projectname + ")";
+            treeView_工程导航.Nodes[0].Text = "工程(" + CEditEnvironmentGlobal.dhp.ProjectName + ")";
             treeView_工程导航.ExpandAll();
         }
         catch
@@ -2941,66 +2969,6 @@ public partial class MDIParent1 : XtraForm
         });
     }
 
-    public bool OpenProjectByHPF(string HpfFile)
-    {
-        if (File.Exists(HpfFile))
-        {
-            FileInfo fileInfo = new(HpfFile);
-            Environment.CurrentDirectory = fileInfo.DirectoryName;
-            CEditEnvironmentGlobal.path = fileInfo.DirectoryName;
-            DHMIImageManage.projectpath = fileInfo.DirectoryName;
-            string databasepwd = CEditEnvironmentGlobal.dhp.databasepwd;
-            string projectname = CEditEnvironmentGlobal.dhp.projectname;
-            CEditEnvironmentGlobal.dhp = Operation.BinaryLoadProject(HpfFile);
-            CEditEnvironmentGlobal.dhp.projectname = projectname;
-            CEditEnvironmentGlobal.dhp.databasepwd = databasepwd;
-            HmiPageGroup hmiPageGroup = Operation.LoadProjectGroups(HpfFile);
-            BuildPageGroupTreeView(hmiPageGroup);
-            foreach (string value in CEditEnvironmentGlobal.dhp.pages.Values)
-            {
-                try
-                {
-                    //initForm.say("加载页面" + value + ".");
-                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + value + ".");
-                    DataFile dataFile = Operation.BinaryLoadFile(value);
-                    SetCPixieControlEvent(dataFile);
-                    CEditEnvironmentGlobal.dfs.Add(dataFile);
-                    if (hmiPageGroup == null)
-                    {
-                        AddPageToTreeView(dataFile.name, dataFile.pageName);
-                    }
-                    //initForm.say("加载页面" + value + "成功.");
-                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + value + "成功.");
-                    Refresh();
-                }
-                catch (Exception ex)
-                {
-                    //initForm.say("加载页面" + value + "失败.");
-                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + value + "失败.");
-                    CEditEnvironmentGlobal.OutputMessage.Say("失败原因：" + ex.ToString());
-                    return false;
-                }
-            }
-            if (CEditEnvironmentGlobal.dhp.dirtyPage == null)
-            {
-                CEditEnvironmentGlobal.dhp.dirtyPage = new List<string>();
-                foreach (DataFile df in CEditEnvironmentGlobal.dfs)
-                {
-                    CEditEnvironmentGlobal.dhp.dirtyPageAdd(df.name);
-                }
-            }
-            treeView_工程导航.ExpandAll();
-        }
-        else
-        {
-            FileInfo fileInfo2 = new(HpfFile);
-            Environment.CurrentDirectory = fileInfo2.DirectoryName;
-            CEditEnvironmentGlobal.path = fileInfo2.DirectoryName;
-            DHMIImageManage.projectpath = fileInfo2.DirectoryName;
-        }
-        return true;
-    }
-
     private static void SetCPixieControlEvent(DataFile df)
     {
         foreach (CShape item in df.ListAllShowCShape)
@@ -3579,91 +3547,12 @@ public partial class MDIParent1 : XtraForm
         treeView_工程导航.SelectedNode = srcNode;
     }
 
-    private void LoadProjectFromDSL(FileInfo dslProjectFile)
-    {
-        try
-        {
-            CEditEnvironmentGlobal.OutputMessage.Say("开始载入工程.");
-
-            EnableAllControl(true);
-            childFormNumber = (pageGroupNumber = 0);
-            OpenProjectFromDSL(dslProjectFile.FullName);
-            if (!OpenProjectByHPF(CEditEnvironmentGlobal.ProjectFile))
-                return;
-
-            CheckIOExists.IOTableOld = true;
-
-            CEditEnvironmentGlobal.OutputMessage.Say("成功载入工程.");
-        }
-        catch (Exception ex)
-        {
-            CEditEnvironmentGlobal.OutputMessage.Say("加载工程失败.");
-            CEditEnvironmentGlobal.OutputMessage.Say("原因:" + ex.Message);
-        }
-
-        if (0 == CEditEnvironmentGlobal.dfs.Count)
-        {
-            CreateNewPage();
-        }
-    }
-
     private void EnableAllControl(bool enabled)
     {
         foreach (Control control in base.Controls)
         {
             control.Enabled = enabled;
         }
-    }
-
-    public void OpenProjectFromDSL(string dslFile)
-    {
-        FileInfo fileInfo = new(dslFile);
-        fileSystemWatcher1.Path = fileInfo.DirectoryName;
-        Directory.CreateDirectory(fileInfo.DirectoryName + "\\hmi");
-        Environment.CurrentDirectory = fileInfo.DirectoryName + "\\hmi";
-        Environment.SetEnvironmentVariable("HMIProjectPath", fileInfo.DirectoryName + "\\hmi\\");
-        try
-        {
-            string[] array = fileInfo.Name.Split('.');
-            CEditEnvironmentGlobal.dhp.projectname = fileInfo.Name.Remove(fileInfo.Name.Length - array[array.Length - 1].Length - ((array.Length != 1) ? 1 : 0));
-        }
-        catch
-        {
-            MessageBox.Show("获取工程名称出现异常！", "提示");
-        }
-
-        CEditEnvironmentGlobal.dhp.creattime = DateTime.Now;
-        CEditEnvironmentGlobal.ProjectFile = fileInfo.DirectoryName + "\\hmi\\HMI.dhp";
-        treeView_工程导航.Nodes[0].Nodes.RemoveByKey("Page");
-
-        treeView_工程导航.Nodes[0].Text = "本地工程(" + CEditEnvironmentGlobal.dhp.projectname + ")";
-        TreeNode treeNode2 = treeView_工程导航.Nodes[0].Nodes.Insert(0, "Page", $"{ConstantHelper.SoftwareName}页面", "NativeApp.png", "NativeApp.png");
-        treeNode2.ContextMenuStrip = contextMenuStrip_本地页面根节点;
-        treeNode2.Tag = new HmiPageGroup
-        {
-            Name = treeNode2.Name,
-            Text = treeNode2.Text,
-            Parent = null
-        };
-
-        dockPanel_事件.Visibility = DockVisibility.Hidden;
-        menubarCheckItem_事件.Visibility = BarItemVisibility.Never;
-        dockPanel_动画.Visibility = DockVisibility.Hidden;
-        menubarCheckItem_动画.Visibility = BarItemVisibility.Never;
-        dockPanel_导航栏.Visibility = DockVisibility.Visible;
-        menubarCheckItem_导航栏.Visibility = BarItemVisibility.Always;
-        barSubItem_主菜单_脚本.Visibility = BarItemVisibility.Always;
-        menubarCheckItem_精灵控件.Visibility = BarItemVisibility.Always;
-        toolbarButtonItem_精灵控件.Visibility = BarItemVisibility.Always;
-        dockPanel_精灵控件.Visibility = DockVisibility.AutoHide;
-        menubarCheckItem_DCCE工控组件.Visibility = BarItemVisibility.Always;
-        toolbarButtonItem_DCCE工控组件.Visibility = BarItemVisibility.Always;
-        dockPanel_DCCE工控组件.Visibility = DockVisibility.AutoHide;
-        menubarCheckItem_ActiveX控件.Visibility = BarItemVisibility.Always;
-        toolbarButtonItem_ActiveX控件.Visibility = BarItemVisibility.Always;
-        dockPanel_ActiveX控件.Visibility = DockVisibility.AutoHide;
-        barButtonItem_Polygon.Visibility = BarItemVisibility.Always;
-        barButtonItem_RoundedRectangle.Visibility = BarItemVisibility.Always;
     }
 
     private void MDIParent1_Load(object sender, EventArgs e)
@@ -3694,7 +3583,7 @@ public partial class MDIParent1 : XtraForm
         var path = (e.Item as BarListItem).Strings[e.Index];
         if (File.Exists(path))
         {
-            EnableProject(path);
+            OpenProject(path);
         }
         else
         {
@@ -3775,87 +3664,139 @@ public partial class MDIParent1 : XtraForm
         if (DialogResult.OK != result)
             return;
 
-        EnableProject(newProject.ProjeceFilePath);
+        OpenProject(newProject.ProjeceFilePath);
     }
 
     private void BarButtonItem_OpenProject_ItemClick(object sender, ItemClickEventArgs e)
     {
         openFileDialog_OpenProject.Filter = $"工程文件|*{ConstantHelper.ProjectSuffixName}";
+        openFileDialog_OpenProject.InitialDirectory = PathHelper.GetDefaultProjectPath();
         if (DialogResult.OK != openFileDialog_OpenProject.ShowDialog())
             return;
 
-        EnableProject(openFileDialog_OpenProject.FileName);
+        OpenProject(openFileDialog_OpenProject.FileName);
     }
 
-    private void EnableProject(string projeceFilePath)
+    private void OpenProject(string projeceFilePath)
     {
         EnableAllControl(true);
         EnableControls();
         InitPictureAndVar();
         InitScript();
         InitDockAnimation();
+        InitDockerLayout();
         InitNavigation();
         InitLibraryControl();
         InitEvent();
         InitTheglobal();
         InitAnimationConnect();
         InitVarBrowserShow();
-
         projectPathSave.AddRecentFile(projeceFilePath);
-        CEditEnvironmentGlobal.ProjectPath = projeceFilePath.Substring(0, projeceFilePath.LastIndexOf("\\"));
-
-        var fileInfo = new FileInfo(projeceFilePath);
-        if (CEditEnvironmentGlobal.path != "" || CEditEnvironmentGlobal.dfs.Count != 0)
-        {
-            if (CEditEnvironmentGlobal.path != fileInfo.DirectoryName + "\\hmi")
-            {
-                ReloadProjectFromDSL(fileInfo);
-            }
-        }
-        else
-        {
-            LoadProjectFromDSL(fileInfo);
-        }
+        LoadProject(projeceFilePath);
     }
 
-    private void ReloadProjectFromDSL(FileInfo dslProjectFile)
+    private void LoadProject(string projeceFilePath)
     {
         try
         {
-            SaveBarLayout();
-            childFormNumber = (pageGroupNumber = 0);
-            CEditEnvironmentGlobal.dfs.Clear();
-            fileSystemWatcher1.Filter = "noenfaw5325dsfseonoeonfowenfsjfkljsadlk";
-            CEditEnvironmentGlobal.dhp = new HMIProjectFile();
-            CEditEnvironmentGlobal.ProjectFile = "";
-            页面组_关闭所有();
-            OpenProjectFromDSL(dslProjectFile.FullName);
-            OpenProjectByHPF(CEditEnvironmentGlobal.ProjectFile);
+            var fileInfo = new FileInfo(projeceFilePath);
+            if (CEditEnvironmentGlobal.ProjectPath == fileInfo.DirectoryName)
+                return;
+
+            if (!string.IsNullOrEmpty(CEditEnvironmentGlobal.ProjectPath))
+            {
+                CEditEnvironmentGlobal.dfs.Clear();
+                CEditEnvironmentGlobal.dhp = new HMIProjectFile();
+                CEditEnvironmentGlobal.ProjectHPFFilePath = "";
+                页面组_关闭所有();
+            }
+
+            CEditEnvironmentGlobal.ProjectPath = fileInfo.DirectoryName;
+            CEditEnvironmentGlobal.HMIPath = fileInfo.DirectoryName + "\\hmi";
+            CEditEnvironmentGlobal.ProjectHPFFilePath = CEditEnvironmentGlobal.HMIPath + "\\HMI.dhp";
+            DHMIImageManage.projectpath = CEditEnvironmentGlobal.HMIPath;
+            fileSystemWatcher1.Path = fileInfo.DirectoryName;
+
+            CEditEnvironmentGlobal.dhp.ProjectName = Path.GetFileNameWithoutExtension(fileInfo.Name);
+            CEditEnvironmentGlobal.dhp.CreatTime = DateTime.Now;
+
+            CEditEnvironmentGlobal.OutputMessage.Say("开始载入工程.");
+
+            LoadHMI();
+
             CheckIOExists.IOTableOld = true;
             CEditEnvironmentGlobal.OutputMessage.Say("成功载入工程.");
-            ReloadBarLayout();
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex.Message);
             CEditEnvironmentGlobal.OutputMessage.Say("加载工程失败.");
             CEditEnvironmentGlobal.OutputMessage.Say("原因:" + ex.Message);
         }
-        if (CEditEnvironmentGlobal.dfs.Count == 0)
+    }
+
+    private void LoadHMI()
+    {
+        Directory.CreateDirectory(CEditEnvironmentGlobal.HMIPath);
+        
+        EnableAllControl(true);
+        childFormNumber = (pageGroupNumber = 0);
+
+        treeView_工程导航.Nodes[0].Nodes.RemoveByKey("Page");
+
+        treeView_工程导航.Nodes[0].Text = "本地工程(" + CEditEnvironmentGlobal.dhp.ProjectName + ")";
+        TreeNode treeNode2 = treeView_工程导航.Nodes[0].Nodes.Insert(0, "Page", $"{ConstantHelper.SoftwareName}页面", "NativeApp.png", "NativeApp.png");
+        treeNode2.ContextMenuStrip = contextMenuStrip_本地页面根节点;
+        treeNode2.Tag = new HmiPageGroup
+        {
+            Name = treeNode2.Name,
+            Text = treeNode2.Text,
+            Parent = null
+        };
+
+        if (File.Exists(CEditEnvironmentGlobal.ProjectHPFFilePath))
+        {
+            CEditEnvironmentGlobal.dhp = Operation.BinaryLoadProject(CEditEnvironmentGlobal.ProjectHPFFilePath);
+            HmiPageGroup hmiPageGroup = Operation.LoadProjectGroups(CEditEnvironmentGlobal.ProjectHPFFilePath);
+            BuildPageGroupTreeView(hmiPageGroup);
+            foreach (string value in CEditEnvironmentGlobal.dhp.pages.Values)
+            {
+                try
+                {
+                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + value + ".");
+                    DataFile dataFile = Operation.BinaryLoadFile(value);
+                    SetCPixieControlEvent(dataFile);
+                    CEditEnvironmentGlobal.dfs.Add(dataFile);
+                    if (hmiPageGroup == null)
+                    {
+                        AddPageToTreeView(dataFile.name, dataFile.pageName);
+                    }
+                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + value + "成功.");
+                    Refresh();
+                }
+                catch (Exception ex)
+                {
+                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + value + "失败.");
+                    CEditEnvironmentGlobal.OutputMessage.Say("失败原因:" + ex.ToString());
+                    LogUtil.Error("失败原因:" + ex);
+                }
+            }
+            if (CEditEnvironmentGlobal.dhp.dirtyPage == null)
+            {
+                CEditEnvironmentGlobal.dhp.dirtyPage = new List<string>();
+                foreach (DataFile df in CEditEnvironmentGlobal.dfs)
+                {
+                    CEditEnvironmentGlobal.dhp.dirtyPageAdd(df.name);
+                }
+            }
+            treeView_工程导航.ExpandAll();
+        }
+
+        if (0 == CEditEnvironmentGlobal.dfs.Count)
         {
             CreateNewPage();
         }
     }
 
-    public MDIParent1()
-    {
-        InitializeComponent();
-    }
-
-    private void ReloadBarLayout()
-    {
-        LoadBarLayout();
-    }
 
     private void SaveBarLayout()
     {
@@ -3870,7 +3811,7 @@ public partial class MDIParent1 : XtraForm
             return;
         }
         CEditEnvironmentGlobal.childform = base.ActiveMdiChild as ChildForm;
-        string text = CEditEnvironmentGlobal.path + "\\" + CEditEnvironmentGlobal.childform.theglobal.df.name + ".hpg";
+        string text = CEditEnvironmentGlobal.HMIPath + "\\" + CEditEnvironmentGlobal.childform.theglobal.df.name + ".hpg";
         try
         {
             Operation.BinarySaveFile(text, CEditEnvironmentGlobal.childform.theglobal.df);

@@ -36,7 +36,7 @@ public class MySQLConfigForm : Form
 
     private void MySQLConfigForm_Load(object sender, EventArgs e)
     {
-        strPath = CEditEnvironmentGlobal.path + "\\DBConnectionInfo.cfg";
+        strPath = CEditEnvironmentGlobal.HMIPath + "\\DBConnectionInfo.cfg";
         xmlDoc.Load(strPath);
         pXmlNode = xmlDoc.SelectSingleNode("DocumentRoot");
         XmlNode xmlNode = pXmlNode.SelectSingleNode("MySQL_Server");

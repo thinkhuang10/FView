@@ -531,7 +531,7 @@
             <property name="IsGalleryToolbarItemLink">false</property>
             <property name="GalleryBarItemName" />
             <property name="ItemId">282</property>
-            <property name="ClickCount">21</property>
+            <property name="ClickCount">20</property>
             <property name="UserWidth">0</property>
             <property name="UserEditWidth">0</property>
             <property name="UserCaption" />
@@ -558,7 +558,7 @@
             <property name="IsGalleryToolbarItemLink">false</property>
             <property name="GalleryBarItemName" />
             <property name="ItemId">283</property>
-            <property name="ClickCount">20</property>
+            <property name="ClickCount">21</property>
             <property name="UserWidth">0</property>
             <property name="UserEditWidth">0</property>
             <property name="UserCaption" />
@@ -2244,7 +2244,7 @@
             <property name="IsGalleryToolbarItemLink">false</property>
             <property name="GalleryBarItemName" />
             <property name="ItemId">291</property>
-            <property name="ClickCount">21</property>
+            <property name="ClickCount">22</property>
             <property name="UserWidth">0</property>
             <property name="UserEditWidth">0</property>
             <property name="UserCaption" />
@@ -2318,7 +2318,7 @@
             <property name="IsGalleryToolbarItemLink">false</property>
             <property name="GalleryBarItemName" />
             <property name="ItemId">116</property>
-            <property name="ClickCount">0</property>
+            <property name="ClickCount">1</property>
             <property name="UserWidth">0</property>
             <property name="UserEditWidth">0</property>
             <property name="UserCaption" />
@@ -2326,7 +2326,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">1</property>
+            <property name="RecentIndex">0</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">true</property>
@@ -2399,7 +2399,7 @@
             <property name="IsGalleryToolbarItemLink">false</property>
             <property name="GalleryBarItemName" />
             <property name="ItemId">118</property>
-            <property name="ClickCount">109</property>
+            <property name="ClickCount">110</property>
             <property name="UserWidth">0</property>
             <property name="UserEditWidth">0</property>
             <property name="UserCaption" />
@@ -2407,7 +2407,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">4</property>
+            <property name="RecentIndex">0</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">false</property>
@@ -2434,7 +2434,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">5</property>
+            <property name="RecentIndex">4</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">true</property>
@@ -2461,7 +2461,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">6</property>
+            <property name="RecentIndex">5</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">false</property>
@@ -2488,7 +2488,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">7</property>
+            <property name="RecentIndex">6</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">true</property>
@@ -2515,7 +2515,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">8</property>
+            <property name="RecentIndex">7</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">false</property>
@@ -2542,7 +2542,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">9</property>
+            <property name="RecentIndex">8</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">false</property>
@@ -2569,7 +2569,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">10</property>
+            <property name="RecentIndex">9</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">false</property>
@@ -2596,7 +2596,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">11</property>
+            <property name="RecentIndex">10</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">true</property>
@@ -2623,7 +2623,7 @@
             <property name="UserAlignment">Default</property>
             <property name="UserPaintStyle">Standard</property>
             <property name="Width">0</property>
-            <property name="RecentIndex">0</property>
+            <property name="RecentIndex">11</property>
             <property name="Visible">true</property>
             <property name="MostRecentlyUsed">true</property>
             <property name="BeginGroup">true</property>
@@ -2672,7 +2672,7 @@
             <property name="IsGalleryToolbarItemLink">false</property>
             <property name="GalleryBarItemName" />
             <property name="ItemId">2</property>
-            <property name="ClickCount">236</property>
+            <property name="ClickCount">250</property>
             <property name="UserWidth">0</property>
             <property name="UserEditWidth">0</property>
             <property name="UserCaption" />
@@ -3979,7 +3979,7 @@
         <property name="ID">c138eeb8-e571-4153-be56-36563be3e8a7</property>
         <property name="XtraID">0</property>
         <property name="XtraActiveChildID">5</property>
-        <property name="XtraBounds">@1,X=0@2,Y=75@3,Width=234@3,Height=925</property>
+        <property name="XtraBounds">@1,X=0@2,Y=75@3,Width=234@3,Height=613</property>
         <property name="OriginalSize">@3,Width=234@3,Height=486</property>
         <property name="XtraZIndex">5</property>
         <property name="SavedDock">Float</property>
@@ -4031,7 +4031,7 @@
         <property name="ID">431ea039-70bb-4a98-9b08-c84c31e1f79e</property>
         <property name="XtraID">1</property>
         <property name="XtraActiveChildID">-1</property>
-        <property name="XtraBounds">@3,X=234@3,Y=729@4,Width=1459@3,Height=271</property>
+        <property name="XtraBounds">@3,X=234@3,Y=417@3,Width=905@3,Height=271</property>
         <property name="OriginalSize">@3,Width=791@3,Height=271</property>
         <property name="XtraZIndex">4</property>
         <property name="SavedDock">Float</property>
@@ -4083,7 +4083,7 @@
         <property name="ID">00206914-4add-4981-9486-087c4939f841</property>
         <property name="XtraID">2</property>
         <property name="XtraActiveChildID">-1</property>
-        <property name="XtraBounds">@4,X=1693@2,Y=75@3,Width=205@3,Height=925</property>
+        <property name="XtraBounds">@4,X=1139@2,Y=75@3,Width=205@3,Height=613</property>
         <property name="OriginalSize">@3,Width=205@3,Height=264</property>
         <property name="XtraZIndex">6</property>
         <property name="SavedDock">Float</property>

@@ -49,7 +49,7 @@ public class DBConnConfigForm : Form
         panel.Controls.Clear();
         panel.Controls.Add(sqlServerCF);
         sqlServerCF.Show();
-        strPath = CEditEnvironmentGlobal.path + "\\DBConnectionInfo.cfg";
+        strPath = CEditEnvironmentGlobal.HMIPath + "\\DBConnectionInfo.cfg";
     }
 
     private void cbDBType_SelectedIndexChanged(object sender, EventArgs e)

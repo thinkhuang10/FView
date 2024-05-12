@@ -2742,10 +2742,10 @@ public class MainControl : UserControl, IMessageFilter
             }
         }
         memoryStream.Dispose();
-        DHMIImageManage.projectname = dhp.projectname;
+        DHMIImageManage.projectname = dhp.ProjectName;
         DHMIImageManage.ipaddress = dhp.ipaddress;
         DHMIImageManage.projectpath = AppDomain.CurrentDomain.BaseDirectory;
-        comtimer.Interval = dhp.refreshtime;
+        comtimer.Interval = dhp.RefreshTime;
         if (dhp.SetupPath != null)
         {
             installpath = dhp.SetupPath;
@@ -2754,13 +2754,13 @@ public class MainControl : UserControl, IMessageFilter
         {
             projectpath = dhp.EnvironmentPath;
         }
-        if (dhp.projectname != null)
+        if (dhp.ProjectName != null)
         {
-            projectname = dhp.projectname;
+            projectname = dhp.ProjectName;
         }
         init.Say("初始化运行环境参数..");
         timer.Interval = ((dhp.InvalidateTime == 0) ? 100 : dhp.InvalidateTime);
-        base.Name = dhp.projectname;
+        base.Name = dhp.ProjectName;
         BackColor = dhp.ProjectBackColor;
         systimer.Interval = ((dhp.LogicTime < 50) ? 50 : dhp.LogicTime);
         systimer.Tick += Systimer_Tick;
@@ -3001,7 +3001,7 @@ public class MainControl : UserControl, IMessageFilter
             byte[] array;
             while (true)
             {
-                path = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + dhp.projectname + "\\" + dhp.ipaddress + "\\" + filename;
+                path = Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + dhp.ProjectName + "\\" + dhp.ipaddress + "\\" + filename;
                 array = new byte[0];
                 try
                 {
@@ -3076,13 +3076,13 @@ public class MainControl : UserControl, IMessageFilter
             }
             try
             {
-                if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + dhp.projectname + "\\"))
+                if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + dhp.ProjectName + "\\"))
                 {
-                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + dhp.projectname + "\\");
+                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + dhp.ProjectName + "\\");
                 }
-                if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + dhp.projectname + "\\" + ipaddress + "\\"))
+                if (!Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + dhp.ProjectName + "\\" + ipaddress + "\\"))
                 {
-                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + dhp.projectname + "\\" + ipaddress + "\\");
+                    Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData) + "\\" + dhp.ProjectName + "\\" + ipaddress + "\\");
                 }
                 File.WriteAllBytes(path, array);
             }
@@ -4644,7 +4644,7 @@ public class MainControl : UserControl, IMessageFilter
             return AppDomain.CurrentDomain.BaseDirectory;
         }
         RegistryKey localMachine = Registry.LocalMachine;
-        RegistryKey registryKey = localMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\" + dhp.projectname);
+        RegistryKey registryKey = localMachine.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\App Paths\\" + dhp.ProjectName);
         if (registryKey != null)
         {
             return (string)registryKey.GetValue("") + "\\Project\\Output\\";

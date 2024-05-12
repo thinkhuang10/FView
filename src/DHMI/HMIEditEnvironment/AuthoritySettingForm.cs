@@ -61,7 +61,7 @@ public class AuthoritySettingForm : Form
 		cbAuthorityLevel.SelectedIndex = 0;
 		CAuthoritySeiallize cAuthoritySeiallize = new();
 		BinarySerialize<CAuthoritySeiallize> binarySerialize = new();
-		cAuthoritySeiallize = binarySerialize.DeSerialize(CEditEnvironmentGlobal.path + "\\Authority.data");
+		cAuthoritySeiallize = binarySerialize.DeSerialize(CEditEnvironmentGlobal.HMIPath + "\\Authority.data");
 		if (cAuthoritySeiallize == null)
 		{
 			return;
@@ -324,7 +324,7 @@ public class AuthoritySettingForm : Form
 				}
 			}
 			BinarySerialize<CAuthoritySeiallize> binarySerialize = new();
-			binarySerialize.Serialize(cAuthoritySeiallize, CEditEnvironmentGlobal.path + "\\Authority.data");
+			binarySerialize.Serialize(cAuthoritySeiallize, CEditEnvironmentGlobal.HMIPath + "\\Authority.data");
 			Close();
 		}
 		catch

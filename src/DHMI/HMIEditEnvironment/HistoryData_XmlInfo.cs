@@ -30,7 +30,7 @@ internal class HistoryData_XmlInfo
 
     public string ReadHistoryDataXml()
     {
-        string filename = CEditEnvironmentGlobal.path + "\\DBCrossInfo.cfg";
+        string filename = CEditEnvironmentGlobal.HMIPath + "\\DBCrossInfo.cfg";
         xmlDoc.Load(filename);
         XmlNode xmlNode = xmlDoc.SelectSingleNode("DocumentRoot");
         XmlNode xmlNode2 = xmlNode.SelectSingleNode("ServerStatus");
@@ -39,7 +39,7 @@ internal class HistoryData_XmlInfo
 
     public void WriteHistoryDataXml(string strResult)
     {
-        string filename = CEditEnvironmentGlobal.path + "\\DBCrossInfo.cfg";
+        string filename = CEditEnvironmentGlobal.HMIPath + "\\DBCrossInfo.cfg";
         xmlDoc.Load(filename);
         XmlNode xmlNode = xmlDoc.SelectSingleNode("DocumentRoot");
         XmlNode xmlNode2 = xmlNode.SelectSingleNode("DBCrossInfo");
@@ -49,7 +49,7 @@ internal class HistoryData_XmlInfo
 
     public void InsertHistoryDataXml(CDBVarDefine dbVar)
     {
-        string filename = CEditEnvironmentGlobal.path + "\\HistoryDataXML.cfg";
+        string filename = CEditEnvironmentGlobal.HMIPath + "\\HistoryDataXML.cfg";
         xmlDoc.Load(filename);
         XmlNode xmlNode = xmlDoc.SelectSingleNode("DocumentRoot");
         XmlElement xmlElement = xmlDoc.CreateElement("Table");
