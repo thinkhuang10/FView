@@ -460,7 +460,7 @@ public class dhljForm : XtraForm
 
     private void Button13_Click(object sender, EventArgs e)
     {
-        aiForm aiForm2 = new(theglobal);
+        AIForm aiForm2 = new(theglobal);
         if (aiForm2.ShowDialog() == DialogResult.OK)
         {
             dirty = true;
@@ -508,7 +508,7 @@ public class dhljForm : XtraForm
 
     private void Button12_Click(object sender, EventArgs e)
     {
-        diForm diForm2 = new(theglobal);
+        DIForm diForm2 = new(theglobal);
         if (diForm2.ShowDialog() == DialogResult.OK)
         {
             dirty = true;
@@ -543,7 +543,7 @@ public class dhljForm : XtraForm
 
     private void Button16_Click(object sender, EventArgs e)
     {
-        aoForm aoForm2 = new(theglobal);
+        AOForm aoForm2 = new(theglobal);
         if (aoForm2.ShowDialog() == DialogResult.OK)
         {
             dirty = true;
@@ -553,7 +553,7 @@ public class dhljForm : XtraForm
 
     private void Button15_Click(object sender, EventArgs e)
     {
-        doForm doForm2 = new(theglobal);
+        DOForm doForm2 = new(theglobal);
         if (doForm2.ShowDialog() == DialogResult.OK)
         {
             dirty = true;

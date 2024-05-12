@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace HMIEditEnvironment;
 
-public class aiForm : Form
+public class AIForm : Form
 {
     private readonly CGlobal theglobal;
 
@@ -29,7 +29,7 @@ public class aiForm : Form
 
     private Label label4;
 
-    public aiForm(CGlobal _theglobal)
+    public AIForm(CGlobal _theglobal)
     {
         theglobal = _theglobal;
         InitializeComponent();

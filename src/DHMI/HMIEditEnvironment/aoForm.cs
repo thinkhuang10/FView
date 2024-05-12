@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace HMIEditEnvironment;
 
-public class aoForm : Form
+public class AOForm : Form
 {
 	private readonly CGlobal theglobal;
 
@@ -30,12 +30,12 @@ public class aoForm : Form
 
 	private Label label5;
 
-    public aoForm()
+    public AOForm()
     {
         InitializeComponent();
     }
 
-    public aoForm(CGlobal _theglobal)
+    public AOForm(CGlobal _theglobal)
 	{
 		InitializeComponent();
 		theglobal = _theglobal;

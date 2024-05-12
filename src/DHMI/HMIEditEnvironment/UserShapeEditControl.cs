@@ -807,7 +807,7 @@ public class UserShapeEditControl : UserControl
 			List<string> list2 = CheckIOExists.ShapeInUse(theglobal.df.name + "." + cShape.Name);
 			if (list2.Count != 0)
 			{
-				delPage delPage2 = new(list2, "该图形正在被引用,是否仍继续操作.");
+				DelPage delPage2 = new(list2, "该图形正在被引用,是否仍继续操作.");
 				if (delPage2.ShowDialog() != DialogResult.Yes)
 				{
 					return;
@@ -839,7 +839,7 @@ public class UserShapeEditControl : UserControl
 			List<string> list2 = CheckIOExists.ShapeInUse(theglobal.df.name + "." + cShape.Name);
 			if (list2.Count != 0)
 			{
-				delPage delPage2 = new(list2, "该图形正在被引用,是否仍继续操作.");
+				DelPage delPage2 = new(list2, "该图形正在被引用,是否仍继续操作.");
 				if (delPage2.ShowDialog() != DialogResult.Yes)
 				{
 					return;
@@ -1412,7 +1412,7 @@ public class UserShapeEditControl : UserControl
 		List<string> list = CheckIOExists.ShapeInUse(CEditEnvironmentGlobal.childform.theglobal.df.name + "." + theglobal.SelectedShapeList[0].ShapeName);
 		if (list.Count != 0)
 		{
-			delPage delPage2 = new(list, "该图形正在被引用,是否仍继续操作.");
+			DelPage delPage2 = new(list, "该图形正在被引用,是否仍继续操作.");
 			if (delPage2.ShowDialog(this) != DialogResult.Yes)
 			{
 				return;

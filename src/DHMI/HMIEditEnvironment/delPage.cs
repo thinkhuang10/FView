@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace HMIEditEnvironment;
 
-public class delPage : XtraForm
+public class DelPage : XtraForm
 {
     private ListView listView1;
 
@@ -17,12 +17,12 @@ public class delPage : XtraForm
 
     private Button button2;
 
-    public delPage()
+    public DelPage()
     {
         InitializeComponent();
     }
 
-    public delPage(List<string> err)
+    public DelPage(List<string> err)
     {
         InitializeComponent();
         foreach (string item in err)
@@ -31,7 +31,7 @@ public class delPage : XtraForm
         }
     }
 
-    public delPage(List<string> err, string text)
+    public DelPage(List<string> err, string text)
     {
         InitializeComponent();
         foreach (string item in err)

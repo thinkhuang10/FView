@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace HMIEditEnvironment;
 
-public class diForm : XtraForm
+public class DIForm : XtraForm
 {
     private readonly CGlobal theglobal;
 
@@ -32,7 +32,7 @@ public class diForm : XtraForm
 
     private Button button3;
 
-    public diForm(CGlobal _theglobal)
+    public DIForm(CGlobal _theglobal)
     {
         theglobal = _theglobal;
         InitializeComponent();

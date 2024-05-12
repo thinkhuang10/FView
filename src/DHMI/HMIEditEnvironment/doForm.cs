@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace HMIEditEnvironment;
 
-public class doForm : XtraForm
+public class DOForm : XtraForm
 {
     private readonly CGlobal theglobal;
 
@@ -30,7 +30,7 @@ public class doForm : XtraForm
 
     private Label label4;
 
-    public doForm(CGlobal _theglobal)
+    public DOForm(CGlobal _theglobal)
     {
         theglobal = _theglobal;
         InitializeComponent();

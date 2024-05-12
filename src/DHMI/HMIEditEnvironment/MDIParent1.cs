@@ -705,7 +705,7 @@ public partial class MDIParent1 : XtraForm
             List<string> list2 = CheckIOExists.ShapeInUse(userCommandControl21.theglobal.df.name + "." + cShape.Name);
             if (list2.Count != 0)
             {
-                delPage delPage2 = new(list2, "该图形正在被引用,是否仍继续操作.");
+                DelPage delPage2 = new(list2, "该图形正在被引用,是否仍继续操作.");
                 if (delPage2.ShowDialog() != DialogResult.Yes)
                 {
                     return;
@@ -789,7 +789,7 @@ public partial class MDIParent1 : XtraForm
             var list2 = CheckIOExists.ShapeInUse(userCommandControl21.theglobal.df.name + "." + cShape.Name);
             if (list2.Count != 0)
             {
-                var delPage2 = new delPage(list2, "该图形正在被引用,是否仍继续操作.");
+                var delPage2 = new DelPage(list2, "该图形正在被引用,是否仍继续操作.");
                 if (delPage2.ShowDialog() != DialogResult.Yes)
                     return;
             }
@@ -943,7 +943,7 @@ public partial class MDIParent1 : XtraForm
                 {
                     dataGridView1.SelectedCells[0].Value = "模拟量输入";
                     userCommandControl21.theglobal.SelectedShapeList[0].ai = true;
-                    aiForm aiForm2 = new(userCommandControl21.theglobal);
+                    AIForm aiForm2 = new(userCommandControl21.theglobal);
                     aiForm2.ShowDialog();
                     break;
                 }
@@ -951,7 +951,7 @@ public partial class MDIParent1 : XtraForm
                 {
                     dataGridView1.SelectedCells[0].Value = "数字量输入";
                     userCommandControl21.theglobal.SelectedShapeList[0].di = true;
-                    diForm diForm2 = new(userCommandControl21.theglobal);
+                    DIForm diForm2 = new(userCommandControl21.theglobal);
                     diForm2.ShowDialog();
                     break;
                 }
@@ -967,7 +967,7 @@ public partial class MDIParent1 : XtraForm
                 {
                     dataGridView1.SelectedCells[0].Value = "模拟量输出";
                     userCommandControl21.theglobal.SelectedShapeList[0].ao = true;
-                    aoForm aoForm2 = new(userCommandControl21.theglobal);
+                    AOForm aoForm2 = new(userCommandControl21.theglobal);
                     aoForm2.ShowDialog();
                     break;
                 }
@@ -975,7 +975,7 @@ public partial class MDIParent1 : XtraForm
                 {
                     dataGridView1.SelectedCells[0].Value = "数字量输出";
                     userCommandControl21.theglobal.SelectedShapeList[0].doo = true;
-                    doForm doForm2 = new(userCommandControl21.theglobal);
+                    DOForm doForm2 = new(userCommandControl21.theglobal);
                     doForm2.ShowDialog();
                     break;
                 }
@@ -2407,7 +2407,7 @@ public partial class MDIParent1 : XtraForm
             List<string> list = CheckIOExists.ShapeInUse(CEditEnvironmentGlobal.childform.theglobal.df.name + "." + text);
             if (list.Count != 0)
             {
-                delPage delPage2 = new(list, "该图形正在被引用,是否仍继续操作.");
+                DelPage delPage2 = new(list, "该图形正在被引用,是否仍继续操作.");
                 if (delPage2.ShowDialog() != DialogResult.Yes)
                 {
                     userCommandControl21.theglobal.OldShapes.Clear();
@@ -2520,7 +2520,7 @@ public partial class MDIParent1 : XtraForm
             List<string> list = CheckIOExists.PageInUse(CEditEnvironmentGlobal.childform.theglobal.df.name);
             if (list.Count != 0)
             {
-                delPage delPage2 = new(list);
+                DelPage delPage2 = new(list);
                 if (delPage2.ShowDialog() != DialogResult.Yes)
                 {
                     userCommandControl21.theglobal.OldShapes.Clear();
@@ -3077,7 +3077,7 @@ public partial class MDIParent1 : XtraForm
             List<string> list = CheckIOExists.PageInUse(pageName);
             if (list.Count > 0)
             {
-                delPage delPage2 = new(list);
+                DelPage delPage2 = new(list);
                 if (delPage2.ShowDialog() != DialogResult.Yes)
                 {
                     return;
