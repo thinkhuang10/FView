@@ -591,7 +591,7 @@ public partial class MDIParent1 : XtraForm
             }
         }
         CEditEnvironmentGlobal.dhp.PageGroup = treeView_工程导航.Nodes[0].Nodes[0].Tag as HmiPageGroup;
-        CEditEnvironmentGlobal.dhp.pages = dictionary;
+        CEditEnvironmentGlobal.dhp.Pages = dictionary;
         CEditEnvironmentGlobal.dhp.startVisiblePages = list;
         Operation.BinarySaveProject(projectfile, CEditEnvironmentGlobal.dhp);
         CEditEnvironmentGlobal.OutputMessage.Say("成功保存到" + projectfile);
@@ -3758,24 +3758,24 @@ public partial class MDIParent1 : XtraForm
             CEditEnvironmentGlobal.dhp = Operation.BinaryLoadProject(CEditEnvironmentGlobal.ProjectHPFFilePath);
             HmiPageGroup hmiPageGroup = Operation.LoadProjectGroups(CEditEnvironmentGlobal.ProjectHPFFilePath);
             BuildPageGroupTreeView(hmiPageGroup);
-            foreach (string value in CEditEnvironmentGlobal.dhp.pages.Values)
+            foreach (var pageName in CEditEnvironmentGlobal.dhp.Pages.Values)
             {
                 try
                 {
-                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + value + ".");
-                    DataFile dataFile = Operation.BinaryLoadFile(value);
+                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + pageName + ".");
+                    DataFile dataFile = Operation.BinaryLoadFile(Path.Combine(CEditEnvironmentGlobal.HMIPath, pageName));
                     SetCPixieControlEvent(dataFile);
                     CEditEnvironmentGlobal.dfs.Add(dataFile);
                     if (hmiPageGroup == null)
                     {
                         AddPageToTreeView(dataFile.name, dataFile.pageName);
                     }
-                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + value + "成功.");
+                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + pageName + "成功.");
                     Refresh();
                 }
                 catch (Exception ex)
                 {
-                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + value + "失败.");
+                    CEditEnvironmentGlobal.OutputMessage.Say("加载页面" + pageName + "失败.");
                     CEditEnvironmentGlobal.OutputMessage.Say("失败原因:" + ex.ToString());
                     LogUtil.Error("失败原因:" + ex);
                 }

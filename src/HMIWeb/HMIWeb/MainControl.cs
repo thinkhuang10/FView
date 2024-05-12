@@ -2851,7 +2851,7 @@ public class MainControl : UserControl, IMessageFilter
         //}
         init.Say("初始化页面..");
         dfs = new List<DataFile>();
-        foreach (string key in dhp.pages.Keys)
+        foreach (string key in dhp.Pages.Keys)
         {
             Type type = assembly.GetType("LogicPage.Page_" + key);
             object[] args = new object[1];
@@ -3115,7 +3115,7 @@ public class MainControl : UserControl, IMessageFilter
         }
         try
         {
-            MemoryStream memoryStream = ((!dhp.Compress) ? new MemoryStream(ReadFileData(dhp.pages[pagename])) : new MemoryStream(Operation.UncompressStream(ReadFileData(dhp.pages[pagename]))));
+            MemoryStream memoryStream = ((!dhp.Compress) ? new MemoryStream(ReadFileData(dhp.Pages[pagename])) : new MemoryStream(Operation.UncompressStream(ReadFileData(dhp.Pages[pagename]))));
             DataFile dataFile = Operation.BinaryLoadFile(memoryStream);
             memoryStream.Dispose();
             lock (SD)
