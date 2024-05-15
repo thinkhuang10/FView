@@ -755,6 +755,7 @@
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "XYSetForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "配置";
             this.Load += new System.EventHandler(this.XYSetForm_Load);
             this.tabControl1.ResumeLayout(false);

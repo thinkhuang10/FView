@@ -332,7 +332,7 @@ namespace XYControl
             this.plotView1.Model = saveData.Points;
         }
 
-        private void plotView1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void plotView1_DoubleClick(object sender, EventArgs e)
         {
             if (isRuning)
                 return;
@@ -359,9 +359,7 @@ namespace XYControl
             saveData.YMax = this.plotView1.Model.Axes[1].Maximum;
             saveData.YMin = this.plotView1.Model.Axes[1].Minimum;
 
-            XYSetForm form = new XYSetForm(saveData);
-
-
+            var form = new XYSetForm(saveData);
             if (form.ShowDialog() == DialogResult.OK)
             {
                 Title = saveData.Title;

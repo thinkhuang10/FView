@@ -43,6 +43,7 @@
             this.plotView1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
             this.plotView1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.plotView1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            this.plotView1.DoubleClick += new System.EventHandler(this.plotView1_DoubleClick);
             // 
             // XYDiagramControl
             // 
