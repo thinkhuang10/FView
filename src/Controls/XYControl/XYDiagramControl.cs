@@ -5,23 +5,20 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using FControl.SetFroms;
-using System.Diagnostics;
 using CommonSnappableTypes;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
-using FControl.XYDiagram;
+using FControl.SetFroms;
+using OxyPlot.Annotations;
+using OxyPlot.Axes;
 using OxyPlot.Series;
 using OxyPlot;
-using OxyPlot.Axes;
-using OxyPlot.WindowsForms;
-using OxyPlot.Annotations;
-using static System.Net.WebRequestMethods;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
-namespace FControl
+namespace XYControl
 {
-    public partial class XYDiagramControl : UserControl, IDCCEControl
+    public partial class XYDiagramControl: UserControl
     {
         private XYSave saveData = new XYSave();
 
@@ -434,6 +431,5 @@ namespace FControl
         public event GetVarTable GetVarTableEvent;
 
         public event GetValue GetSystemItemEvent;
-
     }
 }

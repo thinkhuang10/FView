@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using OxyPlot;
 using OxyPlot.Series;
-using FControl.XYDiagram;
+using XYControl;
 using OxyPlot.Annotations;
 
 namespace FControl.SetFroms

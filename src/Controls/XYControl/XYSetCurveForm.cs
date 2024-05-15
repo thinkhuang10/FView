@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OxyPlot.Series;
-using FControl.XYDiagram;
+using XYControl;
 using OxyPlot.Axes;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 using OxyPlot;

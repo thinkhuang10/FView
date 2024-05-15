@@ -13,8 +13,8 @@ internal static class Program
         Control.CheckForIllegalCrossThreadCalls = false;
         Application.EnableVisualStyles();
         Application.SetCompatibleTextRenderingDefault(defaultValue: false);
-        // Application.Run(new MDIParent1());
+        Application.Run(new MDIParent1());
         // Application.Run(new TagManagerForm());
-        Application.Run(new DeviceManagerForm());
+        //Application.Run(new DeviceManagerForm());
     }
 }

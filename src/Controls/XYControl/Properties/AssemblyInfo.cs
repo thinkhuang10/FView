@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("FControl")]
+[assembly: AssemblyTitle("XYControl")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FControl")]
+[assembly: AssemblyProduct("XYControl")]
 [assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("f55a9c3c-e57d-4fc2-8942-ff9c8713b7ee")]
+[assembly: Guid("769f98cf-75a7-42c7-85ce-5b4607bf20d5")]
 
 // 程序集的版本信息由下列四个值组成: 
 //

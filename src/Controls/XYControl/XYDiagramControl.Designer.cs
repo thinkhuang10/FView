@@ -1,4 +1,4 @@
-﻿namespace FControl
+﻿namespace XYControl
 {
     partial class XYDiagramControl
     {
@@ -37,13 +37,12 @@
             this.plotView1.Location = new System.Drawing.Point(0, 0);
             this.plotView1.Name = "plotView1";
             this.plotView1.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.plotView1.Size = new System.Drawing.Size(521, 326);
-            this.plotView1.TabIndex = 0;
+            this.plotView1.Size = new System.Drawing.Size(800, 450);
+            this.plotView1.TabIndex = 1;
             this.plotView1.Text = "plotView1";
             this.plotView1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
             this.plotView1.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.plotView1.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
-            this.plotView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.plotView1_MouseDoubleClick);
             // 
             // XYDiagramControl
             // 
@@ -51,7 +50,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.plotView1);
             this.Name = "XYDiagramControl";
-            this.Size = new System.Drawing.Size(521, 326);
+            this.Size = new System.Drawing.Size(800, 450);
             this.Load += new System.EventHandler(this.XYDiagramControl_Load);
             this.ResumeLayout(false);
 

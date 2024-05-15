@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OxyPlot;
 
-namespace FControl.XYDiagram
+namespace XYControl
 {
     [Serializable]
     public class XYSave
