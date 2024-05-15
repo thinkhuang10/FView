@@ -157,6 +157,9 @@ Section "FTView·þÎñ¶Ë" FTViewServer
   File /r "${InstallFilesDir}\Serilog.dll"
   File /r "${InstallFilesDir}\Serilog.Sinks.File.dll"
   File /r "${InstallFilesDir}\System.Diagnostics.DiagnosticSource.dll"
+  File /r "${InstallFilesDir}\OxyPlot.dll"
+  File /r "${InstallFilesDir}\OxyPlot.WindowsForms.dll"
+  File /r "${InstallFilesDir}\XYControl.dll"
   
 SectionEnd
 
