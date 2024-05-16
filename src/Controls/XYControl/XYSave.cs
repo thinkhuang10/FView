@@ -11,13 +11,13 @@ namespace XYControl
     [Serializable]
     public class XYSave
     {
-        public OxyColor ForegroundColor { get; set; }
+        //public OxyColor ForegroundColor { get; set; }
 
-        public OxyColor BackgroundColor { get; set; }
+        //public OxyColor BackgroundColor { get; set; }
 
-        public OxyColor GridColor { get; set; }
+        //public OxyColor GridColor { get; set; }
 
-        public OxyColor MarkColor { get; set; }
+        //public OxyColor MarkColor { get; set; }
 
         public int HorizontalGrid { get; set; }
 
@@ -35,9 +35,9 @@ namespace XYControl
 
         public string YLabel { get; set; }
 
-        public OxyColor XLabelColor { get; set; }
+        //public OxyColor XLabelColor { get; set; }
 
-        public OxyColor YLabelColor { get; set; }
+        //public OxyColor YLabelColor { get; set; }
 
         public int DecimalPlaces { get; set; }
 

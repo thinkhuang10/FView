@@ -18,7 +18,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace XYControl
 {
-    public partial class XYDiagramControl: UserControl
+    public partial class XYDiagramControl: UserControl,IDCCEControl
     {
         private XYSave saveData = new XYSave();
 
@@ -45,18 +45,18 @@ namespace XYControl
             set { _foregroundColor = value; }
         }
 
-        [Category("颜色")]
-        [DisplayName("背景颜色")]
-        public OxyColor BackgroundColor
-        {
-            get { return saveData.BackgroundColor; }
-            set
-            {
-                saveData.BackgroundColor = value;
-                if (this.plotView1.Model != null)
-                    this.plotView1.Model.Background = value;
-            }
-        }
+        //[Category("颜色")]
+        //[DisplayName("背景颜色")]
+        //public OxyColor BackgroundColor
+        //{
+        //    get { return saveData.BackgroundColor; }
+        //    set
+        //    {
+        //        saveData.BackgroundColor = value;
+        //        if (this.plotView1.Model != null)
+        //            this.plotView1.Model.Background = value;
+        //    }
+        //}
 
         [Category("颜色")]
         [DisplayName("网格颜色")]
@@ -131,8 +131,8 @@ namespace XYControl
             set
             {
                 saveData.Title = value;
-                if (this.plotView1.Model != null)
-                    this.plotView1.Model.Title = value;
+                //if (this.plotView1.Model != null)
+                //this.chart.Titles.Add(value);
             }
         }
 
@@ -144,8 +144,8 @@ namespace XYControl
             set
             {
                 saveData.XLabel = value;
-                if (this.plotView1.Model != null)
-                    this.plotView1.Model.Axes[0].Title = value;
+                //if (this.plotView1.Model != null)
+                //    this.plotView1.Model.Axes[0].Title = value;
             }
         }
 
@@ -158,36 +158,36 @@ namespace XYControl
             set
             {
                 saveData.YLabel = value;
-                if (this.plotView1.Model != null)
-                    this.plotView1.Model.Axes[1].Title = value;
+                //if (this.plotView1.Model != null)
+                //    this.plotView1.Model.Axes[1].Title = value;
             }
         }
 
-        [Category("标题/显示信息")]
-        [DisplayName("X轴标签颜色")]
-        public OxyColor XLabelColor
-        {
-            get { return saveData.XLabelColor; }
-            set
-            {
-                saveData.XLabelColor = value;
-                if (this.plotView1.Model != null)
-                    this.plotView1.Model.Axes[0].TextColor = value;
-            }
-        }
+        //[Category("标题/显示信息")]
+        //[DisplayName("X轴标签颜色")]
+        //public OxyColor XLabelColor
+        //{
+        //    get { return saveData.XLabelColor; }
+        //    set
+        //    {
+        //        saveData.XLabelColor = value;
+        //        if (this.plotView1.Model != null)
+        //            this.plotView1.Model.Axes[0].TextColor = value;
+        //    }
+        //}
 
-        [Category("标题/显示信息")]
-        [DisplayName("Y轴标签颜色")]
-        public OxyColor YLabelColor
-        {
-            get { return saveData.YLabelColor; }
-            set
-            {
-                saveData.XLabelColor = value;
-                if (this.plotView1.Model != null)
-                    this.plotView1.Model.Axes[1].TextColor = value;
-            }
-        }
+        //[Category("标题/显示信息")]
+        //[DisplayName("Y轴标签颜色")]
+        //public OxyColor YLabelColor
+        //{
+        //    get { return saveData.YLabelColor; }
+        //    set
+        //    {
+        //        saveData.XLabelColor = value;
+        //        if (this.plotView1.Model != null)
+        //            this.plotView1.Model.Axes[1].TextColor = value;
+        //    }
+        //}
 
         [Category("其他")]
         [DisplayName("小数位")]
@@ -221,8 +221,8 @@ namespace XYControl
             set
             {
                 saveData.XMax = value;
-                if (this.plotView1.Model != null)
-                    this.plotView1.Model.Axes[0].Maximum = value;
+                //if (this.plotView1.Model != null)
+                //    this.plotView1.Model.Axes[0].Maximum = value;
             }
         }
 
@@ -234,8 +234,8 @@ namespace XYControl
             set
             {
                 saveData.XMin = value;
-                if (this.plotView1.Model != null)
-                    this.plotView1.Model.Axes[0].Minimum = value;
+                //if (this.plotView1.Model != null)
+                //    this.plotView1.Model.Axes[0].Minimum = value;
             }
         }
 
@@ -247,8 +247,8 @@ namespace XYControl
             set
             {
                 saveData.YMax = value;
-                if (this.plotView1.Model != null)
-                    this.plotView1.Model.Axes[1].Maximum = value;
+                //if (this.plotView1.Model != null)
+                //    this.plotView1.Model.Axes[1].Maximum = value;
             }
         }
 
@@ -260,8 +260,8 @@ namespace XYControl
             set
             {
                 saveData.YMin = value;
-                if (this.plotView1.Model != null)
-                    this.plotView1.Model.Axes[1].Minimum = value;
+                //if (this.plotView1.Model != null)
+                //    this.plotView1.Model.Axes[1].Minimum = value;
             }
         }
 
@@ -274,6 +274,13 @@ namespace XYControl
         }
         private void XYDiagramControl_Load(object sender, EventArgs e)
         {
+            if (0 != this.chart.Titles.Count)
+            {
+                this.chart.Titles.Add(this.chart.Titles.FirstOrDefault().Name);
+            }
+
+
+
             var xAxis = new LinearAxis
             {
                 Position = AxisPosition.Bottom, // 设置X轴位置
@@ -319,8 +326,8 @@ namespace XYControl
             };
 
             // 将轴添加到PlotView中
-            plotView1.Model.Axes.Add(xAxis);
-            plotView1.Model.Axes.Add(yAxis);
+            //plotView1.Model.Axes.Add(xAxis);
+            //plotView1.Model.Axes.Add(yAxis);
         }
 
         private void TestDemo()
@@ -329,65 +336,14 @@ namespace XYControl
             saveData.Points.Series.Add(new FunctionSeries(Math.Cos, 0, 10, 0.1, "cos(x)"));
             saveData.Points.Series.Add(new FunctionSeries(Math.Sin, 1, 11, 0.2, "sin(x)"));
             saveData.Points.Annotations.Add(new PointAnnotation { X = 2.5, Y = 1.56, Fill = OxyColors.Red, });
-            this.plotView1.Model = saveData.Points;
+            //this.plotView1.Model = saveData.Points;
         }
 
         private void plotView1_DoubleClick(object sender, EventArgs e)
         {
-            if (isRuning)
-                return;
-
-            saveData.Title = this.plotView1.Model.Title;
-            //saveData.ForegroundColor = this.plotView1.Model.ForegroundColor;
-            saveData.BackgroundColor = this.plotView1.Model.Background;
-            saveData.GridColor = this.plotView1.Model.Axes[0].MajorGridlineColor;
-            saveData.MarkColor = this.plotView1.Model.Axes[0].MajorGridlineColor;
-            saveData.HorizontalGrid = int.Parse(this.plotView1.Model.Axes[0].MinorGridlineThickness.ToString());
-            saveData.VerticalGrid = int.Parse(this.plotView1.Model.Axes[1].MinorGridlineThickness.ToString());
-            //saveData.DynamicPointDiameter = DynamicPointDiameter;
-            //saveData.ShowDynamicPointValue = ShowDynamicPointValue;
-            //saveData.DynamicPointFontSize = DynamicPointFontSize;
-            saveData.XLabel = this.plotView1.Model.Axes[0].Title;
-            saveData.YLabel = this.plotView1.Model.Axes[1].Title;
-            saveData.XLabelColor = this.plotView1.Model.Axes[0].MajorGridlineColor;
-            saveData.YLabelColor = this.plotView1.Model.Axes[1].MajorGridlineColor;
-            saveData.DecimalPlaces = DecimalPlaces;
-            saveData.CurveLineWidth = CurveLineWidth;
-            saveData.RefreshTime = RefreshTime;
-            saveData.XMax = this.plotView1.Model.Axes[0].Maximum;
-            saveData.XMin = this.plotView1.Model.Axes[0].Minimum;
-            saveData.YMax = this.plotView1.Model.Axes[1].Maximum;
-            saveData.YMin = this.plotView1.Model.Axes[1].Minimum;
-
-            var form = new XYSetForm(saveData);
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                Title = saveData.Title;
-                ForegroundColor = saveData.ForegroundColor;
-                BackgroundColor = saveData.BackgroundColor;
-                GridColor = saveData.GridColor;
-                MarkerColor = saveData.MarkColor;
-                HorizontalGrid = saveData.HorizontalGrid;
-                VerticalGrid = saveData.VerticalGrid;
-                DynamicPointDiameter = saveData.DynamicPointDiameter;
-                ShowDynamicPointValue = saveData.ShowDynamicPointValue;
-                DynamicPointFontSize = saveData.DynamicPointFontSize;
-                XLabel = saveData.XLabel;
-                YLabel = saveData.YLabel;
-                XLabelColor = saveData.XLabelColor;
-                YLabelColor = saveData.YLabelColor;
-                DecimalPlaces = saveData.DecimalPlaces;
-                CurveLineWidth = saveData.CurveLineWidth;
-                RefreshTime = saveData.RefreshTime;
-                XMax = saveData.XMax;
-                XMin = saveData.XMin;
-                YMax = saveData.YMax;
-                YMin = saveData.YMin;
-                //myModel.Title = saveData.Name;
-            }
-
-            plotView1.Model.InvalidatePlot(true);
+            
         }
+
 
         public byte[] Serialize()
         {
@@ -429,5 +385,71 @@ namespace XYControl
         public event GetVarTable GetVarTableEvent;
 
         public event GetValue GetSystemItemEvent;
+
+        private void chart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart_DoubleClick(object sender, EventArgs e)
+        {
+            if (isRuning)
+                return;
+
+            if (0 != this.chart.Titles.Count)
+            {
+                saveData.Title = this.chart.Titles.FirstOrDefault().Name;
+            }
+
+            ////saveData.ForegroundColor = this.plotView1.Model.ForegroundColor;
+            ////saveData.BackgroundColor = this.plotView1.Model.Background;
+            ////saveData.GridColor = this.plotView1.Model.Axes[0].MajorGridlineColor;
+            ////saveData.MarkColor = this.plotView1.Model.Axes[0].MajorGridlineColor;
+            //saveData.HorizontalGrid = int.Parse(this.plotView1.Model.Axes[0].MinorGridlineThickness.ToString());
+            //saveData.VerticalGrid = int.Parse(this.plotView1.Model.Axes[1].MinorGridlineThickness.ToString());
+            ////saveData.DynamicPointDiameter = DynamicPointDiameter;
+            ////saveData.ShowDynamicPointValue = ShowDynamicPointValue;
+            ////saveData.DynamicPointFontSize = DynamicPointFontSize;
+            //saveData.XLabel = this.plotView1.Model.Axes[0].Title;
+            //saveData.YLabel = this.plotView1.Model.Axes[1].Title;
+            ////saveData.XLabelColor = this.plotView1.Model.Axes[0].MajorGridlineColor;
+            ////saveData.YLabelColor = this.plotView1.Model.Axes[1].MajorGridlineColor;
+            //saveData.DecimalPlaces = DecimalPlaces;
+            //saveData.CurveLineWidth = CurveLineWidth;
+            //saveData.RefreshTime = RefreshTime;
+            //saveData.XMax = this.plotView1.Model.Axes[0].Maximum;
+            //saveData.XMin = this.plotView1.Model.Axes[0].Minimum;
+            //saveData.YMax = this.plotView1.Model.Axes[1].Maximum;
+            //saveData.YMin = this.plotView1.Model.Axes[1].Minimum;
+
+            var form = new XYSetForm(saveData);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                Title = saveData.Title;
+                //ForegroundColor = saveData.ForegroundColor;
+                //BackgroundColor = saveData.BackgroundColor;
+                //GridColor = saveData.GridColor;
+                //MarkerColor = saveData.MarkColor;
+                HorizontalGrid = saveData.HorizontalGrid;
+                VerticalGrid = saveData.VerticalGrid;
+                DynamicPointDiameter = saveData.DynamicPointDiameter;
+                ShowDynamicPointValue = saveData.ShowDynamicPointValue;
+                DynamicPointFontSize = saveData.DynamicPointFontSize;
+                XLabel = saveData.XLabel;
+                YLabel = saveData.YLabel;
+                //XLabelColor = saveData.XLabelColor;
+                //YLabelColor = saveData.YLabelColor;
+                DecimalPlaces = saveData.DecimalPlaces;
+                CurveLineWidth = saveData.CurveLineWidth;
+                RefreshTime = saveData.RefreshTime;
+                XMax = saveData.XMax;
+                XMin = saveData.XMin;
+                YMax = saveData.YMax;
+                YMin = saveData.YMin;
+                //myModel.Title = saveData.Name;
+            }
+
+            //plotView1.Model.InvalidatePlot(true);
+        }
     }
 }
