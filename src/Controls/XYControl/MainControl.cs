@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommonSnappableTypes;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
@@ -6,15 +7,43 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace XYControl
 {
-    public partial class MainControl: UserControl
+    public partial class MainControl: UserControl,IDCCEControl
     {
         private const string ChartAreaName = "chartArea";
         private readonly Save saveData = new Save();
 
-        public MainControl()
+        #region 与组态的接口
+
+        [Browsable(false)]
+        public bool isRuning { set; get; }
+
+        public event GetValue GetValueEvent;
+        public event SetValue SetValueEvent;
+        public event GetDataBase GetDataBaseEvent;
+        public event GetVarTable GetVarTableEvent;
+        public event GetValue GetSystemItemEvent;
+
+        public Bitmap GetLogo()
         {
-            InitializeComponent();
+            return null;
         }
+
+        public byte[] Serialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeSerialize(byte[] bytes)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Stop()
+        {
+
+        }
+
+        #endregion
 
         #region 屏蔽部分没必要显示的属性并修改部分显示属性的名称
 
@@ -484,6 +513,11 @@ namespace XYControl
 
         #endregion
 
+        public MainControl()
+        {
+            InitializeComponent();
+        }
+
         private void UserControl_Load(object sender, EventArgs e)
         {
             SetTitle();
@@ -619,7 +653,7 @@ namespace XYControl
         private void Chart_DoubleClick(object sender, EventArgs e)
         {
             var form = new SetForm(saveData);
-
+            form.GetVarTableEvent += GetVarTableEvent;
             if (DialogResult.OK != form.ShowDialog())
                 return;
 
@@ -640,5 +674,6 @@ namespace XYControl
             xyChart.ChartAreas.Clear();
             xyChart.Titles.Clear();
         }
+
     }
 }

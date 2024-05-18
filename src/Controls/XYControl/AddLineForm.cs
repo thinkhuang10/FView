@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace XYControl
 {
-    public partial class AddCurveForm : Form
+    public partial class AddLineForm : Form
     {
         //public XYSave saveData = new XYSave();
         //private XYSave tempSaveData = new XYSave();
@@ -13,7 +13,7 @@ namespace XYControl
         private int addFlg;
         private bool isLine = true;
 
-        public AddCurveForm()
+        public AddLineForm()
         {
             InitializeComponent();
         }
@@ -155,13 +155,12 @@ namespace XYControl
             //}
             //saveData = tempSaveData;
 
-            base.DialogResult = DialogResult.OK;
-            Close();
+            DialogResult = DialogResult.OK;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult = DialogResult.Cancel;
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CommonSnappableTypes;
+using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace XYControl
@@ -7,6 +9,8 @@ namespace XYControl
     {
         private Save saveData;
         private readonly ColorDialog colorDialog = new ColorDialog();
+
+        public event GetVarTable GetVarTableEvent;
 
         public SetForm(Save saveData)
         {
@@ -49,6 +53,12 @@ namespace XYControl
             XAxisMax.Text = saveData.xAxisMax.ToString();
             YAxisMin.Text = saveData.yAxisMin.ToString();
             YAxisMax.Text = saveData.yAxisMax.ToString();
+
+            PointDataGrid.Rows.Clear();
+            foreach (var item in saveData.pointInfos)
+            {
+                PointDataGrid.Rows.Add(item.XVar, item.YVar, item.PointColor);
+            }
         }
 
         private void OKButton_Click(object sender, EventArgs e)
@@ -194,8 +204,19 @@ namespace XYControl
             saveData.yAxisMin = yAxisMin;
             saveData.yAxisMax = yAxisMax;
 
+            saveData.pointInfos.Clear();
+            for (var i = 0;i< PointDataGrid.Rows.Count;i++)
+            {
+                var pointColor = (Color)PointDataGrid.Rows[i].Cells["PointColor"].Value;
+                saveData.pointInfos.Add(new PointInfo()
+                {
+                    XVar = PointDataGrid.Rows[i].Cells["XVar"].Value.ToString(),
+                    YVar = PointDataGrid.Rows[i].Cells["YVar"].Value.ToString(),
+                    PointColor = null == pointColor ? Color.Green: pointColor,
+                }); 
+            }
+
             DialogResult = DialogResult.OK;
-            Close();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -211,17 +232,18 @@ namespace XYControl
         private void CancelButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-            Close();
         }
 
-        private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void PointDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //XYSetCurveForm curveForm = new XYSetCurveForm(saveData, e.RowIndex,1, false);
-            //if (curveForm.ShowDialog() == DialogResult.OK)
-            //{
-            //    saveData = curveForm.saveData;
-            //    SetDataGruidView();
-            //}
+            var form = new AddPointForm(saveData, PointDataGrid.Rows[e.RowIndex]);
+            if (DialogResult.OK != form.ShowDialog())
+                return;
+
+            var pointInfo = form.pointInfo;
+            PointDataGrid.Rows[e.RowIndex].Cells["XVar"].Value = pointInfo.XVar;
+            PointDataGrid.Rows[e.RowIndex].Cells["YVar"].Value = pointInfo.YVar;
+            PointDataGrid.Rows[e.RowIndex].Cells["PointColor"].Value = pointInfo.PointColor;
         }
 
         #region Tab - 常规
@@ -338,19 +360,25 @@ namespace XYControl
 
         private void AddPointButton_Click(object sender, EventArgs e)
         {
-            //XYSetCurveForm curveForm = new XYSetCurveForm(saveData, 1, 0, false);
-            //if (curveForm.ShowDialog() == DialogResult.OK)
-            //{
-            //    saveData = curveForm.saveData;
-            //    SetDataGruidView();
-            //}
+            var form = new AddPointForm(saveData);
+            form.GetVarTableEvent += GetVarTableEvent;
+
+            if (DialogResult.OK != form.ShowDialog())
+                return;
+
+            PointDataGrid.Rows.Add(form.pointInfo.XVar, form.pointInfo.YVar, form.pointInfo.PointColor);
         }
 
         private void DeletePointButton_Click(object sender, EventArgs e)
         {
-            //this.saveData.Points.Annotations.Clear();
-            //this.dataGridView2.Rows.Clear();
-            //MessageBox.Show("标注已清空！");
+            DialogResult dr = MessageBox.Show("确认删除选中的动态点？", "提示", MessageBoxButtons.OKCancel);
+            if (dr == DialogResult.OK)
+            {
+                for (int i = 0; i < PointDataGrid.SelectedRows.Count; i++)
+                {
+                    PointDataGrid.Rows.RemoveAt(i);
+                }
+            }
         }
 
         #endregion

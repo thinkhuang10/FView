@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 
 namespace XYControl
@@ -65,5 +67,7 @@ namespace XYControl
         public int seriesBorderWidth = 2;
 
         public int refreshInterval = 1000;
+
+        public List<PointInfo> pointInfos = new List<PointInfo>();
     }
 }

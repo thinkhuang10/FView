@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -87,9 +88,6 @@
             this.AddPointButton = new System.Windows.Forms.Button();
             this.AddLineButton = new System.Windows.Forms.Button();
             this.PointDataGrid = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LineDataGrid = new System.Windows.Forms.DataGridView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.YAxisMax = new System.Windows.Forms.TextBox();
@@ -102,6 +100,9 @@
             this.label19 = new System.Windows.Forms.Label();
             this.OKButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.XVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.YVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PointColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -668,7 +669,7 @@
             this.DeletePointButton.Name = "DeletePointButton";
             this.DeletePointButton.Size = new System.Drawing.Size(107, 23);
             this.DeletePointButton.TabIndex = 3;
-            this.DeletePointButton.Text = "清空动态点";
+            this.DeletePointButton.Text = "删除动态点";
             this.DeletePointButton.UseVisualStyleBackColor = true;
             this.DeletePointButton.Click += new System.EventHandler(this.DeletePointButton_Click);
             // 
@@ -678,7 +679,7 @@
             this.DeleteLineButton.Name = "DeleteLineButton";
             this.DeleteLineButton.Size = new System.Drawing.Size(107, 23);
             this.DeleteLineButton.TabIndex = 3;
-            this.DeleteLineButton.Text = "清空曲线";
+            this.DeleteLineButton.Text = "删除曲线";
             this.DeleteLineButton.UseVisualStyleBackColor = true;
             this.DeleteLineButton.Click += new System.EventHandler(this.DeleteLineButton_Click);
             // 
@@ -704,47 +705,40 @@
             // 
             // PointDataGrid
             // 
+            this.PointDataGrid.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.PointDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.PointDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PointDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3});
+            this.XVar,
+            this.YVar,
+            this.PointColor});
             this.PointDataGrid.Location = new System.Drawing.Point(7, 335);
             this.PointDataGrid.Name = "PointDataGrid";
+            this.PointDataGrid.ReadOnly = true;
+            this.PointDataGrid.RowHeadersVisible = false;
             this.PointDataGrid.RowHeadersWidth = 62;
             this.PointDataGrid.RowTemplate.Height = 23;
+            this.PointDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.PointDataGrid.Size = new System.Drawing.Size(497, 140);
             this.PointDataGrid.TabIndex = 2;
-            this.PointDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "变量1";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "变量2";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 120;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "颜色";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 8;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 120;
+            this.PointDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PointDataGrid_CellDoubleClick);
             // 
             // LineDataGrid
             // 
             this.LineDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LineDataGrid.Location = new System.Drawing.Point(6, 92);
             this.LineDataGrid.Name = "LineDataGrid";
+            this.LineDataGrid.RowHeadersVisible = false;
             this.LineDataGrid.RowHeadersWidth = 62;
             this.LineDataGrid.RowTemplate.Height = 23;
+            this.LineDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LineDataGrid.Size = new System.Drawing.Size(497, 208);
             this.LineDataGrid.TabIndex = 2;
             this.LineDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
@@ -832,7 +826,7 @@
             // 
             // OKButton
             // 
-            this.OKButton.Location = new System.Drawing.Point(334, 528);
+            this.OKButton.Location = new System.Drawing.Point(337, 520);
             this.OKButton.Name = "OKButton";
             this.OKButton.Size = new System.Drawing.Size(75, 23);
             this.OKButton.TabIndex = 1;
@@ -842,7 +836,7 @@
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(417, 528);
+            this.CancelButton.Location = new System.Drawing.Point(427, 520);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
             this.CancelButton.TabIndex = 1;
@@ -850,17 +844,41 @@
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
+            // XVar
+            // 
+            this.XVar.HeaderText = "变量1";
+            this.XVar.MinimumWidth = 60;
+            this.XVar.Name = "XVar";
+            this.XVar.ReadOnly = true;
+            this.XVar.Width = 130;
+            // 
+            // YVar
+            // 
+            this.YVar.HeaderText = "变量2";
+            this.YVar.MinimumWidth = 60;
+            this.YVar.Name = "YVar";
+            this.YVar.ReadOnly = true;
+            this.YVar.Width = 130;
+            // 
+            // PointColor
+            // 
+            this.PointColor.HeaderText = "颜色";
+            this.PointColor.MinimumWidth = 60;
+            this.PointColor.Name = "PointColor";
+            this.PointColor.ReadOnly = true;
+            this.PointColor.Width = 233;
+            // 
             // SetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(521, 563);
+            this.ClientSize = new System.Drawing.Size(521, 555);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SetForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "配置";
             this.Load += new System.EventHandler(this.XYSetForm_Load);
             this.tabControl1.ResumeLayout(false);
@@ -933,9 +951,6 @@
         private System.Windows.Forms.Button DeleteLineButton;
         private System.Windows.Forms.Button AddPointButton;
         private System.Windows.Forms.DataGridView PointDataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.Label ChartForeColor;
         private System.Windows.Forms.Label ChartBackColor;
         private System.Windows.Forms.Label AxisLabelColor;
@@ -960,5 +975,8 @@
         private System.Windows.Forms.TextBox RefreshInterval;
         private System.Windows.Forms.TextBox SeriesBorderWidth;
         private System.Windows.Forms.TextBox DecimalPlace;
+        private System.Windows.Forms.DataGridViewTextBoxColumn XVar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn YVar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PointColor;
     }
 }

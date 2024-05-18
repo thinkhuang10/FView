@@ -1,6 +1,6 @@
 ﻿namespace XYControl
 {
-    partial class AddCurveForm
+    partial class AddLineForm
     {
         /// <summary>
         /// Required designer variable.
@@ -52,60 +52,53 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 42);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 20);
+            this.label1.Size = new System.Drawing.Size(35, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "X范围";
             // 
             // txtXScope
             // 
-            this.txtXScope.Location = new System.Drawing.Point(122, 37);
-            this.txtXScope.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtXScope.Location = new System.Drawing.Point(69, 13);
             this.txtXScope.Name = "txtXScope";
             this.txtXScope.ReadOnly = true;
-            this.txtXScope.Size = new System.Drawing.Size(498, 26);
+            this.txtXScope.Size = new System.Drawing.Size(333, 21);
             this.txtXScope.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 87);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(12, 45);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 20);
+            this.label2.Size = new System.Drawing.Size(35, 12);
             this.label2.TabIndex = 0;
             this.label2.Text = "Y范围";
             // 
             // txtYScope
             // 
-            this.txtYScope.Location = new System.Drawing.Point(122, 82);
-            this.txtYScope.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtYScope.Location = new System.Drawing.Point(69, 41);
             this.txtYScope.Name = "txtYScope";
             this.txtYScope.ReadOnly = true;
-            this.txtYScope.Size = new System.Drawing.Size(498, 26);
+            this.txtYScope.Size = new System.Drawing.Size(333, 21);
             this.txtYScope.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 138);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(12, 73);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 20);
+            this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 0;
             this.label3.Text = "颜色";
             // 
             // lblColor
             // 
-            this.lblColor.AutoSize = true;
             this.lblColor.BackColor = System.Drawing.Color.Gray;
             this.lblColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblColor.Location = new System.Drawing.Point(122, 135);
-            this.lblColor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblColor.Location = new System.Drawing.Point(69, 69);
             this.lblColor.Name = "lblColor";
-            this.lblColor.Size = new System.Drawing.Size(31, 22);
+            this.lblColor.Size = new System.Drawing.Size(56, 20);
             this.lblColor.TabIndex = 4;
             this.lblColor.Text = "     ";
             this.lblColor.Click += new System.EventHandler(this.lblColor_Click);
@@ -113,45 +106,40 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 185);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(12, 111);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 20);
+            this.label4.Size = new System.Drawing.Size(11, 12);
             this.label4.TabIndex = 0;
             this.label4.Text = "X";
             // 
             // txtX
             // 
-            this.txtX.Location = new System.Drawing.Point(44, 180);
-            this.txtX.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtX.Location = new System.Drawing.Point(29, 108);
             this.txtX.Name = "txtX";
-            this.txtX.Size = new System.Drawing.Size(241, 26);
+            this.txtX.Size = new System.Drawing.Size(141, 21);
             this.txtX.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(352, 185);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(235, 111);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(20, 20);
+            this.label5.Size = new System.Drawing.Size(11, 12);
             this.label5.TabIndex = 0;
             this.label5.Text = "Y";
             // 
             // txtY
             // 
-            this.txtY.Location = new System.Drawing.Point(378, 180);
-            this.txtY.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtY.Location = new System.Drawing.Point(252, 108);
             this.txtY.Name = "txtY";
-            this.txtY.Size = new System.Drawing.Size(241, 26);
+            this.txtY.Size = new System.Drawing.Size(162, 21);
             this.txtY.TabIndex = 1;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(21, 248);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAdd.Location = new System.Drawing.Point(14, 149);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(112, 38);
+            this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "添加";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -159,10 +147,9 @@
             // 
             // btnUpd
             // 
-            this.btnUpd.Location = new System.Drawing.Point(142, 248);
-            this.btnUpd.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnUpd.Location = new System.Drawing.Point(95, 149);
             this.btnUpd.Name = "btnUpd";
-            this.btnUpd.Size = new System.Drawing.Size(112, 38);
+            this.btnUpd.Size = new System.Drawing.Size(75, 23);
             this.btnUpd.TabIndex = 5;
             this.btnUpd.Text = "修改";
             this.btnUpd.UseVisualStyleBackColor = true;
@@ -170,10 +157,9 @@
             // 
             // btnDel
             // 
-            this.btnDel.Location = new System.Drawing.Point(508, 248);
-            this.btnDel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnDel.Location = new System.Drawing.Point(339, 149);
             this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(112, 38);
+            this.btnDel.Size = new System.Drawing.Size(75, 23);
             this.btnDel.TabIndex = 5;
             this.btnDel.Text = "删除";
             this.btnDel.UseVisualStyleBackColor = true;
@@ -185,14 +171,13 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.x,
             this.y});
-            this.dataGridView1.Location = new System.Drawing.Point(21, 318);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 191);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(600, 375);
+            this.dataGridView1.Size = new System.Drawing.Size(400, 225);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -214,10 +199,9 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(387, 703);
-            this.btnOk.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnOk.Location = new System.Drawing.Point(258, 422);
             this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(112, 38);
+            this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 5;
             this.btnOk.Text = "确定";
             this.btnOk.UseVisualStyleBackColor = true;
@@ -225,20 +209,19 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(508, 703);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCancel.Location = new System.Drawing.Point(339, 422);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(112, 38);
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // XYSetCurveForm
+            // AddLineForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 750);
+            this.ClientSize = new System.Drawing.Size(424, 450);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnDel);
             this.Controls.Add(this.btnUpd);
@@ -255,9 +238,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtXScope);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "XYSetCurveForm";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "AddLineForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "添加曲线";
             this.Load += new System.EventHandler(this.XYSetCurveForm_Load);
