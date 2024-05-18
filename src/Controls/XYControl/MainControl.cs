@@ -2,6 +2,8 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -10,7 +12,9 @@ namespace XYControl
     public partial class MainControl: UserControl,IDCCEControl
     {
         private const string ChartAreaName = "chartArea";
-        private readonly Save saveData = new Save();
+        private Save saveData = new Save();
+
+        private Series pointSeries;
 
         #region 与组态的接口
 
@@ -30,12 +34,20 @@ namespace XYControl
 
         public byte[] Serialize()
         {
-            throw new NotImplementedException();
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            MemoryStream memoryStream = new MemoryStream();
+            binaryFormatter.Serialize(memoryStream, saveData);
+            byte[] result = memoryStream.ToArray();
+            memoryStream.Dispose();
+            return result;
         }
 
         public void DeSerialize(byte[] bytes)
         {
-            throw new NotImplementedException();
+            BinaryFormatter binaryFormatter = new BinaryFormatter();
+            MemoryStream memoryStream = new MemoryStream(bytes);
+            saveData = (Save)binaryFormatter.Deserialize(memoryStream);
+            memoryStream.Dispose();
         }
 
         public void Stop()
@@ -525,9 +537,56 @@ namespace XYControl
             SetGrid();
             SetDefaultPoint();
 
-            AddLine1("line1");
-            AddLine2("line2");
-            AddPoint("point");
+            if (isRuning)
+            {
+                pointSeries = xyChart.Series.Add("Points");
+                pointSeries.ChartArea = ChartAreaName;
+                pointSeries.ChartType = SeriesChartType.Point;
+                pointSeries.MarkerStyle = MarkerStyle.Circle;
+                pointSeries.MarkerSize = saveData.dynamicPointSize;
+
+                timer.Interval = saveData.refreshInterval;
+                timer.Enabled = true;
+                timer.Tick += Timer_Tick;
+            }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            ShowPoints();
+        }
+
+        private void ShowPoints()
+        {
+            pointSeries.Points.Clear();
+            var font = new Font(FontFamily.GenericSansSerif, saveData.dynamicPointLabelSize);
+            foreach (var point in saveData.pointInfos)
+            {
+                if (null == GetValueEvent)
+                    continue;
+
+                var xAxisValue = GetValueEvent(point.XVar);
+                var yAxisValue = GetValueEvent(point.YVar);
+                if (null == xAxisValue || null == yAxisValue)
+                    continue;
+
+                if (!double.TryParse(xAxisValue.ToString(), out double xValue))
+                    continue;
+
+                if (!double.TryParse(yAxisValue.ToString(), out double yValue))
+                    continue;
+
+                var dataPoint = new DataPoint { Color = point.PointColor, XValue = Math.Round(xValue, saveData.decimalPlace), YValues = new double[] { Math.Round(yValue, saveData.decimalPlace) } };
+                if (saveData.isShowDynamicPointLabel)
+                {
+                    dataPoint.IsValueShownAsLabel = saveData.isShowDynamicPointLabel;
+                    dataPoint.Label = "#VALX, #VALY";
+                    dataPoint.LabelBackColor = saveData.dynamicPointLabelBackColor;
+                    dataPoint.LabelForeColor = saveData.dynamicPointLabelForeColor;
+                    dataPoint.Font = font;
+                }
+                pointSeries.Points.Add(dataPoint);
+            }
         }
 
         /// <summary>
@@ -603,6 +662,29 @@ namespace XYControl
             xyChart.ChartAreas[ChartAreaName].AxisY.MajorGrid.Interval = (saveData.yAxisMax - saveData.yAxisMin) / saveData.horizonalGridCount;
         }
 
+        private void Chart_DoubleClick(object sender, EventArgs e)
+        {
+            var form = new SetForm(saveData);
+            form.GetVarTableEvent += GetVarTableEvent;
+            if (DialogResult.OK != form.ShowDialog())
+                return;
+
+            ClearChart();
+            SetTitle();
+            SetChartArea();
+            SetGrid();
+            SetDefaultPoint();
+        }
+
+        private void ClearChart()
+        {
+            xyChart.Series.Clear();
+            xyChart.ChartAreas.Clear();
+            xyChart.Titles.Clear();
+        }
+
+        #region 用于测试
+
         private void AddLine1(string lineName)
         {
             var series = xyChart.Series.Add(lineName);
@@ -634,7 +716,7 @@ namespace XYControl
             series.ChartType = SeriesChartType.Point;
             series.MarkerStyle = MarkerStyle.Circle;
             series.MarkerSize = saveData.dynamicPointSize;
-            
+
             var font = new Font(FontFamily.GenericSansSerif, saveData.dynamicPointLabelSize);
 
             var dataPoint = new DataPoint { Color = Color.Red, XValue = 41, YValues = new double[] { 32 } };
@@ -650,30 +732,8 @@ namespace XYControl
             series.Points.Add(dataPoint);
         }
 
-        private void Chart_DoubleClick(object sender, EventArgs e)
-        {
-            var form = new SetForm(saveData);
-            form.GetVarTableEvent += GetVarTableEvent;
-            if (DialogResult.OK != form.ShowDialog())
-                return;
 
-            ClearChart();
-            SetTitle();
-            SetChartArea();
-            SetGrid();
-            SetDefaultPoint();
-
-            AddLine1("line1");
-            AddLine2("line2");
-            AddPoint("point");
-        }
-
-        private void ClearChart()
-        {
-            xyChart.Series.Clear();
-            xyChart.ChartAreas.Clear();
-            xyChart.Titles.Clear();
-        }
+        #endregion
 
     }
 }

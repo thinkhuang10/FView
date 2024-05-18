@@ -7,7 +7,7 @@ namespace XYControl
 {
     public partial class SetForm : Form
     {
-        private Save saveData;
+        private readonly Save saveData;
         private readonly ColorDialog colorDialog = new ColorDialog();
 
         public event GetVarTable GetVarTableEvent;
@@ -234,18 +234,6 @@ namespace XYControl
             DialogResult = DialogResult.Cancel;
         }
 
-        private void PointDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            var form = new AddPointForm(saveData, PointDataGrid.Rows[e.RowIndex]);
-            if (DialogResult.OK != form.ShowDialog())
-                return;
-
-            var pointInfo = form.pointInfo;
-            PointDataGrid.Rows[e.RowIndex].Cells["XVar"].Value = pointInfo.XVar;
-            PointDataGrid.Rows[e.RowIndex].Cells["YVar"].Value = pointInfo.YVar;
-            PointDataGrid.Rows[e.RowIndex].Cells["PointColor"].Value = pointInfo.PointColor;
-        }
-
         #region Tab - 常规
 
         private void ChartForeColor_Click(object sender, EventArgs e)
@@ -362,7 +350,6 @@ namespace XYControl
         {
             var form = new AddPointForm(saveData);
             form.GetVarTableEvent += GetVarTableEvent;
-
             if (DialogResult.OK != form.ShowDialog())
                 return;
 
@@ -379,6 +366,19 @@ namespace XYControl
                     PointDataGrid.Rows.RemoveAt(i);
                 }
             }
+        }
+
+        private void PointDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var form = new AddPointForm(saveData, PointDataGrid.Rows[e.RowIndex]);
+            form.GetVarTableEvent += GetVarTableEvent;
+            if (DialogResult.OK != form.ShowDialog())
+                return;
+
+            var pointInfo = form.pointInfo;
+            PointDataGrid.Rows[e.RowIndex].Cells["XVar"].Value = pointInfo.XVar;
+            PointDataGrid.Rows[e.RowIndex].Cells["YVar"].Value = pointInfo.YVar;
+            PointDataGrid.Rows[e.RowIndex].Cells["PointColor"].Value = pointInfo.PointColor;
         }
 
         #endregion

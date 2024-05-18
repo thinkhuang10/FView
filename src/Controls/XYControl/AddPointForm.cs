@@ -75,20 +75,32 @@ namespace XYControl
 
         private void SelectedXAxisVarButton_Click(object sender, EventArgs e)
         {
+            if (null == GetVarTableEvent)
+                return;
+
             var variables = GetVarTableEvent("").Split('|');
             if (variables.Length <= 0)
                 return;
 
-            XAxisVar.Text = variables.First();
+            if (string.IsNullOrEmpty(variables.First()))
+                return;
+
+            XAxisVar.Text = string.Concat("[", variables.First(), "]");
         }
 
         private void SelectedYAxisVarButton_Click(object sender, EventArgs e)
         {
+            if (null == GetVarTableEvent)
+                return;
+
             var variables = GetVarTableEvent("").Split('|');
             if (variables.Length <= 0)
                 return;
 
-            YAxisVar.Text = variables.First();
+            if (string.IsNullOrEmpty(variables.First()))
+                return;
+
+            YAxisVar.Text = string.Concat("[", variables.First(), "]");
         }
 
         private void PointColor_Click(object sender, EventArgs e)

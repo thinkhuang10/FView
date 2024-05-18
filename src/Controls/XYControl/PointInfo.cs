@@ -1,7 +1,9 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace XYControl
 {
+    [Serializable]
     public class PointInfo
     {
         public string XVar { set; get; }
