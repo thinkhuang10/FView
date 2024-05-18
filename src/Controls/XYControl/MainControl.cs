@@ -514,6 +514,9 @@ namespace XYControl
 
         private void SetTitle()
         {
+            if (string.IsNullOrEmpty(saveData.chartTitle))
+                return;
+
             var title = xyChart.Titles.Add(saveData.chartTitle);    // 设置标题文本
             title.ForeColor = saveData.chartTitleColor;             // 设置标题颜色
             title.Font = new Font(FontFamily.GenericSansSerif, saveData.chartTitleSize,     // 设置标题字体大小

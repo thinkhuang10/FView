@@ -24,7 +24,7 @@ namespace XYControl
 
         public Color chartTitleColor = Color.Black;
 
-        public float chartTitleSize = 12.0f;
+        public float chartTitleSize = 10.0f;
 
         public bool chartTitleIsBold = false;
 
@@ -36,9 +36,9 @@ namespace XYControl
 
         public Color yAxisTitleForeColor = Color.Black;
 
-        public float xAxisTitleSize = 12.0f;
+        public float xAxisTitleSize = 10.0f;
 
-        public float yAxisTitleSize = 12.0f;
+        public float yAxisTitleSize = 10.0f;
 
         public bool xAxisTitleIsBold = false;
 
@@ -60,10 +60,10 @@ namespace XYControl
 
         public Color dynamicPointLabelForeColor = Color.Black;
 
-        public uint decimalPlace = 1;
+        public int decimalPlace = 1;
 
         public int seriesBorderWidth = 2;
 
-        public int millisecond = 1000;
+        public int refreshInterval = 1000;
     }
 }

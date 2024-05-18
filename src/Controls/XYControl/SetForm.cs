@@ -28,6 +28,27 @@ namespace XYControl
             DynamicPointLabelForeColor.BackColor = saveData.dynamicPointLabelForeColor;
             DynamicPointLabelBackColor.BackColor = saveData.dynamicPointLabelBackColor;
             DynamicPointLabelSize.Text = saveData.dynamicPointLabelSize.ToString();
+
+            ChartTitle.Text = saveData.chartTitle;
+            ChartTitleColor.BackColor = saveData.chartTitleColor;
+            ChartTitleSize.Text =  saveData.chartTitleSize.ToString();
+
+            XAxisTitle.Text = saveData.xAxisTitle;
+            XAxisTitleForeColor.BackColor = saveData.xAxisTitleForeColor;
+            XAxisTitleSize.Text = saveData.xAxisTitleSize.ToString();
+
+            YAxisTitle.Text = saveData.yAxisTitle;
+            YAxisTitleForeColor.BackColor = saveData.yAxisTitleForeColor;
+            YAxisTitleSize.Text = saveData.yAxisTitleSize.ToString();
+
+            DecimalPlace.Text = saveData.decimalPlace.ToString();
+            SeriesBorderWidth.Text = saveData.seriesBorderWidth.ToString();
+            RefreshInterval.Text = saveData.refreshInterval.ToString();
+
+            XAxisMin.Text = saveData.xAxisMin.ToString();
+            XAxisMax.Text = saveData.xAxisMax.ToString();
+            YAxisMin.Text = saveData.yAxisMin.ToString();
+            YAxisMax.Text = saveData.yAxisMax.ToString();
         }
 
         private void OKButton_Click(object sender, EventArgs e)
@@ -60,6 +81,83 @@ namespace XYControl
                 return;
             }
 
+            if (!int.TryParse(ChartTitleSize.Text.Trim(), out int chartTitleSize)
+                || chartTitleSize <= 0)
+            {
+                MessageBox.Show("请输入正确的标题字体大小.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(XAxisTitleSize.Text.Trim(), out int xAxisTitleSize)
+                || xAxisTitleSize <= 0)
+            {
+                MessageBox.Show("请输入正确的X信息字体大小.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(YAxisTitleSize.Text.Trim(), out int yAxisTitleSize)
+                || yAxisTitleSize <= 0)
+            {
+                MessageBox.Show("请输入正确的Y信息字体大小.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(DecimalPlace.Text.Trim(), out int decimalPlace))
+            {
+                MessageBox.Show("请输入正确的小数位数.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(SeriesBorderWidth.Text.Trim(), out int seriesBorderWidth)
+                || seriesBorderWidth <= 0)
+            {
+                MessageBox.Show("请输入正确的曲线宽度.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(RefreshInterval.Text.Trim(), out int refreshInterval)
+                || refreshInterval <= 0)
+            {
+                MessageBox.Show("请输入正确的刷新时间.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(XAxisMin.Text.Trim(), out int xAxisMin))
+            {
+                MessageBox.Show("请输入正确的X最小值.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(XAxisMax.Text.Trim(), out int xAxisMax))
+            {
+                MessageBox.Show("请输入正确的X最大值.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (xAxisMin >= xAxisMax)
+            {
+                MessageBox.Show("请输入正确的X最小值和最大值.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(YAxisMin.Text.Trim(), out int yAxisMin))
+            {
+                MessageBox.Show("请输入正确的Y最小值.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (!int.TryParse(YAxisMax.Text.Trim(), out int yAxisMax))
+            {
+                MessageBox.Show("请输入正确的Y最大值.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (yAxisMin >= yAxisMax)
+            {
+                MessageBox.Show("请输入正确的Y最小值和最大值.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             saveData.chartForeColor = ChartForeColor.BackColor;
             saveData.chartBackColor = ChartBackColor.BackColor;
             saveData.gridColor = GridColor.BackColor;
@@ -75,30 +173,29 @@ namespace XYControl
             saveData.dynamicPointLabelBackColor = DynamicPointLabelBackColor.BackColor;
             saveData.dynamicPointLabelSize = dynamicPointLabelSize;
 
+            saveData.chartTitle = ChartTitle.Text.Trim();
+            saveData.chartTitleColor = ChartTitleColor.BackColor;
+            saveData.chartTitleSize = chartTitleSize;
+
+            saveData.xAxisTitle = XAxisTitle.Text.Trim();
+            saveData.xAxisTitleForeColor = XAxisTitleForeColor.BackColor;
+            saveData.xAxisTitleSize = xAxisTitleSize;
+
+            saveData.yAxisTitle = YAxisTitle.Text.Trim();
+            saveData.yAxisTitleForeColor = YAxisTitleForeColor.BackColor;
+            saveData.yAxisTitleSize = yAxisTitleSize;
+
+            saveData.decimalPlace = decimalPlace;
+            saveData.seriesBorderWidth = seriesBorderWidth;
+            saveData.refreshInterval = refreshInterval;
+
+            saveData.xAxisMin = xAxisMin;
+            saveData.xAxisMax = xAxisMax;
+            saveData.yAxisMin = yAxisMin;
+            saveData.yAxisMax = yAxisMax;
+
             DialogResult = DialogResult.OK;
             Close();
-        }
-
-        private void lblXLabelColor_Click(object sender, EventArgs e)
-        {
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-                lblXLabelColor.BackColor = colorDialog.Color;
-        }
-
-        private void lblYLabelColor_Click(object sender, EventArgs e)
-        {
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-                lblYLabelColor.BackColor = colorDialog.Color;
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //XYSetCurveForm curveForm = new XYSetCurveForm(saveData, 0, 0, true);
-            //if (curveForm.ShowDialog() == DialogResult.OK)
-            //{
-            //    saveData = curveForm.saveData;
-            //    SetDataGruidView();
-            //}
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -111,35 +208,10 @@ namespace XYControl
             //}
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //this.saveData.Points.Series.Clear();
-            //this.dataGridView1.Rows.Clear();
-            //this.dataGridView1.Columns.Clear();
-            //MessageBox.Show("曲线已清空！");
-        }
-
         private void CancelButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
             Close();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            //this.saveData.Points.Annotations.Clear();
-            //this.dataGridView2.Rows.Clear();
-            //MessageBox.Show("标注已清空！");
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            //XYSetCurveForm curveForm = new XYSetCurveForm(saveData, 1, 0, false);
-            //if (curveForm.ShowDialog() == DialogResult.OK)
-            //{
-            //    saveData = curveForm.saveData;
-            //    SetDataGruidView();
-            //}
         }
 
         private void dataGridView2_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -153,6 +225,7 @@ namespace XYControl
         }
 
         #region Tab - 常规
+
         private void ChartForeColor_Click(object sender, EventArgs e)
         {
             if (colorDialog.ShowDialog() != DialogResult.OK)
@@ -184,12 +257,6 @@ namespace XYControl
 
             AxisLabelColor.BackColor = colorDialog.Color;
         }
-        #endregion
-
-        #region Tab - 数据
-
-
-        #endregion
 
         private void IsShowDynamicPointLabel_CheckedChanged(object sender, EventArgs e)
         {
@@ -222,5 +289,71 @@ namespace XYControl
 
             DynamicPointLabelBackColor.BackColor = colorDialog.Color;
         }
+
+        private void ChartTitleColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            ChartTitleColor.BackColor = colorDialog.Color;
+        }
+
+        private void XAxisTitleForeColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            XAxisTitleForeColor.BackColor = colorDialog.Color;
+        }
+
+        private void YAxisTitleForeColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            YAxisTitleForeColor.BackColor = colorDialog.Color;
+        }
+
+        #endregion
+
+        #region Tab - 数据
+
+        private void AddLineButton_Click(object sender, EventArgs e)
+        {
+            //XYSetCurveForm curveForm = new XYSetCurveForm(saveData, 0, 0, true);
+            //if (curveForm.ShowDialog() == DialogResult.OK)
+            //{
+            //    saveData = curveForm.saveData;
+            //    SetDataGruidView();
+            //}
+        }
+
+        private void DeleteLineButton_Click(object sender, EventArgs e)
+        {
+            //this.saveData.Points.Series.Clear();
+            //this.dataGridView1.Rows.Clear();
+            //this.dataGridView1.Columns.Clear();
+            //MessageBox.Show("曲线已清空！");
+        }
+
+        private void AddPointButton_Click(object sender, EventArgs e)
+        {
+            //XYSetCurveForm curveForm = new XYSetCurveForm(saveData, 1, 0, false);
+            //if (curveForm.ShowDialog() == DialogResult.OK)
+            //{
+            //    saveData = curveForm.saveData;
+            //    SetDataGruidView();
+            //}
+        }
+
+        private void DeletePointButton_Click(object sender, EventArgs e)
+        {
+            //this.saveData.Points.Annotations.Clear();
+            //this.dataGridView2.Rows.Clear();
+            //MessageBox.Show("标注已清空！");
+        }
+
+        #endregion
+
     }
 }
