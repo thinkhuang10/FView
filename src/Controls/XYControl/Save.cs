@@ -6,9 +6,9 @@ namespace XYControl
     [Serializable]
     public class Save
     {
-        public Color chartBackColor = Color.Gray;
-
         public Color chartForeColor = Color.Black;
+
+        public Color chartBackColor = Color.Gray;
 
         public double xAxisMin = 0;
 
@@ -46,19 +46,19 @@ namespace XYControl
 
         public Color gridColor = Color.White;
 
-        public uint xAxisGridCount = 10;
+        public uint verticalGridCount = 10;
 
-        public uint yAxisGridCount = 10;
+        public uint horizonalGridCount = 10;
 
-        public uint dynamicPointSize = 10;
+        public int dynamicPointSize = 10;
 
-        public bool isShowDynamicPolitLabel = true;
+        public bool isShowDynamicPointLabel = true;
 
-        public float dynamicPolitLabelSize = 8.0f;
+        public float dynamicPointLabelSize = 8.0f;
 
-        public Color dynamicPolitLabelBackColor = Color.White;
+        public Color dynamicPointLabelBackColor = Color.White;
 
-        public Color dynamicPolitLabelForeColor = Color.Black;
+        public Color dynamicPointLabelForeColor = Color.Black;
 
         public uint decimalPlace = 1;
 

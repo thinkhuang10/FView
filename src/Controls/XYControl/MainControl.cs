@@ -486,22 +486,33 @@ namespace XYControl
 
         private void UserControl_Load(object sender, EventArgs e)
         {
-            InitChart();
-            InitTitle();
-            InitChartArea();
-            InitGrid();
+            SetTitle();
+            SetChartArea();
+            SetGrid();
+            SetDefaultPoint();
 
             AddLine1("line1");
             AddLine2("line2");
             AddPoint("point");
         }
 
-        private void InitChart()
+        /// <summary>
+        /// 特殊处理: 添加默认点,避免配置时不显示网格
+        /// </summary>
+        private void SetDefaultPoint()
         {
-            xyChart.BackColor = saveData.chartBackColor;    // 设置背景色
+            var series = xyChart.Series.Add("SpecialPointForLoad");
+            series.ChartArea = ChartAreaName;
+            series.ChartType = SeriesChartType.Point;
+            series.Points.Add(new DataPoint
+            {
+                Color = Color.Transparent,
+                XValue = saveData.xAxisMin,
+                YValues = new double[] { saveData.yAxisMin }
+            });
         }
 
-        private void InitTitle()
+        private void SetTitle()
         {
             var title = xyChart.Titles.Add(saveData.chartTitle);    // 设置标题文本
             title.ForeColor = saveData.chartTitleColor;             // 设置标题颜色
@@ -509,55 +520,50 @@ namespace XYControl
                 saveData.chartTitleIsBold ? FontStyle.Bold : FontStyle.Regular);            // 设置标题是否为粗体
         }
 
-        private void InitChartArea()
+        private void SetChartArea()
         {
-            var chartArea = new ChartArea(ChartAreaName);
+            xyChart.BackColor = saveData.chartBackColor;    // 设置背景色
 
+            var chartArea = new ChartArea(ChartAreaName);
             chartArea.BackColor = saveData.chartForeColor;      // 设置前景色
 
             chartArea.AxisX.Minimum = saveData.xAxisMin;        // 设置X轴最小值
             chartArea.AxisX.Maximum = saveData.xAxisMax;        // 设置X轴最大值
-
             chartArea.AxisY.Minimum = saveData.yAxisMin;        // 设置Y轴最小值
             chartArea.AxisY.Maximum = saveData.yAxisMax;        // 设置Y轴最大值
 
             // 设置标注颜色
-            chartArea.AxisX.LabelStyle = new LabelStyle
-            {
-                ForeColor = saveData.axisLabelColor,
-            };
-
-            chartArea.AxisY.LabelStyle = new LabelStyle
-            {
-                ForeColor = saveData.axisLabelColor
-            };
+            chartArea.AxisX.LabelStyle = new LabelStyle { ForeColor = saveData.axisLabelColor };
+            chartArea.AxisY.LabelStyle = new LabelStyle { ForeColor = saveData.axisLabelColor };
 
             chartArea.AxisX.Title = saveData.xAxisTitle;                    // 设置X信息
             chartArea.AxisX.TitleForeColor = saveData.xAxisTitleForeColor;  // 设置X信息颜色
-            chartArea.AxisX.TitleFont = new Font(FontFamily.GenericSansSerif, saveData.xAxisTitleSize,     // 设置X信息字体大小
-                saveData.xAxisTitleIsBold ? FontStyle.Bold : FontStyle.Regular);                           // 设置X信息是否为粗体
+            chartArea.AxisX.TitleFont = new Font(FontFamily.GenericSansSerif, 
+                saveData.xAxisTitleSize,     // 设置X信息字体大小
+                saveData.xAxisTitleIsBold ? FontStyle.Bold : FontStyle.Regular);    // 设置X信息是否为粗体
 
             chartArea.AxisY.Title = saveData.yAxisTitle;                    // 设置Y信息
             chartArea.AxisY.TitleForeColor = saveData.yAxisTitleForeColor;  // 设置Y信息颜色
-            chartArea.AxisY.TitleFont = new Font(FontFamily.GenericSansSerif, saveData.yAxisTitleSize,     // 设置Y信息字体大小
-                saveData.yAxisTitleIsBold ? FontStyle.Bold : FontStyle.Regular);                           // 设置Y信息是否为粗体
+            chartArea.AxisY.TitleFont = new Font(FontFamily.GenericSansSerif, 
+                saveData.yAxisTitleSize,     // 设置Y信息字体大小
+                saveData.yAxisTitleIsBold ? FontStyle.Bold : FontStyle.Regular);    // 设置Y信息是否为粗体
 
             xyChart.ChartAreas.Add(chartArea);
         }
 
-        private void InitGrid()
+        private void SetGrid()
         {
             xyChart.ChartAreas[ChartAreaName].AxisX.MajorGrid.Enabled = true;
             xyChart.ChartAreas[ChartAreaName].AxisX.MajorGrid.LineColor = saveData.gridColor;
             xyChart.ChartAreas[ChartAreaName].AxisX.MajorGrid.LineDashStyle = ChartDashStyle.Solid;
             xyChart.ChartAreas[ChartAreaName].AxisX.MajorGrid.IntervalType = DateTimeIntervalType.Number;
-            xyChart.ChartAreas[ChartAreaName].AxisX.MajorGrid.Interval = (saveData.xAxisMax - saveData.xAxisMin) / saveData.xAxisGridCount;
+            xyChart.ChartAreas[ChartAreaName].AxisX.MajorGrid.Interval = (saveData.xAxisMax - saveData.xAxisMin) / saveData.verticalGridCount;
 
             xyChart.ChartAreas[ChartAreaName].AxisY.MajorGrid.Enabled = true;
             xyChart.ChartAreas[ChartAreaName].AxisY.MajorGrid.LineColor = saveData.gridColor;
             xyChart.ChartAreas[ChartAreaName].AxisY.MajorGrid.LineDashStyle = ChartDashStyle.Solid;
             xyChart.ChartAreas[ChartAreaName].AxisY.MajorGrid.IntervalType = DateTimeIntervalType.Number;
-            xyChart.ChartAreas[ChartAreaName].AxisY.MajorGrid.Interval = (saveData.yAxisMax - saveData.yAxisMin) / saveData.yAxisGridCount;
+            xyChart.ChartAreas[ChartAreaName].AxisY.MajorGrid.Interval = (saveData.yAxisMax - saveData.yAxisMin) / saveData.horizonalGridCount;
         }
 
         private void AddLine1(string lineName)
@@ -590,38 +596,46 @@ namespace XYControl
             series.ChartArea = ChartAreaName;
             series.ChartType = SeriesChartType.Point;
             series.MarkerStyle = MarkerStyle.Circle;
-            series.MarkerSize = 10;
+            series.MarkerSize = saveData.dynamicPointSize;
             
-            var font = new Font(FontFamily.GenericSansSerif, saveData.dynamicPolitLabelSize);
-            series.Points.Add(new DataPoint
+            var font = new Font(FontFamily.GenericSansSerif, saveData.dynamicPointLabelSize);
+
+            var dataPoint = new DataPoint { Color = Color.Red, XValue = 41, YValues = new double[] { 32 } };
+            if (saveData.isShowDynamicPointLabel)
             {
-                Color = Color.Red,
-                XValue = 41,
-                YValues = new double[] { 32 },
-                IsValueShownAsLabel = saveData.isShowDynamicPolitLabel,
-                Label = "#VALX, #VALY",
-                LabelBackColor = saveData.dynamicPolitLabelBackColor,
-                LabelForeColor = saveData.dynamicPolitLabelForeColor,
-                Font = font
-            });
-            series.Points.Add(new DataPoint
-            {
-                Color = Color.Green,
-                XValue = 21,
-                YValues = new double[] { 66 },
-                IsValueShownAsLabel = saveData.isShowDynamicPolitLabel,
-                Label = "#VALX, #VALY",
-                LabelBackColor = saveData.dynamicPolitLabelBackColor,
-                LabelForeColor = saveData.dynamicPolitLabelForeColor,
-                Font = font
-            });
+                dataPoint.IsValueShownAsLabel = saveData.isShowDynamicPointLabel;
+                dataPoint.Label = "#VALX, #VALY";
+                dataPoint.LabelBackColor = saveData.dynamicPointLabelBackColor;
+                dataPoint.LabelForeColor = saveData.dynamicPointLabelForeColor;
+                dataPoint.Font = font;
+            }
+
+            series.Points.Add(dataPoint);
         }
 
         private void Chart_DoubleClick(object sender, EventArgs e)
         {
-            var form = new SetForm();
-            form.ShowDialog();
+            var form = new SetForm(saveData);
+
+            if (DialogResult.OK != form.ShowDialog())
+                return;
+
+            ClearChart();
+            SetTitle();
+            SetChartArea();
+            SetGrid();
+            SetDefaultPoint();
+
+            AddLine1("line1");
+            AddLine2("line2");
+            AddPoint("point");
         }
 
+        private void ClearChart()
+        {
+            xyChart.Series.Clear();
+            xyChart.ChartAreas.Clear();
+            xyChart.Titles.Clear();
+        }
     }
 }
