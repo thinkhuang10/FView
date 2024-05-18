@@ -54,15 +54,27 @@ namespace XYControl
             YAxisMin.Text = saveData.yAxisMin.ToString();
             YAxisMax.Text = saveData.yAxisMax.ToString();
 
-            PointDataGrid.Rows.Clear();
             foreach (var item in saveData.pointInfos)
             {
                 PointDataGrid.Rows.Add(item.XVar, item.YVar, item.PointColor);
             }
+
+            var column = new DataGridViewColumn
+            {
+                Name = "No",
+                HeaderText = "序号",
+                SortMode = DataGridViewColumnSortMode.NotSortable,
+                CellTemplate = new DataGridViewTextBoxCell()
+            };
+            LineDataGrid.Columns.Add(column);
+            LineDataGrid.Columns["No"].Width = 60;
+            //LineDataGrid.Columns["No"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void OKButton_Click(object sender, EventArgs e)
         {
+            #region 验证输入
+
             if (!uint.TryParse(HorizonalGridCount.Text.Trim(), out uint horizonalGridCount)
                 || 0 == horizonalGridCount)
             {
@@ -168,6 +180,8 @@ namespace XYControl
                 return;
             }
 
+            #endregion
+
             saveData.chartForeColor = ChartForeColor.BackColor;
             saveData.chartBackColor = ChartBackColor.BackColor;
             saveData.gridColor = GridColor.BackColor;
@@ -217,16 +231,6 @@ namespace XYControl
             }
 
             DialogResult = DialogResult.OK;
-        }
-
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //XYSetCurveForm curveForm = new XYSetCurveForm(saveData, e.ColumnIndex, 1, true);
-            //if (curveForm.ShowDialog() == DialogResult.OK)
-            //{
-            //    saveData = curveForm.saveData;
-            //    SetDataGruidView();
-            //}
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -336,14 +340,52 @@ namespace XYControl
             //    saveData = curveForm.saveData;
             //    SetDataGruidView();
             //}
+
+            LineDataGrid.Rows.Add(8);
+            LineDataGrid.Rows[0].Cells[0].Value = "颜色";
+            for (var i = 1; i < LineDataGrid.Rows.Count; i++)
+            {
+                LineDataGrid.Rows[i].Cells[0].Value = i;
+            }
+
+            var column = new DataGridViewColumn
+            {
+                Name = "曲线1",
+                HeaderText = "曲线1",
+                SortMode = DataGridViewColumnSortMode.NotSortable,
+                CellTemplate = new DataGridViewTextBoxCell()
+            };
+            var columnNum = LineDataGrid.Columns.Add(column);
+            LineDataGrid.Columns[columnNum].Width = 60;
+            LineDataGrid.Rows[0].Cells[columnNum].Value = Color.Red;
+            LineDataGrid.Rows[1].Cells[columnNum].Value = "22";
+            LineDataGrid.Rows[2].Cells[columnNum].Value = "33";
         }
 
         private void DeleteLineButton_Click(object sender, EventArgs e)
         {
-            //this.saveData.Points.Series.Clear();
-            //this.dataGridView1.Rows.Clear();
-            //this.dataGridView1.Columns.Clear();
-            //MessageBox.Show("曲线已清空！");
+            var dr = MessageBox.Show("确认删除选中的曲线？", "提示", MessageBoxButtons.OKCancel);
+            if (dr != DialogResult.OK)
+                return;
+
+            for (var i = LineDataGrid.SelectedColumns.Count; i >= 1; i--)
+            {
+                // 表格的第一列不能被删除
+                if (0 == LineDataGrid.SelectedColumns[i - 1].Index)
+                    continue;
+
+                LineDataGrid.Columns.RemoveAt(LineDataGrid.SelectedColumns[i - 1].Index);
+            }
+        }
+
+        private void LineDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //XYSetCurveForm curveForm = new XYSetCurveForm(saveData, e.ColumnIndex, 1, true);
+            //if (curveForm.ShowDialog() == DialogResult.OK)
+            //{
+            //    saveData = curveForm.saveData;
+            //    SetDataGruidView();
+            //}
         }
 
         private void AddPointButton_Click(object sender, EventArgs e)
@@ -358,13 +400,13 @@ namespace XYControl
 
         private void DeletePointButton_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("确认删除选中的动态点？", "提示", MessageBoxButtons.OKCancel);
-            if (dr == DialogResult.OK)
+            var dr = MessageBox.Show("确认删除选中的动态点？", "提示", MessageBoxButtons.OKCancel);
+            if (dr != DialogResult.OK)
+                return;
+
+            for (var i = PointDataGrid.SelectedRows.Count; i >= 1; i--) 
             {
-                for (int i = 0; i < PointDataGrid.SelectedRows.Count; i++)
-                {
-                    PointDataGrid.Rows.RemoveAt(i);
-                }
+                PointDataGrid.Rows.RemoveAt(PointDataGrid.SelectedRows[i - 1].Index);
             }
         }
 

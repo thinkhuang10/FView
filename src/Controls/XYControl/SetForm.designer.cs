@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -88,6 +89,9 @@
             this.AddPointButton = new System.Windows.Forms.Button();
             this.AddLineButton = new System.Windows.Forms.Button();
             this.PointDataGrid = new System.Windows.Forms.DataGridView();
+            this.XVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.YVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PointColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LineDataGrid = new System.Windows.Forms.DataGridView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.YAxisMax = new System.Windows.Forms.TextBox();
@@ -100,9 +104,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.OKButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
-            this.XVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.YVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PointColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -706,6 +707,7 @@
             // PointDataGrid
             // 
             this.PointDataGrid.AllowUserToAddRows = false;
+            this.PointDataGrid.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -730,18 +732,54 @@
             this.PointDataGrid.TabIndex = 2;
             this.PointDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PointDataGrid_CellDoubleClick);
             // 
+            // XVar
+            // 
+            this.XVar.HeaderText = "变量1";
+            this.XVar.MinimumWidth = 60;
+            this.XVar.Name = "XVar";
+            this.XVar.ReadOnly = true;
+            this.XVar.Width = 130;
+            // 
+            // YVar
+            // 
+            this.YVar.HeaderText = "变量2";
+            this.YVar.MinimumWidth = 60;
+            this.YVar.Name = "YVar";
+            this.YVar.ReadOnly = true;
+            this.YVar.Width = 130;
+            // 
+            // PointColor
+            // 
+            this.PointColor.HeaderText = "颜色";
+            this.PointColor.MinimumWidth = 60;
+            this.PointColor.Name = "PointColor";
+            this.PointColor.ReadOnly = true;
+            this.PointColor.Width = 233;
+            // 
             // LineDataGrid
             // 
+            this.LineDataGrid.AllowUserToAddRows = false;
+            this.LineDataGrid.AllowUserToDeleteRows = false;
+            this.LineDataGrid.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LineDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.LineDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.LineDataGrid.Location = new System.Drawing.Point(6, 92);
             this.LineDataGrid.Name = "LineDataGrid";
+            this.LineDataGrid.ReadOnly = true;
             this.LineDataGrid.RowHeadersVisible = false;
             this.LineDataGrid.RowHeadersWidth = 62;
             this.LineDataGrid.RowTemplate.Height = 23;
-            this.LineDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.LineDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullColumnSelect;
             this.LineDataGrid.Size = new System.Drawing.Size(497, 208);
             this.LineDataGrid.TabIndex = 2;
-            this.LineDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.LineDataGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LineDataGrid_CellDoubleClick);
             // 
             // groupBox6
             // 
@@ -843,30 +881,6 @@
             this.CancelButton.Text = "取消";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
-            // 
-            // XVar
-            // 
-            this.XVar.HeaderText = "变量1";
-            this.XVar.MinimumWidth = 60;
-            this.XVar.Name = "XVar";
-            this.XVar.ReadOnly = true;
-            this.XVar.Width = 130;
-            // 
-            // YVar
-            // 
-            this.YVar.HeaderText = "变量2";
-            this.YVar.MinimumWidth = 60;
-            this.YVar.Name = "YVar";
-            this.YVar.ReadOnly = true;
-            this.YVar.Width = 130;
-            // 
-            // PointColor
-            // 
-            this.PointColor.HeaderText = "颜色";
-            this.PointColor.MinimumWidth = 60;
-            this.PointColor.Name = "PointColor";
-            this.PointColor.ReadOnly = true;
-            this.PointColor.Width = 233;
             // 
             // SetForm
             // 
