@@ -28,25 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtXScope = new System.Windows.Forms.TextBox();
+            this.XAxisScope = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtYScope = new System.Windows.Forms.TextBox();
+            this.YAxisScope = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblColor = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtX = new System.Windows.Forms.TextBox();
+            this.LineColor = new System.Windows.Forms.Label();
+            this.AddButton = new System.Windows.Forms.Button();
+            this.ModifyButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.LineGridView = new System.Windows.Forms.DataGridView();
+            this.OkButton = new System.Windows.Forms.Button();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.SelectedYAxisVarButton = new System.Windows.Forms.Button();
+            this.SelectedXAxisVarButton = new System.Windows.Forms.Button();
+            this.YAxisVar = new System.Windows.Forms.TextBox();
+            this.XAxisVar = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtY = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnUpd = new System.Windows.Forms.Button();
-            this.btnDel = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.x = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.y = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnOk = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.label4 = new System.Windows.Forms.Label();
+            this.XVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.YVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.LineGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -58,13 +61,13 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "X范围";
             // 
-            // txtXScope
+            // XAxisScope
             // 
-            this.txtXScope.Location = new System.Drawing.Point(69, 13);
-            this.txtXScope.Name = "txtXScope";
-            this.txtXScope.ReadOnly = true;
-            this.txtXScope.Size = new System.Drawing.Size(333, 21);
-            this.txtXScope.TabIndex = 1;
+            this.XAxisScope.Location = new System.Drawing.Point(69, 13);
+            this.XAxisScope.Name = "XAxisScope";
+            this.XAxisScope.ReadOnly = true;
+            this.XAxisScope.Size = new System.Drawing.Size(333, 21);
+            this.XAxisScope.TabIndex = 1;
             // 
             // label2
             // 
@@ -75,13 +78,13 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Y范围";
             // 
-            // txtYScope
+            // YAxisScope
             // 
-            this.txtYScope.Location = new System.Drawing.Point(69, 41);
-            this.txtYScope.Name = "txtYScope";
-            this.txtYScope.ReadOnly = true;
-            this.txtYScope.Size = new System.Drawing.Size(333, 21);
-            this.txtYScope.TabIndex = 1;
+            this.YAxisScope.Location = new System.Drawing.Point(69, 41);
+            this.YAxisScope.Name = "YAxisScope";
+            this.YAxisScope.ReadOnly = true;
+            this.YAxisScope.Size = new System.Drawing.Size(333, 21);
+            this.YAxisScope.TabIndex = 1;
             // 
             // label3
             // 
@@ -92,158 +95,190 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "颜色";
             // 
-            // lblColor
+            // LineColor
             // 
-            this.lblColor.BackColor = System.Drawing.Color.Gray;
-            this.lblColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblColor.Location = new System.Drawing.Point(69, 69);
-            this.lblColor.Name = "lblColor";
-            this.lblColor.Size = new System.Drawing.Size(56, 20);
-            this.lblColor.TabIndex = 4;
-            this.lblColor.Text = "     ";
-            this.lblColor.Click += new System.EventHandler(this.lblColor_Click);
+            this.LineColor.BackColor = System.Drawing.Color.Gray;
+            this.LineColor.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LineColor.Location = new System.Drawing.Point(69, 69);
+            this.LineColor.Name = "LineColor";
+            this.LineColor.Size = new System.Drawing.Size(56, 20);
+            this.LineColor.TabIndex = 4;
+            this.LineColor.Text = "     ";
+            this.LineColor.Click += new System.EventHandler(this.LineColor_Click);
             // 
-            // label4
+            // AddButton
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 111);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(11, 12);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "X";
+            this.AddButton.Location = new System.Drawing.Point(14, 149);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(75, 23);
+            this.AddButton.TabIndex = 5;
+            this.AddButton.Text = "添加";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
-            // txtX
+            // ModifyButton
             // 
-            this.txtX.Location = new System.Drawing.Point(29, 108);
-            this.txtX.Name = "txtX";
-            this.txtX.Size = new System.Drawing.Size(141, 21);
-            this.txtX.TabIndex = 1;
+            this.ModifyButton.Location = new System.Drawing.Point(95, 149);
+            this.ModifyButton.Name = "ModifyButton";
+            this.ModifyButton.Size = new System.Drawing.Size(75, 23);
+            this.ModifyButton.TabIndex = 5;
+            this.ModifyButton.Text = "修改";
+            this.ModifyButton.UseVisualStyleBackColor = true;
+            this.ModifyButton.Click += new System.EventHandler(this.ModifyButton_Click);
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Location = new System.Drawing.Point(339, 149);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(75, 23);
+            this.DeleteButton.TabIndex = 5;
+            this.DeleteButton.Text = "删除";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // LineGridView
+            // 
+            this.LineGridView.AllowUserToAddRows = false;
+            this.LineGridView.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LineGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.LineGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.LineGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.XVar,
+            this.YVar});
+            this.LineGridView.Location = new System.Drawing.Point(14, 191);
+            this.LineGridView.Name = "LineGridView";
+            this.LineGridView.RowHeadersVisible = false;
+            this.LineGridView.RowHeadersWidth = 62;
+            this.LineGridView.RowTemplate.Height = 23;
+            this.LineGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.LineGridView.Size = new System.Drawing.Size(400, 225);
+            this.LineGridView.TabIndex = 6;
+            this.LineGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LineGridView_CellClick);
+            // 
+            // OkButton
+            // 
+            this.OkButton.Location = new System.Drawing.Point(258, 422);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(75, 23);
+            this.OkButton.TabIndex = 5;
+            this.OkButton.Text = "确定";
+            this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
+            // 
+            // CancelButton
+            // 
+            this.CancelButton.Location = new System.Drawing.Point(339, 422);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.TabIndex = 5;
+            this.CancelButton.Text = "取消";
+            this.CancelButton.UseVisualStyleBackColor = true;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            // 
+            // SelectedYAxisVarButton
+            // 
+            this.SelectedYAxisVarButton.Location = new System.Drawing.Point(371, 106);
+            this.SelectedYAxisVarButton.Name = "SelectedYAxisVarButton";
+            this.SelectedYAxisVarButton.Size = new System.Drawing.Size(33, 23);
+            this.SelectedYAxisVarButton.TabIndex = 26;
+            this.SelectedYAxisVarButton.Text = "...";
+            this.SelectedYAxisVarButton.UseVisualStyleBackColor = true;
+            this.SelectedYAxisVarButton.Click += new System.EventHandler(this.SelectedYAxisVarButton_Click);
+            // 
+            // SelectedXAxisVarButton
+            // 
+            this.SelectedXAxisVarButton.Location = new System.Drawing.Point(176, 106);
+            this.SelectedXAxisVarButton.Name = "SelectedXAxisVarButton";
+            this.SelectedXAxisVarButton.Size = new System.Drawing.Size(33, 23);
+            this.SelectedXAxisVarButton.TabIndex = 25;
+            this.SelectedXAxisVarButton.Text = "...";
+            this.SelectedXAxisVarButton.UseVisualStyleBackColor = true;
+            this.SelectedXAxisVarButton.Click += new System.EventHandler(this.SelectedXAxisVarButton_Click);
+            // 
+            // YAxisVar
+            // 
+            this.YAxisVar.Location = new System.Drawing.Point(235, 107);
+            this.YAxisVar.Name = "YAxisVar";
+            this.YAxisVar.Size = new System.Drawing.Size(130, 21);
+            this.YAxisVar.TabIndex = 23;
+            // 
+            // XAxisVar
+            // 
+            this.XAxisVar.Location = new System.Drawing.Point(40, 107);
+            this.XAxisVar.Name = "XAxisVar";
+            this.XAxisVar.Size = new System.Drawing.Size(130, 21);
+            this.XAxisVar.TabIndex = 24;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(235, 111);
+            this.label5.Location = new System.Drawing.Point(218, 111);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(11, 12);
-            this.label5.TabIndex = 0;
+            this.label5.TabIndex = 21;
             this.label5.Text = "Y";
             // 
-            // txtY
+            // label4
             // 
-            this.txtY.Location = new System.Drawing.Point(252, 108);
-            this.txtY.Name = "txtY";
-            this.txtY.Size = new System.Drawing.Size(162, 21);
-            this.txtY.TabIndex = 1;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(23, 111);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(11, 12);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "X";
             // 
-            // btnAdd
+            // XVar
             // 
-            this.btnAdd.Location = new System.Drawing.Point(14, 149);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 5;
-            this.btnAdd.Text = "添加";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.XVar.HeaderText = "X";
+            this.XVar.MinimumWidth = 8;
+            this.XVar.Name = "XVar";
+            this.XVar.ReadOnly = true;
+            this.XVar.Width = 198;
             // 
-            // btnUpd
+            // YVar
             // 
-            this.btnUpd.Location = new System.Drawing.Point(95, 149);
-            this.btnUpd.Name = "btnUpd";
-            this.btnUpd.Size = new System.Drawing.Size(75, 23);
-            this.btnUpd.TabIndex = 5;
-            this.btnUpd.Text = "修改";
-            this.btnUpd.UseVisualStyleBackColor = true;
-            this.btnUpd.Click += new System.EventHandler(this.btnUpd_Click);
-            // 
-            // btnDel
-            // 
-            this.btnDel.Location = new System.Drawing.Point(339, 149);
-            this.btnDel.Name = "btnDel";
-            this.btnDel.Size = new System.Drawing.Size(75, 23);
-            this.btnDel.TabIndex = 5;
-            this.btnDel.Text = "删除";
-            this.btnDel.UseVisualStyleBackColor = true;
-            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.x,
-            this.y});
-            this.dataGridView1.Location = new System.Drawing.Point(14, 191);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(400, 225);
-            this.dataGridView1.TabIndex = 6;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            // 
-            // x
-            // 
-            this.x.HeaderText = "X";
-            this.x.MinimumWidth = 8;
-            this.x.Name = "x";
-            this.x.ReadOnly = true;
-            this.x.Width = 150;
-            // 
-            // y
-            // 
-            this.y.HeaderText = "Y";
-            this.y.MinimumWidth = 8;
-            this.y.Name = "y";
-            this.y.ReadOnly = true;
-            this.y.Width = 150;
-            // 
-            // btnOk
-            // 
-            this.btnOk.Location = new System.Drawing.Point(258, 422);
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 5;
-            this.btnOk.Text = "确定";
-            this.btnOk.UseVisualStyleBackColor = true;
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(339, 422);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "取消";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            this.YVar.HeaderText = "Y";
+            this.YVar.MinimumWidth = 8;
+            this.YVar.Name = "YVar";
+            this.YVar.ReadOnly = true;
+            this.YVar.Width = 198;
             // 
             // AddLineForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 450);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btnDel);
-            this.Controls.Add(this.btnUpd);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.lblColor);
-            this.Controls.Add(this.txtY);
-            this.Controls.Add(this.txtX);
+            this.Controls.Add(this.SelectedYAxisVarButton);
+            this.Controls.Add(this.SelectedXAxisVarButton);
+            this.Controls.Add(this.YAxisVar);
+            this.Controls.Add(this.XAxisVar);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtYScope);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.LineGridView);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.ModifyButton);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.OkButton);
+            this.Controls.Add(this.AddButton);
+            this.Controls.Add(this.LineColor);
+            this.Controls.Add(this.YAxisScope);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtXScope);
+            this.Controls.Add(this.XAxisScope);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddLineForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "添加曲线";
-            this.Load += new System.EventHandler(this.XYSetCurveForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.AddLineForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.LineGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,22 +287,24 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtXScope;
+        private System.Windows.Forms.TextBox XAxisScope;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtYScope;
+        private System.Windows.Forms.TextBox YAxisScope;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label lblColor;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtX;
+        private System.Windows.Forms.Label LineColor;
+        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button ModifyButton;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.DataGridView LineGridView;
+        private System.Windows.Forms.Button OkButton;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button SelectedYAxisVarButton;
+        private System.Windows.Forms.Button SelectedXAxisVarButton;
+        private System.Windows.Forms.TextBox YAxisVar;
+        private System.Windows.Forms.TextBox XAxisVar;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtY;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnUpd;
-        private System.Windows.Forms.Button btnDel;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnOk;
-        private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn x;
-        private System.Windows.Forms.DataGridViewTextBoxColumn y;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn XVar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn YVar;
     }
 }

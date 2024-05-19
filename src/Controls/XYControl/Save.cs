@@ -68,5 +68,7 @@ namespace XYControl
         public int refreshInterval = 1000;
 
         public List<PointInfo> pointInfos = new List<PointInfo>();
+
+        public List<LineInfo> lineInfos = new List<LineInfo>();
     }
 }

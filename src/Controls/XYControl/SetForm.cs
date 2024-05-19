@@ -1,5 +1,6 @@
 ﻿using CommonSnappableTypes;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,6 +10,7 @@ namespace XYControl
     {
         private readonly Save saveData;
         private readonly ColorDialog colorDialog = new ColorDialog();
+        private const string LineGridViewFirstColumnName = "No";
 
         public event GetVarTable GetVarTableEvent;
 
@@ -59,16 +61,27 @@ namespace XYControl
                 PointDataGrid.Rows.Add(item.XVar, item.YVar, item.PointColor);
             }
 
-            var column = new DataGridViewColumn
+            LineDataGrid.Columns.Add(new DataGridViewColumn
             {
-                Name = "No",
+                Name = LineGridViewFirstColumnName,
                 HeaderText = "序号",
                 SortMode = DataGridViewColumnSortMode.NotSortable,
                 CellTemplate = new DataGridViewTextBoxCell()
-            };
-            LineDataGrid.Columns.Add(column);
-            LineDataGrid.Columns["No"].Width = 60;
-            //LineDataGrid.Columns["No"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            });
+            LineDataGrid.Columns[LineGridViewFirstColumnName].Width = 60;
+
+            foreach (var item in saveData.lineInfos)
+            {
+                var columnNum = LineDataGrid.Columns.Add(new DataGridViewColumn
+                {
+                    Name = "曲线" + LineDataGrid.ColumnCount,
+                    HeaderText = "曲线" + LineDataGrid.ColumnCount,
+                    SortMode = DataGridViewColumnSortMode.NotSortable,
+                    CellTemplate = new DataGridViewTextBoxCell()
+                });
+
+                SetLineDataGrid(item, columnNum);
+            }
         }
 
         private void OKButton_Click(object sender, EventArgs e)
@@ -230,6 +243,34 @@ namespace XYControl
                 }); 
             }
 
+            saveData.lineInfos.Clear();
+            for (var i = 1; i < LineDataGrid.Columns.Count; i++)
+            {
+                var lineColor = (Color)LineDataGrid.Rows[0].Cells[i].Value;
+                var pointInfos = new List<PointInfo>();
+                for (var j = 1; j < LineDataGrid.Rows.Count; j++)
+                {
+                    var cellValue = LineDataGrid.Rows[j].Cells[i].Value;
+                    if (null == cellValue || string.IsNullOrEmpty(cellValue.ToString()))
+                        continue;
+
+                    var vals = cellValue.ToString().Split(',');
+                    if (2 != vals.Length)
+                        continue;
+
+                    pointInfos.Add(new PointInfo()
+                    {
+                        XVar = vals[0],
+                        YVar = vals[1]
+                    });
+                }
+
+                saveData.lineInfos.Add(new LineInfo() { 
+                    LineColor = lineColor,
+                    PointInfos = pointInfos
+                });
+            }
+
             DialogResult = DialogResult.OK;
         }
 
@@ -334,32 +375,47 @@ namespace XYControl
 
         private void AddLineButton_Click(object sender, EventArgs e)
         {
-            //XYSetCurveForm curveForm = new XYSetCurveForm(saveData, 0, 0, true);
-            //if (curveForm.ShowDialog() == DialogResult.OK)
-            //{
-            //    saveData = curveForm.saveData;
-            //    SetDataGruidView();
-            //}
+            var form = new AddLineForm(saveData);
+            form.GetVarTableEvent += GetVarTableEvent;
+            if (form.ShowDialog() != DialogResult.OK)
+                return;
 
-            LineDataGrid.Rows.Add(8);
+            if (null != form.lineInfo)
+            {
+                var column = new DataGridViewColumn
+                {
+                    Name = "曲线" + LineDataGrid.ColumnCount,
+                    HeaderText = "曲线" + LineDataGrid.ColumnCount,
+                    SortMode = DataGridViewColumnSortMode.NotSortable,
+                    CellTemplate = new DataGridViewTextBoxCell()
+                };
+                var columnNum = LineDataGrid.Columns.Add(column);
+
+                SetLineDataGrid(form.lineInfo, columnNum);
+            }
+        }
+
+        private void SetLineDataGrid(LineInfo lineInfo, int columnNum)
+        {
+            if (lineInfo.PointInfos.Count + 1 > LineDataGrid.Rows.Count)
+            {
+                LineDataGrid.Rows.Add(lineInfo.PointInfos.Count + 1 - LineDataGrid.Rows.Count);
+            }
+
             LineDataGrid.Rows[0].Cells[0].Value = "颜色";
             for (var i = 1; i < LineDataGrid.Rows.Count; i++)
             {
                 LineDataGrid.Rows[i].Cells[0].Value = i;
             }
 
-            var column = new DataGridViewColumn
+            LineDataGrid.Columns[columnNum].Width = 230;
+            LineDataGrid.Rows[0].Cells[columnNum].Value = lineInfo.LineColor;
+            for (var i = 1; i <= lineInfo.PointInfos.Count; i++)
             {
-                Name = "曲线1",
-                HeaderText = "曲线1",
-                SortMode = DataGridViewColumnSortMode.NotSortable,
-                CellTemplate = new DataGridViewTextBoxCell()
-            };
-            var columnNum = LineDataGrid.Columns.Add(column);
-            LineDataGrid.Columns[columnNum].Width = 60;
-            LineDataGrid.Rows[0].Cells[columnNum].Value = Color.Red;
-            LineDataGrid.Rows[1].Cells[columnNum].Value = "22";
-            LineDataGrid.Rows[2].Cells[columnNum].Value = "33";
+                var XVar = lineInfo.PointInfos[i - 1].XVar;
+                var YVar = lineInfo.PointInfos[i - 1].YVar;
+                LineDataGrid.Rows[i].Cells[columnNum].Value = string.Concat(XVar, ",", YVar);
+            }
         }
 
         private void DeleteLineButton_Click(object sender, EventArgs e)
@@ -380,12 +436,34 @@ namespace XYControl
 
         private void LineDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //XYSetCurveForm curveForm = new XYSetCurveForm(saveData, e.ColumnIndex, 1, true);
-            //if (curveForm.ShowDialog() == DialogResult.OK)
-            //{
-            //    saveData = curveForm.saveData;
-            //    SetDataGruidView();
-            //}
+            var lineInfo = new LineInfo
+            {
+                LineColor = (Color)LineDataGrid.Rows[0].Cells[e.ColumnIndex].Value,
+                PointInfos = new List<PointInfo>()
+            };
+            for (var i = 1; i < LineDataGrid.Rows.Count; i++)
+            {
+                var cellValue = LineDataGrid.Rows[i].Cells[e.ColumnIndex].Value;
+                if (null == cellValue || string.IsNullOrEmpty(cellValue.ToString()))
+                    continue;
+
+                var vals = cellValue.ToString().Split(',');
+                if (2 != vals.Length)
+                    continue;
+
+                lineInfo.PointInfos.Add(new PointInfo()
+                {
+                    XVar = vals[0],
+                    YVar = vals[1]
+                });
+            }
+
+            var form = new AddLineForm(saveData, lineInfo);
+            form.GetVarTableEvent += GetVarTableEvent;
+            if (DialogResult.OK != form.ShowDialog())
+                return;
+
+            SetLineDataGrid(form.lineInfo, e.ColumnIndex);
         }
 
         private void AddPointButton_Click(object sender, EventArgs e)

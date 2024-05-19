@@ -49,6 +49,7 @@
     <Compile Include="AddPointForm.Designer.cs">
       <DependentUpon>AddPointForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LineInfo.cs" />
     <Compile Include="PointInfo.cs" />
     <Compile Include="Save.cs" />
     <Compile Include="MainControl.cs">

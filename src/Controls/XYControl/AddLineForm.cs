@@ -1,186 +1,170 @@
-﻿using System;
+﻿using CommonSnappableTypes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace XYControl
 {
     public partial class AddLineForm : Form
     {
-        //public XYSave saveData = new XYSave();
-        //private XYSave tempSaveData = new XYSave();
-        private ColorDialog colorDialog1 = new ColorDialog();
-        private int seriesCount = 0;
-        private int currentIndex = 0;
-        private int addFlg;
-        private bool isLine = true;
+        private Save saveData;
 
-        public AddLineForm()
+        public event GetVarTable GetVarTableEvent;
+
+        public LineInfo lineInfo;
+
+        private readonly ColorDialog colorDialog = new ColorDialog();
+
+        public AddLineForm(Save saveData)
         {
             InitializeComponent();
+            this.saveData = saveData;
         }
 
-        //public XYSetCurveForm(XYSave data, int cell, int flg, bool line)
-        //{
-        //    InitializeComponent();
-        //    //tempSaveData = (XYSave)data.Clone();
-        //    seriesCount = cell;
-        //    addFlg = flg;
-        //    isLine = line;
-        //}
-
-        private void XYSetCurveForm_Load(object sender, EventArgs e)
+        public AddLineForm(Save saveData, LineInfo lineInfo)
         {
-            //txtXScope.Text = "(" + tempSaveData.XMin.ToString() + "," + tempSaveData.XMax.ToString() + ")";
-            //txtYScope.Text = "(" + tempSaveData.YMin.ToString() + "," + tempSaveData.YMax.ToString() + ")";
-            
-            //if (addFlg == 0)
-            //{
-            //    btnUpd.Enabled = false;
-            //    if (isLine)
-            //    {
-            //        seriesCount = tempSaveData.Points.Series.Count + 1;
-            //        var scatterSeries = new FunctionSeries();
-            //        scatterSeries.Background = OxyColors.Transparent;
-            //        tempSaveData.Points.Series.Add(scatterSeries);
-            //    }
-            //    else
-            //    {
-            //        seriesCount = tempSaveData.Points.Series.Count;
-            //        var scatterSeries = new PointAnnotation();
-            //        scatterSeries.Fill = OxyColors.Transparent;
-            //        tempSaveData.Points.Annotations.Add(scatterSeries);
-            //    }
-
-            //}
-            //else
-            //{
-            //    btnAdd.Enabled = false;
-            //    if (isLine)
-            //    {
-            //        var series = tempSaveData.Points.Series[seriesCount - 1];
-            //        lblColor.BackColor = OxyColorToColor(series.Background);
-            //        foreach (var item in (series as DataPointSeries).Points)
-            //        {
-            //            dataGridView1.Rows.Add(item.X, item.Y);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        var annotation = (PointAnnotation)tempSaveData.Points.Annotations[seriesCount];
-            //        lblColor.BackColor = OxyColorToColor(annotation.Fill);
-            //        dataGridView1.Rows.Add(annotation.X, annotation.Y);
-            //    }
-            //}
+            InitializeComponent();
+            this.saveData = saveData;
+            this.lineInfo = lineInfo;
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void AddLineForm_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtX.Text) || string.IsNullOrEmpty(txtY.Text))
+            XAxisScope.Text = string.Concat("(", saveData.xAxisMin, ",", saveData.xAxisMax, ")");
+            YAxisScope.Text = string.Concat("(", saveData.yAxisMin, ",", saveData.yAxisMax, ")");
+
+            if (null != lineInfo)
             {
-                MessageBox.Show("请输入有效的坐标！");
+                LineColor.BackColor = lineInfo.LineColor;
+                foreach (var pointInfo in lineInfo.PointInfos)
+                {
+                    LineGridView.Rows.Add(pointInfo.XVar, pointInfo.YVar);
+                }
+            }
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(XAxisVar.Text.Trim()))
+            {
+                MessageBox.Show("请选择X轴绑定变量.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            double x = 0, y = 0;
-            if (!double.TryParse(txtX.Text, out x) || !double.TryParse(txtY.Text, out y))
+
+            if (string.IsNullOrEmpty(YAxisVar.Text.Trim()))
             {
-                MessageBox.Show("请输入有效的坐标！");
+                MessageBox.Show("请选择Y轴绑定变量.", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            //if (tempSaveData.XMin >= x || x >= tempSaveData.XMax || tempSaveData.YMin >= y || y >= tempSaveData.YMax)
-            //{
-            //    MessageBox.Show("请输入有效的坐标！");
-            //    return;
-            //}
-            //dataGridView1.Rows.Add(x, y);
 
-            //if (isLine)
-            //{
-            //    var lineSer = tempSaveData.Points.Series[seriesCount - 1] as LineSeries;
-            //    lineSer.Background = ColorToOxyColor(lblColor.BackColor);
-            //    lineSer.Points.Add(new DataPoint(x, y));
-
-            //}
-            //else
-            //{
-            //    tempSaveData.Points.Annotations.Add(new PointAnnotation { X = x, Y = y, Fill = ColorToOxyColor(lblColor.BackColor) });
-            //}
-
-            MessageBox.Show("坐标已添加！");
+            LineGridView.Rows.Add(XAxisVar.Text.Trim(), YAxisVar.Text.Trim());
         }
 
-        private void btnUpd_Click(object sender, EventArgs e)
+        private void ModifyButton_Click(object sender, EventArgs e)
         {
-            dataGridView1.Rows[currentIndex].Cells[0].Value = txtX.Text;
-            dataGridView1.Rows[currentIndex].Cells[1].Value = txtY.Text;
-
-            //if (isLine)
-            //{
-            //    var lineSer = tempSaveData.Points.Series[seriesCount - 1] as LineSeries;
-            //    lineSer.Points[currentIndex] = new DataPoint(double.Parse(txtX.Text), double.Parse(txtY.Text));
-            //}
-            //else
-            //{
-            //    var annotation = (PointAnnotation)tempSaveData.Points.Annotations[seriesCount - 1];
-            //    annotation.X = double.Parse(txtX.Text);
-            //    annotation.Y = double.Parse(txtY.Text);
-            //}
-
-            MessageBox.Show("坐标已更新！");
+            for (var i = LineGridView.SelectedRows.Count; i >= 1; i--)
+            {
+                var rowIndex = LineGridView.SelectedRows[i - 1].Index;
+                LineGridView.Rows[rowIndex].Cells["XVar"].Value = XAxisVar.Text;
+                LineGridView.Rows[rowIndex].Cells["YVar"].Value = YAxisVar.Text;
+            }
         }
 
-        private void btnDel_Click(object sender, EventArgs e)
+        private void DeleteButton_Click(object sender, EventArgs e)
         {
-            //dataGridView1.Rows.Remove(dataGridView1.Rows[currentIndex]);
-            //if (isLine)
-            //{
-            //    var lineSer = tempSaveData.Points.Series[seriesCount - 1] as LineSeries;
-            //    lineSer.Points.RemoveAt(currentIndex);
-            //}
-            //else 
-            //    tempSaveData.Points.Annotations.RemoveAt(seriesCount);
+            var dr = MessageBox.Show("确认删除选中的动态点？", "提示", MessageBoxButtons.OKCancel);
+            if (dr != DialogResult.OK)
+                return;
 
-            MessageBox.Show("坐标已删除！");
+            for (var i = LineGridView.SelectedRows.Count; i >= 1; i--)
+            {
+                LineGridView.Rows.RemoveAt(LineGridView.SelectedRows[i - 1].Index);
+            }
         }
 
-        private void btnOk_Click(object sender, EventArgs e)
+        private void OkButton_Click(object sender, EventArgs e)
         {
-            //if (isLine)
-            //{
-            //    var lineSer = tempSaveData.Points.Series[seriesCount - 1] as LineSeries;
-            //    lineSer.Background = ColorToOxyColor(lblColor.BackColor);
-            //}
-            //else
-            //{
-            //    var annotation = (PointAnnotation)tempSaveData.Points.Annotations[seriesCount - 1];
-            //    annotation.Fill = ColorToOxyColor(lblColor.BackColor);
-            //}
-            //saveData = tempSaveData;
+            if (0 == LineGridView.Rows.Count)
+            {
+                DialogResult = DialogResult.OK;
+                return;
+            }
+
+            var pointInfos = new List<PointInfo>();
+            for (var i = 0; i< LineGridView.Rows.Count; i++)
+            {
+                pointInfos.Add(new PointInfo()
+                {
+                    XVar = LineGridView.Rows[i].Cells["XVar"].Value.ToString(),
+                    YVar = LineGridView.Rows[i].Cells["YVar"].Value.ToString()
+                });
+            }
+
+            lineInfo = new LineInfo
+            {
+                LineColor = LineColor.BackColor,
+                PointInfos = pointInfos
+            };
 
             DialogResult = DialogResult.OK;
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void CancelButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void LineGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex < 0 || e.RowIndex < 0)
                 return;
 
-            if (dataGridView1.Rows[e.RowIndex].Cells[0].Value == null ||
-                dataGridView1.Rows[e.RowIndex].Cells[1].Value == null)
+            if (LineGridView.Rows[e.RowIndex].Cells[0].Value == null ||
+                LineGridView.Rows[e.RowIndex].Cells[1].Value == null)
                 return;
 
-            txtX.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txtY.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            currentIndex = e.RowIndex;
+            XAxisVar.Text = LineGridView.Rows[e.RowIndex].Cells["XVar"].Value.ToString();
+            YAxisVar.Text = LineGridView.Rows[e.RowIndex].Cells["YVar"].Value.ToString();
         }
 
-        private void lblColor_Click(object sender, EventArgs e)
+        private void SelectedXAxisVarButton_Click(object sender, EventArgs e)
         {
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-                lblColor.BackColor = colorDialog1.Color;
+            if (null == GetVarTableEvent)
+                return;
+
+            var variables = GetVarTableEvent("").Split('|');
+            if (variables.Length <= 0)
+                return;
+
+            if (string.IsNullOrEmpty(variables.First()))
+                return;
+
+            XAxisVar.Text = string.Concat("[", variables.First(), "]");
         }
+
+        private void SelectedYAxisVarButton_Click(object sender, EventArgs e)
+        {
+            if (null == GetVarTableEvent)
+                return;
+
+            var variables = GetVarTableEvent("").Split('|');
+            if (variables.Length <= 0)
+                return;
+
+            if (string.IsNullOrEmpty(variables.First()))
+                return;
+
+            YAxisVar.Text = string.Concat("[", variables.First(), "]");
+        }
+
+        private void LineColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            LineColor.BackColor = colorDialog.Color;
+        }
+
     }
 }

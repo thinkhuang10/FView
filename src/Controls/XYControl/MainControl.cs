@@ -14,8 +14,6 @@ namespace XYControl
         private const string ChartAreaName = "chartArea";
         private Save saveData = new Save();
 
-        private Series pointSeries;
-
         #region 与组态的接口
 
         [Browsable(false)]
@@ -539,12 +537,6 @@ namespace XYControl
 
             if (isRuning)
             {
-                pointSeries = xyChart.Series.Add("Points");
-                pointSeries.ChartArea = ChartAreaName;
-                pointSeries.ChartType = SeriesChartType.Point;
-                pointSeries.MarkerStyle = MarkerStyle.Circle;
-                pointSeries.MarkerSize = saveData.dynamicPointSize;
-
                 timer.Interval = saveData.refreshInterval;
                 timer.Enabled = true;
                 timer.Tick += Timer_Tick;
@@ -553,12 +545,49 @@ namespace XYControl
 
         private void Timer_Tick(object sender, EventArgs e)
         {
+            xyChart.Series.Clear();
+
+            ShowLines();
             ShowPoints();
+        }
+
+        private void ShowLines() 
+        {
+            for (var i = 0; i < saveData.lineInfos.Count; i++) 
+            {
+                var series = xyChart.Series.Add($"line{i}");
+                series.BorderWidth = saveData.seriesBorderWidth;    // 曲线宽度
+                series.Color = saveData.lineInfos[i].LineColor;
+                series.ChartArea = ChartAreaName;
+                series.ChartType = SeriesChartType.Line;
+
+                foreach (var pointInfo in saveData.lineInfos[i].PointInfos)
+                {
+                    var xAxisValue = GetValueEvent(pointInfo.XVar);
+                    var yAxisValue = GetValueEvent(pointInfo.YVar);
+                    if (null == xAxisValue || null == yAxisValue)
+                        continue;
+
+                    if (!double.TryParse(xAxisValue.ToString(), out double xValue))
+                        continue;
+
+                    if (!double.TryParse(yAxisValue.ToString(), out double yValue))
+                        continue;
+
+                    series.Points.AddXY(Math.Round(xValue, saveData.decimalPlace),
+                        Math.Round(yValue, saveData.decimalPlace));
+                }
+            }
         }
 
         private void ShowPoints()
         {
-            pointSeries.Points.Clear();
+            var pointSeries = xyChart.Series.Add("Points");
+            pointSeries.ChartArea = ChartAreaName;
+            pointSeries.ChartType = SeriesChartType.Point;
+            pointSeries.MarkerStyle = MarkerStyle.Circle;
+            pointSeries.MarkerSize = saveData.dynamicPointSize;
+
             var font = new Font(FontFamily.GenericSansSerif, saveData.dynamicPointLabelSize);
             foreach (var point in saveData.pointInfos)
             {
@@ -731,7 +760,6 @@ namespace XYControl
 
             series.Points.Add(dataPoint);
         }
-
 
         #endregion
 
