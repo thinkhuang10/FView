@@ -56,11 +56,13 @@ namespace XYControl
             YAxisMin.Text = saveData.yAxisMin.ToString();
             YAxisMax.Text = saveData.yAxisMax.ToString();
 
+            // 初始化点表格
             foreach (var item in saveData.pointInfos)
             {
                 PointDataGrid.Rows.Add(item.XVar, item.YVar, item.PointColor);
             }
 
+            // 初始化曲线表格
             LineDataGrid.Columns.Add(new DataGridViewColumn
             {
                 Name = LineGridViewFirstColumnName,
@@ -195,6 +197,8 @@ namespace XYControl
 
             #endregion
 
+            #region 保存配置到序列化文件中
+
             saveData.chartForeColor = ChartForeColor.BackColor;
             saveData.chartBackColor = ChartBackColor.BackColor;
             saveData.gridColor = GridColor.BackColor;
@@ -271,10 +275,12 @@ namespace XYControl
                 });
             }
 
+            #endregion
+
             DialogResult = DialogResult.OK;
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
@@ -375,7 +381,8 @@ namespace XYControl
 
         private void AddLineButton_Click(object sender, EventArgs e)
         {
-            var form = new AddLineForm(saveData);
+            var form = new AddLineForm(XAxisMin.Text.Trim(), XAxisMax.Text.Trim(),
+                YAxisMin.Text.Trim(), YAxisMax.Text.Trim());
             form.GetVarTableEvent += GetVarTableEvent;
             if (form.ShowDialog() != DialogResult.OK)
                 return;
@@ -436,11 +443,8 @@ namespace XYControl
 
         private void LineDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var lineInfo = new LineInfo
-            {
-                LineColor = (Color)LineDataGrid.Rows[0].Cells[e.ColumnIndex].Value,
-                PointInfos = new List<PointInfo>()
-            };
+            // 获取选中曲线绑定的所有变量
+            var pointInfos = new List<PointInfo>();
             for (var i = 1; i < LineDataGrid.Rows.Count; i++)
             {
                 var cellValue = LineDataGrid.Rows[i].Cells[e.ColumnIndex].Value;
@@ -451,14 +455,19 @@ namespace XYControl
                 if (2 != vals.Length)
                     continue;
 
-                lineInfo.PointInfos.Add(new PointInfo()
+                pointInfos.Add(new PointInfo()
                 {
                     XVar = vals[0],
                     YVar = vals[1]
                 });
             }
 
-            var form = new AddLineForm(saveData, lineInfo);
+            var form = new AddLineForm(XAxisMin.Text.Trim(), XAxisMax.Text.Trim(),
+                YAxisMin.Text.Trim(), YAxisMax.Text.Trim(), new LineInfo
+                {
+                    LineColor = (Color)LineDataGrid.Rows[0].Cells[e.ColumnIndex].Value,
+                    PointInfos = pointInfos
+                });
             form.GetVarTableEvent += GetVarTableEvent;
             if (DialogResult.OK != form.ShowDialog())
                 return;
@@ -468,18 +477,21 @@ namespace XYControl
 
         private void AddPointButton_Click(object sender, EventArgs e)
         {
-            var form = new AddPointForm(saveData);
+            var form = new AddPointForm(XAxisMin.Text.Trim(), XAxisMax.Text.Trim(),
+                YAxisMin.Text.Trim(), YAxisMax.Text.Trim());
             form.GetVarTableEvent += GetVarTableEvent;
             if (DialogResult.OK != form.ShowDialog())
                 return;
 
-            PointDataGrid.Rows.Add(form.pointInfo.XVar, form.pointInfo.YVar, form.pointInfo.PointColor);
+            if (null == form.PointInfo)
+                return;
+
+            PointDataGrid.Rows.Add(form.PointInfo.XVar, form.PointInfo.YVar, form.PointInfo.PointColor);
         }
 
         private void DeletePointButton_Click(object sender, EventArgs e)
         {
-            var dr = MessageBox.Show("确认删除选中的动态点？", "提示", MessageBoxButtons.OKCancel);
-            if (dr != DialogResult.OK)
+            if (DialogResult.OK == MessageBox.Show("确认删除选中的动态点？", "提示", MessageBoxButtons.OKCancel))
                 return;
 
             for (var i = PointDataGrid.SelectedRows.Count; i >= 1; i--) 
@@ -490,15 +502,25 @@ namespace XYControl
 
         private void PointDataGrid_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            var form = new AddPointForm(saveData, PointDataGrid.Rows[e.RowIndex]);
+            var row = PointDataGrid.Rows[e.RowIndex];
+            var form = new AddPointForm(XAxisMin.Text.Trim(), XAxisMax.Text.Trim(),
+                YAxisMin.Text.Trim(), YAxisMax.Text.Trim(), new PointInfo
+            {
+                XVar = row.Cells["XVar"].Value.ToString(),
+                YVar = row.Cells["YVar"].Value.ToString(),
+                PointColor = (Color)row.Cells["PointColor"].Value
+            });
             form.GetVarTableEvent += GetVarTableEvent;
             if (DialogResult.OK != form.ShowDialog())
                 return;
 
-            var pointInfo = form.pointInfo;
-            PointDataGrid.Rows[e.RowIndex].Cells["XVar"].Value = pointInfo.XVar;
-            PointDataGrid.Rows[e.RowIndex].Cells["YVar"].Value = pointInfo.YVar;
-            PointDataGrid.Rows[e.RowIndex].Cells["PointColor"].Value = pointInfo.PointColor;
+            var pointInfo = form.PointInfo;
+            if (null != pointInfo)
+            {
+                row.Cells["XVar"].Value = pointInfo.XVar;
+                row.Cells["YVar"].Value = pointInfo.YVar;
+                row.Cells["PointColor"].Value = pointInfo.PointColor;
+            }
         }
 
         #endregion

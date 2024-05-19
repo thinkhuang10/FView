@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommonSnappableTypes, Version=1.0.6058.42381, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\CommonSnappableTypes.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -51,6 +55,11 @@
     </Compile>
     <Compile Include="LineInfo.cs" />
     <Compile Include="PointInfo.cs" />
+    <Compile Include="Properties\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Save.cs" />
     <Compile Include="MainControl.cs">
       <SubType>UserControl</SubType>
@@ -83,15 +92,16 @@
     <EmbeddedResource Include="AddLineForm.resx">
       <DependentUpon>AddLineForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="SetForm.resx">
       <DependentUpon>SetForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CommonSnappableTypes\CommonSnappableTypes.csproj">
-      <Project>{2c5abf19-fd7d-4b1f-9bb1-6b5224518fcf}</Project>
-      <Name>CommonSnappableTypes</Name>
-    </ProjectReference>
+    <None Include="Resources\XY.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

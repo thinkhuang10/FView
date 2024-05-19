@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.OKButton = new System.Windows.Forms.Button();
             this.PointColor = new System.Windows.Forms.Label();
             this.YAxisVar = new System.Windows.Forms.TextBox();
@@ -44,15 +44,15 @@
             this.SelectedYAxisVarButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // CancelButton
+            // ExitButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(322, 148);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 16;
-            this.CancelButton.Text = "取消";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.ExitButton.Location = new System.Drawing.Point(322, 148);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(75, 23);
+            this.ExitButton.TabIndex = 16;
+            this.ExitButton.Text = "取消";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // OKButton
             // 
@@ -177,7 +177,7 @@
             this.ClientSize = new System.Drawing.Size(424, 189);
             this.Controls.Add(this.SelectedYAxisVarButton);
             this.Controls.Add(this.SelectedXAxisVarButton);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.OKButton);
             this.Controls.Add(this.PointColor);
             this.Controls.Add(this.YAxisVar);
@@ -201,7 +201,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Label PointColor;
         private System.Windows.Forms.TextBox YAxisVar;

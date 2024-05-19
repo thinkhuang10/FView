@@ -3,15 +3,21 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
+using System.Resources;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using XYControl.Properties;
 
 namespace XYControl
 {
     public partial class MainControl: UserControl,IDCCEControl
     {
-        private const string ChartAreaName = "chartArea";
+        private const string ChartAreaName = "XYChartArea";
+        private const string PointSeriesName = "XYPoint";
+        private const string LineSeriesPrefixName = "XYLine";
+        private const string SpecialSeriesName = "SpecialPointForLoad";
+
         private Save saveData = new Save();
 
         #region 与组态的接口
@@ -20,14 +26,23 @@ namespace XYControl
         public bool isRuning { set; get; }
 
         public event GetValue GetValueEvent;
+        public event GetVarTable GetVarTableEvent;
+#pragma warning disable CS0067
         public event SetValue SetValueEvent;
         public event GetDataBase GetDataBaseEvent;
-        public event GetVarTable GetVarTableEvent;
         public event GetValue GetSystemItemEvent;
+#pragma warning restore CS0067
+
+        public static Image GetLogoStatic()
+        {
+            ResourceManager resourceManager = new ResourceManager(typeof(Resource));
+            return (Bitmap)resourceManager.GetObject("XY");
+        }
 
         public Bitmap GetLogo()
         {
-            return null;
+            var resourceManager = new ResourceManager(typeof(Resource));
+            return (Bitmap)resourceManager.GetObject("XY");
         }
 
         public byte[] Serialize()
@@ -537,15 +552,46 @@ namespace XYControl
 
             if (isRuning)
             {
-                timer.Interval = saveData.refreshInterval;
-                timer.Enabled = true;
-                timer.Tick += Timer_Tick;
+                SetSeriesStyle();
+                StartTimer();
             }
+        }
+
+        private void StartTimer()
+        {
+            timer.Interval = saveData.refreshInterval;
+            timer.Enabled = true;
+            timer.Tick += Timer_Tick;
+        }
+
+        private void SetSeriesStyle()
+        {
+            // 提前初始化曲线,定时器中不要周期执行
+            // TODO: 尝试提高曲线绘制效率
+            for (var i = 0; i < saveData.lineInfos.Count; i++)
+            {
+                var series = xyChart.Series.Add($"{LineSeriesPrefixName}{i}");
+                series.BorderWidth = saveData.seriesBorderWidth;    // 曲线宽度
+                series.Color = saveData.lineInfos[i].LineColor;
+                series.ChartArea = ChartAreaName;
+                series.ChartType = SeriesChartType.Line;
+            }
+
+            var pointSeries = xyChart.Series.Add(PointSeriesName);
+            pointSeries.ChartArea = ChartAreaName;
+            pointSeries.ChartType = SeriesChartType.Point;
+            pointSeries.MarkerStyle = MarkerStyle.Circle;
+            pointSeries.MarkerSize = saveData.dynamicPointSize;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            xyChart.Series.Clear();
+            // 清空点的方式
+            // TODO: 尽量提高取下效率
+            for (var i = 0; i < xyChart.Series.Count; i++)
+            {
+                xyChart.Series[i].Points.Clear();
+            }
 
             ShowLines();
             ShowPoints();
@@ -555,14 +601,11 @@ namespace XYControl
         {
             for (var i = 0; i < saveData.lineInfos.Count; i++) 
             {
-                var series = xyChart.Series.Add($"line{i}");
-                series.BorderWidth = saveData.seriesBorderWidth;    // 曲线宽度
-                series.Color = saveData.lineInfos[i].LineColor;
-                series.ChartArea = ChartAreaName;
-                series.ChartType = SeriesChartType.Line;
-
                 foreach (var pointInfo in saveData.lineInfos[i].PointInfos)
                 {
+                    if (null == GetValueEvent)
+                        continue;
+
                     var xAxisValue = GetValueEvent(pointInfo.XVar);
                     var yAxisValue = GetValueEvent(pointInfo.YVar);
                     if (null == xAxisValue || null == yAxisValue)
@@ -574,7 +617,7 @@ namespace XYControl
                     if (!double.TryParse(yAxisValue.ToString(), out double yValue))
                         continue;
 
-                    series.Points.AddXY(Math.Round(xValue, saveData.decimalPlace),
+                    xyChart.Series[$"{LineSeriesPrefixName}{i}"].Points.AddXY(Math.Round(xValue, saveData.decimalPlace),
                         Math.Round(yValue, saveData.decimalPlace));
                 }
             }
@@ -582,12 +625,6 @@ namespace XYControl
 
         private void ShowPoints()
         {
-            var pointSeries = xyChart.Series.Add("Points");
-            pointSeries.ChartArea = ChartAreaName;
-            pointSeries.ChartType = SeriesChartType.Point;
-            pointSeries.MarkerStyle = MarkerStyle.Circle;
-            pointSeries.MarkerSize = saveData.dynamicPointSize;
-
             var font = new Font(FontFamily.GenericSansSerif, saveData.dynamicPointLabelSize);
             foreach (var point in saveData.pointInfos)
             {
@@ -614,7 +651,7 @@ namespace XYControl
                     dataPoint.LabelForeColor = saveData.dynamicPointLabelForeColor;
                     dataPoint.Font = font;
                 }
-                pointSeries.Points.Add(dataPoint);
+                xyChart.Series[PointSeriesName].Points.Add(dataPoint);
             }
         }
 
@@ -623,7 +660,7 @@ namespace XYControl
         /// </summary>
         private void SetDefaultPoint()
         {
-            var series = xyChart.Series.Add("SpecialPointForLoad");
+            var series = xyChart.Series.Add(SpecialSeriesName);
             series.ChartArea = ChartAreaName;
             series.ChartType = SeriesChartType.Point;
             series.Points.Add(new DataPoint
@@ -649,8 +686,10 @@ namespace XYControl
         {
             xyChart.BackColor = saveData.chartBackColor;    // 设置背景色
 
-            var chartArea = new ChartArea(ChartAreaName);
-            chartArea.BackColor = saveData.chartForeColor;      // 设置前景色
+            var chartArea = new ChartArea(ChartAreaName)
+            {
+                BackColor = saveData.chartForeColor      // 设置前景色
+            };
 
             chartArea.AxisX.Minimum = saveData.xAxisMin;        // 设置X轴最小值
             chartArea.AxisX.Maximum = saveData.xAxisMax;        // 设置X轴最大值
@@ -711,57 +750,6 @@ namespace XYControl
             xyChart.ChartAreas.Clear();
             xyChart.Titles.Clear();
         }
-
-        #region 用于测试
-
-        private void AddLine1(string lineName)
-        {
-            var series = xyChart.Series.Add(lineName);
-            series.BorderWidth = saveData.seriesBorderWidth;    // 曲线宽度
-            series.Color = Color.Yellow;
-            series.ChartArea = ChartAreaName;
-            series.ChartType = SeriesChartType.Line;
-
-            series.Points.AddXY(1, 2);
-            series.Points.AddXY(31, 42);
-        }
-
-        private void AddLine2(string lineName)
-        {
-            var series = xyChart.Series.Add(lineName);
-            series.BorderWidth = saveData.seriesBorderWidth;    // 曲线宽度
-            series.Color = Color.Blue;
-            series.ChartArea = ChartAreaName;
-            series.ChartType = SeriesChartType.Line;
-            series.Points.AddXY(11, 32);
-            series.Points.AddXY(1, 26);
-            series.Points.AddXY(55, 36);
-        }
-
-        private void AddPoint(string pointName)
-        {
-            var series = xyChart.Series.Add(pointName);
-            series.ChartArea = ChartAreaName;
-            series.ChartType = SeriesChartType.Point;
-            series.MarkerStyle = MarkerStyle.Circle;
-            series.MarkerSize = saveData.dynamicPointSize;
-
-            var font = new Font(FontFamily.GenericSansSerif, saveData.dynamicPointLabelSize);
-
-            var dataPoint = new DataPoint { Color = Color.Red, XValue = 41, YValues = new double[] { 32 } };
-            if (saveData.isShowDynamicPointLabel)
-            {
-                dataPoint.IsValueShownAsLabel = saveData.isShowDynamicPointLabel;
-                dataPoint.Label = "#VALX, #VALY";
-                dataPoint.LabelBackColor = saveData.dynamicPointLabelBackColor;
-                dataPoint.LabelForeColor = saveData.dynamicPointLabelForeColor;
-                dataPoint.Font = font;
-            }
-
-            series.Points.Add(dataPoint);
-        }
-
-        #endregion
 
     }
 }

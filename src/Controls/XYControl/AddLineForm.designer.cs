@@ -39,16 +39,16 @@
             this.ModifyButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.LineGridView = new System.Windows.Forms.DataGridView();
+            this.XVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.YVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OkButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.SelectedYAxisVarButton = new System.Windows.Forms.Button();
             this.SelectedXAxisVarButton = new System.Windows.Forms.Button();
             this.YAxisVar = new System.Windows.Forms.TextBox();
             this.XAxisVar = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.XVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.YVar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.LineGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -162,6 +162,22 @@
             this.LineGridView.TabIndex = 6;
             this.LineGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LineGridView_CellClick);
             // 
+            // XVar
+            // 
+            this.XVar.HeaderText = "X";
+            this.XVar.MinimumWidth = 8;
+            this.XVar.Name = "XVar";
+            this.XVar.ReadOnly = true;
+            this.XVar.Width = 198;
+            // 
+            // YVar
+            // 
+            this.YVar.HeaderText = "Y";
+            this.YVar.MinimumWidth = 8;
+            this.YVar.Name = "YVar";
+            this.YVar.ReadOnly = true;
+            this.YVar.Width = 198;
+            // 
             // OkButton
             // 
             this.OkButton.Location = new System.Drawing.Point(258, 422);
@@ -172,15 +188,15 @@
             this.OkButton.UseVisualStyleBackColor = true;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
-            // CancelButton
+            // ExitButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(339, 422);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 5;
-            this.CancelButton.Text = "取消";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.ExitButton.Location = new System.Drawing.Point(339, 422);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(75, 23);
+            this.ExitButton.TabIndex = 5;
+            this.ExitButton.Text = "取消";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // SelectedYAxisVarButton
             // 
@@ -234,22 +250,6 @@
             this.label4.TabIndex = 22;
             this.label4.Text = "X";
             // 
-            // XVar
-            // 
-            this.XVar.HeaderText = "X";
-            this.XVar.MinimumWidth = 8;
-            this.XVar.Name = "XVar";
-            this.XVar.ReadOnly = true;
-            this.XVar.Width = 198;
-            // 
-            // YVar
-            // 
-            this.YVar.HeaderText = "Y";
-            this.YVar.MinimumWidth = 8;
-            this.YVar.Name = "YVar";
-            this.YVar.ReadOnly = true;
-            this.YVar.Width = 198;
-            // 
             // AddLineForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -264,7 +264,7 @@
             this.Controls.Add(this.LineGridView);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.ModifyButton);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.LineColor);
@@ -297,7 +297,7 @@
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.DataGridView LineGridView;
         private System.Windows.Forms.Button OkButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button SelectedYAxisVarButton;
         private System.Windows.Forms.Button SelectedXAxisVarButton;
         private System.Windows.Forms.TextBox YAxisVar;

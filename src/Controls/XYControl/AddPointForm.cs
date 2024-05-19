@@ -1,6 +1,5 @@
 ﻿using CommonSnappableTypes;
 using System;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -9,38 +8,44 @@ namespace XYControl
     public partial class AddPointForm : Form
     {
         public event GetVarTable GetVarTableEvent;
-
-        public PointInfo pointInfo;
-
-        public Save saveData;
+        public PointInfo PointInfo;
 
         private readonly ColorDialog colorDialog = new ColorDialog();
 
-        private DataGridViewRow dataGridViewRow;
+        private readonly string xAxisMin;
+        private readonly string xAxisMax;
+        private readonly string yAxisMin;
+        private readonly string yAxisMax;
 
-        public AddPointForm(Save saveData)
+        public AddPointForm(string xAxisMin, string xAxisMax, string yAxisMin, string yAxisMax)
         {
             InitializeComponent();
-            this.saveData = saveData;
+            this.xAxisMin = xAxisMin;
+            this.xAxisMax = xAxisMax;
+            this.yAxisMin = yAxisMin;
+            this.yAxisMax = yAxisMax;
         }
 
-        public AddPointForm(Save saveData, DataGridViewRow dataGridViewRow)
+        public AddPointForm(string xAxisMin, string xAxisMax, string yAxisMin, string yAxisMax, PointInfo pointInfo)
         {
             InitializeComponent();
-            this.saveData = saveData;
-            this.dataGridViewRow = dataGridViewRow;
+            this.xAxisMin = xAxisMin;
+            this.xAxisMax = xAxisMax;
+            this.yAxisMin = yAxisMin;
+            this.yAxisMax = yAxisMax;
+            PointInfo = pointInfo;
         }
 
         private void AddPointForm_Load(object sender, EventArgs e)
         {
-            XAxisScope.Text = string.Concat("(", saveData.xAxisMin, ",", saveData.xAxisMax, ")");
-            YAxisScope.Text = string.Concat("(", saveData.yAxisMin, ",", saveData.yAxisMax, ")");
+            XAxisScope.Text = string.Concat("(", xAxisMin, ",", xAxisMax, ")");
+            YAxisScope.Text = string.Concat("(", yAxisMin, ",", yAxisMax, ")");
 
-            if (null != dataGridViewRow)
+            if (null != PointInfo)
             {
-                XAxisVar.Text = dataGridViewRow.Cells["XVar"].Value.ToString();
-                YAxisVar.Text = dataGridViewRow.Cells["YVar"].Value.ToString();
-                PointColor.BackColor = (Color)dataGridViewRow.Cells["PointColor"].Value;
+                XAxisVar.Text = PointInfo.XVar;
+                YAxisVar.Text = PointInfo.YVar;
+                PointColor.BackColor = PointInfo.PointColor;
             }
         }
 
@@ -58,7 +63,7 @@ namespace XYControl
                 return;
             }
 
-            pointInfo = new PointInfo
+            PointInfo = new PointInfo
             {
                 XVar = XAxisVar.Text.Trim(),
                 YVar = YAxisVar.Text.Trim(),
@@ -68,7 +73,7 @@ namespace XYControl
             DialogResult = DialogResult.OK;
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }

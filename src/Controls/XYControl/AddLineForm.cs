@@ -8,31 +8,38 @@ namespace XYControl
 {
     public partial class AddLineForm : Form
     {
-        private Save saveData;
-
         public event GetVarTable GetVarTableEvent;
-
         public LineInfo lineInfo;
 
         private readonly ColorDialog colorDialog = new ColorDialog();
+        private readonly string xAxisMin;
+        private readonly string xAxisMax;
+        private readonly string yAxisMin;
+        private readonly string yAxisMax;
 
-        public AddLineForm(Save saveData)
+        public AddLineForm(string xAxisMin, string xAxisMax, string yAxisMin, string yAxisMax)
         {
             InitializeComponent();
-            this.saveData = saveData;
+            this.xAxisMin = xAxisMin;
+            this.xAxisMax = xAxisMax;
+            this.yAxisMin = yAxisMin;
+            this.yAxisMax = yAxisMax;
         }
 
-        public AddLineForm(Save saveData, LineInfo lineInfo)
+        public AddLineForm(string xAxisMin, string xAxisMax, string yAxisMin, string yAxisMax, LineInfo lineInfo)
         {
             InitializeComponent();
-            this.saveData = saveData;
+            this.xAxisMin = xAxisMin;
+            this.xAxisMax = xAxisMax;
+            this.yAxisMin = yAxisMin;
+            this.yAxisMax = yAxisMax;
             this.lineInfo = lineInfo;
         }
 
         private void AddLineForm_Load(object sender, EventArgs e)
         {
-            XAxisScope.Text = string.Concat("(", saveData.xAxisMin, ",", saveData.xAxisMax, ")");
-            YAxisScope.Text = string.Concat("(", saveData.yAxisMin, ",", saveData.yAxisMax, ")");
+            XAxisScope.Text = string.Concat("(", xAxisMin, ",", xAxisMax, ")");
+            YAxisScope.Text = string.Concat("(", yAxisMin, ",", yAxisMax, ")");
 
             if (null != lineInfo)
             {
@@ -110,7 +117,7 @@ namespace XYControl
             DialogResult = DialogResult.OK;
         }
 
-        private void CancelButton_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
         }
