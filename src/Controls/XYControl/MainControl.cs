@@ -587,7 +587,7 @@ namespace XYControl
         private void Timer_Tick(object sender, EventArgs e)
         {
             // 清空点的方式
-            // TODO: 尽量提高取下效率
+            // TODO: 尽量提高效率
             for (var i = 0; i < xyChart.Series.Count; i++)
             {
                 xyChart.Series[i].Points.Clear();
@@ -732,6 +732,9 @@ namespace XYControl
 
         private void Chart_DoubleClick(object sender, EventArgs e)
         {
+            if (isRuning)
+                return;
+
             var form = new SetForm(saveData);
             form.GetVarTableEvent += GetVarTableEvent;
             if (DialogResult.OK != form.ShowDialog())
